@@ -47,8 +47,6 @@ For updates, <code>git</code> is easiest.  In your <code>thebench</code> directo
    <code>git pull</code>
 
 
-MORE GOODIES:
-
 -Python note: Default python interpreters are SLOW. You may want to try <code><a href="https://pypy.org">pypy</a></code>.
 This tool is much faster in it.
  
