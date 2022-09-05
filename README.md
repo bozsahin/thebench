@@ -12,7 +12,9 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
 1. In a directory where you want to save the tool, clone this repo,
 
-   for example by doing <code>git clone https://github.com/bozsahin/thebench</code>
+   for example by doing 
+
+   <code>git clone https://github.com/bozsahin/thebench</code>
 
    This will create <code>thebench</code> folder with code and documentation.
 
@@ -22,7 +24,9 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
    In the terminal, do  the following:
 
    <code>./install-bench</code>
+
    <code>pip install sly</code>
+
    <code>pip install cl4py</code>
 
 Open a fresh terminal.
