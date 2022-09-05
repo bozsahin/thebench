@@ -19,7 +19,7 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
    This will create <code>thebench</code> folder with code and documentation.
 
 2. Open a terminal  and change to that directory
-   (in linux, Mac and Windows with WSL system---with terminal in that system):
+   (in linux, Mac or Windows with WSL system---with terminal in that system):
 
    In the terminal, do  the following:
 
@@ -31,11 +31,11 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
 Open a fresh terminal.
 
-Now you can run <code>bench.py</code> from any folder in your system. 
+Now you can use the tool from any folder in your system. 
 
 To run an interactive session, please do
 
-   <code>bench</code>
+   <code><b>bench</b></code>
 
 - And, ehm, yes, please read the manual.
 
