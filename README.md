@@ -10,8 +10,7 @@ To use the tool you need:
 
 Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
-1.  Open a terminal (in Linux, Mac or Windows with WSL system---with terminal in that system),
-
+1.  Open a terminal (in Linux, Mac or Windows with WSL system---with terminal in that system), 
    for example by doing 
 
    <code>git clone https://github.com/bozsahin/thebench</code>
