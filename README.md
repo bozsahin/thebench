@@ -25,7 +25,8 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
    <code>pip install cl4py</code>
 
-You are done with installation.
+You are done with installation. (You've just installed thebench, pip and SBCL as Common Lisp,
+which is used by one of the python libraries.) If you already had them, your versions are detected and used by the bench.
 
 Open a fresh terminal.
 
