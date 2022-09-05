@@ -10,7 +10,7 @@ To use the tool you need:
 
 Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
-1. In a directory where you want to save the tool, clone this repo,
+1.  Open a terminal (in Linux, Mac or Windows with WSL system---with terminal in that system),
 
    for example by doing 
 
@@ -18,16 +18,15 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
    This will create <code>thebench</code> folder with code and documentation.
 
-2. Open a terminal  and change to that directory
-   (in linux, Mac or Windows with WSL system---with terminal in that system):
-
-   In the terminal, do  the following:
+2.  In the terminal and in that directory, do  the following:
 
    <code>./install-bench</code>
 
    <code>pip install sly</code>
 
    <code>pip install cl4py</code>
+
+You are done with installation.
 
 Open a fresh terminal.
 
