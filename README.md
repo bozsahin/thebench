@@ -6,19 +6,18 @@ To use the tool you need:
 
 - <a href="https://www.python.org/">Python 3.8  or above</a>
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
-n
-- Optional but very highly recommended: <a href="https://git-scm.com/downloads">git</a>
+- <a href="https://git-scm.com/downloads">git</a>
 
 Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
-1. In a directory where you want to save the tool, clone this repo. Or, download it if you don't want to use <code>git</code>.
+1. In a directory where you want to save the tool, clone this repo,
 
-   For example, you can  open a terminal app and do <code>git clone https://github.com/bozsahin/thebench</code>
+   for example by doing <code>git clone https://github.com/bozsahin/thebench</code>
 
    This will create <code>thebench</code> folder with code and documentation.
 
 2. Open a terminal  and change to that directory
-   (linux, Mac, Windows with WSL system---with terminal in that system):
+   (in linux, Mac and Windows with WSL system---with terminal in that system):
 
    In the terminal, do  the following:
 
@@ -26,13 +25,13 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
    <code>pip install sly</code>
    <code>pip install cl4py</code>
 
+Open a fresh terminal.
+
 Now you can run <code>bench.py</code> from any folder in your system. 
 
-To run an interactive grammar development/testing session, please do
+To run an interactive session, please do
 
-   <code>python ...bench.py</code>
-
-   where dots are the full path to where you keep the <code>bench.py</code>.
+   <code>bench</code>
 
 - And, ehm, yes, please read the manual.
 
