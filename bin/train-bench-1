@@ -19,7 +19,7 @@
 #      the experiment.
 # $9 : the function to call before training (none called if not supplied)
 #      This is useful for initializing switches etc.
-TRAIN=train-nohup-sbcl    # this function is in init-sbcl.lisp
+TRAIN=train-nohup-sbcl    # this function is in init-training.lisp
 BENCH_LISP="`which sbcl` --dynamic-space-size $1"
 N=$5  # whether this is iteration count or xp determines which trainer to call
 if [ $5 = xp ]; then
@@ -33,6 +33,6 @@ echo "            in: `hostname`" >> $8.log
 echo "Log goes to   : $8.log" >> $8.log
 echo "I will call sbcl as: $BENCH_LISP" >> $8.log
 TRAINER="$TRAIN \"$3\" $2 $4 \"$8.$N.$6a.$7c\" $N $6 $7"   # passes one less argument if $N is empty string
-echo "It will call $TRAIN in $BENCH_HOME/bin/init-sbcl.lisp as: ($TRAINER)" >> $8.log
+echo "It will call $TRAIN in $BENCH_HOME/bin/init-training.lisp as: ($TRAINER)" >> $8.log
 echo '=======          ============' >> $8.log
-$RLWRAP $BENCH_LISP --load $BENCH_HOME/bin/bench.lisp --load $BENCH_HOME/bin/init-sbcl.lisp --load $BENCH_HOME/bin/init-user.lisp --eval '(reset-globals)' --eval "($9)" --eval "($TRAINER)" --eval '(sb-ext:exit)' >> $8.log
+$BENCH_LISP --load $BENCH_HOME/bin/bench.lisp --load $BENCH_HOME/bin/init-training.lisp --eval '(reset-globals)' --eval "($9)" --eval "($TRAINER)" --eval '(sb-ext:exit)' >> $8.log

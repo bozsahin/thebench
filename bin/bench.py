@@ -644,13 +644,15 @@ def do (commline):
         print('command unknown')
 
 def welcome ():
-    print('-----------------------------------------------')
+    print('------------------------------------------------------------------------')
     print(1*_prompt+'Welcome to The Bench,')
-    print(2*_prompt+"The Monadic Grammar Workbench")
+    print(2*_prompt+"A workbench for studying Monadic Structures in Natural Language")
     print(3*_prompt+"Version:", _version, "Dated:", _vdate)
+    print(3*_prompt+"Pre/post processing by Python (format checks, interfaces)")
+    print(3*_prompt+"Processing by Common Lisp (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
     print(1*_prompt+"Type x to exit, h to get some help")
-    print('-----------------------------------------------')
+    print('-----------------------------------------------------------------------')
 
 mglexer  = MGLexer()
 mgparser = MGParser()
