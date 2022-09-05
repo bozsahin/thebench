@@ -34,7 +34,9 @@ Now you can use the tool from any folder in your system.
 
 To run an interactive session, please do
 
-   <code><b>bench</b></code>
+   <code><b>python bench</b></code>
+
+where <code>python</code> is the most recent (and >= 3.8) python executable.
 
 - And, ehm, yes, please read the manual.
 
