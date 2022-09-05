@@ -1,5 +1,5 @@
 # thebench
-Bench tool for working with Natural Language Monad of Command
+A tool for working with Natural Language Monad of Command
 
 
 To use the tool you need:
