@@ -1,4 +1,4 @@
-;; to suppress style warnings --load before everything else
+;; to suppress style warnings --load before anything else
 ;; first form is SBCL-specific
 ;; -cem bozsahin
 (declaim #+sbcl(sb-ext:muffle-conditions style-warning))
@@ -10,11 +10,18 @@
        (*error-output* nada))
      (load ,stuff)))
 
-;;; the BAT monad. No monad library is needed. We implement composition the monadic way.
 
 ;;;; ==================================================
-;;;; == Lisp Top level needs and some general utilities
+;;;  == Lisp code for studying Monadic Structures
+;;;  == Cem Bozsahin, 2022
+;;;  == Basically, projection is as it has been worked 
+;;;  ==  by CCG, except no S, no semantic function application.
+;;;  == Referentiality is from the book on Monadic Structures.
+;;;  == We get a monad with composition only, and always headed
+;;;  ==  by the ultimate element.
 ;;;; ==================================================
+
+;; Lisp Top level needs and some general utilities
 
 (defparameter *ccglab-globals* nil) ; to keep track of all globals defined by defccglab macro
                                     ; i seem to want to define more and more and lose track
@@ -1277,62 +1284,16 @@
 	  pname sourcefile infilename ofilename sourcefile ofilename)
   (load-supervision pname))
 
-(defun load-project (pname)
-  (let* ((sname (concatenate 'string pname ".ccg"))
-	 (tname (concatenate 'string pname ".lisptokens"))
-	 (gname (concatenate 'string pname ".ccg.lisp"))
-	 (suname (concatenate 'string pname ".sup"))
-	 (sulname (concatenate 'string pname ".supervision"))
-	 (sfile (probe-file sname))
-	 (tfile (probe-file tname))
-	 (gfile (probe-file gname))
-	 (sufile (probe-file suname))
-	 (sulfile (probe-file sulname)))
-    (format t "~%======================= l o a d i n g =======================================~%")
+(defun load-dotlisp (pname)
+  "loads the grammar generated from intermediate representation of monadic grammar"
+  (let* ((gname (concatenate 'string pname ".lisp")))
     (setf *error* nil)
-    (safely-load gname)             ; this will set the *ccg-grammar* variable
-    (cond ((not *error*)
-	   (setf *lex-rules-table* nil)
-	   (setf *loaded-grammar* gname)
-	   (dolist (l *ccg-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
-	   (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
-	   (format t "~%Project ~A file system (some optional, some system-generated)" pname)
-           (format t "~%-----------------------------------------------------------------------------")
-	   (and sfile   (format t "~%  CCG grammar source       : ~A" sname))
-	   (and tfile   (format t "~%          token form       : ~A" tname))
-	   (and gfile   (format t "~%  Compiled/loaded grammar  : ~A" gname))
-	   (and sufile  (format t "~%  Supervision native source: ~A" suname))
-	   (and sulfile (format t "~%  Supervision text source  : ~A" sulname))
-	                (format t "~%       *CCG-GRAMMAR*       : ~A entries" (length *ccg-grammar*))
-	                (format t "~%   *LEX-RULES-TABLE*       : ~A entries" (length *lex-rules-table*))
-	   (format t "~%=============================================================================~%")
-	   t)
-	  (t (format t "~%**ERROR in loading ~A." gfile)
-	     (and sfile (format t "~%  Have a look at ~A to see THE FIRST ERROR in ~A" gname sname))
-	     (or sfile  (format t "~%  ~A does not exist" sname))
-	     (or gfile  (format t "~%  ~A does not exist" gname))
-	     (format t "~%Project ~A cannot be loaded:" pname)
-	     (format t "~%  *ccg-grammar* is unchanged.")
-	     (format t "~%  *lex-rules-table* is unchanged.~%")
-	     nil))))
-
-(defmacro load-model (pname)
-  "kept as legacy code"
-  `(load-project ,pname))
-
-(defun load-grammar (pname &key (maker nil) (make (if maker t nil)) (sure nil))
-  "Prepares and loads a Lisp-translated CCG grammar, and prepares the lexical rule hashtable for the project.
-  Maker is a legacy argument; I kept it for people who have scripts with e.g. (load-grammar .. :maker 'sbcl)."
-  (if (and make (not sure))
-    (progn (format t "You may be about to override a modified ~A file.~%If you are sure, use make-and-load-grammar (aka mlg)" 
-		   (concatenate 'string pname ".ccg.lisp"))
-	   (return-from load-grammar)))
-  (and make (lispify-project pname *lispsys*)) ; generates the .ccg.lisp file and/or .lisptokens file 
-  (load-project pname))
-
-(defmacro make-and-load-grammar (pname)
-  "simple macro for make and load, assuming you know what you are doing"
-  `(load-grammar ,pname :make t :sure t))        
+    (setf *ccg-grammar* (read1 gname))             
+    (cond ((not *error*) (setf *lex-rules-table* nil)
+			 (setf *loaded-grammar* gname)
+			 (dolist (l *ccg-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
+			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
+			 ))))
 
 (defun get-ht (phon ht-list)
   "returns the hashtable in ht-list that has PHON feature same as phon.
@@ -3118,7 +3079,7 @@
 (defun update-model (pname iterations alpha0 c &key (verbose nil)(load nil) (debug nil))
   "default workflow for updating model parameters of a project. Compare and save are separate."
   (beam-value) ;; in case you want to abort a misguided looong training asap
-  (and load (load-model pname)) ; loads the .ind file into *ccg-grammar*
+  (and load (load-dotlisp pname)) ; loads the .ind file into *ccg-grammar*
   (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
   (set-training-parameters iterations (length *supervision-pairs-list*)(length *ccg-grammar*) alpha0 c)
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
@@ -3133,7 +3094,7 @@
   Then it runs Cabay & Jackson algorithm to find the gradient's limit for each parameter by
   minimum polynomial extrapolation (MPE). It can be erroneous if stages fluctuate."
   (beam-value) ;; in case you want to abort 
-  (and load (load-model pname)) ; loads the .ind file into *ccg-grammar*
+  (and load (load-dotlisp pname)) ; loads the .ind file into *ccg-grammar*
   (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
   (set-training-parameters 4 (length *supervision-pairs-list*)(length *ccg-grammar*) alpha0 c 'x4) ; fixed iteration 
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
@@ -3309,7 +3270,7 @@
   It's best if you merge two grammars if their PARAMs are from same value space (eg. both z-scored or none, etc.)"
   (let* ((lg (copy-seq *ccg-grammar*)) ; will update currently loaded grammar
 	 (c 0))
-    (load-grammar gname)     ; resets *ccg-grammar* to grammar in gname
+    (load-dotlisp gname)     ; resets *ccg-grammar* to grammar in gname
     (dolist (l *ccg-grammar*) 
       (if (not (reduce #'(lambda (x y)(or x y))  ; reduce will return true only if l is a member of lg
 		       (mapcar #'(lambda (z)(member (assoc 'KEY l) z :test #'equal))
@@ -3383,7 +3344,7 @@
 
 (defun kl-prepare (g)
   "z score grammar g, then hash item key to (param z-score prob)"
-  (load-model g)
+  (load-dotlisp g)
   (let ((ght (make-training-hashtable (length *ccg-grammar*)))
 	(errlog nil))
     (dolist (el *ccg-grammar*)
@@ -3449,10 +3410,7 @@
 (defun ab ()
   (dolist (a *abv*) (format t "~5A ~A~%" (first a) (second a))))
 
-(abbrevs lg load-grammar 
-	 mlg make-and-load-grammar
-	 loads safely-load
-	 lm load-model
+(abbrevs loads safely-load
 	 cd ccg-deduce
 	 p  ccg-deduce
 	 ci ccg-induce
@@ -3659,7 +3617,7 @@
 
 (defun g2 (pname morphs &optional (e-log "tr-error.log")) 
   "identify lexical functions from morphs tag and generate 2nd order case function for their outermost argument"
-  (load-grammar pname)  
+  (load-dotlisp pname)  
   (if *error* (progn (format t "~%aborting compile; currently loaded grammar is unchanged")
 		     (return-from g2)))
   (setf *RAISED-LEX-RULES* NIL) ;set to default
