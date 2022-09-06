@@ -2,7 +2,7 @@
 A tool for working with Natural Language Monad of Command
 
 
-To use the tool you need:
+To install and use the tool you need:
 
 - <a href="https://www.python.org/">Python 3.8  or above</a>
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
@@ -17,32 +17,31 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
    This will create <code>thebench</code> folder with code and documentation.
 
-2.  In the terminal and in that directory, do  the following:
+2.  In the terminal, and in that directory, do  the following:
 
-   <code>./install-bench</code>
+   <code>install-bench</code>
 
    <code>pip install sly</code>
 
    <code>pip install cl4py</code>
 
-You are done with installation. (You've just installed thebench, pip and SBCL as Common Lisp,
-which is used by one of the python libraries.) If you already had them, your versions are detected and used by the bench.
+You are done with installation. 
 
-Open a fresh terminal.
+(You've just installed thebench, pip, rlwrap and SBCL as Common Lisp, which is used by one of the python libraries.) If you already had them, your versions are detected and used by the bench. Rlwrap is great for recalling
+earlier commands in an interactive session.
 
-Now you can use the tool from any folder in your system. 
+TO USE:
 
-To run an interactive session, please do
+Open a fresh terminal, and do
 
    <code><b>python $bench</b></code>
 
 where <code>python</code> is the most recent (and >= 3.8) python executable.
 
-- And, ehm, yes, please read the manual.
 
-- I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.
+I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.
 
-For updates, <code>git</code> is easiest.  In your <code>thebench</code> directory do
+For updates, in your <code>thebench</code> directory do
 
    <code>git pull</code>
 
