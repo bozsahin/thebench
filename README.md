@@ -11,7 +11,7 @@ To install and use the tool you need:
 Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
 1.  Open a terminal (in Linux, Mac or Windows with WSL system---with terminal in that system), 
-   for example by doing 
+   and change to the directory where you want to install the tool. Then do:
 
    <code>git clone https://github.com/bozsahin/thebench</code>
 
@@ -27,7 +27,7 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
 You are done with installation. 
 
-(You've just installed thebench, pip, rlwrap and SBCL as Common Lisp, which is used by one of the python libraries.) If you already had them, your versions are detected and used by the bench. Rlwrap is great for recalling
+(You've just installed thebench, rlwrap, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries.) If you already had them, your versions are detected and used by the bench. Rlwrap is great for recalling
 earlier commands in an interactive session.
 
 TO USE:
