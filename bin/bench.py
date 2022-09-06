@@ -18,7 +18,8 @@ import cl4py                     # processor is in Lisp
 
 _lisp = cl4py.Lisp()
 _cl   = _lisp.find_package('CL')
-_cl.load('bench.lisp')
+_cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')
+_cl.load(os.environ['BENCH_HOME']+'/bin/init-interactive.lisp')
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
@@ -488,24 +489,26 @@ def split_command (cline):  # splits a command line into command and list of arg
 def help ():
         print('           ... is space-separated items ending with newline')
         print(' a ...   | analyzes the expression ...')
-        print(' b .     | saves the binary of current grammar (a python dict) in file .')
         print(' c ...   | generates case functions (asymmetric relational rules),')
         print('         |   for all elements with parts of speech ...')
         print('         |   and adds them to currently loaded grammar')
+        print(' d ...   | displays analyses with solutions numbered ...,')
+        print('         |   all of them if no number is provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(' g       | shows information about the currently loaded grammar')
+        print(' g .     | grammar with the filename . is checked and loaded (and .lisp file generated)')
         print(' h       | lists commands')
-        print(' p .     | shows (without adding to grammar) the internal structure of . ')
+        print(' i       | shows information about the currently loaded grammar')
         print(' k ...   | shows grammar elements which bear the keys ...')
-        print(' l .     | checks and loads the grammar with the filename .')
-        print(' m .     | loads the model with the filename .')
+        print(' m .     | model with the filename . is loaded (a .lisp file)')
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p ...   | shows the elements with parts of speech ...')
         print(' r ...   | ranks the expression ...')
-        print(' s ...   | shows analyses with solutions numbered ...,')
-        print('         |   all of them if no number is provided')
-        print(' t ...   | restricts synthetic case application to basic categories ...')
         print(' x       | exits from the tool')
+        print(' = ...   | restricts synthetic case application to basic categories ...')
+        print(' @ .     | shows the value of the Lisp object . ')
+        print(' ^ .     | calls Lisp function . (call convention is assumed to be Python-style) ')
+        print(' ! .     | shows (without adding) the intermediate representation of element . in source code')
+        print(' & .     | saves the intermediate representation of current grammar (a python dict) in file .')
 
 def load_1pass(fname):        # checks but not updates the grammar with indices
     global _online, _grammar, _info  # here's the difference from load_2pass: grammarians must ignore <index,param>; at end

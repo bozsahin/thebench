@@ -79,4 +79,3 @@
   (setf *fx3-comp* nil)
   (setf *bx3-comp* nil)
   )
-  (format t "~%init-user.lisp loaded")
