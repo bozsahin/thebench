@@ -1239,35 +1239,6 @@
 	     (setf (machash 'ARG newsyn)(substitute-special-cat (machash 'ARG spht1) catht2))
 	     newsyn))))
 
-(defmacro parse/2 (words)
-  "sticks in the end marker to pass on to lalrparser's overridden parse function in ccglab.
-  This is the list it expects."
-  `(parse (append ,words (list *ENDMARKER*))))
-
-(defun lispify-project (pname maker)
-   "reads paper-style tokenized specs for the project pname, and feeds that into 
-  parse/1 to generate compiled pname file"
-   (let ((ofilename (concatenate 'string pname ".ccg.lisp"))
-	 (sfilename (concatenate 'string pname ".ccg"))
-	 (infilename (concatenate 'string pname ".lisptokens")))
-     (case maker ;; one of these will generate .lisptokens
-       (sbcl (run-program *ccg-tokenizer* (list sfilename infilename) :search t :wait t))
-       (ccl  (run-program *ccg-tokenizer* (list sfilename infilename) :wait t))
-       (alisp  (run-shell-command (concatenate 'string *ccg-tokenizer* " " sfilename infilename) :wait t))
-       (otherwise (format t "~%Reading from off-line generated ~A" infilename)))
-     (with-open-file (strm infilename :direction :input :if-does-not-exist nil)
-       (if (streamp strm)
-	 (with-open-file (s ofilename  :direction :output :if-exists :supersede)
-	   (setf *singletons* 0)
-	   (setf *ccg-grammar-keys* 0)
-	   (format s "~A" (parse/2 (read strm)))) ; this is the interface to LALR transformer's parse
-	 (progn (format t "~%**ERROR in load: ~A or ~A or ~A." sfilename infilename ofilename)
-		(return-from lispify-project))))
-     (and (> *singletons* 0) 
-	  (format t "~%=============================================================================~%*** CCGlab warning *** There are ~A string-constant categories in your grammar~% make sure NONE are void" *singletons*))
-     (format t "~2%======================= c o m p i l i n g ===================================~%")
-     (format t "~%Project name: ~A~%  Input : (~A, ~A)~%  Output: ~A ~%** IF load fails, check ~A for THE FIRST ERROR in ~A." pname sfilename infilename ofilename ofilename sfilename)))
-
 (defun lispify-supervision (pname ofilename sourcefile infilename maker)
   (case maker ;; one of these will generate .suptokens
     (sbcl (run-program *ccg-tokenizer*  (list sourcefile infilename) :search t :wait t))
