@@ -1,9 +1,7 @@
 # -----------------------------------------------------------------------------
 # bench.py
-# A python system for Monadic Grammarian's workbench
-# Only sly is non-standard python module that needs installing
-# All code is here, in one file.
-# -Cem Bozsahin, 2022, Ankara, Şile
+# pre/post processing and processor interface for monadic grammar
+# -Cem Bozsahin, 2022, Ankara, Datça, Şile
 # -----------------------------------------------------------------------------
 
 import os
@@ -12,11 +10,15 @@ import pprint
 from   contextlib import redirect_stdout
 from   datetime import datetime
 from   random import randint
-from   sly import Lexer, Parser
+from   sly import Lexer, Parser  # pre/post processor is in Python
+import cl4py                     # processor is in Lisp
 
 # global variables, all beginning with one underscore
 # actually python passes big values ok since ref is shared, but do we really want so many args?
 
+_lisp = cl4py.Lisp()
+_cl   = _lisp.find_package('CL')
+#cl.load('bench.lisp')
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
@@ -484,26 +486,25 @@ def split_command (cline):  # splits a command line into command and list of arg
     return (comarg[0], comarg[1:])
     
 def help ():
-        print('         | ... is space-separated items ending with newline')
-        print(' a .     | analyzes the expression .')
+        print('           ... is space-separated items ending with newline')
+        print(' a ...   | analyzes the expression ...')
         print(' b .     | saves the binary of current grammar (a python dict) in file .')
         print(' c ...   | generates case functions (asymmetric relational rules),')
-        print('         |   for all elements with parts of speech ...; saves them in')
-        print('         |   <g>.case,  where <g> is filename of currently loaded grammar')
+        print('         |   for all elements with parts of speech ...')
+        print('         |   and adds them to currently loaded grammar')
         print(" e .     | evaluates the python expression . if you know what you're doing")
         print(' g       | shows information about the currently loaded grammar')
         print(' h       | lists commands')
-        print(' i .     | shows (without adding to grammar) the internal structure of . ')
-        print('         |   as a potential grammar element')
+        print(' p .     | shows (without adding to grammar) the internal structure of . ')
         print(' k ...   | shows grammar elements which bear the keys ...')
         print(' l .     | checks and loads the grammar with the filename .')
-        print(' m .     | checks and loads the model with the filename .')
-        print('         |   backs up and upgrades the file with keys etc. if it has to')
+        print(' m .     | loads the model with the filename .')
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p ...   | shows the elements with parts of speech ...')
-        print(' r ...   | restricts synthetic case application to basic categories ...')
+        print(' r ...   | ranks the expression ...')
         print(' s ...   | shows analyses with solutions numbered ...,')
         print('         |   all of them if no number is provided')
+        print(' t ...   | restricts synthetic case application to basic categories ...')
         print(' x       | exits from the tool')
 
 def load_1pass(fname):        # checks but not updates the grammar with indices
@@ -648,7 +649,7 @@ def welcome ():
     print(1*_prompt+'Welcome to The Bench,')
     print(2*_prompt+"A workbench for studying Monadic Structures in Natural Language")
     print(3*_prompt+"Version:", _version, "Dated:", _vdate)
-    print(3*_prompt+"Pre/post processing by Python (format checks, interfaces)")
+    print(3*_prompt+"Pre/post processing by Python (grammar checks, interfaces)")
     print(3*_prompt+"Processing by Common Lisp (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
     print(1*_prompt+"Type x to exit, h to get some help")
