@@ -9,14 +9,12 @@ if [ "$BENCH_HOME" ]; then
 fi
 LOG="=======================================================\nTheBench install and set up, `date`\n=======================================================" # installers can be very verbose, accumulate all deeds to report at end
 LOGFILE='/tmp/thebench-install.log'
-LOG+="\n-thebench command-line resources for install and use:"
+LOG+="\n-thebench command-line resources available before install and use:"
 LOG+="\n  git=`command -v git`"
-if [ ! `command -v git` ]; then
-  LOG+="\n-Your system is missing some command-line basics."
-  LOG+="\n-Check the top of this log file to find out which one is missing"
-  LOG+="\n-Install the missing one in your system before install and use"
-  LOG+="\n-thebench install: ABORTED"
-else
+LOG+="\n  pip=`command -v pip`"
+LOG+="\n  python=`command -v python`"
+LOG+="\n  sbcl=`command -v sbcl`"
+LOG+="\n  rlwrap=`command -v rlwrap`"
 echo "PLEASE NOTE:"
 echo "  IN CASE THE INSTALLER ASKS FOR superuser PASSWORD,"
 echo "  It will be ONLY for installing the Common Lisp sbcl and rlwrap THROUGH safe installers"
@@ -79,16 +77,15 @@ else
   printf '%s\n' 'export RLWRAP=' >> ~/.bashrc
   LOG+='\n-Change the RLWRAP variable in ~/.bashrc if you have rlwrap somewhere'
 fi
-printf '%s\n%s\n%s\n%s\n' "export BENCH_HOME=$labdir" "export bench=$BENCH_HOME/bin/bench.py" "export PATH=:.:\$BENCH_HOME/bin:\$PATH" >> ~/.bashrc
+printf '%s\n%s\n%s\n%s\n' "export BENCH_HOME=$labdir" "export bench=$labdir/bin/bench.py" "export PATH=:.:\$BENCH_HOME/bin:\$PATH" >> ~/.bashrc
 printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
 printf '%s\n' '# stuff added by thebench installer' >> ~/.bash_profile
 printf '%s\n' 'if [ -f ~/.bashrc ]; then source ~/.bashrc; fi' >> ~/.bash_profile
 LOG+='\n-Your .bashrc and .bash_profile have been updated for thebench'
 LOG+='\n-Just do "git pull" in thebench home for updates from now on.'
 LOG+="\n-I wouldnt do updates in standard files of $labdir."
-LOG+="\n-They will be overridden by next git pull"
+LOG+="\n They will be overridden by next git pull"
 LOG+="\n\n-thebench install: COMPLETED"
-fi
 LOG+="\n-This log is saved in file $LOGFILE"
 LOG+="\n`date`\n======================================================="
 echo -e $LOG > $LOGFILE
