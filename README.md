@@ -27,8 +27,9 @@ Once you have them, please do steps 1-2 to install <code>thebench</code>:
 
 You are done with installation. 
 
-(You've just installed thebench, rlwrap, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries.) If you already had them, your versions are detected and used by the bench. Rlwrap is great for recalling
-earlier commands in an interactive session.
+You've just installed thebench, rlwrap, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries. You have also made the tool available from anywhere in your machine.
+
+If you already had these utilities in your system, your versions are detected and used by the bench. Rlwrap is great for recalling earlier commands in an interactive session.
 
 TO USE:
 
@@ -39,14 +40,17 @@ Open a fresh terminal, change to your working directory, and do
 where <code>python</code> is the most recent (and >= 3.8) python executable.
 
 
-I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.
+TO DEVELOP GRAMMARS AND KEEP TRACK OF CHANGES:
+
+I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.  
 
 For updates, in your <code>thebench</code> directory do
 
    <code>git pull</code>
 
+PYTHON NOTE:
 
--Python note: Default python interpreters are SLOW. You may want to try <code><a href="https://pypy.org">pypy</a></code>.
+Default python interpreters are SLOW. You may want to try <code><a href="https://pypy.org">pypy</a></code>.
 This tool is much faster in it.
  
 If you do make the switch, change <code>pip install ..</code> commands in step 2 above
