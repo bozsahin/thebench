@@ -32,7 +32,7 @@ earlier commands in an interactive session.
 
 TO USE:
 
-Open a fresh terminal, and do
+Open a fresh terminal, change to your working directory, and do
 
    <code><b>python $bench</b></code>
 
