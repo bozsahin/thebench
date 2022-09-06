@@ -8,7 +8,9 @@ To install and use the tool you need:
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 - <a href="https://git-scm.com/downloads">git</a>
 
-Once you have them, please do steps 1-2 to install <code>thebench</code>:
+TO INSTALL: 
+
+Please do steps 1-2:
 
 1.  Open a terminal (in Linux, Mac or Windows with WSL system---with terminal in that system), 
    and change to the directory where you want to install the tool. Then do:
