@@ -18,7 +18,7 @@ import cl4py                     # processor is in Lisp
 
 _lisp = cl4py.Lisp()
 _cl   = _lisp.find_package('CL')
-#cl.load('bench.lisp')
+_cl.load('bench.lisp')
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
