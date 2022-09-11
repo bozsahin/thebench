@@ -598,7 +598,7 @@ def do (commline):
         return
     if comm == 'h':
         help()
-    elif comm == 'b':
+    elif comm == '&':
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
@@ -624,7 +624,7 @@ def do (commline):
                     pp.pprint(entry)
                 else:
                     print(f"key {int(key)} not found")
-    elif comm == 'l':
+    elif comm == 'g':
         load_1pass(args[0])      # args[0] is full filename, not necessarily full path name
     elif comm == 'e':
         try:
