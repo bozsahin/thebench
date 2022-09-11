@@ -16,9 +16,9 @@ import cl4py                     # processor is in Lisp
 # global variables, all beginning with one underscore
 # actually python passes big values ok since ref is shared, but do we really want so many args?
 
-_lisp = cl4py.Lisp()          # get access to Lisp code for processing
-_cl   = _lisp.find_package('CL')
-_cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')
+_lisp = cl4py.Lisp()              # get access to Lisp for processing
+_cl   = _lisp.find_package('CL')  # get access to CL utilities
+_cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
 _cl.load(os.environ['BENCH_HOME']+'/bin/init-interactive.lisp')
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
@@ -634,17 +634,23 @@ def do (commline):
     elif comm == 'o':
         os.system(' '.join([str(item) for item in args[0:]]))
     elif comm == '^':              
-        f = _lisp.function(args[0])
-        a = args[1:]
-        if len(a) == 0:
-            f()
-        elif len(a) == 1:    # that horrifying syntax of py: tuple of [] is ([],) !!!
-            f(a[0])
-        else:
-            f(tuple(a))
+        try:
+            f = _lisp.function(args[0])
+            a = args[1:]
+            if len(a) == 0:
+                f()
+            elif len(a) == 1:    # that horrifying syntax of py: tuple of [] is ([],) !!!
+                f(a[0])
+            else:
+                f(tuple(a))
+        except Exception:
+            print('something went wrong')
         print()
     elif comm == '@':
-        print(_lisp.eval(cl4py.Symbol(args[0])))
+        try:
+            print(_lisp.eval(cl4py.Symbol(args[0])))
+        except Exception:
+            print('something went wrong')
     elif comm == '?':
         print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']}\n a rules :  {_info['arule']}")
         print(" basics  : ", ' '.join(_info['basic'].keys()))
