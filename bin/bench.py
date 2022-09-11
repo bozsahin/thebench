@@ -507,7 +507,7 @@ def help ():
         print(' ?       | shows information about the currently loaded grammar')
         print(' = ...   | restricts synthetic case application to basic categories ...')
         print(' @ .     | shows the value of the Lisp object . ')
-        print(' ^ .     | calls Lisp function . (call convention is assumed to be Python-style) ')
+        print(" ^ . ... | calls Lisp function . with args ... assuming you've got them right")
         print(' ! .     | shows (without adding) the intermediate representation of element . in source format')
         print(' & .     | saves the intermediate representation of current grammar (a python dict) in file .')
 
@@ -611,7 +611,7 @@ def do (commline):
             print(f"grammar binary is pretty-printed to {fn}")
         elif ch:
             print('canceled')
-    elif comm == 'i':
+    elif comm == '!':
         _online = True
         args, _, _ = ' '.join([str(item) for item in args]).partition('%')   # just eliminate the comment
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
@@ -633,7 +633,19 @@ def do (commline):
             print('python says it is ill-formed or unevaluable')
     elif comm == 'o':
         os.system(' '.join([str(item) for item in args[0:]]))
-    elif comm == 'g':
+    elif comm == '^':              
+        f = _lisp.function(args[0])
+        a = args[1:]
+        if len(a) == 0:
+            f()
+        elif len(a) == 1:    # that horrifying syntax of py: tuple of [] is ([],) !!!
+            f(a[0])
+        else:
+            f(tuple(a))
+        print()
+    elif comm == '@':
+        print(_lisp.eval(cl4py.Symbol(args[0])))
+    elif comm == '?':
         print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']}\n a rules :  {_info['arule']}")
         print(" basics  : ", ' '.join(_info['basic'].keys()))
         print(" quoted  : ", ' '.join(_info['quoted'].keys()))
