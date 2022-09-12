@@ -507,9 +507,11 @@ def help ():
         print(' ?       | shows information about the currently loaded grammar')
         print(' = ...   | restricts synthetic case application to basic categories ...')
         print(' @ .     | shows the value of the Lisp object . ')
-        print(" ^ . ... | calls Lisp function . with args ... assuming you've got them right")
+        print(" ^ . ... | calls Lisp function . with args ...")
         print(' ! .     | shows (without adding) the intermediate representation of element . in source format')
         print(' & .     | saves the intermediate representation of current grammar (a python dict) in file .')
+        print(' > .     | Logs processor output to the file . (overridden, so beware)')
+        print(' <       | Logging turned off')
 
 def load_1pass(fname):        # checks but not updates the grammar with indices
     global _online, _grammar, _info  # here's the difference from load_2pass: grammarians must ignore <index,param>; at end
@@ -593,7 +595,7 @@ def load_2pass(fname):            # this is for model building, for replacing ';
 def do (commline):
     global _online, _grammar, _info
     comm, args = split_command(commline)
-    if comm != 'h' and comm != 'x' and comm != 'pass' and comm != '?' and not args:
+    if comm != 'h' and comm != 'x' and comm != 'pass' and comm != '?' and comm != '<' and not args:
         print('insufficient arguments')
         return
     if comm == 'h':
@@ -663,6 +665,12 @@ def do (commline):
         pass
     elif comm == 'pass':    # not in the menu, to report others as bad
         pass
+    elif comm == '>':
+        print('Logging processor output to: ', args[0])
+        _cl.dribble(args[0])
+    elif comm == '<':
+        _cl.dribble()
+        print('Logging turned off')
     else:
         print('command unknown')
 
