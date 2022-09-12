@@ -595,8 +595,8 @@ def load_2pass(fname):            # this is for model building, for replacing ';
 def do (commline):
     global _online, _grammar, _info
     comm, args = split_command(commline)
-    if comm != 'h' and comm != 'x' and comm != 'pass' and comm != '?' and comm != '<' and not args:
-        print('insufficient arguments')
+    if (comm == 'h' or comm == 'x' or comm == '?' or comm == '<') and args:
+        print('too many arguments')
         return
     if comm == 'h':
         help()
