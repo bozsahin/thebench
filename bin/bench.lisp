@@ -10,6 +10,11 @@
        (*error-output* nada))
      (load ,stuff)))
 
+(defun dummy (a1)
+  (pprint a1))
+
+(defun dumm2 (a1 a2)
+  (+ a1 a2))
 
 ;;;; ==================================================
 ;;;  == Lisp code for studying Monadic Structures
@@ -1092,6 +1097,7 @@
 (defun load-dotlisp (pname)
   "loads the grammar generated from intermediate representation of monadic grammar"
   (let* ((gname (concatenate 'string pname ".lisp")))
+    (pprint gname)
     (setf *error* nil)
     (setf *ccg-grammar* (read1 gname))             
     (cond ((not *error*) (setf *lex-rules-table* nil)
@@ -1099,6 +1105,10 @@
 			 (dolist (l *ccg-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
 			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
 			 ))))
+
+(defun load_py ()
+  (format t "enter grammar without .lisp")
+  (load-dotlisp (read-line *query-io*)))
 
 (defun get-ht (phon ht-list)
   "returns the hashtable in ht-list that has PHON feature same as phon.
