@@ -19,7 +19,7 @@ import cl4py                     # processor is in Lisp
 _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
 _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
-_cl.load(os.environ['BENCH_HOME']+'/bin/init-interactive.lisp')
+_cl.load(os.environ['BENCH_HOME']+'/bin/init-user.lisp')
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
