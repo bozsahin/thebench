@@ -660,7 +660,7 @@
   )
 
 (defun which-batgram ()
-  "BAT categorial grammar, version 7.2.3")
+  (values "Monad of Natural Command" "7.2.3"))
 
 (defun set-lisp-system (lispsys)
   (case lispsys
@@ -685,9 +685,9 @@
 
 (defun welcome (&optional (lispsys *lispsys*))
   (format t "~%=====================================================")
-  (format t "~%Welcome to ~A" (which-batgram))
+  (multiple-value-bind (pr v) (which-batgram)
+    (format t "~%This is the processor for ~A,~%  version ~A" pr v))
   (format t "~%-----------------------------------------------------")
-  (set-lisp-system lispsys)
   (flash-news)
   (format t "~%Ready.")
   (format t "~%=====================================================~%"))
