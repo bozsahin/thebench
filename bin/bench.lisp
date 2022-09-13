@@ -13,7 +13,7 @@
 
 ;;;; ==================================================
 ;;;  == Lisp code for studying Monadic Structures
-;;;  == Cem Bozsahin, 2022
+;;;  == Cem Bozsahin, 2022, Ankara, Datca, Sile
 ;;;  == Basically, projection is as it has been worked 
 ;;;  ==  by CCG, except no S, no semantic function application.
 ;;;  == Referentiality is from the book on Monadic Structures.
@@ -317,11 +317,8 @@
 ;;; globals
 ;;; =======
 
-(defccglab *ccg-tokenizer* "tokens") ; call this sed script for all CCG tokenization
 (defccglab *ccglab-reserved* '(tag phon morph syn sem param insyn insem outsyn outsem bcat dir feats modal
 				  left right solution result arg index lex bconst key id)) ; reserved words
-(defccglab *lispsys* nil)   ; the lisp system you are using; detected automatically by ccglab script
-(defccglab *singletons* 0)  ; singleton (string constant) category is potentially dangerous, esp. empty ones!
 (defccglab *hash-data-size* 65536)  ; for CKY and LF argmax tables. Make IT REALLY BIG for training sets
                                        ; involving LOOOONG sentences.
 				       ; default is 64K entries
@@ -376,27 +373,10 @@
 (defccglab *b-comp* t)
 (defccglab *fx-comp* t)
 (defccglab *bx-comp* t)
-(defccglab *f-sub* nil  )   ;substitution
-(defccglab *b-sub* nil)
-(defccglab *fx-sub* nil)
-(defccglab *bx-sub* nil)
-(defccglab *f-subbar* nil ) ;substitution bar (aka lost combinator)
-(defccglab *b-subbar* nil)
-(defccglab *fx-subbar* nil)
-(defccglab *bx-subbar* nil)
-(defccglab *f-subcomp* nil );subcomposition (i.e. D)
-(defccglab *b-subcomp* nil)
-(defccglab *fx-subcomp* nil)
-(defccglab *bx-subcomp* nil)
-(defccglab *f2-subcomp* nil) ; D^2
 (defccglab *f2-comp* t )     ; B^2
 (defccglab *b2-comp* t)
 (defccglab *fx2-comp* t)
 (defccglab *bx2-comp* t)
-(defccglab *f2-sub* nil )   ;S'' (not S^2 of Curry)
-(defccglab *b2-sub* nil)
-(defccglab *fx2-sub* nil)
-(defccglab *bx2-sub* nil)
 (defccglab *f3-comp* t )  ;B^3
 (defccglab *b3-comp* t)
 (defccglab *fx3-comp* t)
@@ -435,27 +415,10 @@
     *b-comp* t
     *fx-comp* t
     *bx-comp* t
-    *f-sub* t     ;substitution
-    *b-sub* t
-    *fx-sub* t
-    *bx-sub* t
-    *f-subbar* nil  ;substitution bar (aka lost combinator)
-    *b-subbar* nil
-    *fx-subbar* nil
-    *bx-subbar* nil
-    *f-subcomp* nil ;subcomposition (i.e. D)
-    *f2-subcomp* nil ; D^2
-    *b-subcomp* nil
-    *fx-subcomp* nil
-    *bx-subcomp* nil
     *f2-comp* t   ;B^2
     *b2-comp* t
     *fx2-comp* t
     *bx2-comp* t
-    *f2-sub* t    ;S'' (not S^2 of Curry)
-    *b2-sub* t
-    *fx2-sub* t
-    *bx2-sub* t
     *f3-comp* t   ;B^3
     *b3-comp* t
     *fx3-comp* t
@@ -473,27 +436,10 @@
     *b-comp* t
     *fx-comp* t
     *bx-comp* t
-    *f-sub* nil     ;substitution
-    *b-sub* nil
-    *fx-sub* nil
-    *bx-sub* nil
-    *f-subbar* nil  ;substitution bar (aka lost combinator)
-    *b-subbar* nil
-    *fx-subbar* nil
-    *bx-subbar* nil
-    *f-subcomp* nil ;subcomposition (i.e. D)
-    *f2-subcomp* nil ; D^2
-    *b-subcomp* nil
-    *fx-subcomp* nil
-    *bx-subcomp* nil
     *f2-comp* t   ;B^2
     *b2-comp* t
     *fx2-comp* t
     *bx2-comp* t
-    *f2-sub* nil    ;S'' (not S^2 of Curry)
-    *b2-sub* nil
-    *fx2-sub* nil
-    *bx2-sub* nil
     *f3-comp* t   ;B^3
     *b3-comp* t
     *fx3-comp* t
@@ -511,27 +457,10 @@
     *b-comp* nil
     *fx-comp* nil
     *bx-comp* nil
-    *f-sub* nil     ;substitution
-    *b-sub* nil
-    *fx-sub* nil
-    *bx-sub* nil
-    *f-subbar* nil  ;substitution bar (aka lost combinator)
-    *b-subbar* nil
-    *fx-subbar* nil
-    *bx-subbar* nil
-    *f-subcomp* nil ;subcomposition (i.e. D)
-    *f2-subcomp* nil ; D^2
-    *b-subcomp* nil
-    *fx-subcomp* nil
-    *bx-subcomp* nil
     *f2-comp* nil   ;B^2
     *b2-comp* nil
     *fx2-comp* nil
     *bx2-comp* nil
-    *f2-sub* nil    ;S'' (not S^2 of Curry)
-    *b2-sub* nil
-    *fx2-sub* nil
-    *bx2-sub* nil
     *f3-comp* nil   ;B^3
     *b3-comp* nil
     *fx3-comp* nil
@@ -550,27 +479,10 @@
     *b-comp* t
     *fx-comp* t
     *bx-comp* t
-    *f-sub* t     ;substitution
-    *b-sub* t
-    *fx-sub* t
-    *bx-sub* t
-    *f-subbar* t  ;substitution bar (aka lost combinator)
-    *b-subbar* t
-    *fx-subbar* t
-    *bx-subbar* t
-    *f-subcomp* t ;subcomposition (i.e. D)
-    *f2-subcomp* t ; D^2
-    *b-subcomp* t
-    *fx-subcomp* t
-    *bx-subcomp* t
     *f2-comp* t   ;B^2
     *b2-comp* t
     *fx2-comp* t
     *bx2-comp* t
-    *f2-sub* t    ;S'' (not S^2 of Curry)
-    *b2-sub* t
-    *fx2-sub* t
-    *bx2-sub* t
     *f3-comp* t   ;B^3
     *b3-comp* t
     *fx3-comp* t
@@ -587,35 +499,16 @@
 	  *b-comp*      ~A
 	  *fx-comp*     ~A
 	  *bx-comp*     ~A
-	  *f-sub*       ~A
-	  *b-sub*       ~A
-	  *fx-sub*      ~A
-	  *bx-sub*      ~A
-          *f-subbar*    ~A
-	  *b-subbar*    ~A
-	  *fx-subbar*   ~A
-	  *bx-subbar*   ~A
-	  *f-subcomp*   ~A
-	  *b-subcomp*   ~A
-	  *fx-subcomp*  ~A
-	  *bx-subcomp*  ~A
           *f2-comp*     ~A
 	  *b2-comp*     ~A
 	  *fx2-comp*    ~A
 	  *bx2-comp*    ~A
-	  *f2-sub*      ~A
-	  *b2-sub*      ~A
-	  *fx2-sub*     ~A
-	  *bx2-sub*     ~A
-	  *f2-subcomp*  ~A
 	  *f3-comp*     ~A
 	  *b3-comp*     ~A
 	  *fx3-comp*    ~A
 	  *bx3-comp*    ~A~%"
-	  *f-apply* *b-apply* *f-comp* *b-comp* *fx-comp* *bx-comp* *f-sub* *b-sub* *fx-sub* *bx-sub*
-          *f-subbar* *b-subbar* *fx-subbar* *bx-subbar* *f-subcomp* *b-subcomp* *fx-subcomp* *bx-subcomp*
-          *f2-comp* *b2-comp* *fx2-comp* *bx2-comp* *f2-sub* *b2-sub* *fx2-sub* *bx2-sub* *f2-subcomp* *f3-comp* *b3-comp* 
-	  *fx3-comp* *bx3-comp*))
+	  *f-apply* *b-apply* *f-comp* *b-comp* *fx-comp* *bx-comp* 
+          *f2-comp* *b2-comp* *fx2-comp* *bx2-comp* *f3-comp* *b3-comp* *fx3-comp* *bx3-comp*))
 
 (defmacro sort-grammar (&optional (order #'>))
   "sort current grammar by order, default descending. report quartiles"
@@ -641,9 +534,7 @@
   "returns all equivalent LFS if all-lfs is not nil"
   (format t "~2%  do (rules) or (onoff) for rules and switches~%")
   (format t "  ---------------------------~%")
-  (format t "  Any non-standard rule     ? ~A~%" (if (or *f-subbar* *b-subbar* *fx-subbar* *bx-subbar* *f-subcomp* *b-subcomp* 
-							 *fx-subcomp* *bx-subcomp*)
-						   'yes 'no))
+  (format t "  Any non-standard rule     ? ~A~%" 'no)
   (format t "  Currently loaded grammar  : ~A~%" *loaded-grammar*)
   (format t " *CCG-GRAMMAR*              : ~A item~:p~%" (length *ccg-grammar*))
   (format t " *LEX-RULES-TABLE*          : ~A item~:p~%" (length *lex-rules-table*))
@@ -662,28 +553,13 @@
 (defun which-batgram ()
   (values "Monad of Natural Command" "7.2.3"))
 
-(defun set-lisp-system (lispsys)
-  (case lispsys
-    (sbcl (setf *lispsys* 'sbcl))
-    ((ccl ccl64 ccl32) (setf *lispsys* 'ccl))
-    ((alisp mlisp mlisp8) (setf *lispsys* 'alisp))
-    (otherwise (setf *lispsys* 'UNKNOWN)))
-  (format t "~%Your Lisp is ~A." *lispsys*)
-  (if (eql *lispsys* 'UNKNOWN)
-    (progn 
-      (setf *lispsys* 'sbcl)
-      (format t "~%I am using run-program API as ~A does." *lispsys*)
-      (format t "~%You may not be able to re-make .ccg.lisp or .sup files if this is wrong."))))
-
 (defun flash-news (&optional (report t))
   (cond (report 
-	  (format t "~%Type-raising algorithms G2 and P2 available as G2P2.")
-	  (format t "~%  S0 is essentially use of a G2P2'd grammar in~%  parsing and ranking.")
+	  (format t "~%Synthetic case and second-order function generation available.")
 	  (format t "~%Kullback-Leibler test available.")
-	  (format t "~%awk tokenization installed.")
 	  )))
 
-(defun welcome (&optional (lispsys *lispsys*))
+(defun welcome () 
   (format t "~%=====================================================")
   (multiple-value-bind (pr v) (which-batgram)
     (format t "~%This is the processor for ~A,~%  version ~A" pr v))
@@ -729,32 +605,6 @@
   (if (or (eq on t) (equal on 'on))
     (setf *lfflag* t)
     (setf *lfflag* nil)))
-
-; keeping below as legacy access  to switches
-
-(defun beam-off ()
-  (setf *beamp* nil)(beam-value))
-
-(defun beam-on ()
-  (setf *beamp* t)(beam-value))
-
-(defun nf-parse-off ()
-  (setf *nf-parse* nil)(nf-parse-value))
-
-(defun nf-parse-on ()
-  (setf *nf-parse* t)(nf-parse-value))
-
-(defun oov-off ()
-  (setf *oovp* nil) (format t "OOV is reset (OOV errors reported)~%"))
-
-(defun oov-on ()
-  (setf *oovp* t) (format t "OOV is set (OOV errors not reported)~%"))
-
-(defun show-lf ()
-  (setf *lfflag* t) (format t "All LFs will be shown~%"))
-
-(defun hide-lf ()
-  (setf *lfflag* nil) (format t "Only final LF will be shown~%"))
 
 ; this one is easier summary
 
@@ -1239,22 +1089,6 @@
 	     (setf (machash 'ARG newsyn)(substitute-special-cat (machash 'ARG spht1) catht2))
 	     newsyn))))
 
-(defun lispify-supervision (pname ofilename sourcefile infilename maker)
-  (case maker ;; one of these will generate .suptokens
-    (sbcl (run-program *ccg-tokenizer*  (list sourcefile infilename) :search t :wait t))
-    (ccl  (run-program *ccg-tokenizer* (list sourcefile infilename) :wait t))
-    (alisp  (run-shell-command (concatenate 'string *ccg-tokenizer* " " sourcefile infilename) :wait t))
-    (otherwise (format t "~%Reading from off-line generated ~A" infilename)))
-  (with-open-file (strm infilename :direction :input :if-does-not-exist nil)
-    (if (streamp strm)
-      (with-open-file (s ofilename  :direction :output :if-exists :supersede)
-	(format s "~A" (parse/2 (read strm)))) ; this is the interface to LALR transformer's parse
-      (progn (format t "~%**ERROR in loading ~A" infilename)
-	     (return-from lispify-supervision))))
-  (format t "~%Project name: ~A~%  Input : (~A, ~A) ~%  Output: ~A ~%Check ~A for errors and retry if load of ~A fails." 
-	  pname sourcefile infilename ofilename sourcefile ofilename)
-  (load-supervision pname))
-
 (defun load-dotlisp (pname)
   "loads the grammar generated from intermediate representation of monadic grammar"
   (let* ((gname (concatenate 'string pname ".lisp")))
@@ -1307,10 +1141,10 @@
   (cky-show-normal-forms (length *cky-input*) 1))
 
 ;;;; =============================================================================
-;;;; == Part 2: The CKY parser for CCG -- the deductive component               ==
+;;;; == Part 2: The CKY parser 
 ;;;; =============================================================================
 
-;;;; CRITICAL NOTES ABOUT CCG's lambda forms and CL lambda forms:
+;;;; CRITICAL NOTES lambda forms and CL lambda forms:
 ;;;
 ;;;; 1) We assume the input functions are curried.
 ;;;; 2) CL does not like to re-define constants, hence defining LF constants as Lisp
@@ -1320,7 +1154,7 @@
 ;;;;  Therefore since we have many LF constants with overlapping names, we use !c to
 ;;;;  fake a constant c, which is actually a function that returns c as a string constant.
 ;;;;  Use !c in LFs wherever you need a true constant (i.e. something that evaluates to itself ALL THE TIME).
-;;;; 3) PCCG component of CCGlab requires checking for LF equivalence. This is almost impossible if we
+;;;; 3) PCCG component requires checking for LF equivalence. This is almost impossible if we
 ;;;;  use native lambdas of Lisp, because internal reductions will be saved by Lisp in a different format 
 ;;;;  (closures, functions) which we cannot penetrate. If your input sentence does not lead to an LF
 ;;;;  with no lambdas, the leftover lambdas would be invisible, and we cannot check for equality.
@@ -1329,8 +1163,8 @@
 ;;;;  We translate all combinator instructions to lambda terms in our lambda ADT language
 ;;;;  so that LF normalizer only works with our lambdas.
 
-;; these are the CCG rules. Succesful combination creates a new cky entry with SYN SEM INDEX PARAM
-;;                          PARAM is calculated by the caller of caller (ccg-deduce), because it is a common method for all rules
+;; Monad's dependency rule. Succesful combination creates a new cky entry with SYN SEM INDEX PARAM
+;;    PARAM is calculated by the caller of caller (ccg-deduce), because it is a common method for all rules
 
 (defun f-apply (ht1 ht2 lex2 coord2) 
   "forward application"
@@ -1462,437 +1296,6 @@
 		      (setf (machash 'RESULT 'SYN newht)(realize-binds (machash 'RESULT 'SYN ht2) b2))
 		      (setf (machash 'ARG 'SYN newht)(realize-binds (machash 'ARG 'SYN ht1) b1))
 		      newht)))))
-
-(defun f-sub (ht1 ht2) 
-  "forward substitution"
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (forward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (eql (machash 'DIR 'SYN ht1) 'FS)
-       (eql (machash 'DIR 'SYN ht2) 'FS)
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'FS)
-       (member (machash 'MODAL 'SYN ht1) '(ALL HARMONIC))
-       (member (machash 'MODAL 'SYN ht2) '(ALL HARMONIC))
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL HARMONIC))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'ARG 'SYN ht1) (machash 'ARG 'SYN ht2))
-	 (and match (multiple-value-bind (match2 b12 b22)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht1)
-				 (machash 'RESULT 'SYN ht2))
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *fc*)
-			     (setf (machash 'SEM newht) (&s (machash 'SEM ht1) (machash 'SEM ht2)))
-			     (setf (machash 'INDEX newht) '|>S|) ; ht2 dir and modality projects below
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
-			     (setf (machash 'RESULT 'SYN newht)(realize-binds (machash 'RESULT 'RESULT 'SYN ht1) 
-											(append b1 b12)))
-			     (setf (machash 'ARG 'SYN newht)(realize-binds (machash 'ARG 'SYN ht2) 
-										     (append b2 b22)))
-			     newht)))))))
-
-(defun b-sub (ht1 ht2) 
-  "backward substitution"
-  (and (complexp-hash (machash 'SYN ht2))
-       (complexp-hash (machash 'SYN ht1))
-       (backward-nf)
-       (machash 'RESULT 'SYN ht2) 
-       (machash 'DIR 'RESULT 'SYN ht2) ; result must be functor too
-       (eql (machash 'DIR 'SYN ht2) 'BS)
-       (eql (machash 'DIR 'SYN ht1) 'BS)
-       (eql (machash 'DIR 'RESULT 'SYN ht2) 'BS)
-       (member (machash 'MODAL 'SYN ht2) '(ALL HARMONIC))
-       (member (machash 'MODAL 'SYN ht1) '(ALL HARMONIC))
-       (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL HARMONIC))
-       (multiple-value-bind (match b2 b1)
-	 (cat-match (machash 'ARG 'SYN ht2) (machash 'ARG 'SYN ht1))
-	 (and match (multiple-value-bind (match2 b21 b12)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht2)
-				 (machash 'RESULT 'SYN ht1))
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *bc*)
-			     (setf (machash 'SEM newht) (&s (machash 'SEM ht2) (machash 'SEM ht1)))
-			     (setf (machash 'INDEX newht) '|<S|) ; ht1 dir and modality projects below
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
-			     (setf (machash 'RESULT 'SYN newht)(realize-binds (machash 'RESULT 'RESULT 'SYN ht2) 
-											(append b2 b21)))
-			     (setf (machash 'ARG 'SYN newht)(realize-binds (machash 'ARG 'SYN ht1) 
-										     (append b1 b12)))
-			     newht)))))))
-
-(defun fx-sub (ht1 ht2) 
-  "forward crossed substitution"
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (forward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (eql (machash 'DIR 'SYN ht1) 'BS)
-       (eql (machash 'DIR 'SYN ht2) 'BS)
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'FS)
-       (member (machash 'MODAL 'SYN ht1) '(ALL CROSS))
-       (member (machash 'MODAL 'SYN ht2) '(ALL CROSS))
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL CROSS))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'ARG 'SYN ht1) (machash 'ARG 'SYN ht2))
-	 (and match (multiple-value-bind (match2 b12 b22)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht1)
-				 (machash 'RESULT 'SYN ht2))
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *fc*)
-			     (setf (machash 'SEM newht) (&s (machash 'SEM ht1) (machash 'SEM ht2)))
-			     (setf (machash 'INDEX newht) '|>Sx|) ; ht2 dir and modality projects below
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
-			     (setf (machash 'RESULT 'SYN newht)(realize-binds (machash 'RESULT 'RESULT 'SYN ht1) 
-											(append b1 b12)))
-			     (setf (machash 'ARG 'SYN newht)(realize-binds (machash 'ARG 'SYN ht2) 
-										     (append b2 b22)))
-			     newht)))))))
-
-(defun bx-sub (ht1 ht2) 
-  "backward crossed substitution"
-  (and (complexp-hash (machash 'SYN ht2))
-       (complexp-hash (machash 'SYN ht1))
-       (backward-nf)
-       (machash 'RESULT 'SYN ht2) 
-       (machash 'DIR 'RESULT 'SYN ht2) ; result must be functor too
-       (eql (machash 'DIR 'SYN ht2) 'FS)
-       (eql (machash 'DIR 'SYN ht1) 'FS)
-       (eql (machash 'DIR 'RESULT 'SYN ht2) 'BS)
-       (member (machash 'MODAL 'SYN ht2) '(ALL CROSS))
-       (member (machash 'MODAL 'SYN ht1) '(ALL CROSS))
-       (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL CROSS))
-       (multiple-value-bind (match b2 b1)
-	 (cat-match (machash 'ARG 'SYN ht2) (machash 'ARG 'SYN ht1))
-	 (and match (multiple-value-bind (match2 b21 b12)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht2)
-				 (machash 'RESULT 'SYN ht1))
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *bc*)
-			     (setf (machash 'SEM newht) (&s (machash 'SEM ht2) (machash 'SEM ht1)))
-			     (setf (machash 'INDEX newht) '|<Sx|) ; ht1 dir and modality projects below
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
-			     (setf (machash 'RESULT 'SYN newht)(realize-binds (machash 'RESULT 'RESULT 'SYN ht2) 
-											(append b2 b21)))
-			     (setf (machash 'ARG 'SYN newht)(realize-binds (machash 'ARG 'SYN ht1) 
-										     (append b1 b12)))
-			     newht)))))))
-
-;; this combinator is experimental. In forward form it is (X/Y)|Z:f Y/W:g -> (X|Z)/W : \w\z.fz(gw). It has C in the style of S
-;; this is MJS version and CB version combined, to give two results; i had (X/W)|Z as result in L'
-;;  which turned out to be unnecessary, given L see the AL paper for `folded the rug under'.
-(defun f-subbar (ht1 ht2) 
-  "forward substitution bar, aka the lost combinator"
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (forward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (eql (machash 'DIR 'SYN ht2) 'FS)
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'FS)
-       (member (machash 'MODAL 'SYN ht2) '(ALL HARMONIC))
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL HARMONIC))
-       (multiple-value-bind (match2 b12 b22)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht1)  ; Y in (X/Y)|Z
-				 (machash 'RESULT 'SYN ht2))      ; Y in Y/W
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn (make-complex-cat-hashtable))
-				 (newsynz (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *fc*)
-			     (setf (machash 'SEM newht) (&sbar (machash 'SEM ht1) (machash 'SEM ht2)))
-			     (setf (machash 'INDEX newht) '|>L|) 
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2)) ; /W
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2)) ; /modW
-			     (setf (machash 'ARG 'SYN newht) (realize-binds           ;W itself
-							       (machash 'ARG 'SYN ht2) (append nil b22)))
-			     (setf (machash 'DIR newsynz) (machash 'DIR 'SYN ht1)) ; |Z is /Z or \Z
-			     (setf (machash 'MODAL newsynz) (machash 'MODAL 'SYN ht1)) ; |modZ
-			     (setf (machash 'RESULT newsynz) (realize-binds            ; X
-							       (machash 'RESULT 'RESULT 'SYN ht1) 
-											(append nil b12)))
-			     (setf (machash 'ARG newsynz) (realize-binds               ; Z
-							    (machash 'ARG 'SYN ht1) 
-							    (append nil b12)))
-			     (setf (machash 'RESULT 'SYN newht) newsynz)  ; result is X|Z not just |Z
-			     newht)))))  
-
-(defun fx-subbar (ht1 ht2) 
-  "forward crossing substitution bar"
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (forward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (eql (machash 'DIR 'SYN ht2) 'BS)
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'FS)
-       (member (machash 'MODAL 'SYN ht2) '(ALL CROSS))
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL CROSS))
-       (multiple-value-bind (match2 b12 b22)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht1)  ; Y in (X/Y)|Z
-				 (machash 'RESULT 'SYN ht2))      ; Y in Y/W
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn (make-complex-cat-hashtable))
-				 (newsynz (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *fc*)
-			     (setf (machash 'SEM newht) (&sbar (machash 'SEM ht1) (machash 'SEM ht2)))
-			     (setf (machash 'INDEX newht) '|>Lx|) 
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2)) ; \W
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2)) ; \modW
-			     (setf (machash 'ARG 'SYN newht) (realize-binds           ;W itself
-							       (machash 'ARG 'SYN ht2) (append nil b22)))
-			     (setf (machash 'DIR newsynz) (machash 'DIR 'SYN ht1)) ; |Z is /Z or \Z
-			     (setf (machash 'MODAL newsynz) (machash 'MODAL 'SYN ht1)) ; |modZ
-			     (setf (machash 'RESULT newsynz) (realize-binds            ; X
-							       (machash 'RESULT 'RESULT 'SYN ht1) 
-											(append nil b12)))
-			     (setf (machash 'ARG newsynz) (realize-binds               ; Z
-							    (machash 'ARG 'SYN ht1) 
-							    (append nil b12)))
-			     (setf (machash 'RESULT 'SYN newht) newsynz)  ; result is X|Z not just |Z
-			     newht)))))
-
-(defun b-subbar (ht2 ht1) 
-  "backward substitution bar"
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (backward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (eql (machash 'DIR 'SYN ht2) 'BS)
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'BS)
-       (member (machash 'MODAL 'SYN ht2) '(ALL HARMONIC))
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL HARMONIC))
-       (multiple-value-bind (match2 b22 b12)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht1)  ; Y in (X\Y)|Z
-				 (machash 'RESULT 'SYN ht2))      ; Y in Y\W
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn (make-complex-cat-hashtable))
-				 (newsynz (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *bc*)
-			     (setf (machash 'SEM newht) (&sbar (machash 'SEM ht1) (machash 'SEM ht2)))
-			     (setf (machash 'INDEX newht) '|<L|) 
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2)) ; \W
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2)) ; \modW
-			     (setf (machash 'ARG 'SYN newht) (realize-binds           ;W itself
-							       (machash 'ARG 'SYN ht2) (append nil b22)))
-			     (setf (machash 'DIR newsynz) (machash 'DIR 'SYN ht1)) ; |Z is /Z or \Z
-			     (setf (machash 'MODAL newsynz) (machash 'MODAL 'SYN ht1)) ; |modZ
-			     (setf (machash 'RESULT newsynz) (realize-binds            ; X
-							       (machash 'RESULT 'RESULT 'SYN ht1) 
-											(append nil b12)))
-			     (setf (machash 'ARG newsynz) (realize-binds               ; Z
-							    (machash 'ARG 'SYN ht1) 
-							    (append nil b12)))
-			     (setf (machash 'RESULT 'SYN newht) newsynz)  ; result is X|Z not just |Z
-			     newht)))))
-
-(defun bx-subbar (ht2 ht1) 
-  "backward crossed substitution bar"
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (backward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (eql (machash 'DIR 'SYN ht2) 'FS)
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'BS)
-       (member (machash 'MODAL 'SYN ht2) '(ALL CROSS))
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL CROSS))
-       (multiple-value-bind (match2 b22 b12)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht1)  ; Y in (X\Y)|Z
-				 (machash 'RESULT 'SYN ht2))      ; Y in Y/W
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn (make-complex-cat-hashtable))
-				 (newsynz (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *bc*)
-			     (setf (machash 'SEM newht) (&sbar (machash 'SEM ht1) (machash 'SEM ht2)))
-			     (setf (machash 'INDEX newht) '|<Lx|) 
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2)) ; /W
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2)) ; /modW
-			     (setf (machash 'ARG 'SYN newht) (realize-binds           ;W itself
-							       (machash 'ARG 'SYN ht2) (append nil b22)))
-			     (setf (machash 'DIR newsynz) (machash 'DIR 'SYN ht1)) ; |Z is /Z or \Z
-			     (setf (machash 'MODAL newsynz) (machash 'MODAL 'SYN ht1)) ; |modZ
-			     (setf (machash 'RESULT newsynz) (realize-binds            ; X
-							       (machash 'RESULT 'RESULT 'SYN ht1) 
-											(append nil b12)))
-			     (setf (machash 'ARG newsynz) (realize-binds               ; Z
-							    (machash 'ARG 'SYN ht1) 
-							    (append nil b12)))
-			     (setf (machash 'RESULT 'SYN newht) newsynz)  ; result is X|Z not just |Z
-			     newht)))))
-
-(defun f-subcomp (ht1 ht2) 
-  "forward subcomposition.
-   Hoyt and Baldridge's D from 2008 for subcomposition/subcombination.
-   Not to be confused with combinator D of Rosenbloom 1950, which is just BB."
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (forward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'ARG 'SYN ht1) ; arg must be functor too
-       (eql (machash 'DIR 'SYN ht2) 'FS)
-       (eql (machash 'DIR 'SYN ht1) 'FS)
-       (member (machash 'MODAL 'SYN ht2) '(ALL HARMONIC))
-       (member (machash 'MODAL 'SYN ht1) '(ALL HARMONIC))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'RESULT 'ARG 'SYN ht1) (machash 'RESULT 'SYN ht2))
-	 (and match 
-              (let ((newht (make-cky-entry-hashtable))     ;
-		    (newsynx (make-complex-cat-hashtable))   ; new result
-		    (newsynw (make-complex-cat-hashtable)))  ; new result of new argument
-		(set-nf-tag newht *fc*)
-		(setf (machash 'SEM newht) (&d (machash 'SEM ht1) (machash 'SEM ht2)))
-		(setf (machash 'INDEX newht) '|>D|) ; things project from ht1 and ht2
-		(setf (machash 'SYN newht) newsynx)
-		(setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
-		(setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
-                (setf (machash 'RESULT 'SYN newht)
-		      (realize-binds (machash 'RESULT 'SYN ht1) b1))
-                (setf (machash 'ARG 'SYN newht) newsynw)
-                (setf (machash 'DIR 'ARG 'SYN newht) 
-			       (machash 'DIR 'ARG 'SYN ht1))
-                (setf (machash 'MODAL 'ARG 'SYN newht)
-			       (machash 'MODAL 'ARG 'SYN ht1))
-                (setf (machash 'RESULT 'ARG 'SYN newht)
-		      (realize-binds (machash 'ARG 'SYN ht2) b2))
-                (setf (machash 'ARG 'ARG 'SYN newht)
-		      (realize-binds (machash 'ARG 'ARG 'SYN ht1) b1))
-			     newht)))))
-
-(defun b-subcomp (ht1 ht2) 
-  "backward subcomposition."
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (backward-nf)
-       (machash 'RESULT 'SYN ht2) 
-       (machash 'DIR 'ARG 'SYN ht2) ; arg must be functor too
-       (eql (machash 'DIR 'SYN ht1) 'BS)
-       (eql (machash 'DIR 'SYN ht2) 'BS)
-       (member (machash 'MODAL  'SYN ht1) '(ALL HARMONIC))
-       (member (machash 'MODAL 'SYN ht2) '(ALL HARMONIC))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'RESULT 'SYN ht1)
-		    (machash 'RESULT 'ARG 'SYN ht2)) 
-	 (and match 
-              (let ((newht (make-cky-entry-hashtable))     ;
-		    (newsynx (make-complex-cat-hashtable))   ; new result
-		    (newsynw (make-complex-cat-hashtable)))  ; new result of new argument
-		(set-nf-tag newht *bc*)
-		(setf (machash 'SEM newht) (&d (machash 'SEM ht2) (machash 'SEM ht1)))
-		(setf (machash 'INDEX newht) '|<D|) ; things project from ht1 and ht2
-		(setf (machash 'SYN newht) newsynx)
-		(setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
-		(setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
-                (setf (machash 'RESULT 'SYN newht)
-		      (realize-binds (machash 'RESULT 'SYN ht2) b2))
-                (setf (machash 'ARG 'SYN newht) newsynw)
-                (setf (machash 'DIR 'ARG 'SYN newht) 
-			       (machash 'DIR 'ARG 'SYN ht2))
-                (setf (machash 'MODAL 'ARG 'SYN newht)
-			       (machash 'MODAL 'ARG 'SYN ht2))
-                (setf (machash 'RESULT 'ARG 'SYN newht)
-		      (realize-binds (machash 'ARG 'SYN ht1) b1))
-                (setf (machash 'ARG 'ARG 'SYN newht)
-		      (realize-binds (machash 'ARG 'ARG 'SYN ht2) b2))
-			     newht)))))
-
-(defun fx-subcomp (ht1 ht2) 
-  "forward crossed subcomposition."
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (forward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'ARG 'SYN ht1) ; arg must be functor too
-       (eql (machash 'DIR 'SYN ht2) 'BS)
-       (eql (machash 'DIR 'SYN ht1) 'FS)
-       (member (machash 'MODAL 'SYN ht2) '(ALL CROSS))
-       (member (machash 'MODAL 'SYN ht1) '(ALL CROSS))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'RESULT 'ARG 'SYN ht1) (machash 'RESULT 'SYN ht2))
-	 (and match 
-              (let ((newht (make-cky-entry-hashtable))     ;
-		    (newsynx (make-complex-cat-hashtable))   ; new result
-		    (newsynw (make-complex-cat-hashtable)))  ; new result of new argument
-		(set-nf-tag newht *fc*)
-		(setf (machash 'SEM newht) (&d (machash 'SEM ht1) (machash 'SEM ht2)))
-		(setf (machash 'INDEX newht) '|>Dx|) ; things project from ht1 and ht2
-		(setf (machash 'SYN newht) newsynx)
-		(setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
-		(setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
-                (setf (machash 'RESULT 'SYN newht)
-		      (realize-binds (machash 'RESULT 'SYN ht1) b1))
-                (setf (machash 'ARG  'SYN newht) newsynw)
-                (setf (machash 'DIR 'ARG 'SYN newht) 
-			       (machash 'DIR 'ARG 'SYN ht1))
-                (setf (machash 'MODAL 'ARG 'SYN newht)
-			       (machash 'MODAL 'ARG 'SYN ht1))
-                (setf (machash 'RESULT 'ARG 'SYN newht)
-		      (realize-binds (machash 'ARG 'SYN ht2) b2))
-                (setf (machash 'ARG 'ARG 'SYN newht)
-		      (realize-binds (machash 'ARG 'ARG 'SYN ht1) b1))
-			     newht)))))
-
-(defun bx-subcomp (ht1 ht2) 
-  "backward crossed subcomposition."
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (backward-nf)
-       (machash 'RESULT 'SYN ht2) 
-       (machash 'DIR 'ARG 'SYN ht2) ; arg must be functor too
-       (eql (machash 'DIR 'SYN ht1) 'FS)
-       (eql (machash 'DIR 'SYN ht2) 'BS)
-       (member (machash 'MODAL 'SYN ht1) '(ALL CROSS))
-       (member (machash 'MODAL 'SYN ht2) '(ALL CROSS))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'RESULT 'SYN ht1)
-		    (machash 'RESULT 'ARG 'SYN ht2)) 
-	 (and match 
-              (let ((newht (make-cky-entry-hashtable))     ;
-		    (newsynx (make-complex-cat-hashtable))   ; new result
-		    (newsynw (make-complex-cat-hashtable)))  ; new result of new argument
-		(set-nf-tag newht *bc*)
-		(setf (machash 'SEM newht) (&d (machash 'SEM ht2) (machash 'SEM ht1)))
-		(setf (machash 'INDEX newht) '|<Dx|) ; things project from ht1 and ht2
-		(setf (machash 'SYN newht) newsynx)
-		(setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
-		(setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
-                (setf (machash 'RESULT 'SYN newht)
-		      (realize-binds (machash 'RESULT 'SYN ht2) b2))
-                (setf (machash 'ARG 'SYN newht) newsynw)
-                (setf (machash 'DIR 'ARG 'SYN newht) 
-			       (machash 'DIR 'ARG 'SYN ht2))
-                (setf (machash 'MODAL 'ARG 'SYN newht)
-			       (machash 'MODAL 'ARG 'SYN ht2))
-                (setf (machash 'RESULT 'ARG 'SYN newht)
-		      (realize-binds (machash 'ARG 'SYN ht1) b1))
-                (setf (machash 'ARG 'ARG 'SYN newht)
-		      (realize-binds (machash 'ARG 'ARG 'SYN ht2) b2))
-			     newht)))))
 
 (defun f2-comp (ht1 ht2) 
   ">B^2"
@@ -2035,226 +1438,6 @@
 		      (setf (machash 'ARG 'RESULT 'SYN newht)
 			    (realize-binds (machash 'ARG 'RESULT 'SYN ht1) b1))
 		      newht)))))
-
-(defun f2-sub (ht1 ht2) 
-  ">S2 of Steedman 2011, not Curry's. see  Bozsahin CL book ch.5"
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (forward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (machash 'DIR 'RESULT 'SYN ht2) ; result must be functor too
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'FS)
-       (eql (machash 'DIR 'RESULT 'SYN ht2) 'FS)
-       (not (eql (machash 'MODAL 'SYN ht2) 'STAR)) ; main functor must allow composition
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL HARMONIC))
-       (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL HARMONIC))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'ARG 'SYN ht1) (machash 'ARG 'SYN ht2))
-	 (and match (multiple-value-bind (match2 b12 b22)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht1)
-				 (machash 'RESULT 'RESULT 'SYN ht2))
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn2 (make-complex-cat-hashtable))
-				 (newsyn (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *fc*)
-			     (setf (machash 'SEM newht) (&s2 (machash 'SEM ht1) (machash 'SEM ht2)))
-			     (setf (machash 'INDEX newht) '|>S2|) ; ht2 dir and modality projects below
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
-			     (setf (machash 'ARG 'SYN newht)
-				   (realize-binds (machash 'ARG 'SYN ht2)
-			                          (append b2 b22)))
-			     (setf (machash 'RESULT 'SYN newht) newsyn2)
-			     (setf (machash 'RESULT 'RESULT 'SYN newht)
-				   (realize-binds (machash 'RESULT 'RESULT 'SYN ht1) 
-						  (append b1 b12)))
-			     (setf (machash 'ARG 'RESULT 'SYN newht)
-				   (realize-binds (machash 'ARG 'RESULT 'SYN ht2) 
-			                          (append b2 b22)))
-			     (setf (machash 'DIR 'RESULT 'SYN newht)
-				   (machash 'DIR 'RESULT 'SYN ht2))
-			     (setf (machash 'MODAL 'RESULT 'SYN newht)
-				   (machash 'MODAL 'RESULT 'SYN ht2))
-			     newht)))))))
-
-(defun b2-sub (ht1 ht2) 
-  "<S2"
-  (and (complexp-hash (machash 'SYN ht2))
-       (complexp-hash (machash 'SYN ht1))
-       (backward-nf)
-       (machash 'RESULT 'SYN ht2) 
-       (machash 'DIR 'RESULT 'SYN ht2) ; result must be functor too
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (eql (machash 'DIR 'RESULT 'SYN ht2) 'BS)
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'BS)
-       (not (eql (machash 'MODAL 'SYN ht1) 'STAR)) ; main functor must allow composition
-       (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL HARMONIC))
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL HARMONIC))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'ARG 'SYN ht1) 
-		    (machash 'ARG 'SYN ht2))
-	 (and match (multiple-value-bind (match2 b12 b22)
-		      (cat-match (machash 'RESULT 'RESULT 'SYN ht1)
-				 (machash 'ARG 'RESULT 'SYN ht2))
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn2 (make-complex-cat-hashtable))
-				 (newsyn (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *bc*)
-			     (setf (machash 'SEM newht) (&s2 (machash 'SEM ht2) (machash 'SEM ht1)))
-			     (setf (machash 'INDEX newht) '|<S2|) ; ht1 dir and modality projects below
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
-			     (setf (machash 'ARG 'SYN newht)
-				   (realize-binds (machash 'ARG 'SYN ht1)
-			                          (append b1 b12)))
-			     (setf (machash 'RESULT 'SYN newht) newsyn2)
-			     (setf (machash 'RESULT 'RESULT 'SYN newht)
-				   (realize-binds (machash 'RESULT 'RESULT 'SYN ht2) 
-						  (append b2 b22)))
-			     (setf (machash 'ARG 'RESULT 'SYN newht)
-				   (realize-binds (machash 'ARG 'RESULT  'SYN ht1) 
-			                          (append b1 b12)))
-			     (setf (machash 'DIR 'RESULT 'SYN newht)
-				   (machash 'DIR 'RESULT 'SYN ht1))
-			     (setf (machash 'MODAL 'RESULT 'SYN newht)
-				   (machash 'MODAL 'RESULT 'SYN ht1))
-			     newht)))))))
-
-(defun fx2-sub (ht1 ht2) 
-  ">S2"
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (forward-nf)
-       (machash 'RESULT 'SYN ht1) 
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (machash 'DIR 'RESULT 'SYN ht2) ; result must be functor too
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'FS)
-       (eql (machash 'DIR 'RESULT 'SYN ht2) 'BS)
-       (not (eql (machash 'MODAL 'SYN ht2) 'STAR)) ; main functor must allow composition
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL CROSS))
-       (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL CROSS))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'ARG 'SYN ht1) (machash 'ARG 'SYN ht2))
-	 (and match (multiple-value-bind (match2 b12 b22)
-		      (cat-match (machash 'ARG 'RESULT 'SYN ht1)
-				 (machash 'RESULT 'RESULT 'SYN ht2))
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn2 (make-complex-cat-hashtable))
-				 (newsyn (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *fc*)
-			     (setf (machash 'SEM newht) (&s2 (machash 'SEM ht1) (machash 'SEM ht2)))
-			     (setf (machash 'INDEX newht) '|>Sx2|) ; ht2 dir and modality projects below
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
-			     (setf (machash 'ARG 'SYN newht)
-				   (realize-binds (machash 'ARG 'SYN ht2)
-			                          (append b2 b22)))
-			     (setf (machash 'RESULT 'SYN newht) newsyn2)
-			     (setf (machash 'RESULT 'RESULT 'SYN newht)
-				   (realize-binds (machash 'RESULT 'RESULT 'SYN ht1) 
-						  (append b1 b12)))
-			     (setf (machash 'ARG 'RESULT 'SYN newht)
-				   (realize-binds (machash 'ARG 'RESULT 'SYN ht2) 
-			                          (append b2 b22)))
-			     (setf (machash 'DIR 'RESULT 'SYN newht)
-				   (machash 'DIR 'RESULT 'SYN ht2))
-			     (setf (machash 'MODAL 'RESULT 'SYN newht)
-				   (machash 'MODAL 'RESULT  'SYN ht2))
-			     newht)))))))
-
-(defun bx2-sub (ht1 ht2) 
-  "<Sx2, of Steedman 2011"
-  (and (complexp-hash (machash 'SYN ht2))
-       (complexp-hash (machash 'SYN ht1))
-       (backward-nf)
-       (machash 'RESULT 'SYN ht2) 
-       (machash 'DIR 'RESULT 'SYN ht2) ; result must be functor too
-       (machash 'DIR 'RESULT 'SYN ht1) ; result must be functor too
-       (eql (machash 'DIR 'RESULT 'SYN ht2) 'BS)
-       (eql (machash 'DIR 'RESULT 'SYN ht1) 'FS)
-       (not (eql (machash 'MODAL 'SYN ht1) 'STAR)) ; main functor must allow composition
-       (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL CROSS))
-       (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL CROSS))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'ARG 'SYN ht1) 
-		    (machash 'ARG 'SYN ht2))
-	 (and match (multiple-value-bind (match2 b12 b22)
-		      (cat-match (machash 'RESULT 'RESULT 'SYN ht1)
-				 (machash 'ARG 'RESULT 'SYN ht2))
-		      (and match2 
-			   (let ((newht (make-cky-entry-hashtable))
-				 (newsyn2 (make-complex-cat-hashtable))
-				 (newsyn (make-complex-cat-hashtable)))
-			     (set-nf-tag newht *bc*)
-			     (setf (machash 'SEM newht) (&s2 (machash 'SEM ht2) (machash 'SEM ht1)))
-			     (setf (machash 'INDEX newht) '|<Sx2|) ; ht1 dir and modality projects below
-			     (setf (machash 'SYN newht) newsyn)
-			     (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
-			     (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
-			     (setf (machash 'ARG 'SYN newht)
-				   (realize-binds (machash 'ARG 'SYN ht1)
-			                          (append b1 b12)))
-			     (setf (machash 'RESULT 'SYN newht) newsyn2)
-			     (setf (machash 'RESULT 'RESULT 'SYN newht)
-				   (realize-binds (machash 'RESULT 'RESULT 'SYN ht2) 
-						  (append b2 b22)))
-			     (setf (machash 'ARG 'RESULT 'SYN newht)
-				   (realize-binds (machash 'ARG 'RESULT 'SYN ht1) 
-			                          (append b1 b12)))
-			     (setf (machash 'DIR 'RESULT 'SYN newht)
-				   (machash 'DIR 'RESULT 'SYN ht1))
-			     (setf (machash 'MODAL 'RESULT 'SYN newht)
-				   (machash 'MODAL 'RESULT  'SYN ht1))
-			     newht)))))))
-
-(defun f2-subcomp (ht1 ht2) 
-  "Forward harmonic D^2: X/(Y|Z) (Y/W)|Q -> X/(W|Z)|Q
-  Creation of new complex cats is probably clearest in this function because i wrote it last!
-  We need fresh copies of these cats if match is successful (hence make), because of the need 
-  coming from term unification of two Y's to be reflected on X,W,Z,Q.
-  Every slash in the result needs a new make.
-  Unlike other rules, there is no indirect ref in newht by its SYN feature, e.g. DIR SYN newht.
-  They are assembled locally then assigned wholesale to SYN newht."
-  (and (complexp-hash (machash 'SYN ht1))
-       (complexp-hash (machash 'SYN ht2))
-       (complexp-hash (machash 'ARG 'SYN ht1))
-       (complexp-hash (machash 'RESULT 'SYN ht2))
-       (forward-nf)
-       (eql (machash 'DIR 'SYN ht1) 'FS) 
-       (eql (machash 'DIR 'RESULT 'SYN ht2) 'FS)
-       (member (machash 'MODAL 'SYN ht1) '(ALL HARMONIC))
-       (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL HARMONIC))
-       (multiple-value-bind (match b1 b2)
-	 (cat-match (machash 'RESULT 'ARG 'SYN ht1) (machash 'RESULT 'RESULT 'SYN ht2))
-	 (and match 
-              (let ((newht (make-cky-entry-hashtable))      ; in this function, complex cats are named after arguments  
-		    (newsynq (make-complex-cat-hashtable))  ; other rules are still confusing (to me) 
-		    (newsynz (make-complex-cat-hashtable))  ; because of indirect refs by SYN newht
-		    (newsynw (make-complex-cat-hashtable))) ; maybe one day i'll rename them all. one day
-		(set-nf-tag newht *fc*)
-		(setf (machash 'SEM newht) (&d2 (machash 'SEM ht1) (machash 'SEM ht2)))
-		(setf (machash 'INDEX newht) '|>D2|) ; things project from ht1 and ht2
-		(setf (machash 'DIR newsynz) (machash 'DIR 'ARG 'SYN ht1))
-		(setf (machash 'MODAL newsynz) (machash 'MODAL 'ARG 'SYN ht1))
-		(setf (machash 'ARG newsynz) (realize-binds (machash 'ARG 'ARG 'SYN ht1) b1))
-		(setf (machash 'RESULT newsynz) (realize-binds (machash 'ARG 'RESULT 'SYN ht2) b2))
-		(setf (machash 'ARG newsynw) newsynz)
-		(setf (machash 'DIR newsynw) (machash 'DIR 'SYN ht1))
-		(setf (machash 'MODAL newsynw) (machash 'MODAL 'SYN ht1))
-		(setf (machash 'RESULT newsynw) (realize-binds (machash 'RESULT 'SYN ht1) b1))
-		(setf (machash 'RESULT newsynq) newsynw) ; that i hope is clearer now
-		(setf (machash 'DIR newsynq) (machash 'DIR 'SYN ht2))
-		(setf (machash 'MODAL newsynq) (machash 'MODAL 'SYN ht2))
-		(setf (machash 'ARG newsynq) (realize-binds (machash 'ARG 'SYN ht2) b2))
-		(setf (machash 'SYN newht) newsynq)
-		newht)))))
 
 (defun f3-comp (ht1 ht2) 
   ">B^3"
@@ -2505,33 +1688,10 @@
 					  (return-from ccg-combine (values s2 s1))
 					  nil))))
 
-      (and *f-sub* (f-sub ht1 ht2))             ; substitution
-      (and *b-sub* (b-sub ht1 ht2))
-      (and *fx-sub* (fx-sub ht1 ht2))
-      (and *bx-sub* (bx-sub ht1 ht2))
-      (and *f-subbar* (f-subbar ht1 ht2))       ; substitution bar (aka lost combinator)
-      (and *b-subbar* (b-subbar ht1 ht2))
-      (and *fx-subbar* (fx-subbar ht1 ht2))
-      (and *bx-subbar* (bx-subbar ht1 ht2))
-      (and *f-subcomp* (f-subcomp ht1 ht2))     ; subcomposition (i.e. D)
-      (and *b-subcomp* (b-subcomp ht1 ht2))
-      (and *fx-subcomp* (fx-subcomp ht1 ht2))
-      (and *bx-subcomp* (bx-subcomp ht1 ht2))
       (and *f2-comp* (f2-comp ht1 ht2))         ; B^2
       (and *b2-comp* (b2-comp ht1 ht2))
       (and *fx2-comp* (fx2-comp ht1 ht2))
       (and *bx2-comp* (bx2-comp ht1 ht2))
-      (and *f2-sub* (f2-sub ht1 ht2))           ; (not S^2 of Curry; see Bozsahin CL book)
-      (and *b2-sub* (b2-sub ht1 ht2))
-                                                ; <S2x and >S2x cannot be short-circuited if X=W (check out CL book p.117)
-      (and (or *fx2-sub* *bx2-sub*) (multiple-value-bind (s1 s2) (values (and *fx2-sub* (fx2-sub ht1 ht2)) 
-									 (and *bx2-sub* (bx2-sub ht1 ht2)))
-				     (if s1    ; short-circuit if at least one succeeds -- pass the succesful one first for 'and'
-				       (return-from ccg-combine (values s1 s2))
-				       (if s2
-					 (return-from ccg-combine (values s2 s1))
-					 nil))))
-      (and *f2-subcomp* (f2-subcomp ht1 ht2))   ; D^2
       (and *f3-comp* (f3-comp ht1 ht2))         ; B^3
       (and *b3-comp* (b3-comp ht1 ht2))
       (and *fx3-comp* (fx3-comp ht1 ht2))
@@ -2658,7 +1818,7 @@
 	(t (format t "Error: expected a list of items.~%"))))
 
 ;;;; =============================================================================
-;;;; == Part 3: The CKY parse ranker for CCG -- the inductive component         ==
+;;;; == Part 3: The CKY parse ranker -- the inductive component         ==
 ;;;; =============================================================================
 
 
@@ -2806,7 +1966,7 @@
 ;;;; =============================================================================
 
 ;; Please read the opening comments in the beginning of this file and the manual about this component.
-;; CCGlab's standard workflow is that of section 2 of Z&C'05.
+;; Standard workflow is that of section 2 of Z&C'05.
 ;; We recommend you write modeling code as add-on, rather than plugging it in here.
 ;; NB the manual for a suggested workflow.
 
@@ -3363,60 +2523,14 @@
       (cons (if (consp rest) (subseq source 0 n) source)
 	    (group rest n)))))
 
-(defmacro abbrev (short long)
-  `(defmacro ,short (&rest args)
-     `(,',long ,@args)))
-
-(defmacro abbrevs (&rest names)
-  "let here is not really necessary; i use it to show destructive
-  effects of sort. without copy-seq the last reference to np gives error."
-  (let ((np (group names 2)))
-    (setf *abv* (sort (append (copy-seq np) *abv*) #'string< :key #'car)) ; beware: sort is destructive
-    `(progn 
-       ,@(mapcar #'(lambda (pair) `(abbrev ,@pair))
-	       np))))
-
 ;; shortcuts for common functions. they become macros.
 
 (defun ab ()
   (dolist (a *abv*) (format t "~5A ~A~%" (first a) (second a))))
 
-(abbrevs loads safely-load
-	 cd ccg-deduce
-	 p  ccg-deduce
-	 ci ccg-induce
-	 pp ccg-induce
-	 rank ccg-induce
-	 switches onoff
-	 ders cky-show-deduction
-	 derivs cky-show-deduction
-	 derivations cky-show-deduction
-	 derivation cky-show-deduction
-	 csd cky-show-deduction
-	 csi cky-show-induction
-	 probs cky-show-induction
-	 ranks cky-show-induction
-	 csle cky-show-lf-eqv 
-	 um update-model
-	 umxp update-model-xp
-	 st show-training
-	 kl klz 
-	 stxp show-training-xp
-	 csnf cky-show-normal-forms
-	 crs cky-reveal-cell
-	 cpp cky-pprint-probs
-	 sg  save-grammar
-	 savet save-training
-	 savetxp save-training-xp
-	 z z-score-grammar
-	 z2 z-score-grammar-per-form
-	 beta beta-normalize-outer
-	 ms make-supervision
-	 help ab
-	 )
 ;;; ------------------------------------------
 ;;; A compiler for synthetic case, 2022 Datca, Ankara
-;;;  -- Cem Bozsahin
+;;; -- Cem Bozsahin
 ;;; ------------------------------------------
 
 (defccglab *ht-tr* nil) ; hash table for derived tr rules--for subsumption check after compile
@@ -3671,13 +2785,8 @@
   (format t "~%Use (mergesave-tr <pn>) to merge and save the rules~% with current grammar to <pn>.ccg.lisp")
   )
 
-(abbrevs mergesave-tr save-subsumption) ; add these to help list
-(abbrevs tr g2p2)
-(abbrevs compile-tr g2p2)
-(abbrevs s0  ccg-deduce)
-
 ;; some nohup-friendly test suite -- all is written offline
-;; this stuff is used by bench-training-x scripts 
+;; this stuff is used by bench-training- scripts 
 
 (defun train-nohup-sbcl (gram gcmb savep out N alpha0 c)
   (progn 
