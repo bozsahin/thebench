@@ -488,7 +488,7 @@ def split_command (cline):  # splits a command line into command and list of arg
     return (comarg[0], comarg[1:])
     
 def help ():
-        print('           ... is space-separated items ending with newline')
+        print(' NOTE >>   ... is space-separated items ending with newline')
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates case functions (asymmetric relational rules),')
         print('         |   for all elements with parts of speech ...')
@@ -496,21 +496,23 @@ def help ():
         print(' d ...   | displays analyses with solutions numbered ...,')
         print('         |   all of them if no number is provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(' g .     | grammar with the filename . is checked and loaded (and .lisp file generated)')
+        print(' g .     | grammar with filename . is checked and loaded (.lisp file generated)')
         print(' h       | lists commands')
         print(' k ...   | shows grammar elements which bear the keys ...')
         print(' m .     | model with the filename . is loaded (a .lisp file)')
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p ...   | shows the elements with parts of speech ...')
         print(' r ...   | ranks the expression ... using the currently loaded model')
+        print(' s .     | converts supervision pairs in file . to native format for the trainer')
+        print('         |    (saved in filename with .sup extension)')
         print(' x       | exits from the tool')
         print(' ?       | shows information about the currently loaded grammar')
         print(' = ...   | restricts synthetic case application to basic categories ...')
         print(' @ .     | shows the value of the Lisp object . ')
-        print(" ^ . ... | calls Lisp function . with args ...")
+        print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings")
         print(' ! .     | shows (without adding) the intermediate representation of element . in source format')
         print(' & .     | saves the intermediate representation of current grammar (a python dict) in file .')
-        print(' > .     | Logs processor output to the file . (overridden, so beware)')
+        print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)')
         print(' <       | Logging turned off')
 
 def load_1pass(fname):        # checks but not updates the grammar with indices
@@ -635,13 +637,19 @@ def do (commline):
             print('python says it is ill-formed or unevaluable')
     elif comm == 'o':
         os.system(' '.join([str(item) for item in args[0:]]))
+    elif comm == 'a':
+        try:
+            _lisp.function('load-dotlisp')(args[0])
+            print(f"{args[0]} loaded")
+        except Exception:
+            print('something went wrong')
     elif comm == '^':              
         try:
             f = _lisp.function(args[0])
             a = args[1:]
             if len(a) == 0:
                 f()
-            elif len(a) == 1:    # that horrifying syntax of py: tuple of [] is ([],) !!!
+            elif len(a) == 1:    # that horrifying syntax of py: tuple of [a] is (a,), that of [] is () !!
                 f(a[0])
             else:
                 f(tuple(a))
@@ -666,8 +674,8 @@ def do (commline):
     elif comm == 'pass':    # not in the menu, to report others as bad
         pass
     elif comm == '>':
-        print('Logging processor output to: ', args[0])
-        _cl.dribble(args[0])
+        print('Logging processor output to: ', args[0]+'.log')
+        _cl.dribble(args[0]+'.log')
     elif comm == '<':
         _cl.dribble()
         print('Logging turned off')

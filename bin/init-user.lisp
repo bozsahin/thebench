@@ -80,4 +80,4 @@
   (setf *bx3-comp* nil)
   )
 
-(format t "~%processor: bench.lisp and user-init.lisp loaded~%")
+(format t "~%processor: init-user.lisp loaded~%")

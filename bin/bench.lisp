@@ -10,12 +10,6 @@
        (*error-output* nada))
      (load ,stuff)))
 
-(defun dummy (a1)
-  (pprint a1))
-
-(defun dumm2 (a1 a2)
-  (+ a1 a2))
-
 ;;;; ==================================================
 ;;;  == Lisp code for studying Monadic Structures
 ;;;  == Cem Bozsahin, 2022, Ankara, Datca, Sile
@@ -240,7 +234,7 @@
   The only hashtable that has potential clash is the basic cat table because only there we have
   user features.
   Called during parsing .ccg to lisp code"
-  `(if (member ,feat *ccglab-reserved*) (format t "~%*** CCGlab warning *** Your feature name clashes with built-in features; please rename : ~A" ,feat)))
+  `(if (member ,feat *ccglab-reserved*) (format t "~%*** warning *** Your feature name clashes with built-in features; please rename : ~A" ,feat)))
 
 (defun make-lex-hashtable ()
   "keys are: index key param sem syn morph phon tag. Tag is NF tag"
@@ -283,7 +277,7 @@
   (make-hash-table :test #'equal :size size :rehash-size size)) ; if data is big, dont spend too much time on rehash
 
 (defun make-lf-hashtable (size)
-  "used for finding argmax of most likely LF in the PCCG part. The keys are LF items themselves, so there
+  "used for finding argmax of most likely LF in the probabilistic part. The keys are LF items themselves, so there
   is no search for them. Consequently, key equality can be pretty complex.
   Values are tuples (cump indexes), where cump is scalar-product of the key LF's features, and indexes
   is a list of CKY entries for the cumulative."
@@ -362,7 +356,7 @@
 (defccglab *cky-argmax-lf* nil)    ; list of solutions for most likely LF
 (defccglab *cky-argmax-lf-max* nil); current highest-ranking cell in cky table for the most likely LF.
 (defccglab *cky-lf* nil)           ; LF with the argmax
-(defccglab *ccg-grammar* nil)      ; current ccg grammar, as a list of Lisp-translated lex specs
+(defccglab *current-grammar* nil)      ; current ccg grammar, as a list of Lisp-translated lex specs
 (defccglab *ccg-grammar-keys* nil) ; unique keys for each entry; from 1 to n
 (defccglab *loaded-grammar* nil)   ; The source of currently loaded grammar
 
@@ -517,7 +511,7 @@
 
 (defmacro sort-grammar (&optional (order #'>))
   "sort current grammar by order, default descending. report quartiles"
-  `(let* ((g (copy-seq *ccg-grammar*))   ; sort is destructive
+  `(let* ((g (copy-seq *current-grammar*))   ; sort is destructive
 	  (gs (sort g ,order :key #'(lambda (x)(nv-get-v 'PARAM x))))
 	  (n (length gs)))
      (values gs
@@ -541,7 +535,7 @@
   (format t "  ---------------------------~%")
   (format t "  Any non-standard rule     ? ~A~%" 'no)
   (format t "  Currently loaded grammar  : ~A~%" *loaded-grammar*)
-  (format t " *CCG-GRAMMAR*              : ~A item~:p~%" (length *ccg-grammar*))
+  (format t " *current-grammar*              : ~A item~:p~%" (length *current-grammar*))
   (format t " *LEX-RULES-TABLE*          : ~A item~:p~%" (length *lex-rules-table*))
   (format t " *CKY-HASHTABLE*            : ~A item~:p~%" (hash-table-count *cky-hashtable*))
   (format t " *CKY-INPUT* for the table  : ~A ~%" *cky-input*)
@@ -916,7 +910,7 @@
 (defun get-gram-items (phon)
   "given a phonological string, return a list of lex specs for the string."
   (let ((specs nil))
-    (dolist (l *ccg-grammar*)
+    (dolist (l *current-grammar*)
       (and (equal (nv-list-val 'PHON l) phon)(push l specs)))
     specs))
 
@@ -934,12 +928,12 @@
 
 (defun algebraic? (x)
   "If a basic category is an algebraic unknown (NOT a variable), it has the @ prefix.
-  Keep in mind that CCG has NO VARIABLES; basic, complex, syncategorematic, or trace."
+  Keep in mind that MG has NO VARIABLES; basic, complex, syncategorematic, or trace."
   (and (symbolp x)(eql (char (symbol-name x) 0) #\@)))
 
 (defun specialp-hash (htsyn)
   "special cats have @ prefix on BCAT and can be complex in result but not in arg.
-  This way we maintain procedural neutrality of CCG."
+  This way we maintain procedural neutrality."
   (cond ((and (machash 'BCAT htsyn)(algebraic? (machash 'BCAT htsyn))))
         ((and (machash 'ARG htsyn)(null (machash 'DIR 'ARG htsyn))
 	 (algebraic? (machash 'BCAT 'ARG htsyn))))))
@@ -980,7 +974,7 @@
 	    (return-from create-syn-table ht)))))
 
 (defun hash-lex (lexspec)
-  "This function turns a sequentially represented CCG lex entry, which consists of 
+  "This function turns a sequentially represented lex entry, which consists of 
   Lisp association lists in the lexicalized grammar, to a hashtable, 
   for faster and easier parsing. Called during parsing only."
   (let ((ht (make-lex-hashtable)))
@@ -1032,7 +1026,7 @@
   to each other to avoid global variable passing of the HPSG kind.
   E.g. agr=?x in sht1 and agr=?y in sht2, would make first agr ?y.
   There ain't no global variables or complex features.
-  There is no unification in CCG. Feature match is simply value match or lack of value.
+  There is no unification. Feature match is simply value match or lack of value.
   Returns 3 values: success of match, local variables and their values in two binding
   lists of the form (feature variable value).
   First list relates to left term, and right list to right term."
@@ -1075,7 +1069,7 @@
   "Returns the syntactic hashtable sht with matching features in it bound to list of feature-values in 
   binds if same local variable is used.
   It is important to call this function with a local binding list, otherwise we might
-  create global variables in CCG. See comments on cat-match.
+  create global variables. See comments on cat-match.
   It must do the update on fresh copy of sht to avoid changing constituents of combination!"
   (let ((newht (copy-hashtable sht)))
     (cond ((null binds) newht)
@@ -1083,7 +1077,7 @@
 
 (defun substitute-special-cat (spht1 catht2)
   "substitutes all categories in special cat spht1 with normal cat catht2.
-  To avoid HPSGisation of CCG, we must assume all basic cats in spht1 are special. This way
+  To avoid HPSGisation, we must assume all basic cats in spht1 are special. This way
   we avoid reentrant unification, and this is empirically sound."
   (cond ((null (machash 'DIR spht1)) catht2)
 	(t (let ((newsyn (make-complex-cat-hashtable)))
@@ -1097,18 +1091,13 @@
 (defun load-dotlisp (pname)
   "loads the grammar generated from intermediate representation of monadic grammar"
   (let* ((gname (concatenate 'string pname ".lisp")))
-    (pprint gname)
     (setf *error* nil)
-    (setf *ccg-grammar* (read1 gname))             
+    (setf *current-grammar* (read1 gname))             
     (cond ((not *error*) (setf *lex-rules-table* nil)
 			 (setf *loaded-grammar* gname)
-			 (dolist (l *ccg-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
+			 (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
 			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
 			 ))))
-
-(defun load_py ()
-  (format t "enter grammar without .lisp")
-  (load-dotlisp (read-line *query-io*)))
 
 (defun get-ht (phon ht-list)
   "returns the hashtable in ht-list that has PHON feature same as phon.
@@ -1164,7 +1153,7 @@
 ;;;;  Therefore since we have many LF constants with overlapping names, we use !c to
 ;;;;  fake a constant c, which is actually a function that returns c as a string constant.
 ;;;;  Use !c in LFs wherever you need a true constant (i.e. something that evaluates to itself ALL THE TIME).
-;;;; 3) PCCG component requires checking for LF equivalence. This is almost impossible if we
+;;;; 3) Probabilistic component requires checking for LF equivalence. This is almost impossible if we
 ;;;;  use native lambdas of Lisp, because internal reductions will be saved by Lisp in a different format 
 ;;;;  (closures, functions) which we cannot penetrate. If your input sentence does not lead to an LF
 ;;;;  with no lambdas, the leftover lambdas would be invisible, and we cannot check for equality.
@@ -1662,7 +1651,7 @@
 (defun ccg-combine (ht1 ht2 lex1 lex2 coord1 coord2)
   "Short-circuit evaluates ccg rules one by one, to left term (ht1) and right term (ht2), which are hashtables.
   Returns the result as a hashtable.
-  Note: CCG is procedurally neutral, i.e. given two cats, the other is uniquely determined
+  Note: we are procedurally neutral, i.e. given two cats, the other is uniquely determined
   if combinable (see Pareschi & steedman 1987). Therefore only one rule can succeed if
   lexical cats never use category variables (we don't do that). Eat your heart out, unifiers!!
   So we return immediately once a rule succeeds, because of this paradeterminism.
@@ -1773,7 +1762,7 @@
 			   (if *oovp* 
 			     (progn
 			       (setf matches (make-dummy-lex-entries (nth (- i 1) itemslist)))
-			       (dolist (entry matches) (push entry *ccg-grammar*))
+			       (dolist (entry matches) (push entry *current-grammar*))
 			       (setf n2 (length matches)))
 			     (progn 
 			       (format t "No lex entry for ~A! Exiting without parse.~%" (nth (- i 1) itemslist))
@@ -2086,7 +2075,7 @@
   (setf *training-hashtable* (make-training-hashtable nparams))
   (if x4 (setf *training-hashtable-x4* (make-training-hashtable nparams))) ; this one needed if we extrapolate
   (setf *training-non0-hashtable* (make-training-hashtable smalln)) ; for inside-outside
-  (dolist (l *ccg-grammar*)(mk-train-entry (nv-list-val 'KEY l) (nv-list-val 'PARAM l) 0.0))
+  (dolist (l *current-grammar*)(mk-train-entry (nv-list-val 'KEY l) (nv-list-val 'PARAM l) 0.0))
   t)
 
 (defun estimate-parameters (k i)
@@ -2161,7 +2150,7 @@
 
 (defun find-derivative-of-log-likelihood (s-lf pairindex verbose debug)
   "given (Si Li) pair find the partial derivative of log likelihood.
-  This is the PCCG variant of the inside-outside algorithm, where training-hashtable keeps all weights.
+  This is the probabilistic variant of the inside-outside algorithm, where training-hashtable keeps all weights.
   What we get is f_je^param1+f_j^param2...-f_je^param+f_je^param counts first.
   Then update-derivative turns them into probabilities by dividing into sums."
   (let* ((result (ccg-induce (sup-sentence s-lf)))   ; get all analyses. we will filter later (ie No Normal form parsing)
@@ -2220,9 +2209,9 @@
 (defun update-model (pname iterations alpha0 c &key (verbose nil)(load nil) (debug nil))
   "default workflow for updating model parameters of a project. Compare and save are separate."
   (beam-value) ;; in case you want to abort a misguided looong training asap
-  (and load (load-dotlisp pname)) ; loads the .ind file into *ccg-grammar*
+  (and load (load-dotlisp pname)) ; loads the .ind file into *current-grammar*
   (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
-  (set-training-parameters iterations (length *supervision-pairs-list*)(length *ccg-grammar*) alpha0 c)
+  (set-training-parameters iterations (length *supervision-pairs-list*)(length *current-grammar*) alpha0 c)
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
                    ; we're trying to avoid recalculating counts since they dont change over iterations
   (stochastic-gradient-ascent verbose debug)
@@ -2235,9 +2224,9 @@
   Then it runs Cabay & Jackson algorithm to find the gradient's limit for each parameter by
   minimum polynomial extrapolation (MPE). It can be erroneous if stages fluctuate."
   (beam-value) ;; in case you want to abort 
-  (and load (load-dotlisp pname)) ; loads the .ind file into *ccg-grammar*
+  (and load (load-dotlisp pname)) ; loads the .ind file into *current-grammar*
   (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
-  (set-training-parameters 4 (length *supervision-pairs-list*)(length *ccg-grammar*) alpha0 c 'x4) ; fixed iteration 
+  (set-training-parameters 4 (length *supervision-pairs-list*)(length *current-grammar*) alpha0 c 'x4) ; fixed iteration 
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
   ; we're trying to avoid recalculating counts since they dont change over iterations
   (stochastic-gradient-ascent verbose debug 'x4)
@@ -2252,7 +2241,7 @@
 	  *bign*  *alpha0* *c* *smalln*)
   (format t "~%Model parameters before and after training~%================================================")
   (format t "~%key   lex             initial  final    diff ~%------------------------------------------------")
-  (dolist (l *ccg-grammar*)
+  (dolist (l *current-grammar*)
     (let ((feat (if (lex-rule-p (nv-list-val 'KEY l)) 'INDEX 'PHON)))
       (format t "~%~5,,,A ~12,,,A ~8,,,F ~8,,,F  (~8,,,F)"
 	      (nv-list-val 'KEY l) (nv-list-val feat l) (nv-list-val 'PARAM l) (get-key-param (nv-list-val 'KEY l))
@@ -2267,7 +2256,7 @@
 	  *bign*  *alpha0* *c* *smalln*)
   (format t "~%Model parameters before and after training and extrapolation~%================================================")
   (format t "~%key   lex             initial  final    diff ~%------------------------------------------------")
-  (dolist (l *ccg-grammar*)
+  (dolist (l *current-grammar*)
     (let ((feat (if (lex-rule-p (nv-list-val 'KEY l)) 'INDEX 'PHON)))
       (format t "~%~5,,,A ~12,,,A ~8,,,F ~8,,,F  (~8,,,F)"
 	      (nv-list-val 'KEY l) (nv-list-val feat l) (nv-list-val 'PARAM l) (get-key-param-xp (nv-list-val 'KEY l))
@@ -2278,22 +2267,22 @@
   "this save is baroque to make it lisp reload-able"
   (with-open-file (s (concatenate 'string (string gname) ".ccg.lisp") 
 		     :direction :output :if-exists (if force :supersede :error))  ; we put the default extension
-    (format s "(defparameter *ccg-grammar*~%")
+    (format s "(defparameter *current-grammar*~%")
     (format s "'")
-    (prin1 *ccg-grammar* s)
+    (prin1 *current-grammar* s)
     (format s ")~%")))
 
 (defun save-training (out)
   (or out (format t "please specify an output grammar name to avoid unintentional overrides") 
       (return-from save-training))
-  (dolist (l *ccg-grammar*)
+  (dolist (l *current-grammar*)
     (setf (nv-list-val 'PARAM l) (get-key-param (nv-list-val 'KEY l))))
   (save-grammar out))
 
 (defun save-training-xp (out)
   (or out (format t "please specify an output grammar name to avoid unintentional overrides") 
       (return-from save-training-xp))
-  (dolist (l *ccg-grammar*)
+  (dolist (l *current-grammar*)
     (setf (nv-list-val 'PARAM l) (get-key-param-xp (nv-list-val 'KEY l))))
   (save-grammar out))
 
@@ -2303,14 +2292,14 @@
   Now all parameters are factors apart from population standard deviation with same variance as original sample.
   Useful for avoiding over/underflow as your model develops.
   Assuming population mean & std deviation to avoid dbz check."
-  (if (< (length *ccg-grammar*) 2)
+  (if (< (length *current-grammar*) 2)
     (format t "~%Nothing to z-score!")
     (let ((sumsq 0.0) ; find standard deviation and mean in one pass
 	  (sum  0.0)
 	  (std  0.0)
 	  (mean 0.0)
-	  (n (length *ccg-grammar*)))
-      (dolist (item *ccg-grammar*)
+	  (n (length *current-grammar*)))
+      (dolist (item *current-grammar*)
 	(setf sumsq (+ sumsq (expt (nv-list-val 'PARAM item) 2)))
 	(setf sum (+ sum (nv-list-val 'PARAM item))))
       (setf std (mysqrt (- (/ sumsq n)  (expt (/ sum n) 2))))
@@ -2319,7 +2308,7 @@
 	(let ((minw most-positive-single-float)
 	      (maxw most-negative-single-float))
 	  (setf mean (/ sum n))
-	  (dolist (item *ccg-grammar*)
+	  (dolist (item *current-grammar*)
 	    (setf (nv-list-val 'PARAM item) (/ (- (nv-list-val 'PARAM item) mean) std))
 	    (if (> (nv-list-val 'PARAM item) maxw) (setf maxw (nv-list-val 'PARAM item)))
 	    (if (< (nv-list-val 'PARAM item) minw) (setf minw (nv-list-val 'PARAM item))))
@@ -2331,7 +2320,7 @@
   "find the spanned elements of the currently loaded grammar, 
   i.e. those with same LF but weaker one is string-covered by the stronger."
   (let ((sp nil)
-	(g (copy-seq *ccg-grammar*)))  ; we will delete from g destructively 
+	(g (copy-seq *current-grammar*)))  ; we will delete from g destructively 
     (dolist (l1 g (values g (reverse sp)))
       (dolist (l2 g)
 	(if (and (not (equal (nv-get-v 'KEY l1) (nv-get-v 'KEY l2)))
@@ -2345,11 +2334,11 @@
 (defmacro subset-principle-lf (gn)
   "saves result of max-lf-span as current grammar. Call it if you want to see both survived and deleted entries"
   `(progn 
-     (format t "~%Size of current grammar before update: ~A" (length *ccg-grammar*))
+     (format t "~%Size of current grammar before update: ~A" (length *current-grammar*))
      (multiple-value-bind (g d)
        (max-lf-span) ; applies SP to currently loaded grammar wrt identical LFs
        (format t "~%Size of updated grammar= ~A~%Size of deletion list (with overlaps)= ~A~%" (length g) (length d))
-       (setf *ccg-grammar* g))
+       (setf *current-grammar* g))
      (save-grammar ,gn))) ; then saves the updated current grammar
 
 (defun filter (&key (metod '>=) (threshold 0.0))
@@ -2358,24 +2347,24 @@
 	 (fn (progn (format t "~%Enter a grammar name (without .ccg.lisp extension) for saving survivors")
 		    (format t "~%put in double quotes if you want to preserve case~%") 
 		    (string (read)))))
-    (dolist (item *ccg-grammar*)
+    (dolist (item *current-grammar*)
       (if (funcall metod (nv-list-val 'PARAM item) threshold) (push item fg)))
-    (setf *ccg-grammar* (reverse fg))
+    (setf *current-grammar* (reverse fg))
     (save-grammar fn)))
 
 (defun z-score-grammar-per-form ()
   "calculates z values for each lexical form separately, because they are the ones 
   in competition with each other in parsing and ranking. Assumes a loaded grammar.
   Assuming population mean & std deviation to avoid dbz check."
-  (if (< (length *ccg-grammar*) 2)
+  (if (< (length *current-grammar*) 2)
     (format t "~%Nothing to z-score!")
-    (let* ((n (length *ccg-grammar*))
+    (let* ((n (length *current-grammar*))
 	   (ht (make-hash-table :test #'equal :size n)))
-      (dolist (item *ccg-grammar*)  ; initialize sums per form --collisions override same form
+      (dolist (item *current-grammar*)  ; initialize sums per form --collisions override same form
 	(setf (machash (nv-list-val 'PHON item) ht) '((SUMSQ 0.0)
 						      (SUM 0.0)
 						      (N 0))))
-      (dolist (item *ccg-grammar*)  ; another pass to fill in data
+      (dolist (item *current-grammar*)  ; another pass to fill in data
 	(setf (machash (nv-list-val 'PHON item) ht)
 	      (list
 		(list 'SUMSQ 
@@ -2396,7 +2385,7 @@
 							    (nv-list-val 'N v)) 2)))))))
 
 		 ht)
-	(dolist (item *ccg-grammar*) ; now update parameters per form in currently loaded grammar
+	(dolist (item *current-grammar*) ; now update parameters per form in currently loaded grammar
 	  (setf (nv-list-val 'PARAM item) 
 		(setf (nv-list-val 'PARAM item) 
 		      (if (/= (nv-list-val 'STD (machash (nv-list-val 'PHON item) ht2)) 0.0)
@@ -2409,15 +2398,15 @@
 (defun merge-grammar (gname)
   "merges grammar gname into currently loaded grammar without overriding the entries of current grammar.
   It's best if you merge two grammars if their PARAMs are from same value space (eg. both z-scored or none, etc.)"
-  (let* ((lg (copy-seq *ccg-grammar*)) ; will update currently loaded grammar
+  (let* ((lg (copy-seq *current-grammar*)) ; will update currently loaded grammar
 	 (c 0))
-    (load-dotlisp gname)     ; resets *ccg-grammar* to grammar in gname
-    (dolist (l *ccg-grammar*) 
+    (load-dotlisp gname)     ; resets *current-grammar* to grammar in gname
+    (dolist (l *current-grammar*) 
       (if (not (reduce #'(lambda (x y)(or x y))  ; reduce will return true only if l is a member of lg
 		       (mapcar #'(lambda (z)(member (assoc 'KEY l) z :test #'equal))
 			       lg)))
 	(progn (push l lg)(incf c))))
-    (setf *ccg-grammar* lg)
+    (setf *current-grammar* lg)
     (format t "~%Current grammar is merged with ~A adding ~A entries." gname c)))
 
 (defun mklist (obj)
@@ -2437,7 +2426,7 @@
   (setf *cky-argmax-lf* nil)
   (setf *cky-lf* nil) 
   (setf *loaded-grammar* "")
-  (setf *ccg-grammar*  nil)
+  (setf *current-grammar*  nil)
   (setf *ccg-grammar-keys*  0)
   (simple-ccg :nf-parse t :lf t :beam nil 
 	     :oov nil)) ; turn experimental rules off by default
@@ -2486,12 +2475,12 @@
 (defun kl-prepare (g)
   "z score grammar g, then hash item key to (param z-score prob)"
   (load-dotlisp g)
-  (let ((ght (make-training-hashtable (length *ccg-grammar*)))
+  (let ((ght (make-training-hashtable (length *current-grammar*)))
 	(errlog nil))
-    (dolist (el *ccg-grammar*)
+    (dolist (el *current-grammar*)
       (setf (machash (nv-list-val 'KEY el) ght) (nv-list-val 'PARAM el)))
     (z-score-grammar) ; z-scoring changes values of currently loaded parameters to z scores
-    (dolist (el *ccg-grammar*)
+    (dolist (el *current-grammar*)
       (setf (machash (nv-list-val 'KEY el) ght) (list (machash (nv-list-val 'KEY el) ght)
 						      (nv-list-val 'PARAM el)
 						      (standard-normal-pdf (nv-list-val 'PARAM el)))))
@@ -2624,8 +2613,8 @@
 
 (defun add-tr-to-grammar ()
   "add rules to the currently loaded grammar"
-  (setf *ccg-grammar* (append *ccg-grammar* (reverse *RAISED-LEX-RULES*)))
-  (format t "~%Type-raising rules added at the end of *ccg-grammar*"))
+  (setf *current-grammar* (append *current-grammar* (reverse *RAISED-LEX-RULES*)))
+  (format t "~%Type-raising rules added at the end of *current-grammar*"))
 
 (defun mk-bcat (bcatht)
   (let ((feats nil)
@@ -2719,8 +2708,8 @@
   (setf *VERBS-IN-GRAMMAR* NIL)
   (setf *tr-error-file* e-log)
   (setf *tr-error-log* nil)
-  (find-morph-v *ccg-grammar* morphs)
-  (get-last-key-id *ccg-grammar*)
+  (find-morph-v *current-grammar* morphs)
+  (get-last-key-id *current-grammar*)
   (dolist (v-entry *VERBS-IN-GRAMMAR*)
     (tr-from-lexical-function (nv-get-v 'SYN v-entry))  ; sets *TR-RANGE* and *DOMAIN* 
     (if (and *DOMAIN* *TR-RANGE*)
@@ -2788,7 +2777,7 @@
     (format t "~%Log of warnings and errors                      : ~A (~A entries) " 
 	    *tr-error-file* (length *tr-error-log*))
     (format t "~%There were NO errors/warnings in deriving second order functions"))
-  (format t "~%Number of lexical entries                       : ~A" (length *CCG-GRAMMAR*))
+  (format t "~%Number of lexical entries                       : ~A" (length *current-grammar*))
   (format t "~%Number of lexical functions considered          : ~A" (length *VERBS-IN-GRAMMAR*))
   (format t "~%Number of second-order case functions generated : ~A" (length *RAISED-LEX-RULES*))
   (format t "~%Number of paradigmatic functions out of them    : ~A" (hash-table-count *ht-tr*))
@@ -2821,3 +2810,5 @@
 
 (defun nf-and-beam ()
   (simple-ccg :nf-parse t :beam t))
+
+(format t "processor: bench.lisp loaded")
