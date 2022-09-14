@@ -2810,5 +2810,3 @@
 
 (defun nf-and-beam ()
   (simple-ccg :nf-parse t :beam t))
-
-(format t "processor: bench.lisp loaded")

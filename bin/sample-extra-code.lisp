@@ -1,4 +1,5 @@
-;; sample user additions the processor
+;; sample user additions to the processor
+;; --cem bozsahin 
 
 (defun beam07-app ()
   "sets beam and turns of normal form parse"
@@ -17,4 +18,4 @@
   (setf *b-comp* t)
   )
 
-(format t "~%processor: init-user.lisp loaded~%")
+(beam07-app)  ; run the code to change parse behavior

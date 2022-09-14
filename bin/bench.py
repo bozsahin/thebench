@@ -19,7 +19,7 @@ import cl4py                     # processor is in Lisp
 _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
 _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
-_cl.load(os.environ['BENCH_HOME']+'/bin/init-user.lisp')
+print('processor: bench.lisp loaded')
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
@@ -580,6 +580,7 @@ def help ():
         print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings")
         print(' ! .     | shows (without adding) the intermediate representation of element . in source format')
         print(' & .     | saves the intermediate representation of current grammar (a python dict) in file .')
+        print(' + .     | adds Lisp code in file . to the processor')
         print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)')
         print(' <       | Logging turned off')
 
@@ -711,6 +712,16 @@ def do (commline):
             print(f"{args[0]} loaded")
         except Exception:
             print('something went wrong')
+    elif comm == '+':
+        fn = str(args[0])
+        if os.path.exists(fn):
+            try:
+                _lisp.function('safely-load')(args[0])
+                print(f"{args[0]} loaded")
+            except Exception:
+                print('something went wrong')
+        else:
+            print(f"can't find {fn} in the current directory")
     elif comm == '^':              
         try:
             f = _lisp.function(args[0])
