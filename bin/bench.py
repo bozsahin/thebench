@@ -1,4 +1,4 @@
-# -----------------------------------------------------------------------------
+
 # bench.py
 # pre/post processing and processor interface for monadic grammar
 # -Cem Bozsahin, 2022, Ankara, Datça, Şile
@@ -29,7 +29,7 @@ _vdate = 'April 10, 2022'
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
 _grammar = {}                 # currently loaded grammar parsed into internal representation
-                              # structure of the dict, key: (index,_el/_arule/_srule, list of items for the element)
+                              # structure of the dict key: (index,_el/_arule/_srule, list of items for the element)
 _info = {}
 _indexed = False              # whether an entry is already indexed; need this for 2-pass processing
 
@@ -164,6 +164,25 @@ def make_up_an_index():              # return the first non-colliding random ind
 # All data parsing and tokenization goes here, one for grammar, one for supervision, one for input to analysis
 #
 
+class SUPLexer(Lexer): # Token types for supervision pairs
+    tokens = { ID, ITEM, CORR, DOT, LP, RP, BS }
+
+    ignore = ' \t'            # whitespace
+    ignore_comment = r'\%.*'  # ignore everything starting with %
+    ignore_newline = r'\n+'   # ignore empty lines
+     
+    ITEM   = r'\|.*\|'                                     
+    ID     = r'[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
+    CORR   = r'\:'
+    DOT    = r'\.'          # modalities also use this
+    LP     = r'\('
+    RP     = r'\)'
+    BS     = r'\\'            # lambda also uses this
+
+    def error(self, tok):                     # best to avoid adding this to token types
+        print("Unknown supervision character '%s'" % tok.value[0])
+        self.index += 1
+
 class MGLexer(Lexer):  # Token types of monadic grammar specifications
     tokens = { ID, RNAME, SPECID, ITEM, M, SRULE, ARULE, END, CATEND, LSQ, RSQ, COM, CORR, DOT, SQCAT, DQCAT,
                LP, RP, LB, RB, EQ, BS, FS, BDS, FDS, MODHAR, MODAPP,
@@ -211,6 +230,55 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
     def error(self, tok):                     # best to avoid adding this to token types
         print("Unknown character '%s'" % tok.value[0])
         self.index += 1
+
+class SUPParser(Parser):      # the syntax of string : meaning; pairs
+    #debugfile = 'lalr-sup.log'
+    tokens = SUPLexer.tokens
+
+    @_('ITEM CORR lcom')
+    def s(self, p):
+        pprint(f"item: {p[0][1:-1].split()} lcom: {p.lcom}")
+
+    @_('lterm')
+    def lcom(self, p):
+        return p.lterm
+
+    @_('bodys')
+    def lcom(self, p):
+        return p.bodys
+
+    @_('bodys body') 
+    def bodys(self, p):
+        return mk_bin(_app, p.bodys, p.body)
+
+    @_('body')
+    def bodys(self, p):
+        return p.body
+
+    @_('BS ID [ DOT ] lbody')
+    def lterm(self, p):
+        return mk_bin(_lam, p[1], p.lbody)
+
+    @_('lterm')
+    def lbody(self, p):
+        return p.lterm
+
+    @_('ID')
+    def body(self, p):
+        return p[0]
+
+    @_('LP lcom RP')
+    def body(self, p):
+        return p.lcom
+
+    @_('bodys')
+    def lbody(self, p):
+        return p.bodys
+
+    def error(self, p):     
+        #if EOFError:
+        #    print('end of supervision entry has been reached unexpectedly')
+        pass
 
 class MGParser(Parser):       # the syntax of MG entries 
     #debugfile = 'lalr.log'
