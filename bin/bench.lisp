@@ -2810,3 +2810,7 @@
 
 (defun nf-and-beam ()
   (simple-ccg :nf-parse t :beam t))
+
+(format t "processor: bench.lisp loaded, version ~A~%" 
+  (multiple-value-bind (pr v) (which-batgram)
+    v))

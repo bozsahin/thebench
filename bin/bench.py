@@ -5,6 +5,7 @@
 # -----------------------------------------------------------------------------
 
 import os
+import platform
 import shutil
 import pprint
 from   contextlib import redirect_stdout
@@ -19,7 +20,7 @@ import cl4py                     # processor is in Lisp
 _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
 _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
-print('processor: bench.lisp loaded')
+#print('processor: bench.lisp loaded')
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
@@ -573,12 +574,12 @@ def help ():
         print(' r ...   | ranks the expression ... using the currently loaded model')
         print(' s .     | converts supervision pairs in file . to native format for the trainer')
         print('         |    (saved in filename with .sup extension)')
+        print(' v .     | shows (without adding) the intermediate representation of element .')
         print(' x       | exits from the tool')
         print(' ?       | shows information about the currently loaded grammar')
         print(' = ...   | restricts synthetic case application to basic categories ...')
         print(' @ .     | shows the value of the Lisp object . ')
         print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings")
-        print(' ! .     | shows (without adding) the intermediate representation of element . in source format')
         print(' & .     | saves the intermediate representation of current grammar (a python dict) in file .')
         print(' + .     | adds Lisp code in file . to the processor')
         print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)')
@@ -662,6 +663,17 @@ def load_2pass(fname):            # this is for model building, for replacing ';
     else:
         print("grammar file untouched.")
 
+def mk_lisp_list(ir):
+    # turns an internal representation of grammar (a python dict) into Lisp list in strings
+    if type(ir) == type({}) or type(ir) == type(()):
+        if len(ir) > 0:
+            return '('+' '.join(map(mk_lisp_list,ir)) + ')'
+        else:
+            return '()'
+    else:
+        return str(ir)
+
+
             
 def do (commline):
     global _online, _grammar, _info
@@ -681,10 +693,10 @@ def do (commline):
                 with redirect_stdout(f):
                     pp = pprint.PrettyPrinter(indent=2)
                     pp.pprint(_grammar)
-            print(f"grammar binary is pretty-printed to {fn}")
+            print(f"grammar is pretty-printed to {fn} in internal representation")
         elif ch:
             print('canceled')
-    elif comm == '!':
+    elif comm == 'v':
         _online = True
         args, _, _ = ' '.join([str(item) for item in args]).partition('%')   # just eliminate the comment
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
@@ -698,7 +710,11 @@ def do (commline):
                 else:
                     print(f"key {int(key)} not found")
     elif comm == 'g':
-        load_1pass(args[0])      # args[0] is full filename, not necessarily full path name
+        if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
+            print(mk_lisp_list(_grammar))
+            print('.lisp file generated')
+        else:
+            print('.lisp file not generated')
     elif comm == 'e':
         try:
             eval(' '.join(str(item) for item in args))
@@ -766,6 +782,7 @@ def welcome ():
     print(1*_prompt+'Welcome to The Bench,')
     print(2*_prompt+"A workbench for studying Monadic Structures in Natural Language")
     print(3*_prompt+"Version:", _version, "Dated:", _vdate)
+    print(3*_prompt+"Python Version:", platform.python_version())
     print(3*_prompt+"Pre/post processing by Python (grammar checks, interfaces)")
     print(3*_prompt+"Processing by Common Lisp (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
