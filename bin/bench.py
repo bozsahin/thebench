@@ -63,9 +63,9 @@ _apair = 'apair'
 _spair = 'spair'
 _choice= 'choice'
 _index = 'index'
-_op    = 0         # rather than using string match
-_l     = 1
-_r     = 2
+_op    = 'op'         
+_l     = 'l'
+_r     = 'r'
 
 # 
 # All grammar STRUCTURES are ternary and binary native python dictionaries
