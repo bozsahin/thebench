@@ -106,12 +106,12 @@ def mk_entry (element, index):
     if _online:
         print(element)
     elif element[_op] == _el:
-        _grammar[(index[_l], index[_r], element[_l][_l])] =  element  
+        _grammar['elements'][(index[_l], index[_r], element[_l][_l])] =  element  
     elif element[_op] == _arule:    # keep them in grammar but separately dict'd
         _grammar['arules'][(index[_l], index[_r], element[_l][_op])] =  element  
     elif element[_op] == _srule:    # compile them into two native entries of type _el; make another key
-        _grammar[(index[_l], index[_r], element[_l][_l][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_l][_l], element[_l][_op]), element[_l][_l][_r])
-        _grammar[(make_up_an_index(), index[_r], element[_l][_r][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_r][_l], element[_l][_op]), element[_l][_r][_r])
+        _grammar['elements'][(index[_l], index[_r], element[_l][_l][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_l][_l], element[_l][_op]), element[_l][_l][_r])
+        _grammar['elements'][(make_up_an_index(), index[_r], element[_l][_r][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_r][_l], element[_l][_op]), element[_l][_r][_r])
     else:
         print('** UKNOWN ENTRY TYPE: ', element[_op])
     return True
@@ -137,7 +137,8 @@ def init_grammar():
     _info.clear()
     _keys.clear()
     _info = { 'name': 'unknown', 'el':0, 'srule':0, 'arule':0, 'basic': {}, 'quoted': {}, 'special': {}, 'features' : {}, 'values': {}, 'pos': {} }  # basic cat inventory is synthetic, this ain't GG
-    _grammar = { 'arules': {}}         # keep arules separate, srules are compiled into entries
+    _grammar['arules'] = {}     # keep arules separate, srules are compiled into elements
+    _grammar['elements'] = {}   # all other entries under this label  
     
 def make_up_an_index():              # return the first non-colliding random index
     #return(choice([i for i in _keyrange if i not in _keys]))   # this takes too long, and not lazy
@@ -757,7 +758,8 @@ def do (commline):
         except Exception:
             print('something went wrong')
     elif comm == '?':
-        print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']}\n a rules :  {_info['arule']}")
+        srule_ent = _info['srule']*2
+        print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {srule_ent} elements)\n a rules :  {_info['arule']}")
         print(" basics  : ", ' '.join(_info['basic'].keys()))
         print(" quoted  : ", ' '.join(_info['quoted'].keys()))
         print(" special : ", ' '.join(_info['special'].keys()))
