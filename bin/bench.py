@@ -109,9 +109,9 @@ def mk_entry (element, index):
         _grammar[(index[_l], index[_r], element[_l][_l])] =  element  
     elif element[_op] == _arule:    # keep them in grammar but separately dict'd
         _grammar['arules'][(index[_l], index[_r], element[_l][_op])] =  element  
-    elif element[_op] == _srule:    # compile them into two native entries of type _el
+    elif element[_op] == _srule:    # compile them into two native entries of type _el; make another key
         _grammar[(index[_l], index[_r], element[_l][_l][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_l][_l], element[_l][_op]), element[_l][_l][_r])
-        _grammar[(index[_l], index[_r], element[_l][_r][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_r][_l], element[_l][_op]), element[_l][_r][_r])
+        _grammar[(make_up_an_index(), index[_r], element[_l][_r][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_r][_l], element[_l][_op]), element[_l][_r][_r])
     else:
         print('** UKNOWN ENTRY TYPE: ', element[_op])
     return True
