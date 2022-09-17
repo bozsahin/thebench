@@ -102,7 +102,7 @@ _r     = 'r'
 #               
 
 def mk_entry (element, index):  
-    global _grammar, _online
+    global _grammar, _online, _op, _l, _r
     if _online:
         print(element)
     elif element[_op] == _el:
@@ -636,7 +636,6 @@ def load_1pass(fname):        # checks but not updates the grammar with indices
         print('grammar file not found; are you sure you specified a full name?')
     if not nofile:
         print(f"please check the {logfile} file for information.")
-
     return (result and (not errors) and (not nofile))
 
 def load_2pass(fname):            # this is for model building, for replacing ';' with <index, param>; pairs
