@@ -38,6 +38,7 @@ _indexed = False              # whether an entry is already indexed; need this f
 #   And, these two classes are required by the sly module. 
 
 #########  
+# Internal Representation
 #
 # Internal grammar's AST
 #
@@ -52,16 +53,13 @@ _lcom  = 'lcom'
 _dom   = 'dom'
 _range = 'range'
 _dir   = 'dir'
-_eqn   = 'eqn'
 _basic = 'basic'
 _lam   = 'lam'
 _app   = 'app'
-_val   = 'val'
 _arule = 'arule'
 _srule = 'srule'
 _apair = 'apair'
 _spair = 'spair'
-_choice= 'choice'
 _index = 'index'
 _op    = 'op'         
 _l     = 'l'
@@ -69,9 +67,9 @@ _r     = 'r'
 
 # 
 # All grammar STRUCTURES are ternary and binary native python dictionaries
-#  in the form {0: operator, 1 : left element, 2: right element}
+#  in the form {'op': operator, 'l' : left element, 'r': right element}
 #
-# valuation is, for 0/1/2 in order: 
+# valuation is, for op/l/r order
 #
 # (_el,    _form, _cat)      
 # (_form,  string of items, one value)  one value is False in _spair     
@@ -80,21 +78,20 @@ _r     = 'r'
 # (_scom,  _basic)
 # (_lcom,  _lam)
 # (_lcom,  _app)
-# (_lcom,  _val)
+# (_lcom,  val)
 # (_dom,   _dir, _scom)
 # (_dir,   slash, modality)
 # (_basic, one value, list of features, feature followed by value)
 # (_lam,   varname, _app)
-# (_lam,   varname, _val)
+# (_lam,   varname, val)
 # (_lam,   varname, _lam)
 # (_app,   _app, value)
-# (_app,   _val, value)
-# (_app,   _val, _app)
+# (_app,   val, value)
+# (_app,   val, _app)
 # (_arule, rulename, _apair)
 # (_srule, rulename, _choice)
 # (_apair, _cat, _cat)
 # (_spair, _form, _cat)
-# (_choice,_spair, _spair)
 # (_index, an index, a parameter)
 
 # 
@@ -687,14 +684,14 @@ def do (commline):
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/n)? ")
-        if not ch or ch == 'y':
+            ch = input(f"file {fn} exists, overwrite (y/N)? ")
+        if ch == 'y':
             with open(str(fn),'w') as f:
                 with redirect_stdout(f):
                     pp = pprint.PrettyPrinter(indent=2)
                     pp.pprint(_grammar)
             print(f"grammar is pretty-printed to {fn} in internal representation")
-        elif ch:
+        else:
             print('canceled')
     elif comm == 'v':
         _online = True
