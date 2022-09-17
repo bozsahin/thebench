@@ -30,9 +30,8 @@ _vdate = 'April 10, 2022'
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
 _grammar = {}                 # currently loaded grammar parsed into internal representation
-                              # structure of the dict key: (index,_el/_arule/_srule, list of items for the element)
 _info = {}
-_indexed = False              # whether an entry is already indexed; need this for 2-pass processing
+_indexed = False              # whether an entry is already indexed; need this unique indexing
 
 # Apart from MGLexer and MGParser, there is NO class definition, to make everything natively printable.
 #   And, these two classes are required by the sly module. 
@@ -61,38 +60,38 @@ _srule = 'srule'
 _apair = 'apair'
 _spair = 'spair'
 _index = 'index'
-_op    = 'op'         
-_l     = 'l'
-_r     = 'r'
+_op    = 0
+_l     = 1
+_r     = 2
 
 # 
 # All grammar STRUCTURES are ternary and binary native python dictionaries
-#  in the form {'op': operator, 'l' : left element, 'r': right element}
+#  in the form {_op: operator, _l : left element, _r : right element}
 #
 # valuation is, for op/l/r order
 #
-# (_el,    _form, _cat)      
-# (_form,  string of items, one value)  one value is False in _spair     
-# (_cat,   _scom, _lcom)
-# (_scom,  _range, _dom)   
-# (_scom,  _basic)
-# (_lcom,  _lam)
-# (_lcom,  _app)
-# (_lcom,  val)
-# (_dom,   _dir, _scom)
-# (_dir,   slash, modality)
-# (_basic, one value, list of features, feature followed by value)
-# (_lam,   varname, _app)
-# (_lam,   varname, val)
-# (_lam,   varname, _lam)
-# (_app,   _app, value)
-# (_app,   val, value)
-# (_app,   val, _app)
-# (_arule, rulename, _apair)
-# (_srule, rulename, _choice)
-# (_apair, _cat, _cat)
-# (_spair, _form, _cat)
-# (_index, an index, a parameter)
+# {_el,    _form, _cat}      
+# {_form,  string of items, one value}  one value is False in _spair     
+# {_cat,   _scom, _lcom}
+# {_scom,  _range, _dom}
+# {_scom,  _basic}
+# {_lcom,  _lam}
+# {_lcom,  _app}
+# {_lcom,  val}
+# {_dom,   _dir, _scom}
+# {_dir,   slash, modality}
+# {_basic, val, list of feature followed by value}
+# {_lam,   varname, _app}
+# {_lam,   varname, val}
+# {_lam,   varname, _lam}
+# {_app,   _app, val}
+# {_app,   val, val}
+# {_app,   val, _app}
+# {_arule, rulename, _apair}
+# {_srule, rulename, _choice}
+# {_apair, _cat, _cat}
+# {_spair, _form, _cat}
+# {_index, an index, a parameter}
 
 # 
 # make functions.
