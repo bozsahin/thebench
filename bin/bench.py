@@ -5,6 +5,7 @@
 # -----------------------------------------------------------------------------
 
 import os
+import sys
 import platform
 import shutil
 import pprint
@@ -78,7 +79,8 @@ _r     = 2
 # {_lcom,  _lam}
 # {_lcom,  _app}
 # {_lcom,  val}
-# {_dom,   _dir, _scom}
+# {_dom,   _dir, _basic}
+# {_dom,   _dir, _range}
 # {_dir,   slash, modality}
 # {_basic, val, list of feature followed by value}
 # {_lam,   varname, _app}
@@ -87,7 +89,7 @@ _r     = 2
 # {_app,   _app, val}
 # {_app,   val, val}
 # {_app,   val, _app}
-# {_arule, rulename, _apair}
+# {_arule, rulenameval, _apair}
 # {_srule, rulename, _choice}
 # {_apair, _cat, _cat}
 # {_spair, _form, _cat}
@@ -100,7 +102,8 @@ _r     = 2
 def mk_entry (element, index):  
     global _grammar, _online, _op, _l, _r
     if _online:
-        print(element)
+        pp = pprint.PrettyPrinter(indent=2, width=80, stream=sys.stdout)
+        pp.pprint(element)
     elif element[_op] == _el:
         _grammar['elements'][(index[_l], index[_r], element[_l][_l])] =  element  
     elif element[_op] == _arule:    # keep them in grammar but separately dict'd
@@ -343,7 +346,7 @@ class MGParser(Parser):       # the syntax of MG entries
         global _online, _info
         if not _online:
             _info['arule'] += 1
-        return  mk_un(_arule, mk_bin(p[0], p.apair0, p.apair1))
+        return  mk_bin(_arule, p[0], mk_bin(_apair, p.apair0, p.apair1))
 
     @_('LP ids COM c RP')      
     def spair(self, p):
@@ -351,7 +354,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('LP c RP')
     def apair(self, p):
-        return mk_un(_apair, p.c)
+        return p.c
 
     @_('ids ID')
     def ids(self, p):
@@ -659,11 +662,12 @@ def load_2pass(fname):            # this is for model building, for replacing ';
     else:
         print("grammar file untouched.")
 
-def mk_lisp_list(ir):
+def ir_to_lisp(ir):
     # turns an internal representation of grammar (a python dict) into Lisp list in strings
+    # this is essentially code generator for the processor
     if type(ir) == type({}) or type(ir) == type(()):
         if len(ir) > 0:
-            return '('+' '.join(map(mk_lisp_list,ir)) + ')'
+            return '('+' '.join(map(ir_to_lisp,ir)) + ')'
         else:
             return '()'
     else:
@@ -684,10 +688,10 @@ def do (commline):
         ch = False
         if os.path.exists(fn):
             ch = input(f"file {fn} exists, overwrite (y/N)? ")
-        if ch == 'y':
+        if ch == 'y' or not ch:
             with open(str(fn),'w') as f:
                 with redirect_stdout(f):
-                    pp = pprint.PrettyPrinter(indent=2)
+                    pp = pprint.PrettyPrinter(indent=2, width=80, stream=sys.stdout)
                     pp.pprint(_grammar)
             print(f"grammar is pretty-printed to {fn} in internal representation")
         else:
@@ -698,16 +702,15 @@ def do (commline):
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
     elif comm == 'k':
-            pp = pprint.PrettyPrinter(indent=2)
             for key in args:
                 entry = _grammar.get(int(key))
                 if entry:
+                    pp = pprint.PrettyPrinter(indent=2, width=80, stream=sys.stdout)
                     pp.pprint(entry)
                 else:
                     print(f"key {int(key)} not found")
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
-            print(mk_lisp_list(_grammar))
             print('.lisp file generated')
         else:
             print('.lisp file not generated')
