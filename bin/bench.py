@@ -721,8 +721,17 @@ def do (commline):
                     print(f"key {int(key)} not found")
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
-            print('.lisp file generated')
-            print(ir_to_lisp(_grammar['arules']) + ir_to_lisp(_grammar['elements']))
+            fn = str(args[0])+'.lisp'
+            ch = False
+            if os.path.exists(fn):
+                ch = input(f"file {fn} exists, overwrite (y/N)? ")
+            if ch == 'y' or not ch:
+                with open(str(fn),'w') as f:
+                    with redirect_stdout(f):
+                        print('(' + ir_to_lisp(_grammar['arules']) + ir_to_lisp(_grammar['elements']) + ')')
+                print(f"{fn} file generated")
+            else:
+                print('canceled')
         else:
             print('.lisp file not generated')
     elif comm == 'e':
