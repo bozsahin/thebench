@@ -557,7 +557,7 @@ def split_command (cline):  # splits a command line into command and list of arg
     return (comarg[0], comarg[1:])
     
 def help ():
-        print(' NOTE >>   ... is space-separated items ending with newline')
+        print(" NOTE >> | '...' is space-separated items ending with newline")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates case functions (asymmetric relational rules),')
         print('         |   for all elements with parts of speech ...')
@@ -566,7 +566,6 @@ def help ():
         print('         |   all of them if no number is provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
         print(' g .     | grammar with filename . is checked and loaded (.lisp file generated)')
-        print(' h       | lists commands')
         print(' k ...   | shows grammar elements which bear the keys ...')
         print(' m .     | model with the filename . is loaded (a .lisp file)')
         print(' o .     | runs the OS/shell command . at your own risk')
@@ -665,23 +664,34 @@ def load_2pass(fname):            # this is for model building, for replacing ';
 def ir_to_lisp(ir):
     # turns an internal representation of grammar (a python dict) into Lisp list in strings
     # this is essentially code generator for the processor
-    if type(ir) == type({}) or type(ir) == type(()):
-        if len(ir) > 0:
-            return '('+' '.join(map(ir_to_lisp,ir)) + ')'
-        else:
-            return '()'
+    if type(ir) == type(()):
+        l = ''
+        for el in ir:
+            l += str(el) + ' '
+        return '( ' + l + ')'         # no recursive tuple
+    elif type(ir) == type([]):  
+        l = ''
+        for el in ir:
+            l += str(el) + ' '
+        return '(' + l + ')'         # no recursive tuple
+    elif type(ir) == type({}):      
+        l = ''                       # dicts can be recursive
+        for el in ir:
+            l += ' (' + ' ' + str(el) + ' ' + ir_to_lisp(ir[el]) + ') '
+        return l
     else:
         return str(ir)
 
-
-            
 def do (commline):
     global _online, _grammar, _info
     comm, args = split_command(commline)
-    if (comm == 'h' or comm == 'x' or comm == '?' or comm == '<') and args:
+    if comm in ['x', '?', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm == 'h':
+    if comm in ['a', 'c', 'd', 'e', 'g', 'k', 'm', 'o', 'p', 'r', 's', 'v', '=', '@', '^', '&', '+', '>'] and not args:
+        print('too few arguments')
+        return
+    elif comm == 'h':
         help()
     elif comm == '&':
         fn = str(args[0])
@@ -712,6 +722,7 @@ def do (commline):
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
             print('.lisp file generated')
+            print(ir_to_lisp(_grammar['arules']) + ir_to_lisp(_grammar['elements']))
         else:
             print('.lisp file not generated')
     elif comm == 'e':
