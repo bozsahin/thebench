@@ -107,7 +107,7 @@ def mk_entry (element, index):
     elif element[_op] == _el:
         _grammar['elements'][(index[_l], index[_r], element[_l][_l])] =  element  
     elif element[_op] == _arule:    # keep them in grammar but separately dict'd
-        _grammar['arules'][(index[_l], index[_r], element[_l])] =  element  
+        _grammar['arules'][(index[_l], index[_r], element[_l], element[_l])] =  element   # a 4-tuple 
     elif element[_op] == _srule:    # compile them into two native entries of type _el; make another key
         _grammar['elements'][(index[_l], index[_r], element[_l][_l][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_l][_l], element[_l][_op]), element[_l][_l][_r])
         _grammar['elements'][(make_up_an_index(), index[_r], element[_l][_r][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_r][_l], element[_l][_op]), element[_l][_r][_r])
@@ -292,7 +292,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('ITEM pos M c')        # first item is form (get rid of |), second one is POS
     def l(self, p):
-        global _info, _online
+        global _info, _online, _el, _form
         if not _online:
             _info['el'] += 1
         return mk_bin(_el, mk_bin(_form, ' '.join(p[0][1:-1].split()), p.pos), p.c)
@@ -321,14 +321,14 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('LSQ INUM COM RNUM RSQ CATEND')  
     def catend(self, p):
-        global _keys, _indexed
+        global _keys, _indexed, _index
         _indexed = True   # it was already indexed
         _keys[p[1]] = True  # do not generate an index which is already specified
         return mk_bin(_index, int(p[1]), float(p[3]))
 
     @_('CATEND')         # entries are indexed in source grammar, don't let user index them
     def catend(self, p):
-        global _keys, _indexed
+        global _keys, _indexed, _index
         ix = make_up_an_index()
         _indexed = False   # we generated the index
         _keys[ix] = True   # next time it won't be generated
@@ -336,14 +336,14 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('RNAME spair SRULE spair')
     def r(self, p):
-        global _online, _info
+        global _online, _info, _srule
         if not _online:
             _info['srule'] += 1
         return mk_un(_srule, mk_bin(p[0], p.spair0, p.spair1))
 
     @_('RNAME apair ARULE apair')
     def r(self, p):
-        global _online, _info
+        global _online, _info, _apair, _arule
         if not _online:
             _info['arule'] += 1
         return  mk_bin(_arule, p[0], mk_bin(_apair, p.apair0, p.apair1)) 
@@ -366,6 +366,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('scom CORR lcom')
     def c(self, p):
+        global _cat, _lcom, _scom
         return mk_bin(_cat, mk_un(_scom, p.scom), mk_un(_lcom, p.lcom))
 
     @_('basic')
@@ -378,6 +379,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('scom slash last')
     def scom(self, p):
+        global _range, _dom
         return mk_bin(_range, p.scom, mk_bin(_dom, p.slash, p.last))
 
     @_('basic')
@@ -390,10 +392,12 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('dir mod')
     def slash(self, p):
+        global _dir
         return mk_bin(_dir, p.dir, p.mod)
 
     @_('dir')
     def slash(self, p):
+        global _dir
         return mk_bin(_dir, p.dir, '.')
 
     @_('BS')
@@ -430,7 +434,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('ID feats')
     def basic(self, p):
-        global _info, _online
+        global _info, _online, _basic
         if not _online:
             _info['basic'][p[0]] = True
         if p.feats:
@@ -440,21 +444,21 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('SQCAT')
     def basic(self, p):
-        global _info, _online
+        global _info, _online, _basic
         if not _online:
             _info['quoted'][p[0]] = True
         return mk_bin(_basic, p[0], 'quoted')
 
     @_('DQCAT')
     def basic(self, p):
-        global _info, _online
+        global _info, _online, _basic
         if not _online:
             _info['quoted'][p[0]] = True
         return mk_bin(_basic, p[0], 'quoted')
 
     @_('SPECID')
     def basic(self, p):
-        global _info, _online
+        global _info, _online, _basic
         if not _online:
             _info['special'][p[0]] = True
         return mk_bin(_basic, p[0], 'special')
@@ -517,6 +521,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('bodys body') 
     def bodys(self, p):
+        global _app
         return mk_bin(_app, p.bodys, p.body)
 
     @_('body')
@@ -533,6 +538,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('BS ID [ DOT ] lbody')
     def lterm(self, p):
+        global _lam
         return mk_bin(_lam, p[1], p.lbody)
 
     @_('lterm')
@@ -668,9 +674,9 @@ def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
     # this is essentially code generator for the processor
     if type(ir) == type(()):        # no recursive tuple
-        if ir[2][0] == '#':   # rule
+        if len(ir) == 4:   # a rule 
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('INDEX', ir[2])
-        else:
+        else:              # an element
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2])
     elif type(ir) == type([]):  
         l = ''
