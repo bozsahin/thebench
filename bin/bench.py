@@ -565,13 +565,12 @@ def split_command (cline):  # splits a command line into command and list of arg
 def help ():
         print(" NOTE >> | '...' is space-separated items ending with newline")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
-        print(' c ...   | generates case functions (asymmetric relational rules),')
-        print('         |   for all elements with parts of speech ...')
-        print('         |   and adds them to currently loaded grammar')
+        print(' c ...   | generates case functions for all elements with parts of speech ...')
+        print('         |   and adds them to currently loaded .lisp grammar')
         print(' d ...   | displays analyses with solutions numbered ...,')
         print('         |   all of them if no number is provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(' g .     | grammar with filename . is checked and loaded (.lisp file generated)')
+        print(' g .     | checks and loads grammar with filename . (.lisp file generated)')
         print(' k ...   | shows grammar elements which bear the keys ...')
         print(' m .     | model with the filename . is loaded (a .lisp file)')
         print(' o .     | runs the OS/shell command . at your own risk')
@@ -700,7 +699,7 @@ def do (commline):
     if comm in ['a', 'c', 'd', 'e', 'g', 'k', 'm', 'o', 'p', 'r', 's', 'v', '=', '@', '^', '&', '+', '>'] and not args:
         print('too few arguments')
         return
-    elif comm == 'h':
+    if comm == 'h':
         help()
     elif comm == '&':
         fn = str(args[0])
