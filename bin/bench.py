@@ -743,16 +743,18 @@ def do (commline):
                         print(';;')
                         print(';; a rules')
                         print(';;')
-                        for el in _grammar['arules']:
+                        for k,v in _grammar['arules'].items():
                             print('(')
-                            print(ir_to_lisp(el))
+                            print(ir_to_lisp(k))
+                            print(ir_to_lisp(v))
                             print(')')
                         print(';;')
                         print(';; elements')
                         print(';;')
-                        for el in _grammar['elements']:
+                        for k,v in _grammar['elements'].items():
                             print('(')
-                            print(ir_to_lisp(el))
+                            print(ir_to_lisp(k))
+                            print(ir_to_lisp(v))
                             print(')')
                         print(';;')
                         print(';;;;;;;;;; end of bench.py-generated monadic Lisp grammar')
