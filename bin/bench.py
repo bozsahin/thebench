@@ -107,7 +107,7 @@ def mk_entry (element, index):
     elif element[_op] == _el:
         _grammar['elements'][(index[_l], index[_r], element[_l][_l])] =  element  
     elif element[_op] == _arule:    # keep them in grammar but separately dict'd
-        _grammar['arules'][(index[_l], index[_r], element[_l][_op])] =  element  
+        _grammar['arules'][(index[_l], index[_r], element[_l])] =  element  
     elif element[_op] == _srule:    # compile them into two native entries of type _el; make another key
         _grammar['elements'][(index[_l], index[_r], element[_l][_l][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_l][_l], element[_l][_op]), element[_l][_l][_r])
         _grammar['elements'][(make_up_an_index(), index[_r], element[_l][_r][_l])] = mk_bin(_el, mk_bin(_form, element[_l][_r][_l], element[_l][_op]), element[_l][_r][_r])
@@ -346,7 +346,7 @@ class MGParser(Parser):       # the syntax of MG entries
         global _online, _info
         if not _online:
             _info['arule'] += 1
-        return  mk_bin(_arule, p[0], mk_bin(_apair, p.apair0, p.apair1))
+        return  mk_bin(_arule, p[0], mk_bin(_apair, p.apair0, p.apair1)) 
 
     @_('LP ids COM c RP')      
     def spair(self, p):
@@ -661,25 +661,28 @@ def load_2pass(fname):            # this is for model building, for replacing ';
     else:
         print("grammar file untouched.")
 
+def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
+    return '('+ str(e1) + ' '+ str(e2)+ ') '
+
 def ir_to_lisp(ir):
-    # turns an internal representation of grammar (a python dict) into Lisp list in strings
+    # turns an internal representation into Lisp list in strings
     # this is essentially code generator for the processor
-    if type(ir) == type(()):
-        l = ''
-        for el in ir:
-            l += str(el) + ' '
-        return '( ' + l + ')'         # no recursive tuple
+    if type(ir) == type(()):        # no recursive tuple
+        if ir[2][0] == '#':   # rule
+            return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('INDEX', ir[2])
+        else:
+            return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2])
     elif type(ir) == type([]):  
         l = ''
         for el in ir:
             l += str(el) + ' '
-        return '(' + l + ')'         # no recursive tuple
+        return '(' + l + ')'          # no recursive tuple
     elif type(ir) == type({}):      
-        l = ''                       # dicts can be recursive
+        l = ''                        # dicts can be recursive
         for el in ir:
             l += ' (' + ' ' + str(el) + ' ' + ir_to_lisp(ir[el]) + ') '
         return l
-    else:
+    else: 
         return str(ir)
 
 def do (commline):
@@ -728,7 +731,26 @@ def do (commline):
             if ch == 'y' or not ch:
                 with open(str(fn),'w') as f:
                     with redirect_stdout(f):
-                        print('(' + ir_to_lisp(_grammar['arules']) + ir_to_lisp(_grammar['elements']) + ')')
+                        print('(')
+                        print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
+                        print(f";;;;;;;;;;   from {args[0]}") 
+                        print(';;')
+                        print(';; a rules')
+                        print(';;')
+                        for el in _grammar['arules']:
+                            print('(')
+                            print(ir_to_lisp(el))
+                            print(')')
+                        print(';;')
+                        print(';; elements')
+                        print(';;')
+                        for el in _grammar['elements']:
+                            print('(')
+                            print(ir_to_lisp(el))
+                            print(')')
+                        print(';;')
+                        print(';;;;;;;;;; end of bench.py-generated monadic Lisp grammar')
+                        print(')')
                 print(f"{fn} file generated")
             else:
                 print('canceled')
