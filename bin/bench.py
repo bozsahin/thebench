@@ -496,7 +496,7 @@ class MGParser(Parser):       # the syntax of MG entries
         if not _online:
             _info['features'][p[0]] = True
             _info['values'][p[2]] = True
-        return (p[0]+' '+p.val).split(' ')
+        return [[p[0], p.val]]
 
     @_('ID')
     def val(self, p):
@@ -676,22 +676,24 @@ def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
     # this is the code generator for the monadic grammar processor in Lisp
     l = ''
-    if type(ir) == type(()):          # no recursive tuple
+    if type(ir) == type(()):               # no recursive tuple
         if len(ir) == 4:   # a rule 
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('INDEX', ir[2])
         else:              # an element
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2])
-    elif type(ir) == type([]):  
+    elif type(ir) == type([]):             # no recursive list
         for el in ir:
-            l += str(el) + ' '
-        return '(' + l + ')'          # no recursive list
-    elif type(ir) == type({}):        # dicts can be recursive  
+            l += mk_2cl(el[0], el[1])
+        return mk_2cl('FEATS', mk_2cl('', l))    
+    elif type(ir) == type({}):             # dicts can be recursive  
         if ir[_op] == _lcom:
-            l = mk_2cl('SEM',ir_to_lisp(ir[_l]))
+            return mk_2cl('SEM',ir_to_lisp(ir[_l]))
+        elif ir[_op] == _scom:
+            return mk_2cl('SYN',ir_to_lisp(ir[_l]))
         else:
             for el in ir:
                 l += ' (' + ' ' + str(el) + ' ' + ir_to_lisp(ir[el]) + ') '
-        return l
+            return l
     else: 
         return str(ir)
 
