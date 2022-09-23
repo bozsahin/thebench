@@ -250,6 +250,7 @@ class SUPParser(Parser):      # the syntax of string : meaning; pairs
 
     @_('bodys body') 
     def bodys(self, p):
+        global _app
         return mk_bin(_app, p.bodys, p.body)
 
     @_('body')
@@ -258,6 +259,7 @@ class SUPParser(Parser):      # the syntax of string : meaning; pairs
 
     @_('BS ID [ DOT ] lbody')
     def lterm(self, p):
+        global _lam
         return mk_bin(_lam, p[1], p.lbody)
 
     @_('lterm')
@@ -350,6 +352,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('LP ids COM c RP')      
     def spair(self, p):
+        global _spair
         return mk_bin(_spair, p.ids, p.c)
 
     @_('LP c RP')
@@ -563,30 +566,30 @@ def split_command (cline):  # splits a command line into command and list of arg
     return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' is space-separated items ending with newline")
-        print(' a ...   | analyzes the expression ... in the currently loaded grammar')
-        print(' c ...   | generates case functions for all elements with parts of speech ...')
-        print('         |   and adds them to currently loaded .lisp grammar')
-        print(' d ...   | displays analyses with solutions numbered ...,')
-        print('         |   all of them if no number is provided')
-        print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(' g .     | checks and loads grammar with filename . (.lisp file generated)')
-        print(' k ...   | shows grammar elements which bear the keys ...')
-        print(' m .     | model with the filename . is loaded (a .lisp file)')
-        print(' o .     | runs the OS/shell command . at your own risk')
-        print(' p ...   | shows the elements with parts of speech ...')
-        print(' r ...   | ranks the expression ... using the currently loaded model')
-        print(' s .     | converts supervision pairs in file . to native format for the trainer')
-        print('         |    (saved in filename with .sup extension)')
-        print(' v .     | shows (without adding) the intermediate representation of element .')
-        print(' x       | exits from the tool')
-        print(' ?       | shows information about the currently loaded grammar')
-        print(' = ...   | restricts synthetic case application to basic categories ...')
-        print(' @ .     | shows the value of the Lisp object . ')
-        print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings")
-        print(' & .     | saves the intermediate representation of current grammar (a python dict) in file .')
-        print(' + .     | adds Lisp code in file . to the processor')
-        print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)')
+        print(" NOTE >> | '...' is space-separated items ending with newline                                 |")
+        print(' a ...   | analyzes the expression ... in the currently loaded grammar                        |')
+        print(' c ...   | generates case functions for all elements with parts of speech ...                 |')
+        print('         |   and adds them to currently loaded .lisp grammar                                  |')
+        print(' d ...   | displays analyses with solutions numbered ...,                                     |')
+        print('         |   all of them if no number is provided                                             |')
+        print(" e .     | evaluates the python expression . if you know what you're doing                    |")
+        print(' g .     | checks and loads grammar with filename . (.lisp file generated)                    |')
+        print(' k ...   | shows grammar elements which bear the keys ...                                     |')
+        print(' m .     | model with the filename . is loaded (a .lisp file)                                 |')
+        print(' o .     | runs the OS/shell command . at your own risk                                       |')
+        print(' p ...   | shows the elements with parts of speech ...                                        |')
+        print(' r ...   | ranks the expression ... using the currently loaded model                          |')
+        print(' s .     | converts supervision pairs in file . to native format for the trainer              |')
+        print('         |    (saved in filename with .sup extension)                                         |')
+        print(' v .     | shows (without adding) the intermediate representation of element .                |')
+        print(' x       | exits from the tool                                                                |')
+        print(' ?       | shows information about the currently loaded grammar                               |')
+        print(' = ...   | restricts synthetic case application to basic categories ...                       |')
+        print(' @ .     | shows the value of the Lisp object .                                               |')
+        print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings                  |")
+        print(' & .     | saves the intermediate representation of current grammar (a python dict) in file . |')
+        print(' + .     | adds Lisp code in file . to the processor                                          |')
+        print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)    |')
         print(' <       | Logging turned off')
 
 def load_1pass(fname):        # checks but not updates the grammar with indices
