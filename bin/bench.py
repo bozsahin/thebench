@@ -674,21 +674,23 @@ def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
 
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
-    # this is essentially code generator for the processor
-    if type(ir) == type(()):        # no recursive tuple
+    # this is the code generator for the monadic grammar processor in Lisp
+    l = ''
+    if type(ir) == type(()):          # no recursive tuple
         if len(ir) == 4:   # a rule 
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('INDEX', ir[2])
         else:              # an element
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2])
     elif type(ir) == type([]):  
-        l = ''
         for el in ir:
             l += str(el) + ' '
-        return '(' + l + ')'          # no recursive tuple
-    elif type(ir) == type({}):      
-        l = ''                        # dicts can be recursive
-        for el in ir:
-            l += ' (' + ' ' + str(el) + ' ' + ir_to_lisp(ir[el]) + ') '
+        return '(' + l + ')'          # no recursive list
+    elif type(ir) == type({}):        # dicts can be recursive  
+        if ir[_op] == _lcom:
+            l = mk_2cl('SEM',ir_to_lisp(ir[_l]))
+        else:
+            for el in ir:
+                l += ' (' + ' ' + str(el) + ' ' + ir_to_lisp(ir[el]) + ') '
         return l
     else: 
         return str(ir)
