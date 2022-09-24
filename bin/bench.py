@@ -62,6 +62,7 @@ _apair = 'apair'
 _spair = 'spair'
 _index = 'index'
 _op    = 0
+_nop   = ''  # null operator for code gen
 _l     = 1
 _r     = 2
 
@@ -566,31 +567,31 @@ def split_command (cline):  # splits a command line into command and list of arg
     return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' is space-separated items ending with newline                                 |")
-        print(' a ...   | analyzes the expression ... in the currently loaded grammar                        |')
-        print(' c ...   | generates case functions for all elements with parts of speech ...                 |')
-        print('         |   and adds them to currently loaded .lisp grammar                                  |')
-        print(' d ...   | displays analyses with solutions numbered ...,                                     |')
-        print('         |   all of them if no number is provided                                             |')
-        print(" e .     | evaluates the python expression . if you know what you're doing                    |")
-        print(' g .     | checks and loads grammar with filename . (.lisp file generated)                    |')
-        print(' k ...   | shows grammar elements which bear the keys ...                                     |')
-        print(' m .     | model with the filename . is loaded (a .lisp file)                                 |')
-        print(' o .     | runs the OS/shell command . at your own risk                                       |')
-        print(' p ...   | shows the elements with parts of speech ...                                        |')
-        print(' r ...   | ranks the expression ... using the currently loaded model                          |')
-        print(' s .     | converts supervision pairs in file . to native format for the trainer              |')
-        print('         |    (saved in filename with .sup extension)                                         |')
-        print(' v .     | shows (without adding) the intermediate representation of element .                |')
-        print(' x       | exits from the tool                                                                |')
-        print(' ?       | shows information about the currently loaded grammar                               |')
-        print(' = ...   | restricts synthetic case application to basic categories ...                       |')
-        print(' @ .     | shows the value of the Lisp object .                                               |')
-        print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings                  |")
-        print(' & .     | saves the intermediate representation of current grammar (a python dict) in file . |')
-        print(' + .     | adds Lisp code in file . to the processor                                          |')
-        print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)    |')
-        print(' <       | Logging turned off')
+        print(" NOTE >> | '...' is space-separated items ending with newline                                 ")
+        print(' a ...   | analyzes the expression ... in the currently loaded grammar                        ')
+        print(' c ...   | generates case functions for all elements with parts of speech ...                 ')
+        print('         |   and adds them to currently loaded .lisp grammar                                  ')
+        print(' d ...   | displays analyses with solutions numbered ...,                                     ')
+        print('         |   all of them if no number is provided                                             ')
+        print(" e .     | evaluates the python expression . if you know what you're doing                    ")
+        print(' g .     | checks and loads grammar with filename . (.lisp file generated)                    ')
+        print(' k ...   | shows grammar elements which bear the keys ...                                     ')
+        print(' m .     | model with the filename . is loaded (a .lisp file)                                 ')
+        print(' o .     | runs the OS/shell command . at your own risk                                       ')
+        print(' p ...   | shows the elements with parts of speech ...                                        ')
+        print(' r ...   | ranks the expression ... using the currently loaded model                          ')
+        print(' s .     | converts supervision pairs in file . to native format for the trainer              ')
+        print('         |    (saved in filename with .sup extension)                                         ')
+        print(' v .     | shows (without adding) the intermediate representation of element .                ')
+        print(' x       | exits from the tool                                                                ')
+        print(' ?       | shows information about the currently loaded grammar                               ')
+        print(' = ...   | restricts synthetic case application to basic categories ...                       ')
+        print(' @ .     | shows the value of the Lisp object .                                               ')
+        print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings                  ")
+        print(' & .     | saves the intermediate representation of current grammar (a python dict) in file . ')
+        print(' + .     | adds Lisp code in file . to the processor                                          ')
+        print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)    ')
+        print(' <       | Logging turned off                                                                 ')
 
 def load_1pass(fname):        # checks but not updates the grammar with indices
     global _online, _grammar, _info  # here's the difference from load_2pass: grammarians must ignore <index,param>; at end
@@ -675,6 +676,7 @@ def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
     # this is the code generator for the monadic grammar processor in Lisp
+    # the preamble of code is generated by its non-recursive caller ('g' command)
     l = ''
     if type(ir) == type(()):               # no recursive tuple
         if len(ir) == 4:   # a rule 
@@ -684,12 +686,26 @@ def ir_to_lisp(ir):
     elif type(ir) == type([]):             # no recursive list
         for el in ir:
             l += mk_2cl(el[0], el[1])
-        return mk_2cl('FEATS', mk_2cl('', l))    
+        return mk_2cl('FEATS', mk_2cl(_nop, l))    
     elif type(ir) == type({}):             # dicts can be recursive  
         if ir[_op] == _lcom:
-            return mk_2cl('SEM',ir_to_lisp(ir[_l]))
+            return mk_2cl('SEM', ir_to_lisp(ir[_l]))
         elif ir[_op] == _scom:
-            return mk_2cl('SYN',ir_to_lisp(ir[_l]))
+            return mk_2cl('SYN', ir_to_lisp(ir[_l]))
+        elif ir[_op] == _app:
+            if ir[_op][_l] == _app:
+                return mk_2cl(ir_to_lisp(ir[_l]), ir[_r])
+            elif ir[_op][_r] == _app:
+                return mk_2cl(ir[_l], ir_to_lisp(ir[_r]))
+            else:
+                return mk_2cl(ir[_l], ir[_r])
+        elif ir[_op] == _lam:
+            if ir[_op][_r] == _app:
+                return mk_2scl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
+            if ir[_op][_r] == _lam:
+                return mk_2scl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
+            else:
+                return mk_2cl(mk_2cl('LAM', ir[_l]), ir[_r])
         else:
             for el in ir:
                 l += ' (' + ' ' + str(el) + ' ' + ir_to_lisp(ir[el]) + ') '
