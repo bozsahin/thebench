@@ -45,22 +45,22 @@ _indexed = False              # whether an entry is already indexed; need this u
 # AST operators. It is easier to fix them globally than remembering their value types
 
 
-_el    = 'el'
-_form  = 'form'
-_cat   = 'cat'
-_scom  = 'scom'
-_lcom  = 'lcom'
-_dom   = 'dom'
-_range = 'range'
-_dir   = 'dir'
-_basic = 'basic'
-_lam   = 'lam'
-_app   = 'app'
-_arule = 'arule'
-_srule = 'srule'
-_apair = 'apair'
-_spair = 'spair'
-_index = 'index'
+_el    = _overscore+'el'    # prefixed with non-date to avoid name collision with data
+_form  = _overscore+'form'    
+_cat   = _overscore+'cat'
+_scom  = _overscore+'scom'
+_lcom  = _overscore+'lcom'
+_dom   = _overscore+'dom'
+_range = _overscore+'range'
+_dir   = _overscore+'dir'
+_basic = _overscore+'basic'
+_lam   = _overscore+'lam'
+_app   = _overscore+'app'
+_arule = _overscore+'arule'
+_srule = _overscore+'srule'
+_apair = _overscore+'apair'
+_spair = _overscore+'spair'
+_index = _overscore+'index'
 _op    = 0
 _nop   = ''  # null operator for code gen
 _l     = 1
@@ -701,9 +701,9 @@ def ir_to_lisp(ir):
                 return mk_2cl(ir[_l], ir[_r])
         elif ir[_op] == _lam:
             if ir[_op][_r] == _app:
-                return mk_2scl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
+                return mk_2cl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
             if ir[_op][_r] == _lam:
-                return mk_2scl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
+                return mk_2cl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
             else:
                 return mk_2cl(mk_2cl('LAM', ir[_l]), ir[_r])
         else:
@@ -728,7 +728,7 @@ def do (commline):
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/N)? ")
+            ch = input(f"file {fn} exists, overwrite (y/*n)? ")
         if ch == 'y' or not ch:
             with open(str(fn),'w') as f:
                 with redirect_stdout(f):
@@ -755,7 +755,7 @@ def do (commline):
             fn = str(args[0])+'.lisp'
             ch = False
             if os.path.exists(fn):
-                ch = input(f"file {fn} exists, overwrite (y/N)? ")
+                ch = input(f"file {fn} exists, overwrite (y/*n)? ")
             if ch == 'y' or not ch:
                 with open(str(fn),'w') as f:
                     with redirect_stdout(f):
