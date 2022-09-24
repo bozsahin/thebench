@@ -1,4 +1,3 @@
-
 # bench.py
 # pre/post processing and processor interface for monadic grammar
 # -Cem Bozsahin, 2022, Ankara, Datça, Şile
@@ -689,7 +688,10 @@ def ir_to_lisp(ir):
         return mk_2cl('FEATS', mk_2cl(_nop, l))    
     elif type(ir) == type({}):             # dicts can be recursive  
         if ir[_op] == _lcom:
-            return mk_2cl('SEM', ir_to_lisp(ir[_l]))
+            if ir[_l] == _lam or ir[_l] == _app:
+                return mk_2cl('SEM', ir_to_lisp(ir[_l]))
+            else:
+                return mk_2cl('SEM', ir[_l])
         elif ir[_op] == _scom:
             return mk_2cl('SYN', ir_to_lisp(ir[_l]))
         elif ir[_op] == _app:
@@ -700,9 +702,9 @@ def ir_to_lisp(ir):
             else:
                 return mk_2cl(ir[_l], ir[_r])
         elif ir[_op] == _lam:
-            if ir[_op][_r] == _app:
+            if ir[_op][_r][_op] == _app:
                 return mk_2cl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
-            if ir[_op][_r] == _lam:
+            if ir[_op][_r][_op] == _lam:
                 return mk_2cl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
             else:
                 return mk_2cl(mk_2cl('LAM', ir[_l]), ir[_r])
@@ -761,7 +763,7 @@ def do (commline):
                     with redirect_stdout(f):
                         print('(')
                         print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
-                        print(f";;;;;;;;;;   from {args[0]}") 
+                        print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
                         print(';;')
                         print(';; a rules')
                         print(';;')
