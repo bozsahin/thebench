@@ -1,123 +1,123 @@
 (
 ;;;;;;;;;; bench.py-generated monadic Lisp grammar
-;;;;;;;;;; from hw.g September 24, 2022, 15:54:30
+;;;;;;;;;; from hw.g September 24, 2022, 17:58:22
 ;;
 ;; a rules
 ;;
 (
-(KEY 669446) (PARAM 1.0) (INDEX #subj) 
- ( 0 ‾arule)  ( 1 #subj)  ( 2  ( 0 ‾apair)  ( 1  ( 0 ‾cat)  ( 1 (SYN ((BCAT np)  (FEATS ( ) ) ) ) )  ( 2 (SEM lt) ) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )   ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) ) ) ) )  ( 2 (SEM (LAM lt (LAM p (p lt) ) ) ) ) ) ) 
+(KEY 472945) (PARAM 1.0) (INDEX #subj) 
+(INSYN ((BCAT np)  (FEATS ( ) ) ) ) (OUTSYN  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )   ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) ) ) ) (INSEM (SEM lt) ) (OUTSEM (SEM (LAM lt (LAM p (p lt) ) ) ) ) 
 )
 (
-(KEY 354256) (PARAM 1.0) (INDEX #lewis-rule) 
- ( 0 ‾arule)  ( 1 #lewis-rule)  ( 2  ( 0 ‾apair)  ( 1  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT np)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM lt) ) )  ( 2  ( 0 ‾cat)  ( 1 (SYN ((BCAT np)  (FEATS ( ) ) ) ) )  ( 2 (SEM (LAM lt (lt nompred) ) ) ) ) ) 
+(KEY 307663) (PARAM 1.0) (INDEX #lewis-rule) 
+(INSYN  ( 0 ‾range)  ( 1 ((BCAT np)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (OUTSYN ((BCAT np)  (FEATS ( ) ) ) ) (INSEM (SEM lt) ) (OUTSEM (SEM (LAM lt (lt nompred) ) ) ) 
 )
 ;;
 ;; elements
 ;;
 (
-(KEY 45061) (PARAM 1.0) (PHON it) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 it)  ( 2 n) )  ( 2  ( 0 ‾cat)  ( 1 (SYN ((BCAT xp)  (FEATS ( (lex no) (per s3) ) ) ) ) )  ( 2 (SEM it) ) ) 
+(KEY 17604) (PARAM 1.0) (PHON it) 
+(MORPH n) (SYN ((BCAT xp)  (FEATS ( (lex no) (per s3) ) ) ) ) (SEM it) 
 )
 (
-(KEY 396371) (PARAM 1.0) (PHON john) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 john)  ( 2 n) )  ( 2  ( 0 ‾cat)  ( 1 (SYN ((BCAT np)  (FEATS ( (per 3s) (lex yes) ) ) ) ) )  ( 2 (SEM john) ) ) 
+(KEY 746134) (PARAM 1.0) (PHON john) 
+(MORPH n) (SYN ((BCAT np)  (FEATS ( (per 3s) (lex yes) ) ) ) ) (SEM john) 
 )
 (
-(KEY 396913) (PARAM 1.0) (PHON mary) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 mary)  ( 2 n) )  ( 2  ( 0 ‾cat)  ( 1 (SYN ((BCAT np)  (FEATS ( ) ) ) ) )  ( 2 (SEM mary) ) ) 
+(KEY 928707) (PARAM 1.0) (PHON mary) 
+(MORPH n) (SYN ((BCAT np)  (FEATS ( ) ) ) ) (SEM mary) 
 )
 (
-(KEY 860400) (PARAM 1.0) (PHON and) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 and)  ( 2 c) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT @x)  special) )  ( 2 ( (((DIR /)  (MODAL .) )   ( 0 ‾range)  ( 1 ((BCAT @x)  special) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT @x)  special) ) ) ) ) ) ) ) )  ( 2 (SEM (LAM p (LAM q (LAM x ((and (p x) )  (q x) ) ) ) ) ) ) ) 
+(KEY 283322) (PARAM 1.0) (PHON and) 
+(MORPH c) (SYN  ( 0 ‾range)  ( 1 ((BCAT @x)  special) )  ( 2 ( (((DIR /)  (MODAL .) )   ( 0 ‾range)  ( 1 ((BCAT @x)  special) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT @x)  special) ) ) ) ) ) ) ) (SEM (LAM p (LAM q (LAM x ((and (p x) )  (q x) ) ) ) ) ) 
 )
 (
-(KEY 441069) (PARAM 1.0) (PHON study) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 study)  ( 2 inf) )  ( 2  ( 0 ‾cat)  ( 1 (SYN ((BCAT iv)  (FEATS ( ) ) ) ) )  ( 2 (SEM (LAM x (study x) ) ) ) ) 
+(KEY 471858) (PARAM 1.0) (PHON study) 
+(MORPH inf) (SYN ((BCAT iv)  (FEATS ( ) ) ) ) (SEM (LAM x (study x) ) ) 
 )
 (
-(KEY 333055) (PARAM 1.0) (PHON persuaded) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 persuaded)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM p (LAM y (((persuade (p x) )  x)  y) ) ) ) ) ) ) 
+(KEY 194789) (PARAM 1.0) (PHON persuaded) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM p (LAM y (((persuade (p x) )  x)  y) ) ) ) ) 
 )
 (
-(KEY 872408) (PARAM 1.0) (PHON promised) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 promised)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM p (LAM y (((promise (p y) )  x)  y) ) ) ) ) ) ) 
+(KEY 692611) (PARAM 1.0) (PHON promised) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM p (LAM y (((promise (p y) )  x)  y) ) ) ) ) 
 )
 (
-(KEY 323327) (PARAM 1.0) (PHON wanted) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 wanted)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM p (LAM y ((want (p x) )  y) ) ) ) ) ) ) 
+(KEY 928259) (PARAM 1.0) (PHON wanted) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM p (LAM y ((want (p x) )  y) ) ) ) ) 
 )
 (
-(KEY 322042) (PARAM 1.0) (PHON expected) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 expected)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM p (LAM y ((expect (p x) )  y) ) ) ) ) ) ) 
+(KEY 702360) (PARAM 1.0) (PHON expected) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM p (LAM y ((expect (p x) )  y) ) ) ) ) 
 )
 (
-(KEY 230603) (PARAM 1.0) (PHON considered) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 considered)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT propp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM p (LAM y ((consider (p x) )  y) ) ) ) ) ) ) 
+(KEY 5853) (PARAM 1.0) (PHON considered) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT propp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM p (LAM y ((consider (p x) )  y) ) ) ) ) 
 )
 (
-(KEY 425085) (PARAM 1.0) (PHON seemed) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 seemed)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT xp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT s)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM p (LAM x (seem p) ) ) ) ) ) 
+(KEY 116636) (PARAM 1.0) (PHON seemed) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT xp)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT s)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM p (LAM x (seem p) ) ) ) 
 )
 (
-(KEY 481648) (PARAM 1.0) (PHON seemed) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 seemed)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM p (LAM x (seem (p x) ) ) ) ) ) ) 
+(KEY 415086) (PARAM 1.0) (PHON seemed) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT vp)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM p (LAM x (seem (p x) ) ) ) ) 
 )
 (
-(KEY 658992) (PARAM 1.0) (PHON to) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 to)  ( 2 p) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT vp)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT iv)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM p p) ) ) ) 
+(KEY 575893) (PARAM 1.0) (PHON to) 
+(MORPH p) (SYN  ( 0 ‾range)  ( 1 ((BCAT vp)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT iv)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM p p) ) 
 )
 (
-(KEY 980654) (PARAM 1.0) (PHON have) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 have)  ( 2 aux) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT iv)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM p p) ) ) ) 
+(KEY 606335) (PARAM 1.0) (PHON have) 
+(MORPH aux) (SYN  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT iv)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM p p) ) 
 )
 (
-(KEY 834859) (PARAM 1.0) (PHON bought) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 bought)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM y ((buy x)  y) ) ) ) ) ) 
+(KEY 608856) (PARAM 1.0) (PHON bought) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM y ((buy x)  y) ) ) ) 
 )
 (
-(KEY 332488) (PARAM 1.0) (PHON the) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 the)  ( 2 det) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT np)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL *) )  ((BCAT n)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM def) ) ) 
+(KEY 981276) (PARAM 1.0) (PHON the) 
+(MORPH det) (SYN  ( 0 ‾range)  ( 1 ((BCAT np)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL *) )  ((BCAT n)  (FEATS ( ) ) ) ) ) ) ) (SEM def) 
 )
 (
-(KEY 961272) (PARAM 1.0) (PHON car) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 car)  ( 2 n) )  ( 2  ( 0 ‾cat)  ( 1 (SYN ((BCAT n)  (FEATS ( ) ) ) ) )  ( 2 (SEM car) ) ) 
+(KEY 424353) (PARAM 1.0) (PHON car) 
+(MORPH n) (SYN ((BCAT n)  (FEATS ( ) ) ) ) (SEM car) 
 )
 (
-(KEY 901457) (PARAM 1.0) (PHON handsome) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 handsome)  ( 2 p) )  ( 2  ( 0 ‾cat)  ( 1 (SYN ((BCAT propp)  (FEATS ( ) ) ) ) )  ( 2 (SEM (LAM x (handsome x) ) ) ) ) 
+(KEY 827249) (PARAM 1.0) (PHON handsome) 
+(MORPH p) (SYN ((BCAT propp)  (FEATS ( ) ) ) ) (SEM (LAM x (handsome x) ) ) 
 )
 (
-(KEY 711660) (PARAM 1.0) (PHON kicked the bucked) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 kicked the bucked)  ( 2 idio) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (die_euphemistic x) ) ) ) ) 
+(KEY 133415) (PARAM 1.0) (PHON kicked the bucked) 
+(MORPH idio) (SYN  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (die_euphemistic x) ) ) 
 )
 (
-(KEY 454497) (PARAM 1.0) (PHON kicked) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 kicked)  ( 2 v) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT 'bucket')  quoted) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT PredP)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM p (LAM x (LAM y ((die_ ((euphemistic p)  x) )  y) ) ) ) ) ) ) 
+(KEY 591609) (PARAM 1.0) (PHON kicked) 
+(MORPH v) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT 'bucket')  quoted) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT PredP)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM p (LAM x (LAM y ((die_ ((euphemistic p)  x) )  y) ) ) ) ) 
 )
 (
-(KEY 660727) (PARAM 1.0) (PHON pick up) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 pick up)  ( 2 pv) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM y ((pick_culminate x)  y) ) ) ) ) ) 
+(KEY 322670) (PARAM 1.0) (PHON pick up) 
+(MORPH pv) (SYN  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM y ((pick_culminate x)  y) ) ) ) 
 )
 (
-(KEY 437473) (PARAM 1.0) (PHON pick) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 pick)  ( 2 pv2) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT 'up')  quoted) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM y (LAM z (((hold (culminate y) )  x)  z) ) ) ) ) ) ) 
+(KEY 465773) (PARAM 1.0) (PHON pick) 
+(MORPH pv2) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT 'up')  quoted) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM y (LAM z (((hold (culminate y) )  x)  z) ) ) ) ) 
 )
 (
-(KEY 970904) (PARAM 1.0) (PHON run a mile) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 run a mile)  ( 2 #past) )  ( 2  ( 0 ‾cat)  ( 1 (SYN ((BCAT iv)  (FEATS ( ) ) ) ) )  ( 2 (SEM (LAM x (run x) ) ) ) ) 
+(KEY 97662) (PARAM 1.0) (PHON run a mile) 
+(MORPH #past) (SYN ((BCAT iv)  (FEATS ( ) ) ) ) (SEM (LAM x (run x) ) ) 
 )
 (
-(KEY 842734) (PARAM 1.0) (PHON km) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 km)  ( 2 #past) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x ((past run)  x) ) ) ) ) 
+(KEY 872620) (PARAM 1.0) (PHON km) 
+(MORPH #past) (SYN  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x ((past run)  x) ) ) 
 )
 (
-(KEY 724170) (PARAM 1.0) (PHON buy) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 buy)  ( 2 #past) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM y ((buy x)  y) ) ) ) ) ) 
+(KEY 291601) (PARAM 1.0) (PHON buy) 
+(MORPH #past) (SYN  ( 0 ‾range)  ( 1 ((BCAT iv)  (FEATS ( ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM y ((buy x)  y) ) ) ) 
 )
 (
-(KEY 555755) (PARAM 1.0) (PHON bought something) 
- ( 0 ‾el)  ( 1  ( 0 ‾form)  ( 1 bought something)  ( 2 #past) )  ( 2  ( 0 ‾cat)  ( 1 (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) )  ( 2 (SEM (LAM x (LAM y (((past buy)  x)  y) ) ) ) ) ) 
+(KEY 684421) (PARAM 1.0) (PHON bought something) 
+(MORPH #past) (SYN  ( 0 ‾range)  ( 1  ( 0 ‾range)  ( 1 ((BCAT s)  (FEATS ( ) ) ) )  ( 2 ( (((DIR \)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) )  ( 2 ( (((DIR /)  (MODAL .) )  ((BCAT np)  (FEATS ( ) ) ) ) ) ) ) (SEM (LAM x (LAM y (((past buy)  x)  y) ) ) ) 
 )
 ;;
 ;;;;;;;;;; end of bench.py-generated monadic Lisp grammar
