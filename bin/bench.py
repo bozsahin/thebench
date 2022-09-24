@@ -672,6 +672,9 @@ def load_2pass(fname):            # this is for model building, for replacing ';
 def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
     return '('+ str(e1) + ' '+ str(e2)+ ') '
 
+def mk_3cl(e1, e2, e3):  # makes a ternary Lisp list as '(e1 e2 e3)'
+    return '('+ str(e1) + ' '+ str(e2)+ ' ' + str(e3) + ') '
+
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
     # this is the code generator for the monadic grammar processor in Lisp
@@ -687,27 +690,23 @@ def ir_to_lisp(ir):
             l += mk_2cl(el[0], el[1])
         return mk_2cl('FEATS', mk_2cl(_nop, l))    
     elif type(ir) == type({}):             # dicts can be recursive  
-        if ir[_op] == _lcom:
-            if ir[_l] == _lam or ir[_l] == _app:
-                return mk_2cl('SEM', ir_to_lisp(ir[_l]))
+        if   ir[_op] == _scom:
+            if len(ir) == 3:
+                return mk_2cl('SYN', mk_2cl(ir_to_lisp(ir[_l], ir_to_lisp(ir[_r]))))
             else:
-                return mk_2cl('SEM', ir[_l])
-        elif ir[_op] == _scom:
-            return mk_2cl('SYN', ir_to_lisp(ir[_l]))
-        elif ir[_op] == _app:
-            if ir[_op][_l] == _app:
-                return mk_2cl(ir_to_lisp(ir[_l]), ir[_r])
-            elif ir[_op][_r] == _app:
-                return mk_2cl(ir[_l], ir_to_lisp(ir[_r]))
-            else:
-                return mk_2cl(ir[_l], ir[_r])
+                return mk_2cl('SYN', ir_to_lisp(ir[_l]))
+        elif ir[_op] == _lcom:
+            return mk_2cl('SEM', ir_to_lisp(ir[_l]))
+        elif ir[_op] == _dom:
+            return mk_2cl(_nop, mk_2cl(ir_to_lisp(ir[_l]), ir_to_lisp(ir[_r])))
+        elif ir[_op] == _dir:
+            return mk_2cl(mk_2cl('DIR', ir[_l]), mk_2cl('MODAL', ir[_r]))
+        elif ir[_op] == _basic:
+            return mk_2cl(mk_2cl('BCAT', ir_to_lisp(ir[_l])), ir_to_lisp(ir[_r]))
         elif ir[_op] == _lam:
-            if ir[_op][_r][_op] == _app:
-                return mk_2cl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
-            if ir[_op][_r][_op] == _lam:
-                return mk_2cl(mk_2cl('LAM', ir[_l]), ir_to_lisp(ir[_r]))
-            else:
-                return mk_2cl(mk_2cl('LAM', ir[_l]), ir[_r])
+            return mk_3cl('LAM', ir[_l], ir_to_lisp(ir[_r]))   # right associative
+        elif ir[_op] == _app:
+            return mk_2cl(ir_to_lisp(ir[_l]), ir_to_lisp(ir[_r]))
         else:
             for el in ir:
                 l += ' (' + ' ' + str(el) + ' ' + ir_to_lisp(ir[el]) + ') '
