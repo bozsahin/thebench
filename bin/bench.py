@@ -33,6 +33,10 @@ _keys = {}                    # current keys
 _grammar = {}                 # currently loaded grammar parsed into internal representation
 _info = {}
 _indexed = False              # whether an entry is already indexed; need this unique indexing
+_targetprefix = '!'           # _target.. for generating symbol maps for the Lisp processor
+_targetmod = {'.': 'ALL', '+': 'CROSS', '*': 'APP', '^': 'HARMONIC'}
+_targetdir = {'/': 'FS', '\\': 'BS', '//': 'FS', '\\\\': 'BS'}
+_targetslashlex = {'/': 'nil', '\\': 'nil', '//': 't', '\\\\': 't'}
 
 # Apart from MGLexer and MGParser, there is NO class definition, to make everything natively printable.
 #   And, these two classes are required by the sly module. 
@@ -82,6 +86,7 @@ _r     = 2
 # {_lcom,  val}
 # {_dom,   _dir, _basic}
 # {_dom,   _dir, _range}
+# {_range, _scom}
 # {_dir,   slash, modality}
 # {_basic, val, list of feature followed by value}
 # {_lam,   varname, _app}
@@ -706,12 +711,18 @@ def ir_to_lisp(ir):
             return mk_2cl('SEM', ir_to_lisp(ir[_l]))
         elif ir[_op] == _dom:
             return mk_2cl(_nop, mk_2cl(ir_to_lisp(ir[_l]), ir_to_lisp(ir[_r])))
+        elif ir[_op] == _range:
+            return mk_2cl(_nop, mk_2cl(ir_to_lisp(ir[_l]), ir_to_lisp(ir[_r])))
         elif ir[_op] == _dir:
-            return mk_2cl(mk_2cl('DIR', ir[_l]), mk_2cl('MODAL', ir[_r]))
+            return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) \
+                    + mk_2cl('LEX', _targetslashlex[ir[_l]])
         elif ir[_op] == _basic:
             return mk_2cl(mk_2cl('BCAT', ir_to_lisp(ir[_l])), ir_to_lisp(ir[_r]))
         elif ir[_op] == _lam:
-            return mk_3cl('LAM', ir[_l], ir_to_lisp(ir[_r]))   # right associative
+            if ir[_op][_r][_op]:    # this means LF is not a constant
+                return mk_3cl('LAM', ir[_l], ir_to_lisp(ir[_r]))   # right associative
+            else:
+                return mk_3cl('LAM', ir[_l], _targetprefix + ir[_r])  # prefix is ! for Lisp processor
         elif ir[_op] == _app:
             return mk_2cl(ir_to_lisp(ir[_l]), ir_to_lisp(ir[_r]))
         elif ir[_op] == _arule:
