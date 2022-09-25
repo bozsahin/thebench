@@ -64,5 +64,5 @@ to <code>pip_pypy3 install ..</code>
 
   And wherever you see <code>python</code> call above, change it to <code>pypy3</code>.
 
-Enjoy.
+Enjoy. (My email is somewhere in the webosphere to google; just drop me an email if you need assistance.)
 -Cem
