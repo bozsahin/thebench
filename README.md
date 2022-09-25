@@ -2,18 +2,16 @@
 A tool for working with Natural Language Monad of Command
 
 
-To install and use the tool you need:
+YOU NEED:
 
+- A linux-like command facility, such as any Linux, MacOS or Window's WSL system (wsl2 or better)
 - <a href="https://www.python.org/">Python 3.8  or above</a>
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 - <a href="https://git-scm.com/downloads">git</a> (actually, git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do step 2. If you do care about updates, git is safest and easiest).
 
 TO INSTALL: 
 
-Please do steps 1-2:
-
-1.  Open a terminal (in Linux, Mac or Windows with WSL system---with terminal in that system), 
-   and change to the directory where you want to install the tool. Then do:
+1.  Open a terminal, and change to the directory where you want to install the tool. Then do:
 
    <code>git clone https://github.com/bozsahin/thebench</code>
 
@@ -42,11 +40,13 @@ Open a fresh terminal, change to your working directory, and do
 where <code>python</code> is the most recent (and >= 3.8) python executable.
 
 
-TO DEVELOP GRAMMARS AND KEEP TRACK OF CHANGES:
+TO DEVELOP GRAMMARS:
 
 I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.  
 
-For updates, in your <code>thebench</code> directory do
+TO UPGRADE to latest bench:
+
+in your <code>thebench</code> directory do
 
    <code>git pull</code>
 
