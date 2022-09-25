@@ -43,9 +43,11 @@ where <code>python</code> is the most recent (and >= 3.8) python executable.
 
 TO DEVELOP GRAMMARS:
 
+Just use your favourite text editor and enter a grammar. Then follow help (h command) of thebench to process it.
+
 I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.  
 
-TO UPGRADE to latest bench:
+TO UPGRADE:
 
 in your <code>thebench</code> directory do
 
