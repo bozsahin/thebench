@@ -34,7 +34,7 @@ _grammar = {}                 # currently loaded grammar parsed into internal re
 _info = {}
 _indexed = False              # whether an entry is already indexed; need this unique indexing
 _targetprefix = '!'           # _target.. for generating symbol maps for the Lisp processor
-_targetmod = {'.': 'ALL', '+': 'CROSS', '*': 'APP', '^': 'HARMONIC'}
+_targetmod = {'.': 'ALL', '+': 'CROSS', '*': 'STAR', '^': 'HARMONIC'}
 _targetdir = {'/': 'FS', '\\': 'BS', '//': 'FS', '\\\\': 'BS'}
 _targetslashlex = {'/': 'nil', '\\': 'nil', '//': 't', '\\\\': 't'}
 
@@ -734,7 +734,7 @@ def ir_to_lisp(ir):
                     + mk_2cl('OUTSEM', ir_to_lisp(ir[_r][_r][_l]))
         else:
             for el in ir:
-                l += ' (' + ' ' + str(el) + ' ' + ir_to_lisp(ir[el]) + ') '
+                l += '(' + str(el) + ' ' + ir_to_lisp(ir[el]) + ')'
             return l
     else: 
         return str(ir)
