@@ -6,7 +6,7 @@ To install and use the tool you need:
 
 - <a href="https://www.python.org/">Python 3.8  or above</a>
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
-- <a href="https://git-scm.com/downloads">git</a>
+- <a href="https://git-scm.com/downloads">git</a> (actually, git is optional if you don't care about upgrades; just download this repository, and follow the instructions here. If you do care about updates, git is safest and easiest).
 
 TO INSTALL: 
 
