@@ -179,7 +179,7 @@ class SUPLexer(Lexer): # Token types for supervision pairs
     ignore_newline = r'\n+'   # ignore empty lines
      
     ITEM   = r'\|.*\|'                                     
-    ID     = r'[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
+    ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
     CORR   = r'\:'
     DOT    = r'\.'          # modalities also use this
     LP     = r'\('
@@ -204,7 +204,7 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
     ARULE  = r'\-\-\>'                                            # to avoid -- becoming ID 
     SPECID = r'@[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'       # special IDs, app only
     RNAME  = r'\#[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'      # rule names start with #
-    ID     = r'[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
+    ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols not beginning with +, which is a modality, not part of basic cat name)
     RNUM   = r'\d+\.\d+'
     INUM   = r'\d+'
     END    = _overscore                               # RHS defined globally, not visible to user.
