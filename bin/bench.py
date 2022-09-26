@@ -676,10 +676,16 @@ def load_2pass(fname):            # this is for model building, for replacing ';
         print("grammar file untouched.")
 
 def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
-    return '('+ str(e1) + ' '+ str(e2)+ ') '
+    if str(e1) == '' and str(e2) == '':
+        return 'NIL'
+    else:
+        return '('+ str(e1) + ' '+ str(e2)+ ') '
 
 def mk_3cl(e1, e2, e3):  # makes a ternary Lisp list as '(e1 e2 e3)'
-    return '('+ str(e1) + ' '+ str(e2)+ ' ' + str(e3) + ') '
+    if str(e1) == '' and str(e2) == '' and str(e3) == '':
+        return 'NIL'
+    else:
+        return '('+ str(e1) + ' '+ str(e2)+ ' ' + str(e3) + ') '
 
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
@@ -692,9 +698,12 @@ def ir_to_lisp(ir):
         else:              # an element
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2])
     elif type(ir) == type([]):             # no recursive list
-        for el in ir:
-            l += mk_2cl(el[0], el[1])
-        return mk_2cl('FEATS', mk_2cl(_nop, l))    
+        if ir == []:
+            return mk_2cl('FEATS', 'NIL')
+        else:
+            for el in ir:
+                l += mk_2cl(el[0], el[1])
+            return mk_2cl('FEATS', mk_2cl(_nop, l))    
     elif type(ir) == type({}):             # dicts can be recursive  
         if   ir[_op] == _el:
             return ir_to_lisp(ir[_l]) + ir_to_lisp(ir[_r])
@@ -712,7 +721,7 @@ def ir_to_lisp(ir):
         elif ir[_op] == _dom:
             return mk_2cl(_nop, mk_2cl(ir_to_lisp(ir[_l]), ir_to_lisp(ir[_r])))
         elif ir[_op] == _range:
-            return mk_2cl(_nop, mk_2cl(ir_to_lisp(ir[_l]), ir_to_lisp(ir[_r])))
+            return ir_to_lisp(ir[_l]) + ir_to_lisp(ir[_r])
         elif ir[_op] == _dir:
             return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) \
                     + mk_2cl('LEX', _targetslashlex[ir[_l]])

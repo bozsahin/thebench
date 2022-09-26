@@ -41,9 +41,9 @@ Open a fresh terminal, change to your working directory, and do
 where <code>python</code> is the most recent (and >= 3.8) python executable.
 
 
-TO DEVELOP GRAMMARS:
+TO DEVELOP A GRAMMAR:
 
-Just use your favourite text editor and enter a grammar. Then follow help (h command) of thebench to process it.
+Just use your favourite plain text editor and enter a grammar. Then follow help (h command) of thebench to process it.
 
 I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.  
 
