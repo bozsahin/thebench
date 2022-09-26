@@ -4,7 +4,7 @@ A tool for working with Natural Language Monad of Command
 
 YOU NEED:
 
-- A linux-like command facility, such as any Linux, MacOS or Window's WSL system (wsl2 or newer). The standard installers
+- A linux-like command facility, such as any Linux, MacOS or Window's WSL system (wsl2 or newer). Learn about <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. The standard installers
 in these platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by thebench installer. They are built-in, depending on your platform, even under WSL, except brew for MAcOS, which you can install from <a href="https://brew.sh/">brew home</a>.)
 - <a href="https://www.python.org/">Python 3.8  or above</a>
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
