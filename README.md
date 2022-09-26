@@ -4,8 +4,9 @@ A tool for working with Natural Language Monad of Command
 
 YOU NEED:
 
-- A linux-like command facility, such as any Linux, MacOS or Window's WSL system (wsl2 or newer). You canstart using WSL right off the bat: <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. The standard installers
-in these platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by thebench installer. They are built-in, depending on your platform, even under WSL, except brew for MAcOS, which you can install from <a href="https://brew.sh/">brew home</a>.)
+- A linux-like command facility, such as any Linux, MacOS or Window's WSL system (wsl2 or newer).  You can start using WSL right off the bat if you have Windows; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
+- A software installer.  The standard installers
+in these platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by thebench installer. They are built-in, depending on your platform, even under WSL, except brew for MAcOS, which you can install from <a href="https://brew.sh/">brew home</a>.
 - <a href="https://www.python.org/">Python 3.8  or above</a>
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 - <a href="https://git-scm.com/downloads">git</a> (actually, git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do step 2. If you do care about upgrades, git is safest and easiest).
