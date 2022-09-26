@@ -4,7 +4,7 @@ A tool for working with Natural Language Monad of Command
 
 YOU NEED:
 
-- A linux-like command facility, such as any Linux, MacOS or Window's WSL system (wsl2 or newer).  You can start using WSL right off the bat if you have Windows; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
+- A command-line facility, such as any Linux, MacOS or Window's WSL system (wsl2 or newer).  You can start using WSL right off the bat if you have Windows; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 - A software installer.  The standard installers
 in these platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by thebench installer. They are built-in, depending on your platform, even under WSL.
 As things Apple goes, you need an external installer for MacOS, which you get from <a href="https://brew.sh/">brew home</a>.
