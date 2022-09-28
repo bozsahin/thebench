@@ -21,7 +21,7 @@ import cl4py                     # processor is in Lisp
 _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
 _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
-_sbcl = _lisp.function('lisp-implementation-type')() + ' ' + _lisp.function('lisp-implementation-version')()
+_lisptype = _lisp.function('lisp-implementation-type')() + ' ' + _lisp.function('lisp-implementation-version')()
 #print('processor: bench.lisp loaded')
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
@@ -888,11 +888,11 @@ def do (commline):
 
 def welcome ():
     print('------------------------------------------------------------------------')
-    print(1*_prompt+'Welcome to The Bench,')
+    print(1*_prompt+'Welcome to The Bench')
     print(2*_prompt+"A workbench for studying Monadic Structures in Natural Language")
     print(3*_prompt+"Version:", _version, "Dated:", _vdate)
     print(3*_prompt+"Python version:", platform.python_version())
-    print(3*_prompt+"Common Lisp version:", _sbcl)
+    print(3*_prompt+"Common Lisp version:", _lisptype)
     print(3*_prompt+"Pre/post processing by Python (grammar checks, interfaces)")
     print(3*_prompt+"Processing by Common Lisp (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
