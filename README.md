@@ -55,7 +55,7 @@ in your <code>thebench</code> directory do
 
    <code>git pull</code>
 
-PYTHON NOTE:
+PYTHON NOTE 1:
 
 Default python interpreters are SLOW. You may want to try <code><a href="https://pypy.org">pypy</a></code>.
 This tool is much faster in it.
@@ -65,6 +65,11 @@ to <code>pip_pypy3 install ..</code>
 
 
   And wherever you see <code>python</code> call above, change it to <code>pypy3</code>.
+
+NOTE 2:
+
+Python versions can be daunting for the uninitiated. Don't count on executable <code>python</code> to be the latest
+python. You might also have python3.8, python3.9, python9499329932.5727210 etc. Ditto for pip. Use the latest.
 
 Enjoy. 
 
