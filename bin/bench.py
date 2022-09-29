@@ -680,13 +680,13 @@ def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
     if str(e1) == '' and str(e2) == '':
         return 'NIL'
     else:
-        return '('+ str(e1) + ' '+ str(e2)+ ') '
+        return '('+ str(e1) + ' '+ str(e2)+ ')'
 
 def mk_3cl(e1, e2, e3):  # makes a ternary Lisp list as '(e1 e2 e3)'
     if str(e1) == '' and str(e2) == '' and str(e3) == '':
         return 'NIL'
     else:
-        return '('+ str(e1) + ' '+ str(e2)+ ' ' + str(e3) + ') '
+        return '('+ str(e1) + ' '+ str(e2)+ ' ' + str(e3) + ')'
 
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
