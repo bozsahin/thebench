@@ -69,7 +69,7 @@ to <code>pip_pypy3 install ..</code>
 NOTE 2:
 
 Python versions can be daunting for the uninitiated. Don't count on executable <code>python</code> to be the latest
-python. You might also have python3.8, python3.9, python9499329932.5727210 etc. Ditto for pip and pypy. Use the latest for all of them.
+python. You might also have python3.8, python3.9, python3141.59 etc. Ditto for pip and pypy. Use the latest for all of them.
 
 Enjoy. 
 
