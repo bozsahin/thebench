@@ -680,7 +680,10 @@ def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
     if str(e1) == '' and str(e2) == '':
         return 'NIL'
     else:
-        return '('+ str(e1) + ' '+ str(e2)+ ')'
+        if str(e1) == '':
+            return '(' + str(e2) + ')'
+        else:
+            return '(' + str(e1) + ' ' + str(e2)+ ')'
 
 def mk_3cl(e1, e2, e3):  # makes a ternary Lisp list as '(e1 e2 e3)'
     if str(e1) == '' and str(e2) == '' and str(e3) == '':
@@ -704,7 +707,7 @@ def ir_to_lisp(ir):
         else:
             for el in ir:
                 l += mk_2cl(el[0], el[1])
-            return mk_2cl('FEATS', mk_2cl(_nop, l))    
+            return mk_2cl('FEATS', l)    
     elif type(ir) == type({}):             # dicts can be recursive  
         if   ir[_op] == _el:
             return ir_to_lisp(ir[_l]) + ir_to_lisp(ir[_r])
@@ -713,7 +716,7 @@ def ir_to_lisp(ir):
         elif ir[_op] == _cat:
             return ir_to_lisp(ir[_l]) + ir_to_lisp(ir[_r])
         elif ir[_op] == _scom:
-            if len(ir) == 3:
+            if len(ir) == 3:      # complex
                 return mk_2cl('SYN', mk_2cl(ir_to_lisp(ir[_l], ir_to_lisp(ir[_r]))))
             else:
                 return mk_2cl('SYN', ir_to_lisp(ir[_l]))
@@ -721,7 +724,7 @@ def ir_to_lisp(ir):
             return mk_2cl('SEM', ir_to_lisp(ir[_l]))
         elif ir[_op] == _dom:
             return ir_to_lisp(ir[_l]) + \
-                    ir_to_lisp(ir[_r])
+                    mk_2cl(_nop, ir_to_lisp(ir[_r]))
         elif ir[_op] == _range:
             return mk_2cl(_nop, ir_to_lisp(ir[_l])) + \
                     ir_to_lisp(ir[_r])
@@ -729,7 +732,8 @@ def ir_to_lisp(ir):
             return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) \
                     + mk_2cl('LEX', _targetslashlex[ir[_l]])
         elif ir[_op] == _basic:
-            return mk_2cl(mk_2cl('BCAT', ir_to_lisp(ir[_l])), ir_to_lisp(ir[_r]))
+            return mk_2cl('BCAT', ir_to_lisp(ir[_l])) + \
+                    ir_to_lisp(ir[_r])
         elif ir[_op] == _lam:
             if ir[_op][_r][_op]:    # this means LF is not a constant
                 return mk_3cl('LAM', ir[_l], ir_to_lisp(ir[_r]))   # right associative
