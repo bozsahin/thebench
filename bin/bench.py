@@ -717,9 +717,10 @@ def ir_to_lisp(ir):
             return ir_to_lisp(ir[_l]) + ir_to_lisp(ir[_r])
         elif ir[_op] == _scom:
             if len(ir) == 3:      # complex
-                return mk_2cl('SYN', mk_2cl(ir_to_lisp(ir[_l], ir_to_lisp(ir[_r]))))
+                return mk_2cl('SYN', mk_2cl(_nop, \
+                        mk_2cl(ir_to_lisp(ir[_l], ir_to_lisp(ir[_r]))))) # this is idiosyncratic. Target code needs one more parenths
             else:
-                return mk_2cl('SYN', ir_to_lisp(ir[_l]))
+                return mk_2cl('SYN', mk_2cl(_nop, ir_to_lisp(ir[_l])))
         elif ir[_op] == _lcom:
             return mk_2cl('SEM', ir_to_lisp(ir[_l]))
         elif ir[_op] == _dom:
