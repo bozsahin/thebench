@@ -720,9 +720,11 @@ def ir_to_lisp(ir):
         elif ir[_op] == _lcom:
             return mk_2cl('SEM', ir_to_lisp(ir[_l]))
         elif ir[_op] == _dom:
-            return mk_2cl(_nop, mk_2cl(ir_to_lisp(ir[_l]), ir_to_lisp(ir[_r])))
+            return ir_to_lisp(ir[_l]) + \
+                    ir_to_lisp(ir[_r])
         elif ir[_op] == _range:
-            return ir_to_lisp(ir[_l]) + ir_to_lisp(ir[_r])
+            return mk_2cl(_nop, ir_to_lisp(ir[_l])) + \
+                    ir_to_lisp(ir[_r])
         elif ir[_op] == _dir:
             return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) \
                     + mk_2cl('LEX', _targetslashlex[ir[_l]])
