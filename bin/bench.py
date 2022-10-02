@@ -348,14 +348,14 @@ class MGParser(Parser):       # the syntax of MG entries
         global _online, _info, _srule
         if not _online:
             _info['srule'] += 1
-        return mk_un(_srule, mk_bin(p[0], p.spair0, p.spair1))
+        return mk_un(_srule, mk_bin(p[0][1:], p.spair0, p.spair1))  # CL hates sharp in input, take it out of name
 
     @_('RNAME apair ARULE apair')
     def r(self, p):
         global _online, _info, _apair, _arule
         if not _online:
             _info['arule'] += 1
-        return  mk_bin(_arule, p[0], mk_bin(_apair, p.apair0, p.apair1)) 
+        return  mk_bin(_arule, p[0][1:], mk_bin(_apair, p.apair0, p.apair1)) # CL hates sharp in input, take it out of name
 
     @_('LP ids COM c RP')      
     def spair(self, p):
