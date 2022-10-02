@@ -691,6 +691,11 @@ def mk_3cl(e1, e2, e3):  # makes a ternary Lisp list as '(e1 e2 e3)'
     else:
         return '('+ str(e1) + ' '+ str(e2)+ ' ' + str(e3) + ')'
 
+def tc_bundle_quote(ql):
+    # bundles ql, which is string within string, to Lisp list of tokens
+    ws = ql.split("'")  
+    return '(' + ' '.join(ws[1].split()) + ')'
+
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
     # this is the code generator for the monadic grammar processor in Lisp
@@ -733,8 +738,12 @@ def ir_to_lisp(ir):
             return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) \
                     + mk_2cl('LEX', _targetslashlex[ir[_l]])
         elif ir[_op] == _basic:
-            return mk_2cl('BCAT', ir_to_lisp(ir[_l])) + \
-                    ir_to_lisp(ir[_r])
+            if ir[_r] == 'quoted':
+                return mk_2cl('BCAT', tc_bundle_quote(ir[_l])) + \
+                        mk_2cl('BCONST', 'T') + mk_2cl('FEATS', 'NIL')
+            else:
+                return mk_2cl('BCAT', ir_to_lisp(ir[_l])) + \
+                        ir_to_lisp(ir[_r])
         elif ir[_op] == _lam:
             if ir[_op][_r][_op]:    # this means LF is not a constant
                 return mk_3cl('LAM', ir[_l], ir_to_lisp(ir[_r]))   # right associative
