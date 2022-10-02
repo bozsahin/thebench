@@ -37,7 +37,7 @@ _indexed = False              # whether an entry is already indexed; need this u
 _targetprefix = '!'           # _target.. for generating symbol maps for the Lisp processor
 _targetmod = {'.': 'ALL', '+': 'CROSS', '*': 'STAR', '^': 'HARMONIC'}
 _targetdir = {'/': 'FS', '\\': 'BS', '//': 'FS', '\\\\': 'BS'}
-_targetslashlex = {'/': 'nil', '\\': 'nil', '//': 't', '\\\\': 't'}
+_targetslashlex = {'/': False, '\\': False, '//': True, '\\\\': True}
 
 # Apart from MGLexer and MGParser, there is NO class definition, to make everything natively printable.
 #   And, these two classes are required by the sly module. 
@@ -735,8 +735,11 @@ def ir_to_lisp(ir):
             return mk_2cl(_nop, ir_to_lisp(ir[_l])) + \
                     ir_to_lisp(ir[_r])
         elif ir[_op] == _dir:
-            return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) \
-                    + mk_2cl('LEX', _targetslashlex[ir[_l]])
+            if _targetslashlex[ir[_l]]:
+                return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) \
+                    + mk_2cl('LEX', 't')
+            else:
+                return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) 
         elif ir[_op] == _basic:
             if ir[_r] == 'quoted':
                 return mk_2cl('BCAT', tc_bundle_quote(ir[_l])) + \
