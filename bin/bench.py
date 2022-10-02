@@ -754,8 +754,8 @@ def ir_to_lisp(ir):
         elif ir[_op] == _arule:
             return ir_to_lisp(ir[_r])    # name in the left op already taken care of
         elif ir[_op] == _apair:          # avoid several levels to match flatter target code
-            return    mk_2cl('INSYN', ir_to_lisp(ir[_l][_l][_l])) \
-                    + mk_2cl('OUTSYN', ir_to_lisp(ir[_r][_l][_l])) \
+            return    mk_2cl('INSYN', mk_2cl(_nop, ir_to_lisp(ir[_l][_l][_l]))) \
+                    + mk_2cl('OUTSYN', mk_2cl(_nop, ir_to_lisp(ir[_r][_l][_l]))) \
                     + mk_2cl('INSEM', ir_to_lisp(ir[_l][_r][_l])) \
                     + mk_2cl('OUTSEM', ir_to_lisp(ir[_r][_r][_l]))
         else:
