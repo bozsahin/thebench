@@ -573,14 +573,14 @@ def split_command (cline):  # splits a command line into command and list of arg
     return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' is space-separated items ending with newline")
+        print(" NOTE >> | '...' are space-separated items ending with newline                        <<< NOTE")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates case functions for all elements with parts of speech ...')
         print('         |   and adds them to currently loaded .lisp grammar')
         print(' d ...   | displays analyses with solutions numbered ...,')
         print('         |   all of them if no number is provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(' g .     | checks and loads grammar with filename . (and generates .lisp file)')
+        print(' g .     | checks and loads grammar with filename . (and generates the .lisp file)')
         print(' k ...   | shows grammar elements which bear the keys ...')
         print(' m .     | model with the filename . is loaded (a .lisp file)')
         print(' o .     | runs the OS/shell command . at your own risk')
@@ -825,8 +825,11 @@ def do (commline):
                         print(';;;;;;;;;; end of bench.py-generated monadic Lisp grammar')
                         print(')')
                 print(f"{fn} file generated")
-                _lisp.function('load-dotlisp')(str(args[0]))
-                print(f"grammar in {fn} loaded")
+                try:
+                    _lisp.function('load-dotlisp')(str(args[0]))
+                    print(f"grammar in {fn} loaded")
+                except Exception:
+                    print(f"Oops. Unable to load {fn}")
             else:
                 print('canceled')
         else:
