@@ -861,7 +861,6 @@ def do (commline):
             if len(a) == 0:
                 f()
             elif len(a) == 1:    # that horrifying syntax of py: tuple of [a] is (a,), that of [] is () !!
-                print(f,a)
                 f(a[0])
             else:
                 f(tuple(a))
