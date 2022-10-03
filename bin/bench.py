@@ -67,7 +67,6 @@ _apair = _overscore+'apair'
 _spair = _overscore+'spair'  
 _index = _overscore+'index'
 _op    = 0
-_nop   = ''  # null operator for code gen
 _l     = 1
 _r     = 2
 
@@ -676,6 +675,9 @@ def load_2pass(fname):            # this is for model building, for replacing ';
     else:
         print("grammar file untouched.")
 
+def mk_1cl(e1):
+    return '(' + str(e1) + ')'
+
 def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
     if str(e1) == '' and str(e2) == '':
         return 'NIL'
@@ -722,17 +724,17 @@ def ir_to_lisp(ir):
             return ir_to_lisp(ir[_l]) + ir_to_lisp(ir[_r])
         elif ir[_op] == _scom:
             if len(ir) == 3:      # complex
-                return mk_2cl('SYN', mk_2cl(_nop, \
+                return mk_2cl('SYN', mk_1cl( \
                         mk_2cl(ir_to_lisp(ir[_l], ir_to_lisp(ir[_r]))))) # this is idiosyncratic. Target code needs one more parenths
             else:
-                return mk_2cl('SYN', mk_2cl(_nop, ir_to_lisp(ir[_l])))
+                return mk_2cl('SYN', mk_1cl(ir_to_lisp(ir[_l])))
         elif ir[_op] == _lcom:
             return mk_2cl('SEM', ir_to_lisp(ir[_l]))
         elif ir[_op] == _dom:
             return ir_to_lisp(ir[_l]) + \
-                    mk_2cl(_nop, ir_to_lisp(ir[_r]))
+                    mk_1cl(ir_to_lisp(ir[_r]))
         elif ir[_op] == _range:
-            return mk_2cl(_nop, ir_to_lisp(ir[_l])) + \
+            return mk_1cl(ir_to_lisp(ir[_l])) + \
                     ir_to_lisp(ir[_r])
         elif ir[_op] == _dir:
             if _targetslashlex[ir[_l]]:
@@ -757,8 +759,8 @@ def ir_to_lisp(ir):
         elif ir[_op] == _arule:
             return ir_to_lisp(ir[_r])    # name in the left op already taken care of
         elif ir[_op] == _apair:          # avoid several levels to match flatter target code
-            return    mk_2cl('INSYN', mk_2cl(_nop, ir_to_lisp(ir[_l][_l][_l]))) \
-                    + mk_2cl('OUTSYN', mk_2cl(_nop, ir_to_lisp(ir[_r][_l][_l]))) \
+            return    mk_2cl('INSYN', mk_1cl(ir_to_lisp(ir[_l][_l][_l]))) \
+                    + mk_2cl('OUTSYN', mk_1cl(ir_to_lisp(ir[_r][_l][_l]))) \
                     + mk_2cl('INSEM', ir_to_lisp(ir[_l][_r][_l])) \
                     + mk_2cl('OUTSEM', ir_to_lisp(ir[_r][_r][_l]))
         else:
