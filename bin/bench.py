@@ -572,7 +572,7 @@ def split_command (cline):  # splits a command line into command and list of arg
     return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' are space-separated items ending with newline                        <<< NOTE")
+        print(" NOTE >> | '...' are space-separated items ending with newline            <<< NOTE")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates case functions for all elements with parts of speech ...')
         print('         |   and adds them to currently loaded .lisp grammar')
