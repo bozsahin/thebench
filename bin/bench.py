@@ -841,7 +841,7 @@ def do (commline):
                 print(f"{fn} file generated")
                 try:
                     _lisp.function('load-dotlisp')(str(args[0]))
-                    print(f"grammar in {fn} loaded")
+                    print(f"grammar in {fn} loaded; ready for analysis")
                 except Exception:
                     print(f"Oops. Unable to load {fn}")
             else:
