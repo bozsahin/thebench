@@ -581,7 +581,7 @@ def help ():
         print(" e .     | evaluates the python expression . if you know what you're doing")
         print(' g .     | checks and loads grammar with filename . (and generates the .lisp file)')
         print(' k ...   | shows grammar elements which bear the keys ...')
-        print(' m .     | model with the filename . is loaded (a .lisp file)')
+        print(' m .     | model of grammar . is loaded (its .lisp file is loaded)')
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p ...   | shows the elements with parts of speech ...')
         print(' r ...   | ranks the expression ... using the currently loaded model')
@@ -848,6 +848,13 @@ def do (commline):
                 print('canceled')
         else:
             print('.lisp file not generated')
+    elif comm == 'm':
+        fn = str(args[0])+'.lisp'
+        try:
+            _lisp.function('load-dotlisp')(fn)
+            print(f"grammar in {fn} loaded; ready for analysis")
+        except Exception:
+            print(f"Oops. Unable to load {fn}")
     elif comm == 'e':
         try:
             eval(' '.join(str(item) for item in args))
