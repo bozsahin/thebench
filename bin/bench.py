@@ -696,7 +696,10 @@ def mk_3cl(e1, e2, e3):  # makes a ternary Lisp list as '(e1 e2 e3)'
 def tc_bundle_quote(ql):
     # bundles ql, which is string within string, to Lisp list of tokens
     ws = ql.split("'")  
-    return '(' + ' '.join(ws[1].split()) + ')'
+    if len(ws) > 1:
+        return '(' + ' '.join(ws[1].split()) + ')'
+    else:
+        return '(' + ' '.join(ws[0][1:-1].split()) + ')'   # first and last elements are scare quotes, single or double
 
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
