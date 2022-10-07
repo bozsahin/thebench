@@ -698,6 +698,8 @@ def tc_bundle_quote(ql):
     ws = ql.split("'")  
     if len(ws) > 1:
         return '(' + ' '.join(ws[1].split()) + ')'
+    elif len(ws[0]) == 0:
+        return '(**ERROR** Your quoted category is empty This is well-formed but not processable)'
     else:
         return '(' + ' '.join(ws[0][1:-1].split()) + ')'   # first and last elements are scare quotes, single or double
 
