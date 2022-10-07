@@ -856,7 +856,7 @@ def do (commline):
     elif comm == 'm':
         fn = str(args[0])+'.lisp'
         try:
-            _lisp.function('load-dotlisp')(fn)
+            _lisp.function('load-dotlisp')(str(args[0]))
             print(f"grammar in {fn} loaded; ready for analysis")
         except Exception:
             print(f"Oops. Unable to load {fn}")
