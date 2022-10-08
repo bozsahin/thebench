@@ -795,6 +795,7 @@ def do (commline):
             with open(str(fn),'w') as f:
                 with redirect_stdout(f):
                     pp = pprint.PrettyPrinter(indent=2, width=80, stream=sys.stdout)
+                    print(f"# This file can be read as a python dictionary in one fell swoop.\n\n# Tree operators are:\n# {_op}: root\n# {_l}: left child\n# {_r}: right child\n#    see the manual/code for values prefixed with {_overscore}\n\n# There are two structures: arules and elements\n# Grammar items are listed in them.\n")
                     pp.pprint(_grammar)
             print(f"grammar is pretty-printed to {fn} in internal representation")
         else:
