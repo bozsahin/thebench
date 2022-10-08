@@ -1163,7 +1163,7 @@
 ;;;;  so that LF normalizer only works with our lambdas.
 
 ;; Monad's dependency rule. Succesful combination creates a new cky entry with SYN SEM INDEX PARAM
-;;    PARAM is calculated by the caller of caller (ccg-deduce), because it is a common method for all rules
+;;    PARAM is calculated by the caller of caller, because it is a common method for all rules.
 
 (defun f-apply (ht1 ht2 lex2 coord2) 
   "forward application"
@@ -1743,7 +1743,7 @@
 					  (list 'SOLUTION newht))))))))))))
   t)
 
-(defun ccg-deduce (itemslist)
+(defun cky_analyze (itemslist)
   "CKY-parses the items in the input list.
   The lower-triangular matrix of CKY is built as a hashtable
   where keys are triplets (i j k), meaning combinations of length i,
@@ -1766,7 +1766,7 @@
 			       (setf n2 (length matches)))
 			     (progn 
 			       (format t "No lex entry for ~A! Exiting without parse.~%" (nth (- i 1) itemslist))
-			       (return-from ccg-deduce nil)))))
+			       (return-from cky_analyze nil)))))
 		   (loop for i2 from 1 to n2 do
 			 (setf (machash (list 1 i i2) *cky-hashtable*) 
 			       (list (list 'LEFT (list 1 i i2))
@@ -2036,13 +2036,13 @@
 		   (t (+ (count-feature key l (+ 1 sum) flag lc)
                          (count-feature key r (+ 1 sum) flag lc))))))))
 
-(defun ccg-induce (itemslist)
+(defun cky_rank (itemslist)
   "Computes formulas (1) and argmax_L of Zettlemoyer & Collins (2005).
   We don't exponentiate (1) to avoid overflows, since sum is the same for argmax_L.
-  ccg-deduce calculates local sums using CKY. This function simply sums them."
-  (and (not (listp itemslist))(format t "Expected a list!")(return-from ccg-induce nil))
+  cky_analyze calculates local sums using CKY. This function simply sums them."
+  (and (not (listp itemslist))(format t "Expected a list!")(return-from cky_rank nil))
   (let ((n (length itemslist)))
-    (and (ccg-deduce itemslist) ; this creates the CKY table with its local counts
+    (and (cky_analyze itemslist) ; this creates the CKY table with its local counts
 	 (do ((maxprob most-negative-single-float)
 	      (minprob most-positive-single-float)
 	      (cmax 0)
@@ -2116,7 +2116,7 @@
   (let ((pairindex 0))
     (dolist (s-lf *supervision-pairs-list*)
       (incf pairindex)
-      (let* ((s (ccg-induce (sup-sentence s-lf)))
+      (let* ((s (cky_rank (sup-sentence s-lf)))
 	     (b (and s *beamp* (beamer))) ;sets  beam parameter -- reduce more for more parses
 	     (r1 (cell-len *cky-max*))
 	     (r2 (cell-pos *cky-max*))
@@ -2153,7 +2153,7 @@
   This is the probabilistic variant of the inside-outside algorithm, where training-hashtable keeps all weights.
   What we get is f_je^param1+f_j^param2...-f_je^param+f_je^param counts first.
   Then update-derivative turns them into probabilities by dividing into sums."
-  (let* ((result (ccg-induce (sup-sentence s-lf)))   ; get all analyses. we will filter later (ie No Normal form parsing)
+  (let* ((result (cky_rank (sup-sentence s-lf)))   ; get all analyses. we will filter later (ie No Normal form parsing)
 	 (lf (and result (beta-normalize-outer (sup-lf s-lf))))
 	 (s (and result (prepare-solutions debug))) ; sets beam, and produces *training-sorted-solutions-list*
 	 (nonzerokeys (machash pairindex *training-non0-hashtable*)) ; table was set by inside-outside
