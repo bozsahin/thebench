@@ -846,7 +846,7 @@ def do (commline):
                         print(')')
                 print(f"{fn} file generated")
                 try:
-                    _lisp.function('load-dotlisp')(str(args[0]))
+                    _lisp.function('load_dotlisp')(str(args[0]))
                     print(f"grammar in {fn} loaded; ready for analysis")
                 except Exception:
                     print(f"Oops. Unable to load {fn}")
@@ -857,7 +857,7 @@ def do (commline):
     elif comm == 'm':
         fn = str(args[0])+'.lisp'
         try:
-            _lisp.function('load-dotlisp')(str(args[0]))
+            _lisp.function('load_dotlisp')(str(args[0]))
             print(f"grammar in {fn} loaded; ready for analysis")
         except Exception:
             print(f"Oops. Unable to load {fn}")
@@ -884,7 +884,7 @@ def do (commline):
         fn = str(args[0])
         if os.path.exists(fn):
             try:
-                _lisp.function('safely-load')(args[0])
+                _lisp.function('safely_load')(args[0])
                 print(f"{args[0]} loaded")
             except Exception:
                 print('something went wrong')
