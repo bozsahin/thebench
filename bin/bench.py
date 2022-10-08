@@ -876,7 +876,7 @@ def do (commline):
             print('something went wrong')
     elif comm == 'd':
         try:
-            _lisp.function('cky_show_analysis')(())
+            _lisp.function('cky_show_analysis')(tuple(args))
             print()
         except Exception:
             print('something went wrong')
