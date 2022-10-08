@@ -1122,8 +1122,7 @@
 	(format t "~2&Final LF, normal-order evaluated: ~2%    ~A =~%    ~A" 
 		(beta-normalize-outer (cky-sem (list row col m)))
 		(display-lf (beta-normalize-outer (cky-sem (list row col m))))))))
-  (format t "~2&Try (cky-pprint) to see the details including the features and slash modalities.")
-  (format t  "~&    (cky-reveal-cell <cell>) to pretty-print the parse in <cell>."))
+  )
 
 (defun cky-show-normal-forms (row col)
    (do ((m 1 (incf m)))
@@ -1131,7 +1130,7 @@
      (format t "~2%Derivation ~A~%----------------~%" m)
      (beta-normalize (cky-sem (list row col m)))))
 
-(defun cky-show-deduction (&optional (onto nil))
+(defun cky_show_analysis (&optional (onto nil))
   "the answer is in first column of row n, which is the length of the string."
   (cky-show-der (length *cky-input*) 1 onto))
 
@@ -1943,7 +1942,7 @@
 (defun cky-pprint-probs (cell)
   (format t (cky-show-probs cell)))
 
-(defun cky-show-induction ()
+(defun cky_show_ranking ()
   (format t "~%Most likely LF for the input: ~A~2%  ~A =~%  ~A~2%Cumulative weight:  ~A" *cky-input* 
 	  (second *cky-lf*)(display-lf (beta-normalize-outer (second *cky-lf*)))
 	  (first *cky-lf*))

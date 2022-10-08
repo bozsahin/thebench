@@ -781,7 +781,7 @@ def do (commline):
     if comm in ['x', '?', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'd', 'e', 'g', 'k', 'm', 'o', 'p', 'r', 's', 'v', '=', '@', '^', '&', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'k', 'm', 'o', 'p', 'r', 's', 'v', '=', '@', '^', '&', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
@@ -870,12 +870,14 @@ def do (commline):
         os.system(' '.join([str(item) for item in args[0:]]))
     elif comm == 'a':
         try:
-            ws = _cl.cons(args[0], None)
-            if len(args) > 1:
-                for w in args[1:]:
-                    ws = _cl.cons(w, ws)
-            _lisp.function('cky_analyze')(ws)
-            print(f"done")
+            _lisp.function('cky_analyze')(tuple(args))
+            print(f"Done. Try d command for results")
+        except Exception:
+            print('something went wrong')
+    elif comm == 'd':
+        try:
+            _lisp.function('cky_show_analysis')(())
+            print()
         except Exception:
             print('something went wrong')
     elif comm == '+':
