@@ -550,8 +550,8 @@
   (and all-lfs (pack-cky-lf-hashtable))
   )
 
-(defun which-batgram ()
-  (values "Monad of Natural Command" "7.2.3"))
+(defun which_proc ()
+  (values "Monad of Natural Command" "7.2.3.1"))
 
 (defun flash-news (&optional (report t))
   (cond (report 
@@ -561,7 +561,7 @@
 
 (defun welcome () 
   (format t "~%=====================================================")
-  (multiple-value-bind (pr v) (which-batgram)
+  (multiple-value-bind (pr v) (which_proc)
     (format t "~%This is the processor for ~A,~%  version ~A" pr v))
   (format t "~%-----------------------------------------------------")
   (flash-news)
@@ -609,7 +609,7 @@
 ; this one is easier summary
 
 (defun show-config ()
-  (format t "~2%~A~2%" (which-batgram))
+  (format t "~2%~A~2%" (which_proc))
   (rules)
   (onoff)
   (beam-value))
@@ -1816,6 +1816,15 @@
 	   (and (machash (list n 1 1) *cky-hashtable*) t)))  ; if a rule applied, result would be in n 1 1 
 	(t (format t "Error: expected a list of items.~%"))))
 
+(defun cky_analyze0 (itemslist)
+  "the python interface"
+  (cky_analyze itemslist)
+  (format t "~%Number of analyses: ~A~%"
+	  (do ((m 1 (incf m))
+	       (row (length itemslist)))
+	    ((null (machash (list row 1 m) *cky-hashtable*)) (- m 1)))))
+   
+
 ;;;; =============================================================================
 ;;;; == Part 3: The CKY parse ranker -- the inductive component         ==
 ;;;; =============================================================================
@@ -2811,5 +2820,5 @@
   (simple-ccg :nf-parse t :beam t))
 
 (format t "processor: bench.lisp loaded, version ~A~%" 
-  (multiple-value-bind (pr v) (which-batgram)
+  (multiple-value-bind (pr v) (which_proc)
     v))
