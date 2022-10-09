@@ -21,7 +21,10 @@ import cl4py                     # processor is in Lisp
 _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
 _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
-_lisptype = _lisp.function('lisp-implementation-type')() + ' ' + _lisp.function('lisp-implementation-version')()
+try:
+    _lisptype = _lisp.function('lisp-implementation-type')() + ' ' + _lisp.function('lisp-implementation-version')()
+except Exception:
+    _lisptype = 'unknown'
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
@@ -932,11 +935,17 @@ def do (commline):
     elif comm == 'pass':    # not in the menu, to report others as bad
         pass
     elif comm == '>':
-        print('Logging processor output to: ', args[0]+'.log')
-        _cl.dribble(args[0]+'.log')
+        try:
+            print('Logging processor output to: ', args[0]+'.log')
+            _cl.dribble(args[0]+'.log')
+        except Exception:
+            print('something wrong')
     elif comm == '<':
-        _cl.dribble()
-        print('Logging turned off')
+        try:
+            _cl.dribble()
+            print('Logging turned off')
+        except Exception:
+            print("dribble is already off, or something's wrong")
     else:
         print('command unknown')
 
