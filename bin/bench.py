@@ -952,7 +952,7 @@ def do (commline):
 def welcome ():
     print('------------------------------------------------------------------------')
     print(1*_prompt+'Welcome to The Bench')
-    print(2*_prompt+"A workbench for studying Monadic Structures in Natural Language")
+    print(2*_prompt+" A workbench for studying Monadic Structures in Natural Language")
     print(3*_prompt+"Version:", _version, "Dated:", _vdate)
     print(3*_prompt+"Python version:", platform.python_version())
     print(3*_prompt+"Common Lisp version:", _lisptype)
