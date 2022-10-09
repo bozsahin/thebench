@@ -550,7 +550,7 @@
   (and all-lfs (pack-cky-lf-hashtable))
   )
 
-(defun which_proc ()
+(defun which_processor ()
   (values "Monad of Natural Command" "7.2.3.1"))
 
 (defun flash-news (&optional (report t))
@@ -561,7 +561,7 @@
 
 (defun welcome () 
   (format t "~%=====================================================")
-  (multiple-value-bind (pr v) (which_proc)
+  (multiple-value-bind (pr v) (which_processor)
     (format t "~%This is the processor for ~A,~%  version ~A" pr v))
   (format t "~%-----------------------------------------------------")
   (flash-news)
@@ -609,7 +609,7 @@
 ; this one is easier summary
 
 (defun show-config ()
-  (format t "~2%~A~2%" (which_proc))
+  (format t "~2%~A~2%" (which_processor))
   (rules)
   (onoff)
   (beam-value))
@@ -1110,6 +1110,20 @@
   up to your lisp printer variables and CL implementation, aka insallah printing.
   For testing purposes only."
   (maphash #'(lambda (k v) (format t "~%~A = ~A~%" k v)) *cky-hashtable*))
+
+(defun cky_show_analysis_1 (m &optional (onto nil))
+  "tries to print the derivation in CKY cell (n 1 m) as humanly as possible where n is input size. Only final result is
+  normalized in its LF. Onto is assumed to be a basic cat, and if supplied only these solutions will be shown"
+  (if (machash (list (length *cky-input*) 1 m) *cky-hashtable*)
+    (if (or (not onto) (equal (machash 'BCAT 'SYN (nv-list-val 'SOLUTION 
+							       (machash (list (length *cky-input*) 1 m) *cky-hashtable*))) onto))
+      (progn 
+	(format t "~2%Derivation ~A~%--------------" m)
+	(format t (cky-thread (list (length *cky-input*) 1 m)))
+	(format t "~2&Final LF, normal-order evaluated: ~2%    ~A =~%    ~A" 
+		(beta-normalize-outer (cky-sem (list (length *cky-input*) 1 m)))
+		(display-lf (beta-normalize-outer (cky-sem (list (length *cky-input*) 1 m))))))))
+  )
 
 (defun cky-show-der (row col &optional (onto nil))
   "tries to print the derivations ending in CKY cell (row col) as humanly as possible. Only final result is
@@ -1817,7 +1831,7 @@
 	(t (format t "Error: expected a list of items.~%"))))
 
 (defun cky_analyze0 (itemslist)
-  "the python interface"
+  "the python interface. Input length will be saved in *cky-input* for d command."
   (cky_analyze itemslist)
   (format t "~%Number of analyses: ~A~%"
 	  (do ((m 1 (incf m))
@@ -2820,5 +2834,5 @@
   (simple-ccg :nf-parse t :beam t))
 
 (format t "processor: bench.lisp loaded, version ~A~%" 
-  (multiple-value-bind (pr v) (which_proc)
+  (multiple-value-bind (pr v) (which_processor)
     v))

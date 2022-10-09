@@ -876,8 +876,13 @@ def do (commline):
             print('something went wrong')
     elif comm == 'd':
         try:
-            _lisp.function('cky_show_analysis')(tuple(args))
-            print()
+            if not args:
+                _lisp.function('cky_show_analysis')(tuple(args))
+                print()
+            else:
+                for ana in args:
+                    _lisp.function('cky_show_analysis_1')(int(ana)) # int() guarded by try
+                    print()
         except Exception:
             print('something went wrong')
     elif comm == '+':
