@@ -22,13 +22,13 @@ _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
 _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
 _lisptype = _lisp.function('lisp-implementation-type')() + ' ' + _lisp.function('lisp-implementation-version')()
-#print('processor: bench.lisp loaded')
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.1'
 _vdate = 'April 10, 2022'
+_binext = '.bin'              # binary (lisp code) extension
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
 _grammar = {}                 # currently loaded grammar parsed into internal representation
@@ -815,7 +815,7 @@ def do (commline):
                     print(f"key {int(key)} not found")
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
-            fn = str(args[0])+'.lisp'
+            fn = str(args[0]) + _binext
             ch = False
             if os.path.exists(fn):
                 ch = input(f"file {fn} exists, overwrite (y/*n)? ")
@@ -846,18 +846,18 @@ def do (commline):
                         print(')')
                 print(f"{fn} file generated")
                 try:
-                    _lisp.function('load_dotlisp')(str(args[0]))
+                    _lisp.function('load_bin')(fn)
                     print(f"grammar in {fn} loaded; ready for analysis")
                 except Exception:
                     print(f"Oops. Unable to load {fn}")
             else:
                 print('canceled')
         else:
-            print('.lisp file not generated')
+            print(f"{_binext} file not generated")
     elif comm == 'm':
-        fn = str(args[0])+'.lisp'
+        fn = str(args[0]) + _binext
         try:
-            _lisp.function('load_dotlisp')(str(args[0]))
+            _lisp.function('load_bin')(fn)
             print(f"grammar in {fn} loaded; ready for analysis")
         except Exception:
             print(f"Oops. Unable to load {fn}")

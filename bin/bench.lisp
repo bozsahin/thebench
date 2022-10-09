@@ -1089,9 +1089,9 @@
 	     (setf (machash 'ARG newsyn)(substitute-special-cat (machash 'ARG spht1) catht2))
 	     newsyn))))
 
-(defun load_dotlisp (pname)
+(defun load_bin (binname)
   "loads the grammar generated from intermediate representation of monadic grammar"
-  (let* ((gname (concatenate 'string pname ".lisp")))
+  (let* ((gname binname))
     (setf *error* nil)
     (setf *current-grammar* (read1 gname))             
     (cond ((not *error*) (setf *lex-rules-table* nil)
@@ -2231,7 +2231,7 @@
 (defun update-model (pname iterations alpha0 c &key (verbose nil)(load nil) (debug nil))
   "default workflow for updating model parameters of a project. Compare and save are separate."
   (beam-value) ;; in case you want to abort a misguided looong training asap
-  (and load (load_dotlisp pname)) ; loads the .ind file into *current-grammar*
+  (and load (load_bin pname)) ; loads the .ind file into *current-grammar*
   (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
   (set-training-parameters iterations (length *supervision-pairs-list*)(length *current-grammar*) alpha0 c)
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
@@ -2246,7 +2246,7 @@
   Then it runs Cabay & Jackson algorithm to find the gradient's limit for each parameter by
   minimum polynomial extrapolation (MPE). It can be erroneous if stages fluctuate."
   (beam-value) ;; in case you want to abort 
-  (and load (load_dotlisp pname)) ; loads the .ind file into *current-grammar*
+  (and load (load_bin pname)) ; loads the .ind file into *current-grammar*
   (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
   (set-training-parameters 4 (length *supervision-pairs-list*)(length *current-grammar*) alpha0 c 'x4) ; fixed iteration 
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
@@ -2422,7 +2422,7 @@
   It's best if you merge two grammars if their PARAMs are from same value space (eg. both z-scored or none, etc.)"
   (let* ((lg (copy-seq *current-grammar*)) ; will update currently loaded grammar
 	 (c 0))
-    (load_dotlisp gname)     ; resets *current-grammar* to grammar in gname
+    (load_bin gname)     ; resets *current-grammar* to grammar in gname
     (dolist (l *current-grammar*) 
       (if (not (reduce #'(lambda (x y)(or x y))  ; reduce will return true only if l is a member of lg
 		       (mapcar #'(lambda (z)(member (assoc 'KEY l) z :test #'equal))
@@ -2496,7 +2496,7 @@
 
 (defun kl-prepare (g)
   "z score grammar g, then hash item key to (param z-score prob)"
-  (load_dotlisp g)
+  (load_bin g)
   (let ((ght (make-training-hashtable (length *current-grammar*)))
 	(errlog nil))
     (dolist (el *current-grammar*)
@@ -2723,7 +2723,7 @@
 
 (defun g2 (pname morphs &optional (e-log "tr-error.log")) 
   "identify lexical functions from morphs tag and generate 2nd order case function for their outermost argument"
-  (load_dotlisp pname)  
+  (load_bin pname)  
   (if *error* (progn (format t "~%aborting compile; currently loaded grammar is unchanged")
 		     (return-from g2)))
   (setf *RAISED-LEX-RULES* NIL) ;set to default
