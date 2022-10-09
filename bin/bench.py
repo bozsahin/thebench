@@ -589,7 +589,7 @@ def help ():
         print('         |    (saved in filename with .sup extension)')
         print(' v .     | shows (without adding) the intermediate representation of element .                ')
         print(' x       | exits from the tool                                                                ')
-        print(' ?       | shows information about the currently loaded grammar                               ')
+        print(' ?       | shows information about the current g-loaded grammar                               ')
         print(' = ...   | restricts synthetic case application to basic categories ...                       ')
         print(' @ .     | shows the value of the Lisp object .                                               ')
         print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings                  ")
@@ -883,6 +883,11 @@ def do (commline):
                 for ana in args:
                     _lisp.function('cky_show_analysis_1')(int(ana)) # int() guarded by try
                     print()
+        except Exception:
+            print('something went wrong')
+    elif comm == 'p':
+        try:
+            _lisp.function('show_pos')(tuple(args))
         except Exception:
             print('something went wrong')
     elif comm == '+':

@@ -915,6 +915,11 @@
       (and (equal (nv-list-val 'PHON l) phon)(push l specs)))
     specs))
 
+(defun show_pos (poses)
+  (dolist (l *current-grammar*)
+    (if (member (nv-list-val 'MORPH l) poses)
+      (format t "~%Entry: ~A~%--~%" l))))
+
 (defun mod-compatiblep (mod1 mod2)
   "checks if two lexical modalities are compatible. Returns t if they are."
   (or (eql mod1 'ALL) (eql mod2 'ALL) (eql mod1 mod2)))
