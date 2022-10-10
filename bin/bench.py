@@ -29,8 +29,8 @@ except Exception:
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.1'
-_vdate = 'April 10, 2022'
+_version = '0.2'
+_vdate = 'October 10, 2022'
 _binext = '.bin'              # binary (lisp code) extension
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
@@ -825,7 +825,7 @@ def do (commline):
             if ch == 'y' or not ch:
                 with open(str(fn),'w') as f:
                     with redirect_stdout(f):
-                        print('(')
+                        print('(defparameter *current-grammar* (quote ')     # loadable lisp file
                         print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
                         print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
                         print(';;')
@@ -846,7 +846,7 @@ def do (commline):
                             print(')')
                         print(';;')
                         print(';;;;;;;;;; end of bench.py-generated monadic Lisp grammar')
-                        print(')')
+                        print('))')  # one for quote, one for defparameter closing
                 print(f"{fn} file generated")
                 try:
                     _lisp.function('load_bin')(fn)
