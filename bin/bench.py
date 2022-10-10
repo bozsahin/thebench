@@ -945,7 +945,7 @@ def do (commline):
             _cl.dribble()
             print('Logging turned off')
         except Exception:
-            print("dribble is already off, or something's wrong")
+            print("logging is already off, or something went wrong")
     else:
         print('command unknown')
 
