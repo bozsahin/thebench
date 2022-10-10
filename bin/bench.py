@@ -594,8 +594,8 @@ def help ():
         print(' x       | exits from the tool                                                                ')
         print(' ?       | shows information about the current g-loaded grammar                               ')
         print(' = ...   | restricts synthetic case application to basic categories ...                       ')
-        print(' @ .     | shows the value of the Lisp object .                                               ')
-        print(" ^ . ... | calls a Lisp function . with args ... which takes them as strings                  ")
+        print(' ! .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)             ')
+        print(" ^ . ... | calls the Lisp function . with args ... which takes them as strings                ")
         print(' & .     | saves the intermediate representation of current grammar (a python dict) in file . ')
         print(' + .     | adds Lisp code in file . to the processor                                          ')
         print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)    ')
@@ -784,7 +784,7 @@ def do (commline):
     if comm in ['x', '?', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'k', 'm', 'o', 'p', 'r', 's', 'v', '=', '@', '^', '&', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'k', 'm', 'o', 'p', 'r', 's', 'v', '=', '!', '^', '&', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
@@ -919,11 +919,16 @@ def do (commline):
         except Exception:
             print('something went wrong')
         print()
-    elif comm == '@':
-        try:
-            print(_lisp.eval(cl4py.Symbol(args[0])))
-        except Exception:
-            print('something went wrong')
+    elif comm == '!':
+        fn = args[0] + '.ccg.lisp'
+        if os.path.exists(fn):
+            try:
+                _lisp.function('load_legacy')(fn)
+                print(f"legacy grammar in {fn} loaded; ready for analysis")
+            except Exception:
+                print(f"Oops. Unable to load {fn}")
+        else:
+            print(f"no {fn} in current directory")
     elif comm == '?':
         srule_ent = _info['srule']*2
         print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {srule_ent} elements)\n a rules :  {_info['arule']}")
@@ -935,7 +940,7 @@ def do (commline):
         print(" POSs    : ", ' '.join(_info['pos'].keys()))
     elif comm == 'x':       # caller knows what to do next
         pass
-    elif comm == 'pass':    # not in the menu, to report others as bad
+    elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
         pass
     elif comm == '>':
         try:
@@ -971,7 +976,7 @@ mgparser = MGParser()
 if __name__ == '__main__': # MG REPL online
     init_grammar()
     welcome()
-    command = 'pass'
+    command = '~'
     while split_command(command)[0] != 'x':
         do(command)
         command = input(_prompt)

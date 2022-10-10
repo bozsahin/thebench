@@ -1,4 +1,4 @@
-(defparameter *ccg-grammar*
+(defparameter *current-grammar*
 '(((KEY 1) (PHON I) (MORPH N) (SYN ((BCAT NP) (FEATS ((AGR |1S|))))) (SEM "I")
    (PARAM 1.0))
   ((KEY 2) (PHON ARRIVES) (MORPH EN)

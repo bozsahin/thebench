@@ -1095,6 +1095,19 @@
 	     (setf (machash 'ARG newsyn)(substitute-special-cat (machash 'ARG spht1) catht2))
 	     newsyn))))
 
+(defun load_legacy (binname)
+  "loads the grammar generated from intermediate representation of monadic grammar, or legacy ccg grammars, which have the same format"
+  (let* ((gname binname))
+    (setf *error* nil)
+    (safely_load gname)  ;; legacy update
+    (setf *current-grammar* (copy-seq *ccg-grammar*)) ;; ccg-grammar is legacy name from load
+    (cond ((not *error*) (setf *lex-rules-table* nil)
+			 (setf *loaded-grammar* gname)
+			 (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
+			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
+			 )))
+  t)
+
 (defun load_bin (binname)
   "loads the grammar generated from intermediate representation of monadic grammar, or legacy ccg grammars, which have the same format"
   (let* ((gname binname))
