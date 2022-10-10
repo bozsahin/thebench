@@ -24,7 +24,7 @@
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS (agr 3s))))))(SEM (LAM p (p mercier)))
 )
 (
-(KEY 960536)(PARAM 1.0)(PHON camier)
+(KEY 960536)(PARAM 1.0)(PHON CAMIER) 
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS (agr 3s))))))(SEM (LAM p (p camier)))
 )
 (
