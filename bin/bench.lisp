@@ -1095,15 +1095,16 @@
 	     newsyn))))
 
 (defun load_bin (binname)
-  "loads the grammar generated from intermediate representation of monadic grammar"
+  "loads the grammar generated from intermediate representation of monadic grammar, or legacy ccg grammars, which have the same format"
   (let* ((gname binname))
     (setf *error* nil)
-    (setf *current-grammar* (read1 gname))             
+    (safely_load gname)  ;; sets *current-grammar* variable             
     (cond ((not *error*) (setf *lex-rules-table* nil)
 			 (setf *loaded-grammar* gname)
 			 (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
 			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
-			 ))))
+			 )))
+  t) ; do not return hash values to avoid cl4py problems
 
 (defun get-ht (phon ht-list)
   "returns the hashtable in ht-list that has PHON feature same as phon.
