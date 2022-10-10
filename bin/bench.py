@@ -859,11 +859,14 @@ def do (commline):
             print(f"{_binext} file not generated")
     elif comm == 'm':
         fn = str(args[0]) + _binext
-        try:
-            _lisp.function('load_bin')(fn)
-            print(f"grammar in {fn} loaded; ready for analysis")
-        except Exception:
-            print(f"Oops. Unable to load {fn}")
+        if os.path.exists(fn):
+            try:
+                _lisp.function('load_bin')(fn)
+                print(f"grammar in {fn} loaded; ready for analysis")
+            except Exception:
+                print(f"Oops. Unable to load {fn}")
+        else:
+            print(f"{fn} not found")
     elif comm == 'e':
         try:
             eval(' '.join(str(item) for item in args))
