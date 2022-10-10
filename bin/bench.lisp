@@ -918,7 +918,8 @@
 (defun show_pos (poses)
   (dolist (l *current-grammar*)
     (if (member (nv-list-val 'MORPH l) poses)
-      (format t "~%Entry: ~A~%--~%" l))))
+      (format t "~%Entry: ~A~%--~%" l)))
+  t)
 
 (defun mod-compatiblep (mod1 mod2)
   "checks if two lexical modalities are compatible. Returns t if they are."
@@ -1129,7 +1130,7 @@
 	(format t "~2&Final LF, normal-order evaluated: ~2%    ~A =~%    ~A" 
 		(beta-normalize-outer (cky-sem (list (length *cky-input*) 1 m)))
 		(display-lf (beta-normalize-outer (cky-sem (list (length *cky-input*) 1 m))))))))
-  )
+  t)
 
 (defun cky-show-der (row col &optional (onto nil))
   "tries to print the derivations ending in CKY cell (row col) as humanly as possible. Only final result is
@@ -1153,7 +1154,8 @@
 
 (defun cky_show_analysis (&optional (onto nil))
   "the answer is in first column of row n, which is the length of the string."
-  (cky-show-der (length *cky-input*) 1 onto))
+  (cky-show-der (length *cky-input*) 1 onto)
+  t)
 
 (defun cky-show-lf-eqv ()
   "does one check: evaluate results in normal and applicative order, and report differences"
@@ -1842,7 +1844,8 @@
   (format t "~%Number of analyses: ~A~%"
 	  (do ((m 1 (incf m))
 	       (row (length itemslist)))
-	    ((null (machash (list row 1 m) *cky-hashtable*)) (- m 1)))))
+	    ((null (machash (list row 1 m) *cky-hashtable*)) (- m 1))))
+  t)
    
 
 ;;;; =============================================================================
