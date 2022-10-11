@@ -579,11 +579,9 @@ def help ():
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates case functions for all elements with parts of speech ...')
         print(f"         |   and adds them to currently loaded {_binext} grammar")
-        print(' d ...   | displays analyses with solutions numbered ...,')
-        print('         |   all of them if no number is provided')
+        print(' d ...   | displays analyses with solutions numbered ..., all of them if none provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
         print(f" g .     | checks and loads grammar with filename . (and generates the {_binext} file)")
-        print(' k ...   | shows grammar elements which bear the keys ...')
         print(f" m .     | model of grammar . is loaded (its {_binext} file)")
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p ...   | shows the elements with parts of speech ...')
@@ -783,7 +781,7 @@ def do (commline):
     if comm in ['x', '?', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'k', 'm', 'o', 'p', 'r', 's', 'v', '=', '!', '^', '&', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '=', '!', '^', '&', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
@@ -807,14 +805,6 @@ def do (commline):
         args, _, _ = ' '.join([str(item) for item in args]).partition('%')   # just eliminate the comment
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
-    elif comm == 'k':
-            for key in args:
-                entry = _grammar.get(int(key))
-                if entry:
-                    pp = pprint.PrettyPrinter(indent=2, width=80, stream=sys.stdout)
-                    pp.pprint(entry)
-                else:
-                    print(f"key {int(key)} not found")
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
             fn = str(args[0]) + _binext
