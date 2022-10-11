@@ -581,8 +581,8 @@ def help ():
         print(f"         |   and adds them to currently loaded {_binext} grammar")
         print(' d ...   | displays analyses with solutions numbered ..., all of them if none provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(f" g .     | checks and loads grammar with filename . (and generates the {_binext} file)")
-        print(f" m .     | model of grammar . is loaded (its {_binext} file)")
+        print(f" g .     | checks and loads source grammar . (its {_binext} file generated and loaded)")
+        print(f" m .     | loads model of grammar . (its {_binext} file)")
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p ...   | shows the elements with parts of speech ...')
         print(' r ...   | ranks the expression ... using the currently loaded model')
@@ -593,9 +593,9 @@ def help ():
         print(' = ...   | restricts synthetic case application to basic categories ...')
         print(' ! .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
         print(" ^ . ... | calls the Lisp function . with args ... which takes them as strings")
-        print(' & .     | saves the intermediate representation of current grammar (a python dict) in file . ')
+        print(' & .     | saves the abstract representation of current grammar (a python dict) in file . ')
         print(' + .     | adds Lisp code in file . to the processor')
-        print(' > .     | Logs processor output to filename . with .log extension (overridden, so beware)')
+        print(' > .     | Logs processor output to filename . adding .log extension')
         print(' <       | Logging turned off')
 
 def load_1pass(fname):        # checks but not updates the grammar with indices
@@ -932,11 +932,18 @@ def do (commline):
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
         pass
     elif comm == '>':
-        try:
-            print('Logging processor output to: ', args[0]+'.log')
-            _cl.dribble(args[0]+'.log')
-        except Exception:
-            print('something wrong')
+        fn = args[0] + '.log'
+        ch = False
+        if os.path.exists(fn):
+            ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+        if ch == 'y' or not ch:
+            try:
+                print('Logging processor output to: ', args[0]+'.log')
+                _cl.dribble(args[0]+'.log')
+            except Exception:
+                print('something wrong')
+        else:
+            print('logging canceled')
     elif comm == '<':
         try:
             _cl.dribble()
