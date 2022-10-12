@@ -712,7 +712,10 @@ def ir_to_lisp(ir):
         if len(ir) == 4:   # a rule 
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('INDEX', ir[2])
         else:              # an element
-            return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2])
+            if len(ir[2].split()) > 1:              # make all entries uppercase. multi-word entries must be double quoted for the processor
+                return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', '"' + ir[2].upper() + '"')
+            else:
+                return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2].upper())
     elif type(ir) == type([]):             # no recursive list
         if ir == []:
             return mk_2cl('FEATS', 'NIL')
@@ -893,7 +896,7 @@ def do (commline):
         if os.path.exists(fn):
             try:
                 _lisp.function('safely_load')(args[0])
-                print(f"{args[0]} loaded")
+                print(f"{args[0]} loaded to the processor")
             except Exception:
                 print('something went wrong')
         else:
