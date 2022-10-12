@@ -357,7 +357,8 @@
 (defccglab *cky-argmax-lf* nil)    ; list of solutions for most likely LF
 (defccglab *cky-argmax-lf-max* nil); current highest-ranking cell in cky table for the most likely LF.
 (defccglab *cky-lf* nil)           ; LF with the argmax
-(defccglab *current-grammar* nil)      ; current ccg grammar, as a list of Lisp-translated lex specs
+(defccglab *current-grammar* nil)  ; current  grammar, as a list of Lisp-translated lex specs
+(defccglab *ccg-grammar* nil)      ; current ccg grammar, as legacy variable
 (defccglab *ccg-grammar-keys* nil) ; unique keys for each entry; from 1 to n
 (defccglab *loaded-grammar* nil)   ; The source of currently loaded grammar
 

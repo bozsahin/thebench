@@ -719,7 +719,7 @@ def ir_to_lisp(ir):
         else:
             for el in ir:
                 l += mk_2cl(el[0], el[1])
-            return mk_2cl('FEATS', l)    
+            return mk_2cl('FEATS', mk_1cl(l))    
     elif type(ir) == type({}):             # dicts can be recursive  
         if   ir[_op] == _el:
             return ir_to_lisp(ir[_l]) + ir_to_lisp(ir[_r])
@@ -814,7 +814,7 @@ def do (commline):
             if ch == 'y' or not ch:
                 with open(str(fn),'w') as f:
                     with redirect_stdout(f):
-                        print('(defparameter *current-grammar* (quote ')     # loadable lisp file
+                        print("(defparameter *current-grammar* '(")     # loadable lisp file
                         print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
                         print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
                         print(';;')
