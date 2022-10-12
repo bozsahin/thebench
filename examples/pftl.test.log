@@ -710,3 +710,1524 @@ Number of analyses: 0
 =======
 |63C|
 ========
+
+
+Number of analyses: 4
+
+=======
+4
+========
+
+
+Derivation 1
+--------------
+LEX   (SALLY) := NP
+        : SALLY
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (HARRY) := NP
+        : HARRY
+A     (SEES)(HARRY) := S\NP
+        : ((LAM X (LAM Y ((SEE X) Y))) HARRY)
+T     (SALLY)(SEES HARRY) := S
+        : (((LAM X (LAM Y ((SEE X) Y))) HARRY) SALLY)
+
+Final LF, normal-order evaluated: 
+
+    ((SEE HARRY) SALLY) =
+    (SEE HARRY SALLY)
+
+Derivation 2
+--------------
+LEX   (SALLY) := NP
+        : SALLY
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (HARRY) := (S\NP)\((S\NP)/NP)
+        : (LAM P (P HARRY))
+T     (SEES)(HARRY) := S\NP
+        : ((LAM P (P HARRY)) (LAM X (LAM Y ((SEE X) Y))))
+T     (SALLY)(SEES HARRY) := S
+        : (((LAM P (P HARRY)) (LAM X (LAM Y ((SEE X) Y)))) SALLY)
+
+Final LF, normal-order evaluated: 
+
+    ((SEE HARRY) SALLY) =
+    (SEE HARRY SALLY)
+
+Derivation 3
+--------------
+LEX   (SALLY) := S/(S\NP)
+        : (LAM P (P SALLY))
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (HARRY) := NP
+        : HARRY
+A     (SEES)(HARRY) := S\NP
+        : ((LAM X (LAM Y ((SEE X) Y))) HARRY)
+A     (SALLY)(SEES HARRY) := S
+        : ((LAM P (P SALLY)) ((LAM X (LAM Y ((SEE X) Y))) HARRY))
+
+Final LF, normal-order evaluated: 
+
+    ((SEE HARRY) SALLY) =
+    (SEE HARRY SALLY)
+
+Derivation 4
+--------------
+LEX   (SALLY) := S/(S\NP)
+        : (LAM P (P SALLY))
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (HARRY) := (S\NP)\((S\NP)/NP)
+        : (LAM P (P HARRY))
+T     (SEES)(HARRY) := S\NP
+        : ((LAM P (P HARRY)) (LAM X (LAM Y ((SEE X) Y))))
+A     (SALLY)(SEES HARRY) := S
+        : ((LAM P (P SALLY)) ((LAM P (P HARRY)) (LAM X (LAM Y ((SEE X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    ((SEE HARRY) SALLY) =
+    (SEE HARRY SALLY)
+Number of analyses: 1
+
+=======
+14
+========
+
+
+Derivation 1
+--------------
+LEX   (BALB) := N
+        : BALB
+LEX   (US) := (S/(S\NP))\*N
+        : (LAM X (LAM P (P X)))
+T     (BALB)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) BALB)
+LEX   (MUR) := N
+        : WALL
+LEX   (UM) := ((S\NP)/((S\NP)\NP))\N
+        : (LAM X (LAM P (P X)))
+T     (MUR)(UM) := (S\NP)/((S\NP)\NP)
+        : ((LAM X (LAM P (P X))) WALL)
+LEX   (AEDIFICAT) := (S\NP)\NP
+        : (LAM X (LAM Y ((BUILD X) Y)))
+A     (MUR UM)(AEDIFICAT) := S\NP
+        : (((LAM X (LAM P (P X))) WALL) (LAM X (LAM Y ((BUILD X) Y))))
+A     (BALB US)(MUR UM AEDIFICAT) := S
+        : (((LAM X (LAM P (P X))) BALB)
+           (((LAM X (LAM P (P X))) WALL) (LAM X (LAM Y ((BUILD X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    ((BUILD WALL) BALB) =
+    (BUILD WALL BALB)
+Number of analyses: 4
+
+=======
+15
+========
+
+
+Derivation 1
+--------------
+LEX   (SALLY) := NP
+        : SALLY
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (HARRY) := NP
+        : HARRY
+A     (SEES)(HARRY) := S\NP
+        : ((LAM X (LAM Y ((SEE X) Y))) HARRY)
+T     (SALLY)(SEES HARRY) := S
+        : (((LAM X (LAM Y ((SEE X) Y))) HARRY) SALLY)
+
+Final LF, normal-order evaluated: 
+
+    ((SEE HARRY) SALLY) =
+    (SEE HARRY SALLY)
+
+Derivation 2
+--------------
+LEX   (SALLY) := NP
+        : SALLY
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (HARRY) := (S\NP)\((S\NP)/NP)
+        : (LAM P (P HARRY))
+T     (SEES)(HARRY) := S\NP
+        : ((LAM P (P HARRY)) (LAM X (LAM Y ((SEE X) Y))))
+T     (SALLY)(SEES HARRY) := S
+        : (((LAM P (P HARRY)) (LAM X (LAM Y ((SEE X) Y)))) SALLY)
+
+Final LF, normal-order evaluated: 
+
+    ((SEE HARRY) SALLY) =
+    (SEE HARRY SALLY)
+
+Derivation 3
+--------------
+LEX   (SALLY) := S/(S\NP)
+        : (LAM P (P SALLY))
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (HARRY) := NP
+        : HARRY
+A     (SEES)(HARRY) := S\NP
+        : ((LAM X (LAM Y ((SEE X) Y))) HARRY)
+A     (SALLY)(SEES HARRY) := S
+        : ((LAM P (P SALLY)) ((LAM X (LAM Y ((SEE X) Y))) HARRY))
+
+Final LF, normal-order evaluated: 
+
+    ((SEE HARRY) SALLY) =
+    (SEE HARRY SALLY)
+
+Derivation 4
+--------------
+LEX   (SALLY) := S/(S\NP)
+        : (LAM P (P SALLY))
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (HARRY) := (S\NP)\((S\NP)/NP)
+        : (LAM P (P HARRY))
+T     (SEES)(HARRY) := S\NP
+        : ((LAM P (P HARRY)) (LAM X (LAM Y ((SEE X) Y))))
+A     (SALLY)(SEES HARRY) := S
+        : ((LAM P (P SALLY)) ((LAM P (P HARRY)) (LAM X (LAM Y ((SEE X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    ((SEE HARRY) SALLY) =
+    (SEE HARRY SALLY)No lex entry for the saturday dance! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+16
+========
+
+Number of analyses: 1
+
+=======
+|20A|
+========
+
+
+Derivation 1
+--------------
+LEX   (SEE) := VP/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+LEX   (EN) := VP\(VP/NP)
+        : (LAM P (LAM Y ((P Y) (SOMETHING Y))))
+T     (SEE)(EN) := VP
+        : ((LAM P (LAM Y ((P Y) (SOMETHING Y)))) (LAM X (LAM Y ((SEE X) Y))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM Y ((SEE Y) (SOMETHING Y))) =
+    (\ Y . SEE Y (SOMETHING Y))
+Number of analyses: 1
+
+=======
+|20B|
+========
+
+
+Derivation 1
+--------------
+LEX   (PERSUADE) := (VP/VP)/NP
+        : (LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y))))
+LEX   (EN) := (VP/VP)\((VP/VP)/NP)
+        : (LAM P (LAM Q (LAM Y (((P Y) Q) (SOMETHING Y)))))
+T     (PERSUADE)(EN) := VP/VP
+        : ((LAM P (LAM Q (LAM Y (((P Y) Q) (SOMETHING Y)))))
+           (LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM Q (LAM Y (((PERSUADE (Q Y)) Y) (SOMETHING Y)))) =
+    (\ Q . \ Y . PERSUADE (Q Y) Y (SOMETHING Y))No lex entry for -NA-YGU! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+21
+========
+
+Number of analyses: 2
+
+=======
+26
+========
+
+
+Derivation 1
+--------------
+LEX   (TOM) := S/(S\NP)
+        : (LAM P (P TOM))
+LEX   (PERSUADES) := ((S\NP)/VP)/NP
+        : (LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y))))
+LEX   (HARRY) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+        : (LAM P (P HARRY))
+T     (PERSUADES)(HARRY) := (S\NP)/VP
+        : ((LAM P (P HARRY)) (LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y)))))
+LEX   (TO) := VP/VP
+        : (LAM P P)
+LEX   (GO) := VP
+        : (LAM Y (GO Y))
+A     (TO)(GO) := VP
+        : ((LAM P P) (LAM Y (GO Y)))
+A     (PERSUADES HARRY)(TO GO) := S\NP
+        : (((LAM P (P HARRY)) (LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y)))))
+           ((LAM P P) (LAM Y (GO Y))))
+A     (TOM)(PERSUADES HARRY TO GO) := S
+        : ((LAM P (P TOM))
+           (((LAM P (P HARRY))
+             (LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y)))))
+            ((LAM P P) (LAM Y (GO Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (((PERSUADE (GO HARRY)) HARRY) TOM) =
+    (PERSUADE (GO HARRY) HARRY TOM)
+
+Derivation 2
+--------------
+LEX   (TOM) := S/(S\NP)
+        : (LAM P (P TOM))
+LEX   (PERSUADES) := ((S\NP)/VP)/NP
+        : (LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y))))
+LEX   (HARRY) := NP
+        : HARRY
+A     (PERSUADES)(HARRY) := (S\NP)/VP
+        : ((LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y)))) HARRY)
+LEX   (TO) := VP/VP
+        : (LAM P P)
+LEX   (GO) := VP
+        : (LAM Y (GO Y))
+A     (TO)(GO) := VP
+        : ((LAM P P) (LAM Y (GO Y)))
+A     (PERSUADES HARRY)(TO GO) := S\NP
+        : (((LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y)))) HARRY)
+           ((LAM P P) (LAM Y (GO Y))))
+A     (TOM)(PERSUADES HARRY TO GO) := S
+        : ((LAM P (P TOM))
+           (((LAM X (LAM Q (LAM Y (((PERSUADE (Q X)) X) Y)))) HARRY)
+            ((LAM P P) (LAM Y (GO Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (((PERSUADE (GO HARRY)) HARRY) TOM) =
+    (PERSUADE (GO HARRY) HARRY TOM)No lex entry for bayi yara! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|34A|
+========
+No lex entry for bayi yara! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|34B|
+========
+No lex entry for bayi yara! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|34C|
+========
+No lex entry for NUMA-NGU! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|34D|
+========
+No lex entry for bayi yara! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|34E|
+========
+No lex entry for to be! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+43
+========
+No lex entry for to be! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+50
+========
+No lex entry for to be! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+51
+========
+
+Number of analyses: 1
+
+=======
+52
+========
+
+
+Derivation 1
+--------------
+LEX   (MAN) := N
+        : MAN
+LEX   (THAT) := (N\N)/(S/NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (SALLY) := S/(S\NP)
+        : (LAM P (P SALLY))
+LEX   (SEES) := (S\NP)/NP
+        : (LAM X (LAM Y ((SEE X) Y)))
+>B    (SALLY)(SEES) := S/NP
+        : (LAM X ((LAM P (P SALLY)) ((LAM X (LAM Y ((SEE X) Y))) X)))
+A     (THAT)(SALLY SEES) := N\N
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X ((LAM P (P SALLY)) ((LAM X (LAM Y ((SEE X) Y))) X))))
+T     (MAN)(THAT SALLY SEES) := N
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X ((LAM P (P SALLY)) ((LAM X (LAM Y ((SEE X) Y))) X))))
+           MAN)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((SEE X) SALLY)) (MAN X))) =
+    (\ X . AND (SEE X SALLY) (MAN X))
+Number of analyses: 2
+
+=======
+53
+========
+
+
+Derivation 1
+--------------
+LEX   (MUR) := N
+        : WALL
+LEX   (US) := (S/(S\NP))\*N
+        : (LAM X (LAM P (P X)))
+T     (MUR)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) WALL)
+LEX   (QUEM) := ((S/(S\NP))\(S/(S\NP)))/(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) ((Q (LAM X X)) X)))))
+LEX   (BALB) := N
+        : BALB
+LEX   (US) := (S/(S\NP))\*N
+        : (LAM X (LAM P (P X)))
+T     (BALB)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) BALB)
+LEX   (AEDIFICARE) := (S\NP)\NP
+        : (LAM X (LAM Y ((BUILD X) Y)))
+LEX   (VULT) := (S\NP)\(S\NP)
+        : (LAM P (LAM X ((WANT (P X)) X)))
+<B    (AEDIFICARE)(VULT) := (S\NP)\NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X))) ((LAM X (LAM Y ((BUILD X) Y))) X)))
+>Bx   (BALB US)(AEDIFICARE VULT) := S\NP
+        : (LAM X
+           (((LAM X (LAM P (P X))) BALB)
+            ((LAM X
+              ((LAM P (LAM X ((WANT (P X)) X)))
+               ((LAM X (LAM Y ((BUILD X) Y))) X)))
+             X)))
+A     (QUEM)(BALB US AEDIFICARE VULT) := (S/(S\NP))\(S/(S\NP))
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) ((Q (LAM X X)) X)))))
+           (LAM X
+            (((LAM X (LAM P (P X))) BALB)
+             ((LAM X
+               ((LAM P (LAM X ((WANT (P X)) X)))
+                ((LAM X (LAM Y ((BUILD X) Y))) X)))
+              X))))
+T     (MUR US)(QUEM BALB US AEDIFICARE VULT) := S/(S\NP)
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) ((Q (LAM X X)) X)))))
+            (LAM X
+             (((LAM X (LAM P (P X))) BALB)
+              ((LAM X
+                ((LAM P (LAM X ((WANT (P X)) X)))
+                 ((LAM X (LAM Y ((BUILD X) Y))) X)))
+               X))))
+           ((LAM X (LAM P (P X))) WALL))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((WANT ((BUILD X) BALB)) BALB)) (WALL X))) =
+    (\ X . AND (WANT (BUILD X BALB) BALB) (WALL X))
+
+Derivation 2
+--------------
+LEX   (MUR) := N
+        : WALL
+LEX   (US) := (S/(S\NP))\*N
+        : (LAM X (LAM P (P X)))
+T     (MUR)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) WALL)
+LEX   (QUEM) := ((S/(S\NP))\(S/(S\NP)))/(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) ((Q (LAM X X)) X)))))
+LEX   (BALB) := N
+        : BALB
+LEX   (US) := (S/(S\NP))\*N
+        : (LAM X (LAM P (P X)))
+T     (BALB)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) BALB)
+LEX   (AEDIFICARE) := (S\NP)\NP
+        : (LAM X (LAM Y ((BUILD X) Y)))
+>Bx   (BALB US)(AEDIFICARE) := S\NP
+        : (LAM X
+           (((LAM X (LAM P (P X))) BALB) ((LAM X (LAM Y ((BUILD X) Y))) X)))
+A     (QUEM)(BALB US AEDIFICARE) := (S/(S\NP))\(S/(S\NP))
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) ((Q (LAM X X)) X)))))
+           (LAM X
+            (((LAM X (LAM P (P X))) BALB) ((LAM X (LAM Y ((BUILD X) Y))) X))))
+T     (MUR US)(QUEM BALB US AEDIFICARE) := S/(S\NP)
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) ((Q (LAM X X)) X)))))
+            (LAM X
+             (((LAM X (LAM P (P X))) BALB) ((LAM X (LAM Y ((BUILD X) Y))) X))))
+           ((LAM X (LAM P (P X))) WALL))
+LEX   (VULT) := (S\NP)\(S\NP)
+        : (LAM P (LAM X ((WANT (P X)) X)))
+>Bx   (MUR US QUEM BALB US AEDIFICARE)(VULT) := S\(S\NP)
+        : (LAM X
+           ((((LAM P (LAM Q (LAM X ((AND (P X)) ((Q (LAM X X)) X)))))
+              (LAM X
+               (((LAM X (LAM P (P X))) BALB)
+                ((LAM X (LAM Y ((BUILD X) Y))) X))))
+             ((LAM X (LAM P (P X))) WALL))
+            ((LAM P (LAM X ((WANT (P X)) X))) X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X
+     ((AND ((BUILD (LAM G348 ((WANT (X G348)) G348))) BALB))
+      (WALL (LAM G348 ((WANT (X G348)) G348))))) =
+    (\ X . AND (BUILD (\ G355 . WANT (X G355) G355) BALB)
+     (WALL (\ G355 . WANT (X G355) G355)))
+Number of analyses: 1
+
+=======
+54
+========
+
+
+Derivation 1
+--------------
+LEX   (WALL) := N
+        : (LAM X (WALL X))
+LEX   (THAT) := (N\N)/(S/NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (BALBUS) := S/(S\NP)
+        : (LAM P (P BALB))
+LEX   (WANTS) := (S\NP)/VP
+        : (LAM P (LAM Y ((WANT (P Y)) Y)))
+LEX   (TO) := VP/VP
+        : (LAM P P)
+LEX   (BUILD) := VP/NP
+        : (LAM X (LAM Y ((BUILD X) Y)))
+>B    (TO)(BUILD) := VP/NP
+        : (LAM X ((LAM P P) ((LAM X (LAM Y ((BUILD X) Y))) X)))
+>B    (WANTS)(TO BUILD) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y ((WANT (P Y)) Y)))
+            ((LAM X ((LAM P P) ((LAM X (LAM Y ((BUILD X) Y))) X))) X)))
+>B    (BALBUS)(WANTS TO BUILD) := S/NP
+        : (LAM X
+           ((LAM P (P BALB))
+            ((LAM X
+              ((LAM P (LAM Y ((WANT (P Y)) Y)))
+               ((LAM X ((LAM P P) ((LAM X (LAM Y ((BUILD X) Y))) X))) X)))
+             X)))
+A     (THAT)(BALBUS WANTS TO BUILD) := N\N
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X
+            ((LAM P (P BALB))
+             ((LAM X
+               ((LAM P (LAM Y ((WANT (P Y)) Y)))
+                ((LAM X ((LAM P P) ((LAM X (LAM Y ((BUILD X) Y))) X))) X)))
+              X))))
+T     (WALL)(THAT BALBUS WANTS TO BUILD) := N
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X
+             ((LAM P (P BALB))
+              ((LAM X
+                ((LAM P (LAM Y ((WANT (P Y)) Y)))
+                 ((LAM X ((LAM P P) ((LAM X (LAM Y ((BUILD X) Y))) X))) X)))
+               X))))
+           (LAM X (WALL X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((WANT ((BUILD X) BALB)) BALB)) (WALL X))) =
+    (\ X . AND (WANT (BUILD X BALB) BALB) (WALL X))
+Number of analyses: 1
+
+=======
+56
+========
+
+
+Derivation 1
+--------------
+LEX   (MUR) := N
+        : WALL
+LEX   (UM) := (S/(S\NP))\N
+        : (LAM X (LAM P (P X)))
+T     (MUR)(UM) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) WALL)
+LEX   (BALB) := N
+        : BALB
+LEX   (US) := (S/(S\NP))\*N
+        : (LAM X (LAM P (P X)))
+T     (BALB)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) BALB)
+LEX   (AEDIFICAT) := (S\NP)\NP
+        : (LAM X (LAM Y ((BUILD X) Y)))
+>Bx   (BALB US)(AEDIFICAT) := S\NP
+        : (LAM X
+           (((LAM X (LAM P (P X))) BALB) ((LAM X (LAM Y ((BUILD X) Y))) X)))
+A     (MUR UM)(BALB US AEDIFICAT) := S
+        : (((LAM X (LAM P (P X))) WALL)
+           (LAM X
+            (((LAM X (LAM P (P X))) BALB) ((LAM X (LAM Y ((BUILD X) Y))) X))))
+
+Final LF, normal-order evaluated: 
+
+    ((BUILD WALL) BALB) =
+    (BUILD WALL BALB)
+Number of analyses: 2
+
+=======
+|59A|
+========
+
+
+Derivation 1
+--------------
+LEX   (DYNES) := N
+        : WOMAN
+LEX   (WELODD) := (N\N)/NP
+        : (LAM Y (LAM Q (LAM X ((AND ((SAW X) Y)) (Q X)))))
+LEX   (GATH) := (N\N)\((N\N)/NP)
+        : (LAM P (P CAT))
+T     (WELODD)(GATH) := N\N
+        : ((LAM P (P CAT)) (LAM Y (LAM Q (LAM X ((AND ((SAW X) Y)) (Q X))))))
+T     (DYNES)(WELODD GATH) := N
+        : (((LAM P (P CAT)) (LAM Y (LAM Q (LAM X ((AND ((SAW X) Y)) (Q X))))))
+           WOMAN)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((SAW X) CAT)) (WOMAN X))) =
+    (\ X . AND (SAW X CAT) (WOMAN X))
+
+Derivation 2
+--------------
+LEX   (DYNES) := N
+        : WOMAN
+LEX   (WELODD) := (N\N)/NP
+        : (LAM X (LAM Q (LAM Y ((AND ((SAW X) Y)) (Q Y)))))
+LEX   (GATH) := (N\N)\((N\N)/NP)
+        : (LAM P (P CAT))
+T     (WELODD)(GATH) := N\N
+        : ((LAM P (P CAT)) (LAM X (LAM Q (LAM Y ((AND ((SAW X) Y)) (Q Y))))))
+T     (DYNES)(WELODD GATH) := N
+        : (((LAM P (P CAT)) (LAM X (LAM Q (LAM Y ((AND ((SAW X) Y)) (Q Y))))))
+           WOMAN)
+
+Final LF, normal-order evaluated: 
+
+    (LAM Y ((AND ((SAW CAT) Y)) (WOMAN Y))) =
+    (\ Y . AND (SAW CAT Y) (WOMAN Y))
+Number of analyses: 2
+
+=======
+|59B|
+========
+
+
+Derivation 1
+--------------
+LEX   (DDYNES) := N
+        : WOMAN
+LEX   (WELODD) := (N\N)/NP
+        : (LAM Y (LAM Q (LAM X ((AND ((SAW X) Y)) (Q X)))))
+LEX   (CATH) := (N\N)\((N\N)/NP)
+        : (LAM P (P CAT))
+T     (WELODD)(CATH) := N\N
+        : ((LAM P (P CAT)) (LAM Y (LAM Q (LAM X ((AND ((SAW X) Y)) (Q X))))))
+T     (DDYNES)(WELODD CATH) := N
+        : (((LAM P (P CAT)) (LAM Y (LAM Q (LAM X ((AND ((SAW X) Y)) (Q X))))))
+           WOMAN)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((SAW X) CAT)) (WOMAN X))) =
+    (\ X . AND (SAW X CAT) (WOMAN X))
+
+Derivation 2
+--------------
+LEX   (DDYNES) := N
+        : WOMAN
+LEX   (WELODD) := (N\N)/NP
+        : (LAM X (LAM Q (LAM Y ((AND ((SAW X) Y)) (Q Y)))))
+LEX   (CATH) := (N\N)\((N\N)/NP)
+        : (LAM P (P CAT))
+T     (WELODD)(CATH) := N\N
+        : ((LAM P (P CAT)) (LAM X (LAM Q (LAM Y ((AND ((SAW X) Y)) (Q Y))))))
+T     (DDYNES)(WELODD CATH) := N
+        : (((LAM P (P CAT)) (LAM X (LAM Q (LAM Y ((AND ((SAW X) Y)) (Q Y))))))
+           WOMAN)
+
+Final LF, normal-order evaluated: 
+
+    (LAM Y ((AND ((SAW CAT) Y)) (WOMAN Y))) =
+    (\ Y . AND (SAW CAT Y) (WOMAN Y))No lex entry for y ceffyl! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+60
+========
+No lex entry for bayi yara! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|63A|
+========
+No lex entry for balan yibi! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|63B|
+========
+No lex entry for bayi yara! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|63C|
+========
+
+Number of analyses: 1
+
+=======
+65
+========
+
+
+Derivation 1
+--------------
+LEX   (MAN) := N
+        : MAN
+LEX   (THAT) := (N\N)/(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (WALKS) := S\NP
+        : (LAM X (WALK X))
+LEX   (AND) := (@X\*@X)/*@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (TALKS) := S\NP
+        : (LAM X (TALK X))
+>     (AND)(TALKS) := (S\NP)\*(S\NP)
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) (LAM X (TALK X)))
+T     (WALKS)(AND TALKS) := S\NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) (LAM X (TALK X)))
+           (LAM X (WALK X)))
+A     (THAT)(WALKS AND TALKS) := N\N
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) (LAM X (TALK X)))
+            (LAM X (WALK X))))
+T     (MAN)(THAT WALKS AND TALKS) := N
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) (LAM X (TALK X)))
+             (LAM X (WALK X))))
+           MAN)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((AND (TALK X)) (WALK X))) (MAN X))) =
+    (\ X . AND (AND (TALK X) (WALK X)) (MAN X))
+Number of analyses: 0
+
+=======
+66BAD
+========
+
+Number of analyses: 2
+
+=======
+FIG1A
+========
+
+
+Derivation 1
+--------------
+LEX   (THE) := (VP\(VP/NP))/N
+        : (LAM X (LAM P (P X)))
+LEX   (HOUSE) := N
+        : HOUSE
+LEX   (THAT) := (N\N)/(S/NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (JACK) := S/(S\NP)
+        : (LAM P (P JACK))
+LEX   (BUILT) := (S\NP)/NP
+        : (LAM X (LAM Y ((BUILT X) Y)))
+>B    (JACK)(BUILT) := S/NP
+        : (LAM X ((LAM P (P JACK)) ((LAM X (LAM Y ((BUILT X) Y))) X)))
+A     (THAT)(JACK BUILT) := N\N
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X ((LAM P (P JACK)) ((LAM X (LAM Y ((BUILT X) Y))) X))))
+T     (HOUSE)(THAT JACK BUILT) := N
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X ((LAM P (P JACK)) ((LAM X (LAM Y ((BUILT X) Y))) X))))
+           HOUSE)
+A     (THE)(HOUSE THAT JACK BUILT) := VP\(VP/NP)
+        : ((LAM X (LAM P (P X)))
+           (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             (LAM X ((LAM P (P JACK)) ((LAM X (LAM Y ((BUILT X) Y))) X))))
+            HOUSE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((AND ((BUILT X) JACK)) (HOUSE X))))) =
+    (\ P . P (\ X . AND (BUILT X JACK) (HOUSE X)))
+
+Derivation 2
+--------------
+LEX   (THE) := (S/(S\NP))/N
+        : (LAM X (LAM P (P X)))
+LEX   (HOUSE) := N
+        : HOUSE
+LEX   (THAT) := (N\N)/(S/NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (JACK) := S/(S\NP)
+        : (LAM P (P JACK))
+LEX   (BUILT) := (S\NP)/NP
+        : (LAM X (LAM Y ((BUILT X) Y)))
+>B    (JACK)(BUILT) := S/NP
+        : (LAM X ((LAM P (P JACK)) ((LAM X (LAM Y ((BUILT X) Y))) X)))
+A     (THAT)(JACK BUILT) := N\N
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X ((LAM P (P JACK)) ((LAM X (LAM Y ((BUILT X) Y))) X))))
+T     (HOUSE)(THAT JACK BUILT) := N
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X ((LAM P (P JACK)) ((LAM X (LAM Y ((BUILT X) Y))) X))))
+           HOUSE)
+A     (THE)(HOUSE THAT JACK BUILT) := S/(S\NP)
+        : ((LAM X (LAM P (P X)))
+           (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             (LAM X ((LAM P (P JACK)) ((LAM X (LAM Y ((BUILT X) Y))) X))))
+            HOUSE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((AND ((BUILT X) JACK)) (HOUSE X))))) =
+    (\ P . P (\ X . AND (BUILT X JACK) (HOUSE X)))No lex entry for the house that jack built! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+FIG1B
+========
+
+Number of analyses: 1
+
+=======
+FIG1C
+========
+
+
+Derivation 1
+--------------
+LEX   (GIVE) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE Y) X) Z))))
+LEX   (MARY) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+        : (LAM P (P MARY))
+LEX   (RECORDS) := (S\NP)\((S\NP)/NP)
+        : (LAM P (P RECORDS))
+<B    (MARY)(RECORDS) := (S\NP)\(((S\NP)/NP)/NP)
+        : (LAM X ((LAM P (P RECORDS)) ((LAM P (P MARY)) X)))
+LEX   (AND) := (@X\*@X)/*@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (ALICE) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+        : (LAM P (P ALICE))
+LEX   (BOOKS) := (S\NP)\((S\NP)/NP)
+        : (LAM P (P BOOKS))
+<B    (ALICE)(BOOKS) := (S\NP)\(((S\NP)/NP)/NP)
+        : (LAM X ((LAM P (P BOOKS)) ((LAM P (P ALICE)) X)))
+>     (AND)(ALICE BOOKS) := ((S\NP)\(((S\NP)/NP)/NP))\*((S\NP)\(((S\NP)/NP)/NP))
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X ((LAM P (P BOOKS)) ((LAM P (P ALICE)) X))))
+T     (MARY RECORDS)(AND ALICE BOOKS) := (S\NP)\(((S\NP)/NP)/NP)
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X ((LAM P (P BOOKS)) ((LAM P (P ALICE)) X))))
+           (LAM X ((LAM P (P RECORDS)) ((LAM P (P MARY)) X))))
+T     (GIVE)(MARY RECORDS AND ALICE BOOKS) := S\NP
+        : ((((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             (LAM X ((LAM P (P BOOKS)) ((LAM P (P ALICE)) X))))
+            (LAM X ((LAM P (P RECORDS)) ((LAM P (P MARY)) X))))
+           (LAM X (LAM Y (LAM Z (((GIVE Y) X) Z)))))
+
+Final LF, normal-order evaluated: 
+
+    ((AND (LAM Z (((GIVE BOOKS) ALICE) Z))) (LAM Z (((GIVE RECORDS) MARY) Z))) =
+    (AND (\ Z . GIVE BOOKS ALICE Z) (\ Z . GIVE RECORDS MARY Z))
+Number of analyses: 1
+
+=======
+FIG1D
+========
+
+
+Derivation 1
+--------------
+LEX   (BALB) := N
+        : BALB
+LEX   (US) := (S/(S\NP))\*N
+        : (LAM X (LAM P (P X)))
+T     (BALB)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) BALB)
+LEX   (MUR) := N
+        : WALL
+LEX   (UM) := ((S\NP)/((S\NP)\NP))\N
+        : (LAM X (LAM P (P X)))
+T     (MUR)(UM) := (S\NP)/((S\NP)\NP)
+        : ((LAM X (LAM P (P X))) WALL)
+>B    (BALB US)(MUR UM) := S/((S\NP)\NP)
+        : (LAM X
+           (((LAM X (LAM P (P X))) BALB) (((LAM X (LAM P (P X))) WALL) X)))
+LEX   (ET) := (@X\*@X)/*@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (MARC) := N
+        : MARK
+LEX   (US) := (S/(S\NP))\*N
+        : (LAM X (LAM P (P X)))
+T     (MARC)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) MARK)
+LEX   (VILLA) := N
+        : HOUSE
+LEX   (M) := ((S\NP)/((S\NP)\NP))\N
+        : (LAM X (LAM P (P X)))
+T     (VILLA)(M) := (S\NP)/((S\NP)\NP)
+        : ((LAM X (LAM P (P X))) HOUSE)
+>B    (MARC US)(VILLA M) := S/((S\NP)\NP)
+        : (LAM X
+           (((LAM X (LAM P (P X))) MARK) (((LAM X (LAM P (P X))) HOUSE) X)))
+>     (ET)(MARC US VILLA M) := (S/((S\NP)\NP))\*(S/((S\NP)\NP))
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X
+            (((LAM X (LAM P (P X))) MARK) (((LAM X (LAM P (P X))) HOUSE) X))))
+T     (BALB US MUR UM)(ET MARC US VILLA M) := S/((S\NP)\NP)
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X
+             (((LAM X (LAM P (P X))) MARK) (((LAM X (LAM P (P X))) HOUSE) X))))
+           (LAM X
+            (((LAM X (LAM P (P X))) BALB) (((LAM X (LAM P (P X))) WALL) X))))
+LEX   (AEDIFICARE) := (S\NP)\NP
+        : (LAM X (LAM Y ((BUILD X) Y)))
+LEX   (VULT) := (S\NP)\(S\NP)
+        : (LAM P (LAM X ((WANT (P X)) X)))
+<B    (AEDIFICARE)(VULT) := (S\NP)\NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X))) ((LAM X (LAM Y ((BUILD X) Y))) X)))
+A     (BALB US MUR UM ET MARC US VILLA M)(AEDIFICARE VULT) := S
+        : ((((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             (LAM X
+              (((LAM X (LAM P (P X))) MARK)
+               (((LAM X (LAM P (P X))) HOUSE) X))))
+            (LAM X
+             (((LAM X (LAM P (P X))) BALB) (((LAM X (LAM P (P X))) WALL) X))))
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM X (LAM Y ((BUILD X) Y))) X))))
+
+Final LF, normal-order evaluated: 
+
+    ((AND ((WANT ((BUILD HOUSE) MARK)) MARK)) ((WANT ((BUILD WALL) BALB)) BALB)) =
+    (AND (WANT (BUILD HOUSE MARK) MARK) (WANT (BUILD WALL BALB) BALB))
+Number of analyses: 0
+
+=======
+FN40A
+========
+
+Number of analyses: 0
+
+=======
+FN40BBAD
+========
+No lex entry for bayi yara! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+72
+========
+No lex entry for A-TUUK! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|94A|
+========
+No lex entry for A-PUOT! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|94B|
+========
+No lex entry for A-YAAN-E! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|94C|
+========
+
+Number of analyses: 1
+
+=======
+|3S|
+========
+
+
+Derivation 1
+--------------
+LEX   (HARRY) := NP
+        : HARRY
+LEX   (SAW) := (S\NP)/NP
+        : (LAM A (LAM Y ((SAW (A Y)) Y)))
+LEX   (HIMSELF) := (S\NP)\((S\NP)/NP)
+        : (LAM P (P SELF))
+T     (SAW)(HIMSELF) := S\NP
+        : ((LAM P (P SELF)) (LAM A (LAM Y ((SAW (A Y)) Y))))
+T     (HARRY)(SAW HIMSELF) := S
+        : (((LAM P (P SELF)) (LAM A (LAM Y ((SAW (A Y)) Y)))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    ((SAW (SELF HARRY)) HARRY) =
+    (SAW (SELF HARRY) HARRY)
+Number of analyses: 2
+
+=======
+|23S|
+========
+
+
+Derivation 1
+--------------
+LEX   (MAE) := (S/VP)/NP
+        : (LAM Y (LAM P (PRES (P Y))))
+LEX   (RHIANNON) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P RHIANNON))
+T     (MAE)(RHIANNON) := S/VP
+        : ((LAM P (P RHIANNON)) (LAM Y (LAM P (PRES (P Y)))))
+LEX   (YN) := VP/VP
+        : (LAM P P)
+LEX   (CYSGU) := VP
+        : (LAM Y (SLEEP Y))
+A     (YN)(CYSGU) := VP
+        : ((LAM P P) (LAM Y (SLEEP Y)))
+A     (MAE RHIANNON)(YN CYSGU) := S
+        : (((LAM P (P RHIANNON)) (LAM Y (LAM P (PRES (P Y)))))
+           ((LAM P P) (LAM Y (SLEEP Y))))
+
+Final LF, normal-order evaluated: 
+
+    (PRES (SLEEP RHIANNON)) =
+    (PRES (SLEEP RHIANNON))
+
+Derivation 2
+--------------
+LEX   (MAE) := (S/VP)/NP
+        : (LAM Y (LAM P (PRES (P Y))))
+LEX   (RHIANNON) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P RHIANNON))
+T     (MAE)(RHIANNON) := S/VP
+        : ((LAM P (P RHIANNON)) (LAM Y (LAM P (PRES (P Y)))))
+LEX   (YN) := VP/VP
+        : (LAM P (LAM Y (PROG (P Y))))
+LEX   (CYSGU) := VP
+        : (LAM Y (SLEEP Y))
+A     (YN)(CYSGU) := VP
+        : ((LAM P (LAM Y (PROG (P Y)))) (LAM Y (SLEEP Y)))
+A     (MAE RHIANNON)(YN CYSGU) := S
+        : (((LAM P (P RHIANNON)) (LAM Y (LAM P (PRES (P Y)))))
+           ((LAM P (LAM Y (PROG (P Y)))) (LAM Y (SLEEP Y))))
+
+Final LF, normal-order evaluated: 
+
+    (PRES (PROG (SLEEP RHIANNON))) =
+    (PRES (PROG (SLEEP RHIANNON)))No lex entry for ei hun! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|26S|
+========
+
+Number of analyses: 2
+
+=======
+FIG1AS
+========
+
+
+Derivation 1
+--------------
+LEX   (MAEN) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+LEX   (NHW) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P THEM))
+T     (MAEN)(NHW) := S/VP
+        : ((LAM P (P THEM)) (LAM Y (LAM P (P Y))))
+LEX   (N) := VP/VP
+        : (LAM P P)
+LEX   (PERSWADIO) := (VP/VP)/NP
+        : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
+LEX   (GRWPIAU) := (VP/VP)\((VP/VP)/NP)
+        : (LAM P (P GROUPS))
+T     (PERSWADIO)(GRWPIAU) := VP/VP
+        : ((LAM P (P GROUPS)) (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+LEX   (I) := VP/VP
+        : (LAM P P)
+LEX   (FYND) := VP/PP
+        : (LAM X (LAM Y ((GOTO X) Y)))
+LEX   (ADREF) := VP\(VP/PP)
+        : (LAM P (P HOME))
+T     (FYND)(ADREF) := VP
+        : ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y))))
+A     (I)(FYND ADREF) := VP
+        : ((LAM P P) ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y)))))
+A     (PERSWADIO GRWPIAU)(I FYND ADREF) := VP
+        : (((LAM P (P GROUPS))
+            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+           ((LAM P P) ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y))))))
+A     (N)(PERSWADIO GRWPIAU I FYND ADREF) := VP
+        : ((LAM P P)
+           (((LAM P (P GROUPS))
+             (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+            ((LAM P P) ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y)))))))
+A     (MAEN NHW)(N PERSWADIO GRWPIAU I FYND ADREF) := S
+        : (((LAM P (P THEM)) (LAM Y (LAM P (P Y))))
+           ((LAM P P)
+            (((LAM P (P GROUPS))
+              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+             ((LAM P P) ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y))))))))
+
+Final LF, normal-order evaluated: 
+
+    (((PERSUADE ((GOTO HOME) GROUPS)) GROUPS) THEM) =
+    (PERSUADE (GOTO HOME GROUPS) GROUPS THEM)
+
+Derivation 2
+--------------
+LEX   (MAEN) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+LEX   (NHW) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P THEM))
+T     (MAEN)(NHW) := S/VP
+        : ((LAM P (P THEM)) (LAM Y (LAM P (P Y))))
+LEX   (N) := VP/VP
+        : (LAM P P)
+LEX   (PERSWADIO) := (VP/VP)/NP
+        : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
+LEX   (GRWPIAU) := (VP/VP)\((VP/VP)/NP)
+        : (LAM P (P GROUPS))
+T     (PERSWADIO)(GRWPIAU) := VP/VP
+        : ((LAM P (P GROUPS)) (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+LEX   (I) := VP/VP
+        : (LAM P P)
+LEX   (FYND) := VP/PP
+        : (LAM X (LAM Y ((GOTO X) Y)))
+>B    (I)(FYND) := VP/PP
+        : (LAM X ((LAM P P) ((LAM X (LAM Y ((GOTO X) Y))) X)))
+>B    (PERSWADIO GRWPIAU)(I FYND) := VP/PP
+        : (LAM X
+           (((LAM P (P GROUPS))
+             (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+            ((LAM X ((LAM P P) ((LAM X (LAM Y ((GOTO X) Y))) X))) X)))
+LEX   (ADREF) := VP\(VP/PP)
+        : (LAM P (P HOME))
+T     (PERSWADIO GRWPIAU I FYND)(ADREF) := VP
+        : ((LAM P (P HOME))
+           (LAM X
+            (((LAM P (P GROUPS))
+              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+             ((LAM X ((LAM P P) ((LAM X (LAM Y ((GOTO X) Y))) X))) X))))
+A     (N)(PERSWADIO GRWPIAU I FYND ADREF) := VP
+        : ((LAM P P)
+           ((LAM P (P HOME))
+            (LAM X
+             (((LAM P (P GROUPS))
+               (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+              ((LAM X ((LAM P P) ((LAM X (LAM Y ((GOTO X) Y))) X))) X)))))
+A     (MAEN NHW)(N PERSWADIO GRWPIAU I FYND ADREF) := S
+        : (((LAM P (P THEM)) (LAM Y (LAM P (P Y))))
+           ((LAM P P)
+            ((LAM P (P HOME))
+             (LAM X
+              (((LAM P (P GROUPS))
+                (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
+               ((LAM X ((LAM P P) ((LAM X (LAM Y ((GOTO X) Y))) X))) X))))))
+
+Final LF, normal-order evaluated: 
+
+    (((PERSUADE ((GOTO HOME) GROUPS)) GROUPS) THEM) =
+    (PERSUADE (GOTO HOME GROUPS) GROUPS THEM)
+Number of analyses: 3
+
+=======
+FIG1BS
+========
+
+
+Derivation 1
+--------------
+LEX   (ROEDD) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+LEX   (GWYN) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P GWYN))
+T     (ROEDD)(GWYN) := S/VP
+        : ((LAM P (P GWYN)) (LAM Y (LAM P (P Y))))
+LEX   (YN) := VP/VP
+        : (LAM P P)
+LEX   (DYMUNO) := VP/S
+        : (LAM S (LAM Y ((WANT S) Y)))
+LEX   (I) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+LEX   (GRWPIAU) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P GROUPS))
+T     (I)(GRWPIAU) := S/VP
+        : ((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+LEX   (FYND) := VP/PP
+        : (LAM X (LAM Y ((GOTO X) Y)))
+LEX   (ADREF) := VP\(VP/PP)
+        : (LAM P (P HOME))
+T     (FYND)(ADREF) := VP
+        : ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y))))
+A     (I GRWPIAU)(FYND ADREF) := S
+        : (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+           ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y)))))
+A     (DYMUNO)(I GRWPIAU FYND ADREF) := VP
+        : ((LAM S (LAM Y ((WANT S) Y)))
+           (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+            ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y))))))
+A     (YN)(DYMUNO I GRWPIAU FYND ADREF) := VP
+        : ((LAM P P)
+           ((LAM S (LAM Y ((WANT S) Y)))
+            (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+             ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y)))))))
+A     (ROEDD GWYN)(YN DYMUNO I GRWPIAU FYND ADREF) := S
+        : (((LAM P (P GWYN)) (LAM Y (LAM P (P Y))))
+           ((LAM P P)
+            ((LAM S (LAM Y ((WANT S) Y)))
+             (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+              ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y))))))))
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((GOTO HOME) GROUPS)) GWYN) =
+    (WANT (GOTO HOME GROUPS) GWYN)
+
+Derivation 2
+--------------
+LEX   (ROEDD) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+LEX   (GWYN) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P GWYN))
+T     (ROEDD)(GWYN) := S/VP
+        : ((LAM P (P GWYN)) (LAM Y (LAM P (P Y))))
+LEX   (YN) := VP/VP
+        : (LAM P P)
+LEX   (DYMUNO) := VP/S
+        : (LAM S (LAM Y ((WANT S) Y)))
+LEX   (I) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+LEX   (GRWPIAU) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P GROUPS))
+T     (I)(GRWPIAU) := S/VP
+        : ((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+LEX   (FYND) := VP/PP
+        : (LAM X (LAM Y ((GOTO X) Y)))
+>B    (I GRWPIAU)(FYND) := S/PP
+        : (LAM X
+           (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+            ((LAM X (LAM Y ((GOTO X) Y))) X)))
+>B    (DYMUNO)(I GRWPIAU FYND) := VP/PP
+        : (LAM X
+           ((LAM S (LAM Y ((WANT S) Y)))
+            ((LAM X
+              (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+               ((LAM X (LAM Y ((GOTO X) Y))) X)))
+             X)))
+LEX   (ADREF) := VP\(VP/PP)
+        : (LAM P (P HOME))
+T     (DYMUNO I GRWPIAU FYND)(ADREF) := VP
+        : ((LAM P (P HOME))
+           (LAM X
+            ((LAM S (LAM Y ((WANT S) Y)))
+             ((LAM X
+               (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+                ((LAM X (LAM Y ((GOTO X) Y))) X)))
+              X))))
+A     (YN)(DYMUNO I GRWPIAU FYND ADREF) := VP
+        : ((LAM P P)
+           ((LAM P (P HOME))
+            (LAM X
+             ((LAM S (LAM Y ((WANT S) Y)))
+              ((LAM X
+                (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+                 ((LAM X (LAM Y ((GOTO X) Y))) X)))
+               X)))))
+A     (ROEDD GWYN)(YN DYMUNO I GRWPIAU FYND ADREF) := S
+        : (((LAM P (P GWYN)) (LAM Y (LAM P (P Y))))
+           ((LAM P P)
+            ((LAM P (P HOME))
+             (LAM X
+              ((LAM S (LAM Y ((WANT S) Y)))
+               ((LAM X
+                 (((LAM P (P GROUPS)) (LAM Y (LAM P (P Y))))
+                  ((LAM X (LAM Y ((GOTO X) Y))) X)))
+                X))))))
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((GOTO HOME) GROUPS)) GWYN) =
+    (WANT (GOTO HOME GROUPS) GWYN)
+
+Derivation 3
+--------------
+LEX   (ROEDD) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+LEX   (GWYN) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P GWYN))
+T     (ROEDD)(GWYN) := S/VP
+        : ((LAM P (P GWYN)) (LAM Y (LAM P (P Y))))
+LEX   (YN) := VP/VP
+        : (LAM P P)
+LEX   (DYMUNO) := VP/S
+        : (LAM S (LAM Y ((WANT S) Y)))
+LEX   (I) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+>B2   (DYMUNO)(I) := (VP/VP)/NP
+        : (LAM X
+           (LAM Y ((LAM S (LAM Y ((WANT S) Y))) (((LAM Y (LAM P (P Y))) X) Y))))
+>B2   (YN)(DYMUNO I) := (VP/VP)/NP
+        : (LAM X
+           (LAM Y
+            ((LAM P P)
+             (((LAM X
+                (LAM Y
+                 ((LAM S (LAM Y ((WANT S) Y))) (((LAM Y (LAM P (P Y))) X) Y))))
+               X)
+              Y))))
+>B2   (ROEDD GWYN)(YN DYMUNO I) := (S/VP)/NP
+        : (LAM X
+           (LAM Y
+            (((LAM P (P GWYN)) (LAM Y (LAM P (P Y))))
+             (((LAM X
+                (LAM Y
+                 ((LAM P P)
+                  (((LAM X
+                     (LAM Y
+                      ((LAM S (LAM Y ((WANT S) Y)))
+                       (((LAM Y (LAM P (P Y))) X) Y))))
+                    X)
+                   Y))))
+               X)
+              Y))))
+LEX   (GRWPIAU) := (S/VP)\((S/VP)/NP)
+        : (LAM P (P GROUPS))
+T     (ROEDD GWYN YN DYMUNO I)(GRWPIAU) := S/VP
+        : ((LAM P (P GROUPS))
+           (LAM X
+            (LAM Y
+             (((LAM P (P GWYN)) (LAM Y (LAM P (P Y))))
+              (((LAM X
+                 (LAM Y
+                  ((LAM P P)
+                   (((LAM X
+                      (LAM Y
+                       ((LAM S (LAM Y ((WANT S) Y)))
+                        (((LAM Y (LAM P (P Y))) X) Y))))
+                     X)
+                    Y))))
+                X)
+               Y)))))
+LEX   (FYND) := VP/PP
+        : (LAM X (LAM Y ((GOTO X) Y)))
+LEX   (ADREF) := VP\(VP/PP)
+        : (LAM P (P HOME))
+T     (FYND)(ADREF) := VP
+        : ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y))))
+A     (ROEDD GWYN YN DYMUNO I GRWPIAU)(FYND ADREF) := S
+        : (((LAM P (P GROUPS))
+            (LAM X
+             (LAM Y
+              (((LAM P (P GWYN)) (LAM Y (LAM P (P Y))))
+               (((LAM X
+                  (LAM Y
+                   ((LAM P P)
+                    (((LAM X
+                       (LAM Y
+                        ((LAM S (LAM Y ((WANT S) Y)))
+                         (((LAM Y (LAM P (P Y))) X) Y))))
+                      X)
+                     Y))))
+                 X)
+                Y)))))
+           ((LAM P (P HOME)) (LAM X (LAM Y ((GOTO X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((GOTO HOME) GROUPS)) GWYN) =
+    (WANT (GOTO HOME GROUPS) GWYN)No lex entry for NANA-NA! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|43S|
+========
+No lex entry for NANI-SI! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+50AS
+========
+No lex entry for RQU-VAA! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+50BBADS
+========
+No lex entry for PIITA-P! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+51AS
+========
+No lex entry for -TU-Q! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+51BS
+========
+No lex entry for AALLAAM-MIK! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+52AS
+========
+No lex entry for TIGU-SIMA! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+52BBADS
+========
+No lex entry for B-UM-ILI! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|59S|
+========
+No lex entry for B-IN-ILI! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|61B|
+========
+No lex entry for ng tela! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|63S|
+========
+No lex entry for ni pedro! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|65S|
+========
+No lex entry for ANG-MGA-PINGGAN! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+|69S|
+========
+No lex entry for BUY! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+L1
+========
+No lex entry for LONDON! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+L2
+========
+No lex entry for WANT! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+L3
+========
+No lex entry for FOLDED! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+L4
+========
+No lex entry for WHAT! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+D1
+========
+No lex entry for WHAT! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+D2
+========
+No lex entry for GAVE! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+S2
+========

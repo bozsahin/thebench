@@ -751,6 +751,9 @@ def ir_to_lisp(ir):
             if ir[_r] == 'quoted':
                 return mk_2cl('BCAT', tc_bundle_quote(ir[_l])) + \
                         mk_2cl('BCONST', 'T') + mk_2cl('FEATS', 'NIL')
+            elif ir[_r] == 'special':
+                return mk_2cl('BCAT', ir[_l]) + \
+                        mk_2cl('FEATS', 'NIL')
             else:
                 return mk_2cl('BCAT', ir_to_lisp(ir[_l])) + \
                         ir_to_lisp(ir[_r])
