@@ -1779,7 +1779,7 @@
 					  (list 'SOLUTION newht))))))))))))
   t)
 
-(defun cky_analyze (itemslist)
+(defun cky_analyze0 (itemslist)
   "CKY-parses the items in the input list.
   The lower-triangular matrix of CKY is built as a hashtable
   where keys are triplets (i j k), meaning combinations of length i,
@@ -1802,7 +1802,7 @@
 			       (setf n2 (length matches)))
 			     (progn 
 			       (format t "No lex entry for ~A! Exiting without parse.~%" (nth (- i 1) itemslist))
-			       (return-from cky_analyze nil)))))
+			       (return-from cky_analyze0 nil)))))
 		   (loop for i2 from 1 to n2 do
 			 (setf (machash (list 1 i i2) *cky-hashtable*) 
 			       (list (list 'LEFT (list 1 i i2))
@@ -1852,9 +1852,9 @@
 	   (and (machash (list n 1 1) *cky-hashtable*) t)))  ; if a rule applied, result would be in n 1 1 
 	(t (format t "Error: expected a list of items.~%"))))
 
-(defun cky_analyze0 (itemslist)
+(defun cky_analyze (itemslist)
   "the python interface. Input length will be saved in *cky-input* for d command."
-  (cky_analyze itemslist)
+  (cky_analyze0 itemslist)
   (format t "~%Number of analyses: ~A~%"
 	  (do ((m 1 (incf m))
 	       (row (length itemslist)))
@@ -2084,10 +2084,10 @@
 (defun cky_rank (itemslist)
   "Computes formulas (1) and argmax_L of Zettlemoyer & Collins (2005).
   We don't exponentiate (1) to avoid overflows, since sum is the same for argmax_L.
-  cky_analyze calculates local sums using CKY. This function simply sums them."
+  cky_analyze0 calculates local sums using CKY. This function simply sums them."
   (and (not (listp itemslist))(format t "Expected a list!")(return-from cky_rank nil))
   (let ((n (length itemslist)))
-    (and (cky_analyze itemslist) ; this creates the CKY table with its local counts
+    (and (cky_analyze0 itemslist) ; this creates the CKY table with its local counts
 	 (do ((maxprob most-negative-single-float)
 	      (minprob most-positive-single-float)
 	      (cmax 0)

@@ -871,7 +871,7 @@ def do (commline):
         os.system(' '.join([str(item) for item in args[0:]]))
     elif comm == 'a':
         try:
-            _lisp.function('cky_analyze0')(tuple(args))
+            _lisp.function('cky_analyze')(tuple(args))
             print(f"Done. Try d command for results")
         except Exception:
             print('something went wrong')
