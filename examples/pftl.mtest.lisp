@@ -67,12 +67,12 @@
 
 (defun  test-ders()
   (terpri)
-  (dolist (p *db*)(progn (cky_analyze0 (second p))
+  (dolist (p *db*)(progn (cky_analyze (second p))
 			   (format t "~%=======~%~s~%========~%" (first p))
 			   (cky_show_analysis))))
 
 (defun  test-lfs()
   (dolist (p *db*)
-    (progn (cky_analyze0 (second p))
+    (progn (cky_analyze (second p))
 	   (format t "~%=======~%~s~%========~%" (first p))
 	   (cky-show-lf-eqv))))
