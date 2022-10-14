@@ -167,7 +167,7 @@
 |_nu_ru  | aff :: (((s\np[case=abs])/(s\np[case=abs]\np[case=erg]))\ ((s\np[case=abs])/(s\np[case=abs] \np[case=erg])))\(s\np[case=abs]) :\p\q\r\y\x.  and(r x y)( and (p x)(q (\x.x) x));
 |bura_n | v :: (s\np[case=abs])\np[case=erg]: \x\y.  see y x;
 |jilwal_na   | v :: (s\np[case=abs])/np[case=dat]: \x\y.  kick x y;
-|begun guda_gu  | n  :: ((s/(s\np[case=abs]))\(s/(s\np[case=abs]))) \(((s/(s\np[case=abs]))\(s/(s\np[case=abs])))/np[case=dat]) : \p. p  dog;
+|begun guga_gu  | n  :: ((s/(s\np[case=abs]))\(s/(s\np[case=abs]))) \(((s/(s\np[case=abs]))\(s/(s\np[case=abs])))/np[case=dat]) : \p. p  dog;
 |bangun yibi_ngu | n :: s/(s\np[case=erg]) : \p.p  woman; 		
 |bura_n | v :: s\np[case=erg]: \y. saw  topic y;
 |nyurra | n :: s/(s\np[type=pro,case=nom]) : \p.p  you;		

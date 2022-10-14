@@ -942,6 +942,8 @@ def do (commline):
         ch = False
         if os.path.exists(fn):
             ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+            if ch == 'y':
+                os.remove(fn)
         if ch == 'y' or not ch:
             try:
                 print('Logging processor output to: ', args[0]+'.log')

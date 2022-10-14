@@ -1801,7 +1801,7 @@
 			       (dolist (entry matches) (push entry *current-grammar*))
 			       (setf n2 (length matches)))
 			     (progn 
-			       (format t "No lex entry for ~A! Exiting without parse.~%" (nth (- i 1) itemslist))
+			       (format t "~%OOV error: no lex entry for ~A! Exiting without parse.~%" (nth (- i 1) itemslist))
 			       (return-from cky_analyze0 nil)))))
 		   (loop for i2 from 1 to n2 do
 			 (setf (machash (list 1 i i2) *cky-hashtable*) 
