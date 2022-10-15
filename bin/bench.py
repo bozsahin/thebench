@@ -579,8 +579,8 @@ def lisp_wrap(ch):
 
 def split_command (cline): # splits a command line into command and list of args
     comm = cline[0]        # all commands are one character in front, strings and separate punctuation are double quoated
+    commargs = []
     if comm == 'a': # needs special tokenization
-        commargs = []
         if len(cline) < 2:
             return (comm, commargs)
         t = [re.split(_ws, x) for x in cline[1:]]  # only _ws in data will be list of length 2 after this
@@ -594,29 +594,28 @@ def split_command (cline): # splits a command line into command and list of args
                 j = i+1
                 while j <= n and t[j][0] != '"':
                     if len(t[j]) > 1:
-                        arg += arg + _ws     
+                        arg += _ws     
                     else:
                         arg += t[j][0]
                     j += 1
-                commargs += arg+'"'
-                i = j
+                commargs.append(''.join(arg+'"'))
+                i = j + 1
             elif t[i][0] in _punc:
-                commargs += lisp_wrap(t[i][0])
+                commargs.append(''.join(lisp_wrap(t[i][0])))
                 i += 1
             else:
                 arg = ''
-                while i <= n and len(t[i]) < 2:
+                while i <= n and len(t[i]) < 2 and not t[i][0] in _punc:
                     arg += t[i][0]
                     i += 1
-                commargs += arg
-        print(comm, commargs)
+                commargs.append(''.join(arg))
         return (comm, commargs)
     else:
         comarg = _ws.join(cline.split()).split(_ws)
         return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' are space-separated items ending with newline (double-quoted are atomic)")
+        print(" NOTE >> | '...' are space-separated items (double-quoted stuff and punctuation are atomic)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates case functions for all elements with parts of speech ...')
         print(f"         |   and adds them to currently loaded {_binext} grammar")
@@ -753,8 +752,8 @@ def ir_to_lisp(ir):
         if len(ir) == 4:   # a rule 
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('INDEX', ir[2])
         else:              # an element
-            if len(ir[2].split()) > 1:              # make all entries uppercase. multi-word entries must be double quoted for the processor
-                return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', '"' + ir[2].upper() + '"')
+            if len(ir[2].split()) > 1 or ir[2] in _punc:   # make all entries uppercase. MWE/ punctuation double quoted for the processor
+                return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', '"' + ir[2] + '"')
             else:
                 return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2].upper())
     elif type(ir) == type([]):             # no recursive list
@@ -906,7 +905,7 @@ def do (commline):
     elif comm == 'e':
         try:
             eval(_ws.join(str(item) for item in args))
-        except (SyntaxError, NameError, TypeError, ZeroDivisionError, ValueError, KeyError): # all that i can think of going bad
+        except Exception:
             print('python says it is ill-formed or unevaluable')
     elif comm == 'o':
         os.system(_ws.join([str(item) for item in args[0:]]))

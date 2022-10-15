@@ -174,7 +174,7 @@
 |nana_na | n :: (s\np[case=nom,type=pro])/((s\np[type=pro,case=nom])\np[type=pro,case=acc]) : \p. p ( and  us ( topic  us));
 |bura_n | v :: (s\np[case=nom,type=pro])\np[case=acc,type=pro] : \x\y. and( saw ( sk x)( sk y))( noteq ( sk x)( sk y));
 |banaga_nyu | v :: S :  return  topic;
-%|, | x :: (@X\*@X)/*@X : \p\q.  and p q; 
+|,| x :: (@X\*@X)/*@X : \p\q.  and p q; 
 |miqqat  | n :: s/(s\np[case=abs,agr=3pl]): \p.p  children ;		
 |juuna   | n :: vp[case=erg]/(vp[case=erg]\np[case=abs]): \p.p  juuna;
 |ikiu_ssa_llu_gu  | v :: vp[case=erg]\np[case=abs]: \x\y.  help x y;
