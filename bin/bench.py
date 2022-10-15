@@ -633,7 +633,8 @@ def help ():
         print(' = ...   | restricts synthetic case application to basic categories ...')
         print(' ! .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
         print(" ^ . ... | calls the Lisp function . with args ... which takes them as strings")
-        print(' & .     | saves the abstract representation of current grammar (a python dict) in file . ')
+        print(' @ .     | saves the abstract representation of current grammar (a python dict) in file . ')
+        print(' & .     | saves the current grammar in file . ')
         print(' + .     | adds Lisp code in file . to the processor')
         print(' > .     | Logs processor output to filename . adding .log extension')
         print(' <       | Logging turned off')
@@ -827,12 +828,12 @@ def do (commline):
     if comm in ['x', '?', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '=', '!', '^', '&', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '=', '!', '^', '@', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
         help()
-    elif comm == '&':
+    elif comm == '@':
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):

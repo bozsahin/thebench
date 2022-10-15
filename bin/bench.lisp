@@ -2700,16 +2700,6 @@
   (save-grammar fn :force t)
   (format t "~%compiled~A and saved." msg))
 
-(defun save-subsumption (fn)
-  "the result of subsumption is in *ht-tr*."
-  (let ((rules nil))
-    (maphash 
-      #'(lambda (k v)
-	  (push (mk-rule k v) rules))
-      *ht-tr*)
-    (setf *RAISED-LEX-RULES* rules))
-  (save-compile fn ", subsumed"))
-	   
 ;;; ------------------------
 ;;; Most local unifier (MLU) for subsumption
 ;;; in rule subsumption, unlike in projection, we must pass on all local (i.e. basic cat-specific) unifiable features, rather than just check them.
