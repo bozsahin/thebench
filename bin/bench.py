@@ -617,8 +617,7 @@ def split_command (cline): # splits a command line into command and list of args
 def help ():
         print(" NOTE >> | '...' are space-separated items (double-quoted material and punctuation are atomic)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
-        print(' c ...   | generates case functions for all elements with parts of speech ...')
-        print(f"         |   and adds them to currently loaded {_binext} grammar")
+        print(' c ...   | generates and adds case functions for all elements with parts of speech ...')
         print(' d ...   | displays analyses with solutions numbered ..., all of them if none provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
         print(f" g .     | checks and loads source grammar . (its {_binext} file generated and loaded)")
@@ -636,7 +635,7 @@ def help ():
         print(' @ .     | saves the abstract representation of current grammar (a python dict) in file . ')
         print(' & .     | saves the current grammar in file . ')
         print(' + .     | adds Lisp code in file . to the processor')
-        print(' > .     | Logs processor output to filename . adding .log extension')
+        print(' > .     | Logs processor output to filename . after adding .log extension')
         print(' <       | Logging turned off')
 
 def load_1pass(fname):        # checks but not updates the grammar with indices
