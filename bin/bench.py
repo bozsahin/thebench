@@ -615,7 +615,7 @@ def split_command (cline): # splits a command line into command and list of args
         return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' are space-separated items (double-quoted stuff and punctuation are atomic)")
+        print(" NOTE >> | '...' are space-separated items (double-quoted material and punctuation are atomic)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates case functions for all elements with parts of speech ...')
         print(f"         |   and adds them to currently loaded {_binext} grammar")

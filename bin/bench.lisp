@@ -2744,11 +2744,11 @@
 ;------------to create lex-rule entries-------------------------
 ;---------------------------------------------------------------
 
-(defun g2 (pname morphs &optional (e-log "tr-error.log")) 
+(defun compile_v (pname morphs &optional (e-log "tr-error.log")) 
   "identify lexical functions from morphs tag and generate 2nd order case function for their outermost argument"
   (load_bin pname)  
   (if *error* (progn (format t "~%aborting compile; currently loaded grammar is unchanged")
-		     (return-from g2)))
+		     (return-from compile_v)))
   (setf *RAISED-LEX-RULES* NIL) ;set to default
   (setf *VERBS-IN-GRAMMAR* NIL)
   (setf *tr-error-file* e-log)
@@ -2773,7 +2773,7 @@
   (dolist (lexr (reverse *RAISED-LEX-RULES*))
     (setf (machash (nv-list-val 'KEY lexr) *ht-tr*) (hash-lexrule lexr))))
 
-(defun p2 ()
+(defun generate_paradigms ()
   "It uses a hash-table of rules as input, so don't call it standalone.
    v1 and v2 are hash values. INSYN and OUTSYN are hash-valued SYNs due to hash-tr; cat-match needs this."
   (let ((nochange nil))
@@ -2810,13 +2810,13 @@
 		   *ht-tr*))
 	     *ht-tr*))))
 
-(defun g2p2 (gname vmorphs &optional (e-log "tr-error.log"))
+(defun synthetic_case (gname vmorphs &optional (e-log "tr-error.log"))
   "first finds all rules from grammar file with list of verbal POS in vmrophs, 
   then reduces the rule set to MGUs of pairs iteratively.
   We use hashtables to be compatible with MGU function cat-match---and for efficieny."
-  (g2 gname vmorphs e-log) ; result in *RAISED-LEX-RULES* in reverse order of find
+  (compile_v gname vmorphs e-log) ; result in *RAISED-LEX-RULES* in reverse order of find
   (hash-tr)         
-  (p2)
+  (generate_paradigms)
   (format t "~%Summary of compiling type-raising for grammar   : ~A.ccg.lisp" gname)
   (if *tr-error-log*
     (format t "~%Log of warnings and errors                      : ~A (~A entries) " 
