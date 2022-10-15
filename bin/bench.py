@@ -870,6 +870,7 @@ def do (commline):
     elif comm == 'o':
         os.system(' '.join([str(item) for item in args[0:]]))
     elif comm == 'a':
+        print(args, tuple(args))
         try:
             _lisp.function('cky_analyze')(tuple(args))
             print(f"Done. Try d command for results")
