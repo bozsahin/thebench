@@ -30,10 +30,10 @@ except Exception:
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.2'
-_vdate = 'October 10, 2022'
+_version = '0.3'
+_vdate = 'October 15, 2022'
 _binext = '.bin'              # binary (lisp code) extension
-_punc   = ';:,.|~!@#$%^&*?'  # list of private tokens -- individually tokenized and wrapped in double quote
+_punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually tokenized and wrapped in double quote
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _ws     = ' '
 _keys = {}                    # current keys

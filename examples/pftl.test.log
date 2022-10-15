@@ -1,5 +1,4 @@
 
-
 Number of analyses: 4
 
 =======
@@ -200,9 +199,9 @@ Derivation 1
 --------------
 LEX   (MISSED) := S/NP
         : (LAM X ((MISS X) ME))
-LEX   (THE SATURDAY DANCE) := S\(S/NP)
+LEX   (the saturday dance) := S\(S/NP)
         : (LAM P (P THESATURDAYDANCE))
-T     (MISSED)("THE SATURDAY DANCE") := S
+T     (MISSED)("the saturday dance") := S
         : ((LAM P (P THESATURDAYDANCE)) (LAM X ((MISS X) ME)))
 
 Final LF, normal-order evaluated: 
@@ -261,9 +260,9 @@ Derivation 1
 --------------
 LEX   (BURAL) := VP\NP
         : (LAM Y (LAM X ((SEE X) Y)))
-LEX   (_NA_YGU) := (VP/NP)\(VP\NP)
+LEX   (-NA-YGU) := (VP/NP)\(VP\NP)
         : (LAM P (LAM X (LAM Y (ANTIP ((P Y) X)))))
-T     (BURAL)(_NA_YGU) := VP/NP
+T     (BURAL)(-NA-YGU) := VP/NP
         : ((LAM P (LAM X (LAM Y (ANTIP ((P Y) X)))))
            (LAM Y (LAM X ((SEE X) Y))))
 
@@ -276,9 +275,9 @@ Derivation 2
 --------------
 LEX   (BURAL) := VP\NP
         : (LAM Y (LAM X ((SEE X) Y)))
-LEX   (_NA_YGU) := VP\(VP\NP)
+LEX   (-NA-YGU) := VP\(VP\NP)
         : (LAM P (LAM X ((P (SOMETHING X)) X)))
-T     (BURAL)(_NA_YGU) := VP
+T     (BURAL)(-NA-YGU) := VP
         : ((LAM P (LAM X ((P (SOMETHING X)) X))) (LAM Y (LAM X ((SEE X) Y))))
 
 Final LF, normal-order evaluated: 
@@ -359,15 +358,15 @@ Number of analyses: 1
 
 Derivation 1
 --------------
-LEX   (BAYI YARA) := S/(S\NP)
+LEX   (bayi yara) := S/(S\NP)
         : (LAM P (P MAN))
 LEX   (WALNGARRA) := (S\NP)/VP
         : (LAM P (LAM X ((WANT (P X)) X)))
-LEX   (NABA_YGU) := VP
+LEX   (NABA-YGU) := VP
         : (LAM X (BATHE X))
-A     (WALNGARRA)(NABA_YGU) := S\NP
+A     (WALNGARRA)(NABA-YGU) := S\NP
         : ((LAM P (LAM X ((WANT (P X)) X))) (LAM X (BATHE X)))
-A     ("BAYI YARA")(WALNGARRA NABA_YGU) := S
+A     ("bayi yara")(WALNGARRA NABA-YGU) := S
         : ((LAM P (P MAN)) ((LAM P (LAM X ((WANT (P X)) X))) (LAM X (BATHE X))))
 
 Final LF, normal-order evaluated: 
@@ -383,29 +382,29 @@ Number of analyses: 1
 
 Derivation 1
 --------------
-LEX   (BAYI YARA) := S/(S\NP)
+LEX   (bayi yara) := S/(S\NP)
         : (LAM P (P MAN))
 LEX   (WALNGARRA) := (S\NP)/VP
         : (LAM P (LAM X ((WANT (P X)) X)))
 LEX   (BURAL) := VP\NP
         : (LAM Y (LAM X ((SEE X) Y)))
-LEX   (_NA_YGU) := (VP/NP)\(VP\NP)
+LEX   (-NA-YGU) := (VP/NP)\(VP\NP)
         : (LAM P (LAM X (LAM Y (ANTIP ((P Y) X)))))
-T     (BURAL)(_NA_YGU) := VP/NP
+T     (BURAL)(-NA-YGU) := VP/NP
         : ((LAM P (LAM X (LAM Y (ANTIP ((P Y) X)))))
            (LAM Y (LAM X ((SEE X) Y))))
-LEX   (BAGUN YIBI_GU) := VP\(VP/NP)
+LEX   (bagun yibi-gu) := VP\(VP/NP)
         : (LAM P (P WOMAN))
-T     (BURAL _NA_YGU)("BAGUN YIBI_GU") := VP
+T     (BURAL -NA-YGU)("bagun yibi-gu") := VP
         : ((LAM P (P WOMAN))
            ((LAM P (LAM X (LAM Y (ANTIP ((P Y) X)))))
             (LAM Y (LAM X ((SEE X) Y)))))
-A     (WALNGARRA)(BURAL _NA_YGU "BAGUN YIBI_GU") := S\NP
+A     (WALNGARRA)(BURAL -NA-YGU "bagun yibi-gu") := S\NP
         : ((LAM P (LAM X ((WANT (P X)) X)))
            ((LAM P (P WOMAN))
             ((LAM P (LAM X (LAM Y (ANTIP ((P Y) X)))))
              (LAM Y (LAM X ((SEE X) Y))))))
-A     ("BAYI YARA")(WALNGARRA BURAL _NA_YGU "BAGUN YIBI_GU") := S
+A     ("bayi yara")(WALNGARRA BURAL -NA-YGU "bagun yibi-gu") := S
         : ((LAM P (P MAN))
            ((LAM P (LAM X ((WANT (P X)) X)))
             ((LAM P (P WOMAN))
@@ -425,20 +424,20 @@ Number of analyses: 1
 
 Derivation 1
 --------------
-LEX   (BAYI YARA) := S/(S\NP)
+LEX   (bayi yara) := S/(S\NP)
         : (LAM P (P MAN))
 LEX   (WALNGARRA) := (S\NP)/VP
         : (LAM P (LAM X ((WANT (P X)) X)))
-LEX   (BANGUN YIBI_NGU) := VP/(VP\NP)
+LEX   (bangun yibi-ngu) := VP/(VP\NP)
         : (LAM P (P WOMAN))
-LEX   (BURA_LI) := VP\NP
+LEX   (BURA-LI) := VP\NP
         : (LAM X (LAM Y ((SEE Y) X)))
-A     ("BANGUN YIBI_NGU")(BURA_LI) := VP
+A     ("bangun yibi-ngu")(BURA-LI) := VP
         : ((LAM P (P WOMAN)) (LAM X (LAM Y ((SEE Y) X))))
-A     (WALNGARRA)("BANGUN YIBI_NGU" BURA_LI) := S\NP
+A     (WALNGARRA)("bangun yibi-ngu" BURA-LI) := S\NP
         : ((LAM P (LAM X ((WANT (P X)) X)))
            ((LAM P (P WOMAN)) (LAM X (LAM Y ((SEE Y) X)))))
-A     ("BAYI YARA")(WALNGARRA "BANGUN YIBI_NGU" BURA_LI) := S
+A     ("bayi yara")(WALNGARRA "bangun yibi-ngu" BURA-LI) := S
         : ((LAM P (P MAN))
            ((LAM P (LAM X ((WANT (P X)) X)))
             ((LAM P (P WOMAN)) (LAM X (LAM Y ((SEE Y) X))))))
@@ -458,18 +457,18 @@ Derivation 1
 --------------
 LEX   (YABU) := S/(S\NP)
         : (LAM P (P MOTHER))
-LEX   (NUMA_NGU) := (S\NP)/((S\NP)\NP)
+LEX   (NUMA-NGU) := (S\NP)/((S\NP)\NP)
         : (LAM P (P FATHER))
-LEX   (GIGA_N) := ((S\NP)\NP)/VP
+LEX   (GIGA-N) := ((S\NP)\NP)/VP
         : (LAM P (LAM X (LAM Y (((TELL (P Y)) Y) X))))
-LEX   (BANAGA_YGU) := VP
+LEX   (BANAGA-YGU) := VP
         : (LAM X (RETURN X))
-A     (GIGA_N)(BANAGA_YGU) := (S\NP)\NP
+A     (GIGA-N)(BANAGA-YGU) := (S\NP)\NP
         : ((LAM P (LAM X (LAM Y (((TELL (P Y)) Y) X)))) (LAM X (RETURN X)))
-A     (NUMA_NGU)(GIGA_N BANAGA_YGU) := S\NP
+A     (NUMA-NGU)(GIGA-N BANAGA-YGU) := S\NP
         : ((LAM P (P FATHER))
            ((LAM P (LAM X (LAM Y (((TELL (P Y)) Y) X)))) (LAM X (RETURN X))))
-A     (YABU)(NUMA_NGU GIGA_N BANAGA_YGU) := S
+A     (YABU)(NUMA-NGU GIGA-N BANAGA-YGU) := S
         : ((LAM P (P MOTHER))
            ((LAM P (P FATHER))
             ((LAM P (LAM X (LAM Y (((TELL (P Y)) Y) X)))) (LAM X (RETURN X)))))
@@ -487,26 +486,26 @@ Number of analyses: 1
 
 Derivation 1
 --------------
-LEX   (BAYI YARA) := S/(S\NP)
+LEX   (bayi yara) := S/(S\NP)
         : (LAM P (P MAN))
-LEX   (NUMA_NGU) := (S\NP)/((S\NP)\NP)
+LEX   (NUMA-NGU) := (S\NP)/((S\NP)\NP)
         : (LAM P (P FATHER))
-LEX   (GIGA_N) := ((S\NP)\NP)/VP
+LEX   (GIGA-N) := ((S\NP)\NP)/VP
         : (LAM P (LAM X (LAM Y (((TELL (P Y)) Y) X))))
-LEX   (GUBI_NGU) := VP/(VP\NP)
+LEX   (GUBI-NGU) := VP/(VP\NP)
         : (LAM P (P GUBI))
-LEX   (MAWA_LI) := VP\NP
+LEX   (MAWA-LI) := VP\NP
         : (LAM X (LAM Y ((EXAMINE Y) X)))
-A     (GUBI_NGU)(MAWA_LI) := VP
+A     (GUBI-NGU)(MAWA-LI) := VP
         : ((LAM P (P GUBI)) (LAM X (LAM Y ((EXAMINE Y) X))))
-A     (GIGA_N)(GUBI_NGU MAWA_LI) := (S\NP)\NP
+A     (GIGA-N)(GUBI-NGU MAWA-LI) := (S\NP)\NP
         : ((LAM P (LAM X (LAM Y (((TELL (P Y)) Y) X))))
            ((LAM P (P GUBI)) (LAM X (LAM Y ((EXAMINE Y) X)))))
-A     (NUMA_NGU)(GIGA_N GUBI_NGU MAWA_LI) := S\NP
+A     (NUMA-NGU)(GIGA-N GUBI-NGU MAWA-LI) := S\NP
         : ((LAM P (P FATHER))
            ((LAM P (LAM X (LAM Y (((TELL (P Y)) Y) X))))
             ((LAM P (P GUBI)) (LAM X (LAM Y ((EXAMINE Y) X))))))
-A     ("BAYI YARA")(NUMA_NGU GIGA_N GUBI_NGU MAWA_LI) := S
+A     ("bayi yara")(NUMA-NGU GIGA-N GUBI-NGU MAWA-LI) := S
         : ((LAM P (P MAN))
            ((LAM P (P FATHER))
             ((LAM P (LAM X (LAM Y (((TELL (P Y)) Y) X))))
@@ -529,16 +528,16 @@ LEX   (FAIRIES) := S/(S\NP)
         : (LAM P (P FAIRIES))
 LEX   (SEEM) := (S\NP)/VP
         : (LAM P (LAM Y (SEEM (P Y))))
-LEX   (TO BE) := VP/XP
+LEX   (to be) := VP/XP
         : (LAM P (LAM Y (P Y)))
-LEX   (AT THE BOTTOM OF MY GARDEN) := VP\(VP/XP)
+LEX   (at the bottom of my garden) := VP\(VP/XP)
         : (LAM P (P ATBMG))
-T     ("TO BE")("AT THE BOTTOM OF MY GARDEN") := VP
+T     ("to be")("at the bottom of my garden") := VP
         : ((LAM P (P ATBMG)) (LAM P (LAM Y (P Y))))
-A     (SEEM)("TO BE" "AT THE BOTTOM OF MY GARDEN") := S\NP
+A     (SEEM)("to be" "at the bottom of my garden") := S\NP
         : ((LAM P (LAM Y (SEEM (P Y))))
            ((LAM P (P ATBMG)) (LAM P (LAM Y (P Y)))))
-A     (FAIRIES)(SEEM "TO BE" "AT THE BOTTOM OF MY GARDEN") := S
+A     (FAIRIES)(SEEM "to be" "at the bottom of my garden") := S
         : ((LAM P (P FAIRIES))
            ((LAM P (LAM Y (SEEM (P Y))))
             ((LAM P (P ATBMG)) (LAM P (LAM Y (P Y))))))
@@ -554,18 +553,18 @@ LEX   (FAIRIES) := S/(S\NP)
         : (LAM P (P FAIRIES))
 LEX   (SEEM) := (S\NP)/VP
         : (LAM P (LAM Y (SEEM (P Y))))
-LEX   (TO BE) := VP/XP
+LEX   (to be) := VP/XP
         : (LAM P (LAM Y (P Y)))
->B    (SEEM)("TO BE") := (S\NP)/XP
+>B    (SEEM)("to be") := (S\NP)/XP
         : (LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X)))
->B    (FAIRIES)(SEEM "TO BE") := S/XP
+>B    (FAIRIES)(SEEM "to be") := S/XP
         : (LAM X
            ((LAM P (P FAIRIES))
             ((LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X)))
              X)))
-LEX   (AT THE BOTTOM OF MY GARDEN) := S\(S/XP)
+LEX   (at the bottom of my garden) := S\(S/XP)
         : (LAM P (P ATBMG))
-T     (FAIRIES SEEM "TO BE")("AT THE BOTTOM OF MY GARDEN") := S
+T     (FAIRIES SEEM "to be")("at the bottom of my garden") := S
         : ((LAM P (P ATBMG))
            (LAM X
             ((LAM P (P FAIRIES))
@@ -583,18 +582,18 @@ LEX   (FAIRIES) := S/(S\NP)
         : (LAM P (P FAIRIES))
 LEX   (SEEM) := (S\NP)/VP
         : (LAM P (LAM Y (SEEM (P Y))))
-LEX   (TO BE) := VP/XP
+LEX   (to be) := VP/XP
         : (LAM P (LAM Y (P Y)))
->B    (SEEM)("TO BE") := (S\NP)/XP
+>B    (SEEM)("to be") := (S\NP)/XP
         : (LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X)))
->B    (FAIRIES)(SEEM "TO BE") := S/XP
+>B    (FAIRIES)(SEEM "to be") := S/XP
         : (LAM X
            ((LAM P (P FAIRIES))
             ((LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X)))
              X)))
-LEX   (AT THE BOTTOM OF MY GARDEN) := S\(S/XP)
+LEX   (at the bottom of my garden) := S\(S/XP)
         : (LAM P (P ATBMG))
-T     (FAIRIES SEEM "TO BE")("AT THE BOTTOM OF MY GARDEN") := S
+T     (FAIRIES SEEM "to be")("at the bottom of my garden") := S
         : ((LAM P (P ATBMG))
            (LAM X
             ((LAM P (P FAIRIES))
@@ -618,22 +617,22 @@ LEX   (THERE) := ((S/XP)/NP)/((S\NP)/XP)
         : (LAM R (LAM Y (LAM P ((R P) Y))))
 LEX   (SEEM) := (S\NP)/VP
         : (LAM P (LAM Y (SEEM (P Y))))
-LEX   (TO BE) := VP/XP
+LEX   (to be) := VP/XP
         : (LAM P (LAM Y (P Y)))
->B    (SEEM)("TO BE") := (S\NP)/XP
+>B    (SEEM)("to be") := (S\NP)/XP
         : (LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X)))
-A     (THERE)(SEEM "TO BE") := (S/XP)/NP
+A     (THERE)(SEEM "to be") := (S/XP)/NP
         : ((LAM R (LAM Y (LAM P ((R P) Y))))
            (LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X))))
 LEX   (FAIRIES) := (S/XP)\^((S/XP)/NP)
         : (LAM P (P FAIRIES))
-T     (THERE SEEM "TO BE")(FAIRIES) := S/XP
+T     (THERE SEEM "to be")(FAIRIES) := S/XP
         : ((LAM P (P FAIRIES))
            ((LAM R (LAM Y (LAM P ((R P) Y))))
             (LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X)))))
-LEX   (AT THE BOTTOM OF MY GARDEN) := S\(S/XP)
+LEX   (at the bottom of my garden) := S\(S/XP)
         : (LAM P (P ATBMG))
-T     (THERE SEEM "TO BE" FAIRIES)("AT THE BOTTOM OF MY GARDEN") := S
+T     (THERE SEEM "to be" FAIRIES)("at the bottom of my garden") := S
         : ((LAM P (P ATBMG))
            ((LAM P (P FAIRIES))
             ((LAM R (LAM Y (LAM P ((R P) Y))))
@@ -650,22 +649,22 @@ LEX   (THERE) := ((S/XP)/NP)/((S\NP)/XP)
         : (LAM R (LAM Y (LAM P ((R P) Y))))
 LEX   (SEEM) := (S\NP)/VP
         : (LAM P (LAM Y (SEEM (P Y))))
-LEX   (TO BE) := VP/XP
+LEX   (to be) := VP/XP
         : (LAM P (LAM Y (P Y)))
->B    (SEEM)("TO BE") := (S\NP)/XP
+>B    (SEEM)("to be") := (S\NP)/XP
         : (LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X)))
-A     (THERE)(SEEM "TO BE") := (S/XP)/NP
+A     (THERE)(SEEM "to be") := (S/XP)/NP
         : ((LAM R (LAM Y (LAM P ((R P) Y))))
            (LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X))))
 LEX   (FAIRIES) := (S/XP)\^((S/XP)/NP)
         : (LAM P (P FAIRIES))
-T     (THERE SEEM "TO BE")(FAIRIES) := S/XP
+T     (THERE SEEM "to be")(FAIRIES) := S/XP
         : ((LAM P (P FAIRIES))
            ((LAM R (LAM Y (LAM P ((R P) Y))))
             (LAM X ((LAM P (LAM Y (SEEM (P Y)))) ((LAM P (LAM Y (P Y))) X)))))
-LEX   (AT THE BOTTOM OF MY GARDEN) := S\(S/XP)
+LEX   (at the bottom of my garden) := S\(S/XP)
         : (LAM P (P ATBMG))
-T     (THERE SEEM "TO BE" FAIRIES)("AT THE BOTTOM OF MY GARDEN") := S
+T     (THERE SEEM "to be" FAIRIES)("at the bottom of my garden") := S
         : ((LAM P (P ATBMG))
            ((LAM P (P FAIRIES))
             ((LAM R (LAM Y (LAM P ((R P) Y))))
@@ -816,10 +815,10 @@ LEX   (VULT) := (S\NP)\(S\NP)
 Final LF, normal-order evaluated: 
 
     (LAM X
-     ((AND ((BUILD (LAM G697 ((WANT (X G697)) G697))) BALB))
-      (WALL (LAM G697 ((WANT (X G697)) G697))))) =
-    (\ X . AND (BUILD (\ G704 . WANT (X G704) G704) BALB)
-     (WALL (\ G704 . WANT (X G704) G704)))
+     ((AND ((BUILD (LAM G529 ((WANT (X G529)) G529))) BALB))
+      (WALL (LAM G529 ((WANT (X G529)) G529))))) =
+    (\ X . AND (BUILD (\ G536 . WANT (X G536) G536) BALB)
+     (WALL (\ G536 . WANT (X G536) G536)))
 Number of analyses: 1
 
 =======
@@ -1017,20 +1016,20 @@ LEX   (IEUAN) := ((N\N)/NP)\(((N\N)/NP)/NP)
 T     (WERTHODD)(IEUAN) := (N\N)/NP
         : ((LAM P (P EWAN))
            (LAM Y (LAM X (LAM Q (LAM W ((AND (((SOLD W) X) Y)) (Q W)))))))
-LEX   (Y CEFFYL) := (N\N)\((N\N)/NP)
+LEX   (y ceffyl) := (N\N)\((N\N)/NP)
         : (LAM P (P HORSE))
-T     (WERTHODD IEUAN)("Y CEFFYL") := N\N
+T     (WERTHODD IEUAN)("y ceffyl") := N\N
         : ((LAM P (P HORSE))
            ((LAM P (P EWAN))
             (LAM Y (LAM X (LAM Q (LAM W ((AND (((SOLD W) X) Y)) (Q W))))))))
 LEX   (IDDI) := (N\N)\(N\N)
         : (LAM P P)
-T     (WERTHODD IEUAN "Y CEFFYL")(IDDI) := N\N
+T     (WERTHODD IEUAN "y ceffyl")(IDDI) := N\N
         : ((LAM P P)
            ((LAM P (P HORSE))
             ((LAM P (P EWAN))
              (LAM Y (LAM X (LAM Q (LAM W ((AND (((SOLD W) X) Y)) (Q W)))))))))
-T     (DYNES)(WERTHODD IEUAN "Y CEFFYL" IDDI) := N
+T     (DYNES)(WERTHODD IEUAN "y ceffyl" IDDI) := N
         : (((LAM P P)
             ((LAM P (P HORSE))
              ((LAM P (P EWAN))
@@ -1050,20 +1049,20 @@ Number of analyses: 1
 
 Derivation 1
 --------------
-LEX   (BAYI YARA) := S/(S\NP)
+LEX   (bayi yara) := S/(S\NP)
         : (LAM P (P MAN))
 LEX   (MIYANDA) := S\NP
         : (LAM X (LAUGH X))
-LEX   (_NU) := ((S/(S\NP))\(S/(S\NP)))\(S\NP)
+LEX   (-NU) := ((S/(S\NP))\(S/(S\NP)))\(S\NP)
         : (LAM P
            (LAM Q
             (LAM R (LAM X ((AND (R X)) ((AND (P X)) ((Q (LAM X X)) X)))))))
-T     (MIYANDA)(_NU) := (S/(S\NP))\(S/(S\NP))
+T     (MIYANDA)(-NU) := (S/(S\NP))\(S/(S\NP))
         : ((LAM P
             (LAM Q
              (LAM R (LAM X ((AND (R X)) ((AND (P X)) ((Q (LAM X X)) X)))))))
            (LAM X (LAUGH X)))
-T     ("BAYI YARA")(MIYANDA _NU) := S/(S\NP)
+T     ("bayi yara")(MIYANDA -NU) := S/(S\NP)
         : (((LAM P
              (LAM Q
               (LAM R (LAM X ((AND (R X)) ((AND (P X)) ((Q (LAM X X)) X)))))))
@@ -1071,7 +1070,7 @@ T     ("BAYI YARA")(MIYANDA _NU) := S/(S\NP)
            (LAM P (P MAN)))
 LEX   (YANU) := S\NP
         : (LAM X (GO X))
-A     ("BAYI YARA" MIYANDA _NU)(YANU) := S
+A     ("bayi yara" MIYANDA -NU)(YANU) := S
         : ((((LAM P
               (LAM Q
                (LAM R (LAM X ((AND (R X)) ((AND (P X)) ((Q (LAM X X)) X)))))))
@@ -1092,26 +1091,26 @@ Number of analyses: 1
 
 Derivation 1
 --------------
-LEX   (BALAN YIBI) := S/(S\NP)
+LEX   (balan yibi) := S/(S\NP)
         : (LAM P (P WOMAN))
-LEX   (BANGUL YARA_NGU) := (S\NP)/((S\NP)\NP)
+LEX   (bangul yara-ngu) := (S\NP)/((S\NP)\NP)
         : (LAM P (P MAN))
 LEX   (MIYANDA) := S\NP
         : (LAM X (LAUGH X))
-LEX   (_NU_RU) := (((S\NP)/((S\NP)\NP))\((S\NP)/((S\NP)\NP)))\(S\NP)
+LEX   (-NU-RU) := (((S\NP)/((S\NP)\NP))\((S\NP)/((S\NP)\NP)))\(S\NP)
         : (LAM P
            (LAM Q
             (LAM R
              (LAM Y
               (LAM X ((AND ((R X) Y)) ((AND (P X)) ((Q (LAM X X)) X))))))))
-T     (MIYANDA)(_NU_RU) := ((S\NP)/((S\NP)\NP))\((S\NP)/((S\NP)\NP))
+T     (MIYANDA)(-NU-RU) := ((S\NP)/((S\NP)\NP))\((S\NP)/((S\NP)\NP))
         : ((LAM P
             (LAM Q
              (LAM R
               (LAM Y
                (LAM X ((AND ((R X) Y)) ((AND (P X)) ((Q (LAM X X)) X))))))))
            (LAM X (LAUGH X)))
-T     ("BANGUL YARA_NGU")(MIYANDA _NU_RU) := (S\NP)/((S\NP)\NP)
+T     ("bangul yara-ngu")(MIYANDA -NU-RU) := (S\NP)/((S\NP)\NP)
         : (((LAM P
              (LAM Q
               (LAM R
@@ -1119,9 +1118,9 @@ T     ("BANGUL YARA_NGU")(MIYANDA _NU_RU) := (S\NP)/((S\NP)\NP)
                 (LAM X ((AND ((R X) Y)) ((AND (P X)) ((Q (LAM X X)) X))))))))
             (LAM X (LAUGH X)))
            (LAM P (P MAN)))
-LEX   (BURA_N) := (S\NP)\NP
+LEX   (BURA-N) := (S\NP)\NP
         : (LAM X (LAM Y ((SEE Y) X)))
-A     ("BANGUL YARA_NGU" MIYANDA _NU_RU)(BURA_N) := S\NP
+A     ("bangul yara-ngu" MIYANDA -NU-RU)(BURA-N) := S\NP
         : ((((LAM P
               (LAM Q
                (LAM R
@@ -1130,7 +1129,7 @@ A     ("BANGUL YARA_NGU" MIYANDA _NU_RU)(BURA_N) := S\NP
              (LAM X (LAUGH X)))
             (LAM P (P MAN)))
            (LAM X (LAM Y ((SEE Y) X))))
-A     ("BALAN YIBI")("BANGUL YARA_NGU" MIYANDA _NU_RU BURA_N) := S
+A     ("balan yibi")("bangul yara-ngu" MIYANDA -NU-RU BURA-N) := S
         : ((LAM P (P WOMAN))
            ((((LAM P
                (LAM Q
@@ -1154,30 +1153,30 @@ Number of analyses: 1
 
 Derivation 1
 --------------
-LEX   (BAYI YARA) := S/(S\NP)
+LEX   (bayi yara) := S/(S\NP)
         : (LAM P (P MAN))
-LEX   (JILWAL_NA) := (S\NP)/NP
+LEX   (JILWAL-NA) := (S\NP)/NP
         : (LAM X (LAM Y ((KICK X) Y)))
-LEX   (_NU) := ((S/(S\NP))\(S/(S\NP)))\(S\NP)
+LEX   (-NU) := ((S/(S\NP))\(S/(S\NP)))\(S\NP)
         : (LAM P
            (LAM Q
             (LAM R (LAM X ((AND (R X)) ((AND (P X)) ((Q (LAM X X)) X)))))))
-<Bx   (JILWAL_NA)(_NU) := ((S/(S\NP))\(S/(S\NP)))/NP
+<Bx   (JILWAL-NA)(-NU) := ((S/(S\NP))\(S/(S\NP)))/NP
         : (LAM X
            ((LAM P
              (LAM Q
               (LAM R (LAM X ((AND (R X)) ((AND (P X)) ((Q (LAM X X)) X)))))))
             ((LAM X (LAM Y ((KICK X) Y))) X)))
-LEX   (BEGUN GUGA_GU) := ((S/(S\NP))\(S/(S\NP)))\(((S/(S\NP))\(S/(S\NP)))/NP)
+LEX   (begun guda-gu) := ((S/(S\NP))\(S/(S\NP)))\(((S/(S\NP))\(S/(S\NP)))/NP)
         : (LAM P (P DOG))
-T     (JILWAL_NA _NU)("BEGUN GUGA_GU") := (S/(S\NP))\(S/(S\NP))
+T     (JILWAL-NA -NU)("begun guda-gu") := (S/(S\NP))\(S/(S\NP))
         : ((LAM P (P DOG))
            (LAM X
             ((LAM P
               (LAM Q
                (LAM R (LAM X ((AND (R X)) ((AND (P X)) ((Q (LAM X X)) X)))))))
              ((LAM X (LAM Y ((KICK X) Y))) X))))
-T     ("BAYI YARA")(JILWAL_NA _NU "BEGUN GUGA_GU") := S/(S\NP)
+T     ("bayi yara")(JILWAL-NA -NU "begun guda-gu") := S/(S\NP)
         : (((LAM P (P DOG))
             (LAM X
              ((LAM P
@@ -1187,7 +1186,7 @@ T     ("BAYI YARA")(JILWAL_NA _NU "BEGUN GUGA_GU") := S/(S\NP)
            (LAM P (P MAN)))
 LEX   (YANU) := S\NP
         : (LAM X (GO X))
-A     ("BAYI YARA" JILWAL_NA _NU "BEGUN GUGA_GU")(YANU) := S
+A     ("bayi yara" JILWAL-NA -NU "begun guda-gu")(YANU) := S
         : ((((LAM P (P DOG))
              (LAM X
               ((LAM P
@@ -1346,9 +1345,9 @@ T     (I BOUGHT)(AND YOU SOLD) := S/NP
         : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
             (LAM X ((LAM P (P YOU)) ((LAM X (LAM Y ((SOLD X) Y))) X))))
            (LAM X ((LAM P (P I)) ((LAM X (LAM Y ((BOUGHT X) Y))) X))))
-LEX   (THE HOUSE THAT JACK BUILT) := S\(S/NP)
+LEX   (the house that jack built) := S\(S/NP)
         : (LAM P (P HOUSE_BUILT_BY_JACK))
-T     (I BOUGHT AND YOU SOLD)("THE HOUSE THAT JACK BUILT") := S
+T     (I BOUGHT AND YOU SOLD)("the house that jack built") := S
         : ((LAM P (P HOUSE_BUILT_BY_JACK))
            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
              (LAM X ((LAM P (P YOU)) ((LAM X (LAM Y ((SOLD X) Y))) X))))
@@ -1485,14 +1484,41 @@ Number of analyses: 0
 FN40BBAD
 ========
 
-OOV error: no lex entry for ,! Exiting without parse.
-
-Number of analyses: 0
+Number of analyses: 1
 
 =======
 72
 ========
 
+
+Derivation 1
+--------------
+LEX   (bayi yara) := S/(S\NP)
+        : (LAM P (P MAN))
+LEX   (YANU) := S\NP
+        : (LAM X (GO X))
+A     ("bayi yara")(YANU) := S
+        : ((LAM P (P MAN)) (LAM X (GO X)))
+LEX   (,) := (@X\*@X)/*@X
+        : (LAM P (LAM Q ((AND P) Q)))
+LEX   (bangun yibi-ngu) := S/(S\NP)
+        : (LAM P (P WOMAN))
+LEX   (BURA-N) := S\NP
+        : (LAM Y ((SAW TOPIC) Y))
+A     ("bangun yibi-ngu")(BURA-N) := S
+        : ((LAM P (P WOMAN)) (LAM Y ((SAW TOPIC) Y)))
+>     (",")("bangun yibi-ngu" BURA-N) := S\*S
+        : ((LAM P (LAM Q ((AND P) Q)))
+           ((LAM P (P WOMAN)) (LAM Y ((SAW TOPIC) Y))))
+T     ("bayi yara" YANU)("," "bangun yibi-ngu" BURA-N) := S
+        : (((LAM P (LAM Q ((AND P) Q)))
+            ((LAM P (P WOMAN)) (LAM Y ((SAW TOPIC) Y))))
+           ((LAM P (P MAN)) (LAM X (GO X))))
+
+Final LF, normal-order evaluated: 
+
+    ((AND ((SAW TOPIC) WOMAN)) (GO MAN)) =
+    (AND (SAW TOPIC WOMAN) (GO MAN))
 Number of analyses: 1
 
 =======
@@ -1504,9 +1530,9 @@ Derivation 1
 --------------
 LEX   (UBUR) := S/(S\NP)
         : (LAM P (P UBUR))
-LEX   (A_TUUK) := S\NP
+LEX   (A-TUUK) := S\NP
         : (LAM X (PLAY X))
-A     (UBUR)(A_TUUK) := S
+A     (UBUR)(A-TUUK) := S
         : ((LAM P (P UBUR)) (LAM X (PLAY X)))
 
 Final LF, normal-order evaluated: 
@@ -1524,13 +1550,13 @@ Derivation 1
 --------------
 LEX   (UBUR) := S/(S\NP)
         : (LAM P (P UBUR))
-LEX   (A_PUOT) := (S\NP)/NP
+LEX   (A-PUOT) := (S\NP)/NP
         : (LAM Y (LAM X ((BEAT X) Y)))
-LEX   (DHAAG_E) := (S\NP)\((S\NP)/NP)
+LEX   (DHAAG-E) := (S\NP)\((S\NP)/NP)
         : (LAM P (P WOMAN))
-T     (A_PUOT)(DHAAG_E) := S\NP
+T     (A-PUOT)(DHAAG-E) := S\NP
         : ((LAM P (P WOMAN)) (LAM Y (LAM X ((BEAT X) Y))))
-A     (UBUR)(A_PUOT DHAAG_E) := S
+A     (UBUR)(A-PUOT DHAAG-E) := S
         : ((LAM P (P UBUR)) ((LAM P (P WOMAN)) (LAM Y (LAM X ((BEAT X) Y)))))
 
 Final LF, normal-order evaluated: 
@@ -1550,11 +1576,11 @@ LEX   (UBUR) := S/(S/NP)
         : (LAM P (P UBUR))
 LEX   (DHAAGE) := S/(S\NP)
         : (LAM P (P WOMAN))
-LEX   (A_YAAN_E) := (S\NP)/NP
+LEX   (A-YAAN-E) := (S\NP)/NP
         : (LAM Y (LAM X ((INSULT X) Y)))
->B    (DHAAGE)(A_YAAN_E) := S/NP
+>B    (DHAAGE)(A-YAAN-E) := S/NP
         : (LAM X ((LAM P (P WOMAN)) ((LAM Y (LAM X ((INSULT X) Y))) X)))
-A     (UBUR)(DHAAGE A_YAAN_E) := S
+A     (UBUR)(DHAAGE A-YAAN-E) := S
         : ((LAM P (P UBUR))
            (LAM X ((LAM P (P WOMAN)) ((LAM Y (LAM X ((INSULT X) Y))) X))))
 
@@ -1653,9 +1679,9 @@ LEX   (GWYN) := (S/NP)\((S/NP)/NP)
         : (LAM P (P GWYN))
 T     (GWELODD)(GWYN) := S/NP
         : ((LAM P (P GWYN)) (LAM Y (LAM A ((SAW (A Y)) Y))))
-LEX   (EI HUN) := S\(S/NP)
+LEX   (ei hun) := S\(S/NP)
         : (LAM P (P SELF))
-T     (GWELODD GWYN)("EI HUN") := S
+T     (GWELODD GWYN)("ei hun") := S
         : ((LAM P (P SELF)) ((LAM P (P GWYN)) (LAM Y (LAM A ((SAW (A Y)) Y)))))
 
 Final LF, normal-order evaluated: 
@@ -1979,14 +2005,51 @@ Final LF, normal-order evaluated:
 
     ((WANT ((GOTO HOME) GROUPS)) GWYN) =
     (WANT (GOTO HOME GROUPS) GWYN)
-OOV error: no lex entry for ,! Exiting without parse.
-
-Number of analyses: 0
+Number of analyses: 1
 
 =======
 |43S|
 ========
 
+
+Derivation 1
+--------------
+LEX   (NYURRA) := S/(S\NP)
+        : (LAM P (P YOU))
+LEX   (NANA-NA) := (S\NP)/((S\NP)\NP)
+        : (LAM P (P ((AND US) (TOPIC US))))
+LEX   (BURA-N) := (S\NP)\NP
+        : (LAM X (LAM Y ((AND ((SAW (SK X)) (SK Y))) ((NOTEQ (SK X)) (SK Y)))))
+A     (NANA-NA)(BURA-N) := S\NP
+        : ((LAM P (P ((AND US) (TOPIC US))))
+           (LAM X
+            (LAM Y ((AND ((SAW (SK X)) (SK Y))) ((NOTEQ (SK X)) (SK Y))))))
+A     (NYURRA)(NANA-NA BURA-N) := S
+        : ((LAM P (P YOU))
+           ((LAM P (P ((AND US) (TOPIC US))))
+            (LAM X
+             (LAM Y ((AND ((SAW (SK X)) (SK Y))) ((NOTEQ (SK X)) (SK Y)))))))
+LEX   (,) := (@X\*@X)/*@X
+        : (LAM P (LAM Q ((AND P) Q)))
+LEX   (BANAGA-NYU) := S
+        : (RETURN TOPIC)
+>     (",")(BANAGA-NYU) := S\*S
+        : ((LAM P (LAM Q ((AND P) Q))) (RETURN TOPIC))
+T     (NYURRA NANA-NA BURA-N)("," BANAGA-NYU) := S
+        : (((LAM P (LAM Q ((AND P) Q))) (RETURN TOPIC))
+           ((LAM P (P YOU))
+            ((LAM P (P ((AND US) (TOPIC US))))
+             (LAM X
+              (LAM Y ((AND ((SAW (SK X)) (SK Y))) ((NOTEQ (SK X)) (SK Y))))))))
+
+Final LF, normal-order evaluated: 
+
+    ((AND (RETURN TOPIC))
+     ((AND ((SAW (SK ((AND US) (TOPIC US)))) (SK YOU)))
+      ((NOTEQ (SK ((AND US) (TOPIC US)))) (SK YOU)))) =
+    (AND (RETURN TOPIC)
+         (AND (SAW (SK (AND US (TOPIC US))) (SK YOU))
+              (NOTEQ (SK (AND US (TOPIC US))) (SK YOU))))
 Number of analyses: 1
 
 =======
@@ -2002,20 +2065,20 @@ LEX   (NUTARAQ) := (S\NP)/((S\NP)\NP)
         : (LAM P (P CHILD))
 LEX   (TITIRAUTIMIK) := VP/(VP\NP)
         : (LAM P (P PENCIL))
-LEX   (NANI_SI) := VP\NP
+LEX   (NANI-SI) := VP\NP
         : (LAM X (LAM Y (ANTIP ((FIND X) Y))))
-A     (TITIRAUTIMIK)(NANI_SI) := VP
+A     (TITIRAUTIMIK)(NANI-SI) := VP
         : ((LAM P (P PENCIL)) (LAM X (LAM Y (ANTIP ((FIND X) Y)))))
-LEX   (RQU_VAA) := ((S\NP)\NP)\VP
+LEX   (RQU-VAA) := ((S\NP)\NP)\VP
         : (LAM P (LAM X (LAM Y (((TELL (P X)) X) Y))))
-T     (TITIRAUTIMIK NANI_SI)(RQU_VAA) := (S\NP)\NP
+T     (TITIRAUTIMIK NANI-SI)(RQU-VAA) := (S\NP)\NP
         : ((LAM P (LAM X (LAM Y (((TELL (P X)) X) Y))))
            ((LAM P (P PENCIL)) (LAM X (LAM Y (ANTIP ((FIND X) Y))))))
-A     (NUTARAQ)(TITIRAUTIMIK NANI_SI RQU_VAA) := S\NP
+A     (NUTARAQ)(TITIRAUTIMIK NANI-SI RQU-VAA) := S\NP
         : ((LAM P (P CHILD))
            ((LAM P (LAM X (LAM Y (((TELL (P X)) X) Y))))
             ((LAM P (P PENCIL)) (LAM X (LAM Y (ANTIP ((FIND X) Y)))))))
-A     (ARNAUP)(NUTARAQ TITIRAUTIMIK NANI_SI RQU_VAA) := S
+A     (ARNAUP)(NUTARAQ TITIRAUTIMIK NANI-SI RQU-VAA) := S
         : ((LAM P (P WOMAN))
            ((LAM P (P CHILD))
             ((LAM P (LAM X (LAM Y (((TELL (P X)) X) Y))))
@@ -2042,28 +2105,28 @@ Derivation 1
 --------------
 LEX   (NANUQ) := S/(S\NP)
         : (LAM P (P POLARBEAR))
-LEX   (PIITA_P) := ((S/(S\NP))\(S/(S\NP)))/(((S/(S\NP))\(S/(S\NP)))\NP)
+LEX   (PIITA-P) := ((S/(S\NP))\(S/(S\NP)))/(((S/(S\NP))\(S/(S\NP)))\NP)
         : (LAM P (P PIITA))
 LEX   (TUGU) := (S\NP)\NP
         : (LAM X (LAM Y ((KILL X) Y)))
-LEX   (_TA_A) := (((S/(S\NP))\(S/(S\NP)))\NP)\((S\NP)\NP)
+LEX   (-TA-A) := (((S/(S\NP))\(S/(S\NP)))\NP)\((S\NP)\NP)
         : (LAM P
            (LAM Q
             (LAM R1 (LAM R ((AND ((P (R1 (LAM X X))) Q)) (R (R1 (LAM X X))))))))
-T     (TUGU)(_TA_A) := ((S/(S\NP))\(S/(S\NP)))\NP
+T     (TUGU)(-TA-A) := ((S/(S\NP))\(S/(S\NP)))\NP
         : ((LAM P
             (LAM Q
              (LAM R1
               (LAM R ((AND ((P (R1 (LAM X X))) Q)) (R (R1 (LAM X X))))))))
            (LAM X (LAM Y ((KILL X) Y))))
-A     (PIITA_P)(TUGU _TA_A) := (S/(S\NP))\(S/(S\NP))
+A     (PIITA-P)(TUGU -TA-A) := (S/(S\NP))\(S/(S\NP))
         : ((LAM P (P PIITA))
            ((LAM P
              (LAM Q
               (LAM R1
                (LAM R ((AND ((P (R1 (LAM X X))) Q)) (R (R1 (LAM X X))))))))
             (LAM X (LAM Y ((KILL X) Y)))))
-T     (NANUQ)(PIITA_P TUGU _TA_A) := S/(S\NP)
+T     (NANUQ)(PIITA-P TUGU -TA-A) := S/(S\NP)
         : (((LAM P (P PIITA))
             ((LAM P
               (LAM Q
@@ -2089,16 +2152,16 @@ LEX   (MIIRAQ) := S/(S\NP)
         : (LAM P (P CHILD))
 LEX   (KAMAT) := S\NP
         : (LAM X (ANGRY X))
-LEX   (_TU_Q) := ((S/(S\NP))\(S/(S\NP)))\(S\NP)
+LEX   (-TU-Q) := ((S/(S\NP))\(S/(S\NP)))\(S\NP)
         : (LAM P
            (LAM Q
             (LAM R (LAM X ((AND (P X)) ((AND ((Q (LAM X X)) X)) (R X)))))))
-T     (KAMAT)(_TU_Q) := (S/(S\NP))\(S/(S\NP))
+T     (KAMAT)(-TU-Q) := (S/(S\NP))\(S/(S\NP))
         : ((LAM P
             (LAM Q
              (LAM R (LAM X ((AND (P X)) ((AND ((Q (LAM X X)) X)) (R X)))))))
            (LAM X (ANGRY X)))
-T     (MIIRAQ)(KAMAT _TU_Q) := S/(S\NP)
+T     (MIIRAQ)(KAMAT -TU-Q) := S/(S\NP)
         : (((LAM P
              (LAM Q
               (LAM R (LAM X ((AND (P X)) ((AND ((Q (LAM X X)) X)) (R X)))))))
@@ -2120,28 +2183,28 @@ Derivation 1
 --------------
 LEX   (ANGUT) := S/(S\NP)
         : (LAM P (P MAN))
-LEX   (AALLAAM_MIK) := ((S/(S\NP))\(S/(S\NP)))/(((S/(S\NP))\(S/(S\NP)))\NP)
+LEX   (AALLAAM-MIK) := ((S/(S\NP))\(S/(S\NP)))/(((S/(S\NP))\(S/(S\NP)))\NP)
         : (LAM P (P GUN))
-LEX   (TIGU_SI_SIMA) := (S\NP)\NP
+LEX   (TIGU-SI-SIMA) := (S\NP)\NP
         : (LAM X (LAM Y ((TAKE X) Y)))
-LEX   (_SU_Q) := ((S/(S\NP))\(S/(S\NP)))\(S\NP)
+LEX   (-SU-Q) := ((S/(S\NP))\(S/(S\NP)))\(S\NP)
         : (LAM P
            (LAM Q
             (LAM R (LAM X ((AND (P X)) ((AND ((Q (LAM X X)) X)) (R X)))))))
-<B    (TIGU_SI_SIMA)(_SU_Q) := ((S/(S\NP))\(S/(S\NP)))\NP
+<B    (TIGU-SI-SIMA)(-SU-Q) := ((S/(S\NP))\(S/(S\NP)))\NP
         : (LAM X
            ((LAM P
              (LAM Q
               (LAM R (LAM X ((AND (P X)) ((AND ((Q (LAM X X)) X)) (R X)))))))
             ((LAM X (LAM Y ((TAKE X) Y))) X)))
-A     (AALLAAM_MIK)(TIGU_SI_SIMA _SU_Q) := (S/(S\NP))\(S/(S\NP))
+A     (AALLAAM-MIK)(TIGU-SI-SIMA -SU-Q) := (S/(S\NP))\(S/(S\NP))
         : ((LAM P (P GUN))
            (LAM X
             ((LAM P
               (LAM Q
                (LAM R (LAM X ((AND (P X)) ((AND ((Q (LAM X X)) X)) (R X)))))))
              ((LAM X (LAM Y ((TAKE X) Y))) X))))
-T     (ANGUT)(AALLAAM_MIK TIGU_SI_SIMA _SU_Q) := S/(S\NP)
+T     (ANGUT)(AALLAAM-MIK TIGU-SI-SIMA -SU-Q) := S/(S\NP)
         : (((LAM P (P GUN))
             (LAM X
              ((LAM P
@@ -2175,20 +2238,20 @@ LEX   (BABAE) := N
         : WOMAN
 LEX   (NG) := (N\N)/(S/NP)
         : (LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
-LEX   (B_UM_ILI) := (S/NP)/NP
+LEX   (B-UM-ILI) := (S/NP)/NP
         : (LAM X (LAM Y ((BUY X) Y)))
-LEX   (NG_BARO) := (S/NP)\((S/NP)/NP)
+LEX   (NG-BARO) := (S/NP)\((S/NP)/NP)
         : (LAM P (P DRESS))
-T     (B_UM_ILI)(NG_BARO) := S/NP
+T     (B-UM-ILI)(NG-BARO) := S/NP
         : ((LAM P (P DRESS)) (LAM X (LAM Y ((BUY X) Y))))
-A     (NG)(B_UM_ILI NG_BARO) := N\N
+A     (NG)(B-UM-ILI NG-BARO) := N\N
         : ((LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
            ((LAM P (P DRESS)) (LAM X (LAM Y ((BUY X) Y)))))
-T     (BABAE)(NG B_UM_ILI NG_BARO) := N
+T     (BABAE)(NG B-UM-ILI NG-BARO) := N
         : (((LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
             ((LAM P (P DRESS)) (LAM X (LAM Y ((BUY X) Y)))))
            WOMAN)
-A     (ANG)(BABAE NG B_UM_ILI NG_BARO) := S\(S/NP)
+A     (ANG)(BABAE NG B-UM-ILI NG-BARO) := S\(S/NP)
         : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
            (((LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
              ((LAM P (P DRESS)) (LAM X (LAM Y ((BUY X) Y)))))
@@ -2215,25 +2278,25 @@ LEX   (BARO) := N
         : DRESS
 LEX   (NG) := (N\N)/(S/NP)
         : (LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
-LEX   (B_IN_ILI) := (S/NP)/NP
+LEX   (B-IN-ILI) := (S/NP)/NP
         : (LAM X (LAM Y ((BUY Y) X)))
-LEX   (NG_BABAE) := (S/NP)\((S/NP)/NP)
+LEX   (NG-BABAE) := (S/NP)\((S/NP)/NP)
         : (LAM P (P WOMAN))
-T     (B_IN_ILI)(NG_BABAE) := S/NP
+T     (B-IN-ILI)(NG-BABAE) := S/NP
         : ((LAM P (P WOMAN)) (LAM X (LAM Y ((BUY Y) X))))
-A     (NG)(B_IN_ILI NG_BABAE) := N\N
+A     (NG)(B-IN-ILI NG-BABAE) := N\N
         : ((LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
            ((LAM P (P WOMAN)) (LAM X (LAM Y ((BUY Y) X)))))
-T     (BARO)(NG B_IN_ILI NG_BABAE) := N
+T     (BARO)(NG B-IN-ILI NG-BABAE) := N
         : (((LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
             ((LAM P (P WOMAN)) (LAM X (LAM Y ((BUY Y) X)))))
            DRESS)
-A     (ANG)(BARO NG B_IN_ILI NG_BABAE) := S\(S/NP)
+A     (ANG)(BARO NG B-IN-ILI NG-BABAE) := S\(S/NP)
         : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
            (((LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
              ((LAM P (P WOMAN)) (LAM X (LAM Y ((BUY Y) X)))))
             DRESS))
-T     (IYON)(ANG BARO NG B_IN_ILI NG_BABAE) := S
+T     (IYON)(ANG BARO NG B-IN-ILI NG-BABAE) := S
         : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
             (((LAM P (LAM N (LAM X ((AND (P X)) (N X)))))
               ((LAM P (P WOMAN)) (LAM X (LAM Y ((BUY Y) X)))))
@@ -2263,18 +2326,18 @@ LEX   (LANG) := S\S
         : (LAM P (JUST P))
 <Bx2  (KABIBILI)(LANG) := (S/NP)/NP
         : (LAM X (LAM Y ((LAM P (JUST P)) (((LAM X (LAM Y ((BUY X) Y))) X) Y))))
-LEX   (NG TELA) := (S/NP)\((S/NP)/NP)
+LEX   (ng tela) := (S/NP)\((S/NP)/NP)
         : (LAM P (P CLOTH))
-T     (KABIBILI LANG)("NG TELA") := S/NP
+T     (KABIBILI LANG)("ng tela") := S/NP
         : ((LAM P (P CLOTH))
            (LAM X
             (LAM Y ((LAM P (JUST P)) (((LAM X (LAM Y ((BUY X) Y))) X) Y)))))
-A     (ANG)(KABIBILI LANG "NG TELA") := S\(S/NP)
+A     (ANG)(KABIBILI LANG "ng tela") := S\(S/NP)
         : ((LAM P (LAM X (P X)))
            ((LAM P (P CLOTH))
             (LAM X
              (LAM Y ((LAM P (JUST P)) (((LAM X (LAM Y ((BUY X) Y))) X) Y))))))
-T     (SINO)(ANG KABIBILI LANG "NG TELA") := S
+T     (SINO)(ANG KABIBILI LANG "ng tela") := S
         : (((LAM P (LAM X (P X)))
             ((LAM P (P CLOTH))
              (LAM X
@@ -2300,35 +2363,35 @@ LEX   (ANG) := (S\(S/NP))/(S/NP)
         : (LAM P (LAM X (P X)))
 LEX   (SINABI) := (S/S)/NP
         : (LAM X (LAM P ((SAY P) X)))
-LEX   (NI PEDRO) := (S/S)\((S/S)/NP)
+LEX   (ni pedro) := (S/S)\((S/S)/NP)
         : (LAM P (P PEDRO))
-T     (SINABI)("NI PEDRO") := S/S
+T     (SINABI)("ni pedro") := S/S
         : ((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
 LEX   (NA) := S/S
         : (LAM P P)
 LEX   (BINILI) := (S/NP)/NP
         : (LAM X (LAM Y ((BUY Y) X)))
-LEX   (NI LINDA) := (S/NP)\((S/NP)/NP)
+LEX   (ni linda) := (S/NP)\((S/NP)/NP)
         : (LAM P (P LINDA))
-T     (BINILI)("NI LINDA") := S/NP
+T     (BINILI)("ni linda") := S/NP
         : ((LAM P (P LINDA)) (LAM X (LAM Y ((BUY Y) X))))
->B    (NA)(BINILI "NI LINDA") := S/NP
+>B    (NA)(BINILI "ni linda") := S/NP
         : (LAM X
            ((LAM P P) (((LAM P (P LINDA)) (LAM X (LAM Y ((BUY Y) X)))) X)))
->B    (SINABI "NI PEDRO")(NA BINILI "NI LINDA") := S/NP
+>B    (SINABI "ni pedro")(NA BINILI "ni linda") := S/NP
         : (LAM X
            (((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
             ((LAM X
               ((LAM P P) (((LAM P (P LINDA)) (LAM X (LAM Y ((BUY Y) X)))) X)))
              X)))
-A     (ANG)(SINABI "NI PEDRO" NA BINILI "NI LINDA") := S\(S/NP)
+A     (ANG)(SINABI "ni pedro" NA BINILI "ni linda") := S\(S/NP)
         : ((LAM P (LAM X (P X)))
            (LAM X
             (((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
              ((LAM X
                ((LAM P P) (((LAM P (P LINDA)) (LAM X (LAM Y ((BUY Y) X)))) X)))
               X))))
-T     (ANO)(ANG SINABI "NI PEDRO" NA BINILI "NI LINDA") := S
+T     (ANO)(ANG SINABI "ni pedro" NA BINILI "ni linda") := S
         : (((LAM P (LAM X (P X)))
             (LAM X
              (((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
@@ -2351,9 +2414,9 @@ LEX   (ANG) := (S\(S/NP))/(S/NP)
         : (LAM P (LAM X (P X)))
 LEX   (SINABI) := (S/S)/NP
         : (LAM X (LAM P ((SAY P) X)))
-LEX   (NI PEDRO) := (S/S)\((S/S)/NP)
+LEX   (ni pedro) := (S/S)\((S/S)/NP)
         : (LAM P (P PEDRO))
-T     (SINABI)("NI PEDRO") := S/S
+T     (SINABI)("ni pedro") := S/S
         : ((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
 LEX   (NA) := S/S
         : (LAM P P)
@@ -2361,25 +2424,25 @@ LEX   (BINILI) := (S/NP)/NP
         : (LAM X (LAM Y ((BUY Y) X)))
 >B2   (NA)(BINILI) := (S/NP)/NP
         : (LAM X (LAM Y ((LAM P P) (((LAM X (LAM Y ((BUY Y) X))) X) Y))))
-LEX   (NI LINDA) := (S/NP)\((S/NP)/NP)
+LEX   (ni linda) := (S/NP)\((S/NP)/NP)
         : (LAM P (P LINDA))
-T     (NA BINILI)("NI LINDA") := S/NP
+T     (NA BINILI)("ni linda") := S/NP
         : ((LAM P (P LINDA))
            (LAM X (LAM Y ((LAM P P) (((LAM X (LAM Y ((BUY Y) X))) X) Y)))))
->B    (SINABI "NI PEDRO")(NA BINILI "NI LINDA") := S/NP
+>B    (SINABI "ni pedro")(NA BINILI "ni linda") := S/NP
         : (LAM X
            (((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
             (((LAM P (P LINDA))
               (LAM X (LAM Y ((LAM P P) (((LAM X (LAM Y ((BUY Y) X))) X) Y)))))
              X)))
-A     (ANG)(SINABI "NI PEDRO" NA BINILI "NI LINDA") := S\(S/NP)
+A     (ANG)(SINABI "ni pedro" NA BINILI "ni linda") := S\(S/NP)
         : ((LAM P (LAM X (P X)))
            (LAM X
             (((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
              (((LAM P (P LINDA))
                (LAM X (LAM Y ((LAM P P) (((LAM X (LAM Y ((BUY Y) X))) X) Y)))))
               X))))
-T     (ANO)(ANG SINABI "NI PEDRO" NA BINILI "NI LINDA") := S
+T     (ANO)(ANG SINABI "ni pedro" NA BINILI "ni linda") := S
         : (((LAM P (LAM X (P X)))
             (LAM X
              (((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
@@ -2402,9 +2465,9 @@ LEX   (ANG) := (S\(S/NP))/(S/NP)
         : (LAM P (LAM X (P X)))
 LEX   (SINABI) := (S/S)/NP
         : (LAM X (LAM P ((SAY P) X)))
-LEX   (NI PEDRO) := (S/S)\((S/S)/NP)
+LEX   (ni pedro) := (S/S)\((S/S)/NP)
         : (LAM P (P PEDRO))
-T     (SINABI)("NI PEDRO") := S/S
+T     (SINABI)("ni pedro") := S/S
         : ((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
 LEX   (NA) := S/S
         : (LAM P P)
@@ -2412,16 +2475,16 @@ LEX   (BINILI) := (S/NP)/NP
         : (LAM X (LAM Y ((BUY Y) X)))
 >B2   (NA)(BINILI) := (S/NP)/NP
         : (LAM X (LAM Y ((LAM P P) (((LAM X (LAM Y ((BUY Y) X))) X) Y))))
->B2   (SINABI "NI PEDRO")(NA BINILI) := (S/NP)/NP
+>B2   (SINABI "ni pedro")(NA BINILI) := (S/NP)/NP
         : (LAM X
            (LAM Y
             (((LAM P (P PEDRO)) (LAM X (LAM P ((SAY P) X))))
              (((LAM X (LAM Y ((LAM P P) (((LAM X (LAM Y ((BUY Y) X))) X) Y))))
                X)
               Y))))
-LEX   (NI LINDA) := (S/NP)\((S/NP)/NP)
+LEX   (ni linda) := (S/NP)\((S/NP)/NP)
         : (LAM P (P LINDA))
-T     (SINABI "NI PEDRO" NA BINILI)("NI LINDA") := S/NP
+T     (SINABI "ni pedro" NA BINILI)("ni linda") := S/NP
         : ((LAM P (P LINDA))
            (LAM X
             (LAM Y
@@ -2429,7 +2492,7 @@ T     (SINABI "NI PEDRO" NA BINILI)("NI LINDA") := S/NP
               (((LAM X (LAM Y ((LAM P P) (((LAM X (LAM Y ((BUY Y) X))) X) Y))))
                 X)
                Y)))))
-A     (ANG)(SINABI "NI PEDRO" NA BINILI "NI LINDA") := S\(S/NP)
+A     (ANG)(SINABI "ni pedro" NA BINILI "ni linda") := S\(S/NP)
         : ((LAM P (LAM X (P X)))
            ((LAM P (P LINDA))
             (LAM X
@@ -2439,7 +2502,7 @@ A     (ANG)(SINABI "NI PEDRO" NA BINILI "NI LINDA") := S\(S/NP)
                   (LAM Y ((LAM P P) (((LAM X (LAM Y ((BUY Y) X))) X) Y))))
                  X)
                 Y))))))
-T     (ANO)(ANG SINABI "NI PEDRO" NA BINILI "NI LINDA") := S
+T     (ANO)(ANG SINABI "ni pedro" NA BINILI "ni linda") := S
         : (((LAM P (LAM X (P X)))
             ((LAM P (P LINDA))
              (LAM X
@@ -2485,9 +2548,9 @@ T     (HUHUGASAN KO)(AT PUPUNASAN MO) := S/NP
         : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
             ((LAM P (P YOU)) (LAM X (LAM Y ((DRY Y) X)))))
            ((LAM P (P I)) (LAM X (LAM Y ((WASH Y) X)))))
-LEX   (ANG_MGA_PINGGAN) := S\(S/NP)
+LEX   (ANG-MGA-PINGGAN) := S\(S/NP)
         : (LAM P (P DISHES))
-T     (HUHUGASAN KO AT PUPUNASAN MO)(ANG_MGA_PINGGAN) := S
+T     (HUHUGASAN KO AT PUPUNASAN MO)(ANG-MGA-PINGGAN) := S
         : ((LAM P (P DISHES))
            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
              ((LAM P (P YOU)) (LAM X (LAM Y ((DRY Y) X)))))
@@ -2497,3 +2560,58 @@ Final LF, normal-order evaluated:
 
     ((AND ((DRY DISHES) YOU)) ((WASH DISHES) I)) =
     (AND (DRY DISHES YOU) (WASH DISHES I))
+OOV error: no lex entry for BUY! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+L1
+========
+
+OOV error: no lex entry for LONDON! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+L2
+========
+
+OOV error: no lex entry for WANT! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+L3
+========
+
+OOV error: no lex entry for FOLDED! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+L4
+========
+
+OOV error: no lex entry for WHAT! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+D1
+========
+
+OOV error: no lex entry for WHAT! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+D2
+========
+
+OOV error: no lex entry for GAVE! Exiting without parse.
+
+Number of analyses: 0
+
+=======
+S2
+========

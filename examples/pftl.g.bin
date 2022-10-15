@@ -1,6 +1,6 @@
 (defparameter *current-grammar* '(
 ;;;;;;;;;; bench.py-generated monadic Lisp grammar
-;;;;;;;;;; from pftl.g October 15, 2022, 16:22:55
+;;;;;;;;;; from pftl.g October 15, 2022, 17:06:55
 ;;
 ;; a rules
 ;;
@@ -8,919 +8,919 @@
 ;; elements
 ;;
 (
-(KEY 703379)(PARAM 1.0)(PHON WALL)
+(KEY 546158)(PARAM 1.0)(PHON WALL)
 (MORPH n)(SYN ((BCAT N)(FEATS NIL)))(SEM (LAM x (wall x)))
 )
 (
-(KEY 169564)(PARAM 1.0)(PHON COMPANY)
+(KEY 891946)(PARAM 1.0)(PHON COMPANY)
 (MORPH n)(SYN ((BCAT N)(FEATS NIL)))(SEM (LAM x (company x)))
 )
 (
-(KEY 117042)(PARAM 1.0)(PHON CEO)
+(KEY 611194)(PARAM 1.0)(PHON CEO)
 (MORPH n)(SYN ((BCAT N)(FEATS NIL)))(SEM (LAM x (CEO x)))
 )
 (
-(KEY 410711)(PARAM 1.0)(PHON MERCIER)
+(KEY 580732)(PARAM 1.0)(PHON MERCIER)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))))(SEM (LAM p (p mercier)))
 )
 (
-(KEY 691175)(PARAM 1.0)(PHON CAMIER)
+(KEY 353886)(PARAM 1.0)(PHON CAMIER)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))))(SEM (LAM p (p camier)))
 )
 (
-(KEY 267082)(PARAM 1.0)(PHON WHO)
+(KEY 116820)(PARAM 1.0)(PHON WHO)
 (MORPH wh)(SYN ((((BCAT n)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT n)(FEATS NIL)))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 877592)(PARAM 1.0)(PHON BELIEVES)
+(KEY 771898)(PARAM 1.0)(PHON BELIEVES)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))(DIR FS)(MODAL ALL)((BCAT s)(FEATS NIL))))(SEM (LAM s (LAM x ((believe s) x))))
 )
 (
-(KEY 895146)(PARAM 1.0)(PHON HOPES)
+(KEY 558814)(PARAM 1.0)(PHON HOPES)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))(DIR FS)(MODAL ALL)((BCAT s)(FEATS NIL))))(SEM (LAM s (LAM x ((hope s) x))))
 )
 (
-(KEY 268799)(PARAM 1.0)(PHON MIGHT)
+(KEY 675124)(PARAM 1.0)(PHON MIGHT)
 (MORPH aux)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS NIL))))(SEM (LAM p (LAM x (might (p x)))))
 )
 (
-(KEY 545679)(PARAM 1.0)(PHON SAVE)
+(KEY 846838)(PARAM 1.0)(PHON SAVE)
 (MORPH v)(SYN (((BCAT vp)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y ((save x) y))))
 )
 (
-(KEY 569553)(PARAM 1.0)(PHON BALBUS)
+(KEY 660450)(PARAM 1.0)(PHON BALBUS)
 (MORPH np)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)(case nom)))))))(SEM (LAM p (p balb)))
 )
 (
-(KEY 257210)(PARAM 1.0)(PHON BUILD)
+(KEY 637532)(PARAM 1.0)(PHON BUILD)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((typ inf))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y ((build x) y))))
 )
 (
-(KEY 686951)(PARAM 1.0)(PHON SEE)
+(KEY 649250)(PARAM 1.0)(PHON SEE)
 (MORPH v)(SYN (((BCAT VP)(FEATS ((typ inf))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y ((see x) y))))
 )
 (
-(KEY 777419)(PARAM 1.0)(PHON PERSUADE)
+(KEY 82653)(PARAM 1.0)(PHON PERSUADE)
 (MORPH v)(SYN ((((BCAT VP)(FEATS ((typ inf))))(DIR FS)(MODAL ALL)((BCAT VP)(FEATS ((type to)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM q (LAM y (((persuade (q x)) x) y)))))
 )
 (
-(KEY 888520)(PARAM 1.0)(PHON PERSUADES)
+(KEY 140011)(PARAM 1.0)(PHON PERSUADES)
 (MORPH v)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))(DIR FS)(MODAL ALL)((BCAT VP)(FEATS ((type to_inf)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM q (LAM y (((persuade (q x)) x) y)))))
 )
 (
-(KEY 498543)(PARAM 1.0)(PHON EN)
+(KEY 977235)(PARAM 1.0)(PHON EN)
 (MORPH aff)(SYN (((BCAT vp)(FEATS ((type pss))))(DIR BS)(MODAL ALL)(((BCAT VP)(FEATS ((typ inf))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (LAM y ((p y) (something y)))))
 )
 (
-(KEY 455913)(PARAM 1.0)(PHON EN)
+(KEY 679260)(PARAM 1.0)(PHON EN)
 (MORPH aff)(SYN ((((BCAT vp)(FEATS ((type pss))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type to)))))(DIR BS)(MODAL ALL)((((BCAT VP)(FEATS ((typ inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((typ to)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (LAM q (LAM y (((p y) q) (something y))))))
 )
 (
-(KEY 141447)(PARAM 1.0)(PHON SEES)
+(KEY 864911)(PARAM 1.0)(PHON SEES)
 (MORPH v)(SYN ((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((agr 3s)))))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS NIL))))(SEM (LAM x (LAM y ((see x) y))))
 )
 (
-(KEY 752322)(PARAM 1.0)(PHON SAW)
+(KEY 155090)(PARAM 1.0)(PHON SAW)
 (MORPH v)(SYN ((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS ((type full)(agr ?a))))))(SEM (LAM x (LAM y ((saw x) y))))
 )
 (
-(KEY 403449)(PARAM 1.0)(PHON GWELODD)
+(KEY 522234)(PARAM 1.0)(PHON GWELODD)
 (MORPH v)(SYN ((((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS ((agr 3s))))))(SEM (LAM y (LAM x ((saw x) y))))
 )
 (
-(KEY 173239)(PARAM 1.0)(PHON SEEN)
+(KEY 310585)(PARAM 1.0)(PHON SEEN)
 (MORPH v)(SYN (((BCAT S)(FEATS ((voi pass))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM x ((see x) ((sk x) one))))
 )
 (
-(KEY 482990)(PARAM 1.0)(PHON PERSUADED)
+(KEY 551990)(PARAM 1.0)(PHON PERSUADED)
 (MORPH v)(SYN ((((BCAT S)(FEATS ((voi pass))))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((agr 3s)))))(DIR FS)(MODAL ALL)((BCAT VP)(FEATS ((type to_inf))))))(SEM (LAM p (LAM x (((persuade (p x)) x) ((sk x) one)))))
 )
 (
-(KEY 68224)(PARAM 1.0)(PHON OPEN)
+(KEY 74809)(PARAM 1.0)(PHON OPEN)
 (MORPH v)(SYN (((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS NIL))))(SEM (LAM y (init (open y))))
 )
 (
-(KEY 491655)(PARAM 1.0)(PHON OPEN)
+(KEY 628511)(PARAM 1.0)(PHON OPEN)
 (MORPH v)(SYN ((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS NIL))))(SEM (LAM x (LAM y ((cause (init (open x))) y))))
 )
 (
-(KEY 739865)(PARAM 1.0)(PHON BREAK)
+(KEY 234801)(PARAM 1.0)(PHON BREAK)
 (MORPH v)(SYN (((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS NIL))))(SEM (LAM x (init (broken x))))
 )
 (
-(KEY 707028)(PARAM 1.0)(PHON OPEN)
+(KEY 91406)(PARAM 1.0)(PHON OPEN)
 (MORPH v)(SYN ((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS NIL))))(SEM (LAM x (LAM y ((cause (init (broken x))) y))))
 )
 (
-(KEY 329714)(PARAM 1.0)(PHON I)
+(KEY 782544)(PARAM 1.0)(PHON I)
 (MORPH n)(SYN (((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((agr 1s)))))))(SEM (LAM p (p i)))
 )
 (
-(KEY 307795)(PARAM 1.0)(PHON HARRY)
+(KEY 578780)(PARAM 1.0)(PHON HARRY)
 (MORPH n)(SYN ((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((agr ?x)))))(DIR BS)(MODAL ALL)((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((agr ?x)))))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS NIL)))))(SEM (LAM p (p harry)))
 )
 (
-(KEY 374467)(PARAM 1.0)(PHON HARRY)
+(KEY 127792)(PARAM 1.0)(PHON HARRY)
 (MORPH n)(SYN ((BCAT NP)(FEATS NIL)))(SEM harry)
 )
 (
-(KEY 64287)(PARAM 1.0)(PHON BALB)
+(KEY 904869)(PARAM 1.0)(PHON BALB)
 (MORPH n)(SYN ((BCAT N)(FEATS NIL)))(SEM balb)
 )
 (
-(KEY 1141)(PARAM 1.0)(PHON US)
+(KEY 255939)(PARAM 1.0)(PHON US)
 (MORPH aff)(SYN ((((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case nom)(agr 3s))))))(DIR BS)(MODAL STAR)((BCAT N)(FEATS NIL))))(SEM (LAM x (LAM p (p x))))
 )
 (
-(KEY 895795)(PARAM 1.0)(PHON MUR)
+(KEY 941408)(PARAM 1.0)(PHON MUR)
 (MORPH n)(SYN ((BCAT N)(FEATS NIL)))(SEM wall)
 )
 (
-(KEY 127390)(PARAM 1.0)(PHON UM)
+(KEY 613467)(PARAM 1.0)(PHON UM)
 (MORPH aff)(SYN (((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case nom)(agr ?x)))))(DIR FS)(MODAL ALL)((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case nom)(agr ?x)))))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case acc))))))(DIR BS)(MODAL ALL)((BCAT N)(FEATS NIL))))(SEM (LAM x (LAM p (p x))))
 )
 (
-(KEY 602358)(PARAM 1.0)(PHON UM)
+(KEY 866325)(PARAM 1.0)(PHON UM)
 (MORPH aff)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case acc))))))(DIR BS)(MODAL ALL)((BCAT N)(FEATS NIL))))(SEM (LAM x (LAM p (p x))))
 )
 (
-(KEY 53737)(PARAM 1.0)(PHON M)
+(KEY 567478)(PARAM 1.0)(PHON M)
 (MORPH aff)(SYN (((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case nom)(agr ?x)))))(DIR FS)(MODAL ALL)((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case nom)(agr ?x)))))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case acc))))))(DIR BS)(MODAL ALL)((BCAT N)(FEATS NIL))))(SEM (LAM x (LAM p (p x))))
 )
 (
-(KEY 633150)(PARAM 1.0)(PHON AEDIFICAT)
+(KEY 363079)(PARAM 1.0)(PHON AEDIFICAT)
 (MORPH v)(SYN ((((BCAT S)(FEATS ((type pres))))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case nom)(agr 3s)))))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case acc))))))(SEM (LAM x (LAM y ((build x) y))))
 )
 (
-(KEY 337584)(PARAM 1.0)(PHON DEPART)
+(KEY 845623)(PARAM 1.0)(PHON DEPART)
 (MORPH v)(SYN (((BCAT s)(FEATS ((type inf))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM y (depart y)))
 )
 (
-(KEY 492966)(PARAM 1.0)(PHON ED)
+(KEY 663813)(PARAM 1.0)(PHON ED)
 (MORPH aff)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS ((type inf))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (LAM y (past (p y)))))
 )
 (
-(KEY 243122)(PARAM 1.0)(PHON DISMISS)
+(KEY 865505)(PARAM 1.0)(PHON DISMISS)
 (MORPH v)(SYN ((((BCAT s)(FEATS ((type inf))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y ((dismiss x) y))))
 )
 (
-(KEY 329705)(PARAM 1.0)(PHON ROCKET)
+(KEY 719318)(PARAM 1.0)(PHON ROCKET)
 (MORPH n)(SYN ((BCAT n)(FEATS NIL)))(SEM rocket)
 )
 (
-(KEY 305578)(PARAM 1.0)(PHON SCIENT)
+(KEY 898611)(PARAM 1.0)(PHON SCIENT)
 (MORPH n)(SYN (((BCAT n)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT n)(FEATS NIL))))(SEM (LAM x (science x)))
 )
 (
-(KEY 128648)(PARAM 1.0)(PHON IST)
+(KEY 237122)(PARAM 1.0)(PHON IST)
 (MORPH aff)(SYN (((BCAT n)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT n)(FEATS NIL))))(SEM (LAM p (LAM x ((practitioner p) x))))
 )
 (
-(KEY 939542)(PARAM 1.0)(PHON HARRY)
+(KEY 347464)(PARAM 1.0)(PHON HARRY)
 (MORPH n)(SYN (((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((agr 3s)))))))(SEM (LAM p (p harry)))
 )
 (
-(KEY 19800)(PARAM 1.0)(PHON SALLY)
+(KEY 997001)(PARAM 1.0)(PHON SALLY)
 (MORPH n)(SYN (((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((agr 3s)))))))(SEM (LAM p (p sally)))
 )
 (
-(KEY 56434)(PARAM 1.0)(PHON SALLY)
+(KEY 458540)(PARAM 1.0)(PHON SALLY)
 (MORPH n)(SYN ((BCAT NP)(FEATS ((agr 3s)))))(SEM sally)
 )
 (
-(KEY 484692)(PARAM 1.0)(PHON MISSED)
+(KEY 780906)(PARAM 1.0)(PHON MISSED)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x ((miss x) me)))
 )
 (
-(KEY 19419)(PARAM 1.0)(PHON "the saturday dance")
+(KEY 114628)(PARAM 1.0)(PHON "the saturday dance")
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p thesaturdaydance)))
 )
 (
-(KEY 562561)(PARAM 1.0)(PHON SAW)
+(KEY 176262)(PARAM 1.0)(PHON SAW)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((type ana)(agr ?a))))))(SEM (LAM a (LAM y ((saw (a y)) y))))
 )
 (
-(KEY 356961)(PARAM 1.0)(PHON MAE)
+(KEY 645044)(PARAM 1.0)(PHON MAE)
 (MORPH v)(SYN ((((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT VP)(FEATS ((typ asp)))))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS ((agr 3s))))))(SEM (LAM y (LAM p (pres (p y)))))
 )
 (
-(KEY 279658)(PARAM 1.0)(PHON RHIANNON)
+(KEY 943691)(PARAM 1.0)(PHON RHIANNON)
 (MORPH n)(SYN ((((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT VP)(FEATS ((typ asp)))))(DIR BS)(MODAL ALL)((((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT VP)(FEATS ((type asp)))))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS ((agr 3s)))))))(SEM (LAM p (p rhiannon)))
 )
 (
-(KEY 154569)(PARAM 1.0)(PHON YN)
+(KEY 910777)(PARAM 1.0)(PHON YN)
 (MORPH asp)(SYN (((BCAT vp)(FEATS ((type asp))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS NIL))))(SEM (LAM p (LAM y (prog (p y)))))
 )
 (
-(KEY 978883)(PARAM 1.0)(PHON CYSGU)
+(KEY 84082)(PARAM 1.0)(PHON CYSGU)
 (MORPH v)(SYN ((BCAT VP)(FEATS NIL)))(SEM (LAM y (sleep y)))
 )
 (
-(KEY 546816)(PARAM 1.0)(PHON HIMSELF)
+(KEY 922361)(PARAM 1.0)(PHON HIMSELF)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3sm)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3sm)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((type ana)(agr 3sm)))))))(SEM (LAM p (p self)))
 )
 (
-(KEY 502913)(PARAM 1.0)(PHON SAW)
+(KEY 546879)(PARAM 1.0)(PHON SAW)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((type pro)(agr ?a))))))(SEM (LAM a (LAM y ((saw (something a)) y))))
 )
 (
-(KEY 639335)(PARAM 1.0)(PHON HIM)
+(KEY 358629)(PARAM 1.0)(PHON HIM)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((type pro)))))))(SEM (LAM p (p him)))
 )
 (
-(KEY 783084)(PARAM 1.0)(PHON TOM)
+(KEY 302860)(PARAM 1.0)(PHON TOM)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))))(SEM (LAM p (p tom)))
 )
 (
-(KEY 679130)(PARAM 1.0)(PHON WANTS)
+(KEY 413663)(PARAM 1.0)(PHON WANTS)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type to_inf))))))(SEM (LAM p (LAM y ((want (p y)) y))))
 )
 (
-(KEY 501431)(PARAM 1.0)(PHON HARRY)
+(KEY 489393)(PARAM 1.0)(PHON HARRY)
 (MORPH n)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type to_inf)))))(DIR BS)(MODAL ALL)(((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type to_inf)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p harry)))
 )
 (
-(KEY 254768)(PARAM 1.0)(PHON TO)
+(KEY 894197)(PARAM 1.0)(PHON TO)
 (MORPH p)(SYN (((BCAT vp)(FEATS ((type to_inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type inf))))))(SEM (LAM p p))
 )
 (
-(KEY 173113)(PARAM 1.0)(PHON GO)
+(KEY 652026)(PARAM 1.0)(PHON GO)
 (MORPH v)(SYN ((BCAT VP)(FEATS ((type inf)))))(SEM (LAM y (go y)))
 )
 (
-(KEY 36374)(PARAM 1.0)(PHON AEDIFICARE)
+(KEY 625582)(PARAM 1.0)(PHON AEDIFICARE)
 (MORPH v)(SYN ((((BCAT S)(FEATS ((type inf))))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case nom)))))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case acc))))))(SEM (LAM x (LAM y ((build x) y))))
 )
 (
-(KEY 969633)(PARAM 1.0)(PHON THE)
+(KEY 3099)(PARAM 1.0)(PHON THE)
 (MORPH det)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL))))(DIR FS)(MODAL ALL)((BCAT n)(FEATS NIL))))(SEM (LAM x (LAM p (p x))))
 )
 (
-(KEY 865655)(PARAM 1.0)(PHON THE)
+(KEY 231982)(PARAM 1.0)(PHON THE)
 (MORPH det)(SYN ((((BCAT vp)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT vp)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(DIR FS)(MODAL ALL)((BCAT n)(FEATS NIL))))(SEM (LAM x (LAM p (p x))))
 )
 (
-(KEY 446053)(PARAM 1.0)(PHON HOUSE)
+(KEY 622333)(PARAM 1.0)(PHON HOUSE)
 (MORPH n)(SYN ((BCAT n)(FEATS NIL)))(SEM house)
 )
 (
-(KEY 255844)(PARAM 1.0)(PHON BUILT)
+(KEY 433061)(PARAM 1.0)(PHON BUILT)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y ((built x) y))))
 )
 (
-(KEY 487525)(PARAM 1.0)(PHON JACK)
+(KEY 76459)(PARAM 1.0)(PHON JACK)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p jack)))
 )
 (
-(KEY 56022)(PARAM 1.0)(PHON SOLD)
+(KEY 586276)(PARAM 1.0)(PHON SOLD)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y ((sold x) y))))
 )
 (
-(KEY 476099)(PARAM 1.0)(PHON YOU)
+(KEY 189796)(PARAM 1.0)(PHON YOU)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p you)))
 )
 (
-(KEY 501168)(PARAM 1.0)(PHON BOUGHT)
+(KEY 323743)(PARAM 1.0)(PHON BOUGHT)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y ((bought x) y))))
 )
 (
-(KEY 643140)(PARAM 1.0)(PHON "the house that jack built")
+(KEY 957172)(PARAM 1.0)(PHON "the house that jack built")
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p house_built_by_jack)))
 )
 (
-(KEY 691649)(PARAM 1.0)(PHON GIVE)
+(KEY 399012)(PARAM 1.0)(PHON GIVE)
 (MORPH v)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y (LAM z (((give y) x) z)))))
 )
 (
-(KEY 360766)(PARAM 1.0)(PHON MARY)
+(KEY 17317)(PARAM 1.0)(PHON MARY)
 (MORPH n)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR BS)(MODAL ALL)(((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p mary)))
 )
 (
-(KEY 220783)(PARAM 1.0)(PHON RECORDS)
+(KEY 663003)(PARAM 1.0)(PHON RECORDS)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p records)))
 )
 (
-(KEY 253728)(PARAM 1.0)(PHON ALICE)
+(KEY 884887)(PARAM 1.0)(PHON ALICE)
 (MORPH n)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR BS)(MODAL ALL)(((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p alice)))
 )
 (
-(KEY 281658)(PARAM 1.0)(PHON BOOKS)
+(KEY 519301)(PARAM 1.0)(PHON BOOKS)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p books)))
 )
 (
-(KEY 459300)(PARAM 1.0)(PHON THERE)
+(KEY 466693)(PARAM 1.0)(PHON THERE)
 (MORPH xp)(SYN (((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT xp)(FEATS ((type pred)(class pp)(agr ?a)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT xp)(FEATS ((type pred)(class pp)(agr ?a)))))))(SEM (LAM r (LAM y (LAM p ((r p) y)))))
 )
 (
-(KEY 721382)(PARAM 1.0)(PHON SEEM)
+(KEY 676973)(PARAM 1.0)(PHON SEEM)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr pl)))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((typ to_inf)(class vp)(agr pl))))))(SEM (LAM p (LAM y (seem (p y)))))
 )
 (
-(KEY 600840)(PARAM 1.0)(PHON "to be")
+(KEY 385110)(PARAM 1.0)(PHON "to be")
 (MORPH v)(SYN (((BCAT vp)(FEATS ((typ to_inf)(agr ?b))))(DIR FS)(MODAL ALL)((BCAT xp)(FEATS ((type pred)(class pp)(agr ?b))))))(SEM (LAM p (LAM y (p y))))
 )
 (
-(KEY 172384)(PARAM 1.0)(PHON FAIRIES)
+(KEY 937667)(PARAM 1.0)(PHON FAIRIES)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT xp)(FEATS ((type pred)(class pp)(agr pl)))))(DIR BS)(MODAL HARMONIC)((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT xp)(FEATS ((type pred)(class pp)(agr pl)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr pl)))))))(SEM (LAM p (p fairies)))
 )
 (
-(KEY 254898)(PARAM 1.0)(PHON FAIRIES)
+(KEY 442822)(PARAM 1.0)(PHON FAIRIES)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr pl)))))))(SEM (LAM p (p fairies)))
 )
 (
-(KEY 345501)(PARAM 1.0)(PHON "at the bottom of my garden")
+(KEY 824101)(PARAM 1.0)(PHON "at the bottom of my garden")
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT xp)(FEATS ((type pred)(class pp)(agr ?z)))))))(SEM (LAM p (p atbmg)))
 )
 (
-(KEY 498923)(PARAM 1.0)(PHON "at the bottom of my garden")
+(KEY 322936)(PARAM 1.0)(PHON "at the bottom of my garden")
 (MORPH n)(SYN (((BCAT vp)(FEATS ((agr ?a))))(DIR BS)(MODAL ALL)(((BCAT vp)(FEATS ((agr ?a))))(DIR FS)(MODAL ALL)((BCAT xp)(FEATS ((type pred)(class pp)(agr ?a)))))))(SEM (LAM p (p atbmg)))
 )
 (
-(KEY 496720)(PARAM 1.0)(PHON "at the bottom of my garden")
+(KEY 920344)(PARAM 1.0)(PHON "at the bottom of my garden")
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT xp)(FEATS ((type pred)(class pp)(agr ?z)))))))(SEM (LAM p (p atbmg)))
 )
 (
-(KEY 342064)(PARAM 1.0)(PHON QUEM)
+(KEY 465428)(PARAM 1.0)(PHON QUEM)
 (MORPH a)(SYN (((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((gen m))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((gen m)))))))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case acc)))))))(SEM (LAM p (LAM q (LAM x ((and (p x)) ((q (LAM x x)) x))))))
 )
 (
-(KEY 9127)(PARAM 1.0)(PHON ERZAHLEN)
+(KEY 838857)(PARAM 1.0)(PHON ERZAHLEN)
 (MORPH v)(SYN (((BCAT s)(FEATS ((type t))))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((((BCAT vp)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case acc)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case dat))))))))(SEM (LAM p (p tell)))
 )
 (
-(KEY 574717)(PARAM 1.0)(PHON WIRD)
+(KEY 560459)(PARAM 1.0)(PHON WIRD)
 (MORPH x)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM x (LAM p (will (p x)))))
 )
 (
-(KEY 337306)(PARAM 1.0)(PHON ER)
+(KEY 622604)(PARAM 1.0)(PHON ER)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS NIL)))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)(case nom)))))))(SEM (LAM p (p he)))
 )
 (
-(KEY 259793)(PARAM 1.0)(PHON "seiner tochter")
+(KEY 67124)(PARAM 1.0)(PHON "seiner tochter")
 (MORPH n)(SYN (((BCAT vp)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT vp)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case acc)))))))(SEM (LAM p (p daughter)))
 )
 (
-(KEY 740374)(PARAM 1.0)(PHON "ein marchen")
+(KEY 585434)(PARAM 1.0)(PHON "ein marchen")
 (MORPH n)(SYN ((((BCAT vp)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case acc)))))(DIR FS)(MODAL ALL)((((BCAT vp)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case acc)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case dat)))))))(SEM (LAM p (p story)))
 )
 (
-(KEY 791161)(PARAM 1.0)(PHON KONNEN)
+(KEY 587105)(PARAM 1.0)(PHON KONNEN)
 (MORPH v)(SYN (((BCAT vp)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT vp)(FEATS NIL))))(SEM (LAM p (able p)))
 )
 (
-(KEY 154505)(PARAM 1.0)(PHON AND)
+(KEY 823998)(PARAM 1.0)(PHON AND)
 (MORPH x)(SYN ((((BCAT @X)(FEATS NIL))(DIR BS)(MODAL STAR)((BCAT @X)(FEATS NIL)))(DIR FS)(MODAL STAR)((BCAT @X)(FEATS NIL))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 838228)(PARAM 1.0)(PHON MAN)
+(KEY 817700)(PARAM 1.0)(PHON MAN)
 (MORPH n)(SYN ((BCAT n)(FEATS NIL)))(SEM man)
 )
 (
-(KEY 426610)(PARAM 1.0)(PHON THAT)
+(KEY 640600)(PARAM 1.0)(PHON THAT)
 (MORPH a)(SYN ((((BCAT n)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT n)(FEATS NIL)))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 699585)(PARAM 1.0)(PHON THAT)
+(KEY 733206)(PARAM 1.0)(PHON THAT)
 (MORPH a)(SYN ((((BCAT n)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT n)(FEATS NIL)))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 114932)(PARAM 1.0)(PHON WALKS)
+(KEY 931825)(PARAM 1.0)(PHON WALKS)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM x (walk x)))
 )
 (
-(KEY 99799)(PARAM 1.0)(PHON TALKS)
+(KEY 109221)(PARAM 1.0)(PHON TALKS)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM x (talk x)))
 )
 (
-(KEY 146615)(PARAM 1.0)(PHON HE)
+(KEY 277632)(PARAM 1.0)(PHON HE)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p he)))
 )
 (
-(KEY 115623)(PARAM 1.0)(PHON ET)
+(KEY 643763)(PARAM 1.0)(PHON ET)
 (MORPH x)(SYN ((((BCAT @X)(FEATS NIL))(DIR BS)(MODAL STAR)((BCAT @X)(FEATS NIL)))(DIR FS)(MODAL STAR)((BCAT @X)(FEATS NIL))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 982020)(PARAM 1.0)(PHON MARC)
+(KEY 253335)(PARAM 1.0)(PHON MARC)
 (MORPH n)(SYN ((BCAT N)(FEATS NIL)))(SEM mark)
 )
 (
-(KEY 424917)(PARAM 1.0)(PHON VILLA)
+(KEY 184863)(PARAM 1.0)(PHON VILLA)
 (MORPH n)(SYN ((BCAT N)(FEATS NIL)))(SEM house)
 )
 (
-(KEY 801233)(PARAM 1.0)(PHON VULT)
+(KEY 506782)(PARAM 1.0)(PHON VULT)
 (MORPH v)(SYN ((((BCAT S)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS ((case nom)(agr 3s)))))(DIR BS)(MODAL ALL)(((BCAT S)(FEATS ((type inf))))(DIR BS)(MODAL ALL)((BCAT NP)(FEATS NIL)))))(SEM (LAM p (LAM x ((want (p x)) x))))
 )
 (
-(KEY 709878)(PARAM 1.0)(PHON UBUR)
+(KEY 162662)(PARAM 1.0)(PHON UBUR)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p ubur)))
 )
 (
-(KEY 751206)(PARAM 1.0)(PHON A_TUUK)
+(KEY 464476)(PARAM 1.0)(PHON A-TUUK)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (play x)))
 )
 (
-(KEY 280393)(PARAM 1.0)(PHON A_PUOT)
+(KEY 580638)(PARAM 1.0)(PHON A-PUOT)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM y (LAM x ((beat x) y))))
 )
 (
-(KEY 475526)(PARAM 1.0)(PHON DHAAG_E)
+(KEY 932467)(PARAM 1.0)(PHON DHAAG-E)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))))(SEM (LAM p (p woman)))
 )
 (
-(KEY 298310)(PARAM 1.0)(PHON DHAAGE)
+(KEY 12250)(PARAM 1.0)(PHON DHAAGE)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p woman)))
 )
 (
-(KEY 61764)(PARAM 1.0)(PHON UBUR)
+(KEY 268978)(PARAM 1.0)(PHON UBUR)
 (MORPH n)(SYN (((BCAT s)(FEATS ((type top))))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))))(SEM (LAM p (p ubur)))
 )
 (
-(KEY 7712)(PARAM 1.0)(PHON A_YAAN_E)
+(KEY 776160)(PARAM 1.0)(PHON A-YAAN-E)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM y (LAM x ((insult x) y))))
 )
 (
-(KEY 775100)(PARAM 1.0)(PHON TEIM)
+(KEY 231668)(PARAM 1.0)(PHON TEIM)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case dat)(agr 3s)))))))(SEM (LAM p (p them)))
 )
 (
-(KEY 881641)(PARAM 1.0)(PHON LIKAR)
+(KEY 81760)(PARAM 1.0)(PHON LIKAR)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case dat)(agr 3s)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case nom))))))(SEM (LAM x (LAM y ((likes x) y))))
 )
 (
-(KEY 832025)(PARAM 1.0)(PHON MATURINN)
+(KEY 831294)(PARAM 1.0)(PHON MATURINN)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case dat)(agr 3s)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case dat)(agr 3s)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case nom)))))))(SEM (LAM p (p food)))
 )
 (
-(KEY 511313)(PARAM 1.0)(PHON OG)
+(KEY 741852)(PARAM 1.0)(PHON OG)
 (MORPH x)(SYN ((((BCAT @X)(FEATS NIL))(DIR BS)(MODAL STAR)((BCAT @X)(FEATS NIL)))(DIR FS)(MODAL STAR)((BCAT @X)(FEATS NIL))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 153051)(PARAM 1.0)(PHON BORDA)
+(KEY 803598)(PARAM 1.0)(PHON BORDA)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case acc)(num plu))))))(SEM (LAM x ((eat x) they)))
 )
 (
-(KEY 40541)(PARAM 1.0)(PHON MIKID)
+(KEY 27)(PARAM 1.0)(PHON MIKID)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case acc)))))))(SEM (LAM p (p much)))
 )
 (
-(KEY 290182)(PARAM 1.0)(PHON JON)
+(KEY 298661)(PARAM 1.0)(PHON JON)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case nom)))))))(SEM (LAM p (p jon)))
 )
 (
-(KEY 686800)(PARAM 1.0)(PHON LYSTI)
+(KEY 83)(PARAM 1.0)(PHON LYSTI)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case nom)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case dat))))))(SEM (LAM x (LAM y ((describe x) y))))
 )
 (
-(KEY 674073)(PARAM 1.0)(PHON BORDADI)
+(KEY 907817)(PARAM 1.0)(PHON BORDADI)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case nom)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case acc))))))(SEM (LAM x (LAM y ((ate x) y))))
 )
 (
-(KEY 919262)(PARAM 1.0)(PHON MATINN)
+(KEY 34336)(PARAM 1.0)(PHON MATINN)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case acc)))))))(SEM (LAM p (p food)))
 )
 (
-(KEY 635029)(PARAM 1.0)(PHON GWELODD)
+(KEY 622290)(PARAM 1.0)(PHON GWELODD)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((type ana)(agr 3)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3))))))(SEM (LAM y (LAM a ((saw (a y)) y))))
 )
 (
-(KEY 297100)(PARAM 1.0)(PHON GWYN)
+(KEY 178720)(PARAM 1.0)(PHON GWYN)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3)(gen m)))))))(SEM (LAM p (p gwyn)))
 )
 (
-(KEY 680564)(PARAM 1.0)(PHON "ei hun")
+(KEY 347500)(PARAM 1.0)(PHON "ei hun")
 (MORPH ref)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((type ana)(agr 3)(gen m)))))))(SEM (LAM p (p self)))
 )
 (
-(KEY 418238)(PARAM 1.0)(PHON MAEN)
+(KEY 195459)(PARAM 1.0)(PHON MAEN)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type ing)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3)(num plu))))))(SEM (LAM y (LAM p (p y))))
 )
 (
-(KEY 415518)(PARAM 1.0)(PHON NHW)
+(KEY 704945)(PARAM 1.0)(PHON NHW)
 (MORPH pro)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type ing)))))(DIR BS)(MODAL ALL)((((BCAT S)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type ing)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3)(num plu)))))))(SEM (LAM p (p them)))
 )
 (
-(KEY 900966)(PARAM 1.0)(PHON N)
+(KEY 772902)(PARAM 1.0)(PHON N)
 (MORPH ger)(SYN (((BCAT VP)(FEATS ((type ing))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type inf))))))(SEM (LAM p p))
 )
 (
-(KEY 728801)(PARAM 1.0)(PHON PERSWADIO)
+(KEY 886037)(PARAM 1.0)(PHON PERSWADIO)
 (MORPH v)(SYN ((((BCAT vp)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type to_inf)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM p (LAM y (((persuade (p x)) x) y)))))
 )
 (
-(KEY 676440)(PARAM 1.0)(PHON GRWPIAU)
+(KEY 766114)(PARAM 1.0)(PHON GRWPIAU)
 (MORPH n)(SYN ((((BCAT vp)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type to_inf)))))(DIR BS)(MODAL ALL)((((BCAT vp)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type to_inf)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p groups)))
 )
 (
-(KEY 37119)(PARAM 1.0)(PHON I)
+(KEY 647246)(PARAM 1.0)(PHON I)
 (MORPH p)(SYN (((BCAT vp)(FEATS ((type to_inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type inf))))))(SEM (LAM p p))
 )
 (
-(KEY 874446)(PARAM 1.0)(PHON FYND)
+(KEY 550393)(PARAM 1.0)(PHON FYND)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT pp)(FEATS NIL))))(SEM (LAM x (LAM y ((goto x) y))))
 )
 (
-(KEY 414778)(PARAM 1.0)(PHON ADREF)
+(KEY 407645)(PARAM 1.0)(PHON ADREF)
 (MORPH p)(SYN (((BCAT vp)(FEATS ((type inf))))(DIR BS)(MODAL ALL)(((BCAT vp)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT pp)(FEATS NIL)))))(SEM (LAM p (p home)))
 )
 (
-(KEY 224061)(PARAM 1.0)(PHON ROEDD)
+(KEY 795304)(PARAM 1.0)(PHON ROEDD)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type ing)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3))))))(SEM (LAM y (LAM p (p y))))
 )
 (
-(KEY 818835)(PARAM 1.0)(PHON GWYN)
+(KEY 243017)(PARAM 1.0)(PHON GWYN)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type ing)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type ing)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((agr 3)(num s)))))))(SEM (LAM p (p gwyn)))
 )
 (
-(KEY 504932)(PARAM 1.0)(PHON YN)
+(KEY 824987)(PARAM 1.0)(PHON YN)
 (MORPH ger)(SYN (((BCAT vp)(FEATS ((type ing))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type inf))))))(SEM (LAM p p))
 )
 (
-(KEY 563399)(PARAM 1.0)(PHON DYMUNO)
+(KEY 897345)(PARAM 1.0)(PHON DYMUNO)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT s)(FEATS ((type inf))))))(SEM (LAM s (LAM y ((want s) y))))
 )
 (
-(KEY 498069)(PARAM 1.0)(PHON I)
+(KEY 166760)(PARAM 1.0)(PHON I)
 (MORPH c)(SYN ((((BCAT s)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type inf)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM y (LAM p (p y))))
 )
 (
-(KEY 497136)(PARAM 1.0)(PHON GRWPIAU)
+(KEY 58313)(PARAM 1.0)(PHON GRWPIAU)
 (MORPH n)(SYN ((((BCAT s)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type inf)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS ((type inf))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((type inf)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p groups)))
 )
 (
-(KEY 413763)(PARAM 1.0)(PHON DYNES)
+(KEY 129344)(PARAM 1.0)(PHON DYNES)
 (MORPH n)(SYN ((BCAT n)(FEATS ((agr 3fs)))))(SEM woman)
 )
 (
-(KEY 877893)(PARAM 1.0)(PHON DDYNES)
+(KEY 225914)(PARAM 1.0)(PHON DDYNES)
 (MORPH n)(SYN ((BCAT n)(FEATS ((agr 3fs)))))(SEM woman)
 )
 (
-(KEY 593103)(PARAM 1.0)(PHON WELODD)
+(KEY 640124)(PARAM 1.0)(PHON WELODD)
 (MORPH a)(SYN ((((BCAT n)(FEATS ((agr ?a))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM q (LAM y ((and ((saw x) y)) (q y))))))
 )
 (
-(KEY 553528)(PARAM 1.0)(PHON WELODD)
+(KEY 464905)(PARAM 1.0)(PHON WELODD)
 (MORPH a)(SYN ((((BCAT n)(FEATS ((agr ?a))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?a)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM y (LAM q (LAM x ((and ((saw x) y)) (q x))))))
 )
 (
-(KEY 548718)(PARAM 1.0)(PHON GATH)
+(KEY 58753)(PARAM 1.0)(PHON GATH)
 (MORPH n)(SYN ((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR BS)(MODAL ALL)((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS NIL)))))(SEM (LAM p (p cat)))
 )
 (
-(KEY 887109)(PARAM 1.0)(PHON CATH)
+(KEY 162798)(PARAM 1.0)(PHON CATH)
 (MORPH n)(SYN ((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR BS)(MODAL ALL)((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR FS)(MODAL ALL)((BCAT NP)(FEATS NIL)))))(SEM (LAM p (p cat)))
 )
 (
-(KEY 900796)(PARAM 1.0)(PHON WERTHODD)
+(KEY 154236)(PARAM 1.0)(PHON WERTHODD)
 (MORPH v)(SYN (((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM y (LAM x (LAM q (LAM w ((and (((sold w) x) y)) (q w)))))))
 )
 (
-(KEY 313657)(PARAM 1.0)(PHON IEUAN)
+(KEY 903181)(PARAM 1.0)(PHON IEUAN)
 (MORPH n)(SYN (((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR BS)(MODAL ALL)(((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p ewan)))
 )
 (
-(KEY 679055)(PARAM 1.0)(PHON "y ceffyl")
+(KEY 553404)(PARAM 1.0)(PHON "y ceffyl")
 (MORPH n)(SYN ((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR BS)(MODAL ALL)((((BCAT n)(FEATS ((agr ?x))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr ?x)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL)))))(SEM (LAM p (p horse)))
 )
 (
-(KEY 731714)(PARAM 1.0)(PHON IDDI)
+(KEY 699726)(PARAM 1.0)(PHON IDDI)
 (MORPH p)(SYN ((((BCAT n)(FEATS ((agr 3fs))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr 3fs)))))(DIR BS)(MODAL ALL)(((BCAT n)(FEATS ((agr 3fs))))(DIR BS)(MODAL ALL)((BCAT n)(FEATS ((agr 3fs)))))))(SEM (LAM p p))
 )
 (
-(KEY 14453)(PARAM 1.0)(PHON "bayi yara")
+(KEY 649520)(PARAM 1.0)(PHON "bayi yara")
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p man)))
 )
 (
-(KEY 76726)(PARAM 1.0)(PHON WALNGARRA)
+(KEY 986557)(PARAM 1.0)(PHON WALNGARRA)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((case abs))))))(SEM (LAM p (LAM x ((want (p x)) x))))
 )
 (
-(KEY 981638)(PARAM 1.0)(PHON NABA_YGU)
+(KEY 171133)(PARAM 1.0)(PHON NABA-YGU)
 (MORPH v)(SYN ((BCAT VP)(FEATS ((case abs)))))(SEM (LAM x (bathe x)))
 )
 (
-(KEY 18947)(PARAM 1.0)(PHON BURAL)
+(KEY 636474)(PARAM 1.0)(PHON BURAL)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((typ inf))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg))))))(SEM (LAM y (LAM x ((see x) y))))
 )
 (
-(KEY 439790)(PARAM 1.0)(PHON _NA_YGU)
+(KEY 949529)(PARAM 1.0)(PHON -NA-YGU)
 (MORPH aff)(SYN (((BCAT vp)(FEATS ((typ antipss))))(DIR BS)(MODAL ALL)(((BCAT vp)(FEATS ((typ inf))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(SEM (LAM p (LAM x ((p (something x)) x))))
 )
 (
-(KEY 550228)(PARAM 1.0)(PHON _NA_YGU)
+(KEY 611451)(PARAM 1.0)(PHON -NA-YGU)
 (MORPH aff)(SYN ((((BCAT vp)(FEATS ((typ antipss))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case dat)))))(DIR BS)(MODAL ALL)(((BCAT vp)(FEATS ((typ inf))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(SEM (LAM p (LAM x (LAM y (antip ((p y) x))))))
 )
 (
-(KEY 875389)(PARAM 1.0)(PHON "bagun yibi_gu")
+(KEY 544571)(PARAM 1.0)(PHON "bagun yibi-gu")
 (MORPH n)(SYN (((BCAT vp)(FEATS ((case abs))))(DIR BS)(MODAL ALL)(((BCAT vp)(FEATS ((case abs))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case dat)))))))(SEM (LAM p (p woman)))
 )
 (
-(KEY 232264)(PARAM 1.0)(PHON "bangun yibi_ngu")
+(KEY 519739)(PARAM 1.0)(PHON "bangun yibi-ngu")
 (MORPH n)(SYN (((BCAT vp)(FEATS ((case abs))))(DIR FS)(MODAL ALL)(((BCAT vp)(FEATS ((case abs))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(SEM (LAM p (p woman)))
 )
 (
-(KEY 350080)(PARAM 1.0)(PHON BURA_LI)
+(KEY 907556)(PARAM 1.0)(PHON BURA-LI)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((case abs))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg))))))(SEM (LAM x (LAM y ((see y) x))))
 )
 (
-(KEY 990540)(PARAM 1.0)(PHON YABU)
+(KEY 818549)(PARAM 1.0)(PHON YABU)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p mother)))
 )
 (
-(KEY 54309)(PARAM 1.0)(PHON NUMA_NGU)
+(KEY 910948)(PARAM 1.0)(PHON NUMA-NGU)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR FS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(SEM (LAM p (p father)))
 )
 (
-(KEY 954964)(PARAM 1.0)(PHON GIGA_N)
+(KEY 476225)(PARAM 1.0)(PHON GIGA-N)
 (MORPH v)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))(DIR FS)(MODAL ALL)((BCAT vp)(FEATS ((case abs))))))(SEM (LAM p (LAM x (LAM y (((tell (p y)) y) x)))))
 )
 (
-(KEY 89324)(PARAM 1.0)(PHON BANAGA_YGU)
+(KEY 641908)(PARAM 1.0)(PHON BANAGA-YGU)
 (MORPH v)(SYN ((BCAT vp)(FEATS ((case abs)))))(SEM (LAM x (return x)))
 )
 (
-(KEY 531882)(PARAM 1.0)(PHON GUBI_NGU)
+(KEY 761856)(PARAM 1.0)(PHON GUBI-NGU)
 (MORPH n)(SYN (((BCAT vp)(FEATS ((case abs))))(DIR FS)(MODAL ALL)(((BCAT vp)(FEATS ((case abs))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(SEM (LAM p (p gubi)))
 )
 (
-(KEY 448420)(PARAM 1.0)(PHON MAWA_LI)
+(KEY 16121)(PARAM 1.0)(PHON MAWA-LI)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((case abs))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg))))))(SEM (LAM x (LAM y ((examine y) x))))
 )
 (
-(KEY 201203)(PARAM 1.0)(PHON MIYANDA)
+(KEY 23142)(PARAM 1.0)(PHON MIYANDA)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(SEM (LAM x (laugh x)))
 )
 (
-(KEY 216496)(PARAM 1.0)(PHON _NU)
+(KEY 255653)(PARAM 1.0)(PHON -NU)
 (MORPH aff)(SYN (((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (LAM q (LAM r (LAM x ((and (r x)) ((and (p x)) ((q (LAM x x)) x))))))))
 )
 (
-(KEY 788777)(PARAM 1.0)(PHON YANU)
+(KEY 350135)(PARAM 1.0)(PHON YANU)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(SEM (LAM x (go x)))
 )
 (
-(KEY 38013)(PARAM 1.0)(PHON "balan yibi")
+(KEY 932749)(PARAM 1.0)(PHON "balan yibi")
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p woman)))
 )
 (
-(KEY 915061)(PARAM 1.0)(PHON "bangul yara_ngu")
+(KEY 511687)(PARAM 1.0)(PHON "bangul yara-ngu")
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR FS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(SEM (LAM p (p man)))
 )
 (
-(KEY 828816)(PARAM 1.0)(PHON _NU_RU)
+(KEY 742805)(PARAM 1.0)(PHON -NU-RU)
 (MORPH aff)(SYN ((((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR FS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg))))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR FS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (LAM q (LAM r (LAM y (LAM x ((and ((r x) y)) ((and (p x)) ((q (LAM x x)) x)))))))))
 )
 (
-(KEY 516555)(PARAM 1.0)(PHON BURA_N)
+(KEY 982193)(PARAM 1.0)(PHON BURA-N)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg))))))(SEM (LAM x (LAM y ((see y) x))))
 )
 (
-(KEY 135496)(PARAM 1.0)(PHON JILWAL_NA)
+(KEY 672164)(PARAM 1.0)(PHON JILWAL-NA)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case dat))))))(SEM (LAM x (LAM y ((kick x) y))))
 )
 (
-(KEY 148588)(PARAM 1.0)(PHON "begun guga_gu")
+(KEY 1947)(PARAM 1.0)(PHON "begun guda-gu")
 (MORPH n)(SYN (((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(DIR BS)(MODAL ALL)(((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case dat)))))))(SEM (LAM p (p dog)))
 )
 (
-(KEY 898745)(PARAM 1.0)(PHON "bangun yibi_ngu")
+(KEY 65996)(PARAM 1.0)(PHON "bangun yibi-ngu")
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(SEM (LAM p (p woman)))
 )
 (
-(KEY 943290)(PARAM 1.0)(PHON BURA_N)
+(KEY 105553)(PARAM 1.0)(PHON BURA-N)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg))))))(SEM (LAM y ((saw topic) y)))
 )
 (
-(KEY 373487)(PARAM 1.0)(PHON NYURRA)
+(KEY 900958)(PARAM 1.0)(PHON NYURRA)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((type pro)(case nom)))))))(SEM (LAM p (p you)))
 )
 (
-(KEY 997903)(PARAM 1.0)(PHON NANA_NA)
+(KEY 206792)(PARAM 1.0)(PHON NANA-NA)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case nom)(type pro)))))(DIR FS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((type pro)(case nom)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((type pro)(case acc)))))))(SEM (LAM p (p ((and us) (topic us)))))
 )
 (
-(KEY 606983)(PARAM 1.0)(PHON BURA_N)
+(KEY 501398)(PARAM 1.0)(PHON BURA-N)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case nom)(type pro)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case acc)(type pro))))))(SEM (LAM x (LAM y ((and ((saw (sk x)) (sk y))) ((noteq (sk x)) (sk y))))))
 )
 (
-(KEY 494320)(PARAM 1.0)(PHON BANAGA_NYU)
+(KEY 365558)(PARAM 1.0)(PHON BANAGA-NYU)
 (MORPH v)(SYN ((BCAT S)(FEATS NIL)))(SEM (return topic))
 )
 (
-(KEY 887956)(PARAM 1.0)(PHON ",")
+(KEY 639186)(PARAM 1.0)(PHON ",")
 (MORPH x)(SYN ((((BCAT @X)(FEATS NIL))(DIR BS)(MODAL STAR)((BCAT @X)(FEATS NIL)))(DIR FS)(MODAL STAR)((BCAT @X)(FEATS NIL))))(SEM (LAM p (LAM q ((and p) q))))
 )
 (
-(KEY 289624)(PARAM 1.0)(PHON MIQQAT)
+(KEY 124303)(PARAM 1.0)(PHON MIQQAT)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr 3pl)))))))(SEM (LAM p (p children)))
 )
 (
-(KEY 934793)(PARAM 1.0)(PHON JUUNA)
+(KEY 67085)(PARAM 1.0)(PHON JUUNA)
 (MORPH n)(SYN (((BCAT vp)(FEATS ((case erg))))(DIR FS)(MODAL ALL)(((BCAT vp)(FEATS ((case erg))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p juuna)))
 )
 (
-(KEY 744039)(PARAM 1.0)(PHON IKIU_SSA_LLU_GU)
+(KEY 859851)(PARAM 1.0)(PHON IKIU-SSA-LLU-GU)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((case erg))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(SEM (LAM x (LAM y ((help x) y))))
 )
 (
-(KEY 992701)(PARAM 1.0)(PHON NIRIURSUI_PP_U_T)
+(KEY 672907)(PARAM 1.0)(PHON NIRIURSUI-PP-U-T)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr 3pl)))))(DIR BS)(MODAL ALL)((BCAT vp)(FEATS NIL))))(SEM (LAM p (LAM y ((promise (p y)) y))))
 )
 (
-(KEY 328791)(PARAM 1.0)(PHON QITI_SSA_LLU_TIK)
+(KEY 193471)(PARAM 1.0)(PHON QITI-SSA-LLU-TIK)
 (MORPH v)(SYN ((BCAT vp)(FEATS ((case abs)))))(SEM (LAM x (dance x)))
 )
 (
-(KEY 111969)(PARAM 1.0)(PHON ARNAUP)
+(KEY 805379)(PARAM 1.0)(PHON ARNAUP)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)(agr 3sg)))))))(SEM (LAM p (p woman)))
 )
 (
-(KEY 257853)(PARAM 1.0)(PHON NUTARAQ)
+(KEY 611046)(PARAM 1.0)(PHON NUTARAQ)
 (MORPH n)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)(agr 3sg)))))(DIR FS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)(agr 3sg)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr 3sg)))))))(SEM (LAM p (p child)))
 )
 (
-(KEY 587460)(PARAM 1.0)(PHON TITIRAUTIMIK)
+(KEY 156847)(PARAM 1.0)(PHON TITIRAUTIMIK)
 (MORPH n)(SYN (((BCAT vp)(FEATS ((case abs))))(DIR FS)(MODAL ALL)(((BCAT vp)(FEATS ((case abs))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case obl)))))))(SEM (LAM p (p pencil)))
 )
 (
-(KEY 754283)(PARAM 1.0)(PHON NANI_SI)
+(KEY 838835)(PARAM 1.0)(PHON NANI-SI)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((case abs))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case obl))))))(SEM (LAM x (LAM y (antip ((find x) y)))))
 )
 (
-(KEY 795034)(PARAM 1.0)(PHON RQU_VAA)
+(KEY 23641)(PARAM 1.0)(PHON RQU-VAA)
 (MORPH v)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)(agr 3sg)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr 3sg)))))(DIR BS)(MODAL ALL)((BCAT vp)(FEATS ((case abs))))))(SEM (LAM p (LAM x (LAM y (((tell (p x)) x) y)))))
 )
 (
-(KEY 808683)(PARAM 1.0)(PHON TITIRAUTI)
+(KEY 521174)(PARAM 1.0)(PHON TITIRAUTI)
 (MORPH n)(SYN (((BCAT vp)(FEATS ((case erg))))(DIR FS)(MODAL ALL)(((BCAT vp)(FEATS ((case erg))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p pencil)))
 )
 (
-(KEY 460333)(PARAM 1.0)(PHON NANI)
+(KEY 932724)(PARAM 1.0)(PHON NANI)
 (MORPH v)(SYN (((BCAT vp)(FEATS ((case erg))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(SEM (LAM x (LAM y ((find x) y))))
 )
 (
-(KEY 648487)(PARAM 1.0)(PHON NANUQ)
+(KEY 225220)(PARAM 1.0)(PHON NANUQ)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p polarbear)))
 )
 (
-(KEY 85136)(PARAM 1.0)(PHON PIITA_P)
+(KEY 294911)(PARAM 1.0)(PHON PIITA-P)
 (MORPH n)(SYN (((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a)))))))(DIR FS)(MODAL ALL)(((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a)))))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))))(SEM (LAM p (p piita)))
 )
 (
-(KEY 591466)(PARAM 1.0)(PHON TUGU)
+(KEY 843329)(PARAM 1.0)(PHON TUGU)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(SEM (LAM x (LAM y ((kill x) y))))
 )
 (
-(KEY 355823)(PARAM 1.0)(PHON _TA_A)
+(KEY 885651)(PARAM 1.0)(PHON -TA-A)
 (MORPH aff)(SYN ((((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a)))))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (LAM q (LAM r1 (LAM r ((and ((p (r1 (LAM x x))) q)) (r (r1 (LAM x x)))))))))
 )
 (
-(KEY 985832)(PARAM 1.0)(PHON MIIRAQ)
+(KEY 503405)(PARAM 1.0)(PHON MIIRAQ)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p child)))
 )
 (
-(KEY 689659)(PARAM 1.0)(PHON KAMAT)
+(KEY 364398)(PARAM 1.0)(PHON KAMAT)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(SEM (LAM x (angry x)))
 )
 (
-(KEY 506098)(PARAM 1.0)(PHON _TU_Q)
+(KEY 517960)(PARAM 1.0)(PHON -TU-Q)
 (MORPH aff)(SYN (((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a)))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (LAM q (LAM r (LAM x ((and (p x)) ((and ((q (LAM x x)) x)) (r x))))))))
 )
 (
-(KEY 516890)(PARAM 1.0)(PHON ANGUT)
+(KEY 195356)(PARAM 1.0)(PHON ANGUT)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p man)))
 )
 (
-(KEY 10694)(PARAM 1.0)(PHON AALLAAT)
+(KEY 771574)(PARAM 1.0)(PHON AALLAAT)
 (MORPH n)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (p man)))
 )
 (
-(KEY 634965)(PARAM 1.0)(PHON AALLAAM_MIK)
+(KEY 456844)(PARAM 1.0)(PHON AALLAAM-MIK)
 (MORPH n)(SYN (((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a)))))))(DIR FS)(MODAL ALL)(((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a)))))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case inst)))))))(SEM (LAM p (p gun)))
 )
 (
-(KEY 187356)(PARAM 1.0)(PHON TIGU_SI_SIMA)
+(KEY 648927)(PARAM 1.0)(PHON TIGU-SI-SIMA)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case inst))))))(SEM (LAM x (LAM y ((take x) y))))
 )
 (
-(KEY 620835)(PARAM 1.0)(PHON _SU_Q)
+(KEY 501855)(PARAM 1.0)(PHON -SU-Q)
 (MORPH aff)(SYN (((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a)))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (LAM q (LAM r (LAM x ((and (p x)) ((and ((q (LAM x x)) x)) (r x))))))))
 )
 (
-(KEY 644180)(PARAM 1.0)(PHON TIGU_SIMA)
+(KEY 768970)(PARAM 1.0)(PHON TIGU-SIMA)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs))))))(SEM (LAM x (LAM y ((take x) y))))
 )
 (
-(KEY 250710)(PARAM 1.0)(PHON _SA_A)
+(KEY 992828)(PARAM 1.0)(PHON -SA-A)
 (MORPH aff)(SYN ((((((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a))))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)(agr ?a)))))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case erg)))))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((case abs)))))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 3434)(PARAM 1.0)(PHON ANG)
+(KEY 325893)(PARAM 1.0)(PHON ANG)
 (MORPH det)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang))))))(DIR FS)(MODAL ALL)((BCAT n)(FEATS NIL))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 56772)(PARAM 1.0)(PHON BABAE)
+(KEY 46967)(PARAM 1.0)(PHON BABAE)
 (MORPH n)(SYN ((BCAT n)(FEATS NIL)))(SEM woman)
 )
 (
-(KEY 450974)(PARAM 1.0)(PHON NG)
+(KEY 602194)(PARAM 1.0)(PHON NG)
 (MORPH lnk)(SYN ((((BCAT n)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT n)(FEATS NIL)))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS ((voi ?v))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))))(SEM (LAM p (LAM n (LAM x ((and (p x)) (n x))))))
 )
 (
-(KEY 488084)(PARAM 1.0)(PHON B_UM_ILI)
+(KEY 891209)(PARAM 1.0)(PHON B-UM-ILI)
 (MORPH v)(SYN ((((BCAT s)(FEATS ((voi av))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng))))))(SEM (LAM x (LAM y ((buy x) y))))
 )
 (
-(KEY 177744)(PARAM 1.0)(PHON NG_BARO)
+(KEY 50532)(PARAM 1.0)(PHON NG-BARO)
 (MORPH n)(SYN ((((BCAT s)(FEATS ((voi av))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS ((voi av))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))))(SEM (LAM p (p dress)))
 )
 (
-(KEY 246660)(PARAM 1.0)(PHON IYON)
+(KEY 939574)(PARAM 1.0)(PHON IYON)
 (MORPH wh)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang))))))(SEM (LAM x (that x)))
 )
 (
-(KEY 888210)(PARAM 1.0)(PHON BARO)
+(KEY 105014)(PARAM 1.0)(PHON BARO)
 (MORPH n)(SYN ((BCAT n)(FEATS NIL)))(SEM dress)
 )
 (
-(KEY 357821)(PARAM 1.0)(PHON B_IN_ILI)
+(KEY 432119)(PARAM 1.0)(PHON B-IN-ILI)
 (MORPH v)(SYN ((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng))))))(SEM (LAM x (LAM y ((buy y) x))))
 )
 (
-(KEY 191340)(PARAM 1.0)(PHON NG_BABAE)
+(KEY 853699)(PARAM 1.0)(PHON NG-BABAE)
 (MORPH n)(SYN ((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))))(SEM (LAM p (p woman)))
 )
 (
-(KEY 3145)(PARAM 1.0)(PHON SINO)
+(KEY 386135)(PARAM 1.0)(PHON SINO)
 (MORPH wh)(SYN (((BCAT s)(FEATS ((type whq))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang))))))(SEM (LAM x (who x)))
 )
 (
-(KEY 948388)(PARAM 1.0)(PHON ANG)
+(KEY 147860)(PARAM 1.0)(PHON ANG)
 (MORPH det)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang))))))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS ((voi none))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))))(SEM (LAM p (LAM x (p x))))
 )
 (
-(KEY 338546)(PARAM 1.0)(PHON KABIBILI)
+(KEY 409953)(PARAM 1.0)(PHON KABIBILI)
 (MORPH v)(SYN ((((BCAT s)(FEATS ((voi none))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng))))))(SEM (LAM x (LAM y ((buy x) y))))
 )
 (
-(KEY 368550)(PARAM 1.0)(PHON LANG)
+(KEY 864241)(PARAM 1.0)(PHON LANG)
 (MORPH a)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT s)(FEATS NIL))))(SEM (LAM p (just p)))
 )
 (
-(KEY 129466)(PARAM 1.0)(PHON "ng tela")
+(KEY 539094)(PARAM 1.0)(PHON "ng tela")
 (MORPH n)(SYN ((((BCAT s)(FEATS ((voi none))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS ((voi none))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))))(SEM (LAM p (p cloth)))
 )
 (
-(KEY 586300)(PARAM 1.0)(PHON ANO)
+(KEY 93296)(PARAM 1.0)(PHON ANO)
 (MORPH wh)(SYN (((BCAT s)(FEATS ((type whq))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang))))))(SEM (LAM x (what x)))
 )
 (
-(KEY 741575)(PARAM 1.0)(PHON ANG)
+(KEY 225296)(PARAM 1.0)(PHON ANG)
 (MORPH det)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS ((type whq))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang))))))(DIR FS)(MODAL ALL)(((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))))(SEM (LAM p (LAM x (p x))))
 )
 (
-(KEY 543339)(PARAM 1.0)(PHON SINABI)
+(KEY 852075)(PARAM 1.0)(PHON SINABI)
 (MORPH v)(SYN ((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT s)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng))))))(SEM (LAM x (LAM p ((say p) x))))
 )
 (
-(KEY 250332)(PARAM 1.0)(PHON "ni pedro")
+(KEY 725723)(PARAM 1.0)(PHON "ni pedro")
 (MORPH n)(SYN ((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT s)(FEATS NIL)))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT s)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))))(SEM (LAM p (p pedro)))
 )
 (
-(KEY 48529)(PARAM 1.0)(PHON NA)
+(KEY 531560)(PARAM 1.0)(PHON NA)
 (MORPH c)(SYN (((BCAT s)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT s)(FEATS NIL))))(SEM (LAM p p))
 )
 (
-(KEY 986985)(PARAM 1.0)(PHON BINILI)
+(KEY 35957)(PARAM 1.0)(PHON BINILI)
 (MORPH v)(SYN ((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng))))))(SEM (LAM x (LAM y ((buy y) x))))
 )
 (
-(KEY 3433)(PARAM 1.0)(PHON "ni linda")
+(KEY 897612)(PARAM 1.0)(PHON "ni linda")
 (MORPH n)(SYN ((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS ((voi ov))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))))(SEM (LAM p (p linda)))
 )
 (
-(KEY 81344)(PARAM 1.0)(PHON HUHUGASAN)
+(KEY 692149)(PARAM 1.0)(PHON HUHUGASAN)
 (MORPH v)(SYN ((((BCAT s)(FEATS ((voi dv))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng))))))(SEM (LAM x (LAM y ((wash y) x))))
 )
 (
-(KEY 54319)(PARAM 1.0)(PHON KO)
+(KEY 634840)(PARAM 1.0)(PHON KO)
 (MORPH pro)(SYN ((((BCAT s)(FEATS ((voi dv))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS ((voi dv))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))))(SEM (LAM p (p i)))
 )
 (
-(KEY 207240)(PARAM 1.0)(PHON AT)
+(KEY 105064)(PARAM 1.0)(PHON AT)
 (MORPH x)(SYN ((((BCAT @X)(FEATS NIL))(DIR BS)(MODAL STAR)((BCAT @X)(FEATS NIL)))(DIR FS)(MODAL STAR)((BCAT @X)(FEATS NIL))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
-(KEY 381679)(PARAM 1.0)(PHON PUPUNASAN)
+(KEY 212060)(PARAM 1.0)(PHON PUPUNASAN)
 (MORPH v)(SYN ((((BCAT s)(FEATS ((voi dv))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng))))))(SEM (LAM x (LAM y ((dry y) x))))
 )
 (
-(KEY 869097)(PARAM 1.0)(PHON MO)
+(KEY 985292)(PARAM 1.0)(PHON MO)
 (MORPH pro)(SYN ((((BCAT s)(FEATS ((voi dv))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR BS)(MODAL ALL)((((BCAT s)(FEATS ((voi dv))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ng)))))))(SEM (LAM p (p you)))
 )
 (
-(KEY 364069)(PARAM 1.0)(PHON ANG_MGA_PINGGAN)
+(KEY 418914)(PARAM 1.0)(PHON ANG-MGA-PINGGAN)
 (MORPH n)(SYN (((BCAT s)(FEATS ((voi dv))))(DIR BS)(MODAL ALL)(((BCAT s)(FEATS ((voi dv))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((case ang)))))))(SEM (LAM p (p dishes)))
 )
 ;;
