@@ -4,6 +4,7 @@
 # -Cem Bozsahin, 2022, Ankara, Datça, Şile
 # ---------------------------------------------------------------
 
+import re
 import os
 import sys
 import platform
@@ -22,7 +23,7 @@ _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
 _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
 try:
-    _lisptype = _lisp.function('lisp-implementation-type')() + ' ' + _lisp.function('lisp-implementation-version')()
+    _lisptype = _lisp.function('lisp-implementation-type')() + _ws + _lisp.function('lisp-implementation-version')()
 except Exception:
     _lisptype = 'unknown'
 
@@ -32,7 +33,9 @@ _online = False               # parser output control
 _version = '0.2'
 _vdate = 'October 10, 2022'
 _binext = '.bin'              # binary (lisp code) extension
+_punc   = ';:,.|~!@#$%^&*?'  # list of private tokens -- individually tokenized and wrapped in double quote
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
+_ws     = ' '
 _keys = {}                    # current keys
 _grammar = {}                 # currently loaded grammar parsed into internal representation
 _info = {}
@@ -306,7 +309,7 @@ class MGParser(Parser):       # the syntax of MG entries
         global _info, _online, _el, _form
         if not _online:
             _info['el'] += 1
-        return mk_bin(_el, mk_bin(_form, ' '.join(p[0][1:-1].split()), p.pos), p.c)
+        return mk_bin(_el, mk_bin(_form, _ws.join(p[0][1:-1].split()), p.pos), p.c)
 
     @_('ID')
     def pos(self, p):
@@ -320,7 +323,7 @@ class MGParser(Parser):       # the syntax of MG entries
         global _info, _online
         if not _online:
             _info['pos'][p[0][1:-1]] = True
-        return ' '.join(p[0][1:-1].split())
+        return _ws.join(p[0][1:-1].split())
 
     @_('r')
     def l(self, p):
@@ -370,7 +373,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
     @_('ids ID')
     def ids(self, p):
-        return p.ids+' '+p[1]
+        return p.ids+_ws+p[1]
 
     @_('ID')
     def ids(self, p):
@@ -570,12 +573,50 @@ class MGParser(Parser):       # the syntax of MG entries
 # End of data parsing/tokenization
 ############
 
-def split_command (cline):  # splits a command line into command and list of args
-    comarg= ' '.join(cline.split()).split(' ')
-    return (comarg[0], comarg[1:])
+
+def lisp_wrap(ch):
+    return '"' + ch + '"'
+
+def split_command (cline): # splits a command line into command and list of args
+    comm = cline[0]        # all commands are one character in front, strings and separate punctuation are double quoated
+    if comm == 'a': # needs special tokenization
+        commargs = []
+        if len(cline) < 2:
+            return (comm, commargs)
+        t = [re.split(_ws, x) for x in cline[1:]]  # only _ws in data will be list of length 2 after this
+        n = len(t)-1
+        i = 0
+        while i <= n:
+            if len(t[i]) > 1:  # skip free blanks
+                i += 1
+            elif t[i][0] == '"':
+                arg = '"'
+                j = i+1
+                while j <= n and t[j][0] != '"':
+                    if len(t[j]) > 1:
+                        arg += arg + _ws     
+                    else:
+                        arg += t[j][0]
+                    j += 1
+                commargs += arg+'"'
+                i = j
+            elif t[i][0] in _punc:
+                commargs += lisp_wrap(t[i][0])
+                i += 1
+            else:
+                arg = ''
+                while i <= n and len(t[i]) < 2:
+                    arg += t[i][0]
+                    i += 1
+                commargs += arg
+        print(comm, commargs)
+        return (comm, commargs)
+    else:
+        comarg = _ws.join(cline.split()).split(_ws)
+        return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' are space-separated items ending with newline            <<< NOTE")
+        print(" NOTE >> | '...' are space-separated items ending with newline (double-quoted are atomic)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates case functions for all elements with parts of speech ...')
         print(f"         |   and adds them to currently loaded {_binext} grammar")
@@ -685,23 +726,23 @@ def mk_2cl(e1, e2):      # makes a binary Lisp list as '(e1 e2)'
         if str(e1) == '':
             return '(' + str(e2) + ')'
         else:
-            return '(' + str(e1) + ' ' + str(e2)+ ')'
+            return '(' + str(e1) + _ws + str(e2)+ ')'
 
 def mk_3cl(e1, e2, e3):  # makes a ternary Lisp list as '(e1 e2 e3)'
     if str(e1) == '' and str(e2) == '' and str(e3) == '':
         return 'NIL'
     else:
-        return '('+ str(e1) + ' '+ str(e2)+ ' ' + str(e3) + ')'
+        return '('+ str(e1) + _ws+ str(e2)+ _ws + str(e3) + ')'
 
 def tc_bundle_quote(ql):
     # bundles ql, which is string within string, to Lisp list of tokens
     ws = ql.split("'")  
     if len(ws) > 1:
-        return '(' + ' '.join(ws[1].split()) + ')'
+        return '(' + _ws.join(ws[1].split()) + ')'
     elif len(ws[0]) == 0:
         return '(**ERROR** Your quoted category is empty This is well-formed but not processable)'
     else:
-        return '(' + ' '.join(ws[0][1:-1].split()) + ')'   # first and last elements are scare quotes, single or double
+        return '(' + _ws.join(ws[0][1:-1].split()) + ')'   # first and last elements are scare quotes, single or double
 
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
@@ -776,7 +817,7 @@ def ir_to_lisp(ir):
                     + mk_2cl('OUTSEM', ir_to_lisp(ir[_r][_r][_l]))
         else:
             for el in ir:
-                l += '(' + str(el) + ' ' + ir_to_lisp(ir[el]) + ')'
+                l += '(' + str(el) + _ws + ir_to_lisp(ir[el]) + ')'
             return l
     else: 
         return str(ir)
@@ -808,7 +849,7 @@ def do (commline):
             print('canceled')
     elif comm == 'v':
         _online = True
-        args, _, _ = ' '.join([str(item) for item in args]).partition('%')   # just eliminate the comment
+        args, _, _ = _ws.join([str(item) for item in args]).partition('%')   # just eliminate the comment
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
     elif comm == 'g':
@@ -864,13 +905,12 @@ def do (commline):
             print(f"{fn} not found")
     elif comm == 'e':
         try:
-            eval(' '.join(str(item) for item in args))
+            eval(_ws.join(str(item) for item in args))
         except (SyntaxError, NameError, TypeError, ZeroDivisionError, ValueError, KeyError): # all that i can think of going bad
             print('python says it is ill-formed or unevaluable')
     elif comm == 'o':
-        os.system(' '.join([str(item) for item in args[0:]]))
+        os.system(_ws.join([str(item) for item in args[0:]]))
     elif comm == 'a':
-        print(args, tuple(args))
         try:
             _lisp.function('cky_analyze')(tuple(args))
             print(f"Done. Try d command for results")
@@ -928,12 +968,12 @@ def do (commline):
     elif comm == '?':
         srule_ent = _info['srule']*2
         print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {srule_ent} elements)\n a rules :  {_info['arule']}")
-        print(" basics  : ", ' '.join(_info['basic'].keys()))
-        print(" quoted  : ", ' '.join(_info['quoted'].keys()))
-        print(" special : ", ' '.join(_info['special'].keys()))
-        print(" features: ", ' '.join(_info['features'].keys()))
-        print(" values  : ", ' '.join(_info['values'].keys()))
-        print(" POSs    : ", ' '.join(_info['pos'].keys()))
+        print(" basics  : ", _ws.join(_info['basic'].keys()))
+        print(" quoted  : ", _ws.join(_info['quoted'].keys()))
+        print(" special : ", _ws.join(_info['special'].keys()))
+        print(" features: ", _ws.join(_info['features'].keys()))
+        print(" values  : ", _ws.join(_info['values'].keys()))
+        print(" POSs    : ", _ws.join(_info['pos'].keys()))
     elif comm == 'x':       # caller knows what to do next
         pass
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
