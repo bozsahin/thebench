@@ -22,6 +22,7 @@ import cl4py                     # processor is in Lisp
 _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
 _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
+_ws     = ' '
 try:
     _lisptype = _lisp.function('lisp-implementation-type')() + _ws + _lisp.function('lisp-implementation-version')()
 except Exception:
@@ -35,7 +36,6 @@ _vdate = 'October 15, 2022'
 _binext = '.bin'              # binary (lisp code) extension
 _punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually tokenized and wrapped in double quote
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
-_ws     = ' '
 _keys = {}                    # current keys
 _grammar = {}                 # currently loaded grammar parsed into internal representation
 _info = {}
@@ -629,7 +629,7 @@ def help ():
         print(' v .     | shows (without adding) the intermediate representation of element .')
         print(' x       | exits from the tool')
         print(' ?       | shows information about the current g-loaded grammar')
-        print(' = ...   | restricts synthetic case application to basic categories ...')
+        print(' = ...   | displays analyses only onto basic cats in ... ; cf. the d command')
         print(' ! .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
         print(" ^ . ... | calls the Lisp function . with args ... which takes them as strings")
         print(' @ .     | saves the abstract representation of current grammar (a python dict) in file . ')
@@ -837,7 +837,7 @@ def do (commline):
     if comm in ['x', '?', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '=', '!', '^', '@', '&', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '!', '^', '@', '&', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
@@ -952,6 +952,17 @@ def do (commline):
             else:
                 for ana in args:
                     _lisp.function('cky_show_analysis_1')(int(ana)) # int() guarded by try
+                    print()
+        except Exception:
+            print('something went wrong')
+    elif comm == '=':
+        try:
+            if not args:
+                _lisp.function('cky_show_analysis')(tuple(args))
+                print()
+            else:
+                for cat in args:
+                    _lisp.function('cky_show_analysis')(tuple(cat)) 
                     print()
         except Exception:
             print('something went wrong')
