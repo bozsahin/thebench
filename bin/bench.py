@@ -617,7 +617,7 @@ def split_command (cline): # splits a command line into command and list of args
 def help ():
         print(" NOTE >> | '...' are space-separated items (double-quoted material and punctuation are atomic)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
-        print(' c ...   | generates and adds case functions for all elements with parts of speech ...')
+        print(' c ...   | generates and adds to grammar case functions from elements with parts of speech ...')
         print(' d ...   | displays analyses with solutions numbered ..., all of them if none provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
         print(f" g .     | checks and loads source grammar . (its {_binext} file generated and loaded)")
@@ -932,6 +932,11 @@ def do (commline):
             print('python says it is ill-formed or unevaluable')
     elif comm == 'o':
         os.system(_ws.join([str(item) for item in args[0:]]))
+    elif comm == 'c':
+        try:
+            _lisp.function('synthetic_case')(tuple(args))
+        except Exception:
+            print('something went wrong')
     elif comm == 'a':
         try:
             _lisp.function('cky_analyze')(tuple(args))

@@ -2670,7 +2670,7 @@
 (defun add-tr-to-grammar ()
   "add rules to the currently loaded grammar"
   (setf *current-grammar* (append *current-grammar* (reverse *RAISED-LEX-RULES*)))
-  (format t "~%Type-raising rules added at the end of *current-grammar*"))
+  (format t "~%Type-raising rules added at the end of current-grammar"))
 
 (defun mk-bcat (bcatht)
   (let ((feats nil)
@@ -2706,11 +2706,6 @@
 	(list 'INSYN (mk-cat (machash 'INSYN val)))
 	(list 'OUTSYN (mk-cat (machash 'OUTSYN val)))))
 
-(defun save-compile (fn &optional (msg ""))
-  (add-tr-to-grammar)
-  (save_grammar fn :force t)
-  (format t "~%compiled~A and saved." msg))
-
 ;;; ------------------------
 ;;; Most local unifier (MLU) for subsumption
 ;;; in rule subsumption, unlike in projection, we must pass on all local (i.e. basic cat-specific) unifiable features, rather than just check them.
@@ -2745,9 +2740,9 @@
 ;------------to create lex-rule entries-------------------------
 ;---------------------------------------------------------------
 
-(defun compile_v (pname morphs &optional (e-log "tr-error.log")) 
+(defun compile_v (morphs &optional (e-log "case-compile-error.log")) 
   "identify lexical functions from morphs tag and generate 2nd order case function for their outermost argument"
-  (load_bin pname)  
+  ;; assumes that a grammar is loaded before called
   (if *error* (progn (format t "~%aborting compile; currently loaded grammar is unchanged")
 		     (return-from compile_v)))
   (setf *RAISED-LEX-RULES* NIL) ;set to default
@@ -2811,24 +2806,34 @@
 		   *ht-tr*))
 	     *ht-tr*))))
 
-(defun synthetic_case (gname vmorphs &optional (e-log "tr-error.log"))
+(defun compile_case (vmorphs &optional (e-log "case-compile-error.log"))
   "first finds all rules from grammar file with list of verbal POS in vmrophs, 
   then reduces the rule set to MGUs of pairs iteratively.
   We use hashtables to be compatible with MGU function cat-match---and for efficieny."
-  (compile_v gname vmorphs e-log) ; result in *RAISED-LEX-RULES* in reverse order of find
-  (hash-tr)         
-  (generate_paradigms)
-  (format t "~%Summary of compiling type-raising for grammar   : ~A.ccg.lisp" gname)
-  (if *tr-error-log*
-    (format t "~%Log of warnings and errors                      : ~A (~A entries) " 
-	    *tr-error-file* (length *tr-error-log*))
-    (format t "~%There were NO errors/warnings in deriving second order functions"))
-  (format t "~%Number of lexical entries                       : ~A" (length *current-grammar*))
-  (format t "~%Number of lexical functions considered          : ~A" (length *VERBS-IN-GRAMMAR*))
-  (format t "~%Number of second-order case functions generated : ~A" (length *RAISED-LEX-RULES*))
-  (format t "~%Number of paradigmatic functions out of them    : ~A" (hash-table-count *ht-tr*))
-  (format t "~%Use (mergesave-tr <pn>) to merge and save the rules~% with current grammar to <pn>.ccg.lisp")
-  )
+  (let ((res t))
+    (compile_v vmorphs e-log) ; result in *RAISED-LEX-RULES* in reverse order of find
+    (hash-tr)         
+    (generate_paradigms)
+    (format t "~%Summary of compiling type-raising for current grammar")
+    (if *tr-error-log*
+      (progn (format t "~%Log of warnings and errors                      : ~A (~A entries)" 
+		     *tr-error-file* (length *tr-error-log*))
+	     (setf res nil))
+      (format t "~%There were NO errors/warnings in deriving second order functions"))
+    (format t "~%Number of lexical entries                       : ~A" (length *current-grammar*))
+    (format t "~%Number of lexical functions considered          : ~A" (length *VERBS-IN-GRAMMAR*))
+    (format t "~%Number of second-order case functions generated : ~A" (length *RAISED-LEX-RULES*))
+    (format t "~%Number of paradigmatic functions out of them    : ~A~%" (hash-table-count *ht-tr*))
+    res))
+
+(defun synthetic_case (vmorphs)
+  (compile_case vmorphs)
+  (if *tr-error-log* 
+    (format t "Check the case-compile-error.log file for errors~%Current grammar unchanged~%")
+    (progn 
+      (format t "Case functions compiled and added to current grammar~%")
+      (add-tr-to-grammar)))
+  t)
 
 ;; some nohup-friendly test suite -- all is written offline
 ;; this stuff is used by bench-training- scripts 
