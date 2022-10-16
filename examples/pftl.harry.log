@@ -1,0 +1,663 @@
+
+Number of analyses: 66
+
+
+Derivation 1
+--------------
+LEX   (HARRY) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+        : (LAM P (P HARRY))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 2
+--------------
+LEX   (HARRY) := S/(S\NP)
+        : (LAM P (P HARRY))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 3
+--------------
+LEX   (HARRY) := NP
+        : HARRY
+
+Final LF, normal-order evaluated: 
+
+    HARRY =
+    (HARRY)
+
+Derivation 4
+--------------
+LEX   (HARRY) := (S\NP)\((S\NP)/NP)
+        : (LAM P (P HARRY))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 5
+--------------
+_G2_132 (HARRY) := (S/NP)\((S/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 6
+--------------
+_G2_133 (HARRY) := (S/NP)\((S/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 7
+--------------
+_G2_134 (HARRY) := (S/NP)\((S/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 8
+--------------
+_G2_135 (HARRY) := (S/S)\((S/S)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 9
+--------------
+_G2_136 (HARRY) := (S/NP)\((S/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 10
+--------------
+_G2_137 (HARRY) := (S/NP)\((S/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 11
+--------------
+_G2_138 (HARRY) := (S/NP)\((S/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 12
+--------------
+_G2_139 (HARRY) := (S\NP)/((S\NP)\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 13
+--------------
+_G2_140 (HARRY) := (S\NP)/((S\NP)\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 14
+--------------
+_G2_141 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 15
+--------------
+_G2_142 (HARRY) := (S\NP)/((S\NP)\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 16
+--------------
+_G2_143 (HARRY) := VP/(VP\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 17
+--------------
+_G2_145 (HARRY) := VP/(VP\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 18
+--------------
+_G2_147 (HARRY) := VP/(VP\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 19
+--------------
+_G2_148 (HARRY) := (S\NP)/((S\NP)\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 20
+--------------
+_G2_149 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 21
+--------------
+_G2_150 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 22
+--------------
+_G2_151 (HARRY) := (S\NP)/((S\NP)\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 23
+--------------
+_G2_152 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 24
+--------------
+_G2_153 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 25
+--------------
+_G2_154 (HARRY) := VP/(VP\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 26
+--------------
+_G2_156 (HARRY) := VP/(VP\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 27
+--------------
+_G2_157 (HARRY) := VP/(VP\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 28
+--------------
+_G2_159 (HARRY) := ((N\N)/NP)\(((N\N)/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 29
+--------------
+_G2_161 (HARRY) := (S/VP)\((S/VP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 30
+--------------
+_G2_163 (HARRY) := (VP/VP)\((VP/VP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 31
+--------------
+_G2_164 (HARRY) := (S/VP)\((S/VP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 32
+--------------
+_G2_165 (HARRY) := (S/NP)\((S/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 33
+--------------
+_G2_166 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 34
+--------------
+_G2_167 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 35
+--------------
+_G2_168 (HARRY) := S\(S/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 36
+--------------
+_G2_169 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 37
+--------------
+_G2_170 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 38
+--------------
+_G2_171 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 39
+--------------
+_G2_172 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 40
+--------------
+_G2_174 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 41
+--------------
+_G2_175 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 42
+--------------
+_G2_180 (HARRY) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 43
+--------------
+_G2_181 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 44
+--------------
+_G2_182 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 45
+--------------
+_G2_183 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 46
+--------------
+_G2_184 (HARRY) := (S\NP)/((S\NP)\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 47
+--------------
+_G2_186 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 48
+--------------
+_G2_187 (HARRY) := (S/VP)\((S/VP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 49
+--------------
+_G2_188 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 50
+--------------
+_G2_189 (HARRY) := S\(S/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 51
+--------------
+_G2_190 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 52
+--------------
+_G2_191 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 53
+--------------
+_G2_192 (HARRY) := (S\NP)/((S\NP)\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 54
+--------------
+_G2_193 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 55
+--------------
+_G2_194 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 56
+--------------
+_G2_195 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 57
+--------------
+_G2_196 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 58
+--------------
+_G2_198 (HARRY) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 59
+--------------
+_G2_199 (HARRY) := (S/NP)\((S/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 60
+--------------
+_G2_200 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 61
+--------------
+_G2_201 (HARRY) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 62
+--------------
+_G2_202 (HARRY) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 63
+--------------
+_G2_203 (HARRY) := (VP/VP)\((VP/VP)/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 64
+--------------
+_G2_204 (HARRY) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 65
+--------------
+_G2_205 (HARRY) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
+
+Derivation 66
+--------------
+_G2_206 (HARRY) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) HARRY)
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P HARRY)) =
+    (\ P . P HARRY)
