@@ -2670,7 +2670,7 @@
 (defun add-tr-to-grammar ()
   "add rules to the currently loaded grammar"
   (setf *current-grammar* (append *current-grammar* (reverse *RAISED-LEX-RULES*)))
-  (format t "~%Type-raising rules added at the end of current-grammar"))
+  t)
 
 (defun mk-bcat (bcatht)
   (let ((feats nil)
@@ -2814,7 +2814,7 @@
     (compile_v vmorphs e-log) ; result in *RAISED-LEX-RULES* in reverse order of find
     (hash-tr)         
     (generate_paradigms)
-    (format t "~%Summary of compiling type-raising for current grammar")
+    (format t "~%Summary of compiling synthetic case functions for current grammar")
     (if *tr-error-log*
       (progn (format t "~%Log of warnings and errors                      : ~A (~A entries)" 
 		     *tr-error-file* (length *tr-error-log*))
@@ -2829,10 +2829,12 @@
 (defun synthetic_case (vmorphs)
   (compile_case vmorphs)
   (if *tr-error-log* 
-    (format t "Check the case-compile-error.log file for errors~%Current grammar unchanged~%")
-    (progn 
-      (format t "Case functions compiled and added to current grammar~%")
-      (add-tr-to-grammar)))
+    (progn
+      (format t "~%Check the ~A file for potential concerns." *tr-error-file*)
+      (format t "~%These are not ill-formed,~%   but expect unpredictable case performance from them.~%"))
+      (format t "~%Case functions compiled OK.~%"))
+  (add-tr-to-grammar)
+  (format t "Current grammar augmented with arules for case.~%")
   t)
 
 ;; some nohup-friendly test suite -- all is written offline

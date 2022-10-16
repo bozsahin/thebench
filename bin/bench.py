@@ -935,6 +935,7 @@ def do (commline):
     elif comm == 'c':
         try:
             _lisp.function('synthetic_case')(tuple(args))
+            print("Done; check out the & and = commands related to case")
         except Exception:
             print('something went wrong')
     elif comm == 'a':
