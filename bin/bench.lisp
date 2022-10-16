@@ -2832,13 +2832,13 @@
     (progn
       (format t "~%Check the ~A file for potential concerns." *tr-error-file*)
       (format t "~%These are not ill-formed,~%   but expect unpredictable case performance from them.~%"))
-      (format t "~%Case functions compiled OK.~%"))
+    (format t "~%Case functions compiled OK.~%"))
   (add-tr-to-grammar)
   (format t "Current grammar augmented with arules for case.~%")
   t)
 
 ;; some nohup-friendly test suite -- all is written offline
-;; this stuff is used by bench-training- scripts 
+;; this stuff is used by bench-train-.. scripts 
 
 (defun train-nohup-sbcl (gram gcmb savep out N alpha0 c)
   (progn 
