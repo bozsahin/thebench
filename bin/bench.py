@@ -821,6 +821,16 @@ def ir_to_lisp(ir):
     else: 
         return str(ir)
 
+def print_info ():
+    srule_ent = _info['srule']*2
+    print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {srule_ent} elements)\n a rules :  {_info['arule']}")
+    print(" basics  : ", _ws.join(_info['basic'].keys()))
+    print(" quoted  : ", _ws.join(_info['quoted'].keys()))
+    print(" special : ", _ws.join(_info['special'].keys()))
+    print(" features: ", _ws.join(_info['features'].keys()))
+    print(" values  : ", _ws.join(_info['values'].keys()))
+    print(" POSs    : ", _ws.join(_info['pos'].keys()))
+
 def do (commline):
     global _online, _grammar, _info
     comm, args = split_command(commline)
@@ -965,14 +975,20 @@ def do (commline):
         else:
             print(f"no {fn} in current directory")
     elif comm == '?':
-        srule_ent = _info['srule']*2
-        print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {srule_ent} elements)\n a rules :  {_info['arule']}")
-        print(" basics  : ", _ws.join(_info['basic'].keys()))
-        print(" quoted  : ", _ws.join(_info['quoted'].keys()))
-        print(" special : ", _ws.join(_info['special'].keys()))
-        print(" features: ", _ws.join(_info['features'].keys()))
-        print(" values  : ", _ws.join(_info['values'].keys()))
-        print(" POSs    : ", _ws.join(_info['pos'].keys()))
+        ch = input("write to file? (y/*n)? ")
+        if ch == 'y':
+            fn = input("file name: ")
+            ch = False
+            if os.path.exists(fn):
+                ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+            if ch == 'y' or not ch:
+                with open(fn, 'w') as f:
+                    with redirect_stdout(f):
+                        print_info();
+            else:
+                print_info()
+        else:
+            print_info()
     elif comm == 'x':       # caller knows what to do next
         pass
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
