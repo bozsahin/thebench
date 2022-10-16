@@ -29,6 +29,7 @@ except Exception:
     _lisptype = 'unknown'
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
+_underscore= '_'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.3'
@@ -962,7 +963,7 @@ def do (commline):
                 print()
             else:
                 for cat in args:
-                    _lisp.function('cky_show_analysis')(tuple(cat)) 
+                    _lisp.function('cky_show_analysis')(cat) 
                     print()
         except Exception:
             print('something went wrong')
@@ -1048,7 +1049,7 @@ def do (commline):
         print('command unknown')
 
 def welcome ():
-    print('------------------------------------------------------------------------')
+    print(72*_overscore)
     print(1*_prompt+'Welcome to The Bench')
     print(2*_prompt+" A workbench for studying Monadic Structures in Natural Language")
     print(3*_prompt+"Version:", _version, "Dated:", _vdate)
@@ -1058,7 +1059,7 @@ def welcome ():
     print(3*_prompt+"Processing by Common Lisp (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
     print(1*_prompt+"Type x to exit, h to get some help")
-    print('-----------------------------------------------------------------------')
+    print(72*_underscore)
 
 mglexer  = MGLexer()
 mgparser = MGParser()
