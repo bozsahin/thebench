@@ -837,11 +837,24 @@ def do (commline):
     if comm in ['x', '?', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '=', '!', '^', '@', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '=', '!', '^', '@', '&', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
         help()
+    elif comm == '&':
+        fn = str(args[0])
+        ch = False
+        if os.path.exists(fn):
+            ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+        if ch == 'y' or not ch:
+            try:
+                _lisp.function('save_grammar0')(fn)
+                print(f"current grammar saved in {fn}")
+            except Exception:
+                print("something went wrong")
+        else:
+            print('save canceled')
     elif comm == '@':
         fn = str(args[0])
         ch = False

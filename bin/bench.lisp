@@ -2308,28 +2308,39 @@
 	      (- (get-key-param-xp (nv-list-val 'KEY l)) (nv-list-val 'PARAM l)))))
   (format t "~%================================================"))
 
-(defun save-grammar (gname &key (force nil))
+(defun save_grammar0 (gname)
   "this save is baroque to make it lisp reload-able"
-  (with-open-file (s (concatenate 'string (string gname) ".ccg.lisp") 
+  (with-open-file (s gname 
+		     :direction :output :if-exists :supersede)  ; we put the default extension
+    (format s "(defparameter *current-grammar*~%")
+    (format s "'")
+    (prin1 *current-grammar* s)
+    (format s ")~%"))
+  t)
+
+(defun save_grammar (gname &key (force nil))
+  "this save is baroque to make it lisp reload-able"
+  (with-open-file (s gname 
 		     :direction :output :if-exists (if force :supersede :error))  ; we put the default extension
     (format s "(defparameter *current-grammar*~%")
     (format s "'")
     (prin1 *current-grammar* s)
-    (format s ")~%")))
+    (format s ")~%"))
+  t)                  ; to make it cl4py friendly. All interfaces return T to avoid data trouble
 
 (defun save-training (out)
   (or out (format t "please specify an output grammar name to avoid unintentional overrides") 
       (return-from save-training))
   (dolist (l *current-grammar*)
     (setf (nv-list-val 'PARAM l) (get-key-param (nv-list-val 'KEY l))))
-  (save-grammar out))
+  (save_grammar out))
 
 (defun save-training-xp (out)
   (or out (format t "please specify an output grammar name to avoid unintentional overrides") 
       (return-from save-training-xp))
   (dolist (l *current-grammar*)
     (setf (nv-list-val 'PARAM l) (get-key-param-xp (nv-list-val 'KEY l))))
-  (save-grammar out))
+  (save_grammar out))
 
 (defun z-score-grammar ()
   "This version assumes all entries to be from one distribution.
@@ -2384,7 +2395,7 @@
        (max-lf-span) ; applies SP to currently loaded grammar wrt identical LFs
        (format t "~%Size of updated grammar= ~A~%Size of deletion list (with overlaps)= ~A~%" (length g) (length d))
        (setf *current-grammar* g))
-     (save-grammar ,gn))) ; then saves the updated current grammar
+     (save_grammar ,gn))) ; then saves the updated current grammar
 
 (defun filter (&key (metod '>=) (threshold 0.0))
   "filters out grammar entries in current grammar by PARAM; metod is survival criteria"
@@ -2395,7 +2406,7 @@
     (dolist (item *current-grammar*)
       (if (funcall metod (nv-list-val 'PARAM item) threshold) (push item fg)))
     (setf *current-grammar* (reverse fg))
-    (save-grammar fn)))
+    (save_grammar fn)))
 
 (defun z-score-grammar-per-form ()
   "calculates z values for each lexical form separately, because they are the ones 
@@ -2697,7 +2708,7 @@
 
 (defun save-compile (fn &optional (msg ""))
   (add-tr-to-grammar)
-  (save-grammar fn :force t)
+  (save_grammar fn :force t)
   (format t "~%compiled~A and saved." msg))
 
 ;;; ------------------------
