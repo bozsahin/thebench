@@ -1,9 +1,9 @@
 #!/bin/bash
-# This is nohupped by xarg. I advise NOT to use it standalone.
+# This is nohupped by xarg. DO NOT use it standalone.
 # 
-# DO NOT Ctrl-c/d/z the terminal for this. It's OK if terminal times out; your process
+# DO NOT Ctrl-c/d/z the terminal after starting this script. It's OK if terminal times out; your process
 #   continues to run; not OK if you interrupt, which goes into Lisp!!
-# -cem bozsahin, july 2018
+# -cem bozsahin, july 2018-22
 #
 # $1 : sbcl dynamic space size in KBytes; 
 #      make sure /proc/sys/vm/max_map_count can handle this.
@@ -33,6 +33,6 @@ echo "            in: `hostname`" >> $8.log
 echo "Log goes to   : $8.log" >> $8.log
 echo "I will call sbcl as: $BENCH_LISP" >> $8.log
 TRAINER="$TRAIN \"$3\" $2 $4 \"$8.$N.$6a.$7c\" $N $6 $7"   # passes one less argument if $N is empty string
-echo "It will call $TRAIN in $BENCH_HOME/bin/init-training.lisp as: ($TRAINER)" >> $8.log
+echo "It will call $TRAIN in $BENCH_HOME/bin/bench.lisp as: ($TRAINER)" >> $8.log
 echo '=======          ============' >> $8.log
 $BENCH_LISP --load $BENCH_HOME/bin/bench.lisp --eval '(reset-globals)' --eval "($9)" --eval "($TRAINER)" --eval '(sb-ext:exit)' >> $8.log

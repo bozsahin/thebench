@@ -2870,6 +2870,34 @@
 (defun nf-and-beam ()
   (simple-ccg :nf-parse t :beam t))
 
+; keeping below as legacy access  to switches
+
+(defun beam-off ()
+  (setf *beamp* nil)(beam-value))
+
+(defun beam-on ()
+  (setf *beamp* t)(beam-value))
+
+(defun nf-parse-off ()
+  (setf *nf-parse* nil)(nf-parse-value))
+
+(defun nf-parse-on ()
+  (setf *nf-parse* t)(nf-parse-value))
 (format t "processor: bench.lisp loaded, version ~A~%" 
   (multiple-value-bind (pr v) (which_processor)
     v))
+
+(defun nf-parse-on ()
+  (setf *nf-parse* t)(nf-parse-value))
+
+(defun oov-off ()
+  (setf *oovp* nil) (format t "OOV is reset (OOV errors reported)~%"))
+
+(defun oov-on ()
+  (setf *oovp* t) (format t "OOV is set (OOV errors not reported)~%"))
+
+(defun show-lf ()
+  (setf *lfflag* t) (format t "All LFs will be shown~%"))
+
+(defun hide-lf ()
+  (setf *lfflag* nil) (format t "Only final LF will be shown~%"))
