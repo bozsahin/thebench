@@ -1166,9 +1166,10 @@
      (format t "~2%Derivation ~A~%----------------~%" m)
      (beta-normalize (cky-sem (list row col m)))))
 
-(defun cky_show_analysis_onto (onto)
+(defun cky_show_analysis_onto (catlist)
   "the answer is in first column of row n, which is the length of the string."
-  (cky-show-der (length *cky-input*) 1 onto)
+  (dolist (cat catlist)
+    (cky-show-der (length *cky-input*) 1 cat))
   t)
 
 (defun cky_show_analysis (&optional (onto nil))

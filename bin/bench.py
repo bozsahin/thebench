@@ -959,13 +959,8 @@ def do (commline):
             print('something went wrong')
     elif comm == '=':
         try:
-            if not args:
-                _lisp.function('cky_show_analysis')(tuple(args))
-                print()
-            else:
-                for cat in args:
-                    _lisp.function('cky_show_analysis_onto')(cat) 
-                    print()
+            _lisp.function('cky_show_analysis_onto')(tuple(args))
+            print()
         except Exception:
             print('something went wrong')
     elif comm == 'p':
