@@ -1,6 +1,5 @@
 # thebench
-A tool for working with Natural Language Monad of Command
-
+A tool to study monadic structures in natural languages using two command relations.
 
 YOU NEED:
 
