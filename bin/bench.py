@@ -21,7 +21,6 @@ import cl4py                     # processor is in Lisp
 
 _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
-_cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
 _ws     = ' '
 try:
     _lisptype = _lisp.function('lisp-implementation-type')() + _ws + _lisp.function('lisp-implementation-version')()
@@ -579,6 +578,8 @@ def lisp_wrap(ch):
     return '"' + ch + '"'
 
 def split_command (cline): # splits a command line into command and list of args
+    if cline == '':
+        return ('~',[])
     comm = cline[0]        # all commands are one character in front, strings and separate punctuation are double quoated
     commargs = []
     if comm == 'a': # needs special tokenization
@@ -963,7 +964,7 @@ def do (commline):
                 print()
             else:
                 for cat in args:
-                    _lisp.function('cky_show_analysis')(cat) 
+                    _lisp.function('cky_show_analysis_onto')(cat) 
                     print()
         except Exception:
             print('something went wrong')
@@ -1067,6 +1068,7 @@ mgparser = MGParser()
 if __name__ == '__main__': # MG REPL online
     init_grammar()
     welcome()
+    _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
     command = '~'
     while split_command(command)[0] != 'x':
         do(command)
