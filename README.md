@@ -27,11 +27,13 @@ TO INSTALL:
 
    <code>pip install cl4py</code>
 
+   <code>pip install prompt_toolkit</code>
+
 You are done with installation. 
 
-You've just installed thebench, rlwrap, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries. You have also made the tool available from anywhere in your machine.
+You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries. You have also made the tool available from anywhere in your machine.
 
-If you already had these utilities in your system, your versions are detected and used by the bench. Rlwrap is great for recalling earlier commands in an interactive session.
+If you already had these utilities in your system, your versions are detected and used by the bench. 
 
 TO USE:
 
@@ -41,6 +43,8 @@ Open a fresh terminal, change to your working directory, and do
 
 where <code>python</code> is the most recent (and >= 3.8) python executable.
 
+Use UP and DOWN keys for command recall. TheBench keeps its specific command history in <code>.thebenchhistory</code>
+file at your home directory.
 
 TO DEVELOP A GRAMMAR:
 

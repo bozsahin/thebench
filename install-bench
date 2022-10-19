@@ -9,19 +9,13 @@ if [ "$BENCH_HOME" ]; then
 fi
 LOG="=======================================================\nTheBench install and set up, `date`\n=======================================================" # installers can be very verbose, accumulate all deeds to report at end
 LOGFILE='/tmp/thebench-install.log'
-LOG+="\n-thebench command-line resources available before install and use:"
-LOG+="\n  git=`command -v git`"
-LOG+="\n  pip=`command -v pip`"
-LOG+="\n  python=`command -v python`"
-LOG+="\n  sbcl=`command -v sbcl`"
-LOG+="\n  rlwrap=`command -v rlwrap`"
 echo "PLEASE NOTE:"
 echo "  IN CASE THE INSTALLER ASKS FOR superuser PASSWORD,"
-echo "  It will be ONLY for installing the Common Lisp sbcl and rlwrap THROUGH safe installers"
+echo "  It will be ONLY for installing the Common Lisp's sbcl THROUGH safe installers"
 echo " "
 SUDO=sudo
 labdir=`pwd`
-#check if SBCL and rlwrap need installing-- SBCL is the standard  lisp for cl4py module
+#check if SBCL need installing-- SBCL is the standard  lisp for cl4py module
 #there is a pecking order of packagers, in case you have more than one
 packager=
 install=install
@@ -51,7 +45,7 @@ fi
 if [ "$packager" ]; then
 	LOG+="\n-You have an installer ($packager) for standard packages"
 else
-	LOG+="\n-apt-get, dnf, pacman, yum or brew not found. I leave Common Lisp and rlwrap handling to you."
+	LOG+="\n-apt-get, dnf, pacman, yum or brew not found. I leave Common Lisp handling to you."
 fi
 if [ ! `command -v sbcl` ]; then
   if [ "$packager" ]; then
@@ -62,21 +56,7 @@ else
   LOG+="\n-Local sbcl is set for tool use"
 fi
 locallisp=`command -v sbcl`
-if [ `command -v rlwrap` ]; then
-	LOG+="\n-Local rlwrap is set for tool use"
-else 
-  if [ "$packager" ]; then
-	LOG+="\n-rlwrap is downloaded and installed"
-	$SUDO $packager $install rlwrap
-  fi
-fi
 printf '%s\n' '# stuff added by thebench installer' >> ~/.bashrc
-if [ `command -v rlwrap` ]; then
-  printf '%s\n' 'export RLWRAP=rlwrap' >> ~/.bashrc
-else
-  printf '%s\n' 'export RLWRAP=' >> ~/.bashrc
-  LOG+='\n-Change the RLWRAP variable in ~/.bashrc if you have rlwrap somewhere'
-fi
 printf '%s\n%s\n%s\n%s\n' "export BENCH_HOME=$labdir" "export bench=$labdir/bin/bench.py" "export PATH=:.:\$BENCH_HOME/bin:\$PATH" >> ~/.bashrc
 printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
 printf '%s\n' '# stuff added by thebench installer' >> ~/.bash_profile

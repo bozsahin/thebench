@@ -4,6 +4,10 @@
 # -Cem Bozsahin, 2022, Ankara, Datça, Şile
 # ---------------------------------------------------------------
 
+from prompt_toolkit import prompt       
+from prompt_toolkit import PromptSession
+from prompt_toolkit.history import FileHistory
+from os.path import expanduser
 import re
 import os
 import sys
@@ -1073,6 +1077,8 @@ def welcome ():
 mglexer  = MGLexer()
 mgparser = MGParser()
 
+myPromptSession = PromptSession(history = FileHistory(expanduser('~/.thebenchhistory')))
+
 if __name__ == '__main__': # MG REPL online
     init_grammar()
     welcome()
@@ -1080,5 +1086,5 @@ if __name__ == '__main__': # MG REPL online
     command = '~'
     while split_command(command)[0] != 'x':
         do(command)
-        command = input(_prompt)
+        command = myPromptSession.prompt(_prompt)
     print('Done.')
