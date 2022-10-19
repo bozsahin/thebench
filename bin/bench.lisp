@@ -2009,7 +2009,7 @@
   (format t "~2&Final LF, normal-order evaluated: ~2%    ~A =~%    ~A" 
 	  (beta-normalize-outer (cky-sem *cky-max*))
 	  (display-lf (beta-normalize-outer (cky-sem *cky-max*))))
-  )
+  t)
 
 ;;;; =============================================================================
 ;;;; == Part 4: the modeling component                                          ==
@@ -2113,7 +2113,8 @@
 	     (if (< param minprob)
 	       (setf minprob param))))
 	 (cky-find-argmax-lf)
-	 t)))
+	 ))
+  t)
 
 (defun set-training-parameters (bign smalln nparams alpha0 c &optional (x4 nil)) 
   "The parameters of the workflow of Z&C 05 for model parameter estimation. 

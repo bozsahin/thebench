@@ -632,6 +632,7 @@ def help ():
         print(' x       | exits from the tool')
         print(' ?       | shows information about the current g-loaded grammar')
         print(' = ...   | displays analyses onto basic cats in ... ; cf. the d command')
+        print(' # ...   | displays ranked analyses; cf. the r command')
         print(' ! .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
         print(" ^ . ... | calls the Lisp function . with args ... which takes them as strings")
         print(' @ .     | saves the abstract representation of current grammar (a python dict) in file . ')
@@ -836,7 +837,7 @@ def print_info ():
 def do (commline):
     global _online, _grammar, _info
     comm, args = split_command(commline)
-    if comm in ['x', '?', '<', 'h'] and args:
+    if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
         return
     if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '!', '^', '@', '&', '+', '>'] and not args:
@@ -946,6 +947,12 @@ def do (commline):
             print(f"Done. Try d command for results")
         except Exception:
             print('something went wrong')
+    elif comm == 'r':
+        try:
+            _lisp.function('cky_rank')(tuple(args))
+            print(f"Done. Try # command for results")
+        except Exception:
+            print('something went wrong')
     elif comm == 'd':
         try:
             if not args:
@@ -960,6 +967,12 @@ def do (commline):
     elif comm == '=':
         try:
             _lisp.function('cky_show_analysis_onto')(tuple(args))
+            print()
+        except Exception:
+            print('something went wrong')
+    elif comm == '#':
+        try:
+            _lisp.function('cky_show_ranking')()
             print()
         except Exception:
             print('something went wrong')
