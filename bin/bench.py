@@ -1077,6 +1077,8 @@ def welcome ():
 mglexer  = MGLexer()
 mgparser = MGParser()
 
+# command history recaller is from furas of stackoverflow. Many thanks
+
 myPromptSession = PromptSession(history = FileHistory(expanduser('~/.thebenchhistory')))
 
 if __name__ == '__main__': # MG REPL online
