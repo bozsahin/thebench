@@ -57,7 +57,7 @@ else
 fi
 locallisp=`command -v sbcl`
 printf '%s\n' '# stuff added by thebench installer' >> ~/.bashrc
-printf '%s\n%s\n%s\n%s\n' "export BENCH_HOME=$labdir" "export bench=$labdir/bin/bench.py" "export PATH=:.:\$BENCH_HOME/bin:\$PATH" >> ~/.bashrc
+printf '%s\n%s\n%s\n' "export BENCH_HOME=$labdir" "export bench=$labdir/bin/bench.py" "export PATH=:.:\$BENCH_HOME/bin:\$PATH" >> ~/.bashrc
 printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
 printf '%s\n' '# stuff added by thebench installer' >> ~/.bash_profile
 printf '%s\n' 'if [ -f ~/.bashrc ]; then source ~/.bashrc; fi' >> ~/.bash_profile
