@@ -621,7 +621,7 @@ def split_command (cline): # splits a command line into command and list of args
         return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' are space-separated items (double-quoted material and punctuation are atomic)")
+        print(" NOTE >> | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates and adds to grammar case functions from elements with parts of speech ...')
         print(' d ...   | displays analyses with solutions numbered ..., all of them if none provided')
@@ -631,12 +631,12 @@ def help ():
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p ...   | shows the elements with parts of speech ...')
         print(' r ...   | ranks the expression ... using the currently loaded model')
-        print(' s .     | supervision pairs in file .supervision are converted to native format .sup for the trainer')
+        print(' s .     | supervision data in file . converted to native format .sup for the trainer')
         print(' v .     | shows (without adding) the intermediate representation of element .')
         print(' x       | exits from the tool')
         print(' ?       | shows information about the current g-loaded grammar')
         print(' = ...   | displays analyses onto basic cats in ... ; cf. the d command')
-        print(' # ...   | displays ranked analyses; cf. the r command')
+        print(' #       | displays ranked analyses; cf. the r command')
         print(' ! .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
         print(" ^ . ... | calls the Lisp function . with args ... which takes them as strings")
         print(' @ .     | saves the abstract representation of current grammar (a python dict) in file . ')
