@@ -30,7 +30,7 @@ TO INSTALL:
    <code>pip install prompt_toolkit</code>
 
 You are done with installation.  (I did not put these steps in the installer because you need the same version of pip as your python, which seems impossible
-				    to detect in a script. For example </code>pip3.9</code> if you have <code>python3.9</code>.)
+				    to detect in a script. For example <code>pip3.9</code> if you have <code>python3.9</code>.)
 
 You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries. You have also made the tool available from anywhere in your machine.
 
