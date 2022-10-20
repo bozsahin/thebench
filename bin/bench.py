@@ -42,6 +42,7 @@ _punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually toke
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
 _grammar = {}                 # currently loaded grammar parsed into internal representation
+_supervision = {}
 _info = {}
 _indexed = False              # whether an entry is already indexed; need this unique indexing
 _targetprefix = '!'           # _target.. for generating symbol maps for the Lisp processor
@@ -146,6 +147,10 @@ def mk_un (op, left):
 #
 ############
 
+def init_sup():
+    global _supervision
+    _supervision.clear()
+
 def init_grammar():
     global _grammar, _info
     _grammar.clear()
@@ -182,7 +187,7 @@ def make_up_an_index():              # return the first non-colliding random ind
 #
 
 class SUPLexer(Lexer): # Token types for supervision pairs
-    tokens = { ID, ITEM, CORR, DOT, LP, RP, BS }
+    tokens = { ID, ITEM, CORR, CATEND, DOT, LP, RP, BS, END}
 
     ignore = ' \t'            # whitespace
     ignore_comment = r'\%.*'  # ignore everything starting with %
@@ -191,10 +196,12 @@ class SUPLexer(Lexer): # Token types for supervision pairs
     ITEM   = r'\|.*\|'                                     
     ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
     CORR   = r'\:'
+    CATEND = r'\;'
     DOT    = r'\.'          # modalities also use this
     LP     = r'\('
     RP     = r'\)'
     BS     = r'\\'            # lambda also uses this
+    END    = _overscore                               # not visible to user.
 
     def error(self, tok):                     # best to avoid adding this to token types
         print("Unknown supervision character '%s'" % tok.value[0])
@@ -248,13 +255,14 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
         print("Unknown character '%s'" % tok.value[0])
         self.index += 1
 
-class SUPParser(Parser):      # the syntax of string : meaning; pairs
+class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
     #debugfile = 'lalr-sup.log'
     tokens = SUPLexer.tokens
 
-    @_('ITEM CORR lcom')
+    @_('ITEM CORR lcom CATEND t')
     def s(self, p):
-        pprint(f"item: {p[0][1:-1].split()} lcom: {p.lcom}")
+        print(f"{p[0]} lcom: {p.lcom}")
+        return True
 
     @_('lterm')
     def lcom(self, p):
@@ -293,6 +301,10 @@ class SUPParser(Parser):      # the syntax of string : meaning; pairs
     @_('bodys')
     def lbody(self, p):
         return p.bodys
+
+    @_('END')
+    def t(self, p):
+        return True        
 
     def error(self, p):     
         #if EOFError:
@@ -645,6 +657,47 @@ def help ():
         print(' > .     | Logs processor output to filename . after adding .log extension')
         print(' <       | Logging turned off')
 
+def load_1pass_sup(fname):       
+    global _supervision   
+    lineno = 0           
+    errors = False
+    nofile = False
+    result = False
+    init_sup()
+    parserlog = f'file: {fname}\n'
+    logfile = fname+'.log'
+    with open(logfile, 'w') as f:
+        with redirect_stdout(f):
+            try:
+                for line in open(fname, 'r'):
+                    lineno += 1
+                    flag = line.lstrip()
+                    if flag != '':  #  lexer is unpredictable with all comment or all white lines, dont pass on
+                        if flag[0] != '%':
+                            result = supparser.parse(suplexer.tokenize(line+_overscore))
+                            if not result:
+                                errors = True
+                                parserlog += f'bad entry in line {lineno}\n'
+                if not errors:
+                    parserlog += f'The supervision file compiled OK.\n'
+            except  FileNotFoundError:
+                    nofile = True
+                    errors = True
+            print(parserlog)
+    if not errors:
+        print("no errors, proceeding with set up...")
+    else:
+        if not nofile:
+            init_sup()
+            print("you've got errors in the grammar")
+            print('fix them and re-try')
+    if nofile:
+        os.remove(logfile)
+        print('grammar file not found; are you sure you specified a full name?')
+    if not nofile:
+        print(f"please check the {logfile} file for information.")
+    return (result and (not errors) and (not nofile))
+
 def load_1pass(fname):        # checks but not updates the grammar with indices
     global _online, _grammar, _info  # here's the difference from load_2pass: grammarians must ignore <index,param>; at end
     lineno = 0                #   modelers cannot. modelers use load_2pass
@@ -881,6 +934,8 @@ def do (commline):
         args, _, _ = _ws.join([str(item) for item in args]).partition('%')   # just eliminate the comment
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
+    elif comm == 's':
+        load_1pass_sup(args[0])
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
             fn = str(args[0]) + _binext
@@ -1076,6 +1131,8 @@ def welcome ():
 
 mglexer  = MGLexer()
 mgparser = MGParser()
+suplexer = SUPLexer()
+supparser = SUPParser()
 
 # command history recaller is from furas of stackoverflow. Many thanks
 

@@ -1,0 +1,9 @@
+|john loves mary| lcom: {0: '‾app', 1: {0: '‾app', 1: 'love', 2: 'mary'}, 2: 'john'}
+|mary loves john| lcom: {0: '‾app', 1: {0: '‾app', 1: 'love', 2: 'john'}, 2: 'mary'}
+|john knows mary| lcom: {0: '‾app', 1: {0: '‾app', 1: 'know', 2: 'mary'}, 2: 'john'}
+|mary knows john| lcom: {0: '‾app', 1: {0: '‾app', 1: 'know', 2: 'john'}, 2: 'mary'}
+|mary knows john loves mary| lcom: {0: '‾app', 1: {0: '‾app', 1: 'know', 2: {0: '‾app', 1: {0: '‾app', 1: 'love', 2: 'mary'}, 2: 'john'}}, 2: 'mary'}
+|john knows mary loves john| lcom: {0: '‾app', 1: {0: '‾app', 1: 'know', 2: {0: '‾app', 1: {0: '‾app', 1: 'love', 2: 'john'}, 2: 'mary'}}, 2: 'john'}
+file: g1.spairs
+The supervision file compiled OK.
+
