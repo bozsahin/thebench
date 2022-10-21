@@ -1,0 +1,13 @@
+% some training data to swerve the grammar toward forward subject raising
+% and backward object raising (i.e. plain old English)
+% Note that there is no syntactic or morphological information in training. Syntax is a latent variable in training.
+% -cem bozsahin 2017-22
+% escaping the LF objects not necessary in Monadic grammar
+
+john loves mary| : love mary john;
+|mary loves john| : love john mary;
+|john knows mary| : know mary john;
+|mary knows john| : s/np : know john mary;
+|mary knows john loves mary| : know (love mary john) mary;
+|john knows mary loves john : know (love john mary) john;
+

@@ -38,6 +38,7 @@ _online = False               # parser output control
 _version = '0.3'
 _vdate = 'October 15, 2022'
 _binext = '.bin'              # binary (lisp code) extension
+_supext = '.sup'              # native format extension for supervision files
 _punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually tokenized and wrapped in double quote
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
@@ -50,8 +51,9 @@ _targetmod = {'.': 'ALL', '+': 'CROSS', '*': 'STAR', '^': 'HARMONIC'}
 _targetdir = {'/': 'FS', '\\': 'BS', '//': 'FS', '\\\\': 'BS'}
 _targetslashlex = {'/': False, '\\': False, '//': True, '\\\\': True}
 
-# Apart from MGLexer and MGParser, there is NO class definition, to make everything natively printable.
+# Apart from Lexer and Parser, there is NO class definition, to make everything natively printable.
 #   And, these two classes are required by the sly module. 
+# There are two lexers and two parsers, one each for grammar and supervision files
 
 #########  
 # Internal Representation
@@ -99,6 +101,7 @@ _r     = 2
 # {_dom,   _dir, _range}
 # {_range, _scom}
 # {_dir,   slash, modality}
+# {_dir,   slash, modality}
 # {_basic, val, list of feature followed by value}
 # {_lam,   varname, _app}
 # {_lam,   varname, val}
@@ -115,6 +118,10 @@ _r     = 2
 # 
 # make functions.
 #               
+def mk_entry_sup (form, meaning):
+    global _supervision
+    _supervision[form] = ir_to_lisp(meaning)
+    return True
 
 def mk_entry (element, index):  
     global _grammar, _online, _op, _l, _r
@@ -187,7 +194,7 @@ def make_up_an_index():              # return the first non-colliding random ind
 #
 
 class SUPLexer(Lexer): # Token types for supervision pairs
-    tokens = { ID, ITEM, CORR, CATEND, DOT, LP, RP, BS, END}
+    tokens = {ID, ITEM, CORR, CATEND, DOT, LP, RP, BS, END, ANY}
 
     ignore = ' \t'            # whitespace
     ignore_comment = r'\%.*'  # ignore everything starting with %
@@ -202,6 +209,7 @@ class SUPLexer(Lexer): # Token types for supervision pairs
     RP     = r'\)'
     BS     = r'\\'            # lambda also uses this
     END    = _overscore                               # not visible to user.
+    ANY    = r'.'             # in case nothing matches (last chance before error)
 
     def error(self, tok):                     # best to avoid adding this to token types
         print("Unknown supervision character '%s'" % tok.value[0])
@@ -261,8 +269,7 @@ class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
 
     @_('ITEM CORR lcom CATEND t')
     def s(self, p):
-        print(f"{p[0]} lcom: {p.lcom}")
-        return True
+        return mk_entry_sup(p[0][1:-1], p.lcom)
 
     @_('lterm')
     def lcom(self, p):
@@ -291,6 +298,10 @@ class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
         return p.lterm
 
     @_('ID')
+    def body(self, p):
+        return p[0]
+
+    @_('ANY')
     def body(self, p):
         return p[0]
 
@@ -689,11 +700,11 @@ def load_1pass_sup(fname):
     else:
         if not nofile:
             init_sup()
-            print("you've got errors in the grammar")
+            print("you've got errors in the supervision data")
             print('fix them and re-try')
     if nofile:
         os.remove(logfile)
-        print('grammar file not found; are you sure you specified a full name?')
+        print('supervision file not found; are you sure you specified a full name?')
     if not nofile:
         print(f"please check the {logfile} file for information.")
     return (result and (not errors) and (not nofile))
@@ -935,7 +946,31 @@ def do (commline):
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
     elif comm == 's':
-        load_1pass_sup(args[0])
+        if load_1pass_sup(args[0]):
+            fn = str(args[0]) + _supext
+            ch = False
+            if os.path.exists(fn):
+                ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+            if ch == 'y' or not ch:
+                with open(str(fn),'w') as f:
+                    with redirect_stdout(f):
+                        print('(')     # loadable lisp file
+                        print(';;;;;;;;;; bench.py-generated supervision data')
+                        print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
+                        print(';;')
+                        for k,v in _supervision.items():
+                            print('(')
+                            print(mk_1cl(ir_to_lisp(k)))
+                            print(ir_to_lisp(v))
+                            print(')')
+                        print(';;')
+                        print(';;;;;;;;;; end of bench.py-generated supervision data')
+                        print(')') 
+                print(f"{fn} file generated")
+            else:
+                print('canceled')
+        else:
+            print(f"{_supext} file not generated")
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
             fn = str(args[0]) + _binext
@@ -1085,9 +1120,9 @@ def do (commline):
                     with redirect_stdout(f):
                         print_info();
             else:
-                print_info()
-        else:
-            print_info()
+                print_info();
+        else: 
+            print_info();
     elif comm == 'x':       # caller knows what to do next
         pass
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
