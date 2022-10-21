@@ -1,0 +1,27 @@
+(
+;;;;;;;;;; bench.py-generated supervision data
+;;;;;;;;;; from tr.supervision October 21, 2022, 12:11:04
+;;
+(
+(cocuk kitabi okudu)
+((read book) child)
+)
+(
+(kitabi cocuk okudu)
+((read (fg book)) child)
+)
+(
+(okudu cocuk kitabi)
+((read (bg book)) (bg child))
+)
+(
+(cocuk okudu kitabi)
+((read (bg book)) child)
+)
+(
+(kitabi okudu cocuk)
+((read (fg book)) (bg child))
+)
+;;
+;;;;;;;;;; end of bench.py-generated supervision data
+)
