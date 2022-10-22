@@ -12,10 +12,10 @@
 % - Whitespacing does not matter except in quotes.
 
 |it         | n  :: xp[lex=no,per=s3]     : it;  % NB. expletive it for subject's type
-|john       | n  :: np[per=3s,lex=yes]    : john;
+|john       | n  :: np[per=3s,lex=yes]    : !john;
 |mary       | n  :: np             : mary;
 
-|and        | c :: @x/(@x\@x) : \p\q\x. and (p x) (q x); % syncategorematic
+|and        | c :: @x/(@x\@x) : \p\q\x. !and (p x) (q x); % syncategorematic
 
 |study      | inf  :: iv             : \x.study x;
 |persuaded  | v  :: (s\np)/vp/+np   : \x.\p.\y.persuade (p x) x y;

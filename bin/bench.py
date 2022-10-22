@@ -194,13 +194,14 @@ def make_up_an_index():              # return the first non-colliding random ind
 #
 
 class SUPLexer(Lexer): # Token types for supervision pairs
-    tokens = {ID, ITEM, CORR, CATEND, DOT, LP, RP, BS, END, ANY}
+    tokens = {ID, BANGID, ITEM, CORR, CATEND, DOT, LP, RP, BS, END, ANY}
 
     ignore = ' \t'            # whitespace
     ignore_comment = r'\%.*'  # ignore everything starting with %
     ignore_newline = r'\n+'   # ignore empty lines
      
     ITEM   = r'\|.*\|'                                     
+    BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
     ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
     CORR   = r'\:'
     CATEND = r'\;'
@@ -216,7 +217,7 @@ class SUPLexer(Lexer): # Token types for supervision pairs
         self.index += 1
 
 class MGLexer(Lexer):  # Token types of monadic grammar specifications
-    tokens = { ID, RNAME, SPECID, ITEM, M, SRULE, ARULE, END, CATEND, LSQ, RSQ, COM, CORR, DOT, SQCAT, DQCAT,
+    tokens = { ID, BANGID, RNAME, SPECID, ITEM, M, SRULE, ARULE, END, CATEND, LSQ, RSQ, COM, CORR, DOT, SQCAT, DQCAT,
                LP, RP, LB, RB, EQ, BS, FS, BDS, FDS, MODHAR, MODAPP,
                MODX, VARVAL, INUM, RNUM, ANY}
 
@@ -229,7 +230,8 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
     ARULE  = r'\-\-\>'                                            # to avoid -- becoming ID 
     SPECID = r'@[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'       # special IDs, app only
     RNAME  = r'\#[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'      # rule names start with #
-    ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols not beginning with +, which is a modality, not part of basic cat name)
+    BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
+    ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'      # (at least one alphabetical symbol for cat symbols not beginning with +, which is a modality, not part of basic cat name)
     RNUM   = r'\d+\.\d+'
     INUM   = r'\d+'
     END    = _overscore                               # RHS defined globally, not visible to user.
@@ -298,6 +300,10 @@ class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
         return p.lterm
 
     @_('ID')
+    def body(self, p):
+        return p[0]
+
+    @_('BANGID')
     def body(self, p):
         return p[0]
 
@@ -574,6 +580,10 @@ class MGParser(Parser):       # the syntax of MG entries
     def body(self, p):
         return p[0]
 
+    @_('BANGID')
+    def body(self, p):
+        return p[0]
+
     @_('LP lcom RP')
     def body(self, p):
         return p.lcom
@@ -667,6 +677,7 @@ def help ():
         print(' + .     | adds Lisp code in file . to the processor')
         print(' > .     | Logs processor output to filename . after adding .log extension')
         print(' <       | Logging turned off')
+        print('         | Use UP and DOWN keys for command recall from use history')
 
 def load_1pass_sup(fname):       
     global _supervision   
