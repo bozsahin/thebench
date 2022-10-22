@@ -2325,7 +2325,7 @@
     (format s ")~%"))
   t)
 
-(defun save_grammar (gname &key (force nil))
+(defun save_grammar (gname &key (force t))
   "this save is baroque to make it lisp reload-able"
   (with-open-file (s gname 
 		     :direction :output :if-exists (if force :supersede :error))  ; we put the default extension
