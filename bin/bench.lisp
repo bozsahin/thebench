@@ -1109,6 +1109,18 @@
 			 )))
   t)
 
+(defun load_dotbin (binname)
+  "loads the grammar generated from intermediate representation of monadic grammar, or legacy ccg grammars, which have the same format"
+  (let* ((gname (concatenate 'string binname ".bin")))
+    (setf *error* nil)
+    (safely_load gname)  ;; sets *current-grammar* variable             
+    (cond ((not *error*) (setf *lex-rules-table* nil)
+			 (setf *loaded-grammar* gname)
+			 (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
+			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
+			 )))
+  t)
+
 (defun load_bin (binname)
   "loads the grammar generated from intermediate representation of monadic grammar, or legacy ccg grammars, which have the same format"
   (let* ((gname binname))
@@ -2261,7 +2273,7 @@
 (defun update-model (pname iterations alpha0 c &key (verbose nil)(load nil) (debug nil))
   "default workflow for updating model parameters of a project. Compare and save are separate."
   (beam-value) ;; in case you want to abort a misguided looong training asap
-  (and load (load_bin pname)) ; loads the .ind file into *current-grammar*
+  (and load (load_dotbin pname)) ; loads the .bin file into *current-grammar*
   (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
   (set-training-parameters iterations (length *supervision-pairs-list*)(length *current-grammar*) alpha0 c)
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
@@ -2276,7 +2288,7 @@
   Then it runs Cabay & Jackson algorithm to find the gradient's limit for each parameter by
   minimum polynomial extrapolation (MPE). It can be erroneous if stages fluctuate."
   (beam-value) ;; in case you want to abort 
-  (and load (load_bin pname)) ; loads the .ind file into *current-grammar*
+  (and load (load_dotbin pname)) ; loads the .bin file into *current-grammar*
   (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
   (set-training-parameters 4 (length *supervision-pairs-list*)(length *current-grammar*) alpha0 c 'x4) ; fixed iteration 
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
@@ -2458,20 +2470,6 @@
 			0.0)))))
       (format t "~%Currently loaded grammar is z-scored PER FORM."))))
 
-(defun merge-grammar (gname)
-  "merges grammar gname into currently loaded grammar without overriding the entries of current grammar.
-  It's best if you merge two grammars if their PARAMs are from same value space (eg. both z-scored or none, etc.)"
-  (let* ((lg (copy-seq *current-grammar*)) ; will update currently loaded grammar
-	 (c 0))
-    (load_bin gname)     ; resets *current-grammar* to grammar in gname
-    (dolist (l *current-grammar*) 
-      (if (not (reduce #'(lambda (x y)(or x y))  ; reduce will return true only if l is a member of lg
-		       (mapcar #'(lambda (z)(member (assoc 'KEY l) z :test #'equal))
-			       lg)))
-	(progn (push l lg)(incf c))))
-    (setf *current-grammar* lg)
-    (format t "~%Current grammar is merged with ~A adding ~A entries." gname c)))
-
 (defun mklist (obj)
   (if (listp obj) obj (list obj)))
 
@@ -2537,7 +2535,7 @@
 
 (defun kl-prepare (g)
   "z score grammar g, then hash item key to (param z-score prob)"
-  (load_bin g)
+  (load_dotbin g)
   (let ((ght (make-training-hashtable (length *current-grammar*)))
 	(errlog nil))
     (dolist (el *current-grammar*)

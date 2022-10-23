@@ -37,8 +37,10 @@ _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.3'
 _vdate = 'October 15, 2022'
+# 3 built-in extensions recognized by MG
 _binext = '.bin'              # binary (lisp code) extension
 _supext = '.sup'              # native format extension for supervision files
+_logext = '.log'
 _punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually tokenized and wrapped in double quote
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
@@ -266,7 +268,7 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
         self.index += 1
 
 class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
-    #debugfile = 'lalr-sup.log'
+    #debugfile = 'lalr-sup'+ _logext
     tokens = SUPLexer.tokens
 
     @_('ITEM CORR lcom CATEND t')
@@ -329,7 +331,7 @@ class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
         pass
 
 class MGParser(Parser):       # the syntax of MG entries 
-    #debugfile = 'lalr.log'
+    #debugfile = 'lalr'+ _logext
     tokens = MGLexer.tokens
     global _keys, _indexed, _grammar, _info
 
@@ -675,7 +677,7 @@ def help ():
         print(' @ .     | saves the abstract representation of current grammar (a python dict) in file . ')
         print(' & .     | saves the current grammar in file . ')
         print(' + .     | adds Lisp code in file . to the processor')
-        print(' > .     | Logs processor output to filename . after adding .log extension')
+        print(f" > .     | Logs processor output to filename . after adding {_logext} extension")
         print(' <       | Logging turned off')
         print('         | Use UP and DOWN keys for command recall from use history')
 
@@ -687,7 +689,7 @@ def load_1pass_sup(fname):
     result = False
     init_sup()
     parserlog = f'file: {fname}\n'
-    logfile = fname+'.log'
+    logfile = fname+ _logext
     with open(logfile, 'w') as f:
         with redirect_stdout(f):
             try:
@@ -728,7 +730,7 @@ def load_1pass(fname):        # checks but not updates the grammar with indices
     nofile = False
     result = False
     parserlog = f'file: {fname}\n'
-    logfile = fname+'.log'
+    logfile = fname+ _logext
     with open(logfile, 'w') as f:
         with redirect_stdout(f):
             try:
@@ -1139,7 +1141,7 @@ def do (commline):
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
         pass
     elif comm == '>':
-        fn = args[0] + '.log'
+        fn = args[0] + _logext
         ch = False
         if os.path.exists(fn):
             ch = input(f"file {fn} exists, overwrite (y/*n)? ")
@@ -1147,8 +1149,8 @@ def do (commline):
                 os.remove(fn)
         if ch == 'y' or not ch:
             try:
-                print('Logging processor output to: ', args[0]+'.log')
-                _cl.dribble(args[0]+'.log')
+                print('Logging processor output to: ', args[0]+ _logext)
+                _cl.dribble(args[0]+ _logext)
             except Exception:
                 print('something wrong')
         else:
