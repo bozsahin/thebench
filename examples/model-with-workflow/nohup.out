@@ -1,32 +1,3 @@
-While evaluating the form starting at line 113, column 0
-  of #P"/Users/bozsahin/quicklisp/setup.lisp":
-
-debugger invoked on a SB-EXT:FILE-EXISTS in thread
-#<THREAD "main thread" RUNNING {1001060003}>:
-  The file #P"/Users/bozsahin/quicklisp/cache/asdf-fasls/097m2h/signature.txt"
-  already exists:
-    File exists
-
-; file: /Users/bozsahin/quicklisp/quicklisp/dist.lisp
-; in: DEFUN CONFIG-FILE-INITARGS
-;     (INTERN (FUNCALL QL-DIST::*INITARG-CASE-CONVERTER* STRING) 'KEYWORD)
-; 
-; note: deleting unreachable code
-; 
-; compilation unit finished
-;   printed 1 note
-WARNING:
-   redefining PRINT-OBJECT (#<STRUCTURE-CLASS COMMON-LISP:HASH-TABLE>
-                            #<SB-PCL:SYSTEM-CLASS COMMON-LISP:T>) in DEFMETHOD
-
-debugger invoked on a FILE-DOES-NOT-EXIST in thread
-#<THREAD "main thread" RUNNING {100DBF0143}>:
-  The file
-  #P"/Users/bozsahin/myrepos/thebench/examples/model-with-workflow/g1.g.sup"
-  does not exist:
-    No such file or directory
-
-debugger invoked on a SIMPLE-ERROR @7FFF69D500EE in thread #<THREAD "main thread" RUNNING {1001060003}>: Maximum error nesting depth exceeded
 WARNING:
    redefining PRINT-OBJECT (#<STRUCTURE-CLASS COMMON-LISP:HASH-TABLE>
                             #<SB-PCL:SYSTEM-CLASS COMMON-LISP:T>) in DEFMETHOD
