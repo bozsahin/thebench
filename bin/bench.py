@@ -960,7 +960,8 @@ def do (commline):
             print('ill-formed, no internal structure')
     elif comm == 's':
         if load_1pass_sup(args[0]):
-            fn = str(args[0]) + _supext
+            fn = input(f"Output file (we will add {_supext}) ? ")
+            fn = str(fn) + _supext
             ch = False
             if os.path.exists(fn):
                 ch = input(f"file {fn} exists, overwrite (y/*n)? ")

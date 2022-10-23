@@ -1,25 +1,10 @@
 ======= Log file ============
-I am called as: /Users/bozsahin/myrepos/thebench/bin/bench-train-1 7000 4000 g1.g t xp 1.2 1.0 train-basic-xp basic-ccg
-            at: Sun Oct 23 10:20:02 +03 2022
+I am called as: /Users/bozsahin/myrepos/thebench/bin/bench-train-1 7000 4000 g1 t xp 1.2 1.0 train-basic-xp basic-ccg
+            at: Sun Oct 23 12:03:14 +03 2022
             in: Cems-MacBook-Pro-2.local
 Log goes to   : train-basic-xp.log
 I will call sbcl as: /usr/local/bin/sbcl --dynamic-space-size 7000
-It will call train-nohup-sbcl-xp in /Users/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl-xp "g1.g" 4000 t "train-basic-xp..1.2a.1.0c"  1.2 1.0)
-=======          ============
-This is SBCL 2.2.9, an implementation of ANSI Common Lisp.
-More information about SBCL is available at <http://www.sbcl.org/>.
-
-SBCL is free software, provided as is, with absolutely no warranty.
-It is mostly in the public domain; some portions are provided under
-BSD-style licenses.  See the CREDITS and COPYING files in the
-distribution for more information.
-* ======= Log file ============
-I am called as: /Users/bozsahin/myrepos/thebench/bin/bench-train-1 7000 4000 g1.g t xp 1.2 1.0 train-basic-xp basic-ccg
-            at: Sun Oct 23 10:28:13 +03 2022
-            in: Cems-MacBook-Pro-2.local
-Log goes to   : train-basic-xp.log
-I will call sbcl as: /usr/local/bin/sbcl --dynamic-space-size 7000
-It will call train-nohup-sbcl-xp in /Users/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl-xp "g1.g" 4000 t "train-basic-xp..1.2a.1.0c"  1.2 1.0)
+It will call train-nohup-sbcl-xp in /Users/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl-xp "g1" 4000 t "train-basic-xp..1.2a.1.0c"  1.2 1.0)
 =======          ============
 This is SBCL 2.2.9, an implementation of ANSI Common Lisp.
 More information about SBCL is available at <http://www.sbcl.org/>.
@@ -32,16 +17,16 @@ processor: bench.lisp loaded, version 7.2.3.1
 
 *Beamp* = NIL  *Beam-exp* = 0.9
 
-Supervision file loaded: g1.g.sup
+Supervision file loaded: g1.sup
 
 Done. use (show-training-xp/save-training-xp) to see/save the results
 Evaluation took:
-  0.238 seconds of real time
-  0.238262 seconds of total run time (0.236539 user, 0.001723 system)
+  0.249 seconds of real time
+  0.248745 seconds of total run time (0.246846 user, 0.001899 system)
   100.00% CPU
   6 forms interpreted
-  572,436,468 processor cycles
-  55,942,144 bytes consed
+  598,508,544 processor cycles
+  55,942,080 bytes consed
   
 The rule set used in the experiment:
 
@@ -76,103 +61,22 @@ Model parameters before and after training and extrapolation
 ================================================
 key   lex             initial  final    diff 
 ------------------------------------------------
-701033 KNOWS             1.0 7.149053  (6.149053)
-295167 KNOWS             1.0 3.548471  (2.548471)
-433960 KNOWS             1.0 -2.07453  (-3.07453)
-705064 KNOWS             1.0   -2.807  (  -3.807)
-259093 LOVES             1.0 8.150295  (7.150295)
-121784 LOVES             1.0 -6.15029  (-7.15029)
-796094 JOHN              1.0 5.999012  (4.999012)
-387376 JOHN              1.0 3.149672  (2.149672)
-442198 JOHN              1.0 4.112616  (3.112616)
-306951 JOHN              1.0 -1.54693  (-2.54693)
-421536 MARY              1.0 5.402801  (4.402801)
-182447 MARY              1.0 3.506668  (2.506668)
-800798 MARY              1.0 4.630146  (3.630146)
-251109 MARY              1.0 -2.00066  (-3.00066)
-573565 JOHN              1.0 -3.79516  (-4.79516)
-48518 JOHN              1.0 -1.54693  (-2.54693)
-682270 MARY              1.0 -3.49715  (-4.49715)
-205614 MARY              1.0 -2.00066  (-3.00066)
-======================================================= Log file ============
-I am called as: /Users/bozsahin/myrepos/thebench/bin/bench-train-1 7000 4000 g1.g t xp 1.2 1.0 train-basic-xp basic-ccg
-            at: Sun Oct 23 10:34:48 +03 2022
-            in: Cems-MacBook-Pro-2.local
-Log goes to   : train-basic-xp.log
-I will call sbcl as: /usr/local/bin/sbcl --dynamic-space-size 7000
-It will call train-nohup-sbcl-xp in /Users/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl-xp "g1.g" 4000 t "train-basic-xp..1.2a.1.0c"  1.2 1.0)
-=======          ============
-This is SBCL 2.2.9, an implementation of ANSI Common Lisp.
-More information about SBCL is available at <http://www.sbcl.org/>.
-
-SBCL is free software, provided as is, with absolutely no warranty.
-It is mostly in the public domain; some portions are provided under
-BSD-style licenses.  See the CREDITS and COPYING files in the
-distribution for more information.
-processor: bench.lisp loaded, version 7.2.3.1
-
-*Beamp* = NIL  *Beam-exp* = 0.9
-
-Supervision file loaded: g1.g.sup
-
-Done. use (show-training-xp/save-training-xp) to see/save the results
-Evaluation took:
-  0.231 seconds of real time
-  0.231269 seconds of total run time (0.229385 user, 0.001884 system)
-  100.00% CPU
-  6 forms interpreted
-  556,722,012 processor cycles
-  55,942,144 bytes consed
-  
-The rule set used in the experiment:
-
-
-Monad of Natural Command
-
-To change a switch, use (setf <switchname> <value>)
-	      where <value> is T (on) or NIL (off)
-	  *f-apply*     T
-	  *b-apply*     T
-	  *f-comp*      T
-	  *b-comp*      T
-	  *fx-comp*     T
-	  *bx-comp*     T
-          *f2-comp*     T
-	  *b2-comp*     T
-	  *fx2-comp*    T
-	  *bx2-comp*    T
-	  *f3-comp*     T
-	  *b3-comp*     T
-	  *fx3-comp*    T
-	  *bx3-comp*    T
-
-*BEAMP* : NIL
-*LFFLAG* : T
-*NF-PARSE* : T
-*OOVP* : NIL
-*Beamp* = NIL  *Beam-exp* = 0.9
-
-Training parameters: N = 4 alpha0 = 1.2 c = 1.0 n = 6  
-Model parameters before and after training and extrapolation
-================================================
-key   lex             initial  final    diff 
-------------------------------------------------
-701033 KNOWS             1.0 7.149053  (6.149053)
-295167 KNOWS             1.0 3.548471  (2.548471)
-433960 KNOWS             1.0 -2.07453  (-3.07453)
-705064 KNOWS             1.0   -2.807  (  -3.807)
-259093 LOVES             1.0 8.150295  (7.150295)
-121784 LOVES             1.0 -6.15029  (-7.15029)
-796094 JOHN              1.0 5.999012  (4.999012)
-387376 JOHN              1.0 3.149672  (2.149672)
-442198 JOHN              1.0 4.112616  (3.112616)
-306951 JOHN              1.0 -1.54693  (-2.54693)
-421536 MARY              1.0 5.402801  (4.402801)
-182447 MARY              1.0 3.506668  (2.506668)
-800798 MARY              1.0 4.630146  (3.630146)
-251109 MARY              1.0 -2.00066  (-3.00066)
-573565 JOHN              1.0 -3.79516  (-4.79516)
-48518 JOHN              1.0 -1.54693  (-2.54693)
-682270 MARY              1.0 -3.49715  (-4.49715)
-205614 MARY              1.0 -2.00066  (-3.00066)
+627325 KNOWS             1.0 7.149053  (6.149053)
+808916 KNOWS             1.0 3.548471  (2.548471)
+528839 KNOWS             1.0 -2.07453  (-3.07453)
+424962 KNOWS             1.0   -2.807  (  -3.807)
+532407 LOVES             1.0 8.150295  (7.150295)
+210512 LOVES             1.0 -6.15029  (-7.15029)
+326969 JOHN              1.0 5.999012  (4.999012)
+39935 JOHN              1.0 3.149672  (2.149672)
+654357 JOHN              1.0 4.112616  (3.112616)
+13695 JOHN              1.0 -1.54693  (-2.54693)
+476312 MARY              1.0 5.402801  (4.402801)
+952892 MARY              1.0 3.506668  (2.506668)
+179781 MARY              1.0 4.630146  (3.630146)
+562246 MARY              1.0 -2.00066  (-3.00066)
+229799 JOHN              1.0 -3.79516  (-4.79516)
+950836 JOHN              1.0 -1.54693  (-2.54693)
+463807 MARY              1.0 -3.49715  (-4.49715)
+449915 MARY              1.0 -2.00066  (-3.00066)
 ================================================
