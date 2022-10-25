@@ -659,10 +659,9 @@ def help ():
         print(" NOTE >> | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | generates and adds to grammar case functions from elements with parts of speech ...')
-        print(' d ...   | displays analyses with solutions numbered ..., all of them if none provided')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(f" g .     | checks and loads source grammar . (its {_binext} file generated and loaded)")
-        print(f" m .     | loads model of grammar . (its {_binext} file)")
+        print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
+        print(f" m .     | model . of a grammar is loaded (its {_binext} file)")
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p ...   | shows the elements with parts of speech ...')
         print(' r ...   | ranks the expression ... using the currently loaded model')
@@ -670,7 +669,8 @@ def help ():
         print(' v .     | shows (without adding) the intermediate representation of element .')
         print(' x       | exits from the tool')
         print(' ?       | shows information about the current g-loaded grammar')
-        print(' = ...   | displays analyses onto basic cats in ... ; cf. the d command')
+        print(' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
+        print(' , ...   | displays analyses with solutions numbered ..., all of them if none provided')
         print(' #       | displays ranked analyses; cf. the r command')
         print(' ! .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
         print(" ^ . ... | calls the Lisp function . with args ... which takes them as strings")
@@ -1052,7 +1052,7 @@ def do (commline):
     elif comm == 'a':
         try:
             _lisp.function('cky_analyze')(tuple(args))
-            print(f"Done. Try d command for results")
+            print(f"Done. Try , command for results")
         except Exception:
             print('something went wrong')
     elif comm == 'r':
@@ -1061,7 +1061,7 @@ def do (commline):
             print(f"Done. Try # command for results")
         except Exception:
             print('something went wrong')
-    elif comm == 'd':
+    elif comm == ',':
         try:
             if not args:
                 _lisp.function('cky_show_analysis')(tuple(args))
