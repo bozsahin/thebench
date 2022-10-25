@@ -658,13 +658,13 @@ def split_command (cline): # splits a command line into command and list of args
 def help ():
         print("         | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
-        print(' b .     | saves the abstract representation of current grammar (a python dict) in file . ')
-        print(' c ...   | generates and adds to grammar case functions from elements with parts of speech ...')
+        print(' c ...   | case functions generated and added to grammar from elements with parts of speech ...')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(' f .     | saves the current grammar in file . ')
+        print(' f .     | files the current grammar in . ')
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
-        print(f" m .     | model . of a grammar is loaded (its {_binext} file)")
+        print(' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
         print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
+        print(f" m .     | model . of a grammar is loaded (its {_binext} file)")
         print(' o .     | runs the OS/shell command . at your own risk')
         print(' p .     | processor adds Lisp code in file .')
         print(' r ...   | ranks the expression ... using the currently loaded model')
@@ -921,7 +921,7 @@ def do (commline):
     if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'b', 'f', 'p', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'i', 'f', 'p', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
@@ -939,7 +939,7 @@ def do (commline):
                 print("something went wrong")
         else:
             print('save canceled')
-    elif comm == 'b':
+    elif comm == 'i':
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
