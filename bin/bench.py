@@ -656,27 +656,27 @@ def split_command (cline): # splits a command line into command and list of args
         return (comarg[0], comarg[1:])
     
 def help ():
-        print(" NOTE >> | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
+        print("         | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
+        print(' b .     | saves the abstract representation of current grammar (a python dict) in file . ')
         print(' c ...   | generates and adds to grammar case functions from elements with parts of speech ...')
         print(" e .     | evaluates the python expression . if you know what you're doing")
+        print(' f .     | saves the current grammar in file . ')
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
         print(f" m .     | model . of a grammar is loaded (its {_binext} file)")
+        print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
         print(' o .     | runs the OS/shell command . at your own risk')
-        print(' p ...   | shows the elements with parts of speech ...')
+        print(' p .     | processor adds Lisp code in file .')
         print(' r ...   | ranks the expression ... using the currently loaded model')
         print(' s .     | supervision data in file . converted to native format .sup for the trainer')
-        print(' v .     | shows (without adding) the intermediate representation of element .')
+        print(' y .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
         print(' x       | exits from the tool')
+        print(' @ ...   | shows the elements with parts of speech ...')
+        print(' - .     | shows (without adding) the intermediate representation of element .')
         print(' ?       | shows information about the current g-loaded grammar')
         print(' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
         print(' , ...   | displays analyses with solutions numbered ..., all of them if none provided')
         print(' #       | displays ranked analyses; cf. the r command')
-        print(' ! .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
-        print(" ^ . ... | calls the Lisp function . with args ... which takes them as strings")
-        print(' @ .     | saves the abstract representation of current grammar (a python dict) in file . ')
-        print(' & .     | saves the current grammar in file . ')
-        print(' + .     | adds Lisp code in file . to the processor')
         print(f" > .     | Logs processor output to filename . after adding {_logext} extension")
         print(' <       | Logging turned off')
         print('         | Use UP and DOWN keys for command recall from use history')
@@ -921,12 +921,12 @@ def do (commline):
     if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'm', 'o', 'p', 'r', 's', 'v', '!', '^', '@', '&', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'b', 'f', 'p', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
         help()
-    elif comm == '&':
+    elif comm == 'f':
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
@@ -939,7 +939,7 @@ def do (commline):
                 print("something went wrong")
         else:
             print('save canceled')
-    elif comm == '@':
+    elif comm == 'b':
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
@@ -953,7 +953,7 @@ def do (commline):
             print(f"grammar is pretty-printed to {fn} in internal representation")
         else:
             print('canceled')
-    elif comm == 'v':
+    elif comm == '-':
         _online = True
         args, _, _ = _ws.join([str(item) for item in args]).partition('%')   # just eliminate the comment
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
@@ -1084,12 +1084,12 @@ def do (commline):
             print()
         except Exception:
             print('something went wrong')
-    elif comm == 'p':
+    elif comm == '@':
         try:
             _lisp.function('show_pos')(tuple(args))
         except Exception:
             print('something went wrong')
-    elif comm == '+':
+    elif comm == 'p':
         fn = str(args[0])
         if os.path.exists(fn):
             try:
@@ -1099,7 +1099,7 @@ def do (commline):
                 print('something went wrong')
         else:
             print(f"can't find {fn} in the current directory")
-    elif comm == '^':              
+    elif comm == 'l':              
         try:
             f = _lisp.function(args[0])
             a = args[1:]
@@ -1112,7 +1112,7 @@ def do (commline):
         except Exception:
             print('something went wrong')
         print()
-    elif comm == '!':
+    elif comm == 'y':
         fn = args[0] + '.ccg.lisp'
         if os.path.exists(fn):
             try:
