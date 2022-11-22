@@ -1166,17 +1166,17 @@ def do (commline):
         print('command unknown')
 
 def welcome ():
-    print(72*_overscore)
+    print(75*_overscore)
     print(1*_prompt+'Welcome to The Bench')
     print(2*_prompt+" A workbench for studying Monadic Structures in Natural Language")
     print(3*_prompt+"Bench version:      ", _version, "Dated:", _vdate)
     print(3*_prompt+"Python version:     ", platform.python_version())
     print(3*_prompt+"Common Lisp version:", _lisptype)
-    print(3*_prompt+"Pre/post processing by Python (grammar checks, interfaces)")
+    print(3*_prompt+"Pre/post processing by Python (grammar development, interfaces)")
     print(3*_prompt+"Processing by Common Lisp (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
     print(1*_prompt+"Type x to exit, h to get some help")
-    print(72*_underscore)
+    print(75*_underscore)
 
 mglexer  = MGLexer()
 mgparser = MGParser()
