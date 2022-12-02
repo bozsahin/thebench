@@ -930,7 +930,7 @@ def do (commline):
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+            ch = input(f"file {fn} exists, overwrite (y/N)? ")
         if ch == 'y' or not ch:
             try:
                 _lisp.function('save_grammar0')(fn)
@@ -943,7 +943,7 @@ def do (commline):
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+            ch = input(f"file {fn} exists, overwrite (y/N)? ")
         if ch == 'y' or not ch:
             with open(str(fn),'w') as f:
                 with redirect_stdout(f):
@@ -964,7 +964,7 @@ def do (commline):
             fn = str(fn) + _supext
             ch = False
             if os.path.exists(fn):
-                ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+                ch = input(f"file {fn} exists, overwrite (y/N)? ")
             if ch == 'y' or not ch:
                 with open(str(fn),'w') as f:
                     with redirect_stdout(f):
@@ -990,7 +990,7 @@ def do (commline):
             fn = str(args[0]) + _binext
             ch = False
             if os.path.exists(fn):
-                ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+                ch = input(f"file {fn} exists, overwrite (y/N)? ")
             if ch == 'y' or not ch:
                 with open(str(fn),'w') as f:
                     with redirect_stdout(f):
@@ -1123,12 +1123,12 @@ def do (commline):
         else:
             print(f"no {fn} in current directory")
     elif comm == '?':
-        ch = input("write to file? (y/*n)? ")
+        ch = input("write to file? (y/N)? ")
         if ch == 'y':
             fn = input("file name: ")
             ch = False
             if os.path.exists(fn):
-                ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+                ch = input(f"file {fn} exists, overwrite (y/N)? ")
             if ch == 'y' or not ch:
                 with open(fn, 'w') as f:
                     with redirect_stdout(f):
@@ -1145,7 +1145,7 @@ def do (commline):
         fn = args[0] + _logext
         ch = False
         if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/*n)? ")
+            ch = input(f"file {fn} exists, overwrite (y/N)? ")
             if ch == 'y':
                 os.remove(fn)
         if ch == 'y' or not ch:
