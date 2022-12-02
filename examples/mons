@@ -1,0 +1,20 @@
+(defparameter *current-grammar*
+'(((KEY 389266) (PARAM 1.0) (PHON SINCERITY) (MORPH N)
+   (SYN ((BCAT NP) (FEATS ((AGR |3S|))))) (SEM SINCERITY))
+  ((KEY 68107) (PARAM 1.0) (PHON ADMIRES) (MORPH V)
+   (SYN
+    ((((BCAT S) (FEATS NIL)) (DIR BS) (MODAL ALL)
+      ((BCAT NP) (FEATS ((AGR |3S|)))))
+     (DIR FS) (MODAL ALL) ((BCAT NP) (FEATS NIL))))
+   (SEM (LAM X (LAM Y ((ADMIRE X) Y)))))
+  ((KEY 315123) (PARAM 1.0) (PHON JOHN) (MORPH N) (SYN ((BCAT NP) (FEATS NIL)))
+   (SEM JOHN))
+  ((KEY 389267) (INSYN ((BCAT NP) (FEATS NIL))) (INSEM LF)
+   (OUTSYN
+    ((((BCAT S) (FEATS NIL)) (DIR BS) (MODAL ALL)
+      ((BCAT NP) (FEATS ((AGR |3S|)))))
+     (DIR BS) (MODAL ALL)
+     ((((BCAT S) (FEATS NIL)) (DIR BS) (MODAL ALL)
+       ((BCAT NP) (FEATS ((AGR |3S|)))))
+      (DIR FS) (MODAL ALL) ((BCAT NP) (FEATS NIL)))))
+   (OUTSEM (LAM LF (LAM P (P LF)))) (INDEX #:|_G2_132|) (PARAM 1.0))))
