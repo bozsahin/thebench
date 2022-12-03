@@ -656,6 +656,7 @@ def split_command (cline): # splits a command line into command and list of args
         return (comarg[0], comarg[1:])
     
 def help ():
+        print("         | letter commands are action/processor commands; symbol commands are for display or set up")
         print("         | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | case functions generated and added to grammar from elements with parts of speech ...')
