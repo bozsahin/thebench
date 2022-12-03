@@ -746,11 +746,11 @@ def load_1pass(fname):        # checks but not updates the grammar with indices
                                 parserlog += f'bad entry in line {lineno}\n'
                 if not errors:
                     parserlog += f'The grammar file compiled OK.\n'
-                    parserlog += f'Grammarians:\n'
+                    parserlog += f'A note for grammarians:\n'
                     parserlog += f'   Please do  NOT use <index, parameter> at\n'
                     parserlog += f'     the end of elements. It is used for model training.\n'
                     parserlog += f'   Use plain grammar entries instead.\n'
-                    parserlog += f'Modelers:\n'
+                    parserlog += f'A note for modelers:\n'
                     parserlog += f'   Please DO NOT change that information manually.\n'
                     parserlog += f'   When you add new entries to an already-indexed grammar,\n'
                     parserlog += f'     put ALL OF THEM at the END of the grammar file.\n'
