@@ -661,7 +661,7 @@ def help ():
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | case functions generated and added to grammar from elements with parts of speech ...')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(' f .     | files the current grammar in . ')
+        print(' f .     | files the (potentially extended) current grammar in . ')
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
         print(' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
         print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
@@ -1048,6 +1048,8 @@ def do (commline):
         try:
             _lisp.function('synthetic_case')(tuple(args))
             print("Done; check out the = command related to case")
+            _lisp.function('lisp2mg')   # saves these files in source format
+            print("Synthetic case rules saved in file. You can merge them with a grammar file.")
         except Exception:
             print('something went wrong')
     elif comm == 'a':

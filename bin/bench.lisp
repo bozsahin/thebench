@@ -552,7 +552,7 @@
   )
 
 (defun which_processor ()
-  (values "Monad of Natural Command" "7.2.3.1"))
+  (values "Monad of Natural Command" "8.0"))
 
 (defun flash-news (&optional (report t))
   (cond (report 
@@ -2830,6 +2830,10 @@
     (format t "~%Number of second-order case functions generated : ~A" (length *RAISED-LEX-RULES*))
     (format t "~%Number of paradigmatic functions out of them    : ~A~%" (hash-table-count *ht-tr*))
     res))
+
+(defun lisp2mg ()
+  (format t "~%I will convert synthetic case rules from Lisp format to native grammar format~%")
+  )
 
 (defun synthetic_case (vmorphs)
   (compile_case vmorphs)
