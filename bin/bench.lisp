@@ -2865,10 +2865,11 @@
     (with-open-file (s afile :direction :output :if-exists :supersede)
       (dolist (r *RAISED-LEX-RULES*)
 	(mk_arulename (nv-get-v 'INDEX r) s)                 ; these rules have universal semantics
-	(format s " (~(~A~): lt) --> (~(~A~) : \\lt\\p.p lt);~%"
-		(mk_cat (nv-get-v 'INSYN r) s)
-		(mk_cat (nv-get-v 'OUTSYN r) s)
-		)))
+	(format s " ~A" "(")
+	(mk_cat (nv-get-v 'INSYN r) s)
+	(format s "~A" " : a) --> (")
+	(mk_cat (nv-get-v 'OUTSYN r) s)
+	(format s "~A~%" " : \\a\\p.p a);")))
     (format t "~%File: ~A created; contains synthetic case rules in the source format,~%   for merging with grammar a source, inspection or update.~%" afile))
   t) ; all interface functions return t
 
