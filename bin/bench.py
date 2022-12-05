@@ -1019,7 +1019,7 @@ def do (commline):
                 print(f"{fn} file generated")
                 try:
                     _lisp.function('load_bin')(fn)
-                    print(f"grammar in {fn} loaded; ready for analysis")
+                    print(f"grammar loaded; ready for analysis")
                 except Exception:
                     print(f"Oops. Unable to load {fn}")
             else:

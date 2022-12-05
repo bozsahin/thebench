@@ -1,10 +1,10 @@
 file: hw.g
 The grammar file compiled OK.
-Grammarians:
+A note for grammarians:
    Please do  NOT use <index, parameter> at
      the end of elements. It is used for model training.
    Use plain grammar entries instead.
-Modelers:
+A note for modelers:
    Please DO NOT change that information manually.
    When you add new entries to an already-indexed grammar,
      put ALL OF THEM at the END of the grammar file.
