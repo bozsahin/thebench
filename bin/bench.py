@@ -659,9 +659,8 @@ def help ():
         print("         | letter commands are action/processor commands; symbol commands are for display or set up")
         print("         | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
-        print(' c ...   | case functions generated and added to grammar from elements with parts of speech ...')
+        print(' c ...   | case functions generated and added to loaded grammar from elements with parts of speech ...')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(' f .     | files the (potentially extended) current grammar in . ')
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
         print(' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
         print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
@@ -922,24 +921,24 @@ def do (commline):
     if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'i', 'f', 'p', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'i', 'p', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
         help()
-    elif comm == 'f':
-        fn = str(args[0])
-        ch = False
-        if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/N)? ")
-        if ch == 'y' or not ch:
-            try:
-                _lisp.function('save_grammar0')(fn)
-                print(f"current grammar saved in {fn}")
-            except Exception:
-                print("something went wrong")
-        else:
-            print('save canceled')
+    #elif comm == 'f':
+    #    fn = str(args[0])
+    #    ch = False
+    #    if os.path.exists(fn):
+    #        ch = input(f"file {fn} exists, overwrite (y/N)? ")
+    #    if ch == 'y' or not ch:
+    #        try:
+    #            _lisp.function('save_grammar0')(fn)
+    #            print(f"current grammar saved in {fn}")
+    #        except Exception:
+    #            print("something went wrong")
+    #    else:
+    #        print('save canceled')
     elif comm == 'i':
         fn = str(args[0])
         ch = False
@@ -1049,7 +1048,6 @@ def do (commline):
             _lisp.function('synthetic_case')(tuple(args))
             print("Done; check out the = command related to case")
             _lisp.function('lisp2mg')   # saves these files in source format
-            print("Synthetic case rules saved in file. You can merge them with a grammar file.")
         except Exception:
             print('something went wrong')
     elif comm == 'a':
