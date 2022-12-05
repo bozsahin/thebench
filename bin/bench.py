@@ -666,7 +666,6 @@ def help ():
         print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
         print(f" m .     | model . of a grammar is loaded (its {_binext} file)")
         print(' o .     | OS/shell command . is run at your own risk (. can be complex expression)')
-        print(' p .     | processor adds Lisp code in file .')
         print(' r ...   | ranks the expression ... using the currently loaded model')
         print(' s .     | supervision data in file . converted to native format .sup for the trainer')
         print(' y .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
@@ -677,6 +676,7 @@ def help ():
         print(' ?       | shows information about the current g-loaded grammar')
         print(' @ ...   | shows the elements with parts of speech ...')
         print(' - .     | shows (without adding) the intermediate representation of element .')
+        print(' + .     | processor adds Lisp code in file .')
         print(f" > .     | Logs processor output to filename . after adding {_logext} extension")
         print(' <       | Logging turned off')
         print('         | Use UP and DOWN keys for command recall from use history')
@@ -921,7 +921,7 @@ def do (commline):
     if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'i', 'p', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'i', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
@@ -1090,7 +1090,7 @@ def do (commline):
             _lisp.function('show_pos')(tuple(args))
         except Exception:
             print('something went wrong')
-    elif comm == 'p':
+    elif comm == '+':
         fn = str(args[0])
         if os.path.exists(fn):
             try:
