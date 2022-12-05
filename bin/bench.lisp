@@ -2663,8 +2663,11 @@
     ))
 
 (defun add-tr-to-grammar ()
-  "add rules to the currently loaded grammar"
+  "add rules to the currently loaded grammar and refreshes the hash table for rules"
   (setf *current-grammar* (append *current-grammar* (reverse *RAISED-LEX-RULES*)))
+  (setf *lex-rules-table* nil)
+  (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
+  (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
   t)
 
 (defun mk-bcat (bcatht)
@@ -2826,12 +2829,12 @@
 
 (defun mk_basic (syn)
   (mk_string (nv-get-v 'BCAT syn)
-	     (if (nv-get-v 'FEATS)
+	     (if (nv-get-v 'FEATS syn)
 	       (mk_string "["
-			  (let ((n (length (nv-get-v 'FEATS)))
+			  (let ((n (length (nv-get-v 'FEATS syn)))
 				(k 1))
 			    (mk_string 
-			      (dolist (feat (nv-get-v 'FEATS))
+			      (dolist (feat (nv-get-v 'FEATS syn))
 				(if (= n k)
 				  (mk_string (first feat) "=" (second feat))
 				  (mk_string (first feat) "=" (second feat) ",")))))
