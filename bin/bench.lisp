@@ -2818,7 +2818,10 @@
       (progn (format t "~%Log of warnings and errors                      : ~A (~A entries)" 
 		     *tr-error-file* (length *tr-error-log*))
 	     (setf res nil))
-      (format t "~%There were NO errors/warnings in deriving second order functions"))
+      (progn
+	(format t "~%There were NO errors/warnings in deriving second order functions")
+	(with-open-file (err *tr-error-file* :direction :output :if-exists :supersede)  ; delete earlier errors to avoid confusion
+	  (format err "No errors~%"))))
     (format t "~%Number of lexical entries                       : ~A" (length *current-grammar*))
     (format t "~%Number of lexical functions considered          : ~A" (length *VERBS-IN-GRAMMAR*))
     (format t "~%POS tags considered as base of synthetic case   : ~A" vmorphs)

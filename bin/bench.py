@@ -1125,6 +1125,7 @@ def do (commline):
         else:
             print(f"no {fn} in current directory")
     elif comm == '?':
+        print_info()
         ch = input("write to file? (y/N)? ")
         if ch == 'y':
             fn = input("file name: ")
@@ -1134,11 +1135,7 @@ def do (commline):
             if ch == 'y' or not ch:
                 with open(fn, 'w') as f:
                     with redirect_stdout(f):
-                        print_info();
-            else:
-                print_info();
-        else: 
-            print_info();
+                        print_info()
     elif comm == 'x':       # caller knows what to do next
         pass
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
