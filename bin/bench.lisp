@@ -1131,7 +1131,7 @@
 			 (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
 			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
 			 )
-	  (t (setf *error* nil) (format t "Something wrong with the file ~A~% is it a grammar binary?~%" binname))))
+	  (t (setf *error* nil) (format t "Something's wrong with the file ~A~% is it a grammar binary?~%" binname))))
   t) ; do not return hash values to avoid cl4py problems
 
 (defun get-ht (phon ht-list)
