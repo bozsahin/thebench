@@ -664,7 +664,7 @@ def help ():
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
         print(' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
         print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
-        print(f" m .     | model . of a grammar is loaded (its {_binext} file)")
+        print(f" m .     | model . of a grammar is loaded (the lisp code of a grammar for the processor)")
         print(' o .     | OS/shell command . is run at your own risk (. can be complex expression)')
         print(' r ...   | ranks the expression ... using the currently loaded model')
         print(' s .     | supervision data in file . converted to native format .sup for the trainer')
@@ -1028,7 +1028,7 @@ def do (commline):
         else:
             print(f"{_binext} file not generated")
     elif comm == 'm':
-        fn = str(args[0]) + _binext
+        fn = str(args[0])  # do not assume extension
         if os.path.exists(fn):
             try:
                 _lisp.function('load_bin')(fn)
