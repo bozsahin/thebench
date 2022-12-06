@@ -659,9 +659,9 @@ def help ():
         print("         | letter commands are action/processor commands; symbol commands are for display or set up")
         print("         | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
+        print(" b .     | current grammar's binary is saved in file .")
         print(' c ...   | case functions generated and added to loaded grammar from elements with parts of speech ...')
         print(" e .     | evaluates the python expression . if you know what you're doing")
-        print(" f .     | current grammar's binary is saved in file .")
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
         print(' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
         print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
@@ -922,12 +922,12 @@ def do (commline):
     if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'i', '+', '>'] and not args:
+    if comm in ['a', 'b', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'i', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
         help()
-    elif comm == 'f':
+    elif comm == 'b':
         fn = str(args[0])
         ch = False
         if os.path.exists(fn):
