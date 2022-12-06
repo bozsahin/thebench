@@ -990,7 +990,8 @@ def do (commline):
             fn = str(args[0]) + _binext
             ch = False
             if os.path.exists(fn):
-                ch = input(f"file {fn} exists, overwrite (y/N)? ")
+                print(f"file {fn} exists, regenerating it.")
+                ch = 'y'                 # deliberately avoiding earlier provided option, to always load_bin
             if ch == 'y' or not ch:
                 with open(str(fn),'w') as f:
                     with redirect_stdout(f):
@@ -1046,7 +1047,7 @@ def do (commline):
     elif comm == 'c':
         try:
             _lisp.function('synthetic_case')(tuple(args))
-            print("Done; check out the = command related to case")
+            print("Done; check out the = command related to case\n  in addition to , command")
             _lisp.function('lisp2mg')()   # saves these files in source format
         except Exception:
             print('something went wrong')
