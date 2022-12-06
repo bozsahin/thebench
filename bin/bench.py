@@ -661,6 +661,7 @@ def help ():
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(' c ...   | case functions generated and added to loaded grammar from elements with parts of speech ...')
         print(" e .     | evaluates the python expression . if you know what you're doing")
+        print(" f .     | current grammar's binary is saved in file .")
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
         print(' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
         print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
@@ -926,19 +927,19 @@ def do (commline):
         return
     if comm == 'h':
         help()
-    #elif comm == 'f':
-    #    fn = str(args[0])
-    #    ch = False
-    #    if os.path.exists(fn):
-    #        ch = input(f"file {fn} exists, overwrite (y/N)? ")
-    #    if ch == 'y' or not ch:
-    #        try:
-    #            _lisp.function('save_grammar0')(fn)
-    #            print(f"current grammar saved in {fn}")
-    #        except Exception:
-    #            print("something went wrong")
-    #    else:
-    #        print('save canceled')
+    elif comm == 'f':
+        fn = str(args[0])
+        ch = False
+        if os.path.exists(fn):
+            ch = input(f"file {fn} exists, overwrite (y/N)? ")
+        if ch == 'y' or not ch:
+            try:
+                _lisp.function('save_grammar')(fn)
+                print(f"current grammar binary saved in {fn}\n   nb. the c command")
+            except Exception:
+                print("something went wrong")
+        else:
+            print('save canceled')
     elif comm == 'i':
         fn = str(args[0])
         ch = False
