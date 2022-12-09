@@ -1,6 +1,6 @@
 (defparameter *current-grammar* '(
 ;;;;;;;;;; bench.py-generated monadic Lisp grammar
-;;;;;;;;;; from mons.g December 09, 2022, 15:54:19
+;;;;;;;;;; from mons.g December 09, 2022, 17:40:56
 ;;
 ;; a rules
 ;;
@@ -8,20 +8,20 @@
 ;; elements
 ;;
 (
-(KEY 604173)(PARAM 1.0)(PHON SINCERITY)
+(KEY 516385)(PARAM 1.0)(PHON SINCERITY)
 (MORPH n)(SYN ((BCAT np)(FEATS ((agr 3s)))))(SEM sincerity)
 )
 (
-(KEY 162322)(PARAM 1.0)(PHON ADMIRES)
-(MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL STAR)((BCAT np)(FEATS ((agr 3s)))))(DIR FS)(MODAL HARMONIC)((BCAT np)(FEATS ((type ref)(agr no)(var ?x))))))(SEM (LAM x (LAM y ((admire x) y))))
+(KEY 545680)(PARAM 1.0)(PHON ADMIRES)
+(MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((type ref)(var ?x))))))(SEM (LAM x (LAM y ((admire x) y))))
 )
 (
-(KEY 743272)(PARAM 1.0)(PHON WALKS)
-(MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL CROSS)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM y (walk y)))
+(KEY 894232)(PARAM 1.0)(PHON WALKS)
+(MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM y (walk y)))
 )
 (
-(KEY 849159)(PARAM 1.0)(PHON JOHN)
-(MORPH n)(SYN ((BCAT np)(FEATS NIL)))(SEM john)
+(KEY 19397)(PARAM 1.0)(PHON JOHN)
+(MORPH n)(SYN ((BCAT np)(FEATS ((agr 3s)))))(SEM john)
 )
 ;;
 ;;;;;;;;;; end of bench.py-generated monadic Lisp grammar

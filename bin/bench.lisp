@@ -2914,12 +2914,12 @@
 (defun mk_arulename (r s)
   (format s "#~(~A~)" r))
 
-(defun lisp2mg ()   ;; converts arules in lisp format to monadic grammar source code
-  (setf *random-state* (make-random-state t))
+(defun lisp2mg (gname)   ;; converts arules in lisp format to monadic grammar source code
+  ;(setf *random-state* (make-random-state t))
   (if (null *SC-RULES*)
     (progn (format t "~%Nothing to save as case function; please check the case log file~%")
 	   (return-from lisp2mg t)))
-  (let ((afile (concatenate 'string "case-functions-" (write-to-string (random 1000)) ".arules"))) ; make up a name
+  (let ((afile (concatenate 'string gname "-sc.arules"))) ; make up a name
     (with-open-file (s afile :direction :output :if-exists :supersede)
       (dolist (r *SC-RULES*)
 	(mk_arulename (nv-get-v 'INDEX r) s)                 ; these rules have universal semantics

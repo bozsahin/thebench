@@ -45,6 +45,7 @@ _punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually toke
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
 _grammar = {}                 # currently loaded grammar parsed into internal representation
+_latestgr = ''                # latest loaded grammar --used to mark SC rules per grammar, which can be g or m loaded
 _supervision = {}
 _info = {}
 _indexed = False              # whether an entry is already indexed; need this unique indexing
@@ -917,7 +918,7 @@ def print_info ():
     print(" POSs    : ", _ws.join(_info['pos'].keys()))
 
 def do (commline):
-    global _online, _grammar, _info
+    global _online, _grammar, _info, _latestgr
     comm, args = split_command(commline)
     if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
@@ -988,6 +989,7 @@ def do (commline):
             print(f"{_supext} file not generated")
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
+            _latestgr = str(args[0])
             fn = str(args[0]) + _binext
             ch = False
             if os.path.exists(fn):
@@ -1030,6 +1032,7 @@ def do (commline):
             print(f"{_binext} file not generated")
     elif comm == 'm':
         fn = str(args[0])  # do not assume extension
+        _latestgr = fn 
         if os.path.exists(fn):
             try:
                 _lisp.function('load_bin')(fn)
@@ -1049,7 +1052,7 @@ def do (commline):
         try:
             _lisp.function('synthetic_case')(tuple(args))
             print("Done; check out the = command related to case\n  in addition to , command")
-            _lisp.function('lisp2mg')()   # saves these files in source format
+            _lisp.function('lisp2mg')(str(_latestgr))   # saves these files in source format
         except Exception:
             print('something went wrong')
     elif comm == 'a':
