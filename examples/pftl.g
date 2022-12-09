@@ -82,7 +82,7 @@
 |at the bottom of my garden  |n 	 :: vp[agr=?a]\(vp[agr=?a]/xp[type=pred,class=pp,agr=?a]): \p. p  atbmg;    
 |at the bottom of my garden  |n 	 :: s\(s/xp[type=pred,class=pp,agr=?z]): \p. p  atbmg;    
 |quem | a :: ((s/(s\np[gen=m]))\(s/(s\np[gen=m])))/(s\np[case=acc]) : \p\q\x.  and (p x)(q (\x.x) x) ;                           
-|erzahlen | v :: s[type=t]/(s/((vp\np[case=acc])\np[case=dat])) : \p. p  tell;
+|erzahlen | vg :: s[type=t]/(s/((vp\np[case=acc])\np[case=dat])) : \p. p  tell;
 |wird | x :: (s/vp)/np[agr=3s] : \x\p.  will (p x) ;
 |er | n :: (s/vp)\(s/vp/np[agr=3s,case=nom]) : \p.p  he ;
 |seiner tochter  |n  :: vp/(vp\np[case=acc]): \p.p  daughter ;   
@@ -99,7 +99,7 @@
 |et | x :: (@X\*@X)/*@X : \p\q\x.  and (p x) (q x) ;              
 |Marc | n :: N :  mark ;                                            
 |villa | n :: N :  house ;						 
-|vult | v :: (S\NP[case=nom,agr=3s])\(S[type=inf]\NP): \p\x. want (p x)x ; 
+|vult | vl :: (S\NP[case=nom,agr=3s])\(S[type=inf]\NP): \p\x. want (p x)x ; 
 |ubur | n :: s/(s\np) : \p.p  ubur; 		                 
 |a-tuuk | v :: s\np : \x. play x;
 |a-puot | v :: (s\np)/np[agr=3s] : \y\x. beat x y;
