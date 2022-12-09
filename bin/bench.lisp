@@ -984,7 +984,7 @@
 (defun hash-lex (lexspec)
   "This function turns a sequentially represented lex entry, which consists of 
   Lisp association lists in the lexicalized grammar, to a hashtable, 
-  for faster and easier parsing. Called during parsing only."
+  for faster and easier parsing. Called during parsing and synthetic case arules generation."
   (let ((ht (make-lex-hashtable)))
     (setf (machash 'INDEX ht) 'LEX)     ; created by not combining
     (setf (machash 'TAG ht) *ot*)        ; NF tag initialization
@@ -2602,6 +2602,7 @@
 (defccglab *tr-error-file* "")  ; filename for error log 
 (defccglab *tr-error-log* nil)  ; list of errors/warnings
 (defccglab *RAISED-LEX-RULES* NIL)
+(defccglab *SC-RULES* NIL)
 (defccglab *RAISED-LEX-ITEMS* NIL)
 
 ;--------get methods----------;
@@ -2663,9 +2664,57 @@
     (setf *DOMAIN* (car (reverse cat))) 
     ))
 
+(defun mk_lfeats (ht)
+  (let ((feats nil))
+    (maphash #'(lambda (k v)
+		(if (and (not (eql k 'BCAT)) (not (eql k 'CONST))) 
+		  (setf feats (append feats (list k v)))))
+	     ht)
+    (if feats
+      (list 'FEATS (list feats))
+      (list 'FEATS feats))))
+
+(defun mk_lbcat (bcat bconst feats)
+  (if bconst
+    (list  (list 'BCAT bcat) (list 'BCONST bconst) feats)
+    (list  (list 'BCAT bcat)  feats)))
+
+(defun mk_lccat (result dir modal lex arg)
+  (if lex
+    (list result (list 'DIR dir) (list 'MODAL modal) (list 'LEX lex) arg)
+    (list result (list 'DIR dir) (list 'MODAL modal) arg)))
+
+(defun synht2list (ht &optional (syn nil))
+  "converts the syn category in hashtable ht to MG lisp code"
+  (if (machash 'BCAT ht) ; basic
+      (append syn (mk_lbcat (machash 'BCAT ht) (machash 'BCONST ht) (mk_lfeats ht)))
+    (append syn
+	    (mk_lccat 
+	      (synht2list (machash 'RESULT ht) syn)
+	      (machash 'DIR ht) (machash 'MODAL ht) (machash 'LEX ht)
+	      (synht2list (machash 'ARG ht) syn)))))
+      
+(defun httr2list ()
+  "converts the entries in *ht-tr* to list notation for MG entries"
+  (setf *SC-RULES* nil)
+  (maphash #'(lambda (kr vr) ; arule keys and values
+	       (let ((arule nil))  ;; order of push is to hack lisp2mg sequencing easier
+		 (push (list 'PARAM (machash 'PARAM vr)) arule)
+		 (push (list 'INDEX (machash 'INDEX vr)) arule)
+		 (push (list 'OUTSEM (machash 'OUTSEM vr)) arule)
+		 (push (list 'OUTSYN (synht2list (machash 'OUTSYN vr))) arule)
+		 (push (list 'INSEM (machash 'INSEM vr)) arule)
+		 (push (list 'INSYN (synht2list (machash 'INSYN vr))) arule)
+		 (push (list 'KEY kr) arule)
+		 (push arule *SC-RULES*)
+		 ))
+	   *ht-tr*)
+  t)
+
 (defun add-tr-to-grammar ()
   "add rules to the currently loaded grammar and refreshes the hash table for rules"
-  (setf *current-grammar* (append *current-grammar* (reverse *RAISED-LEX-RULES*)))
+  (httr2list)
+  (setf *current-grammar* (append *current-grammar* *SC-RULES*))
   (setf *lex-rules-table* nil)
   (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
   (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
@@ -2867,12 +2916,12 @@
 
 (defun lisp2mg ()   ;; converts arules in lisp format to monadic grammar source code
   (setf *random-state* (make-random-state t))
-  (if (null *RAISED-LEX-RULES*)
+  (if (null *SC-RULES*)
     (progn (format t "~%Nothing to save as case function; please check the case log file~%")
 	   (return-from lisp2mg t)))
   (let ((afile (concatenate 'string "case-functions-" (write-to-string (random 1000)) ".arules"))) ; make up a name
     (with-open-file (s afile :direction :output :if-exists :supersede)
-      (dolist (r *RAISED-LEX-RULES*)
+      (dolist (r *SC-RULES*)
 	(mk_arulename (nv-get-v 'INDEX r) s)                 ; these rules have universal semantics
 	(format s " ~A" "( ")
 	(mk_cat (nv-get-v 'INSYN r) s)
