@@ -2928,7 +2928,7 @@
 	(format s "~A" " : a ) --> ( ")
 	(mk_cat (nv-get-v 'OUTSYN r) s)
 	(format s "~A~%" " : \\a\\p.p a );")))
-    (format t "~%File: ~A created; contains synthetic case rules in the source format,~%   for merging with a grammar source or for inspection.~%" afile))
+    (format t "~%File: ~A created; contains synthetic case rules for ~A in the source format,~%   for merging with grammar source text or for inspection.~%" afile gname))
   t) ; all interface functions return t
 
 (defun synthetic_case (vmorphs)
