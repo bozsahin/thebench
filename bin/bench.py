@@ -670,7 +670,7 @@ def help ():
         print(' o .     | OS/shell command . is run at your own risk (. can be complex expression)')
         print(' r ...   | ranks the expression ... using the currently loaded model')
         print(' s .     | supervision data in file . converted to native format .sup for the trainer')
-        print(' y .     | legacy binary . is loaded for processing (extension .ccg.lisp assumed)')
+        print(' y .     | legacy binary . is loaded for processing')
         print(' x       | exits from the tool')
         print(' , ...   | displays analyses with solutions numbered ..., all of them if none provided; cf. the a command')
         print(' #       | displays ranked analyses; cf. the r command')
@@ -1119,7 +1119,7 @@ def do (commline):
             print('something went wrong')
         print()
     elif comm == 'y':
-        fn = args[0] + '.ccg.lisp'
+        fn = args[0]
         if os.path.exists(fn):
             try:
                 _lisp.function('load_legacy')(fn)
