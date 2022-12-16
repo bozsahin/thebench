@@ -1053,7 +1053,7 @@ def do (commline):
         try:
             _lisp.function('synthetic_case')(tuple(args),_latestgr+".case.log")
             print("Done; check out the = command related to case\n  in addition to , command")
-            _lisp.function('lisp2mg')(str(_latestgr))   # saves these files in source format
+            _lisp.function('sc_rules2mg')(str(_latestgr))   # saves these files in source format
         except Exception:
             print('something went wrong')
     elif comm == 'a':

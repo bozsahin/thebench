@@ -2698,7 +2698,7 @@
   "converts the entries in *ht-tr* to list notation for MG entries"
   (setf *SC-RULES* nil)
   (maphash #'(lambda (kr vr) ; arule keys and values
-	       (let ((arule nil))  ;; order of push is to hack lisp2mg sequencing easier
+	       (let ((arule nil))  ;; order of push is to hack sc_rules2mg sequencing easier
 		 (push (list 'PARAM (machash 'PARAM vr)) arule)
 		 (push (list 'INDEX (machash 'INDEX vr)) arule)
 		 (push (list 'OUTSEM (machash 'OUTSEM vr)) arule)
@@ -2914,11 +2914,11 @@
 (defun mk_arulename (r s)
   (format s "#~(~A~)" r))
 
-(defun lisp2mg (gname)   ;; converts arules in lisp format to monadic grammar source code
+(defun sc_rules2mg (gname)   ;; converts arules in lisp format to monadic grammar source code
   ;(setf *random-state* (make-random-state t))
   (if (null *SC-RULES*)
     (progn (format t "~%Nothing to save as case function; please check the case log file~%")
-	   (return-from lisp2mg t)))
+	   (return-from sc_rules2mg t)))
   (let ((afile (concatenate 'string gname "-sc.arules"))) ; make up a name
     (with-open-file (s afile :direction :output :if-exists :supersede)
       (dolist (r *SC-RULES*)
