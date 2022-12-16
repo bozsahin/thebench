@@ -1050,7 +1050,7 @@ def do (commline):
         os.system(_ws.join([str(item) for item in args[0:]]))
     elif comm == 'c':
         try:
-            _lisp.function('synthetic_case')(tuple(args))
+            _lisp.function('synthetic_case')(tuple(args),_latestgr+".case.log")
             print("Done; check out the = command related to case\n  in addition to , command")
             _lisp.function('lisp2mg')(str(_latestgr))   # saves these files in source format
         except Exception:

@@ -2931,8 +2931,8 @@
     (format t "~%File: ~A created; contains synthetic case rules for ~A in the source format,~%   for merging with grammar source text or for inspection.~%" afile gname))
   t) ; all interface functions return t
 
-(defun synthetic_case (vmorphs)
-  (compile_case vmorphs)
+(defun synthetic_case (vmorphs logfile)
+  (compile_case vmorphs logfile)
   (if *tr-error-log* 
     (progn
       (format t "~%Check the ~A file for potential concerns." *tr-error-file*)
