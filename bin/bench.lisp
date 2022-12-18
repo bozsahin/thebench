@@ -23,30 +23,30 @@
 
 ;; Lisp Top level needs and some general utilities
 
-(defparameter *ccglab-globals* nil) ; to keep track of all globals defined by defccglab macro
+(defparameter *mydef-globals* nil) ; to keep track of all globals defined by mydef macro
                                     ; i seem to want to define more and more and lose track
-(defparameter *ccglab-switches* nil) ; to keep track of all on/off switches
+(defparameter *mydef-switches* nil) ; to keep track of all on/off switches
                                     ; i seem to want to define more and more and lose track
 
-(defmacro defccglab (nam val &optional (msg nil))
-  (if (member nam *ccglab-globals*)
-    (and msg (format t "~%defccglab warning! the name is RE-defined: ~A" nam))
-    (push nam *ccglab-globals*))
+(defmacro mydef (nam val &optional (msg nil))
+  (if (member nam *mydef-globals*)
+    (and msg (format t "~%mydef warning! the name is RE-defined: ~A" nam))
+    (push nam *mydef-globals*))
   `(defparameter ,nam ,val))  ; do the def in any case 
                               ; no defvars in this dynamic env!
 
 (defmacro defswitch (nam val &optional (msg nil))
-  (if (member nam *ccglab-switches*)
+  (if (member nam *mydef-switches*)
     (and msg (format t "~%defswitch warning! the name is RE-defined: ~A" nam))
-    (push nam *ccglab-switches*)) ; do the def in any case 
+    (push nam *mydef-switches*)) ; do the def in any case 
   `(defparameter ,nam ,val))      ; no defvars in this dynamic env!
 
 (defun globals ()
-  (dolist (g (sort (copy-seq *ccglab-globals*) #'string<))
+  (dolist (g (sort (copy-seq *mydef-globals*) #'string<))
     (format t "~%~a" g)))
 
 (defun onoff ()
-  (dolist (g (sort (copy-seq *ccglab-switches*) #'string<))
+  (dolist (g (sort (copy-seq *mydef-switches*) #'string<))
     (format t "~%~a : ~a" g (eval g))))
 
 ;; -----------------
@@ -233,9 +233,8 @@
 (defmacro name-clash-report (feat)
   "reports a warning if feat is a name that clashes with hashtables' fixed features.
   The only hashtable that has potential clash is the basic cat table because only there we have
-  user features.
-  Called during parsing .ccg to lisp code"
-  `(if (member ,feat *ccglab-reserved*) (format t "~%*** warning *** Your feature name clashes with built-in features; please rename : ~A" ,feat)))
+  user features."
+  `(if (member ,feat *mydef-reserved*) (format t "~%*** warning *** Your feature name clashes with built-in features; please rename : ~A" ,feat)))
 
 (defun make-lex-hashtable ()
   "keys are: index key param sem syn morph phon tag. Tag is NF tag"
@@ -297,9 +296,9 @@
 ;;
 ;; Thanks to Juanjo of stackoverflow
 
-(defccglab *error-message* 'LOAD_ERROR)
-(defccglab *error-tag* 'loaderror)
-(defccglab *error* nil)
+(mydef *error-message* 'LOAD_ERROR)
+(mydef *error-tag* 'loaderror)
+(mydef *error* nil)
 
 (defun capture-error (condition)
   (setf *error*
@@ -317,71 +316,69 @@
 ;;; globals
 ;;; =======
 
-(defccglab *ccglab-reserved* '(tag phon morph syn sem param insyn insem outsyn outsem bcat dir feats modal
+(mydef *mydef-reserved* '(tag phon morph syn sem param insyn insem outsyn outsem bcat dir feats modal
 				  left right solution result arg index lex bconst key id)) ; reserved words
-(defccglab *hash-data-size* 65536)  ; for CKY and LF argmax tables. Make IT REALLY BIG for training sets
+(mydef *hash-data-size* 65536)  ; for CKY and LF argmax tables. Make IT REALLY BIG for training sets
                                        ; involving LOOOONG sentences.
 				       ; default is 64K entries
-;; the following two tables are created only once, and cleared before every parse. Change the variable above and reload ccglab
+;; the following two tables are created only once, and cleared before every parse. Change the variable above and reload 
 ;; for very long examples and large unpredictable training sets
 
-(defccglab *cky-hashtable* (make-cky-hashtable *hash-data-size*))    ; this is the CKY table keyed by cky loop indices
-(defccglab *cky-lf-hashtable* (make-lf-hashtable *hash-data-size*)) ; All LFs for the solution in the cky table.
+(mydef *cky-hashtable* (make-cky-hashtable *hash-data-size*))    ; this is the CKY table keyed by cky loop indices
+(mydef *cky-lf-hashtable* (make-lf-hashtable *hash-data-size*)) ; All LFs for the solution in the cky table.
 
 (setf *print-readably* nil) ; In case you want to look at partial results. Turn it off to avoid print errors.
                             ; (Hard to believe but there is no consistent set of print variable values in CL that
                             ; would allow us to print lists, functions and hashtables readably at the same time.)
 (setf *print-pretty* t)     ; NB: defvar does not reset when you re-load this file.
-(defccglab *lex-rules-table* nil)  ; this table is global to avoid loading/searching it everytime we parse.
-(defccglab *cky-input* nil)        ; current input which engendered the cky-hashtable entries.  
-(defccglab *cky-max* nil)          ; current highest ranking result cell in cky table.
+(mydef *lex-rules-table* nil)  ; this table is global to avoid loading/searching it everytime we parse.
+(mydef *cky-input* nil)        ; current input which engendered the cky-hashtable entries.  
+(mydef *cky-max* nil)          ; current highest ranking result cell in cky table.
 
 ;; for beam search in inside-outside computation 
 (defswitch *beamp* t)            ; to beam or not to beam (not much of a question for big data)
-(defccglab *cky-nparses* 0)      ; *beam* is that number exp'd to *beam-exp*
-(defccglab *training-sorted-solutions-list* nil) ; to get out of loops by beam
-(defccglab *beam* 0)             ; beam width, determined by number of solutions
-(defccglab *beam-exp* 0.9)       ; must be 0 <= x <= 1 . Larger means wider beam
+(mydef *cky-nparses* 0)      ; *beam* is that number exp'd to *beam-exp*
+(mydef *training-sorted-solutions-list* nil) ; to get out of loops by beam
+(mydef *beam* 0)             ; beam width, determined by number of solutions
+(mydef *beam-exp* 0.9)       ; must be 0 <= x <= 1 . Larger means wider beam
 
 ;; for NF parse, Eisner 1996-style---eliminate them at the source (no cky-entry)
 (defswitch *nf-parse* t)
-(defccglab *bc* 'BC)
-(defccglab *fc* 'FC)
-(defccglab *ot* 'OT)
-(defccglab *forward-tag-set* (list *bc* *ot*))
-(defccglab *backward-tag-set* (list *fc* *ot*))
+(mydef *bc* 'BC)
+(mydef *fc* 'FC)
+(mydef *ot* 'OT)
+(mydef *forward-tag-set* (list *bc* *ot*))
+(mydef *backward-tag-set* (list *fc* *ot*))
 
 ;; more globals
-(defccglab *epsilon* 0.001)        ; largest difference to be considered equal
-(defccglab *cky-lf-hashtable-sum* 0.0) ; sum of all result LFs inner product
-(defccglab *cky-argmax-lf* nil)    ; list of solutions for most likely LF
-(defccglab *cky-argmax-lf-max* nil); current highest-ranking cell in cky table for the most likely LF.
-(defccglab *cky-lf* nil)           ; LF with the argmax
-(defccglab *current-grammar* nil)  ; current  grammar, as a list of Lisp-translated lex specs
-(defccglab *ccg-grammar* nil)      ; current ccg grammar, as legacy variable
-(defccglab *ccg-grammar-keys* nil) ; unique keys for each entry; from 1 to n
-(defccglab *loaded-grammar* nil)   ; The source of currently loaded grammar
+(mydef *epsilon* 0.001)        ; largest difference to be considered equal
+(mydef *cky-lf-hashtable-sum* 0.0) ; sum of all result LFs inner product
+(mydef *cky-argmax-lf* nil)    ; list of solutions for most likely LF
+(mydef *cky-argmax-lf-max* nil); current highest-ranking cell in cky table for the most likely LF.
+(mydef *cky-lf* nil)           ; LF with the argmax
+(mydef *current-grammar* nil)  ; current  grammar, as a list of Lisp-translated lex specs
+(mydef *loaded-grammar* nil)   ; The source of currently loaded grammar
 
 (defswitch *lfflag* t) ; whether to show intermediate LFs in the output (final one always shown)
-(defccglab *abv* nil) ; list of shortcuts for common functions-- see the bottom
+(mydef *abv* nil) ; list of shortcuts for common functions-- see the bottom
 (defswitch *oovp* nil) ; set it to t to avoid out of vocabulary errors---two entries with uknown LFs will be created 
                           ;  to get partial parses as much as possible in a knowledge-poor way.
 
 ;; rule switches and default values
-(defccglab *f-apply* t)   ;application
-(defccglab *b-apply* t)
-(defccglab *f-comp* t  )  ;composition
-(defccglab *b-comp* t)
-(defccglab *fx-comp* t)
-(defccglab *bx-comp* t)
-(defccglab *f2-comp* t )     ; B^2
-(defccglab *b2-comp* t)
-(defccglab *fx2-comp* t)
-(defccglab *bx2-comp* t)
-(defccglab *f3-comp* t )  ;B^3
-(defccglab *b3-comp* t)
-(defccglab *fx3-comp* t)
-(defccglab *bx3-comp* t)
+(mydef *f-apply* t)   ;application
+(mydef *b-apply* t)
+(mydef *f-comp* t  )  ;composition
+(mydef *b-comp* t)
+(mydef *fx-comp* t)
+(mydef *bx-comp* t)
+(mydef *f2-comp* t )     ; B^2
+(mydef *b2-comp* t)
+(mydef *fx2-comp* t)
+(mydef *bx2-comp* t)
+(mydef *f3-comp* t )  ;B^3
+(mydef *b3-comp* t)
+(mydef *fx3-comp* t)
+(mydef *bx3-comp* t)
 
 ;; NF control
 (defmacro backward-nf ()
@@ -1011,7 +1008,7 @@
 
 (defun singleton-match (fht aht alex ruleindex coorda)
   "called only when functor hashtable fht's argument is singleton category; succeeds if argument hashtable aht's string
-  span matches fht's arg's singleton category. (These categories were converted to word lists during .ccg file processing.)
+  span matches fht's arg's singleton category. (These categories were converted to word lists during file processing.)
   Called from function application only. 
   Strings coordinates are of the form (x y) for argument; 
   they are used to access *cky-input*; x is length, y is starting pos (from 1).
@@ -1096,21 +1093,8 @@
 	     (setf (machash 'ARG newsyn)(substitute-special-cat (machash 'ARG spht1) catht2))
 	     newsyn))))
 
-(defun load_legacy (binname)
-  "loads the grammar generated from intermediate representation of monadic grammar, or legacy ccg grammars, which have the same format"
-  (let* ((gname binname))
-    (setf *error* nil)
-    (safely_load gname)  ;; legacy update
-    (setf *current-grammar* (copy-seq *ccg-grammar*)) ;; ccg-grammar is legacy name from load
-    (cond ((not *error*) (setf *lex-rules-table* nil)
-			 (setf *loaded-grammar* gname)
-			 (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
-			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
-			 )))
-  t)
-
 (defun load_dotbin (binname)
-  "loads the grammar generated from intermediate representation of monadic grammar, or legacy ccg grammars, which have the same format"
+  "loads the grammar generated from intermediate representation of monadic grammar"
   (let* ((gname (concatenate 'string binname ".bin")))
     (setf *error* nil)
     (safely_load gname)  ;; sets *current-grammar* variable             
@@ -1122,7 +1106,7 @@
   t)
 
 (defun load_bin (binname)
-  "loads the grammar generated from intermediate representation of monadic grammar, or legacy ccg grammars, which have the same format"
+  "loads the grammar generated from intermediate representation of monadic grammar"
   (let* ((gname binname))
     (setf *error* nil)
     (safely_load gname)  ;; sets *current-grammar* variable             
@@ -2033,15 +2017,15 @@
 ;; We recommend you write modeling code as add-on, rather than plugging it in here.
 ;; NB the manual for a suggested workflow.
 
-(defccglab *bign* 0) ; N in Z&C05 -- number of iterations over training data
-(defccglab *supervision-pairs-list* nil) ; set of (Si Li) pairs
-(defccglab *smalln* 0) ; size of (Si,Li).  n in Z&C05 -- number of supervision data
-(defccglab *n-paramaters* 0) ; size of training grammar (which is the number of parameters)
-(defccglab *alpha0* 1.0)       ; alpha_0 of Z&C05 - learning rate parameter
-(defccglab *c* 1.0)            ; c of Z&C05       - learning rate parameter
-(defccglab *training-hashtable* nil); parameter vector x partial derivative hash table, for training
-(defccglab *training-hashtable-x4* nil); for extrapolation from 4 runs over training data
-(defccglab *training-non0-hashtable* nil); parameter vector and current nonzero counts
+(mydef *bign* 0) ; N in Z&C05 -- number of iterations over training data
+(mydef *supervision-pairs-list* nil) ; set of (Si Li) pairs
+(mydef *smalln* 0) ; size of (Si,Li).  n in Z&C05 -- number of supervision data
+(mydef *n-paramaters* 0) ; size of training grammar (which is the number of parameters)
+(mydef *alpha0* 1.0)       ; alpha_0 of Z&C05 - learning rate parameter
+(mydef *c* 1.0)            ; c of Z&C05       - learning rate parameter
+(mydef *training-hashtable* nil); parameter vector x partial derivative hash table, for training
+(mydef *training-hashtable-x4* nil); for extrapolation from 4 runs over training data
+(mydef *training-non0-hashtable* nil); parameter vector and current nonzero counts
 
 (defun extrapolate-parameters ()
   "runs over every parameter trained 4 times---input val is a 4-item dotted lists of (param . derivative), 
@@ -2410,7 +2394,7 @@
 (defun filter (&key (metod '>=) (threshold 0.0))
   "filters out grammar entries in current grammar by PARAM; metod is survival criteria"
   (let* ((fg nil) ; filtered grammar
-	 (fn (progn (format t "~%Enter a grammar name (without .ccg.lisp extension) for saving survivors")
+	 (fn (progn (format t "~%Enter a grammar name (without file extension) for saving survivors")
 		    (format t "~%put in double quotes if you want to preserve case~%") 
 		    (string (read)))))
     (dolist (item *current-grammar*)
@@ -2479,7 +2463,6 @@
   (setf *cky-lf* nil) 
   (setf *loaded-grammar* "")
   (setf *current-grammar*  nil)
-  (setf *ccg-grammar-keys*  0)
   (simple-ccg :nf-parse t :lf t :beam nil 
 	     :oov nil)) ; turn experimental rules off by default
 
@@ -2584,9 +2567,9 @@
 ;;; -- Cem Bozsahin
 ;;; ------------------------------------------
 
-(defccglab *ht-tr* nil) ; hash table for derived tr rules--for subsumption check after compile
+(mydef *ht-tr* nil) ; hash table for derived tr rules--for subsumption check after compile
                         ; key : lex rule key value: lex rule including key as hashtable
-(defccglab *VERBS-IN-GRAMMAR* NIL)
+(mydef *VERBS-IN-GRAMMAR* NIL)
 
 (defmacro mk-tr-rule (key index insyn outsyn)
   "semantics is fixed, rest is varying, parameter is just initialized"
@@ -2596,14 +2579,14 @@
 	 (list 'INDEX ,index)
 	 (list 'PARAM 1.0)))  
 
-(defccglab *TR-RANGE* NIL)
-(defccglab *DOMAIN* NIL)
-(defccglab *LAST-KEY-ID* NIL)
-(defccglab *tr-error-file* "")  ; filename for error log 
-(defccglab *tr-error-log* nil)  ; list of errors/warnings
-(defccglab *RAISED-LEX-RULES* NIL)
-(defccglab *SC-RULES* NIL)
-(defccglab *RAISED-LEX-ITEMS* NIL)
+(mydef *TR-RANGE* NIL)
+(mydef *DOMAIN* NIL)
+(mydef *LAST-KEY-ID* NIL)
+(mydef *tr-error-file* "")  ; filename for error log 
+(mydef *tr-error-log* nil)  ; list of errors/warnings
+(mydef *RAISED-LEX-RULES* NIL)
+(mydef *SC-RULES* NIL)
+(mydef *RAISED-LEX-ITEMS* NIL)
 
 ;--------get methods----------;
 
@@ -2623,7 +2606,7 @@
 
 (defun get-last-key-id (l)
   "latest key id in the structure---no guarantee that the grammarfile is ordered by key; find the max"
-  (setf *LAST-KEY-ID* -1) ; no negatives in translation from .ccg to .ccg.lisp  
+  (setf *LAST-KEY-ID* -1) ; no negatives in translation 
   (dolist (e l)
     (if (< *LAST-KEY-ID* (nv-get-v 'KEY e))
       (setf *LAST-KEY-ID* (nv-get-v 'KEY e)))))
@@ -2633,9 +2616,9 @@
   (setf *LAST-KEY-ID* (+ 1 *LAST-KEY-ID*))
   *LAST-KEY-ID*)
 	
-(defun find-morph-v (ccg-grammar morphs)
+(defun find-morph-v (grammar morphs)
   "find verb morphemes"
-  (dolist (entry ccg-grammar)
+  (dolist (entry grammar)
     (dolist (morph morphs)
       (if (equal morph (get-morph entry))
 	(push entry *VERBS-IN-GRAMMAR*)))))
@@ -2839,7 +2822,7 @@
 				      (and match2     ; if both in and out do not match, they are different rules
 					   (let 
 					     ((newht (make-lrule-hashtable))
-					      (key (get-next-key-id)))  ; keeping keys numeral to be consistent with ccglab
+					      (key (get-next-key-id)))  ; keeping keys numeral to be consistent with the auto numbering system
 					     (setf (machash 'KEY newht) key)
 					     (setf (machash 'INDEX newht) (gensym "_P2_"))  ; P2 derived the rule
 					     (setf (machash 'PARAM newht) 1.0)  ; uniform prior for inferred rules
@@ -2952,7 +2935,7 @@
     (sb-ext:gc) ; make effective immediately
     (time (update-model gram N alpha0 c :load t)) ; cross your fingers
     (show-training)                     ; prayers answered
-    (and savep (save-training out))     ; this is to save the grammar---session output always to names with nohup.out when called by ccglab.nohup
+    (and savep (save-training out))     ; this is to save the grammar---session output always to names with nohup.out when called 
     ))
 
 (defun train-nohup-sbcl-xp (gram gcmb savep out alpha0 c)
@@ -2963,7 +2946,7 @@
     (sb-ext:gc) ; make effective immediately
     (time (update-model-xp gram alpha0 c :load t)) 
     (show-training-xp)                  
-    (and savep (save-training-xp out))  ; this is to save the grammar---session output always to names with nohup.out when called by ccglab.nohup
+    (and savep (save-training-xp out))  ; this is to save the grammar---session output always to names with nohup.out when called 
     ))
 
 (defun nf-and-beam ()

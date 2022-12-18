@@ -658,22 +658,19 @@ def split_command (cline): # splits a command line into command and list of args
     
 def help ():
         print("         | letter commands are action/processor commands; symbol commands are for display or set up")
-        print("         | '...' are space-separated items (double-quoted material case/space-sensitive; punctuation quoted)")
+        print("         |  items are space-separated (quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
         print(" b .     | current grammar's binary is saved in file .")
-        print(' c ...   | case functions generated and added to loaded grammar from elements with parts of speech ...')
+        print(' c ...   | case functions generated and added to loaded grammar from elements with POSs ...')
         print(" e .     | evaluates the python expression . at your own risk (beware with deletes)")
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
-        print(f" gg .    | grammar .  checked, and its updated form with <index, param> pairs generated for model preparation")
         print(' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
         print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
-        print(f" m .     | model . of a grammar is loaded (the lisp code of a grammar for the processor)")
         print(' o .     | OS/shell command . is run at your own risk (. can be complex expression)')
         print(' r ...   | ranks the expression ... using the currently loaded model')
         print(' s .     | supervision data in file . converted to native format .sup for the trainer')
-        print(' y .     | legacy binary . is loaded for processing')
-        print(' x       | exits from the tool')
-        print(' , ...   | displays analyses with solutions numbered ..., all of them if none provided; cf. the a command')
+        print(f" z .     | grammar binary . is converted to source; useful before model development")
+        print(' , ...   | displays analyses with solutions numbered ..., all if none provided; cf. the a command')
         print(' #       | displays ranked analyses; cf. the r command')
         print(' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
         print(' ?       | shows information about the current g-loaded grammar')
@@ -924,7 +921,7 @@ def do (commline):
     if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'b', 'c', 'e', 'g', 'm', 'o', '@', 'r', 's', '-', 'y', 'l', 'i', '+', '>'] and not args:
+    if comm in ['a', 'b', 'c', 'e', 'g', 'o', '@', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
@@ -1031,13 +1028,13 @@ def do (commline):
                 print('canceled')
         else:
             print(f"{_binext} file not generated")
-    elif comm == 'm':
+    elif comm == 'z':
         fn = str(args[0])  # do not assume extension
         _latestgr = fn 
         if os.path.exists(fn):
             try:
                 _lisp.function('load_bin')(fn)
-                print(f"grammar in {fn} loaded; ready for analysis")
+                print(f"grammar in {fn} loaded")
             except Exception:
                 print(f"Oops. Unable to load {fn}")
         else:
@@ -1119,16 +1116,6 @@ def do (commline):
         except Exception:
             print('something went wrong')
         print()
-    elif comm == 'y':
-        fn = args[0]
-        if os.path.exists(fn):
-            try:
-                _lisp.function('load_legacy')(fn)
-                print(f"legacy grammar in {fn} loaded; ready for analysis")
-            except Exception:
-                print(f"Oops. Unable to load {fn}")
-        else:
-            print(f"no {fn} in current directory")
     elif comm == '?':
         print_info()
         ch = input("write to file? (y/N)? ")
