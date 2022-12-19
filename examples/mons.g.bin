@@ -1,6 +1,6 @@
 (defparameter *current-grammar* '(
 ;;;;;;;;;; bench.py-generated monadic Lisp grammar
-;;;;;;;;;; from mons.g December 18, 2022, 10:42:43
+;;;;;;;;;; from mons.g December 19, 2022, 10:45:03
 ;;
 ;; a rules
 ;;
@@ -8,19 +8,19 @@
 ;; elements
 ;;
 (
-(KEY 828134)(PARAM 1.0)(PHON SINCERITY)
+(KEY 234954)(PARAM 1.0)(PHON SINCERITY)
 (MORPH n)(SYN ((BCAT np)(FEATS ((agr 3s)))))(SEM sincerity)
 )
 (
-(KEY 891707)(PARAM 1.0)(PHON ADMIRES)
+(KEY 567988)(PARAM 1.0)(PHON ADMIRES)
 (MORPH v)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s)))))(DIR FS)(MODAL ALL)((BCAT np)(FEATS ((type ref)(var ?x))))))(SEM (LAM x (LAM y ((admire x) y))))
 )
 (
-(KEY 221161)(PARAM 1.0)(PHON WALKS)
+(KEY 846322)(PARAM 1.0)(PHON WALKS)
 (MORPH v)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS ((agr 3s))))))(SEM (LAM y (walk y)))
 )
 (
-(KEY 319474)(PARAM 1.0)(PHON JOHN)
+(KEY 838615)(PARAM 1.0)(PHON JOHN)
 (MORPH n)(SYN ((BCAT np)(FEATS ((agr 3s)))))(SEM john)
 )
 ;;

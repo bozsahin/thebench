@@ -660,7 +660,6 @@ def help ():
         print("         | letter commands are action/processor commands; symbol commands are for display or set up")
         print("         |  items are space-separated (quoted material case/space-sensitive; punctuation quoted)")
         print(' a ...   | analyzes the expression ... in the currently loaded grammar')
-        print(" b .     | current grammar's binary is saved in file .")
         print(' c ...   | case functions generated and added to loaded grammar from elements with POSs ...')
         print(" e .     | evaluates the python expression . at your own risk (beware with deletes)")
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
@@ -669,7 +668,7 @@ def help ():
         print(' o .     | OS/shell command . is run at your own risk (. can be complex expression)')
         print(' r ...   | ranks the expression ... using the currently loaded model')
         print(' s .     | supervision data in file . converted to native format .sup for the trainer')
-        print(f" z .     | grammar binary . is converted to source; useful before model development")
+        print(f" z .     | grammar binary . is converted to source, with <index,parameter> added; for model development")
         print(' , ...   | displays analyses with solutions numbered ..., all if none provided; cf. the a command')
         print(' #       | displays ranked analyses; cf. the r command')
         print(' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
@@ -921,24 +920,11 @@ def do (commline):
     if comm in ['x', '?', '#', '<', 'h'] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'b', 'c', 'e', 'g', 'o', '@', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'o', '@', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == 'h':
         help()
-    elif comm == 'b':
-        fn = str(args[0])
-        ch = False
-        if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/N)? ")
-        if ch == 'y' or not ch:
-            try:
-                _lisp.function('save_grammar')(fn)
-                print(f"current grammar binary saved in {fn}\n   nb. the c command")
-            except Exception:
-                print("something went wrong")
-        else:
-            print('save canceled')
     elif comm == 'i':
         fn = str(args[0])
         ch = False
