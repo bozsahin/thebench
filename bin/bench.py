@@ -33,6 +33,8 @@ except Exception:
 
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _underscore= '_'
+_exit='x'
+_help='!'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.3'
@@ -678,6 +680,7 @@ def help ():
         print(' + .     | processor adds Lisp code in file .')
         print(f" > .     | Logs processor output to filename . after adding {_logext} extension")
         print(' <       | Logging turned off')
+        print(' !       | displays help')
         print('         | Use UP and DOWN keys for command recall from use history')
 
 def load_1pass_sup(fname):       
@@ -915,15 +918,15 @@ def print_info ():
     print(" POSs    : ", _ws.join(_info['pos'].keys()))
 
 def do (commline):
-    global _online, _grammar, _info, _latestgr
+    global _online, _grammar, _info, _latestgr, _exit, _help
     comm, args = split_command(commline)
-    if comm in ['x', '?', '#', '<', 'h'] and args:
+    if comm in [_exit, '?', '#', '<', _help] and args:
         print('too many arguments')
         return
     if comm in ['a', 'c', 'e', 'g', 'o', '@', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
         print('too few arguments')
         return
-    if comm == 'h':
+    if comm == _help:
         help()
     elif comm == 'i':
         fn = str(args[0])
@@ -1114,7 +1117,7 @@ def do (commline):
                 with open(fn, 'w') as f:
                     with redirect_stdout(f):
                         print_info()
-    elif comm == 'x':       # caller knows what to do next
+    elif comm == _exit:       # caller knows what to do next
         pass
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
         pass
@@ -1152,7 +1155,7 @@ def welcome ():
     print(3*_prompt+"Pre/post processing by Python (grammar development, interfaces)")
     print(3*_prompt+"Processing by Common Lisp (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
-    print(1*_prompt+"Type x to exit, h to get some help")
+    print(1*_prompt+f"Type {_exit} to exit, {_help} to get some help")
     print(75*_underscore)
 
 mglexer  = MGLexer()
@@ -1169,7 +1172,7 @@ if __name__ == '__main__': # MG REPL online
     welcome()
     _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
     command = '~'
-    while split_command(command)[0] != 'x':
+    while split_command(command)[0] != _exit:
         do(command)
         command = myPromptSession.prompt(_prompt)
     print('Done.')
