@@ -34,7 +34,7 @@ except Exception:
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _underscore= '_'
 _exit='x'
-_help='!'
+_help='?'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.3'
@@ -674,13 +674,13 @@ def help ():
         print(' , ...   | displays analyses with solutions numbered ..., all if none provided; cf. the a command')
         print(' #       | displays ranked analyses; cf. the r command')
         print(' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
-        print(' ?       | shows information about the current g-loaded grammar')
+        print(' !       | shows information about the current g-loaded grammar')
         print(' @ ...   | shows the elements with parts of speech ...')
         print(' - .     | shows (without adding) the intermediate representation of element .')
         print(' + .     | processor adds Lisp code in file .')
         print(f" > .     | Logs processor output to filename . after adding {_logext} extension")
         print(' <       | Logging turned off')
-        print(' !       | displays help')
+        print(f" {_help}       | displays help")
         print('         | Use UP and DOWN keys for command recall from use history')
 
 def load_1pass_sup(fname):       
@@ -920,7 +920,7 @@ def print_info ():
 def do (commline):
     global _online, _grammar, _info, _latestgr, _exit, _help
     comm, args = split_command(commline)
-    if comm in [_exit, '?', '#', '<', _help] and args:
+    if comm in [_exit, '!', '#', '<', _help] and args:
         print('too many arguments')
         return
     if comm in ['a', 'c', 'e', 'g', 'o', '@', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
@@ -1105,7 +1105,7 @@ def do (commline):
         except Exception:
             print('something went wrong')
         print()
-    elif comm == '?':
+    elif comm == '!':
         print_info()
         ch = input("write to file? (y/N)? ")
         if ch == 'y':
