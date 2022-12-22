@@ -908,8 +908,7 @@ def ir_to_lisp(ir):
         return str(ir)
 
 def print_info ():
-    srule_ent = _info['srule']*2
-    print(f" file    :  {_info['name']}\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {srule_ent} elements)\n a rules :  {_info['arule']}")
+    print(f" file    :  {_info['name']} ({_info['el']+_info['srule']+_info['arule']} entries)\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {_info['srule']*2} elements)\n a rules :  {_info['arule']}")
     print(" basics  : ", _ws.join(_info['basic'].keys()))
     print(" quoted  : ", _ws.join(_info['quoted'].keys()))
     print(" special : ", _ws.join(_info['special'].keys()))
