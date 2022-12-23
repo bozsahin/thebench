@@ -659,29 +659,30 @@ def split_command (cline): # splits a command line into command and list of args
         return (comarg[0], comarg[1:])
     
 def help ():
-        print("         | letter commands are action/processor commands; symbol commands are for display or set up")
-        print("         |  items are space-separated (quoted material case/space-sensitive; punctuation quoted)")
-        print(' a ...   | analyzes the expression ... in the currently loaded grammar')
-        print(' c ...   | case functions generated and added to loaded grammar from elements with POSs ...')
-        print(" e .     | evaluates the python expression . at your own risk (beware with deletes)")
+        print(f"         | letter commands are action/processor commands; symbol commands are for display or set up")
+        print(f"         |  items are space-separated (quoted material case/space-sensitive; punctuation quoted)")
+        print(f' a ...   | analyzes the expression ... in the currently loaded grammar')
+        print(f' c ...   | case functions generated and added to loaded grammar from elements with POSs ...')
+        print(f" e .     | evaluates the python expression . at your own risk (beware with deletes)")
         print(f" g .     | grammar text source .  checked, and loaded (its {_binext} file)")
-        print(' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
-        print(" l . ... | Lisp function . is called, with args ..., which takes them as strings")
-        print(' o .     | OS/shell command . is run at your own risk (. can be complex expression)')
-        print(' r ...   | ranks the expression ... using the currently loaded model')
-        print(' s .     | supervision data in file . converted to native format .sup for the trainer')
-        print(f" z .     | grammar binary . is converted to source, with <index,parameter> added; for model development")
-        print(' , ...   | displays analyses with solutions numbered ..., all if none provided; cf. the a command')
-        print(' #       | displays ranked analyses; cf. the r command')
-        print(' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
-        print(' !       | shows information about the current g-loaded grammar')
-        print(' @ ...   | shows the elements with parts of speech ...')
-        print(' - .     | shows (without adding) the intermediate representation of element .')
-        print(' + .     | processor adds Lisp code in file .')
+        print(f' i .     | intermediate representation of current grammar (a python dict)  saved in file . ')
+        print(f" l . ... | Lisp function . is called, with args ..., which takes them as strings")
+        print(f' o .     | OS/shell command . is run at your own risk (. can be complex expression)')
+        print(f' r ...   | ranks the expression ... using the currently loaded model')
+        print(f' s .     | supervision data in file . converted to native format .sup for the trainer')
+        print(f" z .     | grammar binary . is converted to source, with <key, parameter> added; for model development")
+        print(f' , ...   | displays analyses with solutions numbered ..., all if none provided; cf. the a command')
+        print(f' #       | displays ranked analyses; cf. the r command')
+        print(f' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
+        print(f' @ .     | does the commands in file . (same format as here, one command per line)')
+        print(f' !       | shows information about the current g-loaded grammar')
+        print(f' $ ...   | shows the elements with parts of speech ...')
+        print(f' - .     | shows (without adding) the intermediate representation of element .')
+        print(f' + .     | processor adds Lisp code in file .')
         print(f" > .     | Logs processor output to filename . after adding {_logext} extension")
-        print(' <       | Logging turned off')
+        print(f' <       | Logging turned off')
         print(f" {_help}       | displays help")
-        print('         | Use UP and DOWN keys for command recall from use history')
+        print(f'         | Use UP and DOWN keys for command recall from use history')
 
 def load_1pass_sup(fname):       
     global _supervision   
@@ -922,7 +923,7 @@ def do (commline):
     if comm in [_exit, '!', '#', '<', _help] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'o', '@', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'o', '@', '$', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == _help:
@@ -1077,6 +1078,15 @@ def do (commline):
         except Exception:
             print('something went wrong')
     elif comm == '@':
+        fn = str(args[0])
+        try:
+            with open(fn,'r') as f:
+                sys.stdin=f
+                for command in f:
+                    do(command)
+        except FileNotFoundError:
+            print(f'command file {fn} not found')
+    elif comm == '$':
         try:
             _lisp.function('show_pos')(tuple(args))
         except Exception:
