@@ -671,10 +671,10 @@ def help ():
         print(f' r ...   | ranks the expression ... using the currently loaded model')
         print(f' s .     | supervision data in file . converted to native format .sup for the trainer')
         print(f" z .     | grammar binary . is converted to source, with <key, parameter> added; for model development")
+        print(f' @ .     | does the commands in file . (same format as here, one command per line)')
         print(f' , ...   | displays analyses with solutions numbered ..., all if none provided; cf. the a command')
         print(f' #       | displays ranked analyses; cf. the r command')
         print(f' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
-        print(f' @ .     | does the commands in file . (same format as here, one command per line)')
         print(f' !       | shows information about the current g-loaded grammar')
         print(f' $ ...   | shows the elements with parts of speech ...')
         print(f' - .     | shows (without adding) the intermediate representation of element .')
@@ -1081,7 +1081,6 @@ def do (commline):
         fn = str(args[0])
         try:
             with open(fn,'r') as f:
-                sys.stdin=f
                 for command in f:
                     do(command)
         except FileNotFoundError:
