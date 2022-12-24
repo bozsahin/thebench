@@ -671,7 +671,7 @@ def help ():
         print(f' r ...   | ranks the expression ... using the currently loaded model')
         print(f' s .     | supervision data in file . converted to native format .sup for the trainer')
         print(f" z .     | grammar binary . is converted to source, with <key, parameter> added; for model development")
-        print(f' @ .     | does the commands in file . (same format as here, one command per line)')
+        print(f' @ .     | does commands in file . (same format as here, 1 command per line, 1 line per command)')
         print(f' , ...   | displays analyses with solutions numbered ..., all if none provided; cf. the a command')
         print(f' #       | displays ranked analyses; cf. the r command')
         print(f' = ...   | displays analyses onto basic cats in ... ; cf. the , command')
@@ -1082,6 +1082,7 @@ def do (commline):
         try:
             with open(fn,'r') as f:
                 for command in f:
+                    print('\ncommand line: ',command)
                     do(command)
         except FileNotFoundError:
             print(f'command file {fn} not found')
