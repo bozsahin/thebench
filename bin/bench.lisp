@@ -2897,6 +2897,37 @@
 (defun mk_arulename_sc (r s)
   (format s "#~(~A~)" r))
 
+(defun mk_keyparamend (r s)
+  (format s "<~A, ~A>;~%" (nv-get-v 'KEY r) (nv-get-v 'PARAM r))) 
+
+(defun mk_arule (r s)
+  (mk_arulename_sc (nv-get-v 'INDEX r) s)       
+  (format s " ~A" " ( ")
+  (mk_cat (nv-get-v 'INSYN r) s)
+  (format s " : " ) 
+  (mk_lambda (nv-get-v 'INSEM r) s)
+  (format s " ) --> ( ")
+  (mk_cat (nv-get-v 'OUTSYN r) s)
+  (format s " : ")
+  (mk_lambda (nv-get-v 'OUTSEM r) s)
+  (format s " ) "))
+
+(defun generate_source (gname)   ;; converts arules in lisp format to monadic grammar source code
+  (setf *random-state* (make-random-state t))
+  (if (null *current-grammar*)
+    (progn (format t "~%Nothing to save as grammar~%")
+	   (return-from generate_source t)))
+  (let ((afile (concatenate 'string gname (write-to-string (random 1000)) ".g"))) ; make up a name
+    (with-open-file (s afile :direction :output :if-exists :supersede)
+      (dolist (r *current-grammar*)
+	(if (nv-get-v 'INSYN r) ; a rule
+	  (mk_arule r s)
+	  (mk_entry r s))
+	(mk_keyparamend r s)))
+
+    (format t "~%File: ~A created; contains source text for ~A,~%   minus comments, empty lines, with srules converted to entries.~%" afile gname))
+  t)
+
 (defun sc_rules2mg (gname)   ;; converts arules in lisp format to monadic grammar source code
   ;(setf *random-state* (make-random-state t))
   (if (null *SC-RULES*)
