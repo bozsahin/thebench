@@ -2944,17 +2944,17 @@
   (mk_arulename_sc (nv-get-v 'INDEX r) s)       
   (format s " ~A" " ( ")
   (mk_cat (nv-get-v 'INSYN r) s)
-  (format s " : ~(~A~) " (display-lf (nv-get-v 'INSEM r)))
+  (format s " : ~{~(~A~) ~} " (display-lf (nv-get-v 'INSEM r)))
   (format s " ) --> ( ")
   (mk_cat (nv-get-v 'OUTSYN r) s)
-  (format s " : ~(~A~) ) " (display-lf (nv-get-v 'OUTSEM r))))
+  (format s " : ~{~(~A~) ~} ) " (display-lf (nv-get-v 'OUTSEM r))))
 
 (defun mk_entry (e s)
   (format s "|~(~A~)| ~(~A~) :: " 
 	  (nv-get-v 'PHON e)
 	  (nv-get-v 'MORPH e))
   (mk_cat (nv-get-v 'SYN e) s)
-  (format s " : ~(~A~) " (display-lf (nv-get-v 'SEM e))))
+  (format s " : ~{~(~A~) ~} " (display-lf (nv-get-v 'SEM e))))
 
 (defun generate_source (gname)   ;; converts arules in lisp format to monadic grammar source code
   (setf *random-state* (make-random-state t))
