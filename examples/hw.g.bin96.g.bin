@@ -1,6 +1,6 @@
 (defparameter *current-grammar* '(
 ;;;;;;;;;; bench.py-generated monadic Lisp grammar
-;;;;;;;;;; from hw.g December 25, 2022, 18:45:39
+;;;;;;;;;; from hw.g.bin96.g December 25, 2022, 18:45:54
 ;;
 ;; a rules
 ;;
@@ -21,7 +21,7 @@
 )
 (
 (KEY 483387)(PARAM 1.0)(PHON JOHN)
-(MORPH n)(SYN ((BCAT np)(FEATS ((per 3s)(lex yes)))))(SEM !john)
+(MORPH n)(SYN ((BCAT np)(FEATS ((per 3s)(lex yes)))))(SEM john)
 )
 (
 (KEY 77900)(PARAM 1.0)(PHON MARY)
@@ -29,7 +29,7 @@
 )
 (
 (KEY 913106)(PARAM 1.0)(PHON AND)
-(MORPH c)(SYN (((BCAT @x)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT @x)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT @x)(FEATS NIL)))))(SEM (LAM p (LAM q (LAM x ((!and (p x)) (q x))))))
+(MORPH c)(SYN (((BCAT @x)(FEATS NIL))(DIR FS)(MODAL ALL)(((BCAT @x)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT @x)(FEATS NIL)))))(SEM (LAM p (LAM q (LAM x ((and (p x)) (q x))))))
 )
 (
 (KEY 290757)(PARAM 1.0)(PHON STUDY)
@@ -117,7 +117,7 @@
 )
 (
 (KEY 248898)(PARAM 1.0)(PHON KICKED)
-(MORPH v)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT (the bucket))(BCONST T)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT PredP)(FEATS NIL))))(SEM (LAM p (LAM x (LAM y ((die ((euph x) y)) y)))))
+(MORPH v)(SYN (((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT (the bucket))(BCONST T)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT predp)(FEATS NIL))))(SEM (LAM p (LAM x (LAM y ((die ((euph x) y)) y)))))
 )
 ;;
 ;;;;;;;;;; end of bench.py-generated monadic Lisp grammar

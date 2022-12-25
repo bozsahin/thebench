@@ -36,9 +36,8 @@
 |handsome   | p  :: propp          : \x.handsome x;
 
 |kicked the bucked | idio  :: s\np  :\x.die pmod euphemistic x;                      % frozen expression
-|kicked     | v            :: (s\np)/'the bucket'/PredP  : \p\x\y.die pmod (euphemistic p x) y;  % singleton
 |pick up    | pv           :: iv/np          : \x\y.pick pmod culminate x y           ;       % phrasal verb. All POSs are up to you.
-|pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y) x z     ;      % separable phrasal verb
+|pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y x) x z     ;      % separable phrasal verb
 
 % relational rules (as opposed to combining rules)
 
@@ -82,3 +81,4 @@
 %  on linguistic diversity.
 % Nothing in monadic grammar depends on universal set of POS tags or universal set of basic categories.
 % There is no synthetic notion that is necessary.
+|kicked| v   :: (s\np)/'the bucket'/PredP  : \p\x\y.die (euph x y) y;  % singleton
