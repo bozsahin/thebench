@@ -2912,20 +2912,26 @@
 				   (t (mk_basic_sc (fourth syn) s))))
 	(t (mk_basic_sc syn s))))
 
-(defun mk_cat  (syn s)      
+(defun mk_cat (syn s)      
   (cond ((nv-get-v 'DIR syn) (if (nv-get-v 'DIR (first syn))
 			       (progn
 				 (format s "(")   ; complex cat
 				 (mk_cat (first syn) s)
 				 (format s  ")"))
 			       (mk_cat (first syn) s))
-			     (format s "~A" (format-dir (nv-get-v 'DIR syn) nil))   ; there is no auto-generated LEX feature
-			     (format s "~A" (format-mod (nv-get-v 'MODAL syn)))  
-			     (cond ((nv-get-v 'DIR (fourth syn))
-				    (format s "~A" "(")  ; why 4th? auto generated in seq '() DIR MODAL ()'
-				    (mk_cat (fourth syn) s)
-				    (format s "~A" ")"))
-				   (t (mk_basic_sc (fourth syn) s))))
+			     (format s "~A" (format-dir (nv-get-v 'DIR syn) (nv-get-v 'LEX syn))) 
+			     (format s "~A" (format-mod (nv-get-v 'MODAL syn)))
+			     (if (nv-get-v 'LEX syn)   ; it is either () DIR MODAL () or () DIR MODAL LEX ()
+			       (cond ((nv-get-v 'DIR (fifth syn))
+				      (format s "~A" "(")
+				      (mk_cat (fifth syn) s)
+				      (format s "~A" ")"))
+				     (t (mk_basic_sc (fifth syn) s)))
+			       (cond ((nv-get-v 'DIR (fourth syn))
+				      (format s "~A" "(")
+				      (mk_cat (fourth syn) s)
+				      (format s "~A" ")"))
+				     (t (mk_basic_sc (fourth syn) s)))))
 	(t (mk_basic_sc syn s))))
 
 (defun mk_arulename_sc (r s)
@@ -2934,27 +2940,21 @@
 (defun mk_keyparamend (r s)
   (format s "<~A, ~A>;~2%" (nv-get-v 'KEY r) (nv-get-v 'PARAM r))) 
 
-(defun mk_lambda (lf s)
-  (format s "~A" (display-lf lf nil)))
-
 (defun mk_arule (r s)
   (mk_arulename_sc (nv-get-v 'INDEX r) s)       
   (format s " ~A" " ( ")
   (mk_cat (nv-get-v 'INSYN r) s)
-  (format s " : " ) 
-  (mk_lambda (nv-get-v 'INSEM r) s)
+  (format s " : ~(~A~) " (display-lf (nv-get-v 'INSEM r)))
   (format s " ) --> ( ")
   (mk_cat (nv-get-v 'OUTSYN r) s)
-  (format s " : ")
-  (mk_lambda (nv-get-v 'OUTSEM r) s)
-  (format s " ) "))
+  (format s " : ~(~A~) ) " (display-lf (nv-get-v 'OUTSEM r))))
 
 (defun mk_entry (e s)
-  (format s "|~A| ~(~A~) :: ~A : ~(~A~)"  ;; syncat is already lowercased by mk_basic_sc 
+  (format s "|~(~A~)| ~(~A~) :: " 
 	  (nv-get-v 'PHON e)
-	  (nv-get-v 'MORPH e)
-	  (mk_cat (nv-get-v 'SYN e))
-	  (mk_lambda (nv-get-v 'SEM e))))
+	  (nv-get-v 'MORPH e))
+  (mk_cat (nv-get-v 'SYN e) s)
+  (format s " : ~(~A~) " (display-lf (nv-get-v 'SEM e))))
 
 (defun generate_source (gname)   ;; converts arules in lisp format to monadic grammar source code
   (setf *random-state* (make-random-state t))
@@ -2971,8 +2971,7 @@
 	  (mk_arule r s)
 	  (mk_entry r s))
 	(mk_keyparamend r s)))
-
-    (format t "~%File: ~A created; contains source text for ~A,~%   minus comments, empty lines, with srules converted to entries.~%" afile gname))
+    (format t "~%File: ~A created; contains source text for ~A,~%   minus comments and empty lines, with srules converted to entries.~%" afile gname))
   t)
 
 (defun sc_rules2mg (gname)   ;; converts arules in lisp format to monadic grammar source code
