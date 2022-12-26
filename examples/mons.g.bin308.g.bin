@@ -1,6 +1,6 @@
 (defparameter *current-grammar* '(
 ;;;;;;;;;; bench.py-generated monadic Lisp grammar
-;;;;;;;;;; from mons.g December 26, 2022, 08:46:02
+;;;;;;;;;; from mons.g.bin308.g December 26, 2022, 08:46:38
 ;;
 ;; a rules
 ;;
