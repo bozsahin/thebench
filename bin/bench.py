@@ -205,7 +205,7 @@ class SUPLexer(Lexer): # Token types for supervision pairs
     ignore_comment = r'\%.*'  # ignore everything starting with %
     ignore_newline = r'\n+'   # ignore empty lines
      
-    ITEM   = r'\|.*\|'                                     
+    ITEM   = r'.*\|'                                     
     BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
     ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
     CORR   = r'\:'
@@ -230,7 +230,7 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
     ignore_comment = r'\%.*'  # ignore everything starting with %
     ignore_newline = r'\n+'   # ignore empty lines
      
-    ITEM   = r'\|.*\|'                                     
+    ITEM   = r'.*\|'                                     
     SRULE  = r'\<\-\-\>'
     ARULE  = r'\-\-\>'                                            # to avoid -- becoming ID 
     SPECID = r'@[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'       # special IDs, app only
@@ -271,12 +271,12 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
         self.index += 1
 
 class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
-    #debugfile = 'lalr-sup'+ _logext
+    #debugfile = 'lalr_sup'+ _logext
     tokens = SUPLexer.tokens
 
     @_('ITEM CORR lcom CATEND t')
     def s(self, p):
-        return mk_entry_sup(p[0][1:-1], p.lcom)
+        return mk_entry_sup(p[0][0:-1], p.lcom)
 
     @_('lterm')
     def lcom(self, p):
@@ -347,7 +347,7 @@ class MGParser(Parser):       # the syntax of MG entries
         global _info, _online, _el, _form
         if not _online:
             _info['el'] += 1
-        return mk_bin(_el, mk_bin(_form, _ws.join(p[0][1:-1].split()), p.pos), p.c)
+        return mk_bin(_el, mk_bin(_form, _ws.join(p[0][0:-1].split()), p.pos), p.c)
 
     @_('ID')
     def pos(self, p):

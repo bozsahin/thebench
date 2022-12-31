@@ -11,11 +11,11 @@
 % - Information part of every entry must be terminated by ';' (i.e. before any in-line commenting on the right)
 % - Whitespacing does not matter except in quotes.
 
-|it         | n  :: xp[lex=no,per=s3]     : it;  % NB. expletive it for subject's type
-|john       | n  :: np[per=3s,lex=yes]    : !john;
-|mary       | n  :: np             : mary;
+it         | n  :: xp[lex=no,per=s3]     : it;  % NB. expletive it for subject's type
+john       | n  :: np[per=3s,lex=yes]    : !john;
+mary       | n  :: np             : mary;
 
-|and         c :: @x/(@x\@x) : \p\q\x. !and (p x) (q x); % syncategorematic
+and         c :: @x/(@x\@x) : \p\q\x. !and (p x) (q x); % syncategorematic
 
 |study      | inf  :: iv             : \x.study x;
 |persuaded  | v  :: (s\np)/vp/+np   : \x.\p.\y.persuade (p x) x y;
@@ -24,7 +24,7 @@
 |expected   | v  :: (s\np)/vp/np   : \x\p\y.expect (p x) y;
 |considered | v  :: (s\np)/propp/np: \x\p\y.consider (p x) y;
 |seemed     | v  :: (s\xp)/s       : \p\x.seem p;
-|seemed     | v  :: (s\np)/vp      : \p\x.seem (p x);
+seemed      v   (s\np)/vp      : \p\x.seem (p x);
 
 |to         | p  :: vp/iv          : \p.p;
 |have     | aux  :: iv/iv          : \p.p;
@@ -42,7 +42,7 @@
 
 % relational rules (as opposed to combining rules)
 
-#past ( run  a mile, iv:\x.run x) <--> ( km, s\np:\x.past run x); % a symmetric rule
+past ( run  a mile, iv:\x.run x) <--> ( km, s\np:\x.past run x); % a symmetric rule
 #subj (np : lt)            --> (s/(s\np):\lt\p.p lt)   ;    % an asymmetric rule
 
                                         % <--> means these two are related During parsing, we pick the one in surface form.
