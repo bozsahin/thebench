@@ -1,6 +1,6 @@
 (
 ;;;;;;;;;; bench.py-generated supervision data
-;;;;;;;;;; from tr.supervision October 21, 2022, 12:11:04
+;;;;;;;;;; from tr-supervision December 31, 2022, 09:57:12
 ;;
 (
 (cocuk kitabi okudu)
@@ -19,7 +19,7 @@
 ((read (bg book)) child)
 )
 (
-(kitabi okudu cocuk)
+(kitabi okudu         cocuk)
 ((read (fg book)) (bg child))
 )
 ;;
