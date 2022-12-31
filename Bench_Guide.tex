@@ -1,0 +1,769 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[comma]{natbib}
+\usepackage{color,changes}
+\usepackage{setspace}
+\usepackage{a4wide}
+\usepackage[nomarkers,nolists,noheads]{endfloat}
+\renewcommand{\efloatseparator}{\mbox{}}
+\usepackage{amssymb,amsmath,mathptmx}
+\usepackage{cem2e,cemcite,cgmacros2e,cgmodalities,cgmacros-jason}
+\usepackage{lingmacros}
+\usepackage{bigfoot}
+%\usepackage{algorithm}
+\newcommand{\tool}{\textsc{TheBench}}
+\newcommand{\occg}{\texttt{openCCG}}
+\renewcommand{\exf}{\emph}
+\addtolength{\textheight}{4.5cm}
+\addtolength{\topmargin}{-1.5cm}
+%\addtolength{\textwidth}{0.9cm}
+\pagestyle{myheadings}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\llabel}{--}
+\def\labelitemi{\llabel}
+\newcommand{\rds}{\ensuremath{\fs\!\fs}}
+\newcommand{\lds}{\ensuremath{\bs\!\bs}}
+\begin{document}
+\thispagestyle{empty}
+\newcommand{\keep}{\added}
+\noindent{\Large\textbf{\underline{\tool~}}}~~~\texttt{\Large Guide}\\[1ex]
+\keep{Version: 1.0~~~{\small\today}~~~~coloured text means changes from previous release}\hfill{\small Cem Boz\c{s}ahin}\\
+Home: \verb|github.com/bozsahin/thebench|\hfill {(all repos cited have the same URL prefix)}\\
+Download: \verb|git clone https://github.com/bozsahin/thebench|\hfill{\small Ankara, Dat\c{c}a, \c{S}ile 2021--23}
+\vspace*{-.5em}
+
+
+\section{Introduction}
+\tool\, is a tool to study monadic structures in natural languages, for writing grammars, exploring analyses, and training grammars for modeling.
+The monadic structures are binary combinations of elements of grammar using semantics of composition only, hence the name.
+
+The theory regarding the limits of elementary (synthetic) vocabulary and analytic structure is described in \cite{bozs:mons}. In summary,
+it is a Polish School style categorial grammar that uses composition only (i.e. application is also turned into composition). 
+It is meant to study configurationality and referentiality in one system. The configurational approach to surface structure is adopted
+from \cite{Montague73,stee:20}, and the referential approach to constructing elements is adopted from \cite{sapi:24,swad:38,Montague73,schm:18}, with the following major differences: Formally, unlike \cite{steedman00}, all analytic structures handle one dependency at a time (i.e. there is no \combs-style analytic structure), and unlike Montague grammar, predicate-argument structures are not post-analytic. Empirically, morphology and syntax do not compete for surface bracketing, morphology is not confined to the `lexicon' or to some other component, and referential differences
+in all kinds of arguments cause categorial differences. Typologically, any language-particular  difference in elementary (i.e. synthetic) vocabulary can make its way into invariant analytic structure. 
+
+\section{Basics}\label{sec:basics}
+Slash modalities are implemented (see \citealt{baldridge02,steedmanbaldridge-guide}). The examples below show raw input to \tool.\footnote{The mapping of modalities
+to those in papers is (. , .), (\verb|^|,$\diamond$), (\verb|*|,$\star$), (\verb|+|,$\times$), from \tool\,notation to CCG notation.} 
+The first three are lexical items, { and the last one is a unary  rule}. 
+
+
+\begin{tabular}{l}
+\verb|John   n := np[agr=3s] : !john ;|\\ 
+\verb|likes  v := (s\np[agr=3s])/^np : \x\y. !like x y;|\\
+\verb|and    x := (@X\*@X)/*@X : \p\q\x. !and (p x)(q x);|\\
+\verb|(L1) np[agr=?x] : lf --> s/(s\np[agr=?x]) : \lf\p. p lf ;|
+\end{tabular}\medskip
+
+\noindent Order of specifications and whitespacing are not important {except for unary rules; they apply in order. They do
+not apply to same category twice}.  {Later unary rules can see the results of earlier ones.}
+
+Structural unification plays no role in \tool\, because we want to see how far grammatical inference can be carried out by combinators. 
+Only atomic categories can carry features.
+Features are checked for
+atomic category consistency only, and no feature is passed non-locally. All features are simple, feature variables (prefixed by \verb+?+) are
+for values only, they are local to a category, and they are atomic-valued. For example, if we have the category sequence (a) below, we get
+(b) by composition, not (c). We could in principle compile all finite feature values for any basic category in a grammar and get rid of its features (but nobody does that). 
+
+(a) \verb|s[f1=?x1,f2=v2]/s[f1=?x1]  s[f1=v1,f2=?x2]/np[f2=?x2]|
+
+(b) \verb|s[f1=v1,f2=v2]/np[f2=?x2]|
+
+(c) \verb|s[f1=v1,f2=v2]/np[f2=v2]| 
+
+ 
+\noindent Meta-categories such as \cgf{(X\bs X)\fs X}, written in \tool\, as \verb+(@X\@X)/@X+, are allowed with application only,
+which maintains a very important property of \xg{CCG}: it is procedurally neutral \citep{pareschisteedman87}. Given two substantive categories and \xg{CCG}'s understanding of universal rules, there is only one way to combine them,
+so that the parser can eschew other rules for that sequent if it succeeds in one rule. For this reason, `\verb|X$|' categories that you see in CCG papers
+have not been incorporated. They would require structured unification and jeopardize procedural neutralism. What that means for \tool\, is that
+we can write \verb+(@X\@X)/@X+ kind of category, as above, or say \verb+@Y/@Y+, but we cannot write \verb+@X/(@X/NP)+ or \verb+@X/(@X/@Y)+, because
+matching \verb+(@X/NP)+ or \verb+(@X/@Y)+ to yield \verb+@X+ would require structured unification.
+
+
+No basic category is built-in to \tool.
+{Singleton categories are  supported; see \cite{bozs:18} for their syntax and semantics. They allow us to continue to avoid wrapping in verb-particle
+constructions, and render idiomatically combining expressions and phrasal idioms as simple categorial possibilities. For example, in \tool\, notation:}
+
+\begin{itemize}
+\item[(a)] \verb|picked := (s\np)/"up"/np : \x\y\z.!pick _ y x z;|
+\item[(b)] \verb|kicked := (s\np)/"the bucket" : \y\z.!die _ y z;|
+\item[(c)] \verb|spilled := (s\np)/np[h=beans,spec=p] : \y\z.!reveal _ y !secret z;|
+\end{itemize}
+{where} \verb|"up"| {and} \verb|"the bucket"| 
+{are singleton categories (i.e. surface
+strings turned into singleton category, with constant value), and} \verb|np[h=beans,spec=p]| 
+{in (c) means
+this NP must be headed by} \verb|beans|, {which makes it a special
+subcategorization, by} \verb|spec=p|, {meaning $+$special. These are not built-in features (there is no such thing in \tool).
+The underscore is just an ad hoc reminder that
+the first thing that follows is not an argument of the predicate.
+It is included here to show that LF set-up is all up to you.}
+
+Below is the output for the Latin phrase for \emph{Balbus is building the wall}. 
+{Currently there is no separate morphology component, so we have morphological case syntactically combining in the example.}
+The first column is the rule index. 
+The rest of the line is about the current step: a lexical assumption, result of a unary rule, or one step of combination, in which the combining rule is shown. This is the output of the parser in response to \verb+(p '(balb us mur um aedificat))+.
+
+{\scriptsize
+\begin{verbatim}
+Derivation 1
+--------------
+LEX   (BALB) := N
+        : BALB
+LEX   (US) := (S/(S\NP))\N
+        : (LAM X (LAM P (P X)))
+<     (BALB)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) BALB)
+LEX   (MUR) := N
+        : WALL
+LEX   (UM) := ((S\NP)/((S\NP)\NP))\N
+        : (LAM X (LAM P (P X)))
+<     (MUR)(UM) := (S\NP)/((S\NP)\NP)
+        : ((LAM X (LAM P (P X))) WALL)
+LEX   (AEDIFICAT) := (S\NP)\NP
+        : (LAM X (LAM Y ((BUILD X) Y)))
+>     (MUR UM)(AEDIFICAT) := S\NP
+        : (((LAM X (LAM P (P X))) WALL) (LAM X (LAM Y ((BUILD X) Y))))
+>     (BALB US)(MUR UM AEDIFICAT) := S
+        : (((LAM X (LAM P (P X))) BALB)
+           (((LAM X (LAM P (P X))) WALL) (LAM X (LAM Y ((BUILD X) Y)))))
+
+Final LF, normal-order evaluated:
+
+    ((BUILD WALL) BALB) =
+    (BUILD WALL BALB)
+\end{verbatim}}
+
+\noindent The parse ranking component prints associated parameter-weighted local counts of features and the final count, for verification. Every lexical entry, word or unary rule, is assigned a parameter.
+In the example below, all parameters were set to unity so that weighted counting to be described in\xref{rul:prob} below can be seen easily. The only feature is the number of times lexical items are used in a derivation. 17 is the total here.
+The example is output in response to \verb+(rank '(balb us mur um aedificat))+.
+
+{\scriptsize
+\begin{verbatim}
+Most likely LF for the input: (BALB US MUR UM AEDIFICAT)
+
+  ((BUILD WALL) BALB) =
+  (BUILD WALL BALB)
+
+Cumulative weight:  17.0
+
+Most probable derivation for it: (5 1 1)
+--------------------------------
+LEX      1.0  (BALB) := N
+        : BALB
+LEX      1.0  (US) := (S/(S\NP))\N
+        : (LAM X (LAM P (P X)))
+<        2.0  (BALB)(US) := S/(S\NP)
+        : ((LAM X (LAM P (P X))) BALB)
+LEX      1.0  (MUR) := N
+        : WALL
+LEX      1.0  (UM) := ((S\NP)/((S\NP)\NP))\N
+        : (LAM X (LAM P (P X)))
+<        2.0  (MUR)(UM) := (S\NP)/((S\NP)\NP)
+        : ((LAM X (LAM P (P X))) WALL)
+LEX      1.0  (AEDIFICAT) := (S\NP)\NP
+        : (LAM X (LAM Y ((BUILD X) Y)))
+>        3.0  (MUR UM)(AEDIFICAT) := S\NP
+        : (((LAM X (LAM P (P X))) WALL) (LAM X (LAM Y ((BUILD X) Y))))
+>       17.0  (BALB US)(MUR UM AEDIFICAT) := S
+        : (((LAM X (LAM P (P X))) BALB)
+\end{verbatim}}
+
+
+\noindent The parsing component computes all the constituents and their LFs which are derivable from lexical assumptions.
+The ranking component computes (i) the most likely LF for a given string, (ii) the most probable derivation for that LF,
+and (iii) the highest-weighted derivation for any LF for the string (not shown above for brevity).  The parsing component first generates them with unity weights (1.0) when the grammar is first compiled from \verb+.ccg+ textual form to \verb+.ccg.lisp+ compiled form. 
+Your ranking (i.e. training) component can build on that to modify  lexical parameters after parameter estimation.\footnote{There is only one compiled grammar file type, with \verb+.ccg.lisp+ extension, because of common representation.} 
+
+The algorithm for the basic training/ranking component is more or less standard  in Probabilistic \xg{CCG} (\xg{PCCG}). The one we
+use  throughout the manual is summarized from \cite{zettlemoyercollins05}:
+\begin{equation}
+\label{rul:argmax}
+\argmax_L P(L\mid S;\bar{\theta}) = \argmax_L \sum_D P(L, D\mid S;\bar{\theta})
+\end{equation}
+
+\noindent where $S$ is the sequence of words to be parsed, $L$ is a logical form for it, $D$ is a sequence of \xg{CCG} derivations for the $(L,S)$ pair, and $\bar{\theta}$
+is the $n$-dimensional parameter vector for a grammar of size $n$ (the total number of lexical items and rules).
+The term on the right-hand side is induced from the following relation of probabilities and parameters in \xg{PCCG} 
+(\emph{ibid.});\footnote{You may be alarmed by the exponentiation in formula\xref{rul:prob} potentially causing floating-point
+overflow, and may worry about what your value range should be for ${\theta}_i$ to avoid that. 
+We recommend starting with $0<\theta_i\le 1$. Keep also in mind that $\theta_i$ are not probabilities but weights.
+They can be negative. Formula\xref{rul:prob} takes care of any weight.
+}
+ where $\bar{f}$ is a vector of 3-argument functions <${f}_1(L,D,S),\cdots {f}_n(L,D,S)$>:
+\begin{equation}
+\label{rul:prob}
+ P(L,D\mid S;\bar{\theta}) = {\displaystyle\dfrac{e^{\bar{f}(L, D, S)\cdot\bar{\theta}}}
+{\sum\limits_{L}\sum\limits_{D} e^{\bar{f}(L, D, S)\cdot\bar{\theta}}}}
+\end{equation}
+
+ 
+\noindent The functions of $\bar{f}$ count local substructure in $D$. By default, ${f}_i$ is the number of times the lexical element   $i$ (item or rule) is used in $D$. If you want to count other substructures in $D$  or $L$, as in \cite{clar:03}, you need to write some code.\footnote{A plug-in is provided, called \verb+plugin-count-more-substructure+.
+That was one motivation for giving detailed specs. There is a growing body of literature on the topic, starting with
+Clark and Curran.}
+
+\tool\,is Lisp code in three layers, Paul \citealt{grah:94}-style: (i) the representational layer, which is based on \verb|(name value)| pairs, and lists of such pairs; (ii) the parsing layer, which is based on hash tables and the representation layer; and (iii) the post-parsing layer, which is based
+on $\lambda$-calculus and the parsing layer, which is used for checking LF equivalence.\footnote{This layer
+is post-parsing in the sense that although parsing builds an LF at every step, it does not reduce it till the very end. Therefore
+unevaluated LFs of \tool\,are available for exploration.}
+Combinators are Lisp macros on the last layer.
+Because our lambda layer has nothing to do with Lisp's lambdas (the internals of LFs are always visible), you can use the top layer as a debugging tool for your LF assumptions. It has two LF evaluators: normal-order and applicative-order.
+If they do not return the same LF on the same parse result, then there is something strange about your LF.\footnote{It doesn't
+follow that your LF is correct if both evaluations return the same result. If it did, we wouldn't need  empirical sciences
+like linguistics and cognitive science.
+Your categories, and derivations with them,
+can tell you more.}
+
+\section{\tool\,file types}
+We recommend  a separate directory for each project to keep things clean.
+\tool\,will need several files in the working directory to set up a \xg{CCG} grammar or a model.
+Many of them would be depending on need.
+
+By a grammar
+we mean a set of \xg{CCG} assumptions like the one in \S\ref{sec:basics} which you want to subject to \xg{CCG}'s universal combinatorics.
+By a model we mean a version of the grammar which you've subjected to empirical training and parameter
+estimation, results of which you want to subject to \xg{CCG}'s universal combinatorics. They have the same format.
+
+A project say with name $P$ will probably consist of the following files (we explain their format in \S\ref{sec:formats}):
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\item $P$\verb|.ccg| : The \xg{CCG} grammar as text file. You write this one.
+\item $P$\verb+.ccg.lisp+ : The Lisp translation of the $P$\verb+.ccg+ file. This file is generated when
+you call \verb+mlg+ function. This is the file  used when you parse and rank expressions.
+It is the file  whose parameters can be subjected to training. {Unless you call} \verb+mlg+ {again or overwrite this file yourself, this file is untouched by the system. The trainer keeps the trained grammar in memory until you save the results by calling} \verb+save-training+.\footnote{Legacy file types such as \verb+.ded+ and \verb+.ind+ are deprecated. If you have them, and spent a lot of effort
+developing, just rename them with \verb+.ccg.lisp+ extension for current use.}
+
+\item $P$\verb|.sup| : The supervision file in native format (optional). This is the training data for \xg{PCCG} parameter estimation. It consists of expression-LF pairs in a list. Syntax and derivations are hidden variables in \xg{PCCG}, and training is done solely on expression-LF pairs. 
+{These LFs are binarized in the native format. The lambda layer wants that.}
+Here is an example native \verb+.sup+ file:
+{\scriptsize\begin{verbatim}
+(
+((JOHN PERSUADED MARY TO BUY THE CAR) (((("PERSUADE" (("BUY" ("DEF" "CAR")) "MARY")) "MARY") "JOHN")))
+)
+\end{verbatim}}
+
+\item $P$\verb|.supervision| : {A simpler way to create the} \verb|.sup| file (optional). Content is semicolon-separated
+sequence of training pairs such as below.  
+
+~~~~~{\texttt{words:lf};}
+
+where words are space-separated, and lf is as parenthesis-free as it can be.
+Such LFs are much easier to write (and less error prone),  unless you are a parenthesis monster. {\tool\,will do the conversion
+to curried LFs, i.e. put lots of parentheses. The trainer works on native LFs like those in} \verb+.sup+.
+\end{itemize}
+Here is the \verb+.supervision+ file you can write to get the \verb+.sup+ file above by calling \verb+make-supervision+
+{\scriptsize\begin{verbatim}
+       JOHN PERSUADED MARY TO BUY THE CAR : !PERSUADE (!BUY (!DEF !CAR) !MARY) !MARY !JOHN ;
+\end{verbatim}}
+
+{Only these files are checked by \tool\,for their existence and well-formedness. If you are a grammarian, all you need is}
+\verb+.ccg+ {to create} \verb+.ccg.lisp+. {If you are a modeler, you will also need}  \verb+.sup+. 
+
+
+\section{Workflows}\label{sec:workflows}
+There are basically two workflows. Model {development} cannot be fully worflowed, so it's harder.\footnote{Grammar {development}
+cannot be fully workflowed either, but that's another story. Beware of claims to the contrary. This is good for business,
+for us grammarians.}
+In the cases below, the Lisp parts must be done after you launch \tool. The \verb+README.md+ file in the repository explains how. 
+
+\subsection{Grammar development and testing}
+If you start with a linguistically-motivated grammar, you'd probably take the following steps. Let's assume your project's name
+is \verb|example|:
+
+\begin{tabular}{ll}
+1. & In your working directory, write your grammar and save it as plain text e.g. \verb|example.ccg|\\
+{2.}  & In \tool\, do  \verb|(make-and-load-grammar "example")| \\ & This means
+Lisp tokens will be generated by \verb|tokens| bash script from within Lisp. \\
+& This step prepares the \verb|example.ccg.lisp| file and loads it onto Lisp.\\ 
+&{If you update your \verb+example.ccg+ source you must re-make the grammar.
+Short form is \verb+mlg+}.\\
+3. & Do: \verb|(p '(a sequence of words))| to run the  parser. \\
+& Replace \verb|p| function with \verb|rank| to run the parse-ranker.\\
+4. & Do: \verb|(ders)| to see all the derivations, or \verb|(probs)| to see ranked parses.\\
+    & {You can restrict the display to some results only, by using this function as}\\
+    & \verb|(ders <bcat>)|,
+     {where} \verb|<bcat>| {is a basic category. Calculations will be done}\\
+&     {with all available results, but only derivations onto \verb+<bcat>+ will be shown.}\\
+& Run \verb|(cky-pprint)| to see the \xg{CKY} table.
+It prints good  detail for debugging.
+\end{tabular}
+
+\noindent If there are errors in your grammar file, step 2  will fail to make/load the grammar, and you'd need to go back to editing \verb|example.ccg| to fix it.
+Partially-generated \verb|example.ccg.lisp| will tell you where the \emph{first error} was found, so multiple errors are caught one by one (sorry). 
+
+\subsection{Model testing}\label{sec:models}
+At some point, you may turn to modeling. {It usually means taking the} \verb|example.ccg.lisp| {file and  adjusting its parameters (because they were set to default in file creation) by parameter estimation, and playing with its
+categories.} \keep{Keep in mind that parameters are weights, not probabilities.}
+
+Model training is not easy to reduce to a standard workflow  because it depends on what your model is intended to do (whereas
+we all know what a grammar is supposed to do---get to semantics). \tool\,helps with the basics (by having weights associated with every lexical element), to compute (\ref{rul:argmax}--\ref{rul:prob}) and other formulae such as
+(\ref{eq:ml}--\ref{eq:loop}), to be explained soon.
+
+In the end, you  create an \verb|example.ccg.lisp| file in the same format that you started. This means that every lexical entry (lexical item or unary rule) is associated with a parameter. This is the minimum. If you have more parameters, you must
+write some code above the minimal machinery provided by \tool\,to change training. The model testing workflow is:
+\begin{enumerate}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt} 
+\item In \tool, do: \verb|(load-grammar "example")| 
+\par {This will load the grammar in} \verb|example.ccg.lisp|
+{along with its parameter set.}
+\item Do: \verb|(rank '(a sequence of words))| to parse then rank the parses.
+\item Do: \verb|(probs)| to see three results for the input: (i) most likely LF for it, (ii) its most likely derivation, and (iii) most likely derivation for any LF for the input. You can also do \verb|(cky-pprint)| to see the \xg{CKY} table. 
+If you like, do \verb|(ders)|, for display without ranking. It does not recompute anything.
+\end{enumerate}
+
+{There is an on/off switch to control what to do with out-of-vocabulary (OOV) items. If you turn it on (see Table~\ref{tab:ref}), it will create two lexical entries
+with categories} \cgf{X\bstars X} {and} \cgf{X\fstars X} {for every unknown item so that the rest can be parsed along with the unknown items as much as it is possible with application. This much
+knowledge-poor strategy is automated.}
+{Their LFs are the same: $\lambda p.\so{unknown}\,p$. In training it seems best to keep the switch off so that OOV items are complained about by \tool\,for model debugging; in testing wide-coverage parsers
+might opt to switch it on (no promises).}
+
+\subsection{Model development: parameter estimation}\label{sec:develop}
+
+Parameters of a \verb|.ccg.lisp| file can be re-estimated from training data of $(L_i,S_i)$ pairs where $L_i$ is the logical form associated with sentence $S_i$. The log-likelihood of the training data of size $n$ is:
+
+\begin{equation}\label{eq:ml}
+O(\bar{\theta}) = \sum_{i=1}^{n} log\,P(L_i\mid S_i; \bar{\theta})=\sum_{i=1}^{n} log\,(\sum_T P(L_i, T\mid S_i; \bar{\theta}))
+\end{equation}
+Notice that syntax is marginalized by summing over all derivations $T$ of $(L_i,S_i)$. 
+
+For individual parameters we look at the partial derivative of\xref{eq:ml} with respect to parameter $\theta_j$. The local
+gradient of $\theta_j$ with feature $f_j$ for the training pair $(L_i,S_i)$ is the difference of two expected values:
+\begin{equation}\label{eq:perpair}
+\dfrac{\partial O_i}{\partial\theta_j}= E_{f_j(L_i,T,S_i)} -
+E_{f_j(L,T,S_i)}
+\end{equation}
+
+The gradient will be negative if  feature $f_j$ contributes more to any parse than it does to the correct parses of $(L_i,S_i)$.
+It will be zero if all parses are correct, and positive otherwise.
+Expected values of $f_j$ are therefore calculated under the distributions $P(T\mid S_i,L_i; \bar{\theta})$ and $P(L,T\mid S_i; \bar{\theta})$.
+For the overall training set, using sums, the partial derivative is:
+\begin{equation}\label{eq:turev}
+\dfrac{\partial O}{\partial\theta_j}=\sum_{i=1}^{n}\sum_{T} f_j(L_i,T,S_i) P(T\mid S_i,L_i; \bar{\theta})-
+\sum_{i=1}^{n}\sum_{L}\sum_{T} f_j(L,T,S_i) P(L,T\mid S_i; \bar{\theta})
+\end{equation}
+Once we have the derivative, we use stochastic gradient ascent to re-estimate the parameters:
+\begin{flalign}\label{eq:loop}\mbox{Initialize\ } \bar{\theta}& \mbox{\rm\  to some value.}&\end{flalign}\vskip -1ex
+
+\noindent for $k= 0 \cdots N-1$
+
+\noindent~~~~for $i= 1 \cdots n$
+
+\noindent~~~~~~~~~~$\bar{\theta} = \bar{\theta} + \dfrac{\alpha_0}{1+c(i+kn)} \dfrac{\partial log\,P(L_i|S_i; \bar{\theta})}
+{\partial \bar{\theta}}$\medskip
+
+\noindent where $N$ is the number of passes over the training set, $n$ is the training set size, and $\alpha_0$ and $c$ are learning-rate parameters
+(learning rate and learning rate rate). The function \verb|update-model| computes\xref{eq:loop} by taking these as arguments.
+We use the inside-outside algorithm, that is, non-zero counts are found before the loop above, and the rest is eschewed. { Both formulae can be beam-searched to make large models with long training feasible. You can turn it off (default) to see the complete update of the gradient---prepare for a long wait
+in a large model.}
+
+This is gradient \emph{ascent}, so initialize $\bar{\theta}$ accordingly. {You can standardize them as z-scores, if you like.}
+{It is very useful for developing models, to keep them away from floating-point over/underflow.}
+The partial derivative in\xref{eq:loop} is $\dfrac{\partial O_i}{\partial\bar{\theta}}$, for the training pair $i$, i.e. without the 
+outermost sums in\xref{eq:turev}. It is what \verb|update-model| computes first, then\xref{eq:loop}.
+
+
+{For example we can use the following workflow for model update:}
+
+\begin{tabular}{ll}
+1.  & \verb|(make-supervision "example"))| \\ &
+The file \verb+example.sup+ will be generated from \verb+example.supervision+. \\
+2. & \verb|(lg "example")| \\
+& \verb+example.ccg.lisp+ will be loaded. \verb+lg+ is same as \verb+load-grammar+.\\
+3. & \verb+(um "example" 10 1.0 1.0)+ \hfill \verb+um+ is same as \verb+update-model+\\
+& updates the currently loaded grammar. The learning parameters are provided.\\
+4. & \verb+(show-training)+\hfill shows training.\\
+5. & \verb+(save-training "new-model")+\hfill saves training in \verb+new-model.ccg.lisp+.\\
+6. & \verb|(lg "new-model")|\\
+&  loads the file \verb|new-model.ccg.lisp| just saved. Now you can parse and rank with it.\\
+\end{tabular}
+
+
+
+{There is also a version of gradient update based on extrapolation. {To use it, call }
+\verb+update-model-xp+ and \verb+show-training-xp+ {at steps 3 and 4, respectively. Eliminate iteration count (10 in step 3) from learning parameters.}
+It runs  fixed number of iterations (currently four) and extrapolates from there.
+The limits it finds usually fall between the kind of numbers you get with 6--10 iterations, which is quite handy for the  development cycle. 
+
+
+\subsection{A compiler for type-raising}
+{You can manually set up your type-raising system. You can also use the compiler for that. For best results, remove the hand-written type-raising rules from your grammar first before using the compiler.}
+
+{The compiler goes over all the argument-takers you have specified by identifying them from their POS tags. For each one, for its outermost argument, it generates
+the type-raised type. For example for the verbal category \cgf{(S\bs NP)\fs NP}, it will take the `\fs\cgf{NP}' and raise it to \cgf{(S\bs NP)\bs((S\bs NP)\fs NP)}, because of its directionality. For \cgf{S\bs NP}, it will take the `\bs\cgf{NP}' and generate
+\cgf{S\fs(S\bs NP)}.
+The semantics is always the same: $\lambda p.p\,\so{a}$ for some argument \so{a}.}
+
+{It creates lots of rules, some of which may be redundant, because many verbs share the same argument structure if they happen to be in the same morpholexical class (valency, case, agreement, etc.). A rule subsumer then goes over these automatically-generated rules
+and finds a smaller set.}
+
+An example workflow is:
+
+\begin{tabular}{ll}
+1.  & \verb|(mlg "example")| \\ &
+The file \verb+example.ccg.lisp+ will be generated from \verb+example.ccg+. \\
+2. & \verb+(tr "example" '(iv tv))+\\
+& loads \verb+example.ccg.lisp+ and applies type-raising to all functions with POS tags \verb+iv+ and \verb+tv+.\\
+3. & \verb+(mergesave-tr "example-tr")+\\
+& Saves the compiled and subsumed type-raising rules along with current grammar.\\
+4. & \verb+(lg "example-tr")+\hfill loads the file just saved, which is
+\verb+example-tr.ccg.lisp+.\\
+\end{tabular}\medskip
+
+Now you can parse/rank with type-raising unary rules in the grammar. {Step 2 creates a log of warnings. Warnings are about raising a non-basic type or having no argument to raise.}
+
+\section{\tool\,representations}\label{sec:formats}
+
+The first subsection of this section is for everyone. Others may be relevant to developers and modelers.
+
+\subsection{\texttt{.ccg} file format}
+Here is an example textual input to \tool, typed by me.
+
+{\footnotesize\begin{verbatim}
+% a mini CCG grammar in CCGlab
+
+mur n := N : !wall;
+um aff := ((s\np[case=nom])/((s\np[case=nom])\np[case=acc]))\n : \x\p.p x;
+balb n := N : !balb;
+us aff := (s/(s\np[case=nom]))\n : \x\p.p x;   % manually value-raising the input N
+aedificat v := s\np[case=nom]\np[case=acc] : \x\y.!build x y;
+\end{verbatim}}
+
+\noindent A file of this type defines lexical items and unary rules in Steedman style, with the following  amendments
+(stylistic ones are marked with `\llabel', not-so-stylistic ones  with `$\star$'):
+\begin{itemize}
+\setlength{\itemsep}{1pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt} 
+\item  `\verb|;|'  is the terminator of a lexical specification. It is required. Each spec must start on a new line. It can span more than one line.
+\item  `\verb|-->|' is the unary rule marker. Keep in mind that unary rules
+of CCG are not necessarily lexical rules.
+\item[$\star$] {Unary rules take an LF on the left in one fell swoop and
+do something with it on the right. That means you have to have a
+lambda for the same placeholder \emph{first} on the right to make it functional}. Here is an example (manually type raising by a unary rule):
+
+\verb|(L1) np[agr=?x] : lf --> s/(s\np[agr=?x]) : \lf\p. p lf ;|
+
+{Here is another one (verb raising to take adjuncts as arguments):}
+
+\verb|(d-shift) vp : lf --> vp/(vp\vp) : \lf\q. q lf;|
+
+\item[$\star$]  A part-of-speech tag comes before `\verb|:=|'. Its value is up to you.
+(This is the only way \xg{CCG} can tell whether e.g \cgf{(S\bs NP)\fs(S\bs NP)} can be a verb---say `want'---rather than an adjunct,
+which is crucial for type-raising.) {Type-raising compiler finds verbs through the verbal POS tags.}
+\item[$\star$] Special categories are pseudo-atomic. They start with \verb|@|, e.g. \verb|@X|. They must be lexically headed, and they must be across the board in a category. For example,
+\verb|and := (@X\*@X)/*@X:..| is fine but \verb|so := (@X/*@Y)/*(@X/*@Y):..| is not. 
+\verb|And := (S\*NP)/*@X:..|
+is bad too. {They do not have extra features apart from
+what is inside the @\verb+X+s, which are imposed in term match.}
+We therefore avoid---once again---the need for structured unification.
+\item[$\star$] If you use an \verb|@X| category in a unary rule, it will be treated as an ordinary category (so don't).
+\item Non-variables in LF must be Lisp strings, or they must be prefixed by \verb+!+ to avoid evaluation by Lisp. Write \so{hit} as \verb|!hit|. It will be converted to the Lisp string constant \verb|"hit"| by a Lisp reader macro. \keep{Using non-alphabetic symbols in these LF constants produces unpredictable string matching performance.}
+\item[$\star$] Avoid names for LF variables that start with the special symbol `\verb|&|'. Combinators use it.
+The only exception is the identity combinator, \verb|&i|, which you may need in an LF when a functor subcategorizes
+for a type-raised argument rather than the argument itself.\footnote{\label{fn:i}An example of this formal need can be given as follows.
+Suppose that we want to subcategorize for a type-raised NP, e.g. $f$ := \cgf{S\fs(S\fs(S\bs NP))}$\colon \lambda p.\so{f} (p (\lambda x.x))$. Type-raised arguments are universally $\lambda p.p\,\so{a}$, so an argument could be e.g. $a$ := \cgf{S\fs(S\bs NP)}$\colon
+\lambda p.p\,\so{a}$. Application of $f$ to $a$ would be odd if we didn't have $\lambda x.x$ inside the LF of $f$,
+because $f$ seems to be claiming---by its syntactic category---that its predicate-argument structure is \so{f}\so{a}, not $\so{f}(\lambda p.p \so{a})$.}
+The `\verb|tokens|' script converts your \verb|&i| to \verb|(LAM x x)|.
+\item[$\star$] {The double slash has been implemented.
+In \cgf{X\rds Y~~Y} and \cgf{Y~~X\lds Y}, \cgf{Y} must be lexical to succeed.
+The modality of \lds\,and \rds\,is always application only.
+The result \cgf{X} is assumed to be lexical too.}
+\item Phonological strings that span more than one word must be double-quoted. You must use them as such
+in your parse string as well. The contents of a string are not capitalized
+by the Lisp reader whereas everything else is made case-insensitive, which must be kept in mind. 
+\keep{The tokenizer does not transform a string constant if its starts at the beginning of a line, and skips the rest of the line for case conversion etc. We recommend writing string-type phonological values in a line of their own. Spacing and spanning multiple lines for an entry aren't important in \tool, so it should not be a problem.}
+\item Features need names. The basic categories in \cgf{\cgs{S}{fin}\fs(\cgs{S}{fin}\bs\cgs{NP}{3s})}
+could be \verb|s[type=fin]| and \verb|np[agr=3s]|. Order of features is not important if you have more than one.
+They must be comma-separated.
+\item Capitalization is not important for names, unless they are in a string constant. This is also true of atomic categories, feature names, and values. \verb|NP| is same as \verb|np|. Lisp does capitalization, not \tool.
+\item Comments start with `\verb|%|'. The rest of the line is ignored.
+\item[$\star$] {Because \tool\,knows nothing about non-lambda internal abstractions 
+such as the} \verb|x| {in the logical form} \verb|\p\q.(!forall x)(!implies (p x)(q x))|, {it cannot alpha-normalize them to rename} \verb|x| {to something unique. This opens ways to accidental variable
+capture if some \tool\,combinator happens to abstract over the same variable, say $\lambda x.f(gx)$ for
+composition. We wouldn't want this $x$ to replace the} LF \verb|x|. If you intend to
+reduce \verb|(q x)| {to substitute for some lambda in} \verb|q| {via} \verb|x|, {
+you must abstract over it to ensure alpha-normalization; say} \verb|\p\q\x.(!forall x)(!implies (p x)(q x)).| {Assuming that} \verb|x| {is not a syntactic variable but} \verb|p,q| {are, it will
+substitute the variable in} \verb|p,q| {and keep the} \verb|(!forall x)|. {If this is not what is intended, then use a naming convention for non-lambda variables which will not clash with \tool\,variables.
+Doubling the name as} \verb|xx| {is my convention, e.g.} \verb|\p\q.(!forall xx)(!implies (p xx)(q xx).|
+{Prefixing or postfixing the variable with an underscore is also a safe convention.
+Prefixing it with} \verb|&| { is not. Combinators use this convention}.
+\end{itemize}
+
+\noindent The rules for lexical specifications are given in Table~\ref{fig:ccg}. They are used by the \textsc{lalr} parser,
+which converts the system-generated \verb|.lisptokens| version of a textual grammar to \verb|.ccg.lisp|. You will notice
+that lambdas can be grouped together, or written separately. Both $\lambda x\lambda y.\so{hit}xy$
+and $\lambda x.\lambda y.\so{hit}xy$ are fine, and mean the same thing. As standard, \xg{CCG} slashes and sequencing in the body of an LF are left-associative, and lambda binding is right-associative. 
+
+All LF bodies will be curried internally.
+For example, you can write `\verb|\x\y\z.!give x y z|' in the \verb|.ccg| file for convenience. It will be converted
+to `\verb|\x\y\z.((!give x) y)z|'. Beta normalizer wants that.
+
+
+
+\subsection{\texttt{.ccg.lisp} file format}
+
+These files are lists of \verb|(name value)| pair lists bound to the global variable called \verb|*ccg-grammar*|. We chose
+such pairs because Lisp's usual choice for such simple mappings, association lists, are difficult to 
+read.\footnote{In Lisp terminology an association-list is \texttt{(name.value)}, rather than \texttt{(name value)}. 
+It is easy to feel annoyed when there are too many of these `\texttt{.}' to look at. Since we do sequential search only during pre-parsing, efficiency is not the concern here; legibility is. In Lisp, \texttt{rest} returns the value of an association pair, whereas \texttt{second} returns the value of a name-value pair.} 
+Table~\ref{fig:ded} describes the format.
+For \tool, the order is not important in these lists because the names are unique.
+
+
+
+\subsection{\texttt{.sup} {and \texttt{.supervision} file formats}}\label{sec:sup}
+These are the supervision files for training. The {\texttt{.sup} is the native format, which is difficult to type
+because LFs must be curried.
+You can get it from the \texttt{.supervision} file which does that for you, which has the syntax of line-separated
+specs of the form}
+
+\textbf{data : lf ;} 
+
+\noindent{where
+each \texttt{lf} has the same format as in \texttt{.ccg} file. {The repository} \verb|ccglab-database| {has examples.}
+
+\subsection{The logical form's form}\label{sec:lf}
+All internally translated LFs are curried. Your LFs in \verb|.ccg| and \verb|.supervision| files are curried automatically by the system. In fact, it is best in these source files if you leave
+currying the second type of lambda terms below to the system; just write \verb|(((a b)c)d)| as \verb|a b c d|.
+Lambda is not Lisp's `\verb|lambda|'. Formally, the mapping from $\lambda$-calculus 
+to \tool's LFs is:\footnote{This layer is added so that you can see
+the inside of reduced lambdas. Lisp compilers implement and display closures differently;
+so there is no guarantee that native \texttt{lambda} 
+is transparent. Normal-order evaluation of LFs is done at this layer.}
+
+\begin{tabular}[t]{lll}
+$x$ or $c$ & $\rightarrow$ & Lisp symbol or constant\\
+$(e\,\,e)$ & $\rightarrow$ & \verb|(e e)|\\
+$\lambda x.e$ & $\rightarrow$ & \verb|(lam x e)|
+\end{tabular}
+
+
+\noindent{You can see from Table~\ref{fig:ccg}'s non-terminal called `$l\!f$' that \tool's LFs can have inner lambdas.
+In the source files} \verb|.ccg| {and} \verb|.supervision|, {lambda bindings can be grouped, anywhere in the LF, 
+with one dot. Or they can be written one lambda at a time before each dot.
+Therefore any lambda-term can be LF, which means you have to watch out for non-termination. This is an extension from
+earlier ``supercombinator'' LFs so that training can be done on more complex LFs depending on task.}
+
+\subsection{Parser's representations}
+All parser objects are converted to hash tables during parsing and training.  \textsc{Common Lisp}'s hash tables
+are expressive devices. They do not support hash collision or chaining (we like them this way), and the keys can be anything, even a function or another hash table. We harness this property.
+Unlike association lists, access to a key's value does not involve search, e.g. formula~(\ref{rul:argmax}) is computed without
+search because beta-normalized LF is the key for that formula's table. When you have Catalan number of
+potential logical forms to check, you'll appreciate this property.
+(We employ alpha-equivalence of lambda-calculus in counting different LFs.) 
+
+There are five kinds of hash tables in \tool. Table~\ref{fig:ex} shows example snapshots during parsing.
+Their keys and structure are explained in Table~\ref{tab:hashtables}.
+
+
+
+
+
+\subsection{How \tool's term unification works}
+{First we re-iterate that there is no re-entrant unification in \tool. Term unification is used for category matching. Its details may be useful to developers, so here is how it works.}
+
+Assume the following projection rule for CCG, viz. substitution. 
+
+{\cgf{(X\fs Y)\fs Z}~~\cgf{Y\fs Z}~~$\rightarrow$ \cgf{X\fs Z}}
+
+\noindent There are two \cgf{Y}'s to match in the rule, and two \cgf{Z}'s, to project by this rule.
+Notice that \cgf{Z} is passed on, and \cgf{Y} match is needed to see if rule's conditions are satisfied, so that
+we can project its unique semantics, viz. $\lambda x.fx(gx)$ where $f$ is semantics of the first element, and $g$ is that of second.
+
+
+{In each one of these matches function} \verb|cat-match| {creates a binding list of features in these categories, one on each category, so there are
+four of these binding lists (for first Y, second Y, first Z, second Z). These are required because some features may have variable value, which are always atomic; for example
+} \verb|Y[agr=3s,pers=?p]|, {where `pers' has a variable value. These features can be used in other parts of the input category, say by X and Z on the first input category, and by Z
+in the second. To obtain the result, these binding lists are reflected on other parts of the input \emph{locally}, by function} \verb|realize-binds|.
+
+{For example, the following input to the rule above produces the righthand side below, where `pol' feature's value from the second element
+ is not in the binding list, so continues to be a variable in the projection of the first element; whereas `agr' feature of S is now `3s' because this is now the value of `?a'
+ variable, and it is in the binding list of the NP in the first element. The NP in the result carries bindings of two input NPs because both elements use the NP (Z in the rule).}
+ 
+\noindent\verb|S[pol=?p,agr=?a]/VP[type=inf]/NP[case=nom,agr=?a]   VP[pol=pos]/NP[case=?c,agr=3s]|
+ 
+ \verb|--> S[pol=?p,agr=3s]/NP[case=nom,agr=3s]|
+
+{Therefore, if a feature is not in the binding list, it will not be valued in the elements projected if it has a variable feature. The example (c) in \S\ref{sec:basics} shows
+what is at stake if we begin to project things that were not involved in the category match. The first elements of (a)'s `f2' feature has nothing to do with second
+element's `f2' feature, therefore both get locally projected, as in (b).}
+
+{As a rule, bindings of the first element are reflected on the projected parts of the first element; bindings of second element are reflected on the projected
+parts of the second element; and, bindings of both elements are reflected on the projected common element.}
+
+{This is the main reason for abundance of fresh hash tables at run-time, where results are kept as such for speed.
+All projected valuations can be unique to a particular rule use, hence need a fresh copy of results.}
+
+\section{Top-level functions, and names to watch out for}\label{sec:functions}
+The basic parsing  functions were explained in \S\ref{sec:workflows}. Others are quite useful for grammar development and testing. A more
+comprehensive list is provided in Table~\ref{tab:ref}. The code
+includes commentary to make use of them and others. All \tool\,functions are callable if you know
+what you're doing.
+
+{The names of all the features  and hash table keys listed in Tables~\ref{fig:ded} through \ref{tab:hashtables} are considered reserved names by the system.
+{You will get a warning message from} \verb+make-and-load-grammar+ {if you use them in your} \verb+.ccg+ file.
+Using them as a basic category feature results in unpredictable behavior. For example, if you use \xg{ARG} as a feature, the system might crash
+because it expects such features in right places to be hash-valued at parse time.}
+
+\section{{\tool\,in the large}}
+Two aspects will interact to build a feasible model space: data/experiment space, and solution space. Solution space is reflected in the size of CKY parse tables. This size is controlled by the slash modalities (more liberal slashes, more analyses), beam search over solutions (on/off), and normal form parsing (on/off). A balancing act is usually called for. For data space we comment later about using multiple processors. 
+
+
+{Some comments on public
+{\sc Common Lisp}s for their suitability for large-scale development:}
+So far SBCL has proven itself for this task. First, it compiles all Lisp code by default.
+More importantly, although CCL has a dynamically growing heap, its implementation
+of \texttt{sort} is \emph{very} slow compared to SBCL, and it is a commonly used function. Neither SBCL nor CCL are known for their blizzard hash table speeds, and their minimum
+hash table sizes are a bit annoying (because some of the hash tables we use have small number of keys), but at least they are transparent because they are type-complete and collision-free. Non-ANSI Common Lisps are not compatible with \tool.
+
+\subsection{The beam}
+Beam search is possible to re-estimate the parameters in the inside-outside algorithm in a shorter amount of time. 
+There is a switch to control it.
+Number
+of CCG derivations can grow up to Catalan numbers on input size if left unconstrained. Beam is one way to constrain it. By default it is off.
+
+Sort is essential to the beam. We use the formula
+$n^b$, where $0 \leq b\leq 1$.
+The $n$ here is the number of parses of the current input.
+For example $b=.9$ eliminates very few analyses if $n$ is small, large amounts when it's large.
+Before you play with the beam system ($b$ value and its on/off switch), I'd suggest you experiment with learning  parameters
+$N,n,\alpha_0,c$ in\xref{eq:loop} and the extrapolator.
+
+\subsection{Heap and garbage collection}
+{One easy way to get the best of both worlds of fast sort and big heap is to adjust the \texttt{CCGLAB\_LISP} variable
+after install. For example, if you do the following before running \tool, it will set SBCL's heap to 6GB.}\medskip
+
+\verb|export CCGLAB_LISP='/usr/bin/sbcl --noinform --dynamic-space-size 6000'|\medskip
+
+\noindent{CCL won't give you trouble in long training sessions; it won't go out of memory. {You have to check whether it is doing
+useful work rather than garbage-collecting or thrashing.}
+SBCL gives you two options if you use too much memory: (i) recompile SBCL or 
+(ii) increase maximum memory {maps} with e.g. \texttt{'sudo echo 262144 > /proc/sys/vm/max\_map\_count'}. The second option seems to work well without recompile}}.\footnote{{If you get permission errors even with {sudo}
+try this:} \texttt{'echo 262144 | sudo tee /proc/sys/vm/max\_map\_count'}.} {This is the number of maps, not memory size.}
+
+
+{One way to avoid excessive garbage collection is increasing its cycle limit, which is 51MB by default in SBCL. Making it too big
+may be counterproductive.}
+
+\subsection{{Normal-form parsing}}
+{Normal Form (NF) parsing is an option to reduce
+the number of LF-equivalent parses substantially. We use the method by
+\cite{eisner96} which eliminates them at its syntactic source, rather than generate-and-test the LFs. This means that once turned on non-normal parses won't make it into the CKY table
+to effect the lexical counts, which must be kept in mind in models and training.
+NF parse option is available both in parsing and ranking modes.
+There is one switch to control is behavior, listed  in Table~\ref{tab:ref}.}
+
+{NF parse is not recommended if you are exploring surface constituency in all its aspects, especially phonology; but, it is very practical for modeling
+and parameter re-estimation. It can be used
+in conjunction with beam search to reduce the calculations of the inside-outside
+algorithm even more.}
+
+{Unary rules and type-raising do not combine, therefore
+any ``redundancy'' caused by them in the derivations is not eliminated by NF tags; see
+Eisner's paper for explanation. Moreover, \tool's unary rules are not necessarily lexical; they can apply to the result of a derivation. Because they change the input syntactic type and/or LF, we start with a fresh lexical tag (called `OT' in Eisner paper) for the output
+of the rule.}
+
+\subsection{Training on large datasets}
+Parsing after training is  fast. Type-raising can change that if there are too many rules to apply.\footnote{How many is too many? something around 1,000 seems somewhat noticeable, half of  that hardly noticeable, more than 5,000 needs coffee break, or maybe taking over a processor farm.}
+
+{In any case you need
+all the help you can get in training. 
+{A bash script named} \verb|train-sbcl-multithread| {is available in the repository to run various experiments simultaneously if you have multicore support. It reads all the arguments to}
+\verb|trainer-sbcl| {from a file, each experiment fully
+specified on a separate line, requests as many processors as experiments, and calls them using}  \verb|xargs| {command of linux. It does not make use of SBCL's multi-threading; all of this is done on command line. Each experiment
+in multi-thread case is individually} \verb|nohupp|\emph{ed}; that is, they are immune to hangups and logouts \keep{(but not to control-D; let the terminal process die rather than control-D it)}.
+
+Here is one example of an experiment file, \verb+g1.exp+:
+\begin{verbatim}
+7000 4000 g1 t xp 1.2 1.0 train-basic-xp basic-ccg
+4000 2000 g1 t 10 0.5 1.0 train-10
+\end{verbatim}
+
+You would run it as: \verb+train-sbcl-multithread g1.exp+.
+
+It will fetch two processors, one using 7GB of RAM 	in which 4GB is heap, the other with 4GB RAM and 2GB of heap, loads \verb+g1.ccg.lisp+ and \verb+g1.sup+ in both cases, saves the result of training
+because of \verb+t+ (specify \verb+nil+ if you don't want to save the trained grammar). The rest are training parameters: \verb+xp+ means
+use the extrapolator. The second experiment does not extrapolate; it iterates 10 times. Then comes learning rate, learning rate rate, prefix of the log file (full name is suffixation of training parameters), and the function to call before training starts. In the first experiment it is \verb+basic-ccg+. In the second experiment,
+there is nothing to call.
+
+{The bash script} \verb|train-sbcl-1| {is a 9-argument monster}.
+It assumes that constraints which are not within control of SBCL are already handled,
+such as \verb|/proc/sys/vm/max_map_count| {above}. {Even if you have no multicore support, use} \verb|train-sbcl-multithread|
+{to run this script. If you have only one line of experiment data, it will fetch one processor anyway, and you'd be free of hangups.}
+
+
+\subsection{Many Lisps}
+You can work with many Lisps for \tool\,at the same time by setting the shell variable \texttt{CCGLAB\_LISP} to
+different Lisp binaries in a shell. The default is set by you during install.
+{The system will detect your Lisp from the basename of its binary. If it is not SBCL or CCL or public AllegroCL, it is set to SBCL by default, which means
+it will call} \verb|run-program| {with SBCL conventions when running \tool\,in your Lisp.
+Have a look at how} \verb|run-program| {API is used
+by \verb+sbcl+ and \verb|ccl| in the code. You may want to add another case suited to your Lisp, and set the} \verb|*lispsys*| {variable to your Lisp. 
+
+\subsection{Hash tables and growth}
+{The hash tables for the CKY parser can grow very big. To work with very long sentences  or {many automatically generated type-raising rules}
+without rehashing all the time, change the variable \texttt{*hash-data-size*} to a bigger value in \texttt{ccg.lisp} source.
+Tables of these sizes (two tables: one for CKY parses, one for different LFs in argmax calculation) are created once, during the first load, and cleared before every parse. 
+
+{There is a path language for nested hashtables, i.e. hashtables which take hashtables as values of features. Rather than cascaded} \verb|gethash| {calls, you can use
+the} \verb|machash| {macro. See Table~\ref{tab:ref}.} {By design, CKY hash tables are doubled in size when full.
+The logic here is that, if the sentence is long enough to overflow a big hash table, chances are that the table is going to grow just as fast, and we don't
+want to keep rehashing in long training sessions.}
+
+\subsection{Z-scoring and floating-point overflow/underflow} 
+{Because of exponentiation in formula\xref{rul:prob} you have to watch out for floating point overflow and underflow. If the parameters become too large or small, which may happen if you run many training sessions on the same grammar,
+you can z-score a grammar as explained in Table~\ref{tab:ref}.
+In a z-scored grammar all parameters are fraction of the standard deviation distant from the mean. {Two methods are provided: (i) assuming 
+that all elements of grammar come from the same distribution, (ii) finding sample means and standard deviation per lexical form, because the same form's
+different lexical entries are competing in parsing and ranking}, respectively called 
+\verb|z| and \verb|z2|. {If you will merge grammars later on, the second
+method would be unpredictable but first method might be fine
+if they come from the same distribution}.
+{You can set a threshold for cutoff and a comparison method; see Table~\ref{tab:ref}.}
+Z-scoring is better than normalization because it maintains the data distribution's properties like mean and variance. (Don't forget to
+save that updated model.)} 
+
+\keep{Z-scoring is also useful if you want to compare relative entropy of two probability distributions.
+The} \verb|klz| \keep{function in Table~\ref{tab:ref} computes Kullback-Leibler divergence
+of two probability distributions. It uses z-scores of parameters to compute probabilities.}
+
+\subsection{\tool\,database and license}
+The repository \verb+ccglab-database+ is a collection of grammars and models written in \tool. {Older repositories are not maintained anymore.}
+
+\tool\,is GPL licensed public software;  
+you can modify and use it as part of a software system, but you cannot copyright \tool; you must pass on the GPL license as is.}
+
+
+\section*{Acknowledgments}
+
+%\footnotesize
+Translations from \verb|.ccg| to \verb|.ccg.lisp| format and from \verb|.supervision| to \verb|.sup| format are  made possible by Mark Johnson's \textsc{lalr} parser.
+Translation of the LFs of paper-style representations in \verb|.ccg| to a self-contained lambda-calculus processor
+is based on Alessandro Cimatti's abstract data structure implementation of lambda calculus. Thanks to both gentlemen, and to Luke Zettlemoyer for help with the \xg{PCCG} paper. (Without the lambda translation, you'd be at the mercy of a particular Lisp implementation of closures to get the formula (\ref{rul:argmax}) right, or to verify derived LFs.)
+Adnan \"Ozt\"urel convinced me to think again about normal form parsing. This time I made it optional.
+
+I thank Lisp community, stackoverflow and stackexchange for answering my questions before I ask them. 
+
+I am grateful to my university at Ankara, ODT\"U; to Cognitive Science Department of the Informatics Institute,
+for allowing me to work on this project; to Turkish T\"UB\.ITAK for a sabbatical grant (number 1059B191500737), which provided the financial support for a research of which this work is a  part;   to  ANAGRAMA group of
+the CLUL lab of University of Lisbon, Am\'alia Mendes in particular, for hosting me in
+a friendly and relaxed academic environment; to Paulo Quaresma and Ant\'onio Branco for sharing their resources with me;
+and to my officemates at CLUL, Sandra Antunes, Am\'alia Andrade, Hugo Cardoso, Nuno Ferreira Martins and Rita Santos,
+all of whom made \tool\,possible. 
+
+I thank Dat\c{c}a geography and weather for respectively inspiring multi-threading and cooler CPUs,  Ankara's nowadays dying long winters for enjoying programming more than I should, and Lisbon's miradouros, in particular Miradouro de Santa Catarina and Miradouro de Gra\c{c}a, for the opposite effect. I wish I could blame good weather for remaining errors.
+
+%\newpage
+
+%\begin{spacing}{0}
+\setlength{\bibsep}{0ex}
+\bibliographystyle{LI-like}
+\bibliography{cem,mark-references3}
+%\end{spacing}
+\end{document}
