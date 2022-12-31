@@ -11,36 +11,36 @@
 % - Information part of every entry must be terminated by ';' (i.e. before in-line commenting on the right)
 % - Whitespacing does not matter.
 
-|it is more | n  :: xp[typ=x]           : it  <66866 , 1.0>;   % NB. expletive it for subject's type
-|john       | n  :: np[agr=?x, num=sg]             : john  <891443 , 1.0>; 
-|mary       | n  :: np             : mary  <455944 , 1.0>; 
+it is more | n  :: xp[typ=x]           : it  <66866 , 1.0>;   % NB. expletive it for subject's type
+john       | n  :: np[agr=?x, num=sg]             : john  <891443 , 1.0>; 
+mary       | n  :: np             : mary  <455944 , 1.0>; 
 
-|study    | inf  :: iv             : \x.study x   <17, 1.27>;  % last bit is optional for grammarians
-|persuaded  | v  :: (s[type=decl]\np[det=none, h=?x])/vp[h=?x]/np   : \x.\p.\y.persuade (p x) x y  <803681 , 1.0>; 
-|promised   | v  :: (s\np)/vp/np   : \x\p\y.promise  (p y) x y  <330452 , 1.0>;  % lambdas can be grouped
-|wanted     | v  :: (s\np)/.vp/np   : \x\p\y.want (p x) y  <524672 , 1.0>; 
-|expected   | v  :: (s\.np)/^vp/+np   : \x\p\y.expect (p x) y <21, 2.8>;
-|considered | v  :: (s\np)//propp/np: \x\p\y.consider (p x) y  <713195 , 1.0>; 
-|seemed     | v  :: (s\'it is less')/s       : \p\x.seem p  <602858 , 1.0>; 
-|seemed     | v  :: (s\\np)/*vp      : \p\x.seem (p x)  <136174 , 1.0>; 
-|and        | c  :: (@x\@x)/@x     : \p\q\x.and (p x) (q x)  <220906 , 1.0>; 
-|boldly     | j  :: (s\np)/(s[o=kirk, s=?y]\np)  : \p\x.boldly (p x)  <925746 , 1.0>; 
+study    | inf  :: iv             : \x.study x   <17, 1.27>;  % last bit is optional for grammarians
+persuaded  | v  :: (s[type=decl]\np[det=none, h=?x])/vp[h=?x]/np   : \x.\p.\y.persuade (p x) x y  <803681 , 1.0>; 
+promised   | v  :: (s\np)/vp/np   : \x\p\y.promise  (p y) x y  <330452 , 1.0>;  % lambdas can be grouped
+wanted     | v  :: (s\np)/.vp/np   : \x\p\y.want (p x) y  <524672 , 1.0>; 
+expected   | v  :: (s\.np)/^vp/+np   : \x\p\y.expect (p x) y <21, 2.8>;
+considered | v  :: (s\np)//propp/np: \x\p\y.consider (p x) y  <713195 , 1.0>; 
+seemed     | v  :: (s\'it is less')/s       : \p\x.seem p  <602858 , 1.0>; 
+seemed     | v  :: (s\\np)/*vp      : \p\x.seem (p x)  <136174 , 1.0>; 
+and        | c  :: (@x\@x)/@x     : \p\q\x.and (p x) (q x)  <220906 , 1.0>; 
+boldly     | j  :: (s\np)/(s[o=kirk, s=?y]\np)  : \p\x.boldly (p x)  <925746 , 1.0>; 
 
 
 
-|to         | p  :: vp/iv          : \p.p  <636524 , 1.0>; 
-|have     | aux  :: iv/iv          : \p.p  <563112 , 1.0>; 
-|bought     | v  :: iv/np          : \x\y.buy x y  <903945 , 1.0>;  % this one's for perfective have/had bought
+to         | p  :: vp/iv          : \p.p  <636524 , 1.0>; 
+have     | aux  :: iv/iv          : \p.p  <563112 , 1.0>; 
+bought     | v  :: iv/np          : \x\y.buy x y  <903945 , 1.0>;  % this one's for perfective have/had bought
                                                   % Cf. the relational rule down below for bare/tensed form
  
-|the      | det  :: np/*n          : def  <574974 , 1.0>; 
-|car        | n  :: n              : car  <270679 , 1.0>; 
-|handsome   | p  :: propp          : \x.handsome x  <347363 , 1.0>; 
+the      | det  :: np/*n          : def  <574974 , 1.0>; 
+car        | n  :: n              : car  <270679 , 1.0>; 
+handsome   | p  :: propp          : \x.handsome x  <347363 , 1.0>; 
  
-|kicked the bucked | idio  :: s\np  :\x.die_euphemistic x  <795757 , 1.0>;                       % frozen expression
-|kicked     | v            :: (s\np)/'bucket'/PredP  : \p\x\y.die_ (euphemistic p x) y  <566088 , 1.0>;  % not so frozen expression
-|pick up    | pv           :: iv/np          : \x\y.pick_culminate x y             <319026 , 1.0>;        % phrasal verb. All POSs are up to you.
-|pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y) x z       <907008 , 1.0>;       % separable phrasal verb
+kicked the bucked | idio  :: s\np  :\x.die_euphemistic x  <795757 , 1.0>;                       % frozen expression
+kicked     | v            :: (s\np)/'bucket'/PredP  : \p\x\y.die_ (euphemistic p x) y  <566088 , 1.0>;  % not so frozen expression
+pick up    | pv           :: iv/np          : \x\y.pick_culminate x y             <319026 , 1.0>;        % phrasal verb. All POSs are up to you.
+pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y) x z       <907008 , 1.0>;       % separable phrasal verb
 
 % relational rules (as opposed to combining rules)
 

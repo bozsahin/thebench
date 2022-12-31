@@ -1,6 +1,6 @@
 (defparameter *current-grammar* '(
 ;;;;;;;;;; bench.py-generated monadic Lisp grammar
-;;;;;;;;;; from hw-5k.g December 16, 2022, 12:26:31
+;;;;;;;;;; from hw-5k.g December 31, 2022, 16:04:24
 ;;
 ;; a rules
 ;;
@@ -104,7 +104,7 @@
 (MORPH past)(SYN ((BCAT iv)(FEATS NIL)))(SEM (LAM x (run x)))
 )
 (
-(KEY 392599)(PARAM 1.0)(PHON RAN)
+(KEY 271994)(PARAM 1.0)(PHON RAN)
 (MORPH past)(SYN (((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x ((past run) x)))
 )
 (
@@ -112,7 +112,7 @@
 (MORPH past)(SYN (((BCAT iv)(FEATS NIL))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y ((buy x) y))))
 )
 (
-(KEY 523042)(PARAM 1.0)(PHON BOUGHT)
+(KEY 105365)(PARAM 1.0)(PHON BOUGHT)
 (MORPH past)(SYN ((((BCAT s)(FEATS NIL))(DIR BS)(MODAL ALL)((BCAT np)(FEATS NIL)))(DIR FS)(MODAL ALL)((BCAT np)(FEATS NIL))))(SEM (LAM x (LAM y (((past buy) x) y))))
 )
 ;;

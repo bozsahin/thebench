@@ -2,37 +2,37 @@
 % -Cem Bozsahin, March 2022
 
 
-|it is more | n  :: xp[typ=x]           : it;  % NB. expletive it for subject's type
-|john       | n  :: np[agr=?x, num=sg]             : john;
-|mary       | n  :: np             : mary;
+it is more | n  :: xp[typ=x]           : it;  % NB. expletive it for subject's type
+john       | n  :: np[agr=?x, num=sg]             : john;
+mary       | n  :: np             : mary;
 
-|study    | inf  :: iv             : \x.study x   <17, 1.27>;  % last bit is optional for grammarians
-|persuaded  | v  :: (s[type=decl]\np[det=none, h=?x])/vp[h=?x]/np   : \x.\p.\y.persuade (p x) x y;
-|promised   | v  :: (s\np)/vp/np   : \x\p\y.promise  (p y) x y; % lambdas can be grouped
-|wanted     | v  :: (s\np)/.vp/np   : \x\p\y.want (p x) y;
-|expected   | v  :: (s\.np)/^vp/+np   : \x\p\y.expect (p x) y <21, 2.8>;
-|considered | v  :: (s\np)//propp/np: \x\p\y.consider (p x) y;
-|seemed     | v  :: (s\'it is less')/s       : \p\x.seem p;
-|seemed     | v  :: (s\"it is less")/s       : \p\x.seem p;
-|seemed     | v  :: (s\\np)/*vp      : \p\x.seem (p x);
-|and        | c  :: (@x\@x)/@x     : \p\q\x.and (p x) (q x);
-|boldly     | j  :: (s\np)/(s[o=kirk, s=?y]\np)  : \p\x.boldly (p x);
+study    | inf  :: iv             : \x.study x   <17, 1.27>;  % last bit is optional for grammarians
+persuaded  | v  :: (s[type=decl]\np[det=none, h=?x])/vp[h=?x]/np   : \x.\p.\y.persuade (p x) x y;
+promised   | v  :: (s\np)/vp/np   : \x\p\y.promise  (p y) x y; % lambdas can be grouped
+wanted     | v  :: (s\np)/.vp/np   : \x\p\y.want (p x) y;
+expected   | v  :: (s\.np)/^vp/+np   : \x\p\y.expect (p x) y <21, 2.8>;
+considered | v  :: (s\np)//propp/np: \x\p\y.consider (p x) y;
+seemed     | v  :: (s\'it is less')/s       : \p\x.seem p;
+seemed     | v  :: (s\"it is less")/s       : \p\x.seem p;
+seemed     | v  :: (s\\np)/*vp      : \p\x.seem (p x);
+and        | c  :: (@x\@x)/@x     : \p\q\x.and (p x) (q x);
+boldly     | j  :: (s\np)/(s[o=kirk, s=?y]\np)  : \p\x.boldly (p x);
 
 
 
-|to         | p  :: vp/iv          : \p.p;
-|have     | aux  :: iv/iv          : \p.p;
-|bought     | v  :: iv/np          : \x\y.buy x y; % this one's for perfective have/had bought
+to         | p  :: vp/iv          : \p.p;
+have     | aux  :: iv/iv          : \p.p;
+bought     | v  :: iv/np          : \x\y.buy x y; % this one's for perfective have/had bought
                                                  % Cf. the relational rule down below for bare/tensed form
 
-|the      | det  :: np/*n          : def;
-|car        | n  :: n              : car;
-|handsome   | p  :: propp          : \x.handsome x;
+the      | det  :: np/*n          : def;
+car        | n  :: n              : car;
+handsome   | p  :: propp          : \x.handsome x;
 
-|kicked the bucked | idio  :: s\np  :\x.die_euphemistic x;                      % frozen expression
-|kicked     | v            :: (s\np)/'bucket'/PredP  : \p\x\y.die_ (euphemistic p x) y; % not so frozen expression
-|pick up    | pv           :: iv/np          : \x\y.pick_culminate x y           ;       % phrasal verb. All POSs are up to you.
-|pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y) x z     ;      % separable phrasal verb
+kicked the bucked | idio  :: s\np  :\x.die_euphemistic x;                      % frozen expression
+kicked     | v            :: (s\np)/'bucket'/PredP  : \p\x\y.die_ (euphemistic p x) y; % not so frozen expression
+pick up    | pv           :: iv/np          : \x\y.pick_culminate x y           ;       % phrasal verb. All POSs are up to you.
+pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y) x z     ;      % separable phrasal verb
 
 % relational rules (as opposed to combining rules)
 

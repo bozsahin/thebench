@@ -14,8 +14,8 @@
 \newcommand{\tool}{\textsc{TheBench}}
 \newcommand{\occg}{\texttt{openCCG}}
 \renewcommand{\exf}{\emph}
-\addtolength{\textheight}{4.5cm}
-\addtolength{\topmargin}{-1.5cm}
+%\addtolength{\textheight}{4.5cm}
+%\addtolength{\topmargin}{-1.5cm}
 %\addtolength{\textwidth}{0.9cm}
 \pagestyle{myheadings}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -26,11 +26,13 @@
 \begin{document}
 \thispagestyle{empty}
 \newcommand{\keep}{\added}
-\centerline{{\Large\textbf{\underline{\tool~}}}~~~\texttt{\Large Guide}}\medskip
+\centerline{{\Large\textbf{\underline{\tool~}}}~~~\texttt{\Large Guide}}\medskip\smallskip
 
-\noindent\keep{Version: 1.0~~~{\small\today}~~~~coloured text means changes from previous release}\hfill{\small Cem Boz\c{s}ahin}\\
+\noindent\hfill\hfill{\small Cem Boz\c{s}ahin\hfill{\small Ankara, Dat\c{c}a, \c{S}ile 2021--23}
+
+\noindent\keep{Version: 1.0~~~{\small\today}~~~~coloured text means changes from previous release}\\
 Home: \verb|github.com/bozsahin/thebench|\hfill {(all repos cited have the same URL prefix)}\\
-Download: \verb|git clone https://github.com/bozsahin/thebench|\hfill{\small Ankara, Dat\c{c}a, \c{S}ile 2021--23}
+To download, do: \verb|git clone https://github.com/bozsahin/thebench|}
 \vspace*{-.5em}
 
 
@@ -38,15 +40,18 @@ Download: \verb|git clone https://github.com/bozsahin/thebench|\hfill{\small Ank
 \tool\, is a tool to study monadic structures in natural languages, for writing grammars, exploring analyses, and training grammars for modeling.
 The monadic structures are binary combinations of elements of grammar using semantics of composition only, hence the name.
 
-The theory regarding the limits of elementary (synthetic) vocabulary and analytic structure is described in \cite{bozs:mons}. In summary,
-it is a Polish School style categorial grammar that uses composition only (i.e. application is also turned into composition). Unlike generative grammars, there are no top-down universals such as EPP, MLC etc.; segments arise because we analyze by reference, we do not assume analysis arises (`generates') because we have Zelig-style distributional segments.
+The theory regarding the limits of elementary (synthetic) vocabulary and analytic structure allowed in such grammars is described in \cite{bozs:mons}. In summary,
+it is a Polish School style categorial grammar that uses composition only, that is, application is also turned into composition. Unlike generative grammars, there are no top-down universals such as EPP, MLC  or universal lexical categories such as N, V, A, P, or universal argument types such as those in X-bar theory.  All of that is predicted from the ground up.
+Segments arise because we analyze by categorized reference, we do not assume analysis arises from (or rules `generate')  Harris-style distributional segments.
 
 It is meant to study configurationality and referentiality in one system. The configurational approach to surface structure is adopted
-from \cite{Montague73,stee:20}, and the referential approach to constructing elements is adopted from \cite{sapi:24,swad:38,Montague73,schm:18}, with the following major differences: Formally, unlike \cite{steedman00}, all analytic structures handle one dependency at a time (i.e. there is no \combs-style analytic structure), and unlike Montague grammar, predicate-argument structures are not post-analytic. Empirically, morphology and syntax do not compete for surface bracketing, morphology is not confined to the `lexicon' or to some other component, or to leaves of a tree, and referential differences
-in all kinds of arguments cause categorial differences \citep{bozs:22-jlli}. Typologically, any language-particular  difference in elementary (i.e. synthetic) vocabulary can make its way into invariant analytic structure. 
+from \cite{Montague73,stee:20}, and the referential approach to constructing elements is adopted from \cite{sapi:24,swad:38,Montague73,schm:18}, with the following major differences: Formally, unlike \cite{steedman00}, all analytic structures handle one dependency at a time (i.e. there is no \combs-style analytic structure), and unlike Montague grammar, predicate-argument structures are not post-analytic, and syntactic categories
+of second-order case functions require a linguistic rather than logical  theory. Also, distinct function-argument and argument-function surface configurations are the causes of categorial-structural asymmetries, an idea which goes back to \cite{schonfinkel24}.
+Empirically, morphology and syntax do not compete for surface bracketing, morphology is not confined to the `lexicon' or to some other component, or to leaves of a tree, and referential differences
+in all kinds of arguments cause categorial differences including those in idioms and phrasal verbs \citep{bozs:22-jlli}. Typologically, any language-particular  difference in elementary (i.e. synthetic) vocabulary can make its way into invariant analytic structure. It is a very verb-centric bottom-up view of grammar.
 
-Technically, the interface functions of \tool\,are written in Python. Processor functions are written in Common Lisp. The command
-interface has its own syntax, which you can use online and offline. You do not need to know either language to use it. An installer takes care of these requirements for all kinds of computer platforms.
+Technically, the description and interface functions of \tool\,are written in Python. Processor functions are written in Common Lisp. The command
+interface has its own syntax combining the two aspects, which you can use online and offline; no need to know either language to use it. The installer takes care of the requirements to work with all popular computer platforms (well, almost all).
 
 \section{Basics}\label{sec:basics}
 Slash modalities are implemented (see \citealt{baldridge02,steedmanbaldridge-guide}). The examples below show raw input to \tool.\footnote{The mapping of modalities
@@ -703,13 +708,7 @@ such as \verb|/proc/sys/vm/max_map_count| {above}. {Even if you have no multicor
 {to run this script. If you have only one line of experiment data, it will fetch one processor anyway, and you'd be free of hangups.}
 
 
-\subsection{Many Lisps}
-You can work with many Lisps for \tool\,at the same time by setting the shell variable \texttt{CCGLAB\_LISP} to
-different Lisp binaries in a shell. The default is set by you during install.
-{The system will detect your Lisp from the basename of its binary. If it is not SBCL or CCL or public AllegroCL, it is set to SBCL by default, which means
-it will call} \verb|run-program| {with SBCL conventions when running \tool\,in your Lisp.
-Have a look at how} \verb|run-program| {API is used
-by \verb+sbcl+ and \verb|ccl| in the code. You may want to add another case suited to your Lisp, and set the} \verb|*lispsys*| {variable to your Lisp. 
+
 
 \subsection{Hash tables and growth}
 {The hash tables for the CKY parser can grow very big. To work with very long sentences  or {many automatically generated type-raising rules}
@@ -738,29 +737,15 @@ save that updated model.)}
 The} \verb|klz| \keep{function in Table~\ref{tab:ref} computes Kullback-Leibler divergence
 of two probability distributions. It uses z-scores of parameters to compute probabilities.}
 
-\subsection{\tool\,database and license}
-The repository \verb+ccglab-database+ is a collection of grammars and models written in \tool. {Older repositories are not maintained anymore.}
-
-\tool\,is GPL licensed public software;  
-you can modify and use it as part of a software system, but you cannot copyright \tool; you must pass on the GPL license as is.}
-
-
 \section*{Acknowledgments}
 
+I thank the Python and Lisp communities, \texttt{stackoverflow} and \texttt{stackexchange} for answering my questions before I ask them. 
 The self-contained lambda-calculus processor
 is based on Alessandro Cimatti's abstract data structure implementation of lambda calculus. 
+David Beazley's \texttt{sly} python library made grammar description a lot easier.  Marco Heisig's \texttt{cl4py}
+library made Python-Lisp communication easy, which allowed me to recycle some old Lisp code. Thanks to all three gentlemen.
 
-
-I thank Lisp community, stackoverflow and stackexchange for answering my questions before I ask them. 
-
-I am grateful to my university at Ankara, ODT\"U; to Cognitive Science Department of the Informatics Institute,
-for allowing me to work on this project; to Turkish T\"UB\.ITAK for a sabbatical grant (number 1059B191500737), which provided the financial support for a research of which this work is a  part;   to  ANAGRAMA group of
-the CLUL lab of University of Lisbon, Am\'alia Mendes in particular, for hosting me in
-a friendly and relaxed academic environment; to Paulo Quaresma and Ant\'onio Branco for sharing their resources with me;
-and to my officemates at CLUL, Sandra Antunes, Am\'alia Andrade, Hugo Cardoso, Nuno Ferreira Martins and Rita Santos,
-all of whom made \tool\,possible. 
-
-I thank Dat\c{c}a geography and weather for respectively inspiring multi-threading and cooler CPUs,  Ankara's nowadays dying long winters for enjoying programming more than I should, and Lisbon's miradouros, in particular Miradouro de Santa Catarina and Miradouro de Gra\c{c}a, for the opposite effect. I wish I could blame good weather for remaining errors.
+I  blame good weather for remaining errors.
 
 %\newpage
 

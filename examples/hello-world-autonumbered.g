@@ -11,32 +11,32 @@
 % - Information part of every entry must be terminated by ';' (i.e. before in-line commenting on the right)
 % - Whitespacing does not matter.
 
-|it         | n  :: xp             : it  <825681 , 1.0>;   % NB. expletive it for subject's type
-|john       | n  :: np             : john  <570449 , 1.0>; 
-|mary       | n  :: np             : mary  <618664 , 1.0>; 
+it         | n  :: xp             : it  <825681 , 1.0>;   % NB. expletive it for subject's type
+john       | n  :: np             : john  <570449 , 1.0>; 
+mary       | n  :: np             : mary  <618664 , 1.0>; 
 
-|study    | inf  :: iv             : \x.study x  <580251 , 1.0>; 
-|persuaded  | v  :: (s\np)/vp/np   : \x.\p.\y.persuade (p x) x y  <568833 , 1.0>; 
-|promised   | v  :: (s\np)/vp/np   : \x\p\y.promise  (p y) x y  <653092 , 1.0>;  % lambdas can be grouped
-|wanted     | v  :: (s\np)/vp/np   : \x\p\y.want (p x) y  <789640 , 1.0>; 
-|expected   | v  :: (s\np)/vp/np   : \x\p\y.expect (p x) y  <138656 , 1.0>; 
-|considered | v  :: (s\np)/propp/np: \x\p\y.consider (p x) y  <409577 , 1.0>; 
-|seemed     | v  :: (s\xp)/s       : \p\x.seem p  <538672 , 1.0>; 
-|seemed     | v  :: (s\np)/vp      : \p\x.seem (p x)  <73982 , 1.0>; 
+study    | inf  :: iv             : \x.study x  <580251 , 1.0>; 
+persuaded  | v  :: (s\np)/vp/np   : \x.\p.\y.persuade (p x) x y  <568833 , 1.0>; 
+promised   | v  :: (s\np)/vp/np   : \x\p\y.promise  (p y) x y  <653092 , 1.0>;  % lambdas can be grouped
+wanted     | v  :: (s\np)/vp/np   : \x\p\y.want (p x) y  <789640 , 1.0>; 
+expected   | v  :: (s\np)/vp/np   : \x\p\y.expect (p x) y  <138656 , 1.0>; 
+considered | v  :: (s\np)/propp/np: \x\p\y.consider (p x) y  <409577 , 1.0>; 
+seemed     | v  :: (s\xp)/s       : \p\x.seem p  <538672 , 1.0>; 
+seemed     | v  :: (s\np)/vp      : \p\x.seem (p x)  <73982 , 1.0>; 
 
-|to         | p  :: vp/iv          : \p.p  <42852 , 1.0>; 
-|have     | aux  :: iv/iv          : \p.p  <495998 , 1.0>; 
-|bought     | v  :: iv/np          : \x\y.buy x y  <946526 , 1.0>;  % this one's for perfective have/had bought
+to         | p  :: vp/iv          : \p.p  <42852 , 1.0>; 
+have     | aux  :: iv/iv          : \p.p  <495998 , 1.0>; 
+bought     | v  :: iv/np          : \x\y.buy x y  <946526 , 1.0>;  % this one's for perfective have/had bought
                                                  % Cf. the relational rule down below for bare/tensed form
 
-|the      | det  :: np/*n          : def  <594017 , 1.0>; 
-|car        | n  :: n              : car  <109523 , 1.0>; 
-|handsome   | p  :: propp          : \x.handsome x  <526983 , 1.0>; 
+the      | det  :: np/*n          : def  <594017 , 1.0>; 
+car        | n  :: n              : car  <109523 , 1.0>; 
+handsome   | p  :: propp          : \x.handsome x  <526983 , 1.0>; 
 
-|kicked the bucked | idio  :: s\np  :\x.die_euphemistic x  <236780 , 1.0>;                       % frozen expression
-|kicked     | v            :: (s\np)/'bucket'/PredP  : \p\x\y.die_ (euphemistic p x) y  <639012 , 1.0>;  % not so frozen expression
-|pick up    | pv           :: iv/np          : \x\y.pick_culminate x y             <294710 , 1.0>;        % phrasal verb. All POSs are up to you.
-|pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y) x z       <276833 , 1.0>;       % separable phrasal verb
+kicked the bucked | idio  :: s\np  :\x.die_euphemistic x  <236780 , 1.0>;                       % frozen expression
+kicked     | v            :: (s\np)/'bucket'/PredP  : \p\x\y.die_ (euphemistic p x) y  <639012 , 1.0>;  % not so frozen expression
+pick up    | pv           :: iv/np          : \x\y.pick_culminate x y             <294710 , 1.0>;        % phrasal verb. All POSs are up to you.
+pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y) x z       <276833 , 1.0>;       % separable phrasal verb
 
 % relational rules (as opposed to combining rules)
 

@@ -37,8 +37,8 @@ _exit='x'
 _help='?'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.3'
-_vdate = 'October 15, 2022'
+_version = '0.4'
+_vdate = 'December 31, 2022'
 # 3 built-in extensions recognized by MG
 _binext = '.bin'              # binary (lisp code) extension
 _supext = '.sup'              # native format extension for supervision files
@@ -667,13 +667,13 @@ def help ():
         print(f" g .    | grammar text source .  checked and loaded (its {_binext} file generated)")
         print(f' i .    | intermediate representation of current grammar (a python dict)  saved in file .')
         print(f" l . .. | Lisp function . is called, with args .., which takes them as strings")
-        print(f' o .    | OS/shell command . is run at your own risk (. can be complex expression)')
+        print(f' o ..   | OS/shell command .. is run at your own risk')
         print(f' r ..   | ranks the expression .. using the currently loaded model')
         print(f' s .    | supervision data in file . converted to native format .sup for the trainer')
         print(f" z .    | grammar binary . converted to source, with <key, parameter> info added")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
         print(f' , ..   | displays analyses for solutions numbered .., all if none provided')
-        print(f' #      | displays ranked analyses; cf. r command')
+        print(f' #      | displays ranked analyses')
         print(f' = ..   | displays analyses onto basic cats in ..')
         print(f' !      | shows information about the current g-loaded grammar')
         print(f' $ ..   | shows the elements with parts of speech ..')
