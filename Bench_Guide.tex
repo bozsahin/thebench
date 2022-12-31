@@ -26,8 +26,9 @@
 \begin{document}
 \thispagestyle{empty}
 \newcommand{\keep}{\added}
-\noindent{\Large\textbf{\underline{\tool~}}}~~~\texttt{\Large Guide}\\[1ex]
-\keep{Version: 1.0~~~{\small\today}~~~~coloured text means changes from previous release}\hfill{\small Cem Boz\c{s}ahin}\\
+\centerline{{\Large\textbf{\underline{\tool~}}}~~~\texttt{\Large Guide}}\medskip
+
+\noindent\keep{Version: 1.0~~~{\small\today}~~~~coloured text means changes from previous release}\hfill{\small Cem Boz\c{s}ahin}\\
 Home: \verb|github.com/bozsahin/thebench|\hfill {(all repos cited have the same URL prefix)}\\
 Download: \verb|git clone https://github.com/bozsahin/thebench|\hfill{\small Ankara, Dat\c{c}a, \c{S}ile 2021--23}
 \vspace*{-.5em}
@@ -38,10 +39,14 @@ Download: \verb|git clone https://github.com/bozsahin/thebench|\hfill{\small Ank
 The monadic structures are binary combinations of elements of grammar using semantics of composition only, hence the name.
 
 The theory regarding the limits of elementary (synthetic) vocabulary and analytic structure is described in \cite{bozs:mons}. In summary,
-it is a Polish School style categorial grammar that uses composition only (i.e. application is also turned into composition). 
+it is a Polish School style categorial grammar that uses composition only (i.e. application is also turned into composition). Unlike generative grammars, there are no top-down universals such as EPP, MLC etc.; segments arise because we analyze by reference, we do not assume analysis arises (`generates') because we have Zelig-style distributional segments.
+
 It is meant to study configurationality and referentiality in one system. The configurational approach to surface structure is adopted
-from \cite{Montague73,stee:20}, and the referential approach to constructing elements is adopted from \cite{sapi:24,swad:38,Montague73,schm:18}, with the following major differences: Formally, unlike \cite{steedman00}, all analytic structures handle one dependency at a time (i.e. there is no \combs-style analytic structure), and unlike Montague grammar, predicate-argument structures are not post-analytic. Empirically, morphology and syntax do not compete for surface bracketing, morphology is not confined to the `lexicon' or to some other component, and referential differences
-in all kinds of arguments cause categorial differences. Typologically, any language-particular  difference in elementary (i.e. synthetic) vocabulary can make its way into invariant analytic structure. 
+from \cite{Montague73,stee:20}, and the referential approach to constructing elements is adopted from \cite{sapi:24,swad:38,Montague73,schm:18}, with the following major differences: Formally, unlike \cite{steedman00}, all analytic structures handle one dependency at a time (i.e. there is no \combs-style analytic structure), and unlike Montague grammar, predicate-argument structures are not post-analytic. Empirically, morphology and syntax do not compete for surface bracketing, morphology is not confined to the `lexicon' or to some other component, or to leaves of a tree, and referential differences
+in all kinds of arguments cause categorial differences \citep{bozs:22-jlli}. Typologically, any language-particular  difference in elementary (i.e. synthetic) vocabulary can make its way into invariant analytic structure. 
+
+Technically, the interface functions of \tool\,are written in Python. Processor functions are written in Common Lisp. The command
+interface has its own syntax, which you can use online and offline. You do not need to know either language to use it. An installer takes care of these requirements for all kinds of computer platforms.
 
 \section{Basics}\label{sec:basics}
 Slash modalities are implemented (see \citealt{baldridge02,steedmanbaldridge-guide}). The examples below show raw input to \tool.\footnote{The mapping of modalities
@@ -742,11 +747,9 @@ you can modify and use it as part of a software system, but you cannot copyright
 
 \section*{Acknowledgments}
 
-%\footnotesize
-Translations from \verb|.ccg| to \verb|.ccg.lisp| format and from \verb|.supervision| to \verb|.sup| format are  made possible by Mark Johnson's \textsc{lalr} parser.
-Translation of the LFs of paper-style representations in \verb|.ccg| to a self-contained lambda-calculus processor
-is based on Alessandro Cimatti's abstract data structure implementation of lambda calculus. Thanks to both gentlemen, and to Luke Zettlemoyer for help with the \xg{PCCG} paper. (Without the lambda translation, you'd be at the mercy of a particular Lisp implementation of closures to get the formula (\ref{rul:argmax}) right, or to verify derived LFs.)
-Adnan \"Ozt\"urel convinced me to think again about normal form parsing. This time I made it optional.
+The self-contained lambda-calculus processor
+is based on Alessandro Cimatti's abstract data structure implementation of lambda calculus. 
+
 
 I thank Lisp community, stackoverflow and stackexchange for answering my questions before I ask them. 
 
