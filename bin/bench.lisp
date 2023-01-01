@@ -2941,7 +2941,7 @@
   (format s "#~(~A~)" r))
 
 (defun mk_keyparamend (r s)
-  (format s "<~A, ~A>;~2%" (nv-get-v 'KEY r) (nv-get-v 'PARAM r))) 
+  (format s "<~A, ~A>~%" (nv-get-v 'KEY r) (nv-get-v 'PARAM r))) 
 
 (defun mk_arule (r s)
   (mk_arulename_sc (nv-get-v 'INDEX r) s)       

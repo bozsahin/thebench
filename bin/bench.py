@@ -37,8 +37,8 @@ _exit='x'
 _help='?'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.4'
-_vdate = 'December 31, 2022'
+_version = '0.5'
+_vdate = 'January 1, 2023'
 # 3 built-in extensions recognized by MG
 _binext = '.bin'              # binary (lisp code) extension
 _supext = '.sup'              # native format extension for supervision files
@@ -199,7 +199,7 @@ def make_up_an_index():              # return the first non-colliding random ind
 #
 
 class SUPLexer(Lexer): # Token types for supervision pairs
-    tokens = {ID, BANGID, ITEM, CORR, CATEND, DOT, LP, RP, BS, END, ANY}
+    tokens = {ID, BANGID, ITEM, CORR, DOT, LP, RP, BS, END, ANY}
 
     ignore = ' \t'            # whitespace
     ignore_comment = r'\%.*'  # ignore everything starting with %
@@ -209,7 +209,6 @@ class SUPLexer(Lexer): # Token types for supervision pairs
     BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
     ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
     CORR   = r'\:'
-    CATEND = r'\;'
     DOT    = r'\.'          # modalities also use this
     LP     = r'\('
     RP     = r'\)'
@@ -222,7 +221,7 @@ class SUPLexer(Lexer): # Token types for supervision pairs
         self.index += 1
 
 class MGLexer(Lexer):  # Token types of monadic grammar specifications
-    tokens = { ID, BANGID, RNAME, SPECID, ITEM, M, SRULE, ARULE, END, CATEND, LSQ, RSQ, COM, CORR, DOT, SQCAT, DQCAT,
+    tokens = { ID, BANGID, RNAME, SPECID, ITEM, M, SRULE, ARULE, END, LSQ, RSQ, COM, CORR, DOT, SQCAT, DQCAT,
                LP, RP, LB, RB, EQ, BS, FS, BDS, FDS, MODHAR, MODAPP,
                MODX, VARVAL, INUM, RNUM, ANY}
 
@@ -244,7 +243,6 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
                                                       # to avoid end-of-line EOF confusion of the tokenizer
     M      = r'\:\:'
     CORR   = r'\:'
-    CATEND = r'\;'
     LSQ    = r'\<'
     RSQ    = r'\>'
     COM    = r'\,'
@@ -274,7 +272,7 @@ class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
     #debugfile = 'lalr_sup'+ _logext
     tokens = SUPLexer.tokens
 
-    @_('ITEM CORR lcom CATEND t')
+    @_('ITEM CORR lcom t')
     def s(self, p):
         return mk_entry_sup(p[0][0:-1], p.lcom)
 
@@ -338,9 +336,9 @@ class MGParser(Parser):       # the syntax of MG entries
     tokens = MGLexer.tokens
     global _keys, _indexed, _grammar, _info
 
-    @_('l catend t')
+    @_('l t')
     def s(self, p):
-        return mk_entry(p.l, p.catend)
+        return mk_entry(p.l, p.t)
 
     @_('ITEM pos M c')        # first item is form (get rid of |), second one is POS
     def l(self, p):
@@ -367,19 +365,15 @@ class MGParser(Parser):       # the syntax of MG entries
     def l(self, p):
         return p.r
 
-    @_('END')
+    @_('LSQ INUM COM RNUM RSQ END')  
     def t(self, p):
-        return True        
-
-    @_('LSQ INUM COM RNUM RSQ CATEND')  
-    def catend(self, p):
         global _keys, _indexed, _index
         _indexed = True   # it was already indexed
         _keys[p[1]] = True  # do not generate an index which is already specified
         return mk_bin(_index, int(p[1]), float(p[3]))
 
-    @_('CATEND')         # entries are indexed in source grammar, don't let user index them
-    def catend(self, p):
+    @_('END')         # entries are not indexed in source grammar, don't regenerate them
+    def t(self, p):
         global _keys, _indexed, _index
         ix = make_up_an_index()
         _indexed = False   # we generated the index

@@ -11,38 +11,38 @@
 % - Information part of every entry must be terminated by ';' (i.e. before any in-line commenting on the right)
 % - Whitespacing does not matter except in quotes.
 
-it         | n  :: xp[lex=no,per=s3]     : it;  % NB. expletive it for subject's type
-john       | n  :: np[per=3s,lex=yes]    : !john;
-mary       | n  :: np             : mary;
+it         | n  :: xp[lex=no,per=s3]     : it  % NB. expletive it for subject's type
+john       | n  :: np[per=3s,lex=yes]    : !john
+mary       | n  :: np             : mary
 
-and        | c :: @x/(@x\@x) : \p\q\x. !and (p x) (q x); % syncategorematic
+and        | c :: @x/(@x\@x) : \p\q\x. !and (p x) (q x) % syncategorematic
 
-study      | inf  :: iv             : \x.study x;
-persuaded  | v  :: (s\np)/vp/+np   : \x.\p.\y.persuade (p x) x y;
-promised   | v  :: (s\\ np)/vp//np   : \x\p\y.promise  (p y) x y; % lambdas can be grouped
-wanted     | v  :: (s\*np)/^vp/.np   : \x\p\y.want (p x) y;
-expected   | v  :: (s\np)/vp/np   : \x\p\y.expect (p x) y;
-considered | v  :: (s\np)/propp/np: \x\p\y.consider (p x) y;
-seemed     | v  :: (s\xp)/s       : \p\x.seem p;
-seemed     | v  :: (s\np)/vp      : \p\x.seem (p x);
+study      | inf  :: iv             : \x.study x
+persuaded  | v  :: (s\np)/vp/+np   : \x.\p.\y.persuade (p x) x y
+promised   | v  :: (s\\ np)/vp//np   : \x\p\y.promise  (p y) x y % lambdas can be grouped
+wanted     | v  :: (s\*np)/^vp/.np   : \x\p\y.want (p x) y
+expected   | v  :: (s\np)/vp/np   : \x\p\y.expect (p x) y
+considered | v  :: (s\np)/propp/np: \x\p\y.consider (p x) y
+seemed     | v  :: (s\xp)/s       : \p\x.seem p
+seemed     | v  :: (s\np)/vp      : \p\x.seem (p x)
 
-to         | p  :: vp/iv          : \p.p;
-have     | aux  :: iv/iv          : \p.p;
-bought     | v  :: iv/np          : \x\y.buy x y; % this one's for perfective have/had bought
+to         | p  :: vp/iv          : \p.p
+have     | aux  :: iv/iv          : \p.p
+bought     | v  :: iv/np          : \x\y.buy x y % this one's for perfective have/had bought
                                                  % Cf. the relational rule down below for bare/tensed form
 
-  the      | det  :: np/*n          : def;
-car        | n  :: n              : car;
-handsome   | p  :: propp          : \x.handsome x;
+  the      | det  :: np/*n          : def
+car        | n  :: n              : car
+handsome   | p  :: propp          : \x.handsome x
 
-  kicked     the bucket | idio  :: s\np  :\x.die pmod euphemistic x;                      % frozen expression
-pick up    | pv           :: iv/np          : \x\y.pick pmod culminate x y           ;       % phrasal verb. All POSs are up to you.
-pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y x) x z     ;      % separable phrasal verb
+  kicked     the bucket | idio  :: s\np  :\x.die pmod euphemistic x                      % frozen expression
+pick up    | pv           :: iv/np          : \x\y.pick pmod culminate x y                  % phrasal verb. All POSs are up to you.
+pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y x) x z           % separable phrasal verb
 
 % relational rules (as opposed to combining rules)
 
-#past ( run  a mile, iv:\x.run x) <--> ( km, s\np:\x.past run x); % a symmetric rule
-#subj (np : lt)            --> (s/(s\np):\lt\p.p lt)   ;    % an asymmetric rule
+#past ( run  a mile, iv:\x.run x) <--> ( km, s\np:\x.past run x) % a symmetric rule
+#subj (np : lt)            --> (s/(s\np):\lt\p.p lt)       % an asymmetric rule
 
                                         % <--> means these two are related During parsing, we pick the one in surface form.
                                         %  --> means the surface string bearing the category on the lhs ALSO
@@ -57,12 +57,12 @@ pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y x) x z   
                                         % Turkish, turning adjectives to nouns (Lewis 1967),
                                         % mapping input lambda term \p\x.and(p x)(nompred x) to 
                                         % \x.and(nompred x)(nompred x).
-#lewis-rule (np/np : lt)  --> (np : \lt.lt nompred)                   ;
+#lewis-rule (np/np : lt)  --> (np : \lt.lt nompred)                   
                                         % example: zengin adam `rich man', zengin: `the rich'
                                         %          it is asymmetric: 'Mehmet' but *'Mehmet adam'
 
 
-#past (buy, iv/np:\x\y.buy x y) <--> (bought something, (s\np)/np:\x\y.past buy x y)   ;
+#past (buy, iv/np:\x\y.buy x y) <--> (bought something, (s\np)/np:\x\y.past buy x y)   
 
                                         % NB. rule name is same as run <--> ran. Useful
                                         %    (in fact essential) for capturing morphological
@@ -81,4 +81,4 @@ pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y x) x z   
 %  on linguistic diversity.
 % Nothing in monadic grammar depends on universal set of POS tags or universal set of basic categories.
 % There is no synthetic notion that is necessary.
-kicked| v   :: (s\np)/'the bucket'/PredP  : \p\x\y.die (euph x y) y;  % singleton
+kicked| v   :: (s\np)/'the bucket'/PredP  : \p\x\y.die (euph x y) y  % singleton
