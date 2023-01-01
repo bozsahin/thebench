@@ -2938,19 +2938,18 @@
 	(t (mk_basic_sc syn s))))
 
 (defun mk_arulename_sc (r s)
-  (format s "#~(~A~)" r))
+  (format s "#~(~A~)  " r))
 
 (defun mk_keyparamend (r s)
   (format s "<~A, ~A>~%" (nv-get-v 'KEY r) (nv-get-v 'PARAM r))) 
 
 (defun mk_arule (r s)
   (mk_arulename_sc (nv-get-v 'INDEX r) s)       
-  (format s " ~A" " ( ")
   (mk_cat (nv-get-v 'INSYN r) s)
   (format s " : ~{~(~A~) ~} " (display-lf (nv-get-v 'INSEM r)))
-  (format s " ) --> ( ")
+  (format s " --> ")
   (mk_cat (nv-get-v 'OUTSYN r) s)
-  (format s " : ~{~(~A~) ~} ) " (display-lf (nv-get-v 'OUTSEM r))))
+  (format s " : ~{~(~A~) ~} " (display-lf (nv-get-v 'OUTSEM r))))
 
 (defun mk_entry (e s)
   (format s "~(~A~)| ~(~A~) :: " 
@@ -2986,11 +2985,10 @@
     (with-open-file (s afile :direction :output :if-exists :supersede)
       (dolist (r *SC-RULES*)
 	(mk_arulename_sc (nv-get-v 'INDEX r) s)                 ; these rules have universal semantics
-	(format s " ~A" "( ")
 	(mk_cat_sc (nv-get-v 'INSYN r) s)
-	(format s "~A" " : a ) --> ( ")
+	(format s " : a --> ")
 	(mk_cat_sc (nv-get-v 'OUTSYN r) s)
-	(format s "~A~%" " : \\a\\p.p a );")))
+	(format s " : \\a\\p.p a ")))
     (format t "~%File: ~A created; contains synthetic case rules for ~A in the source format,~%   for merging with grammar source text or for inspection.~%" afile gname))
   t) ; all interface functions return t
 

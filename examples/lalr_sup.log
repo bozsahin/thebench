@@ -1,7 +1,7 @@
 Grammar:
 
 Rule 0     S' -> s
-Rule 1     s -> ITEM CORR lcom CATEND t
+Rule 1     s -> ITEM CORR lcom t
 Rule 2     lcom -> bodys
 Rule 3     lcom -> lterm
 Rule 4     bodys -> body
@@ -22,7 +22,6 @@ Terminals, with rules where they appear:
 ANY                  : 12
 BANGID               : 13
 BS                   : 6
-CATEND               : 1
 CORR                 : 1
 DOT                  : 7
 END                  : 15
@@ -47,7 +46,7 @@ t                    : 1
 state 0
 
     (0) S' -> . s
-    (1) s -> . ITEM CORR lcom CATEND t
+    (1) s -> . ITEM CORR lcom t
     ITEM            shift and go to state 2
 
     s                              shift and go to state 1
@@ -59,13 +58,13 @@ state 1
 
 state 2
 
-    (1) s -> ITEM . CORR lcom CATEND t
+    (1) s -> ITEM . CORR lcom t
     CORR            shift and go to state 3
 
 
 state 3
 
-    (1) s -> ITEM CORR . lcom CATEND t
+    (1) s -> ITEM CORR . lcom t
     (2) lcom -> . bodys
     (3) lcom -> . lterm
     (4) bodys -> . body
@@ -88,9 +87,11 @@ state 3
 
 state 4
 
-    (1) s -> ITEM CORR lcom . CATEND t
-    CATEND          shift and go to state 13
+    (1) s -> ITEM CORR lcom . t
+    (15) t -> . END
+    END             shift and go to state 14
 
+    t                              shift and go to state 13
 
 state 5
 
@@ -100,19 +101,19 @@ state 5
     (12) body -> . ANY
     (13) body -> . BANGID
     (14) body -> . ID
-    CATEND          reduce using rule 2 (lcom -> bodys .)
+    END             reduce using rule 2 (lcom -> bodys .)
     RP              reduce using rule 2 (lcom -> bodys .)
     LP              shift and go to state 10
     ANY             shift and go to state 11
     BANGID          shift and go to state 12
     ID              shift and go to state 9
 
-    body                           shift and go to state 14
+    body                           shift and go to state 15
 
 state 6
 
     (3) lcom -> lterm .
-    CATEND          reduce using rule 3 (lcom -> lterm .)
+    END             reduce using rule 3 (lcom -> lterm .)
     RP              reduce using rule 3 (lcom -> lterm .)
 
 
@@ -123,14 +124,14 @@ state 7
     ANY             reduce using rule 4 (bodys -> body .)
     BANGID          reduce using rule 4 (bodys -> body .)
     ID              reduce using rule 4 (bodys -> body .)
-    CATEND          reduce using rule 4 (bodys -> body .)
+    END             reduce using rule 4 (bodys -> body .)
     RP              reduce using rule 4 (bodys -> body .)
 
 
 state 8
 
     (6) lterm -> BS . ID _1_DOT_optional lbody
-    ID              shift and go to state 15
+    ID              shift and go to state 16
 
 
 state 9
@@ -140,7 +141,7 @@ state 9
     ANY             reduce using rule 14 (body -> ID .)
     BANGID          reduce using rule 14 (body -> ID .)
     ID              reduce using rule 14 (body -> ID .)
-    CATEND          reduce using rule 14 (body -> ID .)
+    END             reduce using rule 14 (body -> ID .)
     RP              reduce using rule 14 (body -> ID .)
 
 
@@ -162,7 +163,7 @@ state 10
     BANGID          shift and go to state 12
     ID              shift and go to state 9
 
-    lcom                           shift and go to state 16
+    lcom                           shift and go to state 17
     bodys                          shift and go to state 5
     lterm                          shift and go to state 6
     body                           shift and go to state 7
@@ -174,7 +175,7 @@ state 11
     ANY             reduce using rule 12 (body -> ANY .)
     BANGID          reduce using rule 12 (body -> ANY .)
     ID              reduce using rule 12 (body -> ANY .)
-    CATEND          reduce using rule 12 (body -> ANY .)
+    END             reduce using rule 12 (body -> ANY .)
     RP              reduce using rule 12 (body -> ANY .)
 
 
@@ -185,62 +186,54 @@ state 12
     ANY             reduce using rule 13 (body -> BANGID .)
     BANGID          reduce using rule 13 (body -> BANGID .)
     ID              reduce using rule 13 (body -> BANGID .)
-    CATEND          reduce using rule 13 (body -> BANGID .)
+    END             reduce using rule 13 (body -> BANGID .)
     RP              reduce using rule 13 (body -> BANGID .)
 
 
 state 13
 
-    (1) s -> ITEM CORR lcom CATEND . t
-    (15) t -> . END
-    END             shift and go to state 18
+    (1) s -> ITEM CORR lcom t .
+    $end            reduce using rule 1 (s -> ITEM CORR lcom t .)
 
-    t                              shift and go to state 17
 
 state 14
+
+    (15) t -> END .
+    $end            reduce using rule 15 (t -> END .)
+
+
+state 15
 
     (5) bodys -> bodys body .
     LP              reduce using rule 5 (bodys -> bodys body .)
     ANY             reduce using rule 5 (bodys -> bodys body .)
     BANGID          reduce using rule 5 (bodys -> bodys body .)
     ID              reduce using rule 5 (bodys -> bodys body .)
-    CATEND          reduce using rule 5 (bodys -> bodys body .)
+    END             reduce using rule 5 (bodys -> bodys body .)
     RP              reduce using rule 5 (bodys -> bodys body .)
 
 
-state 15
+state 16
 
     (6) lterm -> BS ID . _1_DOT_optional lbody
     (7) _1_DOT_optional -> . DOT
     (8) _1_DOT_optional -> .
-    DOT             shift and go to state 20
+    DOT             shift and go to state 19
     BS              reduce using rule 8 (_1_DOT_optional -> .)
     LP              reduce using rule 8 (_1_DOT_optional -> .)
     ANY             reduce using rule 8 (_1_DOT_optional -> .)
     BANGID          reduce using rule 8 (_1_DOT_optional -> .)
     ID              reduce using rule 8 (_1_DOT_optional -> .)
 
-    _1_DOT_optional                shift and go to state 19
-
-state 16
-
-    (11) body -> LP lcom . RP
-    RP              shift and go to state 21
-
+    _1_DOT_optional                shift and go to state 18
 
 state 17
 
-    (1) s -> ITEM CORR lcom CATEND t .
-    $end            reduce using rule 1 (s -> ITEM CORR lcom CATEND t .)
+    (11) body -> LP lcom . RP
+    RP              shift and go to state 20
 
 
 state 18
-
-    (15) t -> END .
-    $end            reduce using rule 15 (t -> END .)
-
-
-state 19
 
     (6) lterm -> BS ID _1_DOT_optional . lbody
     (9) lbody -> . bodys
@@ -258,12 +251,12 @@ state 19
     BANGID          shift and go to state 12
     ID              shift and go to state 9
 
-    lbody                          shift and go to state 22
-    bodys                          shift and go to state 23
-    lterm                          shift and go to state 24
+    lbody                          shift and go to state 21
+    bodys                          shift and go to state 22
+    lterm                          shift and go to state 23
     body                           shift and go to state 7
 
-state 20
+state 19
 
     (7) _1_DOT_optional -> DOT .
     BS              reduce using rule 7 (_1_DOT_optional -> DOT .)
@@ -273,25 +266,25 @@ state 20
     ID              reduce using rule 7 (_1_DOT_optional -> DOT .)
 
 
-state 21
+state 20
 
     (11) body -> LP lcom RP .
     LP              reduce using rule 11 (body -> LP lcom RP .)
     ANY             reduce using rule 11 (body -> LP lcom RP .)
     BANGID          reduce using rule 11 (body -> LP lcom RP .)
     ID              reduce using rule 11 (body -> LP lcom RP .)
-    CATEND          reduce using rule 11 (body -> LP lcom RP .)
+    END             reduce using rule 11 (body -> LP lcom RP .)
     RP              reduce using rule 11 (body -> LP lcom RP .)
 
 
-state 22
+state 21
 
     (6) lterm -> BS ID _1_DOT_optional lbody .
-    CATEND          reduce using rule 6 (lterm -> BS ID _1_DOT_optional lbody .)
+    END             reduce using rule 6 (lterm -> BS ID _1_DOT_optional lbody .)
     RP              reduce using rule 6 (lterm -> BS ID _1_DOT_optional lbody .)
 
 
-state 23
+state 22
 
     (9) lbody -> bodys .
     (5) bodys -> bodys . body
@@ -299,17 +292,17 @@ state 23
     (12) body -> . ANY
     (13) body -> . BANGID
     (14) body -> . ID
-    CATEND          reduce using rule 9 (lbody -> bodys .)
+    END             reduce using rule 9 (lbody -> bodys .)
     RP              reduce using rule 9 (lbody -> bodys .)
     LP              shift and go to state 10
     ANY             shift and go to state 11
     BANGID          shift and go to state 12
     ID              shift and go to state 9
 
-    body                           shift and go to state 14
+    body                           shift and go to state 15
 
-state 24
+state 23
 
     (10) lbody -> lterm .
-    CATEND          reduce using rule 10 (lbody -> lterm .)
+    END             reduce using rule 10 (lbody -> lterm .)
     RP              reduce using rule 10 (lbody -> lterm .)

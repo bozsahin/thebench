@@ -394,12 +394,12 @@ class MGParser(Parser):       # the syntax of MG entries
             _info['arule'] += 1
         return  mk_bin(_arule, p[0][1:], mk_bin(_apair, p.apair0, p.apair1)) # CL hates sharp in input, take it out of name
 
-    @_('LP ids COM c RP')      
+    @_('ids COM c')      
     def spair(self, p):
         global _spair
         return mk_bin(_spair, p.ids, p.c)
 
-    @_('LP c RP')
+    @_('c')
     def apair(self, p):
         return p.c
 
@@ -1114,16 +1114,6 @@ def do (commline):
         print()
     elif comm == '!':
         print_info()
-        ch = input("write to file? (y/N)? ")
-        if ch == 'y':
-            fn = input("file name: ")
-            ch = False
-            if os.path.exists(fn):
-                ch = input(f"file {fn} exists, overwrite (y/N)? ")
-            if ch == 'y' or not ch:
-                with open(fn, 'w') as f:
-                    with redirect_stdout(f):
-                        print_info()
     elif comm == _exit:       # caller knows what to do next
         pass
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad

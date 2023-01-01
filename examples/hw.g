@@ -41,8 +41,8 @@ pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y x) x z   
 
 % relational rules (as opposed to combining rules)
 
-#past ( run  a mile, iv:\x.run x) <--> ( km, s\np:\x.past run x) % a symmetric rule
-#subj (np : lt)            --> (s/(s\np):\lt\p.p lt)       % an asymmetric rule
+#past run  a mile, iv:\x.run x <-->  km, s\np:\x.past run x % a symmetric rule
+#subj np : lt            --> s/(s\np):\lt\p.p lt       % an asymmetric rule
 
                                         % <--> means these two are related During parsing, we pick the one in surface form.
                                         %  --> means the surface string bearing the category on the lhs ALSO
@@ -57,12 +57,12 @@ pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y x) x z   
                                         % Turkish, turning adjectives to nouns (Lewis 1967),
                                         % mapping input lambda term \p\x.and(p x)(nompred x) to 
                                         % \x.and(nompred x)(nompred x).
-#lewis-rule (np/np : lt)  --> (np : \lt.lt nompred)                   
+#lewis-rule np/np : lt  --> np : \lt.lt nompred                   
                                         % example: zengin adam `rich man', zengin: `the rich'
                                         %          it is asymmetric: 'Mehmet' but *'Mehmet adam'
 
 
-#past (buy, iv/np:\x\y.buy x y) <--> (bought something, (s\np)/np:\x\y.past buy x y)   
+#past buy, iv/np:\x\y.buy x y <--> bought something, (s\np)/np:\x\y.past buy x y   
 
                                         % NB. rule name is same as run <--> ran. Useful
                                         %    (in fact essential) for capturing morphological

@@ -1,141 +1,138 @@
 Grammar:
 
 Rule 0     S' -> s
-Rule 1     s -> l catend t
+Rule 1     s -> l t
 Rule 2     l -> r
 Rule 3     l -> ITEM pos M c
 Rule 4     pos -> SQCAT
 Rule 5     pos -> ID
 Rule 6     t -> END
-Rule 7     catend -> CATEND
-Rule 8     catend -> LSQ INUM COM RNUM RSQ CATEND
-Rule 9     r -> RNAME apair ARULE apair
-Rule 10    r -> RNAME spair SRULE spair
-Rule 11    spair -> LP ids COM c RP
-Rule 12    apair -> LP c RP
-Rule 13    ids -> ID
-Rule 14    ids -> ids ID
-Rule 15    c -> scom CORR lcom
-Rule 16    scom -> scom slash last
-Rule 17    scom -> parentd
-Rule 18    scom -> basic
-Rule 19    last -> parentd
-Rule 20    last -> basic
-Rule 21    slash -> dir
-Rule 22    slash -> dir mod
-Rule 23    dir -> BDS
-Rule 24    dir -> FDS
-Rule 25    dir -> FS
-Rule 26    dir -> BS
-Rule 27    mod -> MODX
-Rule 28    mod -> MODAPP
-Rule 29    mod -> MODHAR
-Rule 30    mod -> DOT
-Rule 31    basic -> SPECID
-Rule 32    basic -> DQCAT
-Rule 33    basic -> SQCAT
-Rule 34    basic -> ID feats
-Rule 35    parentd -> LP scom RP
-Rule 36    feats -> empty
-Rule 37    feats -> LB eqns RB
-Rule 38    empty -> <empty>
-Rule 39    eqns -> eqn
-Rule 40    eqns -> eqns COM eqn
-Rule 41    eqn -> ID EQ val
-Rule 42    val -> ANY
-Rule 43    val -> VARVAL
-Rule 44    val -> INUM
-Rule 45    val -> ID
-Rule 46    lcom -> lterm
-Rule 47    lcom -> bodys
-Rule 48    bodys -> body
-Rule 49    bodys -> bodys body
-Rule 50    body -> LP lcom RP
-Rule 51    body -> BANGID
-Rule 52    body -> ID
-Rule 53    lterm -> BS ID _2_DOT_optional lbody
-Rule 54    _2_DOT_optional -> DOT
-Rule 55    _2_DOT_optional -> <empty>
-Rule 56    lbody -> bodys
-Rule 57    lbody -> lterm
+Rule 7     t -> LSQ INUM COM RNUM RSQ END
+Rule 8     r -> RNAME apair ARULE apair
+Rule 9     r -> RNAME spair SRULE spair
+Rule 10    spair -> ids COM c
+Rule 11    apair -> c
+Rule 12    ids -> ID
+Rule 13    ids -> ids ID
+Rule 14    c -> scom CORR lcom
+Rule 15    scom -> scom slash last
+Rule 16    scom -> parentd
+Rule 17    scom -> basic
+Rule 18    last -> parentd
+Rule 19    last -> basic
+Rule 20    slash -> dir
+Rule 21    slash -> dir mod
+Rule 22    dir -> BDS
+Rule 23    dir -> FDS
+Rule 24    dir -> FS
+Rule 25    dir -> BS
+Rule 26    mod -> MODX
+Rule 27    mod -> MODAPP
+Rule 28    mod -> MODHAR
+Rule 29    mod -> DOT
+Rule 30    basic -> SPECID
+Rule 31    basic -> DQCAT
+Rule 32    basic -> SQCAT
+Rule 33    basic -> ID feats
+Rule 34    parentd -> LP scom RP
+Rule 35    feats -> empty
+Rule 36    feats -> LB eqns RB
+Rule 37    empty -> <empty>
+Rule 38    eqns -> eqn
+Rule 39    eqns -> eqns COM eqn
+Rule 40    eqn -> ID EQ val
+Rule 41    val -> ANY
+Rule 42    val -> VARVAL
+Rule 43    val -> INUM
+Rule 44    val -> ID
+Rule 45    lcom -> lterm
+Rule 46    lcom -> bodys
+Rule 47    bodys -> body
+Rule 48    bodys -> bodys body
+Rule 49    body -> LP lcom RP
+Rule 50    body -> BANGID
+Rule 51    body -> ID
+Rule 52    lterm -> BS ID _2_DOT_optional lbody
+Rule 53    _2_DOT_optional -> DOT
+Rule 54    _2_DOT_optional -> <empty>
+Rule 55    lbody -> bodys
+Rule 56    lbody -> lterm
 
 Terminals, with rules where they appear:
 
-ANY                  : 42
-ARULE                : 9
-BANGID               : 51
-BDS                  : 23
-BS                   : 26 53
-CATEND               : 7 8
-COM                  : 8 11 40
-CORR                 : 15
-DOT                  : 30 54
-DQCAT                : 32
-END                  : 6
-EQ                   : 41
-FDS                  : 24
-FS                   : 25
-ID                   : 5 13 14 34 41 45 52 53
-INUM                 : 8 44
+ANY                  : 41
+ARULE                : 8
+BANGID               : 50
+BDS                  : 22
+BS                   : 25 52
+COM                  : 7 10 39
+CORR                 : 14
+DOT                  : 29 53
+DQCAT                : 31
+END                  : 6 7
+EQ                   : 40
+FDS                  : 23
+FS                   : 24
+ID                   : 5 12 13 33 40 44 51 52
+INUM                 : 7 43
 ITEM                 : 3
-LB                   : 37
-LP                   : 11 12 35 50
-LSQ                  : 8
+LB                   : 36
+LP                   : 34 49
+LSQ                  : 7
 M                    : 3
-MODAPP               : 28
-MODHAR               : 29
-MODX                 : 27
-RB                   : 37
-RNAME                : 9 10
-RNUM                 : 8
-RP                   : 11 12 35 50
-RSQ                  : 8
-SPECID               : 31
-SQCAT                : 4 33
-SRULE                : 10
-VARVAL               : 43
+MODAPP               : 27
+MODHAR               : 28
+MODX                 : 26
+RB                   : 36
+RNAME                : 8 9
+RNUM                 : 7
+RP                   : 34 49
+RSQ                  : 7
+SPECID               : 30
+SQCAT                : 4 32
+SRULE                : 9
+VARVAL               : 42
 error                : 
 
 Nonterminals, with rules where they appear:
 
-_2_DOT_optional      : 53
-apair                : 9 9
-basic                : 18 20
-body                 : 48 49
-bodys                : 47 49 56
-c                    : 3 11 12
-catend               : 1
-dir                  : 21 22
-empty                : 36
-eqn                  : 39 40
-eqns                 : 37 40
-feats                : 34
-ids                  : 11 14
+_2_DOT_optional      : 52
+apair                : 8 8
+basic                : 17 19
+body                 : 47 48
+bodys                : 46 48 55
+c                    : 3 10 11
+dir                  : 20 21
+empty                : 35
+eqn                  : 38 39
+eqns                 : 36 39
+feats                : 33
+ids                  : 10 13
 l                    : 1
-last                 : 16
-lbody                : 53
-lcom                 : 15 50
-lterm                : 46 57
-mod                  : 22
-parentd              : 17 19
+last                 : 15
+lbody                : 52
+lcom                 : 14 49
+lterm                : 45 56
+mod                  : 21
+parentd              : 16 18
 pos                  : 3
 r                    : 2
 s                    : 0
-scom                 : 15 16 35
-slash                : 16
-spair                : 10 10
+scom                 : 14 15 34
+slash                : 15
+spair                : 9 9
 t                    : 1
-val                  : 41
+val                  : 40
 
 
 state 0
 
     (0) S' -> . s
-    (1) s -> . l catend t
+    (1) s -> . l t
     (2) l -> . r
     (3) l -> . ITEM pos M c
-    (9) r -> . RNAME apair ARULE apair
-    (10) r -> . RNAME spair SRULE spair
+    (8) r -> . RNAME apair ARULE apair
+    (9) r -> . RNAME spair SRULE spair
     ITEM            shift and go to state 4
     RNAME           shift and go to state 5
 
@@ -150,18 +147,18 @@ state 1
 
 state 2
 
-    (1) s -> l . catend t
-    (7) catend -> . CATEND
-    (8) catend -> . LSQ INUM COM RNUM RSQ CATEND
-    CATEND          shift and go to state 7
+    (1) s -> l . t
+    (6) t -> . END
+    (7) t -> . LSQ INUM COM RNUM RSQ END
+    END             shift and go to state 7
     LSQ             shift and go to state 8
 
-    catend                         shift and go to state 6
+    t                              shift and go to state 6
 
 state 3
 
     (2) l -> r .
-    CATEND          reduce using rule 2 (l -> r .)
+    END             reduce using rule 2 (l -> r .)
     LSQ             reduce using rule 2 (l -> r .)
 
 
@@ -177,39 +174,57 @@ state 4
 
 state 5
 
-    (9) r -> RNAME . apair ARULE apair
-    (10) r -> RNAME . spair SRULE spair
-    (12) apair -> . LP c RP
-    (11) spair -> . LP ids COM c RP
-    LP              shift and go to state 14
+    (8) r -> RNAME . apair ARULE apair
+    (9) r -> RNAME . spair SRULE spair
+    (11) apair -> . c
+    (10) spair -> . ids COM c
+    (14) c -> . scom CORR lcom
+    (12) ids -> . ID
+    (13) ids -> . ids ID
+    (15) scom -> . scom slash last
+    (16) scom -> . parentd
+    (17) scom -> . basic
+    (34) parentd -> . LP scom RP
+    (30) basic -> . SPECID
+    (31) basic -> . DQCAT
+    (32) basic -> . SQCAT
+    (33) basic -> . ID feats
+    ID              shift and go to state 17
+    LP              shift and go to state 20
+    SPECID          shift and go to state 21
+    DQCAT           shift and go to state 22
+    SQCAT           shift and go to state 23
 
     apair                          shift and go to state 12
     spair                          shift and go to state 13
+    c                              shift and go to state 14
+    ids                            shift and go to state 15
+    scom                           shift and go to state 16
+    parentd                        shift and go to state 18
+    basic                          shift and go to state 19
 
 state 6
 
-    (1) s -> l catend . t
-    (6) t -> . END
-    END             shift and go to state 16
+    (1) s -> l t .
+    $end            reduce using rule 1 (s -> l t .)
 
-    t                              shift and go to state 15
 
 state 7
 
-    (7) catend -> CATEND .
-    END             reduce using rule 7 (catend -> CATEND .)
+    (6) t -> END .
+    $end            reduce using rule 6 (t -> END .)
 
 
 state 8
 
-    (8) catend -> LSQ . INUM COM RNUM RSQ CATEND
-    INUM            shift and go to state 17
+    (7) t -> LSQ . INUM COM RNUM RSQ END
+    INUM            shift and go to state 24
 
 
 state 9
 
     (3) l -> ITEM pos . M c
-    M               shift and go to state 18
+    M               shift and go to state 25
 
 
 state 10
@@ -226,930 +241,888 @@ state 11
 
 state 12
 
-    (9) r -> RNAME apair . ARULE apair
-    ARULE           shift and go to state 19
+    (8) r -> RNAME apair . ARULE apair
+    ARULE           shift and go to state 26
 
 
 state 13
 
-    (10) r -> RNAME spair . SRULE spair
-    SRULE           shift and go to state 20
+    (9) r -> RNAME spair . SRULE spair
+    SRULE           shift and go to state 27
 
 
 state 14
 
-    (12) apair -> LP . c RP
-    (11) spair -> LP . ids COM c RP
-    (15) c -> . scom CORR lcom
-    (13) ids -> . ID
-    (14) ids -> . ids ID
-    (16) scom -> . scom slash last
-    (17) scom -> . parentd
-    (18) scom -> . basic
-    (35) parentd -> . LP scom RP
-    (31) basic -> . SPECID
-    (32) basic -> . DQCAT
-    (33) basic -> . SQCAT
-    (34) basic -> . ID feats
-    ID              shift and go to state 25
-    LP              shift and go to state 21
-    SPECID          shift and go to state 28
-    DQCAT           shift and go to state 29
-    SQCAT           shift and go to state 30
+    (11) apair -> c .
+    ARULE           reduce using rule 11 (apair -> c .)
+    END             reduce using rule 11 (apair -> c .)
+    LSQ             reduce using rule 11 (apair -> c .)
 
-    c                              shift and go to state 22
-    ids                            shift and go to state 23
-    scom                           shift and go to state 24
-    parentd                        shift and go to state 26
-    basic                          shift and go to state 27
 
 state 15
 
-    (1) s -> l catend t .
-    $end            reduce using rule 1 (s -> l catend t .)
+    (10) spair -> ids . COM c
+    (13) ids -> ids . ID
+    COM             shift and go to state 28
+    ID              shift and go to state 29
 
 
 state 16
 
-    (6) t -> END .
-    $end            reduce using rule 6 (t -> END .)
+    (14) c -> scom . CORR lcom
+    (15) scom -> scom . slash last
+    (20) slash -> . dir
+    (21) slash -> . dir mod
+    (22) dir -> . BDS
+    (23) dir -> . FDS
+    (24) dir -> . FS
+    (25) dir -> . BS
+    CORR            shift and go to state 30
+    BDS             shift and go to state 33
+    FDS             shift and go to state 34
+    FS              shift and go to state 35
+    BS              shift and go to state 36
 
+    slash                          shift and go to state 31
+    dir                            shift and go to state 32
 
 state 17
 
-    (8) catend -> LSQ INUM . COM RNUM RSQ CATEND
-    COM             shift and go to state 31
+    (12) ids -> ID .
+    (33) basic -> ID . feats
+    (35) feats -> . empty
+    (36) feats -> . LB eqns RB
+    (37) empty -> .
+    COM             reduce using rule 12 (ids -> ID .)
+    ID              reduce using rule 12 (ids -> ID .)
+    LB              shift and go to state 39
+    CORR            reduce using rule 37 (empty -> .)
+    BDS             reduce using rule 37 (empty -> .)
+    FDS             reduce using rule 37 (empty -> .)
+    FS              reduce using rule 37 (empty -> .)
+    BS              reduce using rule 37 (empty -> .)
 
+    feats                          shift and go to state 37
+    empty                          shift and go to state 38
 
 state 18
 
-    (3) l -> ITEM pos M . c
-    (15) c -> . scom CORR lcom
-    (16) scom -> . scom slash last
-    (17) scom -> . parentd
-    (18) scom -> . basic
-    (35) parentd -> . LP scom RP
-    (31) basic -> . SPECID
-    (32) basic -> . DQCAT
-    (33) basic -> . SQCAT
-    (34) basic -> . ID feats
-    LP              shift and go to state 21
-    SPECID          shift and go to state 28
-    DQCAT           shift and go to state 29
-    SQCAT           shift and go to state 30
-    ID              shift and go to state 33
+    (16) scom -> parentd .
+    CORR            reduce using rule 16 (scom -> parentd .)
+    BDS             reduce using rule 16 (scom -> parentd .)
+    FDS             reduce using rule 16 (scom -> parentd .)
+    FS              reduce using rule 16 (scom -> parentd .)
+    BS              reduce using rule 16 (scom -> parentd .)
+    RP              reduce using rule 16 (scom -> parentd .)
 
-    c                              shift and go to state 32
-    scom                           shift and go to state 24
-    parentd                        shift and go to state 26
-    basic                          shift and go to state 27
 
 state 19
 
-    (9) r -> RNAME apair ARULE . apair
-    (12) apair -> . LP c RP
-    LP              shift and go to state 35
+    (17) scom -> basic .
+    CORR            reduce using rule 17 (scom -> basic .)
+    BDS             reduce using rule 17 (scom -> basic .)
+    FDS             reduce using rule 17 (scom -> basic .)
+    FS              reduce using rule 17 (scom -> basic .)
+    BS              reduce using rule 17 (scom -> basic .)
+    RP              reduce using rule 17 (scom -> basic .)
 
-    apair                          shift and go to state 34
 
 state 20
 
-    (10) r -> RNAME spair SRULE . spair
-    (11) spair -> . LP ids COM c RP
-    LP              shift and go to state 37
+    (34) parentd -> LP . scom RP
+    (15) scom -> . scom slash last
+    (16) scom -> . parentd
+    (17) scom -> . basic
+    (34) parentd -> . LP scom RP
+    (30) basic -> . SPECID
+    (31) basic -> . DQCAT
+    (32) basic -> . SQCAT
+    (33) basic -> . ID feats
+    LP              shift and go to state 20
+    SPECID          shift and go to state 21
+    DQCAT           shift and go to state 22
+    SQCAT           shift and go to state 23
+    ID              shift and go to state 41
 
-    spair                          shift and go to state 36
+    scom                           shift and go to state 40
+    parentd                        shift and go to state 18
+    basic                          shift and go to state 19
 
 state 21
 
-    (35) parentd -> LP . scom RP
-    (16) scom -> . scom slash last
-    (17) scom -> . parentd
-    (18) scom -> . basic
-    (35) parentd -> . LP scom RP
-    (31) basic -> . SPECID
-    (32) basic -> . DQCAT
-    (33) basic -> . SQCAT
-    (34) basic -> . ID feats
-    LP              shift and go to state 21
-    SPECID          shift and go to state 28
-    DQCAT           shift and go to state 29
-    SQCAT           shift and go to state 30
-    ID              shift and go to state 33
+    (30) basic -> SPECID .
+    CORR            reduce using rule 30 (basic -> SPECID .)
+    BDS             reduce using rule 30 (basic -> SPECID .)
+    FDS             reduce using rule 30 (basic -> SPECID .)
+    FS              reduce using rule 30 (basic -> SPECID .)
+    BS              reduce using rule 30 (basic -> SPECID .)
+    RP              reduce using rule 30 (basic -> SPECID .)
 
-    scom                           shift and go to state 38
-    parentd                        shift and go to state 26
-    basic                          shift and go to state 27
 
 state 22
 
-    (12) apair -> LP c . RP
-    RP              shift and go to state 39
+    (31) basic -> DQCAT .
+    CORR            reduce using rule 31 (basic -> DQCAT .)
+    BDS             reduce using rule 31 (basic -> DQCAT .)
+    FDS             reduce using rule 31 (basic -> DQCAT .)
+    FS              reduce using rule 31 (basic -> DQCAT .)
+    BS              reduce using rule 31 (basic -> DQCAT .)
+    RP              reduce using rule 31 (basic -> DQCAT .)
 
 
 state 23
 
-    (11) spair -> LP ids . COM c RP
-    (14) ids -> ids . ID
-    COM             shift and go to state 40
-    ID              shift and go to state 41
+    (32) basic -> SQCAT .
+    CORR            reduce using rule 32 (basic -> SQCAT .)
+    BDS             reduce using rule 32 (basic -> SQCAT .)
+    FDS             reduce using rule 32 (basic -> SQCAT .)
+    FS              reduce using rule 32 (basic -> SQCAT .)
+    BS              reduce using rule 32 (basic -> SQCAT .)
+    RP              reduce using rule 32 (basic -> SQCAT .)
 
 
 state 24
 
-    (15) c -> scom . CORR lcom
-    (16) scom -> scom . slash last
-    (21) slash -> . dir
-    (22) slash -> . dir mod
-    (23) dir -> . BDS
-    (24) dir -> . FDS
-    (25) dir -> . FS
-    (26) dir -> . BS
-    CORR            shift and go to state 42
-    BDS             shift and go to state 45
-    FDS             shift and go to state 46
-    FS              shift and go to state 47
-    BS              shift and go to state 48
+    (7) t -> LSQ INUM . COM RNUM RSQ END
+    COM             shift and go to state 42
 
-    slash                          shift and go to state 43
-    dir                            shift and go to state 44
 
 state 25
 
-    (13) ids -> ID .
-    (34) basic -> ID . feats
-    (36) feats -> . empty
-    (37) feats -> . LB eqns RB
-    (38) empty -> .
-    COM             reduce using rule 13 (ids -> ID .)
-    ID              reduce using rule 13 (ids -> ID .)
-    LB              shift and go to state 51
-    CORR            reduce using rule 38 (empty -> .)
-    BDS             reduce using rule 38 (empty -> .)
-    FDS             reduce using rule 38 (empty -> .)
-    FS              reduce using rule 38 (empty -> .)
-    BS              reduce using rule 38 (empty -> .)
+    (3) l -> ITEM pos M . c
+    (14) c -> . scom CORR lcom
+    (15) scom -> . scom slash last
+    (16) scom -> . parentd
+    (17) scom -> . basic
+    (34) parentd -> . LP scom RP
+    (30) basic -> . SPECID
+    (31) basic -> . DQCAT
+    (32) basic -> . SQCAT
+    (33) basic -> . ID feats
+    LP              shift and go to state 20
+    SPECID          shift and go to state 21
+    DQCAT           shift and go to state 22
+    SQCAT           shift and go to state 23
+    ID              shift and go to state 41
 
-    feats                          shift and go to state 49
-    empty                          shift and go to state 50
+    c                              shift and go to state 43
+    scom                           shift and go to state 16
+    parentd                        shift and go to state 18
+    basic                          shift and go to state 19
 
 state 26
 
-    (17) scom -> parentd .
-    CORR            reduce using rule 17 (scom -> parentd .)
-    BDS             reduce using rule 17 (scom -> parentd .)
-    FDS             reduce using rule 17 (scom -> parentd .)
-    FS              reduce using rule 17 (scom -> parentd .)
-    BS              reduce using rule 17 (scom -> parentd .)
-    RP              reduce using rule 17 (scom -> parentd .)
+    (8) r -> RNAME apair ARULE . apair
+    (11) apair -> . c
+    (14) c -> . scom CORR lcom
+    (15) scom -> . scom slash last
+    (16) scom -> . parentd
+    (17) scom -> . basic
+    (34) parentd -> . LP scom RP
+    (30) basic -> . SPECID
+    (31) basic -> . DQCAT
+    (32) basic -> . SQCAT
+    (33) basic -> . ID feats
+    LP              shift and go to state 20
+    SPECID          shift and go to state 21
+    DQCAT           shift and go to state 22
+    SQCAT           shift and go to state 23
+    ID              shift and go to state 41
 
+    apair                          shift and go to state 44
+    c                              shift and go to state 14
+    scom                           shift and go to state 16
+    parentd                        shift and go to state 18
+    basic                          shift and go to state 19
 
 state 27
 
-    (18) scom -> basic .
-    CORR            reduce using rule 18 (scom -> basic .)
-    BDS             reduce using rule 18 (scom -> basic .)
-    FDS             reduce using rule 18 (scom -> basic .)
-    FS              reduce using rule 18 (scom -> basic .)
-    BS              reduce using rule 18 (scom -> basic .)
-    RP              reduce using rule 18 (scom -> basic .)
+    (9) r -> RNAME spair SRULE . spair
+    (10) spair -> . ids COM c
+    (12) ids -> . ID
+    (13) ids -> . ids ID
+    ID              shift and go to state 46
 
+    spair                          shift and go to state 45
+    ids                            shift and go to state 15
 
 state 28
 
-    (31) basic -> SPECID .
-    CORR            reduce using rule 31 (basic -> SPECID .)
-    BDS             reduce using rule 31 (basic -> SPECID .)
-    FDS             reduce using rule 31 (basic -> SPECID .)
-    FS              reduce using rule 31 (basic -> SPECID .)
-    BS              reduce using rule 31 (basic -> SPECID .)
-    RP              reduce using rule 31 (basic -> SPECID .)
+    (10) spair -> ids COM . c
+    (14) c -> . scom CORR lcom
+    (15) scom -> . scom slash last
+    (16) scom -> . parentd
+    (17) scom -> . basic
+    (34) parentd -> . LP scom RP
+    (30) basic -> . SPECID
+    (31) basic -> . DQCAT
+    (32) basic -> . SQCAT
+    (33) basic -> . ID feats
+    LP              shift and go to state 20
+    SPECID          shift and go to state 21
+    DQCAT           shift and go to state 22
+    SQCAT           shift and go to state 23
+    ID              shift and go to state 41
 
+    c                              shift and go to state 47
+    scom                           shift and go to state 16
+    parentd                        shift and go to state 18
+    basic                          shift and go to state 19
 
 state 29
 
-    (32) basic -> DQCAT .
-    CORR            reduce using rule 32 (basic -> DQCAT .)
-    BDS             reduce using rule 32 (basic -> DQCAT .)
-    FDS             reduce using rule 32 (basic -> DQCAT .)
-    FS              reduce using rule 32 (basic -> DQCAT .)
-    BS              reduce using rule 32 (basic -> DQCAT .)
-    RP              reduce using rule 32 (basic -> DQCAT .)
+    (13) ids -> ids ID .
+    COM             reduce using rule 13 (ids -> ids ID .)
+    ID              reduce using rule 13 (ids -> ids ID .)
 
 
 state 30
 
-    (33) basic -> SQCAT .
-    CORR            reduce using rule 33 (basic -> SQCAT .)
-    BDS             reduce using rule 33 (basic -> SQCAT .)
-    FDS             reduce using rule 33 (basic -> SQCAT .)
-    FS              reduce using rule 33 (basic -> SQCAT .)
-    BS              reduce using rule 33 (basic -> SQCAT .)
-    RP              reduce using rule 33 (basic -> SQCAT .)
+    (14) c -> scom CORR . lcom
+    (45) lcom -> . lterm
+    (46) lcom -> . bodys
+    (52) lterm -> . BS ID _2_DOT_optional lbody
+    (47) bodys -> . body
+    (48) bodys -> . bodys body
+    (49) body -> . LP lcom RP
+    (50) body -> . BANGID
+    (51) body -> . ID
+    BS              shift and go to state 51
+    LP              shift and go to state 54
+    BANGID          shift and go to state 55
+    ID              shift and go to state 52
 
+    lcom                           shift and go to state 48
+    lterm                          shift and go to state 49
+    bodys                          shift and go to state 50
+    body                           shift and go to state 53
 
 state 31
 
-    (8) catend -> LSQ INUM COM . RNUM RSQ CATEND
-    RNUM            shift and go to state 52
+    (15) scom -> scom slash . last
+    (18) last -> . parentd
+    (19) last -> . basic
+    (34) parentd -> . LP scom RP
+    (30) basic -> . SPECID
+    (31) basic -> . DQCAT
+    (32) basic -> . SQCAT
+    (33) basic -> . ID feats
+    LP              shift and go to state 20
+    SPECID          shift and go to state 21
+    DQCAT           shift and go to state 22
+    SQCAT           shift and go to state 23
+    ID              shift and go to state 41
 
+    last                           shift and go to state 56
+    parentd                        shift and go to state 57
+    basic                          shift and go to state 58
 
 state 32
 
-    (3) l -> ITEM pos M c .
-    CATEND          reduce using rule 3 (l -> ITEM pos M c .)
-    LSQ             reduce using rule 3 (l -> ITEM pos M c .)
+    (20) slash -> dir .
+    (21) slash -> dir . mod
+    (26) mod -> . MODX
+    (27) mod -> . MODAPP
+    (28) mod -> . MODHAR
+    (29) mod -> . DOT
+    LP              reduce using rule 20 (slash -> dir .)
+    SPECID          reduce using rule 20 (slash -> dir .)
+    DQCAT           reduce using rule 20 (slash -> dir .)
+    SQCAT           reduce using rule 20 (slash -> dir .)
+    ID              reduce using rule 20 (slash -> dir .)
+    MODX            shift and go to state 60
+    MODAPP          shift and go to state 61
+    MODHAR          shift and go to state 62
+    DOT             shift and go to state 63
 
+    mod                            shift and go to state 59
 
 state 33
 
-    (34) basic -> ID . feats
-    (36) feats -> . empty
-    (37) feats -> . LB eqns RB
-    (38) empty -> .
-    LB              shift and go to state 51
-    CORR            reduce using rule 38 (empty -> .)
-    BDS             reduce using rule 38 (empty -> .)
-    FDS             reduce using rule 38 (empty -> .)
-    FS              reduce using rule 38 (empty -> .)
-    BS              reduce using rule 38 (empty -> .)
-    RP              reduce using rule 38 (empty -> .)
+    (22) dir -> BDS .
+    MODX            reduce using rule 22 (dir -> BDS .)
+    MODAPP          reduce using rule 22 (dir -> BDS .)
+    MODHAR          reduce using rule 22 (dir -> BDS .)
+    DOT             reduce using rule 22 (dir -> BDS .)
+    LP              reduce using rule 22 (dir -> BDS .)
+    SPECID          reduce using rule 22 (dir -> BDS .)
+    DQCAT           reduce using rule 22 (dir -> BDS .)
+    SQCAT           reduce using rule 22 (dir -> BDS .)
+    ID              reduce using rule 22 (dir -> BDS .)
 
-    feats                          shift and go to state 49
-    empty                          shift and go to state 50
 
 state 34
 
-    (9) r -> RNAME apair ARULE apair .
-    CATEND          reduce using rule 9 (r -> RNAME apair ARULE apair .)
-    LSQ             reduce using rule 9 (r -> RNAME apair ARULE apair .)
+    (23) dir -> FDS .
+    MODX            reduce using rule 23 (dir -> FDS .)
+    MODAPP          reduce using rule 23 (dir -> FDS .)
+    MODHAR          reduce using rule 23 (dir -> FDS .)
+    DOT             reduce using rule 23 (dir -> FDS .)
+    LP              reduce using rule 23 (dir -> FDS .)
+    SPECID          reduce using rule 23 (dir -> FDS .)
+    DQCAT           reduce using rule 23 (dir -> FDS .)
+    SQCAT           reduce using rule 23 (dir -> FDS .)
+    ID              reduce using rule 23 (dir -> FDS .)
 
 
 state 35
 
-    (12) apair -> LP . c RP
-    (15) c -> . scom CORR lcom
-    (16) scom -> . scom slash last
-    (17) scom -> . parentd
-    (18) scom -> . basic
-    (35) parentd -> . LP scom RP
-    (31) basic -> . SPECID
-    (32) basic -> . DQCAT
-    (33) basic -> . SQCAT
-    (34) basic -> . ID feats
-    LP              shift and go to state 21
-    SPECID          shift and go to state 28
-    DQCAT           shift and go to state 29
-    SQCAT           shift and go to state 30
-    ID              shift and go to state 33
+    (24) dir -> FS .
+    MODX            reduce using rule 24 (dir -> FS .)
+    MODAPP          reduce using rule 24 (dir -> FS .)
+    MODHAR          reduce using rule 24 (dir -> FS .)
+    DOT             reduce using rule 24 (dir -> FS .)
+    LP              reduce using rule 24 (dir -> FS .)
+    SPECID          reduce using rule 24 (dir -> FS .)
+    DQCAT           reduce using rule 24 (dir -> FS .)
+    SQCAT           reduce using rule 24 (dir -> FS .)
+    ID              reduce using rule 24 (dir -> FS .)
 
-    c                              shift and go to state 22
-    scom                           shift and go to state 24
-    parentd                        shift and go to state 26
-    basic                          shift and go to state 27
 
 state 36
 
-    (10) r -> RNAME spair SRULE spair .
-    CATEND          reduce using rule 10 (r -> RNAME spair SRULE spair .)
-    LSQ             reduce using rule 10 (r -> RNAME spair SRULE spair .)
+    (25) dir -> BS .
+    MODX            reduce using rule 25 (dir -> BS .)
+    MODAPP          reduce using rule 25 (dir -> BS .)
+    MODHAR          reduce using rule 25 (dir -> BS .)
+    DOT             reduce using rule 25 (dir -> BS .)
+    LP              reduce using rule 25 (dir -> BS .)
+    SPECID          reduce using rule 25 (dir -> BS .)
+    DQCAT           reduce using rule 25 (dir -> BS .)
+    SQCAT           reduce using rule 25 (dir -> BS .)
+    ID              reduce using rule 25 (dir -> BS .)
 
 
 state 37
 
-    (11) spair -> LP . ids COM c RP
-    (13) ids -> . ID
-    (14) ids -> . ids ID
-    ID              shift and go to state 53
+    (33) basic -> ID feats .
+    CORR            reduce using rule 33 (basic -> ID feats .)
+    BDS             reduce using rule 33 (basic -> ID feats .)
+    FDS             reduce using rule 33 (basic -> ID feats .)
+    FS              reduce using rule 33 (basic -> ID feats .)
+    BS              reduce using rule 33 (basic -> ID feats .)
+    RP              reduce using rule 33 (basic -> ID feats .)
 
-    ids                            shift and go to state 23
 
 state 38
 
-    (35) parentd -> LP scom . RP
-    (16) scom -> scom . slash last
-    (21) slash -> . dir
-    (22) slash -> . dir mod
-    (23) dir -> . BDS
-    (24) dir -> . FDS
-    (25) dir -> . FS
-    (26) dir -> . BS
-    RP              shift and go to state 54
-    BDS             shift and go to state 45
-    FDS             shift and go to state 46
-    FS              shift and go to state 47
-    BS              shift and go to state 48
+    (35) feats -> empty .
+    CORR            reduce using rule 35 (feats -> empty .)
+    BDS             reduce using rule 35 (feats -> empty .)
+    FDS             reduce using rule 35 (feats -> empty .)
+    FS              reduce using rule 35 (feats -> empty .)
+    BS              reduce using rule 35 (feats -> empty .)
+    RP              reduce using rule 35 (feats -> empty .)
 
-    slash                          shift and go to state 43
-    dir                            shift and go to state 44
 
 state 39
 
-    (12) apair -> LP c RP .
-    ARULE           reduce using rule 12 (apair -> LP c RP .)
-    CATEND          reduce using rule 12 (apair -> LP c RP .)
-    LSQ             reduce using rule 12 (apair -> LP c RP .)
+    (36) feats -> LB . eqns RB
+    (38) eqns -> . eqn
+    (39) eqns -> . eqns COM eqn
+    (40) eqn -> . ID EQ val
+    ID              shift and go to state 66
 
+    eqns                           shift and go to state 64
+    eqn                            shift and go to state 65
 
 state 40
 
-    (11) spair -> LP ids COM . c RP
-    (15) c -> . scom CORR lcom
-    (16) scom -> . scom slash last
-    (17) scom -> . parentd
-    (18) scom -> . basic
-    (35) parentd -> . LP scom RP
-    (31) basic -> . SPECID
-    (32) basic -> . DQCAT
-    (33) basic -> . SQCAT
-    (34) basic -> . ID feats
-    LP              shift and go to state 21
-    SPECID          shift and go to state 28
-    DQCAT           shift and go to state 29
-    SQCAT           shift and go to state 30
-    ID              shift and go to state 33
+    (34) parentd -> LP scom . RP
+    (15) scom -> scom . slash last
+    (20) slash -> . dir
+    (21) slash -> . dir mod
+    (22) dir -> . BDS
+    (23) dir -> . FDS
+    (24) dir -> . FS
+    (25) dir -> . BS
+    RP              shift and go to state 67
+    BDS             shift and go to state 33
+    FDS             shift and go to state 34
+    FS              shift and go to state 35
+    BS              shift and go to state 36
 
-    c                              shift and go to state 55
-    scom                           shift and go to state 24
-    parentd                        shift and go to state 26
-    basic                          shift and go to state 27
+    slash                          shift and go to state 31
+    dir                            shift and go to state 32
 
 state 41
 
-    (14) ids -> ids ID .
-    COM             reduce using rule 14 (ids -> ids ID .)
-    ID              reduce using rule 14 (ids -> ids ID .)
+    (33) basic -> ID . feats
+    (35) feats -> . empty
+    (36) feats -> . LB eqns RB
+    (37) empty -> .
+    LB              shift and go to state 39
+    RP              reduce using rule 37 (empty -> .)
+    BDS             reduce using rule 37 (empty -> .)
+    FDS             reduce using rule 37 (empty -> .)
+    FS              reduce using rule 37 (empty -> .)
+    BS              reduce using rule 37 (empty -> .)
+    CORR            reduce using rule 37 (empty -> .)
 
+    feats                          shift and go to state 37
+    empty                          shift and go to state 38
 
 state 42
 
-    (15) c -> scom CORR . lcom
-    (46) lcom -> . lterm
-    (47) lcom -> . bodys
-    (53) lterm -> . BS ID _2_DOT_optional lbody
-    (48) bodys -> . body
-    (49) bodys -> . bodys body
-    (50) body -> . LP lcom RP
-    (51) body -> . BANGID
-    (52) body -> . ID
-    BS              shift and go to state 59
-    LP              shift and go to state 62
-    BANGID          shift and go to state 63
-    ID              shift and go to state 60
+    (7) t -> LSQ INUM COM . RNUM RSQ END
+    RNUM            shift and go to state 68
 
-    lcom                           shift and go to state 56
-    lterm                          shift and go to state 57
-    bodys                          shift and go to state 58
-    body                           shift and go to state 61
 
 state 43
 
-    (16) scom -> scom slash . last
-    (19) last -> . parentd
-    (20) last -> . basic
-    (35) parentd -> . LP scom RP
-    (31) basic -> . SPECID
-    (32) basic -> . DQCAT
-    (33) basic -> . SQCAT
-    (34) basic -> . ID feats
-    LP              shift and go to state 21
-    SPECID          shift and go to state 28
-    DQCAT           shift and go to state 29
-    SQCAT           shift and go to state 30
-    ID              shift and go to state 33
+    (3) l -> ITEM pos M c .
+    END             reduce using rule 3 (l -> ITEM pos M c .)
+    LSQ             reduce using rule 3 (l -> ITEM pos M c .)
 
-    last                           shift and go to state 64
-    parentd                        shift and go to state 65
-    basic                          shift and go to state 66
 
 state 44
 
-    (21) slash -> dir .
-    (22) slash -> dir . mod
-    (27) mod -> . MODX
-    (28) mod -> . MODAPP
-    (29) mod -> . MODHAR
-    (30) mod -> . DOT
-    LP              reduce using rule 21 (slash -> dir .)
-    SPECID          reduce using rule 21 (slash -> dir .)
-    DQCAT           reduce using rule 21 (slash -> dir .)
-    SQCAT           reduce using rule 21 (slash -> dir .)
-    ID              reduce using rule 21 (slash -> dir .)
-    MODX            shift and go to state 68
-    MODAPP          shift and go to state 69
-    MODHAR          shift and go to state 70
-    DOT             shift and go to state 71
+    (8) r -> RNAME apair ARULE apair .
+    END             reduce using rule 8 (r -> RNAME apair ARULE apair .)
+    LSQ             reduce using rule 8 (r -> RNAME apair ARULE apair .)
 
-    mod                            shift and go to state 67
 
 state 45
 
-    (23) dir -> BDS .
-    MODX            reduce using rule 23 (dir -> BDS .)
-    MODAPP          reduce using rule 23 (dir -> BDS .)
-    MODHAR          reduce using rule 23 (dir -> BDS .)
-    DOT             reduce using rule 23 (dir -> BDS .)
-    LP              reduce using rule 23 (dir -> BDS .)
-    SPECID          reduce using rule 23 (dir -> BDS .)
-    DQCAT           reduce using rule 23 (dir -> BDS .)
-    SQCAT           reduce using rule 23 (dir -> BDS .)
-    ID              reduce using rule 23 (dir -> BDS .)
+    (9) r -> RNAME spair SRULE spair .
+    END             reduce using rule 9 (r -> RNAME spair SRULE spair .)
+    LSQ             reduce using rule 9 (r -> RNAME spair SRULE spair .)
 
 
 state 46
 
-    (24) dir -> FDS .
-    MODX            reduce using rule 24 (dir -> FDS .)
-    MODAPP          reduce using rule 24 (dir -> FDS .)
-    MODHAR          reduce using rule 24 (dir -> FDS .)
-    DOT             reduce using rule 24 (dir -> FDS .)
-    LP              reduce using rule 24 (dir -> FDS .)
-    SPECID          reduce using rule 24 (dir -> FDS .)
-    DQCAT           reduce using rule 24 (dir -> FDS .)
-    SQCAT           reduce using rule 24 (dir -> FDS .)
-    ID              reduce using rule 24 (dir -> FDS .)
+    (12) ids -> ID .
+    COM             reduce using rule 12 (ids -> ID .)
+    ID              reduce using rule 12 (ids -> ID .)
 
 
 state 47
 
-    (25) dir -> FS .
-    MODX            reduce using rule 25 (dir -> FS .)
-    MODAPP          reduce using rule 25 (dir -> FS .)
-    MODHAR          reduce using rule 25 (dir -> FS .)
-    DOT             reduce using rule 25 (dir -> FS .)
-    LP              reduce using rule 25 (dir -> FS .)
-    SPECID          reduce using rule 25 (dir -> FS .)
-    DQCAT           reduce using rule 25 (dir -> FS .)
-    SQCAT           reduce using rule 25 (dir -> FS .)
-    ID              reduce using rule 25 (dir -> FS .)
+    (10) spair -> ids COM c .
+    SRULE           reduce using rule 10 (spair -> ids COM c .)
+    END             reduce using rule 10 (spair -> ids COM c .)
+    LSQ             reduce using rule 10 (spair -> ids COM c .)
 
 
 state 48
 
-    (26) dir -> BS .
-    MODX            reduce using rule 26 (dir -> BS .)
-    MODAPP          reduce using rule 26 (dir -> BS .)
-    MODHAR          reduce using rule 26 (dir -> BS .)
-    DOT             reduce using rule 26 (dir -> BS .)
-    LP              reduce using rule 26 (dir -> BS .)
-    SPECID          reduce using rule 26 (dir -> BS .)
-    DQCAT           reduce using rule 26 (dir -> BS .)
-    SQCAT           reduce using rule 26 (dir -> BS .)
-    ID              reduce using rule 26 (dir -> BS .)
+    (14) c -> scom CORR lcom .
+    ARULE           reduce using rule 14 (c -> scom CORR lcom .)
+    END             reduce using rule 14 (c -> scom CORR lcom .)
+    LSQ             reduce using rule 14 (c -> scom CORR lcom .)
+    SRULE           reduce using rule 14 (c -> scom CORR lcom .)
 
 
 state 49
 
-    (34) basic -> ID feats .
-    CORR            reduce using rule 34 (basic -> ID feats .)
-    BDS             reduce using rule 34 (basic -> ID feats .)
-    FDS             reduce using rule 34 (basic -> ID feats .)
-    FS              reduce using rule 34 (basic -> ID feats .)
-    BS              reduce using rule 34 (basic -> ID feats .)
-    RP              reduce using rule 34 (basic -> ID feats .)
+    (45) lcom -> lterm .
+    ARULE           reduce using rule 45 (lcom -> lterm .)
+    END             reduce using rule 45 (lcom -> lterm .)
+    LSQ             reduce using rule 45 (lcom -> lterm .)
+    SRULE           reduce using rule 45 (lcom -> lterm .)
+    RP              reduce using rule 45 (lcom -> lterm .)
 
 
 state 50
 
-    (36) feats -> empty .
-    CORR            reduce using rule 36 (feats -> empty .)
-    BDS             reduce using rule 36 (feats -> empty .)
-    FDS             reduce using rule 36 (feats -> empty .)
-    FS              reduce using rule 36 (feats -> empty .)
-    BS              reduce using rule 36 (feats -> empty .)
-    RP              reduce using rule 36 (feats -> empty .)
+    (46) lcom -> bodys .
+    (48) bodys -> bodys . body
+    (49) body -> . LP lcom RP
+    (50) body -> . BANGID
+    (51) body -> . ID
+    ARULE           reduce using rule 46 (lcom -> bodys .)
+    END             reduce using rule 46 (lcom -> bodys .)
+    LSQ             reduce using rule 46 (lcom -> bodys .)
+    SRULE           reduce using rule 46 (lcom -> bodys .)
+    RP              reduce using rule 46 (lcom -> bodys .)
+    LP              shift and go to state 54
+    BANGID          shift and go to state 55
+    ID              shift and go to state 52
 
+    body                           shift and go to state 69
 
 state 51
 
-    (37) feats -> LB . eqns RB
-    (39) eqns -> . eqn
-    (40) eqns -> . eqns COM eqn
-    (41) eqn -> . ID EQ val
-    ID              shift and go to state 74
+    (52) lterm -> BS . ID _2_DOT_optional lbody
+    ID              shift and go to state 70
 
-    eqns                           shift and go to state 72
-    eqn                            shift and go to state 73
 
 state 52
 
-    (8) catend -> LSQ INUM COM RNUM . RSQ CATEND
-    RSQ             shift and go to state 75
+    (51) body -> ID .
+    LP              reduce using rule 51 (body -> ID .)
+    BANGID          reduce using rule 51 (body -> ID .)
+    ID              reduce using rule 51 (body -> ID .)
+    ARULE           reduce using rule 51 (body -> ID .)
+    END             reduce using rule 51 (body -> ID .)
+    LSQ             reduce using rule 51 (body -> ID .)
+    SRULE           reduce using rule 51 (body -> ID .)
+    RP              reduce using rule 51 (body -> ID .)
 
 
 state 53
 
-    (13) ids -> ID .
-    COM             reduce using rule 13 (ids -> ID .)
-    ID              reduce using rule 13 (ids -> ID .)
+    (47) bodys -> body .
+    LP              reduce using rule 47 (bodys -> body .)
+    BANGID          reduce using rule 47 (bodys -> body .)
+    ID              reduce using rule 47 (bodys -> body .)
+    ARULE           reduce using rule 47 (bodys -> body .)
+    END             reduce using rule 47 (bodys -> body .)
+    LSQ             reduce using rule 47 (bodys -> body .)
+    SRULE           reduce using rule 47 (bodys -> body .)
+    RP              reduce using rule 47 (bodys -> body .)
 
 
 state 54
 
-    (35) parentd -> LP scom RP .
-    CORR            reduce using rule 35 (parentd -> LP scom RP .)
-    BDS             reduce using rule 35 (parentd -> LP scom RP .)
-    FDS             reduce using rule 35 (parentd -> LP scom RP .)
-    FS              reduce using rule 35 (parentd -> LP scom RP .)
-    BS              reduce using rule 35 (parentd -> LP scom RP .)
-    RP              reduce using rule 35 (parentd -> LP scom RP .)
+    (49) body -> LP . lcom RP
+    (45) lcom -> . lterm
+    (46) lcom -> . bodys
+    (52) lterm -> . BS ID _2_DOT_optional lbody
+    (47) bodys -> . body
+    (48) bodys -> . bodys body
+    (49) body -> . LP lcom RP
+    (50) body -> . BANGID
+    (51) body -> . ID
+    BS              shift and go to state 51
+    LP              shift and go to state 54
+    BANGID          shift and go to state 55
+    ID              shift and go to state 52
 
+    lcom                           shift and go to state 71
+    lterm                          shift and go to state 49
+    bodys                          shift and go to state 50
+    body                           shift and go to state 53
 
 state 55
 
-    (11) spair -> LP ids COM c . RP
-    RP              shift and go to state 76
+    (50) body -> BANGID .
+    LP              reduce using rule 50 (body -> BANGID .)
+    BANGID          reduce using rule 50 (body -> BANGID .)
+    ID              reduce using rule 50 (body -> BANGID .)
+    ARULE           reduce using rule 50 (body -> BANGID .)
+    END             reduce using rule 50 (body -> BANGID .)
+    LSQ             reduce using rule 50 (body -> BANGID .)
+    SRULE           reduce using rule 50 (body -> BANGID .)
+    RP              reduce using rule 50 (body -> BANGID .)
 
 
 state 56
 
-    (15) c -> scom CORR lcom .
-    RP              reduce using rule 15 (c -> scom CORR lcom .)
-    CATEND          reduce using rule 15 (c -> scom CORR lcom .)
-    LSQ             reduce using rule 15 (c -> scom CORR lcom .)
+    (15) scom -> scom slash last .
+    CORR            reduce using rule 15 (scom -> scom slash last .)
+    BDS             reduce using rule 15 (scom -> scom slash last .)
+    FDS             reduce using rule 15 (scom -> scom slash last .)
+    FS              reduce using rule 15 (scom -> scom slash last .)
+    BS              reduce using rule 15 (scom -> scom slash last .)
+    RP              reduce using rule 15 (scom -> scom slash last .)
 
 
 state 57
 
-    (46) lcom -> lterm .
-    RP              reduce using rule 46 (lcom -> lterm .)
-    CATEND          reduce using rule 46 (lcom -> lterm .)
-    LSQ             reduce using rule 46 (lcom -> lterm .)
+    (18) last -> parentd .
+    CORR            reduce using rule 18 (last -> parentd .)
+    BDS             reduce using rule 18 (last -> parentd .)
+    FDS             reduce using rule 18 (last -> parentd .)
+    FS              reduce using rule 18 (last -> parentd .)
+    BS              reduce using rule 18 (last -> parentd .)
+    RP              reduce using rule 18 (last -> parentd .)
 
 
 state 58
 
-    (47) lcom -> bodys .
-    (49) bodys -> bodys . body
-    (50) body -> . LP lcom RP
-    (51) body -> . BANGID
-    (52) body -> . ID
-    RP              reduce using rule 47 (lcom -> bodys .)
-    CATEND          reduce using rule 47 (lcom -> bodys .)
-    LSQ             reduce using rule 47 (lcom -> bodys .)
-    LP              shift and go to state 62
-    BANGID          shift and go to state 63
-    ID              shift and go to state 60
+    (19) last -> basic .
+    CORR            reduce using rule 19 (last -> basic .)
+    BDS             reduce using rule 19 (last -> basic .)
+    FDS             reduce using rule 19 (last -> basic .)
+    FS              reduce using rule 19 (last -> basic .)
+    BS              reduce using rule 19 (last -> basic .)
+    RP              reduce using rule 19 (last -> basic .)
 
-    body                           shift and go to state 77
 
 state 59
 
-    (53) lterm -> BS . ID _2_DOT_optional lbody
-    ID              shift and go to state 78
+    (21) slash -> dir mod .
+    LP              reduce using rule 21 (slash -> dir mod .)
+    SPECID          reduce using rule 21 (slash -> dir mod .)
+    DQCAT           reduce using rule 21 (slash -> dir mod .)
+    SQCAT           reduce using rule 21 (slash -> dir mod .)
+    ID              reduce using rule 21 (slash -> dir mod .)
 
 
 state 60
 
-    (52) body -> ID .
-    LP              reduce using rule 52 (body -> ID .)
-    BANGID          reduce using rule 52 (body -> ID .)
-    ID              reduce using rule 52 (body -> ID .)
-    RP              reduce using rule 52 (body -> ID .)
-    CATEND          reduce using rule 52 (body -> ID .)
-    LSQ             reduce using rule 52 (body -> ID .)
+    (26) mod -> MODX .
+    LP              reduce using rule 26 (mod -> MODX .)
+    SPECID          reduce using rule 26 (mod -> MODX .)
+    DQCAT           reduce using rule 26 (mod -> MODX .)
+    SQCAT           reduce using rule 26 (mod -> MODX .)
+    ID              reduce using rule 26 (mod -> MODX .)
 
 
 state 61
 
-    (48) bodys -> body .
-    LP              reduce using rule 48 (bodys -> body .)
-    BANGID          reduce using rule 48 (bodys -> body .)
-    ID              reduce using rule 48 (bodys -> body .)
-    RP              reduce using rule 48 (bodys -> body .)
-    CATEND          reduce using rule 48 (bodys -> body .)
-    LSQ             reduce using rule 48 (bodys -> body .)
+    (27) mod -> MODAPP .
+    LP              reduce using rule 27 (mod -> MODAPP .)
+    SPECID          reduce using rule 27 (mod -> MODAPP .)
+    DQCAT           reduce using rule 27 (mod -> MODAPP .)
+    SQCAT           reduce using rule 27 (mod -> MODAPP .)
+    ID              reduce using rule 27 (mod -> MODAPP .)
 
 
 state 62
 
-    (50) body -> LP . lcom RP
-    (46) lcom -> . lterm
-    (47) lcom -> . bodys
-    (53) lterm -> . BS ID _2_DOT_optional lbody
-    (48) bodys -> . body
-    (49) bodys -> . bodys body
-    (50) body -> . LP lcom RP
-    (51) body -> . BANGID
-    (52) body -> . ID
-    BS              shift and go to state 59
-    LP              shift and go to state 62
-    BANGID          shift and go to state 63
-    ID              shift and go to state 60
+    (28) mod -> MODHAR .
+    LP              reduce using rule 28 (mod -> MODHAR .)
+    SPECID          reduce using rule 28 (mod -> MODHAR .)
+    DQCAT           reduce using rule 28 (mod -> MODHAR .)
+    SQCAT           reduce using rule 28 (mod -> MODHAR .)
+    ID              reduce using rule 28 (mod -> MODHAR .)
 
-    lcom                           shift and go to state 79
-    lterm                          shift and go to state 57
-    bodys                          shift and go to state 58
-    body                           shift and go to state 61
 
 state 63
 
-    (51) body -> BANGID .
-    LP              reduce using rule 51 (body -> BANGID .)
-    BANGID          reduce using rule 51 (body -> BANGID .)
-    ID              reduce using rule 51 (body -> BANGID .)
-    RP              reduce using rule 51 (body -> BANGID .)
-    CATEND          reduce using rule 51 (body -> BANGID .)
-    LSQ             reduce using rule 51 (body -> BANGID .)
+    (29) mod -> DOT .
+    LP              reduce using rule 29 (mod -> DOT .)
+    SPECID          reduce using rule 29 (mod -> DOT .)
+    DQCAT           reduce using rule 29 (mod -> DOT .)
+    SQCAT           reduce using rule 29 (mod -> DOT .)
+    ID              reduce using rule 29 (mod -> DOT .)
 
 
 state 64
 
-    (16) scom -> scom slash last .
-    CORR            reduce using rule 16 (scom -> scom slash last .)
-    BDS             reduce using rule 16 (scom -> scom slash last .)
-    FDS             reduce using rule 16 (scom -> scom slash last .)
-    FS              reduce using rule 16 (scom -> scom slash last .)
-    BS              reduce using rule 16 (scom -> scom slash last .)
-    RP              reduce using rule 16 (scom -> scom slash last .)
+    (36) feats -> LB eqns . RB
+    (39) eqns -> eqns . COM eqn
+    RB              shift and go to state 72
+    COM             shift and go to state 73
 
 
 state 65
 
-    (19) last -> parentd .
-    CORR            reduce using rule 19 (last -> parentd .)
-    BDS             reduce using rule 19 (last -> parentd .)
-    FDS             reduce using rule 19 (last -> parentd .)
-    FS              reduce using rule 19 (last -> parentd .)
-    BS              reduce using rule 19 (last -> parentd .)
-    RP              reduce using rule 19 (last -> parentd .)
+    (38) eqns -> eqn .
+    RB              reduce using rule 38 (eqns -> eqn .)
+    COM             reduce using rule 38 (eqns -> eqn .)
 
 
 state 66
 
-    (20) last -> basic .
-    CORR            reduce using rule 20 (last -> basic .)
-    BDS             reduce using rule 20 (last -> basic .)
-    FDS             reduce using rule 20 (last -> basic .)
-    FS              reduce using rule 20 (last -> basic .)
-    BS              reduce using rule 20 (last -> basic .)
-    RP              reduce using rule 20 (last -> basic .)
+    (40) eqn -> ID . EQ val
+    EQ              shift and go to state 74
 
 
 state 67
 
-    (22) slash -> dir mod .
-    LP              reduce using rule 22 (slash -> dir mod .)
-    SPECID          reduce using rule 22 (slash -> dir mod .)
-    DQCAT           reduce using rule 22 (slash -> dir mod .)
-    SQCAT           reduce using rule 22 (slash -> dir mod .)
-    ID              reduce using rule 22 (slash -> dir mod .)
+    (34) parentd -> LP scom RP .
+    CORR            reduce using rule 34 (parentd -> LP scom RP .)
+    BDS             reduce using rule 34 (parentd -> LP scom RP .)
+    FDS             reduce using rule 34 (parentd -> LP scom RP .)
+    FS              reduce using rule 34 (parentd -> LP scom RP .)
+    BS              reduce using rule 34 (parentd -> LP scom RP .)
+    RP              reduce using rule 34 (parentd -> LP scom RP .)
 
 
 state 68
 
-    (27) mod -> MODX .
-    LP              reduce using rule 27 (mod -> MODX .)
-    SPECID          reduce using rule 27 (mod -> MODX .)
-    DQCAT           reduce using rule 27 (mod -> MODX .)
-    SQCAT           reduce using rule 27 (mod -> MODX .)
-    ID              reduce using rule 27 (mod -> MODX .)
+    (7) t -> LSQ INUM COM RNUM . RSQ END
+    RSQ             shift and go to state 75
 
 
 state 69
 
-    (28) mod -> MODAPP .
-    LP              reduce using rule 28 (mod -> MODAPP .)
-    SPECID          reduce using rule 28 (mod -> MODAPP .)
-    DQCAT           reduce using rule 28 (mod -> MODAPP .)
-    SQCAT           reduce using rule 28 (mod -> MODAPP .)
-    ID              reduce using rule 28 (mod -> MODAPP .)
+    (48) bodys -> bodys body .
+    LP              reduce using rule 48 (bodys -> bodys body .)
+    BANGID          reduce using rule 48 (bodys -> bodys body .)
+    ID              reduce using rule 48 (bodys -> bodys body .)
+    ARULE           reduce using rule 48 (bodys -> bodys body .)
+    END             reduce using rule 48 (bodys -> bodys body .)
+    LSQ             reduce using rule 48 (bodys -> bodys body .)
+    SRULE           reduce using rule 48 (bodys -> bodys body .)
+    RP              reduce using rule 48 (bodys -> bodys body .)
 
 
 state 70
 
-    (29) mod -> MODHAR .
-    LP              reduce using rule 29 (mod -> MODHAR .)
-    SPECID          reduce using rule 29 (mod -> MODHAR .)
-    DQCAT           reduce using rule 29 (mod -> MODHAR .)
-    SQCAT           reduce using rule 29 (mod -> MODHAR .)
-    ID              reduce using rule 29 (mod -> MODHAR .)
+    (52) lterm -> BS ID . _2_DOT_optional lbody
+    (53) _2_DOT_optional -> . DOT
+    (54) _2_DOT_optional -> .
+    DOT             shift and go to state 77
+    BS              reduce using rule 54 (_2_DOT_optional -> .)
+    LP              reduce using rule 54 (_2_DOT_optional -> .)
+    BANGID          reduce using rule 54 (_2_DOT_optional -> .)
+    ID              reduce using rule 54 (_2_DOT_optional -> .)
 
+    _2_DOT_optional                shift and go to state 76
 
 state 71
 
-    (30) mod -> DOT .
-    LP              reduce using rule 30 (mod -> DOT .)
-    SPECID          reduce using rule 30 (mod -> DOT .)
-    DQCAT           reduce using rule 30 (mod -> DOT .)
-    SQCAT           reduce using rule 30 (mod -> DOT .)
-    ID              reduce using rule 30 (mod -> DOT .)
+    (49) body -> LP lcom . RP
+    RP              shift and go to state 78
 
 
 state 72
 
-    (37) feats -> LB eqns . RB
-    (40) eqns -> eqns . COM eqn
-    RB              shift and go to state 80
-    COM             shift and go to state 81
+    (36) feats -> LB eqns RB .
+    CORR            reduce using rule 36 (feats -> LB eqns RB .)
+    BDS             reduce using rule 36 (feats -> LB eqns RB .)
+    FDS             reduce using rule 36 (feats -> LB eqns RB .)
+    FS              reduce using rule 36 (feats -> LB eqns RB .)
+    BS              reduce using rule 36 (feats -> LB eqns RB .)
+    RP              reduce using rule 36 (feats -> LB eqns RB .)
 
 
 state 73
 
-    (39) eqns -> eqn .
-    RB              reduce using rule 39 (eqns -> eqn .)
-    COM             reduce using rule 39 (eqns -> eqn .)
+    (39) eqns -> eqns COM . eqn
+    (40) eqn -> . ID EQ val
+    ID              shift and go to state 66
 
+    eqn                            shift and go to state 79
 
 state 74
 
-    (41) eqn -> ID . EQ val
-    EQ              shift and go to state 82
+    (40) eqn -> ID EQ . val
+    (41) val -> . ANY
+    (42) val -> . VARVAL
+    (43) val -> . INUM
+    (44) val -> . ID
+    ANY             shift and go to state 82
+    VARVAL          shift and go to state 83
+    INUM            shift and go to state 84
+    ID              shift and go to state 80
 
+    val                            shift and go to state 81
 
 state 75
 
-    (8) catend -> LSQ INUM COM RNUM RSQ . CATEND
-    CATEND          shift and go to state 83
+    (7) t -> LSQ INUM COM RNUM RSQ . END
+    END             shift and go to state 85
 
 
 state 76
 
-    (11) spair -> LP ids COM c RP .
-    SRULE           reduce using rule 11 (spair -> LP ids COM c RP .)
-    CATEND          reduce using rule 11 (spair -> LP ids COM c RP .)
-    LSQ             reduce using rule 11 (spair -> LP ids COM c RP .)
+    (52) lterm -> BS ID _2_DOT_optional . lbody
+    (55) lbody -> . bodys
+    (56) lbody -> . lterm
+    (47) bodys -> . body
+    (48) bodys -> . bodys body
+    (52) lterm -> . BS ID _2_DOT_optional lbody
+    (49) body -> . LP lcom RP
+    (50) body -> . BANGID
+    (51) body -> . ID
+    BS              shift and go to state 51
+    LP              shift and go to state 54
+    BANGID          shift and go to state 55
+    ID              shift and go to state 52
 
+    lbody                          shift and go to state 86
+    bodys                          shift and go to state 87
+    lterm                          shift and go to state 88
+    body                           shift and go to state 53
 
 state 77
 
-    (49) bodys -> bodys body .
-    LP              reduce using rule 49 (bodys -> bodys body .)
-    BANGID          reduce using rule 49 (bodys -> bodys body .)
-    ID              reduce using rule 49 (bodys -> bodys body .)
-    RP              reduce using rule 49 (bodys -> bodys body .)
-    CATEND          reduce using rule 49 (bodys -> bodys body .)
-    LSQ             reduce using rule 49 (bodys -> bodys body .)
+    (53) _2_DOT_optional -> DOT .
+    BS              reduce using rule 53 (_2_DOT_optional -> DOT .)
+    LP              reduce using rule 53 (_2_DOT_optional -> DOT .)
+    BANGID          reduce using rule 53 (_2_DOT_optional -> DOT .)
+    ID              reduce using rule 53 (_2_DOT_optional -> DOT .)
 
 
 state 78
 
-    (53) lterm -> BS ID . _2_DOT_optional lbody
-    (54) _2_DOT_optional -> . DOT
-    (55) _2_DOT_optional -> .
-    DOT             shift and go to state 85
-    BS              reduce using rule 55 (_2_DOT_optional -> .)
-    LP              reduce using rule 55 (_2_DOT_optional -> .)
-    BANGID          reduce using rule 55 (_2_DOT_optional -> .)
-    ID              reduce using rule 55 (_2_DOT_optional -> .)
+    (49) body -> LP lcom RP .
+    LP              reduce using rule 49 (body -> LP lcom RP .)
+    BANGID          reduce using rule 49 (body -> LP lcom RP .)
+    ID              reduce using rule 49 (body -> LP lcom RP .)
+    ARULE           reduce using rule 49 (body -> LP lcom RP .)
+    END             reduce using rule 49 (body -> LP lcom RP .)
+    LSQ             reduce using rule 49 (body -> LP lcom RP .)
+    SRULE           reduce using rule 49 (body -> LP lcom RP .)
+    RP              reduce using rule 49 (body -> LP lcom RP .)
 
-    _2_DOT_optional                shift and go to state 84
 
 state 79
 
-    (50) body -> LP lcom . RP
-    RP              shift and go to state 86
+    (39) eqns -> eqns COM eqn .
+    RB              reduce using rule 39 (eqns -> eqns COM eqn .)
+    COM             reduce using rule 39 (eqns -> eqns COM eqn .)
 
 
 state 80
 
-    (37) feats -> LB eqns RB .
-    CORR            reduce using rule 37 (feats -> LB eqns RB .)
-    BDS             reduce using rule 37 (feats -> LB eqns RB .)
-    FDS             reduce using rule 37 (feats -> LB eqns RB .)
-    FS              reduce using rule 37 (feats -> LB eqns RB .)
-    BS              reduce using rule 37 (feats -> LB eqns RB .)
-    RP              reduce using rule 37 (feats -> LB eqns RB .)
+    (44) val -> ID .
+    RB              reduce using rule 44 (val -> ID .)
+    COM             reduce using rule 44 (val -> ID .)
 
 
 state 81
 
-    (40) eqns -> eqns COM . eqn
-    (41) eqn -> . ID EQ val
-    ID              shift and go to state 74
+    (40) eqn -> ID EQ val .
+    RB              reduce using rule 40 (eqn -> ID EQ val .)
+    COM             reduce using rule 40 (eqn -> ID EQ val .)
 
-    eqn                            shift and go to state 87
 
 state 82
 
-    (41) eqn -> ID EQ . val
-    (42) val -> . ANY
-    (43) val -> . VARVAL
-    (44) val -> . INUM
-    (45) val -> . ID
-    ANY             shift and go to state 90
-    VARVAL          shift and go to state 91
-    INUM            shift and go to state 92
-    ID              shift and go to state 88
+    (41) val -> ANY .
+    RB              reduce using rule 41 (val -> ANY .)
+    COM             reduce using rule 41 (val -> ANY .)
 
-    val                            shift and go to state 89
 
 state 83
 
-    (8) catend -> LSQ INUM COM RNUM RSQ CATEND .
-    END             reduce using rule 8 (catend -> LSQ INUM COM RNUM RSQ CATEND .)
+    (42) val -> VARVAL .
+    RB              reduce using rule 42 (val -> VARVAL .)
+    COM             reduce using rule 42 (val -> VARVAL .)
 
 
 state 84
 
-    (53) lterm -> BS ID _2_DOT_optional . lbody
-    (56) lbody -> . bodys
-    (57) lbody -> . lterm
-    (48) bodys -> . body
-    (49) bodys -> . bodys body
-    (53) lterm -> . BS ID _2_DOT_optional lbody
-    (50) body -> . LP lcom RP
-    (51) body -> . BANGID
-    (52) body -> . ID
-    BS              shift and go to state 59
-    LP              shift and go to state 62
-    BANGID          shift and go to state 63
-    ID              shift and go to state 60
+    (43) val -> INUM .
+    RB              reduce using rule 43 (val -> INUM .)
+    COM             reduce using rule 43 (val -> INUM .)
 
-    lbody                          shift and go to state 93
-    bodys                          shift and go to state 94
-    lterm                          shift and go to state 95
-    body                           shift and go to state 61
 
 state 85
 
-    (54) _2_DOT_optional -> DOT .
-    BS              reduce using rule 54 (_2_DOT_optional -> DOT .)
-    LP              reduce using rule 54 (_2_DOT_optional -> DOT .)
-    BANGID          reduce using rule 54 (_2_DOT_optional -> DOT .)
-    ID              reduce using rule 54 (_2_DOT_optional -> DOT .)
+    (7) t -> LSQ INUM COM RNUM RSQ END .
+    $end            reduce using rule 7 (t -> LSQ INUM COM RNUM RSQ END .)
 
 
 state 86
 
-    (50) body -> LP lcom RP .
-    LP              reduce using rule 50 (body -> LP lcom RP .)
-    BANGID          reduce using rule 50 (body -> LP lcom RP .)
-    ID              reduce using rule 50 (body -> LP lcom RP .)
-    RP              reduce using rule 50 (body -> LP lcom RP .)
-    CATEND          reduce using rule 50 (body -> LP lcom RP .)
-    LSQ             reduce using rule 50 (body -> LP lcom RP .)
+    (52) lterm -> BS ID _2_DOT_optional lbody .
+    ARULE           reduce using rule 52 (lterm -> BS ID _2_DOT_optional lbody .)
+    END             reduce using rule 52 (lterm -> BS ID _2_DOT_optional lbody .)
+    LSQ             reduce using rule 52 (lterm -> BS ID _2_DOT_optional lbody .)
+    SRULE           reduce using rule 52 (lterm -> BS ID _2_DOT_optional lbody .)
+    RP              reduce using rule 52 (lterm -> BS ID _2_DOT_optional lbody .)
 
 
 state 87
 
-    (40) eqns -> eqns COM eqn .
-    RB              reduce using rule 40 (eqns -> eqns COM eqn .)
-    COM             reduce using rule 40 (eqns -> eqns COM eqn .)
+    (55) lbody -> bodys .
+    (48) bodys -> bodys . body
+    (49) body -> . LP lcom RP
+    (50) body -> . BANGID
+    (51) body -> . ID
+    ARULE           reduce using rule 55 (lbody -> bodys .)
+    END             reduce using rule 55 (lbody -> bodys .)
+    LSQ             reduce using rule 55 (lbody -> bodys .)
+    SRULE           reduce using rule 55 (lbody -> bodys .)
+    RP              reduce using rule 55 (lbody -> bodys .)
+    LP              shift and go to state 54
+    BANGID          shift and go to state 55
+    ID              shift and go to state 52
 
+    body                           shift and go to state 69
 
 state 88
 
-    (45) val -> ID .
-    RB              reduce using rule 45 (val -> ID .)
-    COM             reduce using rule 45 (val -> ID .)
-
-
-state 89
-
-    (41) eqn -> ID EQ val .
-    RB              reduce using rule 41 (eqn -> ID EQ val .)
-    COM             reduce using rule 41 (eqn -> ID EQ val .)
-
-
-state 90
-
-    (42) val -> ANY .
-    RB              reduce using rule 42 (val -> ANY .)
-    COM             reduce using rule 42 (val -> ANY .)
-
-
-state 91
-
-    (43) val -> VARVAL .
-    RB              reduce using rule 43 (val -> VARVAL .)
-    COM             reduce using rule 43 (val -> VARVAL .)
-
-
-state 92
-
-    (44) val -> INUM .
-    RB              reduce using rule 44 (val -> INUM .)
-    COM             reduce using rule 44 (val -> INUM .)
-
-
-state 93
-
-    (53) lterm -> BS ID _2_DOT_optional lbody .
-    RP              reduce using rule 53 (lterm -> BS ID _2_DOT_optional lbody .)
-    CATEND          reduce using rule 53 (lterm -> BS ID _2_DOT_optional lbody .)
-    LSQ             reduce using rule 53 (lterm -> BS ID _2_DOT_optional lbody .)
-
-
-state 94
-
-    (56) lbody -> bodys .
-    (49) bodys -> bodys . body
-    (50) body -> . LP lcom RP
-    (51) body -> . BANGID
-    (52) body -> . ID
-    RP              reduce using rule 56 (lbody -> bodys .)
-    CATEND          reduce using rule 56 (lbody -> bodys .)
-    LSQ             reduce using rule 56 (lbody -> bodys .)
-    LP              shift and go to state 62
-    BANGID          shift and go to state 63
-    ID              shift and go to state 60
-
-    body                           shift and go to state 77
-
-state 95
-
-    (57) lbody -> lterm .
-    RP              reduce using rule 57 (lbody -> lterm .)
-    CATEND          reduce using rule 57 (lbody -> lterm .)
-    LSQ             reduce using rule 57 (lbody -> lterm .)
+    (56) lbody -> lterm .
+    ARULE           reduce using rule 56 (lbody -> lterm .)
+    END             reduce using rule 56 (lbody -> lterm .)
+    LSQ             reduce using rule 56 (lbody -> lterm .)
+    SRULE           reduce using rule 56 (lbody -> lterm .)
+    RP              reduce using rule 56 (lbody -> lterm .)
