@@ -228,3 +228,41 @@ at | x :: (@X\*@X)/*@X: \p\q\x. and (p x)(q x)
 pupunasan | v :: (s[voi=dv]/np[case=ang])/np[case=ng]: \x\y. dry y x  
 mo | pro :: (s[voi=dv]/np[case=ang])\(s[voi=dv]/np[case=ang]/np[case=ng]) : \p. p  you
 ang-mga-pinggan  |  n :: s[voi=dv]\(s[voi=dv]/np[case=ang]): \p.p  dishes
+% manually adding auto generated rules
+%
+#_p2_398  s : a --> (s\np[agr=3s])\((s\np[agr=3s])/s) : \a\p.p a
+#_p2_396  np : a --> vp[typ=inf]\(vp[typ=inf]/np) : \a\p.p a
+#_g2_205  np : a --> (vp[typ=inf]/vp[type=to])\((vp[typ=inf]/vp[type=to])/np) : \a\p.p a
+#_g2_204  np : a --> ((s\np[agr=3s])/vp[type=to_inf])\(((s\np[agr=3s])/vp[type=to_inf])/np) : \a\p.p a
+#_p2_391  np : a --> (s\np[case=abs])\((s\np[case=abs])/np[case=dat]) : \a\p.p a
+#_p2_278  np : a --> (s[voi=dv]/np[case=ang])\((s[voi=dv]/np[case=ang])/np[case=ng]) : \a\p.p a
+#_p2_389  np : a --> s/(s\np[case=abs]) : \a\p.p a
+#_p2_355  vp : a --> (s\np[case=abs])\((s\np[case=abs])/vp[case=abs]) : \a\p.p a
+#_p2_353  np[case=acc] : a --> (s\np[case=nom])/((s\np[case=nom])\np[case=acc]) : \a\p.p a
+#_p2_280  np : a --> s\(s/np[case=acc]) : \a\p.p a
+#_g2_189  np[agr=3s] : a --> (s/vp[typ=asp])\((s/vp[typ=asp])/np[agr=3s]) : \a\p.p a
+#_g2_182  np : a --> ((s\np)/np)\(((s\np)/np)/np) : \a\p.p a
+#_g2_180  xp[type=pred] : a --> vp[typ=to_inf]\(vp[typ=to_inf]/xp[type=pred]) : \a\p.p a
+#_g2_179  vp : a --> vp/(vp\vp) : \a\p.p a
+#_g2_173  np[case=nom] : a --> (s\np[case=dat])\((s\np[case=dat])/np[case=nom]) : \a\p.p a
+#_g2_171  np[case=dat] : a --> (s\np[case=nom])\((s\np[case=nom])/np[case=dat]) : \a\p.p a
+#_g2_170  np[case=acc] : a --> (s\np[case=nom])\((s\np[case=nom])/np[case=acc]) : \a\p.p a
+#_p2_276  np[agr=3] : a --> (s/vp[type=ing])\((s/vp[type=ing])/np[agr=3]) : \a\p.p a
+#_g2_167  np : a --> (vp[type=inf]/vp[type=to_inf])\((vp[type=inf]/vp[type=to_inf])/np) : \a\p.p a
+#_g2_166  pp : a --> vp[type=inf]\(vp[type=inf]/pp) : \a\p.p a
+#_g2_164  s[type=inf] : a --> vp[type=inf]\(vp[type=inf]/s[type=inf]) : \a\p.p a
+#_g2_163  np : a --> ((n[agr=?x]\n[agr=?x])/np)\(((n[agr=?x]\n[agr=?x])/np)/np) : \a\p.p a
+#_p2_270  np[case=erg] : a --> vp[case=abs]/(vp[case=abs]\np[case=erg]) : \a\p.p a
+#_g2_159  vp[case=abs] : a --> ((s\np[case=abs])\np[case=erg])\(((s\np[case=abs])\np[case=erg])/vp[case=abs]) : \a\p.p a
+#_g2_155  np[case=erg] : a --> (s\np[case=abs])/((s\np[case=abs])\np[case=erg]) : \a\p.p a
+#_g2_153  np[case=erg] : a --> s/(s\np[case=erg]) : \a\p.p a
+#_p2_232  np[case=abs] : a --> vp[case=erg]/(vp[case=erg]\np[case=abs]) : \a\p.p a
+#_g2_150  vp : a --> (s\np[case=abs])/((s\np[case=abs])\vp) : \a\p.p a
+#_g2_149  np[case=obl] : a --> vp[case=abs]/(vp[case=abs]\np[case=obl]) : \a\p.p a
+#_g2_148  vp[case=abs] : a --> ((s\np[case=erg])\np[case=abs])/(((s\np[case=erg])\np[case=abs])\vp[case=abs]) : \a\p.p a
+#_p2_220  np[case=abs] : a --> (s\np[case=erg])/((s\np[case=erg])\np[case=abs]) : \a\p.p a
+#_g2_144  np[case=inst] : a --> (s\np[case=abs])/((s\np[case=abs])\np[case=inst]) : \a\p.p a
+#_g2_142  np[case=ng] : a --> (s[voi=av]/np[case=ang])\((s[voi=av]/np[case=ang])/np[case=ng]) : \a\p.p a
+#_p2_218  np[case=ng] : a --> (s[voi=ov]/np[case=ang])\((s[voi=ov]/np[case=ang])/np[case=ng]) : \a\p.p a
+#_g2_140  np[case=ng] : a --> (s[voi=none]/np[case=ng])\((s[voi=none]/np[case=ng])/np[case=ng]) : \a\p.p a
+#_g2_139  np[case=ng] : a --> (s[voi=ov]/s)\((s[voi=ov]/s)/np[case=ng]) : \a\p.p a

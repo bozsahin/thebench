@@ -2988,7 +2988,7 @@
 	(mk_cat_sc (nv-get-v 'INSYN r) s)
 	(format s " : a --> ")
 	(mk_cat_sc (nv-get-v 'OUTSYN r) s)
-	(format s " : \\a\\p.p a ")))
+	(format s " : \\a\\p.p a~%")))
     (format t "~%File: ~A created; contains synthetic case rules for ~A in the source format,~%   for merging with grammar source text or for inspection.~%" afile gname))
   t) ; all interface functions return t
 
