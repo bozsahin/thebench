@@ -669,7 +669,7 @@ def help ():
         print(f' , ..   | displays analyses for solutions numbered .., all if none provided')
         print(f' #      | displays ranked analyses')
         print(f' = ..   | displays analyses onto basic cats in ..')
-        print(f' !      | shows information about the current g-loaded grammar')
+        print(f' ! ..   | shows info on current grammar (args optional; if first . is ! also saves to file .)')
         print(f' $ ..   | shows the elements with parts of speech ..')
         print(f' - .    | shows (without adding) the intermediate representation of element .')
         print(f' + .    | processor adds Lisp code in file .')
@@ -914,7 +914,7 @@ def print_info ():
 def do (commline):
     global _online, _grammar, _info, _latestgr, _exit, _help
     comm, args = split_command(commline)
-    if comm in [_exit, '!', '#', '<', _help] and args:
+    if comm in [_exit, '#', '<', _help] and args:
         print('too many arguments')
         return
     if comm in ['a', 'c', 'e', 'g', 'o', '@', '$', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
@@ -1114,6 +1114,12 @@ def do (commline):
         print()
     elif comm == '!':
         print_info()
+        if args and args[0] == '!':
+            if len(args)> 1:
+                print(f"also writing to file {args[1]}")
+                with open(args[1], 'w') as f:
+                    with redirect_stdout(f):
+                        print_info()
     elif comm == _exit:       # caller knows what to do next
         pass
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
