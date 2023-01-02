@@ -49,7 +49,7 @@ file at your home directory.
 
 TO DEVELOP A GRAMMAR:
 
-Just use your favourite plain text editor and enter a grammar. Then follow help (h command) of thebench to process it.
+Just use your favourite plain text editor and enter a grammar. Then follow help (? command) of thebench to process it.
 
 I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.  
 
