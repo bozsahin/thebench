@@ -669,7 +669,7 @@ def help ():
         print(f' , ..   | displays analyses for solutions numbered .., all if none provided')
         print(f' #      | displays ranked analyses')
         print(f' = ..   | displays analyses onto basic cats in ..')
-        print(f' ! ..   | shows info on current grammar (optional: if 1st . is ! also saves to file in 2nd .)')
+        print(f' ! .    | shows information on current grammar (optionally saves to file .)')
         print(f' $ ..   | shows the elements with parts of speech ..')
         print(f' - .    | shows (without adding) the intermediate representation of element .')
         print(f' + .    | processor adds Lisp code in file .')
@@ -1114,12 +1114,11 @@ def do (commline):
         print()
     elif comm == '!':
         print_info()
-        if args and args[0] == '!':
-            if len(args)> 1:
-                print(f"also writing to file {args[1]}")
-                with open(args[1], 'w') as f:
-                    with redirect_stdout(f):
-                        print_info()
+        if args:
+            print(f"also writing to file {args[0]}")
+            with open(args[0], 'w') as f:
+                with redirect_stdout(f):
+                    print_info()
     elif comm == _exit:       # caller knows what to do next
         pass
     elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
