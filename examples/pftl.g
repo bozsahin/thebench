@@ -12,14 +12,10 @@ Balbus | np :: s/(s\np[agr=3s,case=nom]) : \p. p  balb
 build | v :: vp[typ=inf]/np : \x\y. build x y
 see | v :: VP[typ=inf]/np : \x\y. see x y
 persuade | v :: (VP[typ=inf]/VP[type=to])/np : \x\q\y. persuade (q x) x y
-persuades | v :: ((s\np[agr=3s])/VP[type=to_inf])/np : \x\q\y. persuade (q x) x y
-en  | aff :: vp[type=pss]\(VP[typ=inf]/np):\p\y. p y ( something y)
-en  | aff :: (vp[type=pss]/vp[type=to])\((VP[typ=inf]/vp[typ=to])/np):\p\q\y.p y q ( something y)
 sees  | v :: (S\NP[agr=3s])/NP : \x\y. see x y                     
 saw | v :: (S\NP[agr=?a])/NP[type=full,agr=?a] : \x\y. saw x y                     
 gwelodd | v :: (S/NP)/NP[agr=3s] : \y\x. saw x y                     
 seen    | v :: (S[voi=pass]\np[agr=3s]) : \x. see x ( sk x  one)     
-persuaded  | v :: (S[voi=pass]\NP[agr=3s])/VP[type=to_inf] : \p\x. persuade (p x) x ( sk x  one)     
 open  | v :: S\NP : \y. init( open y) 			         
 open  | v :: (S\NP)/NP : \x\y. cause( init( open x))y              
 break  | v :: S\NP : \x. init( broken x) 	         	         
@@ -74,14 +70,12 @@ records | n :: (s\np)\((s\np)/np): \p.p  records
 alice | n :: ((s\np)/np)\(((s\np)/np)/np): \p.p  alice
 books | n :: (s\np)\((s\np)/np): \p.p  books
 there | xp :: ((s/xp[type=pred,class=pp,agr=?a])/np[agr=?a])/ ((s\np[agr=?a])/xp[type=pred,class=pp,agr=?a]) : \r\y\p.r p y 
-seem | v :: (s\np[agr=pl])/vp[typ=to_inf,class=vp,agr=pl] : \p\y. seem (p y) 
 to be | v :: vp[typ=to_inf,agr=?b]/xp[type=pred,class=pp,agr=?b] : \p\y.p y
 fairies | n :: (s/xp[type=pred,class=pp,agr=pl])\^((s/xp[type=pred,class=pp,agr=pl])/np[agr=pl]) : \p.p  fairies
 fairies | n :: s/(s\np[agr=pl]) : \p.p  fairies
 at the bottom of my garden  |n 	 :: s\(s/xp[type=pred,class=pp,agr=?z]): \p. p  atbmg    
 at the bottom of my garden  |n 	 :: vp[agr=?a]\(vp[agr=?a]/xp[type=pred,class=pp,agr=?a]): \p. p  atbmg    
 at the bottom of my garden  |n 	 :: s\(s/xp[type=pred,class=pp,agr=?z]): \p. p  atbmg    
-quem | a :: ((s/(s\np[gen=m]))\(s/(s\np[gen=m])))/(s\np[case=acc]) : \p\q\x.  and (p x)(q (\x.x) x)                            
 erzahlen | vg :: s[type=t]/(s/((vp\np[case=acc])\np[case=dat])) : \p. p  tell
 wird | x :: (s/vp)/np[agr=3s] : \x\p.  will (p x) 
 er | n :: (s/vp)\(s/vp/np[agr=3s,case=nom]) : \p.p  he 
@@ -123,7 +117,6 @@ ei hun | ref :: s\(s/np[type=ana,agr=3,gen=m]) : \p.p  self
 maen | v :: (s/vp[type=ing])/np[agr=3,num=plu] : \y\p. p y        
 nhw  | pro :: (s/vp[type=ing])\((S/vp[type=ing])/np[agr=3,num=plu]) : \p. p  them 
 n    | ger :: VP[type=ing]/vp[type=inf] : \p. p
-perswadio | v :: (vp[type=inf]/vp[type=to_inf])/np : \x\p\y.  persuade (p x)x y
 grwpiau   | n :: (vp[type=inf]/vp[type=to_inf])\((vp[type=inf]/vp[type=to_inf])/np) : \p. p  groups 
 i  | p :: vp[type=to_inf]/vp[type=inf] : \p. p 
 fynd | v :: vp[type=inf]/pp : \x\y. goto x y
@@ -140,7 +133,6 @@ welodd     | a :: (n[agr=?a]\n[agr=?a])/np : \x\q\y.  and ( saw x y)(q y)
 welodd     | a :: (n[agr=?a]\n[agr=?a])/np : \y\q\x.  and ( saw x y)(q x)
 gath      | n :: (n[agr=?x]\n[agr=?x])\((n[agr=?x]\n[agr=?x])/NP) : \p.p  cat
 cath      | n :: (n[agr=?x]\n[agr=?x])\((n[agr=?x]\n[agr=?x])/NP) : \p.p  cat
-werthodd | v :: ((n[agr=?x]\n[agr=?x])/np)/np : \y\x\q\w.  and ( sold w x y)(q w)                
 ieuan | n :: ((n[agr=?x]\n[agr=?x])/np)\(((n[agr=?x]\n[agr=?x])/np)/np) : \p. p  ewan
 y ceffyl | n :: (n[agr=?x]\n[agr=?x])\((n[agr=?x]\n[agr=?x])/np) : \p. p  horse
 iddi | p :: (n[agr=3fs]\n[agr=3fs])\(n[agr=3fs]\n[agr=3fs]) : \p. p 
@@ -148,31 +140,24 @@ bayi yara| n :: s/(s\np[case=abs]): \p. p  man
 walngarra | v :: (s\np[case=abs])/vp[case=abs]: \p\x.  want (p x)x
 naba-ygu  | v :: VP[case=abs] : \x. bathe x
 bural     | v :: vp[typ=inf]\np[case=erg]: \y\x.  see x y
--na-ygu | aff :: vp[typ=antipss]\(vp[typ=inf]\np[case=erg]) : \p\x. p ( something x) x
--na-ygu | aff :: (vp[typ=antipss]/np[case=dat])\(vp[typ=inf]\np[case=erg]) : \p\x\y.  antip (p y x)
 bagun yibi-gu | n  :: vp[case=abs]\(vp[case=abs]/np[case=dat]): \p.p  woman
 bangun yibi-ngu | n :: vp[case=abs]/(vp[case=abs]\np[case=erg]): \p.p  woman
 bura-li  | v :: vp[case=abs]\np[case=erg]: \x\y. see y x
 yabu     | n :: s/(s\np[case=abs]) : \p.p  mother
 numa-ngu | n :: (s\np[case=abs])/(s\np[case=abs]\np[case=erg]): \p. p  father
-giga-n | v :: ((s\np[case=abs])\np[case=erg])/vp[case=abs] : \p\x\y. tell (p y)y x
 banaga-ygu | v :: vp[case=abs]: \x.  return x
 gubi-ngu   | n :: (vp[case=abs])/(vp[case=abs]\np[case=erg]): \p. p  gubi
 mawa-li | v :: vp[case=abs]\np[case=erg]: \x\y. examine y x 
 miyanda | v :: s\np[case=abs] : \x. laugh x 		        
--nu    | aff :: ((s/(s\np[case=abs]))\((s/(s\np[case=abs]))))\(s\np[case=abs]) :\p\q\r\x.  and(r x)( and (p x)(q (\x.x) x))
 yanu    | v :: s\np[case=abs]: \x. go x
 balan yibi | n :: s/(s\np[case=abs]) : \p.p  woman
 bangul yara-ngu  | n  :: (s\np[case=abs])/(s\np[case=abs]\np[case=erg]) : \p. p  man
--nu-ru  | aff :: (((s\np[case=abs])/(s\np[case=abs]\np[case=erg]))\ ((s\np[case=abs])/(s\np[case=abs] \np[case=erg])))\(s\np[case=abs]) :\p\q\r\y\x.  and(r x y)( and (p x)(q (\x.x) x))
 bura-n | v :: (s\np[case=abs])\np[case=erg]: \x\y.  see y x
 jilwal-na   | v :: (s\np[case=abs])/np[case=dat]: \x\y.  kick x y
 begun guda-gu  | n  :: ((s/(s\np[case=abs]))\(s/(s\np[case=abs]))) \(((s/(s\np[case=abs]))\(s/(s\np[case=abs])))/np[case=dat]) : \p. p  dog
 bangun yibi-ngu | n :: s/(s\np[case=erg]) : \p.p  woman 		
 bura-n | v :: s\np[case=erg]: \y. saw  topic y
 nyurra | n :: s/(s\np[type=pro,case=nom]) : \p.p  you		
-nana-na | n :: (s\np[case=nom,type=pro])/((s\np[type=pro,case=nom])\np[type=pro,case=acc]) : \p. p ( and  us ( topic  us))
-bura-n | v :: (s\np[case=nom,type=pro])\np[case=acc,type=pro] : \x\y. and( saw ( sk x)( sk y))( noteq ( sk x)( sk y))
 banaga-nyu | v :: S :  return  topic
 ,| x :: (@X\*@X)/*@X : \p\q.  and p q 
 miqqat  | n :: s/(s\np[case=abs,agr=3pl]): \p.p  children 		
@@ -184,23 +169,18 @@ arnaup | n :: s/(s\np[case=erg,agr=3sg]):\p.p  woman
 nutaraq | n :: (s\np[case=erg,agr=3sg])/((s\np[case=erg,agr=3sg])\np[case=abs,agr=3sg]) : \p.p  child
 titirautimik | n :: vp[case=abs]/(vp[case=abs]\np[case=obl]): \p.p  pencil
 nani-si | v :: vp[case=abs]\np[case=obl]: \x\y.  antip ( find x y) 
-rqu-vaa | v :: ((s\np[case=erg,agr=3sg])\np[case=abs,agr=3sg])\vp[case=abs] : \p\x\y. tell(p x)x y
 titirauti | n :: vp[case=erg]/(vp[case=erg]\np[case=abs]): \p.p  pencil
 nani      | v :: vp[case=erg]\np[case=abs]: \x\y.  find x y
 nanuq | n :: s/(s\np[case=abs]) : \p.p  polarbear			
 piita-p | n :: ((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))/ (((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\np[case=erg]) :\p.p  piita
 tugu | v :: (s\np[case=erg])\np[case=abs]: \x\y.  kill x y 
--ta-a | aff :: (((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\np[case=erg])\ ((s\np[case=erg])\np[case=abs]) : \p\q\r1\r.  and (p (r1 (\ x.x)) q)(r (r1 (\ x.x)))
 miiraq | n :: s/(s\np[case=abs]): \p. p  child
 kamat  | v :: s\np[case=abs]: \x. angry x
--tu-q | aff :: ((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\ (s\np[case=abs]): \p\q\r\x. and (p x)( and (q (\ x.x) x)(r x))
 angut | n :: s/(s\np[case=abs]) : \p.p  man			
 aallaat | n :: s/(s\np[case=abs]) : \p.p  man			
 aallaam-mik | n :: ((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))/ (((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\np[case=inst]) :\p.p  gun
 tigu-si-sima | v :: s\np[case=abs]\np[case=inst]: \x\y. take x y
--su-q | aff :: ((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\ (s\np[case=abs]): \p\q\r\x. and (p x)( and (q (\ x.x) x)(r x))
 tigu-sima | v :: s\np[case=erg]\np[case=abs]: \x\y. take x y
--sa-a | aff :: (((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\np[case=erg])\ ((s\np[case=erg])\np[case=abs]) : \p\q\x. and (p x)(q x)
 ang  | det :: (s\(s/np[case=ang]))/n : \p\q\x. and (p x)(q x)     
 babae | n :: n:  woman
 ng | lnk :: (n\n)/(s[voi=?v]/np[case=ang]): \p\n\x. and (p x)(n x)
@@ -228,41 +208,29 @@ at | x :: (@X\*@X)/*@X: \p\q\x. and (p x)(q x)
 pupunasan | v :: (s[voi=dv]/np[case=ang])/np[case=ng]: \x\y. dry y x  
 mo | pro :: (s[voi=dv]/np[case=ang])\(s[voi=dv]/np[case=ang]/np[case=ng]) : \p. p  you
 ang-mga-pinggan  |  n :: s[voi=dv]\(s[voi=dv]/np[case=ang]): \p.p  dishes
+
+% putting all multiline problematics at the end manually
+
+-nu    | aff :: ((s/(s\np[case=abs]))\((s/(s\np[case=abs]))))\(s\np[case=abs]) :\p\q\r\x.  and(r x)( and (p x)(q (\x.x) x))
+werthodd | v :: ((n[agr=?x]\n[agr=?x])/np)/np : \y\x\q\w.  and ( sold w x y)(q w)                
+quem | a :: ((s/(s\np[gen=m]))\(s/(s\np[gen=m])))/(s\np[case=acc]) : \p\q\x.  and (p x)(q (\x.x) x)                            
+persuaded  | v :: (S[voi=pass]\NP[agr=3s])/VP[type=to_inf] : \p\x. persuade (p x) x ( sk x  one)     
+en  | aff :: vp[type=pss]\(VP[typ=inf]/np):\p\y. p y ( something y)
+persuades | v :: ((s\np[agr=3s])/VP[type=to_inf])/np : \x\q\y. persuade (q x) x y
+seem | v :: (s\np[agr=pl])/vp[typ=to_inf,class=vp,agr=pl] : \p\y. seem (p y) 
+perswadio | v :: (vp[type=inf]/vp[type=to_inf])/np : \x\p\y.  persuade (p x)x y
+-na-ygu | aff :: vp[typ=antipss]\(vp[typ=inf]\np[case=erg]) : \p\x. p ( something x) x
+-na-ygu | aff :: (vp[typ=antipss]/np[case=dat])\(vp[typ=inf]\np[case=erg]) : \p\x\y.  antip (p y x)
+giga-n | v :: ((s\np[case=abs])\np[case=erg])/vp[case=abs] : \p\x\y. tell (p y)y x
+-nu-ru  | aff :: (((s\np[case=abs])/(s\np[case=abs]\np[case=erg]))\ ((s\np[case=abs])/(s\np[case=abs] \np[case=erg])))\(s\np[case=abs]) :\p\q\r\y\x.  and(r x y)( and (p x)(q (\x.x) x))
+nana-na | n :: (s\np[case=nom,type=pro])/((s\np[type=pro,case=nom])\np[type=pro,case=acc]) : \p. p ( and  us ( topic  us))
+bura-n | v :: (s\np[case=nom,type=pro])\np[case=acc,type=pro] : \x\y. and( saw ( sk x)( sk y))( noteq ( sk x)( sk y))
+rqu-vaa | v :: ((s\np[case=erg,agr=3sg])\np[case=abs,agr=3sg])\vp[case=abs] : \p\x\y. tell(p x)x y
+-ta-a | aff :: (((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\np[case=erg])\ ((s\np[case=erg])\np[case=abs]) : \p\q\r1\r.  and (p (r1 (\ x.x)) q)(r (r1 (\ x.x)))
+-tu-q | aff :: ((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\ (s\np[case=abs]): \p\q\r\x. and (p x)( and (q (\ x.x) x)(r x))
+-su-q | aff :: ((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\ (s\np[case=abs]): \p\q\r\x. and (p x)( and (q (\ x.x) x)(r x))
+-sa-a | aff :: (((s/(s\np[case=abs,agr=?a]))\(s/(s\np[case=abs,agr=?a])))\np[case=erg])\ ((s\np[case=erg])\np[case=abs]) : \p\q\x. and (p x)(q x)
+en  | aff :: (vp[type=pss]/vp[type=to])\((VP[typ=inf]/vp[typ=to])/np):\p\q\y.p y q ( something y)
+
 % manually adding auto generated rules
 %
-#_p2_398  s : a --> (s\np[agr=3s])\((s\np[agr=3s])/s) : \a\p.p a
-#_p2_396  np : a --> vp[typ=inf]\(vp[typ=inf]/np) : \a\p.p a
-#_g2_205  np : a --> (vp[typ=inf]/vp[type=to])\((vp[typ=inf]/vp[type=to])/np) : \a\p.p a
-#_g2_204  np : a --> ((s\np[agr=3s])/vp[type=to_inf])\(((s\np[agr=3s])/vp[type=to_inf])/np) : \a\p.p a
-#_p2_391  np : a --> (s\np[case=abs])\((s\np[case=abs])/np[case=dat]) : \a\p.p a
-#_p2_278  np : a --> (s[voi=dv]/np[case=ang])\((s[voi=dv]/np[case=ang])/np[case=ng]) : \a\p.p a
-#_p2_389  np : a --> s/(s\np[case=abs]) : \a\p.p a
-#_p2_355  vp : a --> (s\np[case=abs])\((s\np[case=abs])/vp[case=abs]) : \a\p.p a
-#_p2_353  np[case=acc] : a --> (s\np[case=nom])/((s\np[case=nom])\np[case=acc]) : \a\p.p a
-#_p2_280  np : a --> s\(s/np[case=acc]) : \a\p.p a
-#_g2_189  np[agr=3s] : a --> (s/vp[typ=asp])\((s/vp[typ=asp])/np[agr=3s]) : \a\p.p a
-#_g2_182  np : a --> ((s\np)/np)\(((s\np)/np)/np) : \a\p.p a
-#_g2_180  xp[type=pred] : a --> vp[typ=to_inf]\(vp[typ=to_inf]/xp[type=pred]) : \a\p.p a
-#_g2_179  vp : a --> vp/(vp\vp) : \a\p.p a
-#_g2_173  np[case=nom] : a --> (s\np[case=dat])\((s\np[case=dat])/np[case=nom]) : \a\p.p a
-#_g2_171  np[case=dat] : a --> (s\np[case=nom])\((s\np[case=nom])/np[case=dat]) : \a\p.p a
-#_g2_170  np[case=acc] : a --> (s\np[case=nom])\((s\np[case=nom])/np[case=acc]) : \a\p.p a
-#_p2_276  np[agr=3] : a --> (s/vp[type=ing])\((s/vp[type=ing])/np[agr=3]) : \a\p.p a
-#_g2_167  np : a --> (vp[type=inf]/vp[type=to_inf])\((vp[type=inf]/vp[type=to_inf])/np) : \a\p.p a
-#_g2_166  pp : a --> vp[type=inf]\(vp[type=inf]/pp) : \a\p.p a
-#_g2_164  s[type=inf] : a --> vp[type=inf]\(vp[type=inf]/s[type=inf]) : \a\p.p a
-#_g2_163  np : a --> ((n[agr=?x]\n[agr=?x])/np)\(((n[agr=?x]\n[agr=?x])/np)/np) : \a\p.p a
-#_p2_270  np[case=erg] : a --> vp[case=abs]/(vp[case=abs]\np[case=erg]) : \a\p.p a
-#_g2_159  vp[case=abs] : a --> ((s\np[case=abs])\np[case=erg])\(((s\np[case=abs])\np[case=erg])/vp[case=abs]) : \a\p.p a
-#_g2_155  np[case=erg] : a --> (s\np[case=abs])/((s\np[case=abs])\np[case=erg]) : \a\p.p a
-#_g2_153  np[case=erg] : a --> s/(s\np[case=erg]) : \a\p.p a
-#_p2_232  np[case=abs] : a --> vp[case=erg]/(vp[case=erg]\np[case=abs]) : \a\p.p a
-#_g2_150  vp : a --> (s\np[case=abs])/((s\np[case=abs])\vp) : \a\p.p a
-#_g2_149  np[case=obl] : a --> vp[case=abs]/(vp[case=abs]\np[case=obl]) : \a\p.p a
-#_g2_148  vp[case=abs] : a --> ((s\np[case=erg])\np[case=abs])/(((s\np[case=erg])\np[case=abs])\vp[case=abs]) : \a\p.p a
-#_p2_220  np[case=abs] : a --> (s\np[case=erg])/((s\np[case=erg])\np[case=abs]) : \a\p.p a
-#_g2_144  np[case=inst] : a --> (s\np[case=abs])/((s\np[case=abs])\np[case=inst]) : \a\p.p a
-#_g2_142  np[case=ng] : a --> (s[voi=av]/np[case=ang])\((s[voi=av]/np[case=ang])/np[case=ng]) : \a\p.p a
-#_p2_218  np[case=ng] : a --> (s[voi=ov]/np[case=ang])\((s[voi=ov]/np[case=ang])/np[case=ng]) : \a\p.p a
-#_g2_140  np[case=ng] : a --> (s[voi=none]/np[case=ng])\((s[voi=none]/np[case=ng])/np[case=ng]) : \a\p.p a
-#_g2_139  np[case=ng] : a --> (s[voi=ov]/s)\((s[voi=ov]/s)/np[case=ng]) : \a\p.p a

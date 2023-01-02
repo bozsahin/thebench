@@ -2943,20 +2943,26 @@
 (defun mk_keyparamend (r s)
   (format s "<~A, ~A>~%" (nv-get-v 'KEY r) (nv-get-v 'PARAM r))) 
 
+(defun mk_lf (lf s)
+  "raw use of display-lf with format directives may spill over multiple lines, we avoid that with this function"
+  (format s " : ")
+  (dolist (obj (display-lf lf))
+    (format s "~(~A~) " obj)))
+
 (defun mk_arule (r s)
   (mk_arulename_sc (nv-get-v 'INDEX r) s)       
   (mk_cat (nv-get-v 'INSYN r) s)
-  (format s " : ~{~(~A~) ~} " (display-lf (nv-get-v 'INSEM r)))
+  (mk_lf (nv-get-v 'INSEM r) s)
   (format s " --> ")
   (mk_cat (nv-get-v 'OUTSYN r) s)
-  (format s " : ~{~(~A~) ~} " (display-lf (nv-get-v 'OUTSEM r))))
+  (mk_lf (nv-get-v 'OUTSEM r) s))
 
 (defun mk_entry (e s)
   (format s "~(~A~)| ~(~A~) :: " 
 	  (nv-get-v 'PHON e)
 	  (nv-get-v 'MORPH e))
   (mk_cat (nv-get-v 'SYN e) s)
-  (format s " : ~{~(~A~) ~} " (display-lf (nv-get-v 'SEM e))))
+  (mk_lf (nv-get-v 'SEM e) s))
 
 (defun generate_source (gname)   ;; converts arules in lisp format to monadic grammar source code
   (setf *random-state* (make-random-state t))

@@ -669,7 +669,7 @@ def help ():
         print(f' , ..   | displays analyses for solutions numbered .., all if none provided')
         print(f' #      | displays ranked analyses')
         print(f' = ..   | displays analyses onto basic cats in ..')
-        print(f' ! ..   | shows info on current grammar (args optional; if first . is ! also saves to file .)')
+        print(f' ! ..   | shows info on current grammar (optional: if 1st . is ! also saves to file in 2nd .)')
         print(f' $ ..   | shows the elements with parts of speech ..')
         print(f' - .    | shows (without adding) the intermediate representation of element .')
         print(f' + .    | processor adds Lisp code in file .')
