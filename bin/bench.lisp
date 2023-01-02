@@ -2965,6 +2965,7 @@
   (mk_lf (nv-get-v 'SEM e) s))
 
 (defun generate_source (gname)   ;; converts arules in lisp format to monadic grammar source code
+  (setf *print-pretty* nil)      ; to avoid multiline entries in format ...
   (setf *random-state* (make-random-state t))
   (if (null *current-grammar*)
     (progn (format t "~%Nothing to save as grammar~%")
@@ -2980,10 +2981,12 @@
 	  (mk_entry r s))
 	(mk_keyparamend r s)))
     (format t "~%File: ~A created; contains source text for ~A,~%   minus comments and empty lines, with srules converted to entries.~%" afile gname))
+  (setf *print-pretty* t)
   t)
 
 (defun sc_rules2mg (gname)   ;; converts arules in lisp format to monadic grammar source code
   ;(setf *random-state* (make-random-state t))
+  (setf *print-pretty* nil)
   (if (null *SC-RULES*)
     (progn (format t "~%Nothing to save as case function; please check the case log file~%")
 	   (return-from sc_rules2mg t)))
@@ -2996,6 +2999,7 @@
 	(mk_cat_sc (nv-get-v 'OUTSYN r) s)
 	(format s " : \\a\\p.p a~%")))
     (format t "~%File: ~A created; contains synthetic case rules for ~A in the source format,~%   for merging with grammar source text or for inspection.~%" afile gname))
+  (setf *print-pretty* t)
   t) ; all interface functions return t
 
 (defun synthetic_case (vmorphs logfile)
@@ -3049,9 +3053,6 @@
 
 (defun nf-parse-on ()
   (setf *nf-parse* t)(nf-parse-value))
-(format t "processor: bench.lisp loaded, version ~A~%" 
-  (multiple-value-bind (pr v) (which_processor)
-    v))
 
 (defun nf-parse-on ()
   (setf *nf-parse* t)(nf-parse-value))
@@ -3067,3 +3068,8 @@
 
 (defun hide-lf ()
   (setf *lfflag* nil) (format t "Only final LF will be shown~%"))
+
+(format t "processor: bench.lisp loaded, version ~A, encoding ~A~%" 
+  (multiple-value-bind (pr v) (which_processor)
+    v)
+  sb-impl::*default-external-format*)
