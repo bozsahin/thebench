@@ -199,16 +199,15 @@ def make_up_an_index():              # return the first non-colliding random ind
 #
 
 class SUPLexer(Lexer): # Token types for supervision pairs
-    tokens = {ID, BANGID, ITEM, CORR, DOT, LP, RP, BS, END, ANY}
+    tokens = {ID, BANGID, ITEM, DOT, LP, RP, BS, END, ANY}
 
     ignore = ' \t'            # whitespace
     ignore_comment = r'\%.*'  # ignore everything starting with %
     ignore_newline = r'\n+'   # ignore empty lines
      
-    ITEM   = r'.*\|'                                     
+    ITEM   = r'.*\:'                                     # no need for form delimiters
     BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
     ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
-    CORR   = r'\:'
     DOT    = r'\.'          # modalities also use this
     LP     = r'\('
     RP     = r'\)'
@@ -268,13 +267,13 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
         print("Unknown character '%s'" % tok.value[0])
         self.index += 1
 
-class SUPParser(Parser):      # the syntax of |string| : meaning; pairs
+class SUPParser(Parser):      # the syntax of string : meaning pairs
     #debugfile = 'lalr_sup'+ _logext
     tokens = SUPLexer.tokens
 
-    @_('ITEM CORR lcom t')
+    @_('ITEM lcom t')
     def s(self, p):
-        return mk_entry_sup(p[0][0:-1], p.lcom)
+        return mk_entry_sup(p[0][0:-1], p.lcom)  # leave out the : from ITEM
 
     @_('lterm')
     def lcom(self, p):
