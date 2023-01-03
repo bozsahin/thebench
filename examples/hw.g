@@ -41,7 +41,8 @@ pick      | pv2           :: iv/'up'/np     : \x\y\z.hold (culminate y x) x z   
 
 % relational rules (as opposed to combining rules)
 
-#past run  a mile, iv:\x.run x <-->  km, s\np:\x.past run x % a symmetric rule
+#tense run, iv:\x.run x <-->  ran, s\np:\x.past run x % a symmetric rule
+#tense brings  a mile, iv:\x.bring x <-->  brought, s\np:\x.past bring x % a symmetric rule
 #subj np : lt            --> s/(s\np):\lt\p.p lt       % an asymmetric rule
 
                                         % <--> means these two are related During parsing, we pick the one in surface form.
