@@ -663,7 +663,7 @@ def help ():
         print(f" l . .. | Lisp function . is called, with args .., which takes them as strings")
         print(f' o ..   | OS/shell command .. is run at your own risk')
         print(f' r ..   | ranks the expression .. using the currently loaded model')
-        print(f' s .    | supervision data in file . converted to native format .sup for the trainer')
+        print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | grammar binary . converted to source, with <key, parameter> info added")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
         print(f' , ..   | displays analyses for solutions numbered .., all if none provided')
