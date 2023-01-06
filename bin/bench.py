@@ -653,7 +653,7 @@ def split_command (cline): # splits a command line into command and list of args
     
 def help ():
         print(f"letter commands are processor commands; symbol commands are for display or set up")
-        print(f"items in .. must be space-separated")
+        print(f"items in .. must be space-separated, only strings are case sensitive")
         print(f' a ..   | analyzes the expression .. in the currently loaded grammar')
         print(f' c ..   | case functions generated and added to loaded grammar from elements with POSs ..')
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
@@ -943,31 +943,28 @@ def do (commline):
     elif comm == 't':
         if len(args) == 3 and os.path.exists(args[0]) and os.path.exists(args[1]) and os.path.exists(args[2]):
             if load_1pass_sup(args[0]):
-                fn = input(f"Output file (we will add {_supext}) ? ")
-                fn = str(fn) + _supext
-                ch = False
-                if os.path.exists(fn):
-                    ch = input(f"file {fn} exists, overwrite (y/N)? ")
-                if ch == 'y' or not ch:
-                    with open(str(fn),'w') as f:
-                        with redirect_stdout(f):
-                            print('(')     # loadable lisp file
-                            print(';;;;;;;;;; bench.py-generated supervision data')
-                            print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
-                            print(';;')
-                            for k,v in _supervision.items():
-                                print('(')
-                                print(mk_1cl(ir_to_lisp(k)))
-                                print(ir_to_lisp(v))
-                                print(')')
-                            print(';;')
-                            print(';;;;;;;;;; end of bench.py-generated supervision data')
-                            print(')') 
-                    print(f"{fn} file generated")
-                else:
-                    print('canceled')
+                fn = "/tmp/" + args[1] + _supext    # .sup is temporary, save it in /tmp after cleaning it on sup
+                os.system('rm /tmp/*.sup')
+                with open(fn,'w') as f:
+                    with redirect_stdout(f):
+                        print('(')     # loadable lisp file
+                        print(';;;;;;;;;; bench.py-generated supervision data')
+                        print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
+                        print(';;')
+                        for k,v in _supervision.items():
+                            print('(')
+                            print(mk_1cl(ir_to_lisp(k)))
+                            print(ir_to_lisp(v))
+                            print(')')
+                        print(';;')
+                        print(';;;;;;;;;; end of bench.py-generated supervision data')
+                        print(')') 
             else:
-                print(f"{_supext} file not generated")
+                print(f"{_supext} file not generated, aborting t command")
+                return
+            with open(args[2],'r') as f:      # read values from experiment file and run bench.sh for each
+                for line in f:
+                    exargs=line.split()
         else:
             print('need three existing files for t')
     elif comm == 'g':
