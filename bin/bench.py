@@ -962,12 +962,8 @@ def do (commline):
             else:
                 print(f"{_supext} file not generated, aborting t command")
                 return
-            with open(args[2],'r') as f:    # get line count to fetch as many processors
-                ch = 0
-                for line in f:
-                    ch=+1
-            os.system(f"cat {args[2]}|nohup xargs -n 9 -P {ch} bench.sh") # hope for the best
-            print(f"trainings started on up to {ch} processors\n you don't have to wait their finish")
+            os.system(f"cat {args[2]}|nohup xargs -n 9 -P `wc -l < {args[2]}` bench.sh") # hope for the best
+            print(f"trainings started, you don't have to wait for the finish")
         else:
             print('need three existing files for t')
     elif comm == 'g':
