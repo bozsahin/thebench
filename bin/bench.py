@@ -967,6 +967,7 @@ def do (commline):
                 for line in f:
                     ch=+1
             os.system(f"cat {args[2]}|nohup xargs -n 9 -P {ch} bench.sh") # hope for the best
+            print(f"trainings started on up to {ch} processors\n you don't have to wait their finish")
         else:
             print('need three existing files for t')
     elif comm == 'g':

@@ -32,7 +32,7 @@ echo "            at: `date`" >> $8.log
 echo "            in: `hostname`" >> $8.log
 echo "Log goes to   : $8.log" >> $8.log
 echo "I will call sbcl as: $BENCH_LISP" >> $8.log
-TRAINER="$TRAIN \"$3\" \"$4\" $2 \"$8.$N.$6a.$7c\" $N $6 $7"   # passes one less argument if $N is empty string
+TRAINER="$TRAIN \"$3\" \"$4\" $2 \"$8.$N.$6a.$7c.bin\" $N $6 $7"   # passes one less argument if $N is empty string
 echo "It will call $TRAIN in $BENCH_HOME/bin/bench.lisp as: ($TRAINER)" >> $8.log
 echo '=======          ============' >> $8.log
 $BENCH_LISP --load $BENCH_HOME/bin/bench.lisp --eval '(reset-globals)' --eval "($9)" --eval "($TRAINER)" --eval '(sb-ext:exit)' >> $8.log
