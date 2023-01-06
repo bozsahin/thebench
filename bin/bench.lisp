@@ -377,7 +377,7 @@
 (mydef *current-grammar* nil)  ; current  grammar, as a list of Lisp-translated lex specs
 (mydef *loaded-grammar* nil)   ; The source of currently loaded grammar
 
-(defswitch *lfflag* t) ; whether to show intermediate LFs in the output (final one always shown)
+(defswitch *lambdaflag* t) ; whether to show intermediate LFs in the output (final one always shown)
 (mydef *abv* nil) ; list of shortcuts for common functions-- see the bottom
 (defswitch *oovp* nil) ; set it to t to avoid out of vocabulary errors---two entries with uknown LFs will be created 
                           ;  to get partial parses as much as possible in a knowledge-poor way.
@@ -507,8 +507,7 @@
 ; -----------------
 
 (defun rules ()
-  (format t  "To change a switch, use (setf <switchname> <value>)
-	      where <value> is T (on) or NIL (off)
+  (format t  "The internal rules of the Monad:
 	  *f-apply*     ~A
 	  *b-apply*     ~A
 	  *f-comp*      ~A
@@ -619,14 +618,14 @@
 
 (defun lf (on)
   (if (or (eq on t) (equal on 'on))
-    (setf *lfflag* t)
-    (setf *lfflag* nil)))
+    (setf *lambdaflag* t)
+    (setf *lambdaflag* nil)))
 
 ; this one is easier summary
 
 (defun show-config ()
-  (format t "~2%~A~2%" (which_processor))
   (rules)
+  (format t "~%Processor control:")
   (onoff)
   (beam-value))
 
@@ -903,13 +902,13 @@
     (cond ((equal l r)   ; we've reached a lexical cell 
 	   (cond ((> (cell-len l) 1)
 		  (format t (cky-thread l)))) ; it may be a lex rule applying to a phrase
-	   (if *lfflag*
+	   (if *lambdaflag*
 	     (format nil "~%~5,,,a~6T~A := ~A~%        : ~A" ix (input-range (cell-len l)(cell-pos l)) syn lf)
 	     (format nil "~%~5,,,a~6T~A := ~A" ix (input-range (cell-len l)(cell-pos l)) syn)))
 	  (t (concatenate 'string 
 			    (cky-thread l)
 			    (cky-thread r)
-			    (if *lfflag*
+			    (if *lambdaflag*
 			      (format nil "~%~5,,,a~6T~A := ~A~%        : ~A" ix inputs syn lf)
 			      (format nil "~%~5,,,a~6T~A := ~A" ix inputs syn)))))))
 
@@ -1949,13 +1948,13 @@
 	     (cond ((equal l r)   ; we've reached a lexical cell 
 		    (cond ((> (cell-len l) 1)
 			   (format t (cky-show-probs l)))) ; it may be a lex rule applying to a phrase
-		    (if *lfflag* 
+		    (if *lambdaflag* 
 		      (format nil "~%~5,,,a~7,,,F~14T~A := ~A~%        : ~A" ix pr (input-range (cell-len l)(cell-pos l)) syn lf)
 		      (format nil "~%~5,,,a~7,,,F~14T~A := ~A" ix pr (input-range (cell-len l)(cell-pos l)) syn)))
 		   (t (concatenate 'string 
 				   (cky-show-probs l)
 				   (cky-show-probs r)
-				   (if *lfflag* 
+				   (if *lambdaflag* 
 				     (format nil "~%~5,,,a~7,,,F~14T~A := ~A~%        : ~A" ix pr inputs syn lf)
 				     (format nil "~%~5,,,a~7,,,F~14T~A := ~A" ix pr inputs syn)))))))))
 
@@ -3064,10 +3063,10 @@
   (setf *oovp* t) (format t "OOV is set (OOV errors not reported)~%"))
 
 (defun show-lf ()
-  (setf *lfflag* t) (format t "All LFs will be shown~%"))
+  (setf *lambdaflag* t) (format t "All LFs will be shown~%"))
 
 (defun hide-lf ()
-  (setf *lfflag* nil) (format t "Only final LF will be shown~%"))
+  (setf *lambdaflag* nil) (format t "Only final LF will be shown~%"))
 
 (format t "processor: bench.lisp loaded, version ~A, encoding ~A~%" 
   (multiple-value-bind (pr v) (which_processor)
