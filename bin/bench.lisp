@@ -419,10 +419,10 @@
 ;; ------------------------------
 
 (defun monad-all (&key (nf-parse t) (lf t) (beam nil) (oov nil))
-  (nf-parse nf-parse)
-  (lf lf)
-  (beam beam)
-  (oov oov)
+  (if nf-parse (nfparse-on) (nfparse-off))
+  (if lf (lambda-on) (lambda-off))
+  (if beam (beam-on) (beam-off))
+  (if oov (oov-on) (oov-off))
   (setf 
     *f-apply* t   ;application
     *b-apply* t
@@ -440,10 +440,10 @@
     *bx3-comp* t))
 
 (defun monad-montague (&key (nf-parse t) (lf t) (beam nil) (oov nil) )
-  (nf-parse nf-parse)
-  (lf lf)
-  (beam beam)
-  (oov oov)
+  (if nf-parse (nfparse-on) (nfparse-off))
+  (if lf (lambda-on) (lambda-off))
+  (if beam (beam-on) (beam-off))
+  (if oov (oov-on) (oov-off))
   (setf 
     *f-apply* t   ;application
     *b-apply* t
@@ -462,25 +462,6 @@
 
 ;
 ; -----------------
-
-(defun rules ()
-  (format t  "The internal rules of the Monad:
-	  *f-apply*     ~A
-	  *b-apply*     ~A
-	  *f-comp*      ~A
-	  *b-comp*      ~A
-	  *fx-comp*     ~A
-	  *bx-comp*     ~A
-          *f2-comp*     ~A
-	  *b2-comp*     ~A
-	  *fx2-comp*    ~A
-	  *bx2-comp*    ~A
-	  *f3-comp*     ~A
-	  *b3-comp*     ~A
-	  *fx3-comp*    ~A
-	  *bx3-comp*    ~A~%"
-	  *f-apply* *b-apply* *f-comp* *b-comp* *fx-comp* *bx-comp* 
-          *f2-comp* *b2-comp* *fx2-comp* *bx2-comp* *f3-comp* *b3-comp* *fx3-comp* *bx3-comp*))
 
 (defmacro sort-grammar (&optional (order #'>))
   "sort current grammar by order, default descending. report quartiles"
@@ -503,10 +484,7 @@
 
 
 (defun status(&optional (all-lfs nil))
-  "returns all equivalent LFS if all-lfs is not nil"
-  (format t "~2%  do (rules) or (onoff) for rules and switches~%")
   (format t "  ---------------------------~%")
-  (format t "  Any non-standard rule     ? ~A~%" 'no)
   (format t "  Currently loaded grammar  : ~A~%" *loaded-grammar*)
   (format t " *current-grammar*              : ~A item~:p~%" (length *current-grammar*))
   (format t " *LEX-RULES-TABLE*          : ~A item~:p~%" (length *lex-rules-table*))
@@ -552,36 +530,7 @@
   (setf *beam-exp* val)
   (beam-value))
 
-;;; ==========================
-;;; user controllable switches 
-;;; ==========================
-
-; not passing on or t resets the switches to nil
-
-(defun beam (on)
-  (if (or (eq on t) (equal on 'on))
-    (setf *beamp* t)
-    (setf *beamp* nil)))
-
-(defun nf-parse (on)
-  (if (or (eq on t) (equal on 'on))
-    (setf *nf-parse* t)
-    (setf *nf-parse* nil)))
-
-(defun oov (on)
-  (if (or (eq on t) (equal on 'on))
-    (setf *oovp* t)
-    (setf *oovp* nil)))
-
-(defun lf (on)
-  (if (or (eq on t) (equal on 'on))
-    (setf *lambdaflag* t)
-    (setf *lambdaflag* nil)))
-
-; this one is easier summary
-
 (defun show-config ()
-  (rules)
   (format t "~%Processor control:")
   (onoff)
   (beam-value))
@@ -2012,8 +1961,8 @@
 		 (setf (machash key *training-hashtable-x4*) (append val (list (cabay-jackson p1 p2 p3 p4))))))
 	   *training-hashtable-x4*))
 
-(defun load-supervision (pname)
-  (let ((supname (concatenate 'string pname ".sup")))
+(defun load-supervision (sname)
+  (let ((supname sname))
     (with-open-file (s supname  :direction :input :if-does-not-exist :error) 
       (setf *supervision-pairs-list* (read s)))
     (format t "~%Supervision file loaded: ~A~%" supname))
@@ -2229,32 +2178,32 @@
 	      (estimate-parameters k i))
 	(if x4 (record-pass))))
 
-(defun update-model (pname iterations alpha0 c &key (verbose nil)(load nil) (debug nil))
+(defun update-model (pname sname iterations alpha0 c &key (verbose nil)(load t) (debug nil))
   "default workflow for updating model parameters of a project. Compare and save are separate."
   (beam-value) ;; in case you want to abort a misguided looong training asap
-  (and load (load_dotbin pname)) ; loads the .bin file into *current-grammar*
-  (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
+  (and load (load_bin pname)) ; loads directly into *current-grammar*
+  (and load (load-supervision sname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
   (set-training-parameters iterations (length *supervision-pairs-list*)(length *current-grammar*) alpha0 c)
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
                    ; we're trying to avoid recalculating counts since they dont change over iterations
   (stochastic-gradient-ascent verbose debug)
-  (format t "~%Done. use (show-training/save-training) to see/save the results"))
+  (format t "~%update-model Done."))
 
-(defun update-model-xp (pname alpha0 c &key (load nil)(verbose nil)(debug nil))
+(defun update-model-xp (pname sname alpha0 c &key (load nil)(verbose nil)(debug nil))
   "This version runs over supervision data 4 times,  then extrapolates. 
   It finds 4 stages of the gradient, setting its direction and first 4 magnitudes.
   Because of inside-outside count estimation, it is actually 5 passes over supervision data.
   Then it runs Cabay & Jackson algorithm to find the gradient's limit for each parameter by
   minimum polynomial extrapolation (MPE). It can be erroneous if stages fluctuate."
   (beam-value) ;; in case you want to abort 
-  (and load (load_dotbin pname)) ; loads the .bin file into *current-grammar*
-  (and load (load-supervision pname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
+  (and load (load_bin pname)) ; loads directly into *current-grammar*
+  (and load (load-supervision sname)) ; (Si Li) pairs loaded into *supervision-pairs-list*
   (set-training-parameters 4 (length *supervision-pairs-list*)(length *current-grammar*) alpha0 c 'x4) ; fixed iteration 
   (inside-outside) ; redundantly parse all sup pairs once to create hash table of nonzero counts for every pair
   ; we're trying to avoid recalculating counts since they dont change over iterations
   (stochastic-gradient-ascent verbose debug 'x4)
   (extrapolate-parameters)
-  (format t "~%Done. use (show-training-xp/save-training-xp) to see/save the results"))
+  (format t "~%update-model-xp done."))
 
 (defun show-training ()
   "show the values of parameters per key before and after training"
@@ -2972,25 +2921,25 @@
 ;; some nohup-friendly test suite -- all is written offline
 ;; this stuff is used by bench-train-.. scripts 
 
-(defun train-nohup-sbcl (gram gcmb savep out N alpha0 c)
+(defun train-nohup-sbcl (gram sup gcmb out N alpha0 c)
   (progn 
     (setf (sb-ext:bytes-consed-between-gcs) (* gcmb 1024 1024))  ; specify GC cycle in MB
     ; default is 51 MB in sbcl
     (sb-ext:gc) ; make effective immediately
-    (time (update-model gram N alpha0 c :load t)) ; cross your fingers
+    (time (update-model gram sup N alpha0 c :load t)) ; cross your fingers
     (show-training)                     ; prayers answered
-    (and savep (save-training out))     ; this is to save the grammar---session output always to names with nohup.out when called 
+    (save-training out)     ; this is to save the grammar---session output always to names with nohup.out when called 
     ))
 
-(defun train-nohup-sbcl-xp (gram gcmb savep out alpha0 c)
+(defun train-nohup-sbcl-xp (gram sup gcmb out alpha0 c)
   "this is the extrapolating version."
   (progn 
     (setf (sb-ext:bytes-consed-between-gcs) (* gcmb 1024 1024))  ; specify GC cycle in MB
     ; default is 51 MB in sbcl
     (sb-ext:gc) ; make effective immediately
-    (time (update-model-xp gram alpha0 c :load t)) 
+    (time (update-model-xp gram sup alpha0 c :load t)) 
     (show-training-xp)                  
-    (and savep (save-training-xp out))  ; this is to save the grammar---session output always to names with nohup.out when called 
+    (save-training-xp out)  ; this is to save the grammar---session output always to names with nohup.out when called 
     ))
 
 (defun nf-and-beam ()

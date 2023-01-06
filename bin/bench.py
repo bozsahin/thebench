@@ -1177,3 +1177,5 @@ if __name__ == '__main__': # MG REPL online
         do(command)
         command = myPromptSession.prompt(_prompt)
     print('Done.')
+else:
+    print('Offline call')
