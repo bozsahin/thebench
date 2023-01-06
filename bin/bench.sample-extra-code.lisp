@@ -4,13 +4,13 @@
 (defun beam07-app ()
   "sets beam and turns of normal form parse"
   (setf *beam-exp* 0.7)
-  (nf-parse-on)
+  (nfparse-on)
   (beam-on)
   )
 
 (defun nobeam-nf-apphcomp ()
   "allowing harmonic composition only"
-  (nf-parse-on)
+  (nfparse-on)
   (beam-off)
   (setf *f-apply* t) ;application
   (setf *b-apply* t)

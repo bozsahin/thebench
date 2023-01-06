@@ -418,8 +418,7 @@
 ;; rule switch wholesale controls
 ;; ------------------------------
 
-(defun basic-ccg (&key (nf-parse t) (lf t) (beam nil) (oov nil))
-  "experimental rules are turned off"
+(defun monad-all (&key (nf-parse t) (lf t) (beam nil) (oov nil))
   (nf-parse nf-parse)
   (lf lf)
   (beam beam)
@@ -440,28 +439,7 @@
     *fx3-comp* t
     *bx3-comp* t))
 
-(defun simple-ccg (&key (nf-parse t) (lf t) (beam nil) (oov nil))
-  (nf-parse nf-parse)
-  (lf lf)
-  (beam beam)
-  (oov oov)
-  (setf 
-    *f-apply* t   ;application
-    *b-apply* t
-    *f-comp* t    ;composition
-    *b-comp* t
-    *fx-comp* t
-    *bx-comp* t
-    *f2-comp* t   ;B^2
-    *b2-comp* t
-    *fx2-comp* t
-    *bx2-comp* t
-    *f3-comp* t   ;B^3
-    *b3-comp* t
-    *fx3-comp* t
-    *bx3-comp* t))
-
-(defun app-ccg (&key (nf-parse t) (lf t) (beam nil) (oov nil) )
+(defun monad-montague (&key (nf-parse t) (lf t) (beam nil) (oov nil) )
   (nf-parse nf-parse)
   (lf lf)
   (beam beam)
@@ -482,27 +460,6 @@
     *fx3-comp* nil
     *bx3-comp* nil))
 
-(defun exp-ccg (&key (nf-parse t) (lf t) (beam nil) (oov nil))
-  "experimental rules are turned on too"
-  (nf-parse nf-parse)
-  (lf lf)
-  (beam beam)
-  (oov oov)
-  (setf 
-    *f-apply* t   ;application
-    *b-apply* t
-    *f-comp* t    ;composition
-    *b-comp* t
-    *fx-comp* t
-    *bx-comp* t
-    *f2-comp* t   ;B^2
-    *b2-comp* t
-    *fx2-comp* t
-    *bx2-comp* t
-    *f3-comp* t   ;B^3
-    *b3-comp* t
-    *fx3-comp* t
-    *bx3-comp* t))
 ;
 ; -----------------
 
@@ -1704,8 +1661,8 @@
 				     (copy-hashtable (machash 'SYN ht1))))
          newht)))
 
-(defun ccg-combine (ht1 ht2 lex1 lex2 coord1 coord2)
-  "Short-circuit evaluates ccg rules one by one, to left term (ht1) and right term (ht2), which are hashtables.
+(defun monad-combine (ht1 ht2 lex1 lex2 coord1 coord2)
+  "Short-circuit evaluates rules one by one, to left term (ht1) and right term (ht2), which are hashtables.
   Returns the result as a hashtable.
   Note: we are procedurally neutral, i.e. given two cats, the other is uniquely determined
   if combinable (see Pareschi & steedman 1987). Therefore only one rule can succeed if
@@ -1723,12 +1680,12 @@
   complex result hashtables as there are slashes in the result."
   (cond ((and (basicp-hash (machash 'SYN ht1))
 	      (basicp-hash (machash 'SYN ht2)))  ; both are basic cats, a non-combinable case
-	 (return-from ccg-combine nil))
+	 (return-from monad-combine nil))
 	((and (complexp-hash ht1)
 	      (complexp-hash ht2)
 	      (eql (machash 'DIR 'SYN ht1) 'BS)
 	      (eql (machash 'DIR 'SYN ht2) 'FS)) ; the only functional case which no rule can combine 
-	 (return-from ccg-combine nil))
+	 (return-from monad-combine nil))
 	)
   (or (and *f-apply* (f-apply ht1 ht2 lex2 coord2)) ; application -- the only relevant case for lex slash
       (and *b-apply* (b-apply ht1 ht2 lex1 coord1))
@@ -1738,9 +1695,9 @@
       (and (or *fx-comp* *bx-comp*) (multiple-value-bind (s1 s2) (values (and *fx-comp* (fx-comp ht1 ht2))
 									 (and *bx-comp* (bx-comp ht1 ht2)))
 				      (if s1    ; short-circuit if at least one succeeds -- pass the succesful one first for 'and'
-					(return-from ccg-combine (values s1 s2))
+					(return-from monad-combine (values s1 s2))
 					(if s2 
-					  (return-from ccg-combine (values s2 s1))
+					  (return-from monad-combine (values s2 s1))
 					  nil))))
 
       (and *f2-comp* (f2-comp ht1 ht2))         ; B^2
@@ -1839,7 +1796,7 @@
 		     ((not (machash (list k j p) *cky-hashtable*)))
 		     (do ((q 1 (+ q 1)))
 		         ((not (machash (list (- i k) (+ j k) q) *cky-hashtable*)))
-                         (multiple-value-bind (r1 r2) (ccg-combine 
+                         (multiple-value-bind (r1 r2) (monad-combine 
                                  (nv-list-val 'SOLUTION (machash (list k j p) *cky-hashtable*))
 				 (nv-list-val 'SOLUTION (machash (list (- i k) (+ j k) q) *cky-hashtable*))
 				 (nv-list-val 'LEX (machash (list k j p) *cky-hashtable*))
@@ -2480,7 +2437,7 @@
   (setf *cky-lf* nil) 
   (setf *loaded-grammar* "")
   (setf *current-grammar*  nil)
-  (simple-ccg :nf-parse t :lf t :beam nil 
+  (monad-all :nf-parse t :lf t :beam nil 
 	     :oov nil)) ; turn experimental rules off by default
 
 (defun almost-eq (x y)
@@ -3037,7 +2994,7 @@
     ))
 
 (defun nf-and-beam ()
-  (simple-ccg :nf-parse t :beam t))
+  (monad-all :nf-parse t :beam t))
 
 ; keeping below as legacy access  to switches
 
@@ -3047,13 +3004,10 @@
 (defun beam-on ()
   (setf *beamp* t)(beam-value))
 
-(defun nf-parse-off ()
+(defun nfparse-off ()
   (setf *nf-parse* nil)(nf-parse-value))
 
-(defun nf-parse-on ()
-  (setf *nf-parse* t)(nf-parse-value))
-
-(defun nf-parse-on ()
+(defun nfparse-on ()
   (setf *nf-parse* t)(nf-parse-value))
 
 (defun oov-off ()
@@ -3062,10 +3016,10 @@
 (defun oov-on ()
   (setf *oovp* t) (format t "OOV is set (OOV errors not reported)~%"))
 
-(defun show-lf ()
+(defun lambda-on ()
   (setf *lambdaflag* t) (format t "All LFs will be shown~%"))
 
-(defun hide-lf ()
+(defun lambda-off ()
   (setf *lambdaflag* nil) (format t "Only final LF will be shown~%"))
 
 (format t "processor: bench.lisp loaded, version ~A, encoding ~A~%" 
