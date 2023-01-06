@@ -916,7 +916,7 @@ def do (commline):
     if comm in [_exit, '#', '<', _help] and args:
         print('too many arguments')
         return
-    if comm in ['a', 'c', 'e', 'g', 'o', '@', '$', 'r', 'z', 's', '-', 'l', 'i', '+', '>'] and not args:
+    if comm in ['a', 'c', 'e', 'g', 'o', '@', '$', 'r', 'z', '-', 'l', 'i', '+', '>'] and not args:
         print('too few arguments')
         return
     if comm == _help:
@@ -940,33 +940,36 @@ def do (commline):
         args, _, _ = _ws.join([str(item) for item in args]).partition('%')   # just eliminate the comment
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
-    elif comm == 's':
-        if load_1pass_sup(args[0]):
-            fn = input(f"Output file (we will add {_supext}) ? ")
-            fn = str(fn) + _supext
-            ch = False
-            if os.path.exists(fn):
-                ch = input(f"file {fn} exists, overwrite (y/N)? ")
-            if ch == 'y' or not ch:
-                with open(str(fn),'w') as f:
-                    with redirect_stdout(f):
-                        print('(')     # loadable lisp file
-                        print(';;;;;;;;;; bench.py-generated supervision data')
-                        print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
-                        print(';;')
-                        for k,v in _supervision.items():
-                            print('(')
-                            print(mk_1cl(ir_to_lisp(k)))
-                            print(ir_to_lisp(v))
-                            print(')')
-                        print(';;')
-                        print(';;;;;;;;;; end of bench.py-generated supervision data')
-                        print(')') 
-                print(f"{fn} file generated")
+    elif comm == 't':
+        if len(args) == 3 and os.path.exists(args[0]) and os.path.exists(args[1]) and os.path.exists(args[2]):
+            if load_1pass_sup(args[0]):
+                fn = input(f"Output file (we will add {_supext}) ? ")
+                fn = str(fn) + _supext
+                ch = False
+                if os.path.exists(fn):
+                    ch = input(f"file {fn} exists, overwrite (y/N)? ")
+                if ch == 'y' or not ch:
+                    with open(str(fn),'w') as f:
+                        with redirect_stdout(f):
+                            print('(')     # loadable lisp file
+                            print(';;;;;;;;;; bench.py-generated supervision data')
+                            print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
+                            print(';;')
+                            for k,v in _supervision.items():
+                                print('(')
+                                print(mk_1cl(ir_to_lisp(k)))
+                                print(ir_to_lisp(v))
+                                print(')')
+                            print(';;')
+                            print(';;;;;;;;;; end of bench.py-generated supervision data')
+                            print(')') 
+                    print(f"{fn} file generated")
+                else:
+                    print('canceled')
             else:
-                print('canceled')
+                print(f"{_supext} file not generated")
         else:
-            print(f"{_supext} file not generated")
+            print('need three existing files for t')
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
             _latestgr = str(args[0])
