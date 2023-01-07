@@ -68,4 +68,74 @@ key   lex             initial  final    diff
 680964 JOHN              1.0      1.0  (     0.0)
 55450 MARY              1.0      1.0  (     0.0)
 780439 MARY              1.0      1.0  (     0.0)
+======================================================= Log file ============
+I am called as: /home/bozsahin/myrepos/thebench/bin/bench.sh 4000 2000 /tmp/g1.bin /tmp/g1.spairs.sup 10 0.5 1.1 bon beam-on
+            at: Sat Jan  7 01:37:26 PM +03 2023
+            in: bozsahin-macbookpro111
+Log goes to   : bon.log
+I will call sbcl as: sbcl --dynamic-space-size 4000
+It will call train-nohup-sbcl in /home/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl "/tmp/g1.bin" "/tmp/g1.spairs.sup" 2000 "bon.10.0.5a.1.1c.bin" 10 0.5 1.1)
+=======          ============
+This is SBCL 2.2.11, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+processor: bench.lisp loaded, version 8.0, encoding UTF-8
+
+*nf-parse* = T
+All LFs will be shown
+
+*Beamp* = NIL  *Beam-exp* = 0.9
+OOV is reset (OOV errors reported)
+
+*Beamp* = T  *Beam-exp* = 0.9
+
+*Beamp* = T  *Beam-exp* = 0.9
+
+Supervision file loaded: /tmp/g1.spairs.sup
+
+update-model Done.
+Evaluation took:
+  0.563 seconds of real time
+  0.541126 seconds of total run time (0.540247 user, 0.000879 system)
+  96.09% CPU
+  6 forms interpreted
+  1,354,332,822 processor cycles
+  43,813,056 bytes consed
+  
+The rule set used in the experiment:
+
+Processor control:
+*BEAMP* : T
+*LAMBDAFLAG* : T
+*NF-PARSE* : T
+*OOVP* : NIL
+*Beamp* = T  *Beam-exp* = 0.9
+
+Training parameters: N = 10 alpha0 = 0.5 c = 1.1 n = 6  
+Model parameters before and after training
+================================================
+key   lex             initial  final    diff 
+------------------------------------------------
+267072 KNOWS             1.0 3.187568  (2.187568)
+130801 KNOWS             1.0 .3437294  (-.656271)
+734828 KNOWS             1.0 -.093784  (-1.09378)
+738015 KNOWS             1.0 .5624864  (-.437514)
+7384  LOVES             1.0      1.0  (     0.0)
+278269 LOVES             1.0      1.0  (     0.0)
+553780 JOHN              1.0      1.0  (     0.0)
+240244 JOHN              1.0      1.0  (     0.0)
+195223 JOHN              1.0      1.0  (     0.0)
+996982 JOHN              1.0      1.0  (     0.0)
+723226 MARY              1.0      1.0  (     0.0)
+552569 MARY              1.0      1.0  (     0.0)
+782398 MARY              1.0      1.0  (     0.0)
+462740 MARY              1.0      1.0  (     0.0)
+126720 JOHN              1.0      1.0  (     0.0)
+840967 JOHN              1.0      1.0  (     0.0)
+197653 MARY              1.0      1.0  (     0.0)
+868632 MARY              1.0      1.0  (     0.0)
 ================================================
