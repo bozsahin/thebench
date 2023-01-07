@@ -1,12 +1,12 @@
 ======= Log file ============
 I am called as: /home/bozsahin/myrepos/thebench/bin/bench.sh 7000 4000 /tmp/g1.bin /tmp/g1.spairs.sup xp 1.2 1.0 nfp nfparse-off
-            at: Sat Jan  7 02:00:45 PM +03 2023
-            in: cem-macmini81
+            at: Sat Jan  7 03:37:57 PM +03 2023
+            in: bozsahin-macbookpro111
 Log goes to   : nfp.log
 I will call sbcl as: sbcl --dynamic-space-size 7000
 It will call train-nohup-sbcl-xp in /home/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl-xp "/tmp/g1.bin" "/tmp/g1.spairs.sup" 4000 "nfp.1.2a.1.0c.bin"  1.2 1.0)
 =======          ============
-This is SBCL 2.2.9, an implementation of ANSI Common Lisp.
+This is SBCL 2.2.11, an implementation of ANSI Common Lisp.
 More information about SBCL is available at <http://www.sbcl.org/>.
 
 SBCL is free software, provided as is, with absolutely no warranty.
@@ -29,12 +29,12 @@ Supervision file loaded: /tmp/g1.spairs.sup
 
 update-model-xp done.
 Evaluation took:
-  0.456 seconds of real time
-  0.457804 seconds of total run time (0.454270 user, 0.003534 system)
-  100.44% CPU
+  0.836 seconds of real time
+  0.799440 seconds of total run time (0.798182 user, 0.001258 system)
+  95.57% CPU
   6 forms interpreted
-  1,649,871,708 processor cycles
-  161,111,984 bytes consed
+  2,012,982,960 processor cycles
+  161,096,800 bytes consed
   
 The rule set used in the experiment:
 
@@ -50,22 +50,22 @@ Model parameters before and after training and extrapolation
 ================================================
 key   lex             initial  final    diff 
 ------------------------------------------------
-427338 KNOWS             1.0 7.917687  (6.917687)
-127786 KNOWS             1.0 3.947588  (2.947588)
-571895 KNOWS             1.0  -1.3059  ( -2.3059)
-255330 KNOWS             1.0 -3.65434  (-4.65434)
-103990 LOVES             1.0 7.664269  (6.664269)
-838538 LOVES             1.0 -5.79095  (-6.79095)
-733125 JOHN              1.0 6.023211  (5.023211)
-472167 JOHN              1.0 3.141498  (2.141498)
-484430 JOHN              1.0 3.957449  (2.957449)
-934071 JOHN              1.0 -1.24592  (-2.24592)
-400169 MARY              1.0 5.410148  (4.410148)
-464205 MARY              1.0 3.492627  (2.492627)
-470083 MARY              1.0 4.443414  (3.443414)
-977971 MARY              1.0 -1.65823  (-2.65823)
-994071 JOHN              1.0 -4.02697  (-5.02697)
-804855 JOHN              1.0 -1.24592  (-2.24592)
-68830 MARY              1.0 -3.72522  (-4.72522)
-443283 MARY              1.0 -1.65823  (-2.65823)
+97592 KNOWS             1.0 7.917687  (6.917687)
+794558 KNOWS             1.0 3.947588  (2.947588)
+782188 KNOWS             1.0  -1.3059  ( -2.3059)
+94075 KNOWS             1.0 -3.65434  (-4.65434)
+498762 LOVES             1.0 7.664269  (6.664269)
+233234 LOVES             1.0 -5.79095  (-6.79095)
+873808 JOHN              1.0 6.023211  (5.023211)
+319795 JOHN              1.0 3.141498  (2.141498)
+621963 JOHN              1.0 3.957449  (2.957449)
+54227 JOHN              1.0 -1.24592  (-2.24592)
+367920 MARY              1.0 5.410148  (4.410148)
+659106 MARY              1.0 3.492627  (2.492627)
+105966 MARY              1.0 4.443414  (3.443414)
+568175 MARY              1.0 -1.65823  (-2.65823)
+235665 JOHN              1.0 -4.02697  (-5.02697)
+13792 JOHN              1.0 -1.24592  (-2.24592)
+439054 MARY              1.0 -3.72522  (-4.72522)
+70410 MARY              1.0 -1.65823  (-2.65823)
 ================================================

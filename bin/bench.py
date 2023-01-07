@@ -994,7 +994,7 @@ def do (commline):
             else:
                 print(f"{_supext} file not generated, aborting t command")
                 return
-            print("\ntrainings start;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
+            print("\ntraining starts;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
             print("if everything runs OK, you can re-generate source grammars from .bin files")
             print("  use the z command for that")
             # xargs makes explicit the processor request from the Linux Kernel; avoiding bash loops for this reason
@@ -1007,6 +1007,7 @@ def do (commline):
                                 print(f"{ch[0]} {ch[1]} {bfn} {fn} {ch[2]} {ch[3]} {ch[4]} {ch[5]} noop")
                             else:
                                 print(f"{ch[0]} {ch[1]} {bfn} {fn} {ch[2]} {ch[3]} {ch[4]} {ch[5]} {ch[6]}")
+            os.system('rm nohup.out')   # linux appends too; get rid of earlier ones.
             os.system(f"cat {efn}|nohup xargs -n 9 -P `wc -l < {efn}` bench.sh") # hope for the best
         else:
             print('need three existing files for the t command')
