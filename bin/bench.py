@@ -994,7 +994,7 @@ def do (commline):
             else:
                 print(f"{_supext} file not generated, aborting t command")
                 return
-            print("\ntrainings start; you don't have to wait for the finish")
+            print("\ntrainings start;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
             # xargs makes explicit the processor request from the Linux Kernel; avoiding bash loops for this reason
             with open(args[2],'r') as expin:
                 with open(efn,'w') as expout:

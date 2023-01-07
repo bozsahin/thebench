@@ -1,0 +1,71 @@
+======= Log file ============
+I am called as: /home/bozsahin/myrepos/thebench/bin/bench.sh 4000 2000 /tmp/g1.bin /tmp/g1.spairs.sup 10 0.5 1.1 bon beam-on
+            at: Sat Jan  7 01:09:01 PM +03 2023
+            in: bozsahin-macbookpro111
+Log goes to   : bon.log
+I will call sbcl as: sbcl --dynamic-space-size 4000
+It will call train-nohup-sbcl in /home/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl "/tmp/g1.bin" "/tmp/g1.spairs.sup" 2000 "bon.10.0.5a.1.1c.bin" 10 0.5 1.1)
+=======          ============
+This is SBCL 2.2.11, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+processor: bench.lisp loaded, version 8.0, encoding UTF-8
+
+*nf-parse* = T
+All LFs will be shown
+
+*Beamp* = NIL  *Beam-exp* = 0.9
+OOV is reset (OOV errors reported)
+
+*Beamp* = T  *Beam-exp* = 0.9
+
+*Beamp* = T  *Beam-exp* = 0.9
+
+Supervision file loaded: /tmp/g1.spairs.sup
+
+update-model Done.
+Evaluation took:
+  0.577 seconds of real time
+  0.422816 seconds of total run time (0.422816 user, 0.000000 system)
+  73.31% CPU
+  6 forms interpreted
+  1,388,901,633 processor cycles
+  43,813,056 bytes consed
+  
+The rule set used in the experiment:
+
+Processor control:
+*BEAMP* : T
+*LAMBDAFLAG* : T
+*NF-PARSE* : T
+*OOVP* : NIL
+*Beamp* = T  *Beam-exp* = 0.9
+
+Training parameters: N = 10 alpha0 = 0.5 c = 1.1 n = 6  
+Model parameters before and after training
+================================================
+key   lex             initial  final    diff 
+------------------------------------------------
+262974 KNOWS             1.0 3.187568  (2.187568)
+120608 KNOWS             1.0 .3437294  (-.656271)
+994073 KNOWS             1.0 -.093784  (-1.09378)
+213577 KNOWS             1.0 .5624864  (-.437514)
+119194 LOVES             1.0      1.0  (     0.0)
+35912 LOVES             1.0      1.0  (     0.0)
+367947 JOHN              1.0      1.0  (     0.0)
+245319 JOHN              1.0      1.0  (     0.0)
+368536 JOHN              1.0      1.0  (     0.0)
+840098 JOHN              1.0      1.0  (     0.0)
+307290 MARY              1.0      1.0  (     0.0)
+836437 MARY              1.0      1.0  (     0.0)
+238809 MARY              1.0      1.0  (     0.0)
+220972 MARY              1.0      1.0  (     0.0)
+368924 JOHN              1.0      1.0  (     0.0)
+680964 JOHN              1.0      1.0  (     0.0)
+55450 MARY              1.0      1.0  (     0.0)
+780439 MARY              1.0      1.0  (     0.0)
+================================================
