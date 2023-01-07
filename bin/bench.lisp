@@ -2945,7 +2945,10 @@
 (defun nf-and-beam ()
   (monad-all :nf-parse t :beam t))
 
-; keeping below as legacy access  to switches
+(defun noop () ; used in bench.py to keep #arguments constant
+  (values))
+
+; switch control
 
 (defun beam-off ()
   (setf *beamp* nil)(beam-value))

@@ -942,14 +942,46 @@ def do (commline):
             print('ill-formed, no internal structure')
     elif comm == 't':
         if len(args) == 3 and os.path.exists(args[0]) and os.path.exists(args[1]) and os.path.exists(args[2]):
-            if load_1pass_sup(args[0]):
+            if load_1pass(args[0]):
+                os.system('rm /tmp/*.bin')  # get rid of old binaries
+                bfn = "/tmp/" + args[0] + _binext
+                with open(str(bfn),'w') as f:
+                    with redirect_stdout(f):
+                        print("(defparameter *current-grammar* '(")     # loadable lisp file
+                        print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
+                        print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
+                        print(';;')
+                        print(';; a rules')
+                        print(';;')
+                        for k,v in _grammar['arules'].items():
+                            print('(')
+                            print(ir_to_lisp(k))
+                            print(ir_to_lisp(v))
+                            print(')')
+                        print(';;')
+                        print(';; elements')
+                        print(';;')
+                        for k,v in _grammar['elements'].items():
+                            print('(')
+                            print(ir_to_lisp(k))
+                            print(ir_to_lisp(v))
+                            print(')')
+                        print(';;')
+                        print(';;;;;;;;;; end of bench.py-generated monadic Lisp grammar')
+                        print('))')  # one for quote, one for defparameter closing
+            else:
+                print("the grammar source is not well-formed, aborting t command")
+                return
+            if load_1pass_sup(args[1]):
                 fn = "/tmp/" + args[1] + _supext    # .sup is temporary, save it in /tmp after cleaning it on sup
-                os.system('rm /tmp/*.sup')
+                efn = "/tmp/" + args[2] + ".bench"
+                os.system('rm /tmp/*.sup')          # delete old temporaries before new save
+                os.system('rm /tmp/*.bench')
                 with open(fn,'w') as f:
                     with redirect_stdout(f):
                         print('(')     # loadable lisp file
                         print(';;;;;;;;;; bench.py-generated supervision data')
-                        print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
+                        print(f";;;;;;;;;; from {args[1]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
                         print(';;')
                         for k,v in _supervision.items():
                             print('(')
@@ -962,10 +994,20 @@ def do (commline):
             else:
                 print(f"{_supext} file not generated, aborting t command")
                 return
-            os.system(f"cat {args[2]}|nohup xargs -n 9 -P `wc -l < {args[2]}` bench.sh") # hope for the best
-            print(f"trainings started, you don't have to wait for the finish")
+            print("\n\ntrainings start, please hit RETURN for prompt; you don't have to wait for the finish")
+            # xargs makes explicit the processor request from the Linux Kernel; avoiding bash loops for this reason
+            with open(args[2],'r') as expin:
+                with open(efn,'w') as expout:
+                    with redirect_stdout(expout):
+                        for line in expin:
+                            ch = line.split()    # ch is now a list
+                            if len(ch) == 6:  # no function to call
+                                print(f"{ch[0]} {ch[1]} {bfn} {fn} {ch[2]} {ch[3]} {ch[4]} {ch[5]} noop")
+                            else:
+                                print(f"{ch[0]} {ch[1]} {bfn} {fn} {ch[2]} {ch[3]} {ch[4]} {ch[5]} {ch[6]}")
+            os.system(f"cat {efn}|nohup xargs -n 9 -P `wc -l < {efn}` bench.sh") # hope for the best
         else:
-            print('need three existing files for t')
+            print('need three existing files for the t command')
     elif comm == 'g':
         if load_1pass(args[0]):      # args[0] is full filename, not necessarily full path name
             _latestgr = str(args[0])
