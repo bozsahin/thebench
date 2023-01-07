@@ -86,3 +86,12 @@ fatal error encountered in SBCL pid 78042 tid 78042:
 fatal error encountered in SBCL pid 78044 tid 78044:
 --dynamic-space-size argument has an unknown suffix: .5,
 
+WARNING:
+WARNING:
+WARNING:
+   redefining PRINT-OBJECT (#<STRUCTURE-CLASS COMMON-LISP:HASH-TABLE>
+   redefining PRINT-OBJECT (#<STRUCTURE-CLASS COMMON-LISP:HASH-TABLE>
+   redefining PRINT-OBJECT (#<STRUCTURE-CLASS COMMON-LISP:HASH-TABLE>
+                            #<SB-PCL:SYSTEM-CLASS COMMON-LISP:T>) in DEFMETHOD
+                            #<SB-PCL:SYSTEM-CLASS COMMON-LISP:T>) in DEFMETHOD
+                            #<SB-PCL:SYSTEM-CLASS COMMON-LISP:T>) in DEFMETHOD
