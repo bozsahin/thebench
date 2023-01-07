@@ -1,0 +1,69 @@
+======= Log file ============
+I am called as: /home/bozsahin/myrepos/thebench/bin/bench.sh 4000 2000 /tmp/g1.bin /tmp/g1.spairs.sup 8 0.5 1.2 g1.10.boff noop
+            at: Sat Jan  7 12:50:24 PM +03 2023
+            in: cem-macmini81
+Log goes to   : g1.10.boff.log
+I will call sbcl as: sbcl --dynamic-space-size 4000
+It will call train-nohup-sbcl in /home/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl "/tmp/g1.bin" "/tmp/g1.spairs.sup" 2000 "g1.10.boff.8.0.5a.1.2c.bin" 8 0.5 1.2)
+=======          ============
+This is SBCL 2.2.9, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+processor: bench.lisp loaded, version 8.0, encoding UTF-8
+
+*nf-parse* = T
+All LFs will be shown
+
+*Beamp* = NIL  *Beam-exp* = 0.9
+OOV is reset (OOV errors reported)
+
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+Supervision file loaded: /tmp/g1.spairs.sup
+
+update-model Done.
+Evaluation took:
+  0.326 seconds of real time
+  0.319861 seconds of total run time (0.319861 user, 0.000000 system)
+  98.16% CPU
+  6 forms interpreted
+  1,165,787,334 processor cycles
+  107,943,104 bytes consed
+  
+The rule set used in the experiment:
+
+Processor control:
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : T
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+Training parameters: N = 8 alpha0 = 0.5 c = 1.2 n = 6  
+Model parameters before and after training
+================================================
+key   lex             initial  final    diff 
+------------------------------------------------
+376829 KNOWS             1.0 3.242459  (2.242459)
+712821 KNOWS             1.0 1.935057  (.9350569)
+969947 KNOWS             1.0 -0.12123  (-1.12123)
+27379 KNOWS             1.0 -.391541  (-1.39154)
+96673 LOVES             1.0 3.610526  (2.610526)
+452723 LOVES             1.0 -1.61053  (-2.61053)
+874600 JOHN              1.0  2.83766  ( 1.83766)
+288703 JOHN              1.0 1.784006  (.7840055)
+66440 JOHN              1.0 2.134823  (1.134823)
+416231 JOHN              1.0 .0676455  (-.932355)
+585708 MARY              1.0 2.610711  (1.610711)
+591677 MARY              1.0 1.915658  (.9156579)
+847757 MARY              1.0 2.327589  (1.327589)
+246204 MARY              1.0 -.099345  (-1.09934)
+627625 JOHN              1.0 -0.75587  (-1.75587)
+440367 JOHN              1.0 .0676455  (-.932355)
+999480 MARY              1.0 -.645159  (-1.64516)
+889362 MARY              1.0 -.099345  (-1.09934)
+================================================
