@@ -37,8 +37,8 @@ _exit='x'
 _help='?'
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.5'
-_vdate = 'January 1, 2023'
+_version = '0.6'
+_vdate = 'January 8, 2023'
 # 3 built-in extensions recognized by MG
 _binext = '.bin'              # binary (lisp code) extension
 _supext = '.sup'              # native format extension for supervision files
@@ -123,6 +123,51 @@ _r     = 2
 # 
 # make functions.
 #               
+
+def mk_lispfile (fn,source):
+    global _grammar
+    with open(str(fn),'w') as f:
+        with redirect_stdout(f):
+           print("(defparameter *current-grammar* '(")     # loadable lisp file
+           print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
+           print(f";;;;;;;;;; from {source} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
+           print(';;')
+           print(';; a rules')
+           print(';;')
+           for k,v in _grammar['arules'].items():
+                 print('(')
+                 print(ir_to_lisp(k))
+                 print(ir_to_lisp(v))
+                 print(')')
+                 print(';;')
+                 print(';; elements')
+                 print(';;')
+           for k,v in _grammar['elements'].items():
+                 print('(')
+                 print(ir_to_lisp(k))
+                 print(ir_to_lisp(v))
+                 print(')')
+           print(';;')
+           print(';;;;;;;;;; end of bench.py-generated monadic Lisp grammar')
+           print('))')  # one for top quote, one for defparameter closing
+
+def mk_supfile (fn, source):
+    global _supervision
+    with open(fn,'w') as f:
+        with redirect_stdout(f):
+            print('(')     # loadable lisp file
+            print(';;;;;;;;;; bench.py-generated supervision data')
+            print(f";;;;;;;;;; from {source} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
+            print(';;')
+            for k,v in _supervision.items():
+                  print('(')
+                  print(mk_1cl(ir_to_lisp(k)))
+                  print(ir_to_lisp(v))
+                  print(')')
+            print(';;')
+            print(';;;;;;;;;; end of bench.py-generated supervision data')
+            print(')') 
+
 def mk_entry_sup (form, meaning):
     global _supervision
     _supervision[form] = ir_to_lisp(meaning)
@@ -659,7 +704,7 @@ def help ():
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
         print(f" g .    | grammar text source .  checked and loaded (and its {_binext} file generated)")
         print(f' i .    | intermediate representation of current grammar (a python dict) saved in file .')
-        print(f" l . .. | Lisp function . is called, with args .., which takes them as strings")
+        print(f" l . .. | Lisp function . is called with args .., which takes them as strings")
         print(f' o ..   | OS/shell command .. is run at your own risk')
         print(f' r ..   | ranks the expression .. using the currently loaded grammar')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
@@ -945,30 +990,7 @@ def do (commline):
             if load_1pass(args[0]):
                 os.system('rm /tmp/*.bin')  # get rid of old binaries
                 bfn = "/tmp/" + args[0] + _binext
-                with open(str(bfn),'w') as f:
-                    with redirect_stdout(f):
-                        print("(defparameter *current-grammar* '(")     # loadable lisp file
-                        print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
-                        print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
-                        print(';;')
-                        print(';; a rules')
-                        print(';;')
-                        for k,v in _grammar['arules'].items():
-                            print('(')
-                            print(ir_to_lisp(k))
-                            print(ir_to_lisp(v))
-                            print(')')
-                        print(';;')
-                        print(';; elements')
-                        print(';;')
-                        for k,v in _grammar['elements'].items():
-                            print('(')
-                            print(ir_to_lisp(k))
-                            print(ir_to_lisp(v))
-                            print(')')
-                        print(';;')
-                        print(';;;;;;;;;; end of bench.py-generated monadic Lisp grammar')
-                        print('))')  # one for quote, one for defparameter closing
+                mk_lispfile(bfn, args[0])
             else:
                 print("the grammar source is not well-formed, aborting t command")
                 return
@@ -977,20 +999,7 @@ def do (commline):
                 efn = "/tmp/" + args[2] + ".bench"
                 os.system('rm /tmp/*.sup')          # delete old temporaries before new save
                 os.system('rm /tmp/*.bench')
-                with open(fn,'w') as f:
-                    with redirect_stdout(f):
-                        print('(')     # loadable lisp file
-                        print(';;;;;;;;;; bench.py-generated supervision data')
-                        print(f";;;;;;;;;; from {args[1]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
-                        print(';;')
-                        for k,v in _supervision.items():
-                            print('(')
-                            print(mk_1cl(ir_to_lisp(k)))
-                            print(ir_to_lisp(v))
-                            print(')')
-                        print(';;')
-                        print(';;;;;;;;;; end of bench.py-generated supervision data')
-                        print(')') 
+                mk_supfile(fn, args[1])
             else:
                 print(f"{_supext} file not generated, aborting t command")
                 return
@@ -1020,30 +1029,7 @@ def do (commline):
                 print(f"file {fn} exists, regenerating it.")
                 ch = 'y'                 # deliberately avoiding earlier provided option, to always load_bin
             if ch == 'y' or not ch:
-                with open(str(fn),'w') as f:
-                    with redirect_stdout(f):
-                        print("(defparameter *current-grammar* '(")     # loadable lisp file
-                        print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
-                        print(f";;;;;;;;;; from {args[0]} {datetime.now().strftime('%B %d, %Y, %H:%M:%S')}")
-                        print(';;')
-                        print(';; a rules')
-                        print(';;')
-                        for k,v in _grammar['arules'].items():
-                            print('(')
-                            print(ir_to_lisp(k))
-                            print(ir_to_lisp(v))
-                            print(')')
-                        print(';;')
-                        print(';; elements')
-                        print(';;')
-                        for k,v in _grammar['elements'].items():
-                            print('(')
-                            print(ir_to_lisp(k))
-                            print(ir_to_lisp(v))
-                            print(')')
-                        print(';;')
-                        print(';;;;;;;;;; end of bench.py-generated monadic Lisp grammar')
-                        print('))')  # one for quote, one for defparameter closing
+                mk_lispfile(fn, args[0])
                 print(f"{fn} file generated")
                 try:
                     _lisp.function('load_bin')(fn)

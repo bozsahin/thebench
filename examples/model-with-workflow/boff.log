@@ -1,12 +1,12 @@
 ======= Log file ============
 I am called as: /home/bozsahin/myrepos/thebench/bin/bench.sh 4000 2000 /tmp/g1.bin /tmp/g1.spairs.sup 8 0.5 1.2 boff noop
-            at: Sat Jan  7 03:37:57 PM +03 2023
-            in: bozsahin-macbookpro111
+            at: Sun Jan  8 12:20:38 PM +03 2023
+            in: cem-macmini81
 Log goes to   : boff.log
 I will call sbcl as: sbcl --dynamic-space-size 4000
 It will call train-nohup-sbcl in /home/bozsahin/myrepos/thebench/bin/bench.lisp as: (train-nohup-sbcl "/tmp/g1.bin" "/tmp/g1.spairs.sup" 2000 "boff.8.0.5a.1.2c.bin" 8 0.5 1.2)
 =======          ============
-This is SBCL 2.2.11, an implementation of ANSI Common Lisp.
+This is SBCL 2.2.9, an implementation of ANSI Common Lisp.
 More information about SBCL is available at <http://www.sbcl.org/>.
 
 SBCL is free software, provided as is, with absolutely no warranty.
@@ -27,12 +27,12 @@ Supervision file loaded: /tmp/g1.spairs.sup
 
 update-model Done.
 Evaluation took:
-  0.903 seconds of real time
-  0.891935 seconds of total run time (0.888797 user, 0.003138 system)
-  98.78% CPU
+  0.323 seconds of real time
+  0.321549 seconds of total run time (0.321339 user, 0.000210 system)
+  99.69% CPU
   6 forms interpreted
-  2,162,270,646 processor cycles
-  107,931,760 bytes consed
+  1,161,059,932 processor cycles
+  107,943,104 bytes consed
   
 The rule set used in the experiment:
 
@@ -48,22 +48,22 @@ Model parameters before and after training
 ================================================
 key   lex             initial  final    diff 
 ------------------------------------------------
-97592 KNOWS             1.0 3.242459  (2.242459)
-794558 KNOWS             1.0 1.935057  (.9350569)
-782188 KNOWS             1.0 -0.12123  (-1.12123)
-94075 KNOWS             1.0 -.391541  (-1.39154)
-498762 LOVES             1.0 3.610526  (2.610526)
-233234 LOVES             1.0 -1.61053  (-2.61053)
-873808 JOHN              1.0  2.83766  ( 1.83766)
-319795 JOHN              1.0 1.784006  (.7840055)
-621963 JOHN              1.0 2.134823  (1.134823)
-54227 JOHN              1.0 .0676455  (-.932355)
-367920 MARY              1.0 2.610711  (1.610711)
-659106 MARY              1.0 1.915658  (.9156579)
-105966 MARY              1.0 2.327589  (1.327589)
-568175 MARY              1.0 -.099345  (-1.09934)
-235665 JOHN              1.0 -0.75587  (-1.75587)
-13792 JOHN              1.0 .0676455  (-.932355)
-439054 MARY              1.0 -.645159  (-1.64516)
-70410 MARY              1.0 -.099345  (-1.09934)
+395351 KNOWS             1.0 3.242459  (2.242459)
+910055 KNOWS             1.0 1.935057  (.9350569)
+859059 KNOWS             1.0 -0.12123  (-1.12123)
+276691 KNOWS             1.0 -.391541  (-1.39154)
+693732 LOVES             1.0 3.610526  (2.610526)
+650582 LOVES             1.0 -1.61053  (-2.61053)
+572451 JOHN              1.0  2.83766  ( 1.83766)
+451699 JOHN              1.0 1.784006  (.7840055)
+800215 JOHN              1.0 2.134823  (1.134823)
+159048 JOHN              1.0 .0676455  (-.932355)
+269648 MARY              1.0 2.610711  (1.610711)
+556197 MARY              1.0 1.915658  (.9156579)
+739182 MARY              1.0 2.327589  (1.327589)
+328963 MARY              1.0 -.099345  (-1.09934)
+69420 JOHN              1.0 -0.75587  (-1.75587)
+936994 JOHN              1.0 .0676455  (-.932355)
+981038 MARY              1.0 -.645159  (-1.64516)
+814980 MARY              1.0 -.099345  (-1.09934)
 ================================================
