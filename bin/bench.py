@@ -36,6 +36,7 @@ _underscore= '_'
 _exit='x'
 _help='?'
 _tmp='/tmp/'                  # all bench-generated files go here
+_home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.6'
@@ -720,6 +721,7 @@ def help ():
         print(f' + .    | processor adds Lisp code in file .')
         print(f" > .    | Logs processor output to filename . after adding {_logext} extension")
         print(f' <      | Logging turned off')
+        print(f' /      | Cleans /tmp of bench-internal files (.bin, .bench, .sup, .sc.arules)')
         print(f" {_help}      | displays help")
         print(f'Use UP and DOWN keys for command recall from use history')
 
@@ -948,9 +950,8 @@ def ir_to_lisp(ir):
         return str(ir)
 
 def print_info ():
-    print('home:')
-    os.system('pwd')
-    print(f"temporary files go to: {_tmp}")
+    print(f' home    : {_home}')
+    print(f" tmp     : {_tmp}")
     print(f" file    :  {_info['name']} ({_info['el']+_info['srule']+_info['arule']} entries)\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {_info['srule']*2} elements)\n a rules :  {_info['arule']}")
     print(" basics  : ", _ws.join(_info['basic'].keys()))
     print(" quoted  : ", _ws.join(_info['quoted'].keys()))
