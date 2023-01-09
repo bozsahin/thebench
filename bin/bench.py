@@ -721,7 +721,7 @@ def help ():
         print(f' + .    | processor adds Lisp code in file .')
         print(f" > .    | Logs processor output to filename . after adding {_logext} extension")
         print(f' <      | Logging turned off')
-        print(f' /      | Cleans /tmp of bench-internal files (.bin, .bench, .sup, .sc.arules)')
+        print(f' /      | Removes bench-internal files from /tmp (.bin, .bench, .sup)')
         print(f" {_help}      | displays help")
         print(f'Use UP and DOWN keys for command recall from use history')
 
