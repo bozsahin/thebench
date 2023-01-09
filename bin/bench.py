@@ -35,6 +35,7 @@ _overscore = chr(8254)        # this is also the invisible 'declaration terminat
 _underscore= '_'
 _exit='x'
 _help='?'
+_tmp='/tmp/'                  # all bench-generated files go here
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.6'
@@ -947,6 +948,9 @@ def ir_to_lisp(ir):
         return str(ir)
 
 def print_info ():
+    print('home:')
+    os.system('pwd')
+    print(f"temporary files go to: {_tmp}")
     print(f" file    :  {_info['name']} ({_info['el']+_info['srule']+_info['arule']} entries)\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {_info['srule']*2} elements)\n a rules :  {_info['arule']}")
     print(" basics  : ", _ws.join(_info['basic'].keys()))
     print(" quoted  : ", _ws.join(_info['quoted'].keys()))
