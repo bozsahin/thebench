@@ -21,7 +21,7 @@ TO INSTALL:
 
 2.  In the terminal, and in that directory, do  the following:
 
-   <code>install-bench</code>
+   <code>bench.install.sh</code>
 
    <code>pip install sly</code>
 
@@ -59,21 +59,16 @@ in your <code>thebench</code> directory do
 
    <code>git pull</code>
 
-PYTHON NOTE 1:
+TO UNINSTALL:
 
-Default python interpreters are SLOW. You may want to try <code><a href="https://pypy.org">pypy</a></code>.
-This tool is much faster in it.
- 
-If you do make the switch, change <code>pip install ..</code> commands in step 2 above
-to <code>pip_pypy3 install ..</code>
+do
 
+<code> bench.uninstall.sh sure</code>
 
-  And wherever you see <code>python</code> call above, change it to <code>pypy3</code>.
-
-NOTE 2:
+PYTHON NOTE:
 
 Python versions can be daunting for the uninitiated. Don't count on executable <code>python</code> to be the latest
-python. You might also have python3.8, python3.9, python3141.59 etc. Ditto for pip and pypy. Use the latest for all of them.
+python. You might also have python3.8, python3.9, python3141.59 etc. Use the latest for all of them.
 
 Enjoy. 
 

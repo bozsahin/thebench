@@ -1,2 +1,0 @@
-#_g2_129 ( np[type=ref] : a ) --> ( (s\np[agr=3s])\((s\np[agr=3s])/np[type=ref]) : \a\p.p a );
-#_g2_128 ( np[agr=3s] : a ) --> ( s/(s\np[agr=3s]) : \a\p.p a );

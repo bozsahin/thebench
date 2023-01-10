@@ -35,14 +35,14 @@ _overscore = chr(8254)        # this is also the invisible 'declaration terminat
 _underscore= '_'
 _exit='x'
 _help='?'
-_tmp='/tmp/'                  # all bench-generated files go here
+_tmp='/tmp/thebench/'                  # all bench-generated non-editing files go here
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.6'
 _vdate = 'January 8, 2023'
 # 3 built-in extensions recognized by MG
-_binext = '.bin'              # binary (lisp code) extension
+_binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
 _logext = '.log'
 _punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually tokenized and wrapped in double quote
@@ -127,8 +127,8 @@ _r     = 2
 #               
 
 def mk_lispfile (fn,source):
-    global _grammar
-    with open(str(fn),'w') as f:
+    global _grammar, _tmp
+    with open(_tmp+fn,'w') as f:   # actual location is prefixed
         with redirect_stdout(f):
            print("(defparameter *current-grammar* '(")     # loadable lisp file
            print(';;;;;;;;;; bench.py-generated monadic Lisp grammar')
@@ -155,7 +155,7 @@ def mk_lispfile (fn,source):
 
 def mk_supfile (fn, source):
     global _supervision
-    with open(fn,'w') as f:
+    with open(_tmp+fn,'w') as f:   # actual location is prefixed
         with redirect_stdout(f):
             print('(')     # loadable lisp file
             print(';;;;;;;;;; bench.py-generated supervision data')
@@ -710,7 +710,7 @@ def help ():
         print(f' o ..   | OS/shell command .. is run at your own risk')
         print(f' r ..   | ranks the expression .. using the currently loaded grammar')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
-        print(f" z .    | grammar binary . converted to source, with <key, parameter> info added")
+        print(f" z .    | grammar source . located in /tmp and converted to text, with <key, parameter> added")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
         print(f' , ..   | displays analyses for solutions numbered .., all if none provided')
         print(f' #      | displays ranked analyses')
@@ -721,7 +721,6 @@ def help ():
         print(f' + .    | processor adds Lisp code in file .')
         print(f" > .    | Logs processor output to filename . after adding {_logext} extension")
         print(f' <      | Logging turned off')
-        print(f' /      | Removes bench-internal files from /tmp (.bin, .bench, .sup)')
         print(f" {_help}      | displays help")
         print(f'Use UP and DOWN keys for command recall from use history')
 
@@ -950,7 +949,9 @@ def ir_to_lisp(ir):
         return str(ir)
 
 def print_info ():
+    print(f'           editable files in')
     print(f' home    : {_home}')
+    print(f'           temporary and non-editable files in')
     print(f" tmp     : {_tmp}")
     print(f" file    :  {_info['name']} ({_info['el']+_info['srule']+_info['arule']} entries)\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {_info['srule']*2} elements)\n a rules :  {_info['arule']}")
     print(" basics  : ", _ws.join(_info['basic'].keys()))
@@ -993,15 +994,14 @@ def do (commline):
     elif comm == 't':
         if len(args) == 3 and os.path.exists(args[0]) and os.path.exists(args[1]) and os.path.exists(args[2]):
             if load_1pass(args[0]):
-                os.system('rm /tmp/*.bin')  # get rid of old binaries
-                bfn = "/tmp/" + args[0] + _binext
+                bfn =  args[0] + _binext
                 mk_lispfile(bfn, args[0])
             else:
                 print("the grammar source is not well-formed, aborting t command")
                 return
             if load_1pass_sup(args[1]):
-                fn = "/tmp/" + args[1] + _supext    # .sup is temporary, save it in /tmp after cleaning it on sup
-                efn = "/tmp/" + args[2] + ".bench"
+                fn = args[1] + _supext    # .sup is temporary, save it in /tmp after cleaning it on sup
+                efn = _tmp + args[2] + ".bench"  # this goes to /tmp too
                 os.system('rm /tmp/*.sup')          # delete old temporaries before new save
                 os.system('rm /tmp/*.bench')
                 mk_supfile(fn, args[1])
@@ -1009,7 +1009,7 @@ def do (commline):
                 print(f"{_supext} file not generated, aborting t command")
                 return
             print("\ntraining starts;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
-            print("if everything runs OK, you can re-generate source grammars from .bin files")
+            print("if everything runs OK, you can re-generate source grammars from .src files")
             print("  use the z command for that")
             # xargs makes explicit the processor request from the Linux Kernel; avoiding bash loops for this reason
             with open(args[2],'r') as expin:
@@ -1022,7 +1022,7 @@ def do (commline):
                             else:
                                 print(f"{ch[0]} {ch[1]} {bfn} {fn} {ch[2]} {ch[3]} {ch[4]} {ch[5]} {ch[6]}")
             os.system('rm nohup.out')   # linux appends too; get rid of earlier ones.
-            os.system(f"cat {efn}|nohup xargs -n 9 -P `wc -l < {efn}` bench.sh") # hope for the best
+            os.system(f"cat {efn}|nohup xargs -n 9 -P `wc -l < {efn}` bench.train.sh") # hope for the best
         else:
             print('need three existing files for the t command')
     elif comm == 'g':
@@ -1030,17 +1030,17 @@ def do (commline):
             _latestgr = str(args[0])
             fn = str(args[0]) + _binext
             ch = False
-            if os.path.exists(fn):
-                print(f"file {fn} exists, regenerating it.")
+            if os.path.exists(_tmp+fn):
+                print(f"file {fn} exists in {_tmp}, regenerating it.")
                 ch = 'y'                 # deliberately avoiding earlier provided option, to always load_bin
             if ch == 'y' or not ch:
                 mk_lispfile(fn, args[0])
                 print(f"{fn} file generated")
                 try:
-                    _lisp.function('load_bin')(fn)
-                    print(f"grammar loaded; ready for analysis")
+                    _lisp.function('load_bin')(_tmp+fn)
+                    print(f"grammar loaded from {_tmp+fn}; ready for analysis")
                 except Exception:
-                    print(f"Oops. Unable to load {fn}")
+                    print(f"Oops. Unable to load {_tmp+fn}")
             else:
                 print('canceled')
         else:
@@ -1048,18 +1048,19 @@ def do (commline):
     elif comm == 'z':
         fn = str(args[0])  # do not assume extension
         _latestgr = fn 
-        if os.path.exists(fn):
+        if os.path.exists(_tmp+fn):
             ch = True
             try:
-                _lisp.function('load_bin')(fn)
-                print(f"grammar in {fn} loaded")
+                _lisp.function('load_bin')(_tmp+fn)
+                print(f"grammar in {_tmp+fn} loaded")
             except Exception:
-                print(f"Oops. Unable to load {fn}\n .. aborting")
+                print(f"Oops. Unable to load {_tmp+fn}\n .. aborting")
                 ch = False
             if ch:                                    # the processor adds random postfix to fn 
                 _lisp.function('generate_source')(fn) # if load is succesful, the bin grammar is already set
+                print(f"grammar text is located in your working directory")
         else:
-            print(f"{fn} not found")
+            print(f"{_tmp+fn} not found")
     elif comm == 'e':
         try:
             eval(_ws.join(str(item) for item in args))
@@ -1069,9 +1070,9 @@ def do (commline):
         os.system(_ws.join([str(item) for item in args[0:]]))
     elif comm == 'c':
         try:
-            _lisp.function('synthetic_case')(tuple(args),_latestgr+".case.log")
+            _lisp.function('synthetic_case')(tuple(args),_latestgr+".case.log")  # a two-arg call to the processor
             print("Done; check out the = command related to case\n  in addition to , command")
-            _lisp.function('sc_rules2mg')(str(_latestgr))   # saves these files in source format
+            _lisp.function('sc_rules2mg')(str(_latestgr))   # saves these files in text format
         except Exception:
             print('something went wrong')
     elif comm == 'a':
@@ -1206,7 +1207,7 @@ myPromptSession = PromptSession(history = FileHistory(expanduser('~/.thebenchhis
 if __name__ == '__main__': # MG REPL online
     init_grammar()
     welcome()
-    _cl.load(os.environ['BENCH_HOME']+'/bin/bench.lisp')               # load the processor
+    _cl.load(os.environ['BENCH_HOME']+'/src/bench.lisp')               # load the processor
     command = '~'
     while split_command(command)[0] != _exit:
         do(command)

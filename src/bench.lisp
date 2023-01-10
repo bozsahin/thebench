@@ -41,6 +41,8 @@
 
 ;; Lisp Top level needs and some general utilities
 
+(defparameter *tmploc* #P"/tmp/thebench")  ; non-editable files go here, ideally this is all taken care of in py interface
+
 (defparameter *mydef-globals* nil) ; to keep track of all globals defined by mydef macro
                                     ; i seem to want to define more and more and lose track
 (defparameter *mydef-switches* nil) ; to keep track of all on/off switches
