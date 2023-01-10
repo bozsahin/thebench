@@ -62,6 +62,7 @@ fi
 locallisp=`command -v sbcl`
 printf '%s\n' '# stuff added by thebench installer' >> ~/.bashrc
 printf '%s\n' 'source ~/.thebenchrc' >> ~/.bashrc
+printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
 printf '%s\n' '# stuff added by thebench installer' > ~/.thebenchrc
 printf '%s\n%s\n%s\n' "export BENCH_HOME=$labdir" "export bench=$labdir/src/bench.py" "export PATH=:.:\$BENCH_HOME/src:\$PATH" >> ~/.thebenchrc
 printf '%s\n' '# end of stuff added by thebench installer' >> ~/.thebenchrc

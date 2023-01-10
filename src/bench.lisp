@@ -2917,7 +2917,7 @@
       (format t "~%These are not ill-formed,~%   but expect unpredictable case performance from them.~%"))
     (format t "~%Case functions compiled OK.~%"))
   (add-tr-to-grammar)
-  (format t "Current grammar augmented with arules for case.~%")
+  (format t "~%Loaded grammar augmented with arules for case~% (NOT saved in its text file).~2%")
   t)
 
 ;; some nohup-friendly test suite -- all is written offline

@@ -141,9 +141,9 @@ def mk_lispfile (fn,source):
                  print(ir_to_lisp(k))
                  print(ir_to_lisp(v))
                  print(')')
-                 print(';;')
-                 print(';; elements')
-                 print(';;')
+           print(';;')
+           print(';; elements')
+           print(';;')
            for k,v in _grammar['elements'].items():
                  print('(')
                  print(ir_to_lisp(k))
@@ -699,18 +699,18 @@ def split_command (cline): # splits a command line into command and list of args
         return (comarg[0], comarg[1:])
     
 def help ():
-        print(f"letter commands are processor commands; symbol commands are for display or set up")
-        print(f"items in .. must be space-separated, only strings are case sensitive")
+        print(f"Letter commands are processor commands; symbol commands are for display or set up")
+        print(f"Items in .. must be space-separated, only strings are case sensitive")
         print(f' a ..   | analyzes the expression .. in the currently loaded grammar')
         print(f' c ..   | case functions generated and added to loaded grammar from elements with POSs ..')
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
-        print(f" g .    | grammar text source .  checked and loaded (and its {_binext} file generated)")
+        print(f" g .    | grammar text .  checked and its source loaded ({_binext} file goes to {_tmp})")
         print(f' i .    | intermediate representation of current grammar (a python dict) saved in file .')
         print(f" l . .. | Lisp function . is called with args .., which takes them as strings")
         print(f' o ..   | OS/shell command .. is run at your own risk')
         print(f' r ..   | ranks the expression .. using the currently loaded grammar')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
-        print(f" z .    | grammar source . located in /tmp and converted to text, with <key, parameter> added")
+        print(f" z .    | grammar source . fetched from {_tmp} and converted to editable grammar")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
         print(f' , ..   | displays analyses for solutions numbered .., all if none provided')
         print(f' #      | displays ranked analyses')
@@ -1001,9 +1001,9 @@ def do (commline):
                 return
             if load_1pass_sup(args[1]):
                 fn = args[1] + _supext    # .sup is temporary, save it in /tmp after cleaning it on sup
-                efn = _tmp + args[2] + ".bench"  # this goes to /tmp too
-                os.system('rm /tmp/*.sup')          # delete old temporaries before new save
-                os.system('rm /tmp/*.bench')
+                efn = args[2] + ".bench"  # this goes to _tmp too
+                os.system('rm ' + f'{_tmp}*.sup')          # delete old temporaries before new save
+                os.system('rm ' + f'{_tmp}*.bench') 
                 mk_supfile(fn, args[1])
             else:
                 print(f"{_supext} file not generated, aborting t command")
@@ -1013,16 +1013,16 @@ def do (commline):
             print("  use the z command for that")
             # xargs makes explicit the processor request from the Linux Kernel; avoiding bash loops for this reason
             with open(args[2],'r') as expin:
-                with open(efn,'w') as expout:
+                with open(_tmp+efn,'w') as expout:
                     with redirect_stdout(expout):
                         for line in expin:
                             ch = line.split()    # ch is now a list
                             if len(ch) == 6:  # no function to call
-                                print(f"{ch[0]} {ch[1]} {bfn} {fn} {ch[2]} {ch[3]} {ch[4]} {ch[5]} noop")
+                                print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} noop")
                             else:
-                                print(f"{ch[0]} {ch[1]} {bfn} {fn} {ch[2]} {ch[3]} {ch[4]} {ch[5]} {ch[6]}")
+                                print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} {ch[6]}")
             os.system('rm nohup.out')   # linux appends too; get rid of earlier ones.
-            os.system(f"cat {efn}|nohup xargs -n 9 -P `wc -l < {efn}` bench.train.sh") # hope for the best
+            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train.sh") # hope for the best
         else:
             print('need three existing files for the t command')
     elif comm == 'g':
@@ -1071,7 +1071,6 @@ def do (commline):
     elif comm == 'c':
         try:
             _lisp.function('synthetic_case')(tuple(args),_latestgr+".case.log")  # a two-arg call to the processor
-            print("Done; check out the = command related to case\n  in addition to , command")
             _lisp.function('sc_rules2mg')(str(_latestgr))   # saves these files in text format
         except Exception:
             print('something went wrong')
