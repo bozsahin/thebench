@@ -2,7 +2,7 @@
 # brew does not allow sudo anymore-- $SUDO controls that
 # cem bozsahin 2022
 # check to see if there is already an installation
-LOG="=======================================================\nTheBench install and set up, `date`\n=======================================================" # installers can be very verbose, accumulate all deeds to report at end
+LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 if [ "$BENCH_HOME" ]; then
   echo "You have thebench installed at: $BENCH_HOME."
   echo "There is no need to reinstall. Just do 'git pull' at $BENCH_HOME for the latest."
@@ -74,6 +74,6 @@ LOG+="\n-I wouldnt do updates in standard files of $labdir."
 LOG+="\n They will be overridden by next git pull"
 LOG+="\n\n-thebench install: COMPLETED"
 LOG+="\n-This log is saved in file $LOGFILE"
-LOG+="\n`date`\n======================================================="
+LOG+="\n`date`\n========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG

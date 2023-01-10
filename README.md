@@ -19,9 +19,9 @@ TO INSTALL:
 
    This will create <code>thebench</code> folder with code and documentation.
 
-2.  In the terminal, and in that directory, do  the following:
+2.  In the terminal, and IN THAT directory, do  the following:
 
-   <code>bench.install.sh</code>
+   <code>src/bench.install.sh</code>
 
    <code>pip install sly</code>
 
