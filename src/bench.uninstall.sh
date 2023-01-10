@@ -10,6 +10,7 @@ if [ ! $sure = sure ]; then
   echo "this is to avoid accidental removal"
   exit -1
 fi
+cd ~  # to avoid disaster if called from bench home
 if [ "$BENCH_HOME" ]; then
   echo "Removing $BENCH_HOME"
   rm -fr $BENCH_HOME
