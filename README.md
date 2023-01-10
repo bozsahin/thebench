@@ -63,12 +63,12 @@ TO UNINSTALL:
 
 do
 
-<code> bench.uninstall.sh sure</code>
+   <code> bench.uninstall.sh sure</code>
 
 PYTHON NOTE:
 
 Python versions can be daunting for the uninitiated. Don't count on executable <code>python</code> to be the latest
-python. You might also have python3.8, python3.9, python3141.59 etc. Use the latest for all of them.
+python. You might also have python3.8, python3.9, python3141.59 etc. Use the latest for python AND pip.
 
 Enjoy. 
 
