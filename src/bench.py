@@ -732,7 +732,7 @@ def load_1pass_sup(fname):
     result = False
     init_sup()
     parserlog = f'file: {fname}\n'
-    logfile = fname+ _logext
+    logfile = _tmp + fname+ _logext
     with open(logfile, 'w') as f:
         with redirect_stdout(f):
             try:
@@ -773,7 +773,7 @@ def load_1pass(fname):        # checks but not updates the grammar with indices
     nofile = False
     result = False
     parserlog = f'file: {fname}\n'
-    logfile = fname+ _logext
+    logfile = _tmp + fname+ _logext
     with open(logfile, 'w') as f:
         with redirect_stdout(f):
             try:
