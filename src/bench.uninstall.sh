@@ -21,7 +21,6 @@ fi
 if [ -e "~/.thebenchrc" ]; then
   echo "Effectively removing .thebenchrc from your home directory"
   echo "  by making it an empty file"
-  rm -f ~/.thebenchrc
+  printf '%s ' > ~/.thebenchrc
+  echo "If you like, you can edit your ~/.bashrc and remove stuff added by the bench installer"
 fi
-printf '%s ' > ~/.thebenchrc
-echo "If you like, you can edit your ~/.bashrc and remove stuff added by the bench installer"
