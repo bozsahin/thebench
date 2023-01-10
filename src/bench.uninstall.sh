@@ -10,7 +10,11 @@ if [ ! $sure = sure ]; then
   echo "this is to avoid accidental removal"
   exit -1
 fi
-cd ~  # to avoid disaster if called from bench home
+if [ `pwd` = $BENCH_HOME ]; then
+  echo "I cannot remove the directory you are already in."
+  echo "Please run the command from an upper directory"
+  exit -1
+fi
 if [ "$BENCH_HOME" ]; then
   echo "Removing $BENCH_HOME"
   rm -fr $BENCH_HOME
