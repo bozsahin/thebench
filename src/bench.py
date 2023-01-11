@@ -1008,9 +1008,6 @@ def do (commline):
             else:
                 print(f"{_supext} file not generated, aborting t command")
                 return
-            print("\ntraining starts;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
-            print("if everything runs OK, you can re-generate source grammars from .src files")
-            print("  use the z command for that")
             # xargs makes explicit the processor request from the Linux Kernel; avoiding bash loops for this reason
             with open(args[2],'r') as expin:
                 with open(_tmp+efn,'w') as expout:
@@ -1022,6 +1019,21 @@ def do (commline):
                             else:
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} {ch[6]}")
             os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train.sh > {_tmp+'nohup.out'}") # hope for the best
+            print("\nTraining starts;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
+            print(f"Summary of experiments for locating results when done")
+            with open(_tmp+efn,'r') as expout:
+                n=1
+                for line in expout:
+                    ch = line.split()
+                    print(f"------ Experiment {n} ------")
+                    print(f"result goes to: {ch[7]}.{ch[4]}.{ch[5]}a.{ch[6]}c.src")
+                    print(f"     log file : {ch[7]}.log (contains summary of parameter change)")
+                    print(f"initial call  : {ch[8]} (before the experiment starts)")
+                    n+=1
+
+            print(f"--------------------------")
+            print("If everything runs OK, you can re-generate source grammars from .src files")
+            print("   use the z command for that")
         else:
             print('need three existing files for the t command')
     elif comm == 'g':
