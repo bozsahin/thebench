@@ -39,8 +39,8 @@ _tmp='/tmp/thebench/'                  # all bench-generated non-editing files g
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.6'
-_vdate = 'January 8, 2023'
+_version = '0.7'
+_vdate = 'January 11, 2023'
 # 3 built-in extensions recognized by MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
@@ -282,7 +282,7 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
     RNAME  = r'\#[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'      # rule names start with #
     BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
     ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'      # (at least one alphabetical symbol for cat symbols not beginning with +, which is a modality, not part of basic cat name)
-    RNUM   = r'\d+\.\d+'
+    RNUM   = r'[\-\+]?\d+\.\d+'
     INUM   = r'\d+'
     END    = _overscore                               # RHS defined globally, not visible to user.
                                                       # Suffixed to every line in tokenization
