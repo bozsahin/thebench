@@ -721,6 +721,7 @@ def help ():
         print(f' + .    | processor adds Lisp code in file .')
         print(f" > .    | Logs processor output to filename . after adding {_logext} extension")
         print(f' <      | Logging turned off')
+        print(f' /      | Clears {_tmp} directory')
         print(f" {_help}      | displays help")
         print(f'Use UP and DOWN keys for command recall from use history')
 
@@ -964,7 +965,7 @@ def print_info ():
 def do (commline):
     global _online, _grammar, _info, _latestgr, _exit, _help
     comm, args = split_command(commline)
-    if comm in [_exit, '#', '<', _help] and args:
+    if comm in [_exit, '/', '#', '<', _help] and args:
         print('too many arguments')
         return
     if comm in ['a', 'c', 'e', 'g', 'o', '@', '$', 'r', 'z', '-', 'l', 'i', '+', '>'] and not args:
@@ -991,6 +992,8 @@ def do (commline):
         args, _, _ = _ws.join([str(item) for item in args]).partition('%')   # just eliminate the comment
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
+    elif comm == '/':
+        os.system(f'rm {_tmp}*')
     elif comm == 't':
         if len(args) == 3 and os.path.exists(args[0]) and os.path.exists(args[1]) and os.path.exists(args[2]):
             if load_1pass(args[0]):

@@ -533,7 +533,6 @@
   (beam-value))
 
 (defun show-config ()
-  (format t "~%Processor control:")
   (onoff)
   (beam-value))
 
@@ -2209,7 +2208,6 @@
 
 (defun show-training ()
   "show the values of parameters per key before and after training"
-  (format t "The rule set used in the experiment:~%")
   (show-config)
   (format t "~%Training parameters: N = ~a alpha0 = ~a c = ~a n = ~a  " 
 	  *bign*  *alpha0* *c* *smalln*)
@@ -2224,7 +2222,6 @@
 
 (defun show-training-xp ()
   "show the values of parameters per key before and after training"
-  (format t "The rule set used in the experiment:~%")
   (show-config)
   (format t "~%Training parameters: N = ~a alpha0 = ~a c = ~a n = ~a  " 
 	  *bign*  *alpha0* *c* *smalln*)
