@@ -29,3 +29,5 @@ if [ -e "~/.thebenchrc" ]; then
   printf '%s ' > ~/.thebenchrc
   echo "If you like, you can edit your ~/.bashrc and remove stuff added by the bench installer"
 fi
+unset BENCH_HOME
+unset BENCH

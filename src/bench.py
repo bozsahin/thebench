@@ -1021,8 +1021,7 @@ def do (commline):
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} noop")
                             else:
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} {ch[6]}")
-            os.system('rm nohup.out')   # linux appends too; get rid of earlier ones.
-            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train.sh") # hope for the best
+            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train.sh > {_tmp+'nohup.out'}") # hope for the best
         else:
             print('need three existing files for the t command')
     elif comm == 'g':
