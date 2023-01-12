@@ -710,7 +710,7 @@ def help ():
         print(f' o ..   | OS/shell command .. is run at your own risk')
         print(f' r ..   | ranks the expression .. using the currently loaded grammar')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
-        print(f" z .    | grammar source . fetched from {_tmp} and converted to editable grammar")
+        print(f" z .    | grammar source . located in {_tmp} and converted to editable grammar (.txt)")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
         print(f' , ..   | displays analyses for solutions numbered .., all if none provided')
         print(f' #      | displays ranked analyses')
