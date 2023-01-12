@@ -67,7 +67,7 @@ do
 
 PYTHON NOTE:
 
-Python versions can be daunting for the uninitiated. Don't count on executable <code>python</code> to be the latest
+Python versions can be daunting for the uninitiated. Don't count on the executable <code>python</code> to be the latest
 python. You might also have python3.8, python3.9, python3141.59 etc. Use the latest for python AND pip.
 
 Enjoy. 
