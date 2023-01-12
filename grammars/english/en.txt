@@ -1,0 +1,10 @@
+% this is from the MS book, covering the English part
+% cem bozsahin
+
+sees| v :: (s[t=fin]\np[agr=3s])/np : \x\y.see x y
+persuades | v :: ((s\np[agr=3s])/vp)/np : \x\p\y.persuade (p x) x y
+promises  | v :: ((s\np[agr=3s])/vp)/np : \x\p\y.promise (p y) x y
+wants     | v :: (s\np[agr=3s])/vp : \p\y. want (p y) y
+wants     | v :: ((s\np[agr=3s])/vp)/np: \x\p\y. want (p x) y
+seems     | v :: (s\np[agr=3s])/vp : \p\y.seems (p y)
+seems     | v :: (s\np[t=xpl])/s : \s\y.seems s
