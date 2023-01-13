@@ -1,5 +1,5 @@
 % this is from the MS book, its Nootka parts
 % -cem bozsahin
 
-yaq | rel :: (n\n)/(s/np[agr=?a]) : \p\p\x.and (p x) (q x)
+yaq | rel :: (n\n)/(s/np[agr=?a]) : \p\q\x.and (p x) (q x)
 
