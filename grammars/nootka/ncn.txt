@@ -2,4 +2,7 @@
 % -cem bozsahin
 
 yaq | rel :: (n\n)/(s/np[agr=?a]) : \p\q\x.and (p x) (q x)
-
+it  | aff :: (s\np[agr=?a])//vp[agr=?a] : \p.p
+ii  | aff :: vp[agr=3s]//iv[agr=?a]: \p.p
+?uut'yaap | v :: iv[agr=?a]/np : \x\y.bring x y
+suuhaa    | n :: iv[agr=?a]\(iv[agr=?a]/np) : \p.p salmon
