@@ -39,8 +39,8 @@ _tmp='/tmp/thebench/'                  # all bench-generated non-editing files g
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.7'
-_vdate = 'January 11, 2023'
+_version = '0.8'
+_vdate = 'January 14, 2023'
 # 3 built-in extensions recognized by MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
@@ -244,6 +244,61 @@ def make_up_an_index():              # return the first non-colliding random ind
 #
 # All data parsing and tokenization goes here, one for grammar, one for supervision, one for input to analysis
 #
+
+class ACLexer(Lexer):       
+    tokens = {EL, MWEB, MWEE, MWEM}
+    ignore = ' \t'             # whitespace
+    EL   = r'[^ \|]+'        # anything not space or | is data
+    MWEB = r'\|[^ \|]+'      # first token of MWE may start with |
+    MWEE = r'[^ \|]+\|'      # last token of MWE may end with |
+    MWEM = r'\|'               # sometimes token by itself
+
+class ACParser(Parser):
+    #debugfile = 'lalr_acommand'+ _logext
+    tokens = ACLexer.tokens
+
+    @_('s el')
+    def s(self, p):
+        return (p.s+p.el)
+
+    @_('el')
+    def s(self, p):
+        return p.el
+
+    @_('simple')
+    def el(self, p):
+        return p.simple
+
+    @_('mwe')
+    def el(self, p):
+        return p.mwe
+
+    @_('EL')
+    def simple(self, p):
+        return p[0]
+
+    @_('simples simple')
+    def simples(self, p):
+        return p.simples+p.simple
+
+    @_('simple')
+    def simples(self, p):
+        return p.simple
+    
+    @_('MWEB simples MWEE', 'MWEM simples MWEM', 'MWEB simples MWEM', 'MWEM simples MWEE')
+    def mwe(self, p):
+        if p[0][0] == '|' and len(p[0]) > 1:
+            mwe1 = p[0][1:]
+        else:
+            mwe1 = p[0]
+        if p[2][-1] == '|' and len(p[2]) > 1:
+            mwen = p[2][:-1]
+        else:
+            mwen = p[2]
+        return mwe1+p.simples+mwen
+
+    def error(self, p):     
+        return False
 
 class SUPLexer(Lexer): # Token types for supervision pairs
     tokens = {ID, BANGID, ITEM, DOT, LP, RP, BS, END, ANY}
@@ -663,48 +718,25 @@ def split_command (cline): # splits a command line into command and list of args
     if cline == '':
         return ('~',[])
     comm = cline[0]        # all commands are one character in front, strings and separate punctuation are double quoated
-    commargs = []
-    if comm == 'a': # needs special tokenization
+    if comm == 'a': # needs special tokenization, which needs a parser too
         if len(cline) < 2:
-            return (comm, commargs)
-        t = [re.split(_ws, x) for x in cline[1:]]  # only _ws in data will be list of length 2 after this
-        n = len(t)-1
-        i = 0
-        while i <= n:
-            if len(t[i]) > 1:  # skip free blanks
-                i += 1
-            elif t[i][0] == '"':
-                arg = '"'
-                j = i+1
-                while j <= n and t[j][0] != '"':
-                    if len(t[j]) > 1:
-                        arg += _ws     
-                    else:
-                        arg += t[j][0]
-                    j += 1
-                commargs.append(''.join(arg+'"'))
-                i = j + 1
-            elif t[i][0] in _punc:
-                commargs.append(''.join(lisp_wrap(t[i][0])))
-                i += 1
-            else:
-                arg = ''
-                while i <= n and len(t[i]) < 2 and not t[i][0] in _punc:
-                    arg += t[i][0]
-                    i += 1
-                commargs.append(''.join(arg))
-        return (comm, commargs)
+            return (comm, [])
+        bundle = acommandparser.parse(acommandlexer.tokenize(cline[1:]))
+        if bundle:
+            return (comm, bundle.split())
+        else:
+            print('ill formed input to a-command')
     else:
-        comarg = _ws.join(cline.split()).split(_ws)
+        comarg = cline.split()
         return (comarg[0], comarg[1:])
     
 def help ():
         print(f"Letter commands are processor commands; symbol commands are for display or set up")
-        print(f"Items in .. must be space-separated, only strings are case sensitive")
-        print(f' a ..   | analyzes the expression .. in the currently loaded grammar')
-        print(f' c ..   | case functions generated and added to loaded grammar from elements with POSs ..')
+        print(f"Items in .. must be space-separated")
+        print(f' a ..   | analyzes .. in the current grammar, MWEs must be enclosed within ||, e.g. |the bucket|')
+        print(f' c ..   | case functions generated for current grammar from elements with POSs ..')
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
-        print(f" g .    | grammar text .  checked and its source loaded ({_binext} file goes to {_tmp})")
+        print(f" g .    | grammar text .  checked and its source made current ({_binext} file goes to {_tmp})")
         print(f' i .    | intermediate representation of current grammar (a python dict) saved in file .')
         print(f" l . .. | Lisp function . is called with args .., which takes them as strings")
         print(f' o ..   | OS/shell command .. is run at your own risk')
@@ -1090,6 +1122,7 @@ def do (commline):
             print('something went wrong')
     elif comm == 'a':
         try:
+            print(tuple(args))
             _lisp.function('cky_analyze')(tuple(args))
             print(f"Done. Try , command for results")
         except Exception:
@@ -1212,6 +1245,8 @@ mglexer  = MGLexer()
 mgparser = MGParser()
 suplexer = SUPLexer()
 supparser = SUPParser()
+acommandlexer = ACLexer()
+acommandparser = ACParser()
 
 # command history recaller is from furas of stackoverflow. Many thanks
 
@@ -1227,4 +1262,5 @@ if __name__ == '__main__': # MG REPL online
         command = myPromptSession.prompt(_prompt)
     print('Done.')
 else:
-    print('Offline call')
+    print('Offline call.')
+    print('Nothing doing. exiting.')
