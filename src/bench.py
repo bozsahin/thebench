@@ -239,13 +239,17 @@ def make_up_an_index():              # return the first non-colliding random ind
     else:
         return randint(-999999,-1)   # this has much less chance of collision, assuming it is done very occasionally-still a six digit number max.
 
+def mk_clatom (s):
+    # CL is awful with special chars, just atomize them and separate; used in a and r commands
+    return ' |'+ s + '| '
+
 ###########
 # Parsing/tokenization
 #
 # All data parsing and tokenization goes here, one for grammar, one for supervision, one for input to analysis
 #
 
-class ACLexer(Lexer):       
+class ARLexer(Lexer):       
     tokens = {EL, MWEB, MWEE, MWEM}
     ignore = ' \t'             # whitespace
     EL   = r'[^ \|]+'        # anything not space or | is data
@@ -253,13 +257,13 @@ class ACLexer(Lexer):
     MWEE = r'[^ \|]+\|'      # last token of MWE may end with |
     MWEM = r'\|'               # sometimes token by itself
 
-class ACParser(Parser):
-    #debugfile = 'lalr_acommand'+ _logext
-    tokens = ACLexer.tokens
+class ARParser(Parser):
+    #debugfile = 'lalr_ar_command'+ _logext
+    tokens = ARLexer.tokens
 
     @_('s el')
     def s(self, p):
-        return (p.s+p.el)
+        return p.s + p.el
 
     @_('el')
     def s(self, p):
@@ -275,7 +279,7 @@ class ACParser(Parser):
 
     @_('EL')
     def simple(self, p):
-        return p[0]
+        return list(''.join(p[0]))
 
     @_('simples simple')
     def simples(self, p):
@@ -288,14 +292,14 @@ class ACParser(Parser):
     @_('MWEB simples MWEE', 'MWEM simples MWEM', 'MWEB simples MWEM', 'MWEM simples MWEE')
     def mwe(self, p):
         if p[0][0] == '|' and len(p[0]) > 1:
-            mwe1 = p[0][1:]
+            mwe1 = list(''.join(p[0][1:]))
         else:
-            mwe1 = p[0]
+            mwe1 = []
         if p[2][-1] == '|' and len(p[2]) > 1:
-            mwen = p[2][:-1]
+            mwen = list(''.join(p[2][:-1]))
         else:
-            mwen = p[2]
-        return mwe1+p.simples+mwen
+            mwen = []
+        return list(mwe1 + p.simples + mwen)
 
     def error(self, p):     
         return False
@@ -718,14 +722,15 @@ def split_command (cline): # splits a command line into command and list of args
     if cline == '':
         return ('~',[])
     comm = cline[0]        # all commands are one character in front, strings and separate punctuation are double quoated
-    if comm == 'a': # needs special tokenization, which needs a parser too
+    if comm == 'a'or comm == 'r' : # needs special tokenization, which needs a parser too
         if len(cline) < 2:
             return (comm, [])
-        bundle = acommandparser.parse(acommandlexer.tokenize(cline[1:]))
+        bundle = ar_commandparser.parse(ar_commandlexer.tokenize(cline[1:]))
         if bundle:
-            return (comm, bundle.split())
+            return (comm, bundle)
         else:
-            print('ill formed input to a-command')
+            print('ill formed input to a-command or r-command')
+            return ('pass', [])
     else:
         comarg = cline.split()
         return (comarg[0], comarg[1:])
@@ -740,7 +745,7 @@ def help ():
         print(f' i .    | intermediate representation of current grammar (a python dict) saved in file .')
         print(f" l . .. | Lisp function . is called with args .., which takes them as strings")
         print(f' o ..   | OS/shell command .. is run at your own risk')
-        print(f' r ..   | ranks the expression .. using the currently loaded grammar')
+        print(f' r ..   | ranks the expression .. using the current grammar')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | grammar source . located in {_tmp} and converted to editable grammar (.txt)")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
@@ -1121,8 +1126,8 @@ def do (commline):
         except Exception:
             print('something went wrong')
     elif comm == 'a':
+        print(args)
         try:
-            print(tuple(args))
             _lisp.function('cky_analyze')(tuple(args))
             print(f"Done. Try , command for results")
         except Exception:
@@ -1245,8 +1250,8 @@ mglexer  = MGLexer()
 mgparser = MGParser()
 suplexer = SUPLexer()
 supparser = SUPParser()
-acommandlexer = ACLexer()
-acommandparser = ACParser()
+ar_commandlexer = ARLexer()
+ar_commandparser = ARParser()
 
 # command history recaller is from furas of stackoverflow. Many thanks
 
