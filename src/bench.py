@@ -251,11 +251,11 @@ def mk_clatom (s):
 
 class ARLexer(Lexer):       
     tokens = {EL, MWEB, MWEE, MWEM}
-    ignore = ' \t'             # whitespace
+    ignore = ' \t'           # whitespace
     EL   = r'[^ \|]+'        # anything not space or | is data
     MWEB = r'\|[^ \|]+'      # first token of MWE may start with |
     MWEE = r'[^ \|]+\|'      # last token of MWE may end with |
-    MWEM = r'\|'               # sometimes token by itself
+    MWEM = r'\|'             # sometimes token by itself
 
 class ARParser(Parser):
     #debugfile = 'lalr_ar_command'+ _logext
@@ -279,7 +279,7 @@ class ARParser(Parser):
 
     @_('EL')
     def simple(self, p):
-        return list(''.join(p[0]))
+        return list(p)
 
     @_('simples simple')
     def simples(self, p):
@@ -292,14 +292,14 @@ class ARParser(Parser):
     @_('MWEB simples MWEE', 'MWEM simples MWEM', 'MWEB simples MWEM', 'MWEM simples MWEE')
     def mwe(self, p):
         if p[0][0] == '|' and len(p[0]) > 1:
-            mwe1 = list(''.join(p[0][1:]))
+            mwe1 = list(p[0][1:])
         else:
             mwe1 = []
         if p[2][-1] == '|' and len(p[2]) > 1:
-            mwen = list(''.join(p[2][:-1]))
+            mwen = list(p[2][:-1])
         else:
             mwen = []
-        return list(mwe1 + p.simples + mwen)
+        return [mwe1 + p.simples + mwen]
 
     def error(self, p):     
         return False
