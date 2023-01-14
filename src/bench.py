@@ -745,7 +745,7 @@ def help ():
         print(f' i .    | intermediate representation of current grammar (a python dict) saved in file .')
         print(f" l . .. | Lisp function . is called with args .., which takes them as strings")
         print(f' o ..   | OS/shell command .. is run at your own risk')
-        print(f' r ..   | ranks the expression .. using the current grammar')
+        print(f' r ..   | ranks .. in the current grammar, MWEs must be enclosed within ||, e.g. |the bucket|')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | grammar source . located in {_tmp} and converted to editable grammar (.txt)")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
