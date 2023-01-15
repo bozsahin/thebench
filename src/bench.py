@@ -722,7 +722,6 @@ def split_command (cline): # splits a command line into command and list of args
                     bundle_lisp += [mk_clatom(_ws.join(item))]
                 else:
                     bundle_lisp += [mk_clatom(item)]
-            print(bundle_lisp)
             return (comm, bundle_lisp)
         else:
             print('ill formed input to a-command or r-command')
@@ -911,11 +910,8 @@ def ir_to_lisp(ir):
     if type(ir) == type(()):               # no recursive tuple
         if len(ir) == 4:   # a rule 
             return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('INDEX', ir[2])
-        else:              # an element
-            if len(ir[2].split()) > 1 or ir[2] in _punc:   # make all entries uppercase. MWE/ punctuation double quoted for the processor
-                return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', '"' + ir[2] + '"')
-            else:
-                return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', ir[2].upper())
+        else:              # an element; phon item is atomic and case sensitive
+            return mk_2cl('KEY', ir[0])+mk_2cl('PARAM', ir[1])+mk_2cl('PHON', '|'+ir[2]+'|')
     elif type(ir) == type([]):             # no recursive list
         if ir == []:
             return mk_2cl('FEATS', 'NIL')
