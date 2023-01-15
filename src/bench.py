@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------
 # bench.py
 # pre/post processing and processor interface for monadic grammar
-# -Cem Bozsahin, 2022, Ankara, Datça, Şile
+# -Cem Bozsahin, 2022-23, Ankara, Datça, Şile
 # ---------------------------------------------------------------
 
 from prompt_toolkit import prompt       
@@ -25,7 +25,7 @@ import cl4py                     # processor is in Lisp
 
 _lisp = cl4py.Lisp()              # get access to Lisp for processing
 _cl   = _lisp.find_package('CL')  # get access to CL utilities
-_ws     = ' '
+_ws   = ' '
 try:
     _lisptype = _lisp.function('lisp-implementation-type')() + _ws + _lisp.function('lisp-implementation-version')()
 except Exception:
@@ -34,6 +34,7 @@ except Exception:
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _underscore= '_'
 _exit='x'
+_silent='~'
 _help='?'
 _tmp='/tmp/thebench/'                  # all bench-generated non-editing files go here
 _home=os.getcwd()
@@ -255,7 +256,7 @@ class ARLexer(Lexer):
     EL   = r'[^ \|]+'        # anything not space or | is data
     MWEB = r'\|[^ \|]+'      # first token of MWE may start with |
     MWEE = r'[^ \|]+\|'      # last token of MWE may end with |
-    MWEM = r'\|'             # sometimes token by itself
+    MWEM = r'\|'             # sometimes | is a token by itself
 
 class ARParser(Parser):
     #debugfile = 'lalr_ar_command'+ _logext
@@ -279,11 +280,11 @@ class ARParser(Parser):
 
     @_('EL')
     def simple(self, p):
-        return list(p)
+        return [p[0]]
 
     @_('simples simple')
     def simples(self, p):
-        return p.simples+p.simple
+        return p.simples + p.simple
 
     @_('simple')
     def simples(self, p):
@@ -292,14 +293,14 @@ class ARParser(Parser):
     @_('MWEB simples MWEE', 'MWEM simples MWEM', 'MWEB simples MWEM', 'MWEM simples MWEE')
     def mwe(self, p):
         if p[0][0] == '|' and len(p[0]) > 1:
-            mwe1 = list(p[0][1:])
+            mwe1 = [p[0][1:]]
         else:
             mwe1 = []
         if p[2][-1] == '|' and len(p[2]) > 1:
-            mwen = list(p[2][:-1])
+            mwen = [p[2][:-1]]
         else:
             mwen = []
-        return [mwe1 + p.simples + mwen]
+        return [ mwe1 + p.simples + mwen ]
 
     def error(self, p):     
         return False
@@ -715,37 +716,36 @@ class MGParser(Parser):       # the syntax of MG entries
 ############
 
 
-def lisp_wrap(ch):
-    return '"' + ch + '"'
-
 def split_command (cline): # splits a command line into command and list of args
     if cline == '':
-        return ('~',[])
-    comm = cline[0]        # all commands are one character in front, strings and separate punctuation are double quoated
-    if comm == 'a'or comm == 'r' : # needs special tokenization, which needs a parser too
+        return (_silent,[])
+    comarg = cline.split()
+    comm = comarg[0]        # all commands are one character in front, strings and separate punctuation are double quoated
+    if comm == 'a' or comm == 'r' : # needs special tokenization to atomize things for Lisp, which needs a parser 
         if len(cline) < 2:
             return (comm, [])
-        bundle = ar_commandparser.parse(ar_commandlexer.tokenize(cline[1:]))
+        print(_ws.join(comarg[1:]))
+        bundle = ar_commandparser.parse(ar_commandlexer.tokenize(_ws.join(comarg[1:])))
+        print(bundle)
         if bundle:
             return (comm, bundle)
         else:
             print('ill formed input to a-command or r-command')
-            return ('pass', [])
+            return (_silent, [])
     else:
-        comarg = cline.split()
-        return (comarg[0], comarg[1:])
+        return (comm, comarg[1:])
     
 def help ():
-        print(f"Letter commands are processor commands; symbol commands are for display or set up")
+        print(f"Letter commands are processor commands; symbol commands are for display or setup")
         print(f"Items in .. must be space-separated")
-        print(f' a ..   | analyzes .. in the current grammar, MWEs must be enclosed within ||, e.g. |the bucket|')
+        print(f' a ..   | analyzes .. in the current grammar, MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' c ..   | case functions generated for current grammar from elements with POSs ..')
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
         print(f" g .    | grammar text .  checked and its source made current ({_binext} file goes to {_tmp})")
         print(f' i .    | intermediate representation of current grammar (a python dict) saved in file .')
         print(f" l . .. | Lisp function . is called with args .., which takes them as strings")
         print(f' o ..   | OS/shell command .. is run at your own risk')
-        print(f' r ..   | ranks .. in the current grammar, MWEs must be enclosed within ||, e.g. |the bucket|')
+        print(f' r ..   | ranks .. in the current grammar, MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | grammar source . located in {_tmp} and converted to editable grammar (.txt)")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
@@ -1126,7 +1126,6 @@ def do (commline):
         except Exception:
             print('something went wrong')
     elif comm == 'a':
-        print(args)
         try:
             _lisp.function('cky_analyze')(tuple(args))
             print(f"Done. Try , command for results")
@@ -1207,7 +1206,7 @@ def do (commline):
                     print_info()
     elif comm == _exit:       # caller knows what to do next
         pass
-    elif comm == 'pass' or comm == '~':    # not in the menu, to report others as bad
+    elif comm == 'pass' or comm == _silent :    # not in the menu, to report others as bad
         pass
     elif comm == '>':
         fn = args[0] + _logext
@@ -1261,7 +1260,8 @@ if __name__ == '__main__': # MG REPL online
     init_grammar()
     welcome()
     _cl.load(os.environ['BENCH_HOME']+'/src/bench.lisp')               # load the processor
-    command = '~'
+    print(f"python   : encoding {sys.getdefaultencoding()}")
+    command = _silent
     while split_command(command)[0] != _exit:
         do(command)
         command = myPromptSession.prompt(_prompt)
