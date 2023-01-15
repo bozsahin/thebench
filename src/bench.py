@@ -241,8 +241,8 @@ def make_up_an_index():              # return the first non-colliding random ind
         return randint(-999999,-1)   # this has much less chance of collision, assuming it is done very occasionally-still a six digit number max.
 
 def mk_clatom (s):
-    # CL is awful with special chars, just atomize them and separate; used in a and r commands
-    return ' |'+ s + '| '
+    # CL is awful with special chars, just atomize them and separate; used for a and r commands
+    return '|'+ s + '|'
 
 ###########
 # Parsing/tokenization
@@ -251,12 +251,10 @@ def mk_clatom (s):
 #
 
 class ARLexer(Lexer):       
-    tokens = {EL, MWEB, MWEE, MWEM}
+    tokens = {EL, MWEM}
     ignore = ' \t'           # whitespace
     EL   = r'[^ \|]+'        # anything not space or | is data
-    MWEB = r'\|[^ \|]+'      # first token of MWE may start with |
-    MWEE = r'[^ \|]+\|'      # last token of MWE may end with |
-    MWEM = r'\|'             # sometimes | is a token by itself
+    MWEM = r'\|'             # | is a token by itself
 
 class ARParser(Parser):
     #debugfile = 'lalr_ar_command'+ _logext
@@ -290,17 +288,9 @@ class ARParser(Parser):
     def simples(self, p):
         return p.simple
     
-    @_('MWEB simples MWEE', 'MWEM simples MWEM', 'MWEB simples MWEM', 'MWEM simples MWEE')
+    @_('MWEM simples MWEM')
     def mwe(self, p):
-        if p[0][0] == '|' and len(p[0]) > 1:
-            mwe1 = [p[0][1:]]
-        else:
-            mwe1 = []
-        if p[2][-1] == '|' and len(p[2]) > 1:
-            mwen = [p[2][:-1]]
-        else:
-            mwen = []
-        return [ mwe1 + p.simples + mwen ]
+        return [p.simples]
 
     def error(self, p):     
         return False
@@ -724,11 +714,16 @@ def split_command (cline): # splits a command line into command and list of args
     if comm == 'a' or comm == 'r' : # needs special tokenization to atomize things for Lisp, which needs a parser 
         if len(cline) < 2:
             return (comm, [])
-        print(_ws.join(comarg[1:]))
         bundle = ar_commandparser.parse(ar_commandlexer.tokenize(_ws.join(comarg[1:])))
-        print(bundle)
         if bundle:
-            return (comm, bundle)
+            bundle_lisp = []
+            for item in bundle:
+                if  type(item) == type([]):
+                    bundle_lisp += [mk_clatom(_ws.join(item))]
+                else:
+                    bundle_lisp += [mk_clatom(item)]
+            print(bundle_lisp)
+            return (comm, bundle_lisp)
         else:
             print('ill formed input to a-command or r-command')
             return (_silent, [])
