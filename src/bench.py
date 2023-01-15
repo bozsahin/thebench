@@ -173,7 +173,11 @@ def mk_supfile (fn, source):
 
 def mk_entry_sup (form, meaning):
     global _supervision
-    _supervision[form] = ir_to_lisp(meaning)
+    items = form.split()
+    lispform = ''
+    for item in items:
+        lispform += ' |'+item+'|'
+    _supervision[lispform] = ir_to_lisp(meaning)
     return True
 
 def mk_entry (element, index):  
