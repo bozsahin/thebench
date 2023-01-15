@@ -21,7 +21,7 @@ TO INSTALL:
 
 2.  In the terminal, and IN THAT directory, do  the following:
 
-   <code>src/bench.install.sh</code>
+   <code>bench.install.sh</code>
 
    <code>pip install sly</code>
 
