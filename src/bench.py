@@ -736,14 +736,14 @@ def split_command (cline): # splits a command line into command and list of args
 def help ():
         print(f"Letter commands are processor commands; symbol commands are for display or setup")
         print(f"Items in .. must be space-separated")
-        print(f' a ..   | analyzes .. in the current grammar, MWEs must be enclosed in |, e.g. |the bucket|')
+        print(f' a ..   | analyzes .. in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' c ..   | case functions generated for current grammar from elements with POSs ..')
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
         print(f" g .    | grammar text .  checked and its source made current ({_binext} file goes to {_tmp})")
-        print(f' i .    | intermediate representation of current grammar (a python dict) saved in file .')
+        print(f' i .    | intermediate representation of current grammar saved (file . goes to {_tmp})')
         print(f" l . .. | Lisp function . is called with args .., which takes them as strings")
-        print(f' o ..   | OS/shell command .. is run at your own risk')
-        print(f' r ..   | ranks .. in the current grammar, MWEs must be enclosed in |, e.g. |the bucket|')
+        print(f' o ..   | OS/shell command .. is run at your own risk (be careful with deletes)')
+        print(f' r ..   | ranks .. in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | grammar source . located in {_tmp} and converted to editable grammar (.txt)")
         print(f' @ .    | does commands in file . (same format, 1 command per line, 1 line per command)')
@@ -1006,19 +1006,13 @@ def do (commline):
     if comm == _help:
         help()
     elif comm == 'i':
-        fn = str(args[0])
-        ch = False
-        if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/N)? ")
-        if ch == 'y' or not ch:
-            with open(str(fn),'w') as f:
-                with redirect_stdout(f):
-                    pp = pprint.PrettyPrinter(indent=2, width=80, stream=sys.stdout)
-                    print(f"# This file can be read as a python dictionary in one fell swoop\n#   using ast.literal_eval(read it here).\n\n# Tree operators are:\n# {_op}: root\n# {_l}: left child\n# {_r}: right child\n#    see the manual/code for values prefixed with {_overscore}\n\n# There are two structures: arules and elements\n# Grammar items are listed in them.\n")
-                    pp.pprint(_grammar)
-            print(f"grammar is pretty-printed to {fn} in internal representation")
-        else:
-            print('canceled')
+        fn = str(_tmp+args[0])
+        with open(str(fn),'w') as f:
+            with redirect_stdout(f):
+                pp = pprint.PrettyPrinter(indent=2, width=80, stream=sys.stdout)
+                print(f"# This file can be read as a python dictionary in one fell swoop\n#   using ast.literal_eval(read it here).\n\n# Tree operators are:\n# {_op}: root\n# {_l}: left child\n# {_r}: right child\n#    see the manual/code for values prefixed with {_overscore}\n\n# There are two structures: arules and elements\n# Grammar items are listed in them.\n")
+                pp.pprint(_grammar)
+        print(f"grammar is pretty-printed to {fn} in internal representation")
     elif comm == '-':
         _online = True
         args, _, _ = _ws.join([str(item) for item in args]).partition('%')   # just eliminate the comment
