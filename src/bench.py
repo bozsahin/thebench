@@ -297,7 +297,7 @@ class ARParser(Parser):
         return [p.simples]
 
     def error(self, p):     
-        return False
+        pass
 
 class SUPLexer(Lexer): # Token types for supervision pairs
     tokens = {ID, BANGID, ITEM, DOT, LP, RP, BS, END, ANY}
@@ -712,7 +712,7 @@ class MGParser(Parser):       # the syntax of MG entries
 
 def split_command (cline): # splits a command line into command and list of args
     if cline == '':
-        return (_silent,[])
+        return (_silent, [])
     comarg = cline.split()
     comm = comarg[0]        # all commands are one character in front, strings and separate punctuation are double quoated
     if comm == 'a' or comm == 'r' : # needs special tokenization to atomize things for Lisp, which needs a parser 
@@ -1199,7 +1199,9 @@ def do (commline):
                     print_info()
     elif comm == _exit:       # caller knows what to do next
         pass
-    elif comm == 'pass' or comm == _silent :    # not in the menu, to report others as bad
+    elif comm == 'pass':   # not in the menu, to report others as bad
+        pass
+    elif comm == _silent:
         pass
     elif comm == '>':
         fn = args[0] + _logext

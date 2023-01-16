@@ -2851,7 +2851,7 @@
   "raw use of display-lf with format directives may spill over multiple lines, we avoid that with this function"
   (format s " : ")
   (dolist (obj (display-lf lf))
-    (format s "~(~A~) " obj)))
+    (format s "~(~A~) " obj)))   ; all in lowercase
 
 (defun mk_arule (r s)
   (mk_arulename_sc (nv-get-v 'INDEX r) s)       
@@ -2862,8 +2862,8 @@
   (mk_lf (nv-get-v 'OUTSEM r) s))
 
 (defun mk_entry (e s)
-  (format s "~A | ~A :: " 
-	  (nv-get-v 'PHON e)
+  (format s "~A | ~(~A~) :: " 
+	  (nv-get-v 'PHON e)    ; keep case of the PHON
 	  (nv-get-v 'MORPH e))
   (mk_cat (nv-get-v 'SYN e) s)
   (mk_lf (nv-get-v 'SEM e) s))
