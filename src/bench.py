@@ -945,8 +945,8 @@ def ir_to_lisp(ir):
             return mk_1cl(ir_to_lisp(ir[_l])) + \
                     ir_to_lisp(ir[_r])
         elif ir[_op] == _dir:
-            if _targetslashlex[ir[_l]]:
-                return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) \
+            if _targetslashlex[ir[_l]]:     # override modality to be app only if double slash
+                return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod['*']) \
                     + mk_2cl('LEX', 't')
             else:
                 return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) 
