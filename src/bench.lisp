@@ -2862,7 +2862,7 @@
   (mk_lf (nv-get-v 'OUTSEM r) s))
 
 (defun mk_entry (e s)
-  (format s "~(~A~)| ~(~A~) :: " 
+  (format s "~A | ~A :: " 
 	  (nv-get-v 'PHON e)
 	  (nv-get-v 'MORPH e))
   (mk_cat (nv-get-v 'SYN e) s)
