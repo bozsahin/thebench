@@ -374,7 +374,11 @@ class SUPParser(Parser):      # the syntax of string : meaning pairs
 
     @_('ITEM lcom t')
     def s(self, p):
-        return mk_entry_sup(p[0][0:-1], p.lcom)  # leave out the : from ITEM
+        els = p[0][0:-1].split('|') # leave out the : from ITEM
+        if (len(els) % 2) == 0:     # odd number of |s -> ill-formed
+            return False
+        else:
+            return mk_entry_sup(_ws.join(els), p.lcom)
 
     @_('lterm')
     def lcom(self, p):
