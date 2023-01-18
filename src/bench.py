@@ -792,7 +792,7 @@ def load_1pass_sup(fname):
                     errors = True
             print(parserlog)
     if not errors:
-        print("no errors, proceeding with set up..")
+        print("no errors in supervision data, proceeding with set up..")
     else:
         if not nofile:
             init_sup()
@@ -844,7 +844,7 @@ def load_1pass(fname):        # checks but not updates the grammar with indices
             print(parserlog)
     if not errors:
         _info['name'] = fname
-        print("no errors, proceeding with set up..")
+        print("no errors in grammar text, proceeding with set up..")
     else:
         if not nofile:
             init_grammar()
