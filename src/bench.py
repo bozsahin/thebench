@@ -173,15 +173,7 @@ def mk_supfile (fn, source):
 
 def mk_entry_sup (form, meaning):
     global _supervision
-    lispform = ''
-    if len(form) == 1:
-        for w in form[0].split():
-            lispform += ' |'+ w + '|'
-    else:
-        for item in form:
-            if item != '':
-                lispform += ' |'+ _ws.join(item.split()) + '|'
-    _supervision[lispform] = ir_to_lisp(meaning)
+    _supervision[_ws.join(form)] = ir_to_lisp(meaning)
     return True
 
 def mk_entry (element, index):  
@@ -377,12 +369,19 @@ class SUPParser(Parser):      # the syntax of string : meaning pairs
     tokens = SUPLexer.tokens
 
     @_('ITEM lcom t')
-    def s(self, p):
-        els = p[0][0:-1].split('|') # leave out the : from ITEM
-        if (len(els) % 2) == 0:     # odd number of |s -> ill-formed
-            return False
+    def s(self, p): 
+        # parse phon item except last bit viz. :
+        bundle = ar_commandparser.parse(ar_commandlexer.tokenize(p[0][0:-1]))
+        if bundle:
+            bundle_lisp = []
+            for item in bundle:
+                if  type(item) == type([]):
+                    bundle_lisp += [mk_clatom(_ws.join(item))]
+                else:
+                    bundle_lisp += [mk_clatom(item)]
+            return mk_entry_sup(bundle_lisp, p.lcom)
         else:
-            return mk_entry_sup(els, p.lcom)
+            return False
 
     @_('lterm')
     def lcom(self, p):
