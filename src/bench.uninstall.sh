@@ -6,11 +6,11 @@ else
   sure='not-sure'
 fi
 if [ ! $sure = sure ]; then
-  echo "exiting without uninstall. Please run it as 'bench-uninstall.sh sure' to remove"
+  echo "exiting without uninstall. Please run it as 'bench.uninstall.sh sure' to remove"
   echo "this is to avoid accidental removal"
   exit -1
 fi
-BENCH_HOME=`cat /usr/local/bin/bench_home`
+BENCH_HOME=`cat /usr/local/lib/bench.home`
 cd ~
 if [ -d "$BENCH_HOME" ]; then
   echo "Removing $BENCH_HOME"
@@ -20,3 +20,8 @@ if [ -d "/tmp/thebench" ]; then
   echo "Removing /tmp/thebench"
   rm -fr /tmp/thebench
 fi
+echo "Need sudo privilege to clear /usr/local/bin and /usr/local/lib off thebench"
+sudo rm '/usr/local/lib/bench.home'
+sudo rm '/usr/local/bin/bench.train'
+sudo rm '/usr/local/bin/bench'
+echo "Done."
