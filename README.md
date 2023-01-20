@@ -11,6 +11,8 @@ As things Apple go, you need an external installer for such goodies in MacOS, wh
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 - <a href="https://git-scm.com/downloads">git</a> (git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do steps 2-3. If you do care about upgrades, git is safest and easiest).
 
+If you already have these utilities in your system, your versions are detected and used by the bench. 
+
 TO INSTALL: 
 
 1.  Open a terminal, and change to the directory where you want to install the tool. Then do:
@@ -19,7 +21,7 @@ TO INSTALL:
 
    This will create <code>thebench</code> folder with code and documentation.
 
-2.  In the terminal, and IN THAT directory, do  the following:
+2.  In the terminal, and IN <code>thebench</code> directory, do  the following:
 
    <code>bench.install.sh</code>
 
@@ -28,15 +30,12 @@ usually there by default; just check it by doing <code>echo $PATH</code>.)
 
 You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
 
-If you already had these utilities in your system, your versions are detected and used by the bench. 
-
 PYTHON NOTE:
 
-Python versions can be daunting for the uninitiated. Don't count on the executable <code>python</code> to be the latest
-python. You might also have python3.8, python3.9, python3141.59 etc. 
+Python versions can be daunting for the uninitiated. Don't count on the executable <code>python</code> to be the latest python. You might also have python3.8, python3.9, python3141.59 etc. 
 
 Use the latest for python AND pip. If you have a new one installed, say python3.11,
-just re-ran the installer with that suffix to update thebench libraries, for example
+just re-run the installer with that suffix to update thebench libraries, for example
 
 <code>bench.install.sh 3.11</code>
 
@@ -55,7 +54,7 @@ TO DEVELOP A GRAMMAR:
 
 Just use your favourite plain text editor and enter a grammar. Then follow help (? command) of thebench to process it.
 
-I suggest you develop grammars NOT in <code>thebench</code> folder.  The directory would get quite messy with log files etc.  
+I suggest you develop grammars NOT in <code>thebench</code> folder.
 
 TO UPGRADE:
 
