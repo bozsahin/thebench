@@ -27,7 +27,21 @@ You've just installed thebench, the Python libraries needed, and SBCL as Common 
 
 If you already had these utilities in your system, your versions are detected and used by the bench. 
 
-TO USE: Make sure that <code>/usr/local/bin</code> is in your <code>PATH</code> variable. (It is
+PYTHON NOTE:
+
+Python versions can be daunting for the uninitiated. Don't count on the executable <code>python</code> to be the latest
+python. You might also have python3.8, python3.9, python3141.59 etc. 
+
+Use the latest for python AND pip. If you have a new one installed, say python3.11 
+just re-ran the installer with that suffix to update the libraries, for example
+
+<code>bench.install.sh 3.11</code>
+
+This will use <code>pip3.11</code> and <code>python3.11</code> for thebench from now on.
+
+TO USE: 
+
+Make sure that <code>/usr/local/bin</code> is in your <code>PATH</code> variable. (It is
 usually there by default; just check with <code>echo $PATH</code>.)
 
 Then do
@@ -53,19 +67,7 @@ TO UNINSTALL:
 
 Go to <code>src</code> subdirectory of the bench, and do
 
-   <code>./bench.uninstall.sh sure</code>
-
-PYTHON NOTE:
-
-Python versions can be daunting for the uninitiated. Don't count on the executable <code>python</code> to be the latest
-python. You might also have python3.8, python3.9, python3141.59 etc. 
-
-Use the latest for python AND pip. If you have a new one installed, say python3.11 
-just re-ran the installer with that suffix to update the libraries, for example
-
-<code>bench.install.sh 3.11</code>
-
-This will use <code>pip3.11</code> and <code>python3.11</code> for thebench from now on.
+   <code>bench.uninstall.sh sure</code>
 
 Enjoy. 
 
