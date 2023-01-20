@@ -9,7 +9,7 @@ in these platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</cod
 As things Apple go, you need an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 - <a href="https://www.python.org/">Python 3.8  or above</a>
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
-- <a href="https://git-scm.com/downloads">git</a> (git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do step 2. If you do care about upgrades, git is safest and easiest).
+- <a href="https://git-scm.com/downloads">git</a> (git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do steps 2-3. If you do care about upgrades, git is safest and easiest).
 
 TO INSTALL: 
 
@@ -23,7 +23,10 @@ TO INSTALL:
 
    <code>bench.install.sh</code>
 
-You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries. You have also made the tool available from anywhere in your machine.
+3. Make sure that <code>/usr/local/bin</code> is in your <code>PATH</code> variable. (It is
+usually there by default; just check it by doing <code>echo $PATH</code>.)
+
+You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
 
 If you already had these utilities in your system, your versions are detected and used by the bench. 
 
@@ -32,19 +35,14 @@ PYTHON NOTE:
 Python versions can be daunting for the uninitiated. Don't count on the executable <code>python</code> to be the latest
 python. You might also have python3.8, python3.9, python3141.59 etc. 
 
-Use the latest for python AND pip. If you have a new one installed, say python3.11 
-just re-ran the installer with that suffix to update the libraries, for example
+Use the latest for python AND pip. If you have a new one installed, say python3.11,
+just re-ran the installer with that suffix to update thebench libraries, for example
 
 <code>bench.install.sh 3.11</code>
 
-This will use <code>pip3.11</code> and <code>python3.11</code> for thebench from now on.
+This will refresh the tool with  <code>pip3.11</code> and <code>python3.11</code>.
 
 TO USE: 
-
-Make sure that <code>/usr/local/bin</code> is in your <code>PATH</code> variable. (It is
-usually there by default; just check with <code>echo $PATH</code>.)
-
-Then do
 
 <code>bench</code>
 
