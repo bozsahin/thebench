@@ -5,6 +5,7 @@
 # brew does not allow sudo anymore-- $SUDO controls that
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 ULB='/usr/local/bin'
+ULL='/usr/local/lib'
 TMPB='/tmp/thebench'
 SUDO=sudo
 LOGFILE='/tmp/thebench-install.log'
@@ -13,7 +14,7 @@ PY="`command -v python$PYSUFF`"
 PIP="`command -v pip$PYSUFF`"
 BHOME=`pwd`
 if [ -f $ULB/bench ]; then
-  echo "You have TheBench installed at: `cat $ULB/bench.home`"
+  echo "You have TheBench installed at: `cat $ULL/bench.home`"
   if [ ! $PYSUFF ]; then   # if empty, it was probably an accidental call
 	  echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
 	  exit -1
@@ -88,11 +89,11 @@ if [ ! `command -v sbcl` ]; then
 else
   LOG+="\n-Local sbcl is set for tool use"
 fi
-echo "$labdir" | $SUDO tee "$ULB/bench.home"
+echo "$labdir" | $SUDO tee "$ULL/bench.home"
 $SUDO ln -s $labdir/src/bench.train.sh $ULB/bench.train
 echo "python$PYSUFF $labdir/src/bench.py" | $SUDO tee "$ULB/bench"
 $SUDO chmod ugo+x "$ULB/bench"
-$SUDO chmod ugo+r "$ULB/bench.home"
+$SUDO chmod ugo+r "$ULL/bench.home"
 $SUDO chmod ugo+x "$ULB/bench.train"
 LOG+="\n\n-thebench install: COMPLETED"
 LOG+="\n-This log is saved in file $LOGFILE"
