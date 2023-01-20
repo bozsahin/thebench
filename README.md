@@ -44,6 +44,8 @@ This will refresh the tool with  <code>pip3.11</code> and <code>python3.11</code
 
 TO USE: 
 
+just do
+
 <code>bench</code>
 
 Use UP and DOWN keys for command recall. TheBench keeps its specific command history in <code>.thebenchhistory</code>

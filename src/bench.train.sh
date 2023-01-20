@@ -21,6 +21,7 @@
 #      This is useful for initializing switches etc.
 TRAIN=train-nohup-sbcl    # this function is in bench.lisp
 BENCH_LISP="sbcl --dynamic-space-size $1"
+BENCH_HOME="`cat /usr/local/bin/bench.home`"
 LOGFILE="$8.log"
 N=$5  # whether this is iteration count or xp determines which trainer to call
 if [ $5 = xp ]; then
@@ -39,6 +40,6 @@ echo "            at: `date`" >> $LOGFILE
 echo "            in: `hostname`" >> $LOGFILE
 echo "Log goes to   : $LOGFILE" >> $LOGFILE
 echo "I will call sbcl as: $BENCH_LISP" >> $LOGFILE
-echo "It will call $TRAIN in $BENCH_HOME/bench.lisp as: ($TRAINER)" >> $LOGFILE
+echo "It will call $TRAIN in $BENCH_HOME/src/bench.lisp as: ($TRAINER)" >> $LOGFILE
 echo '=======          ============' >> $LOGFILE
 $BENCH_LISP --load $BENCH_HOME/src/bench.lisp --eval '(reset-globals)' --eval "($9)" --eval "($TRAINER)" --eval '(sb-ext:exit)' >> $LOGFILE

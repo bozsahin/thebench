@@ -1052,7 +1052,7 @@ def do (commline):
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} noop")
                             else:
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} {ch[6]}")
-            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train.sh > {_tmp+'nohup.out'}") # hope for the best
+            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train > {_tmp+'nohup.out'}") # hope for the best
             print("\nTraining starts;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
             print(f"Summary of experiments for locating results when done")
             with open(_tmp+efn,'r') as expout:
@@ -1255,7 +1255,10 @@ myPromptSession = PromptSession(history = FileHistory(expanduser('~/.thebenchhis
 if __name__ == '__main__': # MG REPL online
     init_grammar()
     welcome()
-    _cl.load(os.environ['BENCH_HOME']+'/src/bench.lisp')               # load the processor
+    with open('/usr/local/bin/bench.home', 'r') as f:
+        for ws in f:
+            p=ws.split()
+    _cl.load(p[0]+'/src/bench.lisp')                # load the processor
     print(f"python   : encoding {sys.getdefaultencoding()}")
     command = _silent
     while split_command(command)[0] != _exit:

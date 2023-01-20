@@ -13,7 +13,7 @@ PY="`command -v python$PYSUFF`"
 PIP="`command -v pip$PYSUFF`"
 BHOME=`pwd`
 if [ -f $ULB/bench ]; then
-  echo "You have TheBench installed at: `cat $ULB/bench_home`"
+  echo "You have TheBench installed at: `cat $ULB/bench.home`"
   if [ ! $PYSUFF ]; then   # if empty, it was probably an accidental call
 	  echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
 	  exit -1
@@ -88,10 +88,12 @@ if [ ! `command -v sbcl` ]; then
 else
   LOG+="\n-Local sbcl is set for tool use"
 fi
-$SUDO echo "$labdir" > "$ULB/bench_home"
-$SUDO echo "python$PYSUFF $labdir/src/bench.py" > "$ULB/bench"
+echo "$labdir" | $SUDO tee "$ULB/bench.home"
+$SUDO ln -s $labdir/src/bench.train.sh $ULB/bench.train
+echo "python$PYSUFF $labdir/src/bench.py" | $SUDO tee "$ULB/bench"
 $SUDO chmod ugo+x "$ULB/bench"
-$SUDO chmod ugo+r "$ULB/bench_home"
+$SUDO chmod ugo+r "$ULB/bench.home"
+$SUDO chmod ugo+x "$ULB/bench.train"
 LOG+="\n\n-thebench install: COMPLETED"
 LOG+="\n-This log is saved in file $LOGFILE"
 LOG+="\n========================================================="

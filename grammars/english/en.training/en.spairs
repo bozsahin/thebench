@@ -7,7 +7,7 @@
 John loves Mary : love mary john
 Mary loves John : love john mary
 John knows Mary : know mary john
-Mary |knows John|: know john mary
-|Mary| knows | John | loves Mary : know (love mary john) mary
-| John knows Mary loves John|  : know (love john mary) john
+Mary knows John: know john mary
+Mary knows  John  loves Mary : know (love mary john) mary
+John knows Mary loves John  : know (love john mary) john
 
