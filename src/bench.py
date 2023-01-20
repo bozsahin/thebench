@@ -173,10 +173,14 @@ def mk_supfile (fn, source):
 
 def mk_entry_sup (form, meaning):
     global _supervision
-    items = form.split()
     lispform = ''
-    for item in items:
-        lispform += ' |'+item+'|'
+    if len(form) == 1:
+        for w in form[0].split():
+            lispform += ' |'+ w + '|'
+    else:
+        for item in form:
+            if item != '':
+                lispform += ' |'+ _ws.join(item.split()) + '|'
     _supervision[lispform] = ir_to_lisp(meaning)
     return True
 
@@ -378,7 +382,7 @@ class SUPParser(Parser):      # the syntax of string : meaning pairs
         if (len(els) % 2) == 0:     # odd number of |s -> ill-formed
             return False
         else:
-            return mk_entry_sup(_ws.join(els), p.lcom)
+            return mk_entry_sup(els, p.lcom)
 
     @_('lterm')
     def lcom(self, p):

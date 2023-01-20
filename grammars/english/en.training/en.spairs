@@ -4,10 +4,10 @@
 % -cem bozsahin 2017-23
 % escaping the LF objects not necessary in Monadic grammar
 
-John |loves Mary : love mary john
+John loves Mary : love mary john
 Mary loves John : love john mary
 John knows Mary : know mary john
-|Mary |knows John|: know john mary
-Mary knows John loves Mary : know (love mary john) mary
+Mary |knows John|: know john mary
+|Mary| knows John loves Mary : know (love mary john) mary
 John knows Mary loves John : know (love john mary) john
 
