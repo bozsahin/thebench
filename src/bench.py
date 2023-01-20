@@ -250,15 +250,15 @@ def mk_clatom (s):
 # All data parsing and tokenization goes here, one for grammar, one for supervision, one for input to analysis
 #
 
-class ARLexer(Lexer):       
+class PHONLexer(Lexer):       
     tokens = {EL, MWEM}
     ignore = ' \t'           # whitespace
     EL   = r'[^ \|]+'        # anything not space or | is data
     MWEM = r'\|'             # | is a token by itself
 
-class ARParser(Parser):
-    #debugfile = 'lalr_ar_command'+ _logext
-    tokens = ARLexer.tokens
+class PHONParser(Parser):
+    #debugfile = 'lalr_phon'+ _logext
+    tokens = PHONLexer.tokens
 
     @_('s el')
     def s(self, p):
@@ -371,7 +371,7 @@ class SUPParser(Parser):      # the syntax of string : meaning pairs
     @_('ITEM lcom t')
     def s(self, p): 
         # parse phon item except last bit viz. :
-        bundle = ar_commandparser.parse(ar_commandlexer.tokenize(p[0][0:-1]))
+        bundle = phonparser.parse(phonlexer.tokenize(p[0][0:-1]))
         if bundle:
             bundle_lisp = []
             for item in bundle:
@@ -725,7 +725,7 @@ def split_command (cline): # splits a command line into command and list of args
     if comm == 'a' or comm == 'r' : # needs special tokenization to atomize things for Lisp, which needs a parser 
         if len(cline) < 2:
             return (comm, [])
-        bundle = ar_commandparser.parse(ar_commandlexer.tokenize(_ws.join(comarg[1:])))
+        bundle = phonparser.parse(phonlexer.tokenize(_ws.join(comarg[1:])))
         if bundle:
             bundle_lisp = []
             for item in bundle:
@@ -1245,8 +1245,8 @@ mglexer  = MGLexer()
 mgparser = MGParser()
 suplexer = SUPLexer()
 supparser = SUPParser()
-ar_commandlexer = ARLexer()
-ar_commandparser = ARParser()
+phonlexer = PHONLexer()
+phonparser = PHONParser()
 
 # command history recaller is from furas of stackoverflow. Many thanks
 
