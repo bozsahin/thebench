@@ -1,23 +1,52 @@
 #!/bin/bash
+# cem bozsahin 2023
+# The new install does not alter PATH or .bashrc or .bash_profile; no environment variables either
+# $1 : Python and pip binary suffixes in case there is more than one binary for them
 # brew does not allow sudo anymore-- $SUDO controls that
-# cem bozsahin 2022
-# check to see if there is already an installation
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
-if [ "$BENCH_HOME" ]; then
-  echo "You have thebench installed at: $BENCH_HOME."
-  echo "There is no need to reinstall. Just do 'git pull' at $BENCH_HOME for the latest."
-  exit -1
-fi
-if [ ! -d "/tmp/thebench" ]; then
-  mkdir /tmp/thebench
-  LOG+="\n-/tmp/thebench directory created, for temporary files"
-fi
-LOGFILE='/tmp/thebench-install.log'
-echo "PLEASE NOTE:"
-echo "  IN CASE THE INSTALLER ASKS FOR superuser PASSWORD,"
-echo "  It will be ONLY for installing the Common Lisp's sbcl THROUGH safe installers"
-echo " "
+ULB='/usr/local/bin'
+TMPB='/tmp/thebench'
 SUDO=sudo
+LOGFILE='/tmp/thebench-install.log'
+PYSUFF=$1
+PY="`command -v python$PYSUFF`"
+PIP="`command -v pip$PYSUFF`"
+BHOME=`pwd`
+if [ -f $ULB/bench ]; then
+  echo "You have TheBench installed at: `cat $ULB/bench_home`"
+  if [ ! $PYSUFF ]; then   # if empty, it was probably an accidental call
+	  echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
+	  exit -1
+  fi
+  echo "Continuing to check pip for library updates"
+fi
+if [ -f $PY ]; then
+	if [ -f $PIP ]; then
+		$PIP install cl4py
+		$PIP install sly
+		$PIP install prompt_toolkit
+	else
+		echo "No $PIP; aborting..."
+		exit -1
+	fi
+else
+	echo "No $PY; aborting..."
+	exit -1
+fi
+echo "PLEASE NOTE:"
+echo "  In case the installer asks for SUDO PASSWORD"
+echo "  It will be for installing the Common Lisp's SBCL through SAFE installers"
+echo "  And for making entries to your $ULB for machine-wide access to TheBench"
+echo " "
+if [ ! -d $ULB ]; then
+  LOG+="\n-No $ULB; creating.."
+  $SUDO mkdir $ULB
+  LOG+="\n-*** Please add $ULB to your PATH variable if not already there"
+fi
+if [ ! -d $TMPB ]; then
+  mkdir $TMPB
+  LOG+="\n-$TMPB directory created for temporary files"
+fi
 labdir=`pwd`
 #check if SBCL need installing-- SBCL is the standard  lisp for cl4py module
 #there is a pecking order of packagers, in case you have more than one
@@ -59,22 +88,12 @@ if [ ! `command -v sbcl` ]; then
 else
   LOG+="\n-Local sbcl is set for tool use"
 fi
-locallisp=`command -v sbcl`
-printf '%s\n' '# stuff added by thebench installer' >> ~/.bashrc
-printf '%s\n' 'source ~/.thebenchrc' >> ~/.bashrc
-printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
-printf '%s\n' '# stuff added by thebench installer' > ~/.thebenchrc
-printf '%s\n%s\n%s\n' "export BENCH_HOME=$labdir" "export bench=$labdir/src/bench.py" "export PATH=:.:\$BENCH_HOME/src:\$PATH" >> ~/.thebenchrc
-printf '%s\n' '# end of stuff added by thebench installer' >> ~/.thebenchrc
-printf '%s\n' '# stuff added by thebench installer' >> ~/.bash_profile
-printf '%s\n' 'if [ -f ~/.bashrc ]; then source ~/.bashrc; fi' >> ~/.bash_profile
-LOG+='\n-Your .bashrc and .bash_profile have been updated for thebench'
-LOG+='\n-You have a .thebenchrc file in your home directory; please do NOT delete it'
-LOG+='\n-Just do "git pull" in thebench home for updates from now on.'
-LOG+="\n-I wouldnt do updates in standard files of $labdir."
-LOG+="\n They will be overridden by next git pull"
+$SUDO echo "$labdir" > "$ULB/bench_home"
+$SUDO echo "python$PYSUFF $labdir/src/bench.py" > "$ULB/bench"
+$SUDO chmod ugo+x "$ULB/bench"
+$SUDO chmod ugo+r "$ULB/bench_home"
 LOG+="\n\n-thebench install: COMPLETED"
 LOG+="\n-This log is saved in file $LOGFILE"
-LOG+="\n`date`\n========================================================="
+LOG+="\n========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG

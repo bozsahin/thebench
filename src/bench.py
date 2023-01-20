@@ -40,8 +40,8 @@ _tmp='/tmp/thebench/'                  # all bench-generated non-editing files g
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.8'
-_vdate = 'January 14, 2023'
+_version = '0.9'
+_vdate = 'January 20, 2023'
 # 3 built-in extensions recognized by MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
