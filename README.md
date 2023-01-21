@@ -12,7 +12,9 @@ You can start using WSL right off the bat if you have Windows; check out <a href
 The standard installers
 in these platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by thebench installer. They are built-in, depending on your platform, even under WSL.
 
-As things Apple go, you need an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
+As things Apple go these days, you might be left helpless about things we take for granted
+in programming; you'd need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
+
 
 - <a href="https://www.python.org/">Python 3.8  or above</a>
 
