@@ -107,3 +107,5 @@ in your user space.
 
 <code>~/bin/bench.train</code> This is a  symbolic link to the trainer <code>bench.train.sh</code> used by the 
 tool.
+
+Please do not alter them manually.
