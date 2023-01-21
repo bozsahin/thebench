@@ -6,7 +6,7 @@
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 ULB="$HOME/bin"
 ULL=$HOME
-BHF="$ULL/.benchhome" # thebench home path resides in this file
+BHF="$ULL/.thebenchhome" # thebench home path resides in this file
 TMPB='/tmp/thebench'
 SUDO=sudo
 LOGFILE='/tmp/thebench-install.log'
@@ -37,14 +37,16 @@ else
 	echo "No $PY; aborting..."
 	exit -1
 fi
-echo "PLEASE NOTE:"
+echo " "
+echo "**** PLEASE NOTE: ****"
+echo " "
 echo "  In case the installer asks for SUDO PASSWORD"
 echo "  It will be ONLY for installing the Common Lisp's SBCL through SAFE installers"
+echo "  and for opening libraries of the package managers for a more comprehensive search"
 echo " "
 if [ ! -d $ULB ]; then
   LOG+="\n-No $ULB; creating.."
   mkdir $ULB
-  LOG+="\n-*** Please add $ULB to your PATH variable if not already there"
 fi
 if [ ! -d $TMPB ]; then
   mkdir $TMPB
@@ -98,9 +100,12 @@ chmod ugo+x "$ULB/bench"
 chmod ugo+r "$BHF"
 chmod ugo+x "$ULB/bench.train"
 LOG+="\n\n-thebench install: COMPLETED"
-LOG+="\n-You have a $HOME/bin; Put this in your PATH if it's not already there"
-LOG+="\n-Some linuxes detect it automatically; some don't.\n-I'm trying to avoid duplicates"
 LOG+="\n-This log is saved in file $LOGFILE"
 LOG+="\n========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
+# and now for some .bashrc managament tucked at the very end of it 
+printf '%s\n' '# stuff added by thebench installer to set and make PATH unique (kudos to Mitch Frazier for the 2nd line)' >> ~/.bashrc
+printf '%s\n' "PATH=~/bin:$PATH" >> ~/.bashrc
+printf '%s\n' 'PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '"'"'!($0 in a) {a[$0]; print}'"'"')' >> ~/.bashrc
+printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc

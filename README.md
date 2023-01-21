@@ -22,7 +22,7 @@ If you installed python by a package manager, you probably have pip already.
 
 - <a href="https://git-scm.com/downloads">git</a> 
 
-(git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do steps 2-3. If you do care about upgrades, git is safest and easiest).
+(git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do step 2. If you do care about upgrades, git is safest and easiest).
 
 If you already have these utilities in your system, your versions are detected and used by the bench. 
 If not, the installer will complain and exit.
@@ -38,9 +38,6 @@ TO INSTALL:
 2.  In the terminal, and IN <code>thebench</code> directory, do  the following:
 
    <code>bench.install.sh</code>
-
-3. Make sure that <code>~/bin</code> is in your <code>PATH</code> variable. 
-Some linuxes detect it automatically when created, some don'tt; just check it by doing <code>echo $PATH</code>.)
 
 You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
 
@@ -60,7 +57,7 @@ just re-run the installer with that suffix to update thebench libraries, for exa
 
 <code>bench.install.sh 3.11</code>
 
-This will refresh the tool with  <code>pip3.11</code> and <code>python3.11</code>.
+This will refresh the tool to work with  <code>pip3.11</code> and <code>python3.11</code>.
 
 TO USE: 
 

@@ -40,8 +40,8 @@ _tmp='/tmp/thebench/'                  # all bench-generated non-editing files g
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.9'
-_vdate = 'January 20, 2023'
+_version = '0.95'
+_vdate = 'January 21, 2023'
 # 3 built-in extensions recognized by MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
@@ -1255,7 +1255,7 @@ myPromptSession = PromptSession(history = FileHistory(expanduser('~/.thebenchhis
 if __name__ == '__main__': # MG REPL online
     init_grammar()
     welcome()
-    with open(os.environ['HOME']+'/bench.home', 'r') as f:            # full path of repo is in this file
+    with open(os.environ['HOME']+'/.thebenchhome', 'r') as f:        # full path of repo is in this file
         for ws in f:
             p=ws.split()
     _cl.load(p[0]+'/src/bench.lisp')                # load the processor
