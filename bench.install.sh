@@ -6,6 +6,7 @@
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 ULB="$HOME/bin"
 ULL=$HOME
+BHF="$ULL/.benchhome" # thebench home path resides in this file
 TMPB='/tmp/thebench'
 SUDO=sudo
 LOGFILE='/tmp/thebench-install.log'
@@ -14,7 +15,7 @@ PY="`command -v python$PYSUFF`"
 PIP="`command -v pip$PYSUFF`"
 BHOME=`pwd`
 if [ -f $ULB/bench ]; then
-  echo "You have TheBench installed at: `cat $ULL/bench.home`"
+  echo "You have TheBench installed at: `cat $BHF`"
   if [ ! $PYSUFF ]; then   # if empty, it was probably an accidental call
 	  echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
 	  echo "If this run is to refresh TheBench libraries for a new python,"
@@ -90,11 +91,11 @@ if [ ! `command -v sbcl` ]; then
 else
   LOG+="\n-Local sbcl is set for tool use"
 fi
-echo "$labdir" | tee "$ULL/bench.home"
+echo "$labdir" | tee "$BHF"
 ln -s $labdir/src/bench.train.sh $ULB/bench.train
 echo "python$PYSUFF $labdir/src/bench.py" | tee "$ULB/bench"
 chmod ugo+x "$ULB/bench"
-chmod ugo+r "$ULL/bench.home"
+chmod ugo+r "$BHF"
 chmod ugo+x "$ULB/bench.train"
 LOG+="\n\n-thebench install: COMPLETED"
 LOG+="\n-You have a $HOME/bin; Put this in your PATH if it's not already there"

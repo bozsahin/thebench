@@ -11,6 +11,7 @@ You can start using WSL right off the bat if you have Windows; check out <a href
 
 The standard installers
 in these platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by thebench installer. They are built-in, depending on your platform, even under WSL.
+
 As things Apple go, you need an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 
 - <a href="https://www.python.org/">Python 3.8  or above</a>
@@ -74,7 +75,7 @@ TO DEVELOP A GRAMMAR:
 
 Just use your favourite plain text editor and enter a grammar. Then follow help (? command) of thebench to process it.
 
-I suggest you develop grammars NOT in <code>thebench</code> folder.
+I suggest you develop grammars NOT in <code>thebench</code> folder to avoid override in upgrades.
 
 TO UPGRADE:
 
@@ -93,3 +94,18 @@ Enjoy.
 My email is somewhere in the webosphere to google; just drop me an email if you need assistance.
 
 -Cem Bozsahin
+
+A NOTE FOR THE DISCERNING TECHY:
+
+Apart from setting a package directory for <code>thebench</code> in your user space, some files
+are maintained using via the installer mechanism to keep things organized and available from
+anywhere in the computer:
+
+<code>~/.thebenchhome</code> This file contains the full path of thebench repository.
+
+<code>~/.thebenchhistory</code> This file contains history of command use, for easier recall.
+
+<code>~/bin/bench</code> This file contains the full python command line to reach thebench from anywhere.
+
+<code>~/bin/bench.train</code> This is a  symbolic link to the trainer <code>bench.train.sh</code> used by the 
+tool.

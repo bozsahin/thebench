@@ -10,7 +10,7 @@ if [ ! $sure = sure ]; then
   echo "this is to avoid accidental removal"
   exit -1
 fi
-BENCH_HOME="`cat ~/bench.home`"
+BENCH_HOME="`cat ~/.thebenchhome`"
 cd ~
 if [ -d "$BENCH_HOME" ]; then
   echo "Removing $BENCH_HOME"
@@ -20,8 +20,8 @@ if [ -d "/tmp/thebench" ]; then
   echo "Removing /tmp/thebench"
   rm -fr /tmp/thebench
 fi
-rm "~/bench.home"
+rm "~/.thebenchhome"
+rm "~/.thebenchhistory"
 rm "~/bin/bench.train"
 rm "~/bin/bench"
-rm "~/.thebenchhistory"
 echo "Done."
