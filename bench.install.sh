@@ -4,8 +4,8 @@
 # $1 : Python and pip binary suffixes in case there is more than one binary for them
 # brew does not allow sudo anymore-- $SUDO controls that
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
-ULB='/usr/local/bin'
-ULL='/usr/local/lib'
+ULB="$HOME/bin"
+ULL=$HOME
 TMPB='/tmp/thebench'
 SUDO=sudo
 LOGFILE='/tmp/thebench-install.log'
@@ -36,12 +36,11 @@ else
 fi
 echo "PLEASE NOTE:"
 echo "  In case the installer asks for SUDO PASSWORD"
-echo "  It will be for installing the Common Lisp's SBCL through SAFE installers"
-echo "  And for making entries to your $ULB for machine-wide access to TheBench"
+echo "  It will be ONLY for installing the Common Lisp's SBCL through SAFE installers"
 echo " "
 if [ ! -d $ULB ]; then
   LOG+="\n-No $ULB; creating.."
-  $SUDO mkdir $ULB
+  mkdir $ULB
   LOG+="\n-*** Please add $ULB to your PATH variable if not already there"
 fi
 if [ ! -d $TMPB ]; then
@@ -89,13 +88,15 @@ if [ ! `command -v sbcl` ]; then
 else
   LOG+="\n-Local sbcl is set for tool use"
 fi
-echo "$labdir" | $SUDO tee "$ULL/bench.home"
-$SUDO ln -s $labdir/src/bench.train.sh $ULB/bench.train
-echo "python$PYSUFF $labdir/src/bench.py" | $SUDO tee "$ULB/bench"
+echo "$labdir" | tee "$ULL/bench.home"
+ln -s $labdir/src/bench.train.sh $ULB/bench.train
+echo "python$PYSUFF $labdir/src/bench.py" | tee "$ULB/bench"
 $SUDO chmod ugo+x "$ULB/bench"
 $SUDO chmod ugo+r "$ULL/bench.home"
 $SUDO chmod ugo+x "$ULB/bench.train"
 LOG+="\n\n-thebench install: COMPLETED"
+LOG+="\n-You have a $HOME/bin; Put this in your PATH if it's not already there"
+LOG+="\n-Some linuxes detect it automatically; some don't. I'm trying to avoid duplicates"
 LOG+="\n-This log is saved in file $LOGFILE"
 LOG+="\n========================================================="
 echo -e $LOG > $LOGFILE

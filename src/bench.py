@@ -1255,7 +1255,7 @@ myPromptSession = PromptSession(history = FileHistory(expanduser('~/.thebenchhis
 if __name__ == '__main__': # MG REPL online
     init_grammar()
     welcome()
-    with open('/usr/local/lib/bench.home', 'r') as f:
+    with open('~/bench.home', 'r') as f:            # full path of repo is in this file
         for ws in f:
             p=ws.split()
     _cl.load(p[0]+'/src/bench.lisp')                # load the processor
