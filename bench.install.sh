@@ -17,6 +17,8 @@ if [ -f $ULB/bench ]; then
   echo "You have TheBench installed at: `cat $ULL/bench.home`"
   if [ ! $PYSUFF ]; then   # if empty, it was probably an accidental call
 	  echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
+	  echo "If this run is to refresh TheBench libraries for a new python,"
+	  echo "  call it with that suffix, e.g. 'bench.install.sh 3.1' for python3.1"
 	  exit -1
   fi
   echo "Continuing to check pip for library updates"
@@ -91,12 +93,12 @@ fi
 echo "$labdir" | tee "$ULL/bench.home"
 ln -s $labdir/src/bench.train.sh $ULB/bench.train
 echo "python$PYSUFF $labdir/src/bench.py" | tee "$ULB/bench"
-$SUDO chmod ugo+x "$ULB/bench"
-$SUDO chmod ugo+r "$ULL/bench.home"
-$SUDO chmod ugo+x "$ULB/bench.train"
+chmod ugo+x "$ULB/bench"
+chmod ugo+r "$ULL/bench.home"
+chmod ugo+x "$ULB/bench.train"
 LOG+="\n\n-thebench install: COMPLETED"
 LOG+="\n-You have a $HOME/bin; Put this in your PATH if it's not already there"
-LOG+="\n-Some linuxes detect it automatically; some don't. I'm trying to avoid duplicates"
+LOG+="\n-Some linuxes detect it automatically; some don't.\n-I'm trying to avoid duplicates"
 LOG+="\n-This log is saved in file $LOGFILE"
 LOG+="\n========================================================="
 echo -e $LOG > $LOGFILE

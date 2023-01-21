@@ -10,7 +10,7 @@ if [ ! $sure = sure ]; then
   echo "this is to avoid accidental removal"
   exit -1
 fi
-BENCH_HOME=`cat /usr/local/lib/bench.home`
+BENCH_HOME="`cat ~/bench.home`"
 cd ~
 if [ -d "$BENCH_HOME" ]; then
   echo "Removing $BENCH_HOME"
@@ -20,8 +20,8 @@ if [ -d "/tmp/thebench" ]; then
   echo "Removing /tmp/thebench"
   rm -fr /tmp/thebench
 fi
-echo "Need sudo privilege to clear /usr/local/bin and /usr/local/lib off thebench"
-sudo rm '/usr/local/lib/bench.home'
-sudo rm '/usr/local/bin/bench.train'
-sudo rm '/usr/local/bin/bench'
+rm "~/bench.home"
+rm "~/bin/bench.train"
+rm "~/bin/bench"
+rm "~/.thebenchhistory"
 echo "Done."

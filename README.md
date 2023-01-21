@@ -3,15 +3,28 @@ A tool to study monadic structures in natural languages using two command relati
 
 YOU NEED:
 
-- A terminal app, such as those in any Linux, MacOS or Window's WSL system (wsl2 or newer).  You can start using WSL right off the bat if you have Windows; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
-- A software installer.  The standard installers
+- A terminal app, such as those in any Linux, MacOS or Window's WSL system (wsl2 or newer).  
+
+You can start using WSL right off the bat if you have Windows; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
+
+- A software installer.  
+
+The standard installers
 in these platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by thebench installer. They are built-in, depending on your platform, even under WSL.
 As things Apple go, you need an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
+
 - <a href="https://www.python.org/">Python 3.8  or above</a>
+
 - Python module installer <a href="https://pypi.org/project/pip/">pip</a>
-- <a href="https://git-scm.com/downloads">git</a> (git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do steps 2-3. If you do care about upgrades, git is safest and easiest).
+
+If you installed python by a package manager, you probably have pip already.
+
+- <a href="https://git-scm.com/downloads">git</a> 
+
+(git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do steps 2-3. If you do care about upgrades, git is safest and easiest).
 
 If you already have these utilities in your system, your versions are detected and used by the bench. 
+If not, the installer will complain and exit.
 
 TO INSTALL: 
 
@@ -25,12 +38,19 @@ TO INSTALL:
 
    <code>bench.install.sh</code>
 
-3. Make sure that <code>/usr/local/bin</code> is in your <code>PATH</code> variable. (It is
-usually there by default; just check it by doing <code>echo $PATH</code>.)
+3. Make sure that <code>~/bin</code> is in your <code>PATH</code> variable. 
+Some linuxes detect it automatically when created, some don'tt; just check it by doing <code>echo $PATH</code>.)
 
 You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
 
-PYTHON NOTE:
+MULTI-USER SYSTEMS:
+
+The installer is designed to set thebench up in a personal computer, where you would have
+<code>sudo</code> access to install goodies like Common Lisp, which we need for
+the processor. If you work in a multi-user system, ask your admin to install <code>SBCL</code> for you.
+Then thebench install script will detect that and won't complain.
+
+PYTHON UPGRADE NOTE:
 
 Python versions can be daunting for the uninitiated. Don't count on the executable <code>python</code> to be the latest python. You might also have python3.8, python3.9, python3141.59 etc. 
 

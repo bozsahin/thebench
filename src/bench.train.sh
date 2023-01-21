@@ -21,7 +21,7 @@
 #      This is useful for initializing switches etc.
 TRAIN=train-nohup-sbcl    # this function is in bench.lisp
 BENCH_LISP="sbcl --dynamic-space-size $1"
-BENCH_HOME="`cat /usr/local/lib/bench.home`"
+BENCH_HOME="`cat ~/bench.home`"
 LOGFILE="$8.log"
 N=$5  # whether this is iteration count or xp determines which trainer to call
 if [ $5 = xp ]; then
