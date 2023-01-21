@@ -94,15 +94,16 @@ My email is somewhere in the webosphere to google; just drop me an email if you 
 
 A NOTE FOR THE DISCERNING TECHY:
 
-Apart from setting a package directory for <code>thebench</code> in your user space, some files
-are maintained using via the installer mechanism to keep things organized and available from
-anywhere in the computer:
+Apart from setting a package directory for <code>thebench</code> in your user space, the installer
+creates some files to keep things organized and available from
+anywhere in the computer. There are four of them:
 
-<code>~/.thebenchhome</code> This file contains the full path of thebench repository.
+<code>~/.thebenchhome</code> This file contains the full path of thebench repository in your installation.
 
-<code>~/.thebenchhistory</code> This file contains history of command use, for easier recall.
+<code>~/.thebenchhistory</code> This file contains history of your command use for easier recall.
 
-<code>~/bin/bench</code> This file contains the full python command line to reach thebench from anywhere.
+<code>~/bin/bench</code> This file contains the full python command line to reach thebench from anywhere
+in your user space.
 
 <code>~/bin/bench.train</code> This is a  symbolic link to the trainer <code>bench.train.sh</code> used by the 
 tool.
