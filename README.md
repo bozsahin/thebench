@@ -94,9 +94,9 @@ My email is somewhere in the webosphere to google; just drop me an email if you 
 
 -Cem Bozsahin
 
-A NOTE FOR THE DISCERNING TECHY:
+NOTES FOR THE DISCERNING TECHIE:
 
-Apart from setting a package directory for <code>thebench</code> in your user space, the installer
+In addition to setting a package directory for <code>thebench</code> in your user space, the installer
 creates some files to keep things organized and available from
 anywhere in the computer. There are four of them:
 
@@ -111,3 +111,8 @@ in your user space.
 tool.
 
 Please do not alter them manually.
+
+The installer also creates a <code>~/bin<code> directory at your home, if you don't already have one.
+The only surgical touch to your <code>~/.bashrc<code>, which is where your bash variables
+are kept (usually), is to this directory to the PATH and eliminate duplicates in it.
+There are no bench-related environment variables.
