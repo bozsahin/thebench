@@ -43,6 +43,15 @@ TO INSTALL:
 
 You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
 
+TO USE: 
+
+just do
+
+<code>bench</code>
+
+Use UP and DOWN keys for command recall. TheBench keeps its specific command history in <code>.thebenchhistory</code>
+file at your home directory.
+
 MULTI-USER SYSTEMS:
 
 The installer is designed to set thebench up in a personal computer, where you would have
@@ -60,15 +69,6 @@ just re-run the installer with that suffix to update thebench libraries, for exa
 <code>bench.install.sh 3.11</code>
 
 This will refresh the tool to work with  <code>pip3.11</code> and <code>python3.11</code>.
-
-TO USE: 
-
-just do
-
-<code>bench</code>
-
-Use UP and DOWN keys for command recall. TheBench keeps its specific command history in <code>.thebenchhistory</code>
-file at your home directory.
 
 TO DEVELOP A GRAMMAR:
 
