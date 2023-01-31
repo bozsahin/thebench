@@ -296,7 +296,7 @@ class PHONParser(Parser):
         pass
 
 class SUPLexer(Lexer): # Token types for supervision pairs
-    tokens = {ID, BANGID, ITEM, DOT, LP, RP, BS, END, ANY}
+    tokens = {ID, BANGID, LCOMMOD, ITEM, DOT, LP, RP, BS, END, ANY}
 
     ignore = ' \t'            # whitespace
     ignore_comment = r'\%.*'  # ignore everything starting with %
@@ -310,6 +310,7 @@ class SUPLexer(Lexer): # Token types for supervision pairs
     RP     = r'\)'
     BS     = r'\\'            # lambda also uses this
     END    = _overscore                               # not visible to user.
+    LCOMMOD= r'_'             # all by itself
     ANY    = r'.'             # in case nothing matches (last chance before error)
 
     def error(self, tok):                     # best to avoid adding this to token types
@@ -317,7 +318,7 @@ class SUPLexer(Lexer): # Token types for supervision pairs
         self.index += 1
 
 class MGLexer(Lexer):  # Token types of monadic grammar specifications
-    tokens = { ID, BANGID, RNAME, SPECID, ITEM, M, SRULE, ARULE, END, LSQ, RSQ, COM, CORR, DOT, SQCAT, DQCAT,
+    tokens = { ID, BANGID, LCOMMOD, RNAME, SPECID, ITEM, M, SRULE, ARULE, END, LSQ, RSQ, COM, CORR, DOT, SQCAT, DQCAT,
                LP, RP, LB, RB, EQ, BS, FS, BDS, FDS, MODHAR, MODAPP,
                MODX, VARVAL, INUM, RNUM, ANY}
 
@@ -331,7 +332,7 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
     SPECID = r'@[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'       # special IDs, app only
     RNAME  = r'\#[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'      # rule names start with #
     BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
-    ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'      # (at least one alphabetical symbol for cat symbols not beginning with +, which is a modality, not part of basic cat name)
+    ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+\>\<]*'      # (at least one alphabetical symbol for cat symbols not beginning with +, which is a modality, not part of basic cat name)
     RNUM   = r'[\-\+]?\d+\.\d+'
     INUM   = r'\d+'
     END    = _overscore                               # RHS defined globally, not visible to user.
@@ -358,6 +359,7 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
     MODAPP = r'\*'
     MODX   = r'\+'
     VARVAL = r'\?[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  # variable name for term unification
+    LCOMMOD= r'_' # all by itself
     ANY    = r'.'             # in case nothing matches (last chance before error)
 
     def error(self, tok):                     # best to avoid adding this to token types
@@ -409,11 +411,7 @@ class SUPParser(Parser):      # the syntax of string : meaning pairs
     def lbody(self, p):
         return p.lterm
 
-    @_('ID')
-    def body(self, p):
-        return p[0]
-
-    @_('BANGID')
+    @_('ID','LCOMMOD','BANGID')
     def body(self, p):
         return p[0]
 
@@ -460,13 +458,6 @@ class MGParser(Parser):       # the syntax of MG entries
         if not _online:
             _info['pos'][p[0]] = True
         return p[0]
-
-    @_('SQCAT')                  # quotes dont go into data -- already a string
-    def pos(self, p):
-        global _info, _online
-        if not _online:
-            _info['pos'][p[0][1:-1]] = True
-        return _ws.join(p[0][1:-1].split())
 
     @_('r')
     def l(self, p):
@@ -682,11 +673,7 @@ class MGParser(Parser):       # the syntax of MG entries
     def bodys(self, p):
         return p.body
 
-    @_('ID')
-    def body(self, p):
-        return p[0]
-
-    @_('BANGID')
+    @_('ID','LCOMMOD','BANGID')
     def body(self, p):
         return p[0]
 
