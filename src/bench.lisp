@@ -2973,7 +2973,7 @@
 (defun lambda-off ()
   (setf *lambdaflag* nil) (format t "Only final LF will be shown~%"))
 
-(format t "processor: bench.lisp loaded, version ~A, encoding ~A~%" 
+(format t "lisp     : bench.lisp loaded, version ~A, encoding ~A~%" 
   (multiple-value-bind (pr v) (which_processor)
     v)
   sb-impl::*default-external-format*)
