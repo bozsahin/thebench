@@ -3,6 +3,25 @@
 # The new install does not alter PATH or .bashrc or .bash_profile; no environment variables either
 # $1 : Python and pip binary suffixes in case there is more than one binary for them
 # brew does not allow sudo anymore-- $SUDO controls that
+
+if [ $1 == uninstall ]; then
+	BENCH_HOME="`cat ~/.thebenchhome`"
+	cd ~
+	if [ -d "$BENCH_HOME" ]; then
+  	echo "Removing $BENCH_HOME"
+  	rm -fr $BENCH_HOME
+	if [ -d "/tmp/thebench" ]; then
+  		echo "Removing /tmp/thebench"
+  		rm -fr /tmp/thebench
+	fi
+	echo "Removing user files from user home"
+	rm "~/.thebenchhome"
+	rm "~/.thebenchhistory"
+	rm "~/bin/bench.train"
+	rm "~/bin/bench"
+	echo "Uninstall completed."
+	exit 0
+fi
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 ULB="$HOME/bin"
 ULL=$HOME
@@ -109,3 +128,4 @@ printf '%s\n' '# stuff added by thebench installer to set and make PATH unique (
 printf '%s\n' "PATH=~/bin:$PATH" >> ~/.bashrc
 printf '%s\n' 'PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '"'"'!($0 in a) {a[$0]; print}'"'"')' >> ~/.bashrc
 printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
+fi

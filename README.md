@@ -84,9 +84,9 @@ in your <code>thebench</code> directory do
 
 TO UNINSTALL:
 
-Go to <code>src</code> subdirectory of the bench, and do
+do
 
-   <code>bench.uninstall.sh sure</code>
+   <code>bench.install.sh uninstall</code>
 
 Enjoy. 
 
