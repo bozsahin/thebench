@@ -14,7 +14,7 @@ if [ $1 == uninstall ]; then
   		echo "Removing /tmp/thebench"
   		rm -fr /tmp/thebench
 	fi
-	echo "Removing user files from user home"
+	echo "Removing thebench files from user home"
 	rm "~/.thebenchhome"
 	rm "~/.thebenchhistory"
 	rm "~/bin/bench.train"
