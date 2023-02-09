@@ -6,14 +6,14 @@
 if [ $1 == uninstall ]; then
 	BENCH_HOME="`cat ~/.thebenchhome`"
 	cd ~
-	if [ -d "$BENCH_HOME" ]; then
+	if [ -d $BENCH_HOME ]; then
   	echo "Removing $BENCH_HOME"
   	rm -fr $BENCH_HOME
 	if [ -d "/tmp/thebench" ]; then
   		echo "Removing /tmp/thebench"
   		rm -fr /tmp/thebench
 	fi
-	echo "Removing thebench files from user home"
+	echo "Removing thebench files from $HOME"
 	rm "~/.thebenchhome"
 	rm "~/.thebenchhistory"
 	rm "~/bin/bench.train"
