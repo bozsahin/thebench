@@ -1,9 +1,8 @@
 #!/bin/bash
 # cem bozsahin 2023
-# The new install does not alter PATH or .bashrc or .bash_profile; no environment variables either
-# $1 : Python and pip binary suffixes in case there is more than one binary for them
-# brew does not allow sudo anymore-- $SUDO controls that
-
+# The new install does not alter .bashrc or .bash_profile; no environment variables either
+# $1 : 'uninstall' or Python and pip binary suffixes in case there is more than one binary for them
+# brew does not allow sudo--$SUDO controls that
 if [ $1 == uninstall ]; then
 	BENCH_HOME="`cat ~/.thebenchhome`"
 	cd ~
