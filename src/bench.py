@@ -735,7 +735,7 @@ def help ():
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
         print(f" g .    | grammar text .  checked and its source made current ({_binext} file goes to {_tmp})")
         print(f' i .    | intermediate representation of current grammar saved (file . goes to {_tmp})')
-        print(f" k . .  | chunks expressions starting with the element . onto category .")
+        print(f" k . .  | reports categorial skeleton of the current grammar---its distinct syntactic cats")
         print(f" l . .. | Lisp function . is called with args .., which takes them as strings")
         print(f' o ..   | OS/shell command .. is run at your own risk (be careful with deletes)')
         print(f' r ..   | ranks .. in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
