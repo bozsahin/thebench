@@ -3,16 +3,18 @@
 
 (defun beam07-app ()
   "sets beam and turns of normal form parse"
+  (monad-all)
   (setf *beam-exp* 0.7)
   (nfparse-on)
   (beam-on)
   )
 
 (defun nobeam-nf-apphcomp ()
-  "allowing harmonic composition only"
+  "Finer control than monad-all: allowing harmonic composition only"
   (nfparse-on)
   (beam-off)
-  (setf *f-apply* t) ;application
+  (monad-all) ; first turn them all on, then restrict
+  (setf *a-apply* t) ;application
   (setf *b-apply* t)
   (setf *f-comp* t)  ;composition
   (setf *b-comp* t)

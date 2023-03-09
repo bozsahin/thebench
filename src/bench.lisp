@@ -385,8 +385,8 @@
                           ;  to get partial parses as much as possible in a knowledge-poor way.
 
 ;; rule switches and default values
-(mydef *f-apply* t)   ;application
-(mydef *b-apply* t)
+(mydef *a-apply* t)   ;application
+(mydef *t-apply* t)
 (mydef *f-comp* t  )  ;composition
 (mydef *b-comp* t)
 (mydef *fx-comp* t)
@@ -426,8 +426,8 @@
   (if beam (beam-on) (beam-off))
   (if oov (oov-on) (oov-off))
   (setf 
-    *f-apply* t   ;application
-    *b-apply* t
+    *a-apply* t   ;application
+    *t-apply* t
     *f-comp* t    ;composition
     *b-comp* t
     *fx-comp* t
@@ -447,8 +447,8 @@
   (if beam (beam-on) (beam-off))
   (if oov (oov-on) (oov-off))
   (setf 
-    *f-apply* t   ;application
-    *b-apply* t
+    *a-apply* t   ;application
+    *t-apply* t
     *f-comp* nil    ;composition
     *b-comp* nil
     *fx-comp* nil
@@ -955,7 +955,7 @@
   to each other to avoid global variable passing of the HPSG kind.
   E.g. agr=?x in sht1 and agr=?y in sht2, would make first agr ?y.
   There ain't no global variables or complex features.
-  There is no unification. Feature match is simply value match or lack of value.
+  There is no structured unification. Feature match is simply value match or lack of value.
   Returns 3 values: success of match, local variables and their values in two binding
   lists of the form (feature variable value).
   First list relates to left term, and right list to right term."
@@ -1128,13 +1128,13 @@
 ;; Monad's dependency rule. Succesful combination creates a new cky entry with SYN SEM INDEX PARAM
 ;;    PARAM is calculated by the caller of caller, because it is a common method for all rules.
 
-(defun f-apply (ht1 ht2 lex2 coord2) 
+(defun a-apply (ht1 ht2 lex2 coord2) 
   "forward application"
   (and (complexp-hash (machash 'SYN ht1))
        (forward-nf)
        (eql (machash 'DIR 'SYN ht1) 'FS) ; no need to check modality, all entries qualify for application.
        (if (machash 'BCONST 'ARG 'SYN ht1) 
-	 (return-from f-apply (singleton-match ht1 ht2 lex2 'A coord2)) t) ; short-circuit f-apply if arg is singleton
+	 (return-from a-apply (singleton-match ht1 ht2 lex2 'A coord2)) t) ; short-circuit a-apply if arg is singleton
        (multiple-value-bind (match b1) ; b2 is not needed from (values)
 	 (cat-match (machash 'ARG 'SYN ht1) (machash 'SYN ht2))
 	 (and match 
@@ -1147,13 +1147,13 @@
 		(setf (machash 'SYN newht) (realize-binds (machash 'RESULT 'SYN ht1) b1))
 		newht)))))
 
-(defun b-apply (ht1 ht2 lex1 coord1) 
+(defun t-apply (ht1 ht2 lex1 coord1) 
   "backward application"
   (and (complexp-hash (machash 'SYN ht2))
        (backward-nf)
        (eql (machash 'DIR 'SYN ht2) 'BS) ; no need to check modality, all entries qualify for application.
        (if (machash 'BCONST 'ARG 'SYN ht2) 
-	 (return-from b-apply (singleton-match ht2 ht1 lex1 'T coord1)) t) ; short-circuit b-apply if arg is singleton
+	 (return-from t-apply (singleton-match ht2 ht1 lex1 'T coord1)) t) ; short-circuit t-apply if arg is singleton
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'SYN ht1) (machash 'ARG 'SYN ht2))
 	 (use-value b1) ; dummy use of b1, not needed but cant be skipped in (values)
@@ -1637,8 +1637,8 @@
 	      (eql (machash 'DIR 'SYN ht2) 'FS)) ; the only functional case which no rule can combine 
 	 (return-from monad-combine nil))
 	)
-  (or (and *f-apply* (f-apply ht1 ht2 lex2 coord2)) ; application -- the only relevant case for lex slash
-      (and *b-apply* (b-apply ht1 ht2 lex1 coord1))
+  (or (and *a-apply* (a-apply ht1 ht2 lex2 coord2)) ; application -- the only relevant case for lex slash
+      (and *t-apply* (t-apply ht1 ht2 lex1 coord1))
       (and *f-comp* (f-comp ht1 ht2))           ; composition
       (and *b-comp* (b-comp ht1 ht2))
                                                 ; <Bx and >Bx cannot be short-circuited if X=Z in X/Y Y\Z
@@ -1658,8 +1658,8 @@
       (and *b3-comp* (b3-comp ht1 ht2))
       (and *fx3-comp* (fx3-comp ht1 ht2))
       (and *bx3-comp* (bx3-comp ht1 ht2))
-      (and *f-apply* (f-special ht1 ht2))       ; application only special cats @X, @Y ...
-      (and *b-apply* (b-special ht1 ht2))))
+      (and *a-apply* (f-special ht1 ht2))       ; application only special cats @X, @Y ...
+      (and *t-apply* (b-special ht1 ht2))))
 
 (defun apply-unary-rules (i j m lexp)
   "applies all the unary rules to the result in CKY cell i j k, where k=1,...m.
