@@ -420,11 +420,7 @@
 ;; rule switch wholesale controls
 ;; ------------------------------
 
-(defun monad-all (&key (nf-parse t) (lf t) (beam nil) (oov nil))
-  (if nf-parse (nfparse-on) (nfparse-off))
-  (if lf (lambda-on) (lambda-off))
-  (if beam (beam-on) (beam-off))
-  (if oov (oov-on) (oov-off))
+(defun monad-all ()
   (setf 
     *a-apply* t   ;application
     *t-apply* t
@@ -441,11 +437,7 @@
     *fx3-comp* t
     *bx3-comp* t))
 
-(defun monad-montague (&key (nf-parse t) (lf t) (beam nil) (oov nil) )
-  (if nf-parse (nfparse-on) (nfparse-off))
-  (if lf (lambda-on) (lambda-off))
-  (if beam (beam-on) (beam-off))
-  (if oov (oov-on) (oov-off))
+(defun monad-montague ()
   (setf 
     *a-apply* t   ;application
     *t-apply* t
@@ -2370,8 +2362,8 @@
 (defun mklist (obj)
   (if (listp obj) obj (list obj)))
 
-(defun reset-globals()
-  "resets the dynamic globals. If you change e.g. *epsilon* etc. just reload."
+(defun reset-globals(&key (silent nil))
+  "resets the dynamic globals."
   (setf *print-readably* nil)
   (setf *print-pretty* t) 
   (setf *lex-rules-table* nil)
@@ -2385,8 +2377,12 @@
   (setf *cky-lf* nil) 
   (setf *loaded-grammar* "")
   (setf *current-grammar*  nil)
-  (monad-all :nf-parse t :lf t :beam nil 
-	     :oov nil)) ; turn experimental rules off by default
+  (beam-off)
+  (lambda-on)
+  (nfparse-on)
+  (oov-off)
+  (monad-all)
+  (if (not silent) show-config)) 
 
 (defun almost-eq (x y)
   (<= (abs (- x y)) *epsilon*))
@@ -2941,37 +2937,38 @@
     (save-training-xp out)  ; this is to save the grammar---session output always to names with nohup.out when called 
     ))
 
-(defun nf-and-beam ()
-  (monad-all :nf-parse t :beam t))
-
 (defun noop () ; used in bench.py to keep #arguments constant
   (values))
 
 ; switch control
 
 (defun beam-off ()
-  (setf *beamp* nil)(beam-value))
+  (setf *beamp* nil))
 
 (defun beam-on ()
-  (setf *beamp* t)(beam-value))
+  (setf *beamp* t))
 
 (defun nfparse-off ()
-  (setf *nf-parse* nil)(nf-parse-value))
+  (setf *nf-parse* nil))
 
 (defun nfparse-on ()
-  (setf *nf-parse* t)(nf-parse-value))
+  (setf *nf-parse* t))
 
 (defun oov-off ()
-  (setf *oovp* nil) (format t "OOV is reset (OOV errors reported)~%"))
+  (setf *oovp* nil))
 
 (defun oov-on ()
-  (setf *oovp* t) (format t "OOV is set (OOV errors not reported)~%"))
+  (setf *oovp* t))
 
 (defun lambda-on ()
-  (setf *lambdaflag* t) (format t "All LFs will be shown~%"))
+  (setf *lambdaflag* t))
 
 (defun lambda-off ()
-  (setf *lambdaflag* nil) (format t "Only final LF will be shown~%"))
+  (setf *lambdaflag* nil))
+
+; almost there
+
+(reset-globals :silent t)
 
 (format t "lisp     : bench.lisp loaded, version ~A, encoding ~A~%" 
   (multiple-value-bind (pr v) (which_processor)
