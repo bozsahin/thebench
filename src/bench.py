@@ -1247,7 +1247,7 @@ if __name__ == '__main__': # MG REPL online
         for ws in f:
             p=ws.split()
     _cl.load(p[0]+'/src/bench.lisp')                # load the processor
-    print(f"python   : encoding {sys.getdefaultencoding()}")
+    print(f"python   : bench.py   loaded, version {_version}, encoding {sys.getdefaultencoding()}")
     print("ready")
     command = _silent
     while split_command(command)[0] != _exit:
