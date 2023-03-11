@@ -1109,7 +1109,8 @@ def do (commline):
             print('something went wrong')
     elif comm == 'k':
         try:
-            _lisp.function('skeleton')(tuple(args))
+            _lisp.function('skeleton')()
+            print(f"use > command beforehand to save the result")
         except Exception:
             print('something went wrong')
     elif comm == 'a':

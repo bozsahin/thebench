@@ -2913,9 +2913,9 @@
 			  skht))
 	     skht)
     (maphash #'(lambda (k v) ; report what is left
-		 (format t "~%item: ~A cat: ~A~%====i~%" (first v) (machash 'SYN (second v))))
+		 (format t "~%elements: ~A~%category: ~A~%--------~%" (first v) (linearize-syn (machash 'SYN (second v)))))
 	     skht))
-  )
+  t)  ; return success to python
 
 ;; some nohup-friendly test suite -- all is written offline
 ;; this stuff is used by bench-train-.. scripts 
