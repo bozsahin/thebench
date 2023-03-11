@@ -1,0 +1,819 @@
+
+elements: (MORE YOUR A THE SOME HIS HER THAT GOOD MY NICE YOUR WHICH AN LOTS-OF
+           ANOTHER FUNNY CLEAN NEW BIG WHICH LITTLE LOVELY WHOSE SWELL NO ANY
+           SQUEAKY JELLY EMPTY LONG BROWN RED ROUND BLUE PINK YELLOW GREEN ONLY
+           THESE ALL OLD ROUND DIRTY BRAND-NEW THEIR THOSE AND BOUNCY BOTH OWN
+           SHORT ICED WISE NEXT LEFT SILLY OUR COMPLICATED PRETTY SO-MUCH FAT
+           BEAUTIFUL NEAR MANY ORANGE BIGGER WHAT WHOLE FIRST MESSY LOUD CURLY
+           OTHER)
+category: NP/NP
+--------
+
+elements: (MORE)
+category: PREDP/PREDP
+--------
+
+elements: (JUICE IT THAT ONE HE MILK JUICE WATER COFFEE TOP ME MY CHEESE SOUP
+           PUDDING CELERY SHE THIS COFFEE YOURS SUGAR HORSIE THEY LIGHT OFF
+           REST TAPIOCA BREAKFAST TOMATO-SOUP CLEANING PUSH GRAPE-JUICE NOW HIM
+           SOMETHING LUNCHTIME BREAD BUTTER NOISE BOUILLON DOOC DL-EL-FL FL
+           PEANUTBUTTER WEDNESDAY THESE CHOCOLATE MINE CREAM HAIR TRASH
+           SATURDAY THOSE CL BL DL NOODLE-SOUP VITAMIN-TIME VITAMIN EVERYBODY
+           NOBODY THREE-O-CLOCK YESTERDAY NOTHING TIME HAPPINESS ITSELF OHIO
+           MONDAY YOURSELF DISH RICE RICE-SOUP MEAT ANYTHING SOME US
+           VEGETABLE-SOUP GRUYERE-CHEESE PEPPER CLAY NAP HER SOMEBODY PARSLEY
+           BACON LOBSTER-SALAD RAIN MARKET MAYONNAISE HAIR CEREAL TEA COLORADO
+           CAMBRIDGE ENGLAND MEDICINE TODAY DESSERT SNAP SUPPER SALT MAGIC
+           JELLO INDIGESTION MUSIC ORANGE-PEEL ICING POPCORN HEAT TOMORROW
+           ROCKABYE-BABY TAPE HAY ICECREAM SNOW AL-BL-CL TONIGHT
+           CHOCOLATE-ICECREAM EVERYTHING CHOCOLATE-ICECREAM GRAVY)
+category: NP
+--------
+
+elements: (? DO READ GO GO SIT SIT LOOK LOOK FALL TURN PLAY GOES PLAY DANCE
+           GONE WENT IS CHIRPS WHISTLE CHIRP MOVE DID MELTED CAME COMES MANAGED
+           STAY WET FELL SEES LIVES MELT DRAW DO CARE HURT COLOR TRIPPED BEND
+           STOPS FINISHED WHISTLE COME CARE SING START LISTENS WORK ARE CRY
+           LAUGH HURTS BE WORKS HURT PAINT COME CRY DRAW TRY WALK AM WAS EAT
+           WAIT PLAY EAT READ LAY TORE STAND CLIMB MOVE SWING JUMP JUMP SLEEP
+           DROPPED SWAYS SWIM BLOW BURP BURPED SLIPPED WERE CRIED MOVED EATS
+           JUMP SLEEP DO)
+category: S\*NP
+--------
+
+elements: (WHERE WHAT WHO WHAT-ELSE WHOSE WHAT)
+category: S/(S/NP)
+--------
+
+elements: (IS ARE WAS DID)
+category: (S/NP)/NP
+--------
+
+elements: (CUP FLY TELEPHONE MAN COOKIE BABY BOOK STOOL HAT DOLLY BOTTLE MAN
+           LETTER PENCIL CORNER SHOE CHOOCHOO LUNCH RADIO GIRL SEAT LUNCH HEAD
+           PAPER DIAPER CHAIR GOOD TAPERECORDER CRACKER APPLE NAME SPOOL NAPKIN
+           MOUTH RECORD COUGH BANJO FLOOR FINGER LETTER KING BEAR CAT FOX DOG
+           KITTY WELL FISH BRIEFCASE BIRD HORSE TABLE BIBBIE SPOON BED TOMATO
+           WIENER SKUNK BOX ERASER CUPBOARD CHEESE-SANDWICH BICYCLE DUCK PIECE
+           CHIRP SNOWMAN BLANKET COUCH SANDWICH PADDLE HOLE NAP BEAD COOKBOOK
+           COLD GAS-MAN BAG BABY-DOLL BOY PEN RING WATCH IDEA PARTY CAKE-PLATE
+           TRAIN ENVELOPE WALK DOILY CARD SPOT TUNNEL FRIEND BANK PEAR
+           BIRTHDAY-SANDWICH BIRTHDAY-CAKE ICING CLOSET EAR AL DRUM STICK FUN
+           BOARD BUILDING BOAT BIT FLOWER SIDE WORD NOISE COAT TUMMY KISS
+           TABLET LADY MUSTACHE JACKET ABC GLASS SQUIRREL CAKE SLIVER COOK
+           MISTAKE CLOCK LOCK KEY COW THING TURTLE GRAHAMCRACKER DOOR DOORWAY
+           HOUSE WINDOW SUITCASE HOUSE-BUILDING BITE CHIN EYE KNOT TRACK
+           RAILROAD SANDBOX WAY PIZZERONIC BLANKIE BLANKET BALLOON DIRT GATE
+           HELP PEDALPUSHERS BATH-MAT COUNTER DRAWER PIPE ZERO SIX FRUIT YES
+           DAY MORNING BONE CHICKEN-BONE SOMERSAULT HAIRCUT CANDLE HIGHCHAIR
+           SCRATCH ELBOW VACCINE TONGUE DINOSAUR FAN DAUGHTER FAMILY SPIGOT
+           FEET BANDAID FRONT PILLOW PAD BOOT MAAM CHOCOLATE-COOKIE AIRPLANE
+           PLANE CAMERA-SPOOL JAR KIND STORY BURRO NEWSPAPER SONG BALL
+           BABY-SISTER DINGDONG-DELL CART LOLLIPOP LOT ZWIEBACK WEDDING
+           NURSERY-RHYME FOOT PICTURE STATUE FINGERNAIL HANGNAIL BUS
+           SAILINGBOAT BUS-STOP MOMENT TREE END REFRIGERATOR COOKIE-PRESS
+           MINUTE MUG CLOWN NOSE GARAGE SUBWAY TOMATO-SANDWICH PART
+           PINEAPPLE-DESSERT RABBIT BANDAID BEACH EGGNOG RUG
+           PEANUTBUTTER-SANDWICH THUMB LEMON ACCIDENT CANDY WASTEBASKET BLOUSE
+           GOOSE BACK FIRE HAND FORK PENNY EGG BASEMENT COOLPOP MAILMAN BUBBLE
+           ASHTRAY CAN GARBAGE POTTIE PAGE CUSTARD DRINK NOODLE PUMPKIN MACHINE
+           WASHINGMACHINE TINKERTOY-CAN TINKERTOY GUN BUTTERFLY TEDDYBEAR DEAR
+           MUFFIN UMBRELLA GRAPE TRUCK CRAYON MATTER TOY RATTLE FACE DRESS
+           POPSICLE LEG SILLY JUMP EXERCISE PITCHER TOE ARM LAP STOVE FURNITURE
+           SHELF CARROT BOWL TOWER BLOCK SOCK ROOM BANANA HAMMER SWEATER GAME
+           COFFEE-POT DANCE LIVINGROOM VANILLA ROCKINGCHAIR BOTTOM PUZZLE CLIP
+           COIN BASEBALL-COIN POCKET BASEBALL SWEETIE HAM GOLDFISH HAMBURGER
+           SHEEP SCARF POLICEMAN APPLE ELEPHANT BUNNY DOGGIE COW DUSTPAN
+           GIRAFFE CAR SAILBOAT BUG STYLUS WEEK OLIVE STRING FIRETRUCK BATH
+           BATHROBE BATHTUB KNEE PAPER-BAG PAPER-CLIP REEL CAN MOUTHFUL MESS
+           PICKLE ROCKABYE TIGER ZEBRA NIPPLE TURN BUTTON ICECREAM-CONE TROUBLE
+           CHICAGO BROOM KNOB SHOVEL SUGAR-TOP BOX-TOP TEAPOT GOAT COVER
+           KANGAROO RIBBON BELL WAGON BOOM TAIL BIT SPONGE CHECK FOOD)
+category: NP
+--------
+
+elements: (I WHO THERE WHAT DOWN HERE OUTSIDE INSIDE DOWNSTAIRS AROUND UP
+           UPSTAIRS)
+category: NP
+--------
+
+elements: (TOOK AM SAYING GET CALLING DOING WANT DO IS READ EAT ATE HAD
+           DRINKING HAVE HAS FIND ARE WRITE SAY WAS MAKING HIT EATS BRING BRING
+           TASTE CHANGE CALL CALLED WRITING HAVING TURN TURN SEE HURT HURT HEAR
+           FIX FORGOT COOK DROPPED USING CUT FINISHED NEED UNDERSTAND USE DOES
+           WEARING HOLD TIE BITE BIT TOUCH GOT OPEN HELP KNOW CRACKING LEAVE
+           LEAVE SNAP LOSE PULLED MAKE WATCHING BUILDING SPELL SPELLS SPELLING
+           BURNED DROP DROP DRAW DID TAKE SAW WIPE TURNING MADE EATEN TORE
+           TRYING LICK BROKE BREAK MOVES SHARE NEEDS SHARING POURING CLEAN
+           CATCH FOLDING FOLD BE SPILL WANT DO WEARS SEE LIKE FIXED WEAR
+           RUBBING HEAR SAID HAVE SAY SPILLED EAT GETTING IRONED TRADE CUT MAKE
+           SINGING SING PEEL CALLED TAKE TAKING FORGET WRITE TELL DRINK NEED
+           SING EATING FIND READING GET TELL WASH FORGET CAUGHT READ DRAWING
+           DRAW GOT WASHED LIKE FOUND HIT PULLING THROW MOVING SHOOTING PAINT
+           MOVE FIX WANTS BUY SENT COOKING HAD MEAN SHUT SHUT HOLD DRINK MOVE
+           BUMPED CUTTING COOK HELP WATCH STIR STIR WATCH EMPTYING DREW THANK
+           CLOSE KISS FINISH TOP USED HOLDING CATCH HEARD THROWING BUILD
+           IMPROVES PIN ANSWER CRACK CRACKED CHANGE COUNT DECORATING ICING
+           DIGGING CARRY FEED MISSED RIDE DRINKS FIXING RUINING ROCKING PULL
+           USED LOOKED PINCH COOL PICK ASK ROLL PUT PUT)
+category: (S\NP)/NP
+--------
+
+elements: (AM BE ARE WAS)
+category: (S\NP)/PREDP
+--------
+
+elements: (NOT)
+category: @X/@X
+--------
+
+elements: (SURE BUSY ALRIGHT BETTER RIGHT UNHAPPY READY HOT WELCOME ALLGONE
+           SLEEPY GREEN DONE SORRY EASIER EARLY OKAY BIGGER BLUE FINE BROWN RED
+           DIRTY FUNNY TRUE WRONG EMPTY BIG WHITE CAREFUL GOOD GLAD SHORT SILLY
+           HUNGRY NICE INDEED WONDERFUL FINISHED LONG WARM SICK HEAVY STRAIGHT
+           ENOUGH GREAT AWAKE DISAPPOINTED OKKAY TIRED CLEAN HAPPY AWFUL
+           NECESSARY ALL-THE-SAME LOST COLD COMFORTABLE FUN NOISY THIRSTY LOOSE
+           MESSY OPEN)
+category: PREDP
+--------
+
+elements: (ARE IS CAN DID WILL WANT DO DOES WOULD HAVE SHALL SHOULD MAY HAS
+           WERE WAS AM (QUOTE D))
+category: (S/(S\NP))/NP
+--------
+
+elements: (YOU)
+category: NP
+--------
+
+elements: (FRASER MOMMY JACK JILL EVE RACKETYBOOM NEIL SAMBO DOLLY GRANMA THEM
+           CROMER BECKY MAMA KATHY HUMPTYDUMPTY DUMPTY SANDY PAPA GORDON SHEILA
+           CATHY JIM MOM GRANNY RICK SARAH HIPPITYHOP NANNY BOSTON FROSTY
+           EMERSON SNEEZER JOANNE POP TIMOTHY TIMMY JOSH JOHN MURRAY NOEL POPS
+           KLEENEX NANCY TAFFY EVECUMMINGS GLORIA HUMM COLIN GOD HELGA
+           EVE-CUMMINGS COLINGC BAABAABLACKSHEEP EXETER RUKO FIZZIE
+           NEWBRUNSWICK BENNY DAVID GRANDPA PETER SCHROEDER DINAH JULIE JACKIE
+           LADYBUMP FIZZIE MOMMA SARA LASSIE RANGY NATALIE CLIPCLOP
+           HUMMTHEHAMSTER OLDMACDONALD FROSTYTHESNOWMAN FROGGY JUDY DANNY
+           MARCIA GOLDRUSH TEQUITA LINDA SNOOPY VALENTINE KIX MARGARET)
+category: NP
+--------
+
+elements: (WHAT LATER AND THERE BECAUSE BUT THEN NOW FIRST AFTER TONIGHT
+           TOMORROW SOMETIMES OR SO OH AFTER-ALL WHILE HAHA EH BECAUSE SEE)
+category: S/S
+--------
+
+elements: (GO COME READ LOOK WAIT COOK JUMP PEEK BLOW PEEPEE STOP TRY WORK PLAY
+              FINISH RUN GUESS SNAP SIT SWIM TOUCH MOVE SWING SLEEP PEEL WAIT
+              SNEEZE EAT SLIPPED HUMP LAY CRASH WHAT)
+category: S
+--------
+
+elements: (AND)
+category: (@X\*@X)/*@X
+--------
+
+elements: (GET DRINK BRING AND BECAUSE PARDON FIND SEND FIX SEE TIE EAT CLEAN
+               CALL WANT HAVE READ HOLD SNAP DO KISS DRAW SPELL LEAVE PATTING
+               TELL CAN SAY TAKE COUNT PIZZC BE TURN BITE SING FINISH MAKE
+               DRINK TASTE WRITE FIXED SHOOT BANG OPEN DO REMEMBER MOVE SHUT
+               CATCH EXCUSE BUMPED WATCH SEE EAT CHANGE WATCH WIPE LOOK HAD
+               WRITE TWIST SIGN HEAR OPEN DROP USE CRACK GIMME SMELL DRAW CARRY
+               WIPE SEE GOT FEED STRAIGHTEN SHOVEL FORGOT NEED DRY HAVE DOES
+               PUT)
+category: S/NP
+--------
+
+elements: (GAVE GIVE SENT READ TOLD GETTING TELL GIVING WRITE BRING BRING WROTE
+           GIVE BRINGING FIND READ)
+category: ((S\NP)/NP)/NP
+--------
+
+elements: (? LATER HERE ? UPSTAIRS FAR OUTSIDE NOW THEN THERE EVERYDAY
+           YESTERDAY YET FIRST STILL SIDEWAYS ? AWAY AFTERWARDS TOMORROW THOUGH
+           DOWN AWHILE BACKWARDS SOON TODAY AWAY AROUND BEFORE ALREADY EVER)
+category: S\*S
+--------
+
+elements: (CAN DO HAVE IS WILL DOES ARE GONNA GOING-TO TO AM MAY WAS DID CANNOT
+           BEEN GOES HAS MUST WERE COULD MAKE PARTICULARLY ONLY TRYING ALREADY
+           PROBABLY BETTER WOULD SHOULD NEVER STARTED GO)
+category: (S\NP)/(S\NP)
+--------
+
+elements: (JUST)
+category: @X/@X
+--------
+
+elements: (DRINKING FIXING BRINGING MAKING FOLDING TAKING EATING PUSHING DOING
+           SMELLING HAVING CHANGING MIXING SHAKING DOING)
+category: S/NP
+--------
+
+elements: (WE)
+category: NP
+--------
+
+elements: (WITH IN TO FOR ON OUT OVER UP OUTOF THROUGH DOWN FROM AT AFTER
+           INSIDE TO OFF BY INTO BEFORE)
+category: (S\S)/NP
+--------
+
+elements: (GIVE WRITE BRING)
+category: (S/NP)/NP
+--------
+
+elements: (SOLDIERS DUCKS FISH PENCILS CANDLES CRAYONS PEGS THINGS CHIRPS
+           GLASSES SHOES SQUIRRELS NAPKINS TEETH BEADS DOLLS STAMPS ONES LIONS
+           FRIENDS BUBBLES HANDS WORDS MEN MITTENS STORIES ABCS BEANS PEAS
+           LETTERS PIES TEARS LEAVES RUBBER-BANDS CUPS RAISINS MUD-PIES TOWELS
+           NUMBERS BUMPS EYES PICTURES CRACKERS JAMMIES COUCHES SEEDS FANS
+           PEOPLE GROWNUPS DAUGHTERS SLEEVES RATTLES HATS CHILDREN FINGERS
+           DOGGIES BUSES FLOWERS FUNNELS COOKIES TOMATOES NOODLES SUBWAYS
+           NOISES EARS PEARS BUTTONS POCKETS TOES HOLES ICECUBES ICECUBE-TRAYS
+           CARROTS CANS PILLOWS TINKERTOYS SPOONS EYEBROWS DRESSES KINDS
+           SOCK-SLIPPERS TOES PAGES NUTS PENNIES BOUILLON-CUBES BLOCKS
+           SNOWBALLS MITTENS CHICKS DONKEYS APPLES APPLE-TREES ROOSTERS COWS
+           CATS BOWELS SNEEZES PANS ANIMALS RACCOONS SOCKS BOOTS PANTIES
+           JAMMIES)
+category: NP
+--------
+
+elements: (AND)
+category: (@X\@X)/@X
+--------
+
+elements: (READ WORRY)
+category: ((S\NP)/NP)/(ABOUT)
+--------
+
+elements: (FOR)
+category: (S/S)/NP
+--------
+
+elements: (WANT WANT LIKE)
+category: ((S\NP)/(S\NP))/NP
+--------
+
+elements: (WHO GONNA GONNA)
+category: S/(S\NP)
+--------
+
+elements: (SITTING GOING COMING PLAYING SWIMMING CRYING DRAWING JUMPING
+           SLEEPING LAYING SMILING EATING STANDING LAUGHING GROWING STAYING
+           FIZZING MEETING DRIPPING LYING TALKING WORKING FLYING READING
+           FALLING TRYING HAPPENNING DANCING TEETHING RUNNING LOOKING HIDING
+           SPLASHING SQUASHING SHOVING MOVING BARKING WALKING BLASTING)
+category: S\NP
+--------
+
+elements: ((QUOTE S) BESIDES)
+category: (NP\NP)/NP
+--------
+
+elements: (BELONGS HAPPENED LISTENING TALKING WENT TALKING WAVING READ GO)
+category: ((S\NP)/NP)/(TO)
+--------
+
+elements: (KITCHEN FIREPLACE)
+category: NP
+--------
+
+elements: (TOO)
+category: @X\@X
+--------
+
+elements: (KEEP CLEAR PULL TAKE PICK)
+category: (S/(OUT))/NP
+--------
+
+elements: (SIT FELL GOING LAYING SIT STAY COMING LYING SITTING)
+category: (S\NP)/(DOWN)
+--------
+
+elements: (HARD ON FLIPFLOP PROPERLY HARD FAST FINE ROUND WELL PROBABLY RIGHT
+           BETTER BAREFOOT STILL GREATLY OFF ALONE OUT BACK UP)
+category: (S\NP)\(S\NP)
+--------
+
+elements: (FELL THINK HOLD FALLING)
+category: ((S\NP)/NP)/(OFF)
+--------
+
+elements: (TO)
+category: ((S\NP)\(S\NP))/(S\NP)
+--------
+
+elements: (ELSE)
+category: NP\NP
+--------
+
+elements: (SURE)
+category: @X/@X
+--------
+
+elements: (WRITING BLOW BELONG)
+category: ((S\NP)/NP)/(ON)
+--------
+
+elements: (NOT)
+category: @X\@X
+--------
+
+elements: (BETTER)
+category: @X/@X
+--------
+
+elements: (AGAIN)
+category: @X\@X
+--------
+
+elements: (PICK CHEW)
+category: (S/(UP))/NP
+--------
+
+elements: (PICK)
+category: (S/NP)/(UP)
+--------
+
+elements: (CLIMB PEEK GO)
+category: S/(IN)
+--------
+
+elements: (RIGHT)
+category: @X/@X
+--------
+
+elements: (GONE GOING GO GONE)
+category: (S\NP)/(AWAY)
+--------
+
+elements: (SIT FELL LAY CLIMB)
+category: S/(DOWN)
+--------
+
+elements: (LYING COMING PLAYING SITTING RUNNING EATING SKATING SWIMMING RINGING)
+category: S
+--------
+
+elements: (TIE EAT PICK CHEW TAKE)
+category: ((S\NP)/(UP))/NP
+--------
+
+elements: (ALMOST)
+category: @X/@X
+--------
+
+elements: (SPIT GET PULL GETTING TOOK GET GOT MOVE PUT)
+category: ((S\NP)/(OUT))/NP
+--------
+
+elements: (SPIT)
+category: ((S\NP)/NP)/(UP)
+--------
+
+elements: (DO)
+category: S/(S\NP)
+--------
+
+elements: (SIT GO WOKE STAY WAKE WAKING)
+category: (S\NP)/(UP)
+--------
+
+elements: (VERY)
+category: @X/@X
+--------
+
+elements: (WELL)
+category: @X\@X
+--------
+
+elements: (WELL)
+category: @X/@X
+--------
+
+elements: (ARE IS DID)
+category: S/NP
+--------
+
+elements: (PLAYING PEEK)
+category: ((S\NP)/NP)/(WITH)
+--------
+
+elements: (TELL)
+category: (S/(S\NP))/NP
+--------
+
+elements: (COME CLIMB CLIMB GO PUT)
+category: (S\NP)/(IN)
+--------
+
+elements: (STANDING BLOW PEEPING PEEKING)
+category: (S\NP)/(OUT)
+--------
+
+elements: (BOTH)
+category: @X\@X
+--------
+
+elements: (LOOK PEEK SMILE)
+category: (S/NP)/(AT)
+--------
+
+elements: (GIVING)
+category: (S/NP)/NP
+--------
+
+elements: (TOGETHER)
+category: @X\@X
+--------
+
+elements: (GOING GOING BUMPED)
+category: ((S\NP)/NP)/(INTO)
+--------
+
+elements: (CERTAINLY)
+category: @X/@X
+--------
+
+elements: (LICK WIPE WASH CLEAN TAKE)
+category: (S/(OFF))/NP
+--------
+
+elements: (POUR PUT)
+category: (S/(IN))/NP
+--------
+
+elements: (PULL)
+category: (S/(DOWN))/NP
+--------
+
+elements: (QUITE)
+category: @X/@X
+--------
+
+elements: (THREW THROW TAKE PUT PUT)
+category: ((S\NP)/(AWAY))/NP
+--------
+
+elements: (GOING)
+category: (S\NP)/(INTO)
+--------
+
+elements: (FELL FALLING COME CAME)
+category: (S\NP)/(OFF)
+--------
+
+elements: (REALLY)
+category: @X/@X
+--------
+
+elements: (STARE PEEK LOOK LOOK WORKING)
+category: ((S\NP)/NP)/(AT)
+--------
+
+elements: (BUT LIKE)
+category: ((S\NP)\(S\NP))/NP
+--------
+
+elements: (GOING)
+category: (S\NP)/(ALONG)
+--------
+
+elements: (IS)
+category: (S\NP)/PREDP
+--------
+
+elements: (ABSOLUTELY)
+category: @X/@X
+--------
+
+elements: (IS)
+category: (S/NP)/PREDP
+--------
+
+elements: (MAYBE)
+category: @X/@X
+--------
+
+elements: (BELONGS LEAVE HAS)
+category: (S\NP)/(ON)
+--------
+
+elements: (PLAYING)
+category: (S/NP)/(WITH)
+--------
+
+elements: (TAKING)
+category: (S/(OFF))/NP
+--------
+
+elements: (INSTEAD-OF)
+category: @X/@X
+--------
+
+elements: (GOING)
+category: (S/NP)/(FOR)
+--------
+
+elements: (COLOR GET PUTTING PUT PUT)
+category: ((S\NP)/(IN))/NP
+--------
+
+elements: (PROBABLY)
+category: @X/@X
+--------
+
+elements: (BLOW STEP)
+category: S/(OUT)
+--------
+
+elements: (IS ARE AM WAS)
+category: (S/PREDP)/NP
+--------
+
+elements: (TRYING)
+category: S/(S\NP)
+--------
+
+elements: (LEAVE SLIP PUT)
+category: (S/(ON))/NP
+--------
+
+elements: (LEAVE GOT PUT PUT)
+category: ((S\NP)/(ON))/NP
+--------
+
+elements: (YEAR)
+category: NP
+--------
+
+elements: (CLIMB BELONG BELONGS)
+category: ((S\NP)/NP)/(IN)
+--------
+
+elements: (EXACTLY)
+category: @X/@X
+--------
+
+elements: (LOOK LOOKS SOUND)
+category: ((S\NP)/NP)/(LIKE)
+--------
+
+elements: (TURN PUSH)
+category: (S/(AROUND))/NP
+--------
+
+elements: (STILL)
+category: @X/@X
+--------
+
+elements: (GOING LOOKING TURN)
+category: (S\NP)/(AROUND)
+--------
+
+elements: (THAT)
+category: (NP\NP)/(S\NP)
+--------
+
+elements: (WENT)
+category: (S\NP)/(BY)
+--------
+
+elements: (FOLD PUT)
+category: ((S\NP)/(OVER))/NP
+--------
+
+elements: (SAYING SAID GO)
+category: (S\NP)/S
+--------
+
+elements: (CHEW BITE WIPE WANT TAKE KEEP)
+category: ((S\NP)/(OFF))/NP
+--------
+
+elements: (ALL)
+category: @X\@X
+--------
+
+elements: (BE)
+category: S/PREDP
+--------
+
+elements: (AWFULLY)
+category: @X/@X
+--------
+
+elements: (CLIMB PUT)
+category: (S/NP)/(IN)
+--------
+
+elements: (TOO)
+category: @X/@X
+--------
+
+elements: (EITHER)
+category: @X\@X
+--------
+
+elements: (ONCE)
+category: @X\@X
+--------
+
+elements: (HURRY SIT CLIMB)
+category: S/(UP)
+--------
+
+elements: (COMING COMING STEP CAME COME RUN)
+category: (S\NP)/(BACK)
+--------
+
+elements: (PEEK TURN)
+category: S/(AROUND)
+--------
+
+elements: (TELL)
+category: ((S/NP)/(ABOUT))/NP
+--------
+
+elements: (LOOKING)
+category: ((S\NP)/(AT))/NP
+--------
+
+elements: (WAIT)
+category: ((S\NP)/NP)/(FOR)
+--------
+
+elements: (PULLING)
+category: ((S\NP)/(DOWN))/NP
+--------
+
+elements: (PUSHING)
+category: (S/(AROUND))/NP
+--------
+
+elements: (BENT TURN)
+category: (S\NP)/(OVER)
+--------
+
+elements: (NOW)
+category: @X\@X
+--------
+
+elements: (QUICKLY)
+category: @X\@X
+--------
+
+elements: (WHICH)
+category: (S/(S/NP))/NP
+--------
+
+elements: (BEST)
+category: @X\@X
+--------
+
+elements: (WENT)
+category: (S/NP)/(TO)
+--------
+
+elements: (LOOK)
+category: ((S\NP)/NP)/(THROUGH)
+--------
+
+elements: (FINE)
+category: @X\@X
+--------
+
+elements: (STRAIGHT)
+category: @X\@X
+--------
+
+elements: (TAKE)
+category: ((S\NP)/(ALONG))/NP
+--------
+
+elements: (UP)
+category: @X/@X
+--------
+
+elements: (ICECUBE BABY-NOISE GOPHER DIFFERENCE BOWEL-MOVEMENT DONKEY ROOSTER
+           RADIATOR)
+category: N
+--------
+
+elements: (TERRIBLY)
+category: @X/@X
+--------
+
+elements: (SORELY)
+category: @X/@X
+--------
+
+elements: (SO-LONG)
+category: @X\@X
+--------
+
+elements: (CLIMB COME)
+category: S/(OVER)
+--------
+
+elements: (TELL)
+category: (((S\NP)/NP)/(ABOUT))/NP
+--------
+
+elements: (GET LOOKING)
+category: ((S\NP)/NP)/(OUT)
+--------
+
+elements: (TAKE)
+category: (S/(APART))/NP
+--------
+
+elements: (WIPE)
+category: (((S\NP)/NP)/(OFF))/NP
+--------
+
+elements: (COME GO)
+category: S/(ON)
+--------
+
+elements: (DEAR)
+category: @X\@X
+--------
+
+elements: (GO)
+category: S/(BACK)
+--------
+
+elements: (COMING)
+category: (S/NP)/(OUTOF)
+--------
+
+elements: (TAKE STEP)
+category: (S/(OUTOF))/NP
+--------
+
+elements: (JUMP)
+category: (S/NP)/(OFF)
+--------
+
+elements: (BEDROOM)
+category: N
+--------
+
+elements: (GO)
+category: S/(AHEAD)
+--------
+
+elements: (SAY)
+category: S/S
+--------
+
+elements: (TAKE PUT PUT)
+category: ((S\NP)/(BACK))/NP
+--------
+
+elements: (BLOW)
+category: (S/NP)/(ON)
+--------
+
+elements: (STICK PUT)
+category: ((S/NP)/(IN))/NP
+--------
+
+elements: (WERE)
+category: (S/NP)/(S/NP)
+--------
+
+elements: (TO)
+category: (S/S)/(S\NP)
+--------
+
+elements: (TELL)
+category: ((S/(S\NP))/NP)/NP
+--------
+
+elements: (PUTTING)
+category: ((S/NP)/(ON))/NP
+--------
+
+elements: (PUTTING PUT)
+category: (((S\NP)/NP)/(IN))/NP
+--------
+
+elements: (PUTTING PUT PUT)
+category: (((S\NP)/NP)/(ON))/NP
+--------
+
+elements: (PUT)
+category: (S/(AWAY))/NP
+--------
+
+elements: (PUT)
+category: (S/(BACK))/NP
+--------
+
+elements: (PUT)
+category: ((S/NP)/(ON))/NP
+--------
