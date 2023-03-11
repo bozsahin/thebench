@@ -2362,27 +2362,6 @@
 (defun mklist (obj)
   (if (listp obj) obj (list obj)))
 
-(defun reset-globals(&key (silent nil))
-  "resets the dynamic globals."
-  (setf *print-readably* nil)
-  (setf *print-pretty* t) 
-  (setf *lex-rules-table* nil)
-  (clrhash *cky-hashtable*)
-  (clrhash *cky-lf-hashtable*)
-  (setf *cky-lf-hashtable-sum* 0.0)
-  (setf *cky-input* nil) 
-  (setf *cky-max* nil)
-  (setf *cky-argmax-lf-max* nil) 
-  (setf *cky-argmax-lf* nil)
-  (setf *cky-lf* nil) 
-  (setf *loaded-grammar* "")
-  (setf *current-grammar*  nil)
-  (beam-off)
-  (lambda-on)
-  (nfparse-on)
-  (oov-off)
-  (monad-all)
-  (if (not silent) show-config)) 
 
 (defun almost-eq (x y)
   (<= (abs (- x y)) *epsilon*))
@@ -2915,13 +2894,28 @@
 
 (defun skeleton ()
   "collects and reports the skeleton of the currently loaded grammar"
-  (let ((skht (mk-cky-hashtable (length *current-grammar*))) ; although this is not for parsing, structure is the same
-	) 
+  (let ((skht (make-cky-hashtable 
+		(+ 5 (length *current-grammar*)))) ; although this is not for parsing, structure is the same
+	) ; second element of the list value is the lex cat as hash table, the first one is list of elements which 
+    ; matches the syntactic cat in the second element
     (dolist (el *current-grammar*)
       (if (not (lex-rule-p (nv-list-val 'KEY el)))
-	(setf (machash (nv-list-val 'KEY el) skht) 
-	      (lex-hash el)))
-      )))
+	(setf (gensym "sk-" skht)
+	      (list (list (nv-list-val 'PHON el))
+		    (lex-hash el)))))
+    (maphash #'(lambda (k1 v1)
+		 (maphash #'(lambda (k2 v2)
+			      (and (not (equal k1 k2))
+				   (cat-match (machash 'SYN (second v1))
+					      (machash 'SYN (second v2)))
+				   (setf (first v1) (append (first v1) (first v2)))
+				   (remhash k2 skht))) ; this is destructive--effects next itereations
+			  skht))
+	     skht)
+    (maphash #'(lambda (k v) ; report what is left
+		 (format t "item: ~A cat: ~A" (first v) (second v)))
+	     skht))
+  )
 
 ;; some nohup-friendly test suite -- all is written offline
 ;; this stuff is used by bench-train-.. scripts 
@@ -2977,6 +2971,28 @@
   (setf *lambdaflag* nil))
 
 ; almost there
+
+(defun reset-globals (&key (silent nil))
+  "resets the dynamic globals."
+  (setf *print-readably* nil)
+  (setf *print-pretty* t) 
+  (setf *lex-rules-table* nil)
+  (clrhash *cky-hashtable*)
+  (clrhash *cky-lf-hashtable*)
+  (setf *cky-lf-hashtable-sum* 0.0)
+  (setf *cky-input* nil) 
+  (setf *cky-max* nil)
+  (setf *cky-argmax-lf-max* nil) 
+  (setf *cky-argmax-lf* nil)
+  (setf *cky-lf* nil) 
+  (setf *loaded-grammar* "")
+  (setf *current-grammar*  nil)
+  (beam-off)
+  (lambda-on)
+  (nfparse-on)
+  (oov-off)
+  (monad-all)
+  (if (not silent) (show-config))) 
 
 (reset-globals :silent t)
 
