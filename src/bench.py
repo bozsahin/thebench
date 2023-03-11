@@ -1110,7 +1110,7 @@ def do (commline):
     elif comm == 'k':
         try:
             _lisp.function('skeleton')()
-            print(f"use > command beforehand to save the result")
+            print(f"\n\nuse > command beforehand to save the result")
         except Exception:
             print('something went wrong')
     elif comm == 'a':

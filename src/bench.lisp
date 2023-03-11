@@ -2913,12 +2913,12 @@
 			  skht))
 	     skht)
     (maphash #'(lambda (k v) ; report what is left
-		 (format t "~%category: ~A~%number  : ~A  element~:P~%elements: ~A~%--------~%" 
+		 (format t "~%category: ~A~%number  : ~A  element~:P~%elements: ~A~2%--------~%" 
 			 (linearize-syn (machash 'SYN (second v))) 
 			 (length (first v))
 			 (first v)))
 	     skht)
-    (format t "Total  : ~A distinct categories~%Out of: ~A entries (not counting asymmetric relational rules)" 
+    (format t "~%Total : ~A distinct categories~%Out of: ~A entries (not counting asymmetric relational rules)" 
 	    (hash-table-count skht)
 	    (- (length *current-grammar*) (length *lex-rules-table*))))
   t)  ; return success to python
