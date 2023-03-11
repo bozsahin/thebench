@@ -1,4 +1,6 @@
 
+category: NP/NP
+number  : 74  elements
 elements: (MORE YOUR A THE SOME HIS HER THAT GOOD MY NICE YOUR WHICH AN LOTS-OF
            ANOTHER FUNNY CLEAN NEW BIG WHICH LITTLE LOVELY WHOSE SWELL NO ANY
            SQUEAKY JELLY EMPTY LONG BROWN RED ROUND BLUE PINK YELLOW GREEN ONLY
@@ -6,13 +8,15 @@ elements: (MORE YOUR A THE SOME HIS HER THAT GOOD MY NICE YOUR WHICH AN LOTS-OF
            SHORT ICED WISE NEXT LEFT SILLY OUR COMPLICATED PRETTY SO-MUCH FAT
            BEAUTIFUL NEAR MANY ORANGE BIGGER WHAT WHOLE FIRST MESSY LOUD CURLY
            OTHER)
-category: NP/NP
 --------
 
-elements: (MORE)
 category: PREDP/PREDP
+number  : 1  element
+elements: (MORE)
 --------
 
+category: NP
+number  : 122  elements
 elements: (JUICE IT THAT ONE HE MILK JUICE WATER COFFEE TOP ME MY CHEESE SOUP
            PUDDING CELERY SHE THIS COFFEE YOURS SUGAR HORSIE THEY LIGHT OFF
            REST TAPIOCA BREAKFAST TOMATO-SOUP CLEANING PUSH GRAPE-JUICE NOW HIM
@@ -27,9 +31,10 @@ elements: (JUICE IT THAT ONE HE MILK JUICE WATER COFFEE TOP ME MY CHEESE SOUP
            JELLO INDIGESTION MUSIC ORANGE-PEEL ICING POPCORN HEAT TOMORROW
            ROCKABYE-BABY TAPE HAY ICECREAM SNOW AL-BL-CL TONIGHT
            CHOCOLATE-ICECREAM EVERYTHING CHOCOLATE-ICECREAM GRAVY)
-category: NP
 --------
 
+category: S\*NP
+number  : 92  elements
 elements: (? DO READ GO GO SIT SIT LOOK LOOK FALL TURN PLAY GOES PLAY DANCE
            GONE WENT IS CHIRPS WHISTLE CHIRP MOVE DID MELTED CAME COMES MANAGED
            STAY WET FELL SEES LIVES MELT DRAW DO CARE HURT COLOR TRIPPED BEND
@@ -38,17 +43,20 @@ elements: (? DO READ GO GO SIT SIT LOOK LOOK FALL TURN PLAY GOES PLAY DANCE
            WAIT PLAY EAT READ LAY TORE STAND CLIMB MOVE SWING JUMP JUMP SLEEP
            DROPPED SWAYS SWIM BLOW BURP BURPED SLIPPED WERE CRIED MOVED EATS
            JUMP SLEEP DO)
-category: S\*NP
 --------
 
-elements: (WHERE WHAT WHO WHAT-ELSE WHOSE WHAT)
 category: S/(S/NP)
+number  : 6  elements
+elements: (WHERE WHAT WHO WHAT-ELSE WHOSE WHAT)
 --------
 
-elements: (IS ARE WAS DID)
 category: (S/NP)/NP
+number  : 4  elements
+elements: (IS ARE WAS DID)
 --------
 
+category: NP
+number  : 373  elements
 elements: (CUP FLY TELEPHONE MAN COOKIE BABY BOOK STOOL HAT DOLLY BOTTLE MAN
            LETTER PENCIL CORNER SHOE CHOOCHOO LUNCH RADIO GIRL SEAT LUNCH HEAD
            PAPER DIAPER CHAIR GOOD TAPERECORDER CRACKER APPLE NAME SPOOL NAPKIN
@@ -89,14 +97,16 @@ elements: (CUP FLY TELEPHONE MAN COOKIE BABY BOOK STOOL HAT DOLLY BOTTLE MAN
            PICKLE ROCKABYE TIGER ZEBRA NIPPLE TURN BUTTON ICECREAM-CONE TROUBLE
            CHICAGO BROOM KNOB SHOVEL SUGAR-TOP BOX-TOP TEAPOT GOAT COVER
            KANGAROO RIBBON BELL WAGON BOOM TAIL BIT SPONGE CHECK FOOD)
-category: NP
 --------
 
+category: NP
+number  : 12  elements
 elements: (I WHO THERE WHAT DOWN HERE OUTSIDE INSIDE DOWNSTAIRS AROUND UP
            UPSTAIRS)
-category: NP
 --------
 
+category: (S\NP)/NP
+number  : 212  elements
 elements: (TOOK AM SAYING GET CALLING DOING WANT DO IS READ EAT ATE HAD
            DRINKING HAVE HAS FIND ARE WRITE SAY WAS MAKING HIT EATS BRING BRING
            TASTE CHANGE CALL CALLED WRITING HAVING TURN TURN SEE HURT HURT HEAR
@@ -116,17 +126,20 @@ elements: (TOOK AM SAYING GET CALLING DOING WANT DO IS READ EAT ATE HAD
            IMPROVES PIN ANSWER CRACK CRACKED CHANGE COUNT DECORATING ICING
            DIGGING CARRY FEED MISSED RIDE DRINKS FIXING RUINING ROCKING PULL
            USED LOOKED PINCH COOL PICK ASK ROLL PUT PUT)
-category: (S\NP)/NP
 --------
 
-elements: (AM BE ARE WAS)
 category: (S\NP)/PREDP
+number  : 4  elements
+elements: (AM BE ARE WAS)
 --------
 
-elements: (NOT)
 category: @X/@X
+number  : 1  element
+elements: (NOT)
 --------
 
+category: PREDP
+number  : 64  elements
 elements: (SURE BUSY ALRIGHT BETTER RIGHT UNHAPPY READY HOT WELCOME ALLGONE
            SLEEPY GREEN DONE SORRY EASIER EARLY OKAY BIGGER BLUE FINE BROWN RED
            DIRTY FUNNY TRUE WRONG EMPTY BIG WHITE CAREFUL GOOD GLAD SHORT SILLY
@@ -134,18 +147,21 @@ elements: (SURE BUSY ALRIGHT BETTER RIGHT UNHAPPY READY HOT WELCOME ALLGONE
            ENOUGH GREAT AWAKE DISAPPOINTED OKKAY TIRED CLEAN HAPPY AWFUL
            NECESSARY ALL-THE-SAME LOST COLD COMFORTABLE FUN NOISY THIRSTY LOOSE
            MESSY OPEN)
-category: PREDP
 --------
 
+category: (S/(S\NP))/NP
+number  : 18  elements
 elements: (ARE IS CAN DID WILL WANT DO DOES WOULD HAVE SHALL SHOULD MAY HAS
            WERE WAS AM (QUOTE D))
-category: (S/(S\NP))/NP
 --------
 
-elements: (YOU)
 category: NP
+number  : 1  element
+elements: (YOU)
 --------
 
+category: NP
+number  : 88  elements
 elements: (FRASER MOMMY JACK JILL EVE RACKETYBOOM NEIL SAMBO DOLLY GRANMA THEM
            CROMER BECKY MAMA KATHY HUMPTYDUMPTY DUMPTY SANDY PAPA GORDON SHEILA
            CATHY JIM MOM GRANNY RICK SARAH HIPPITYHOP NANNY BOSTON FROSTY
@@ -156,24 +172,28 @@ elements: (FRASER MOMMY JACK JILL EVE RACKETYBOOM NEIL SAMBO DOLLY GRANMA THEM
            LADYBUMP FIZZIE MOMMA SARA LASSIE RANGY NATALIE CLIPCLOP
            HUMMTHEHAMSTER OLDMACDONALD FROSTYTHESNOWMAN FROGGY JUDY DANNY
            MARCIA GOLDRUSH TEQUITA LINDA SNOOPY VALENTINE KIX MARGARET)
-category: NP
 --------
 
+category: S/S
+number  : 22  elements
 elements: (WHAT LATER AND THERE BECAUSE BUT THEN NOW FIRST AFTER TONIGHT
            TOMORROW SOMETIMES OR SO OH AFTER-ALL WHILE HAHA EH BECAUSE SEE)
-category: S/S
 --------
 
+category: S
+number  : 33  elements
 elements: (GO COME READ LOOK WAIT COOK JUMP PEEK BLOW PEEPEE STOP TRY WORK PLAY
               FINISH RUN GUESS SNAP SIT SWIM TOUCH MOVE SWING SLEEP PEEL WAIT
               SNEEZE EAT SLIPPED HUMP LAY CRASH WHAT)
-category: S
 --------
 
-elements: (AND)
 category: (@X\*@X)/*@X
+number  : 1  element
+elements: (AND)
 --------
 
+category: S/NP
+number  : 83  elements
 elements: (GET DRINK BRING AND BECAUSE PARDON FIND SEND FIX SEE TIE EAT CLEAN
                CALL WANT HAVE READ HOLD SNAP DO KISS DRAW SPELL LEAVE PATTING
                TELL CAN SAY TAKE COUNT PIZZC BE TURN BITE SING FINISH MAKE
@@ -182,48 +202,57 @@ elements: (GET DRINK BRING AND BECAUSE PARDON FIND SEND FIX SEE TIE EAT CLEAN
                WRITE TWIST SIGN HEAR OPEN DROP USE CRACK GIMME SMELL DRAW CARRY
                WIPE SEE GOT FEED STRAIGHTEN SHOVEL FORGOT NEED DRY HAVE DOES
                PUT)
-category: S/NP
 --------
 
+category: ((S\NP)/NP)/NP
+number  : 16  elements
 elements: (GAVE GIVE SENT READ TOLD GETTING TELL GIVING WRITE BRING BRING WROTE
            GIVE BRINGING FIND READ)
-category: ((S\NP)/NP)/NP
 --------
 
+category: S\*S
+number  : 31  elements
 elements: (? LATER HERE ? UPSTAIRS FAR OUTSIDE NOW THEN THERE EVERYDAY
            YESTERDAY YET FIRST STILL SIDEWAYS ? AWAY AFTERWARDS TOMORROW THOUGH
            DOWN AWHILE BACKWARDS SOON TODAY AWAY AROUND BEFORE ALREADY EVER)
-category: S\*S
 --------
 
+category: (S\NP)/(S\NP)
+number  : 33  elements
 elements: (CAN DO HAVE IS WILL DOES ARE GONNA GOING-TO TO AM MAY WAS DID CANNOT
            BEEN GOES HAS MUST WERE COULD MAKE PARTICULARLY ONLY TRYING ALREADY
            PROBABLY BETTER WOULD SHOULD NEVER STARTED GO)
-category: (S\NP)/(S\NP)
 --------
 
-elements: (JUST)
 category: @X/@X
+number  : 1  element
+elements: (JUST)
 --------
 
+category: S/NP
+number  : 15  elements
 elements: (DRINKING FIXING BRINGING MAKING FOLDING TAKING EATING PUSHING DOING
            SMELLING HAVING CHANGING MIXING SHAKING DOING)
-category: S/NP
 --------
 
-elements: (WE)
 category: NP
+number  : 1  element
+elements: (WE)
 --------
 
+category: (S\S)/NP
+number  : 20  elements
 elements: (WITH IN TO FOR ON OUT OVER UP OUTOF THROUGH DOWN FROM AT AFTER
            INSIDE TO OFF BY INTO BEFORE)
-category: (S\S)/NP
 --------
 
-elements: (GIVE WRITE BRING)
 category: (S/NP)/NP
+number  : 3  elements
+elements: (GIVE WRITE BRING)
 --------
 
+category: NP
+number  : 105  elements
 elements: (SOLDIERS DUCKS FISH PENCILS CANDLES CRAYONS PEGS THINGS CHIRPS
            GLASSES SHOES SQUIRRELS NAPKINS TEETH BEADS DOLLS STAMPS ONES LIONS
            FRIENDS BUBBLES HANDS WORDS MEN MITTENS STORIES ABCS BEANS PEAS
@@ -237,583 +266,727 @@ elements: (SOLDIERS DUCKS FISH PENCILS CANDLES CRAYONS PEGS THINGS CHIRPS
            SNOWBALLS MITTENS CHICKS DONKEYS APPLES APPLE-TREES ROOSTERS COWS
            CATS BOWELS SNEEZES PANS ANIMALS RACCOONS SOCKS BOOTS PANTIES
            JAMMIES)
-category: NP
 --------
 
-elements: (AND)
 category: (@X\@X)/@X
+number  : 1  element
+elements: (AND)
 --------
 
-elements: (READ WORRY)
 category: ((S\NP)/NP)/(ABOUT)
+number  : 2  elements
+elements: (READ WORRY)
 --------
 
-elements: (FOR)
 category: (S/S)/NP
+number  : 1  element
+elements: (FOR)
 --------
 
-elements: (WANT WANT LIKE)
 category: ((S\NP)/(S\NP))/NP
+number  : 3  elements
+elements: (WANT WANT LIKE)
 --------
 
-elements: (WHO GONNA GONNA)
 category: S/(S\NP)
+number  : 3  elements
+elements: (WHO GONNA GONNA)
 --------
 
+category: S\NP
+number  : 39  elements
 elements: (SITTING GOING COMING PLAYING SWIMMING CRYING DRAWING JUMPING
            SLEEPING LAYING SMILING EATING STANDING LAUGHING GROWING STAYING
            FIZZING MEETING DRIPPING LYING TALKING WORKING FLYING READING
            FALLING TRYING HAPPENNING DANCING TEETHING RUNNING LOOKING HIDING
            SPLASHING SQUASHING SHOVING MOVING BARKING WALKING BLASTING)
-category: S\NP
 --------
 
-elements: ((QUOTE S) BESIDES)
 category: (NP\NP)/NP
+number  : 2  elements
+elements: ((QUOTE S) BESIDES)
 --------
 
-elements: (BELONGS HAPPENED LISTENING TALKING WENT TALKING WAVING READ GO)
 category: ((S\NP)/NP)/(TO)
+number  : 9  elements
+elements: (BELONGS HAPPENED LISTENING TALKING WENT TALKING WAVING READ GO)
 --------
 
-elements: (KITCHEN FIREPLACE)
 category: NP
+number  : 2  elements
+elements: (KITCHEN FIREPLACE)
 --------
 
-elements: (TOO)
 category: @X\@X
+number  : 1  element
+elements: (TOO)
 --------
 
-elements: (KEEP CLEAR PULL TAKE PICK)
 category: (S/(OUT))/NP
+number  : 5  elements
+elements: (KEEP CLEAR PULL TAKE PICK)
 --------
 
-elements: (SIT FELL GOING LAYING SIT STAY COMING LYING SITTING)
 category: (S\NP)/(DOWN)
+number  : 9  elements
+elements: (SIT FELL GOING LAYING SIT STAY COMING LYING SITTING)
 --------
 
+category: (S\NP)\(S\NP)
+number  : 20  elements
 elements: (HARD ON FLIPFLOP PROPERLY HARD FAST FINE ROUND WELL PROBABLY RIGHT
            BETTER BAREFOOT STILL GREATLY OFF ALONE OUT BACK UP)
-category: (S\NP)\(S\NP)
 --------
 
-elements: (FELL THINK HOLD FALLING)
 category: ((S\NP)/NP)/(OFF)
+number  : 4  elements
+elements: (FELL THINK HOLD FALLING)
 --------
 
-elements: (TO)
 category: ((S\NP)\(S\NP))/(S\NP)
+number  : 1  element
+elements: (TO)
 --------
 
-elements: (ELSE)
 category: NP\NP
+number  : 1  element
+elements: (ELSE)
 --------
 
+category: @X/@X
+number  : 1  element
 elements: (SURE)
-category: @X/@X
 --------
 
-elements: (WRITING BLOW BELONG)
 category: ((S\NP)/NP)/(ON)
+number  : 3  elements
+elements: (WRITING BLOW BELONG)
 --------
 
+category: @X\@X
+number  : 1  element
 elements: (NOT)
-category: @X\@X
 --------
 
+category: @X/@X
+number  : 1  element
 elements: (BETTER)
-category: @X/@X
 --------
 
+category: @X\@X
+number  : 1  element
 elements: (AGAIN)
-category: @X\@X
 --------
 
-elements: (PICK CHEW)
 category: (S/(UP))/NP
+number  : 2  elements
+elements: (PICK CHEW)
 --------
 
-elements: (PICK)
 category: (S/NP)/(UP)
+number  : 1  element
+elements: (PICK)
 --------
 
-elements: (CLIMB PEEK GO)
 category: S/(IN)
+number  : 3  elements
+elements: (CLIMB PEEK GO)
 --------
 
+category: @X/@X
+number  : 1  element
 elements: (RIGHT)
-category: @X/@X
 --------
 
-elements: (GONE GOING GO GONE)
 category: (S\NP)/(AWAY)
+number  : 4  elements
+elements: (GONE GOING GO GONE)
 --------
 
-elements: (SIT FELL LAY CLIMB)
 category: S/(DOWN)
+number  : 4  elements
+elements: (SIT FELL LAY CLIMB)
 --------
 
-elements: (LYING COMING PLAYING SITTING RUNNING EATING SKATING SWIMMING RINGING)
 category: S
+number  : 9  elements
+elements: (LYING COMING PLAYING SITTING RUNNING EATING SKATING SWIMMING RINGING)
 --------
 
-elements: (TIE EAT PICK CHEW TAKE)
 category: ((S\NP)/(UP))/NP
+number  : 5  elements
+elements: (TIE EAT PICK CHEW TAKE)
 --------
 
+category: @X/@X
+number  : 1  element
 elements: (ALMOST)
-category: @X/@X
 --------
 
-elements: (SPIT GET PULL GETTING TOOK GET GOT MOVE PUT)
 category: ((S\NP)/(OUT))/NP
+number  : 9  elements
+elements: (SPIT GET PULL GETTING TOOK GET GOT MOVE PUT)
 --------
 
-elements: (SPIT)
 category: ((S\NP)/NP)/(UP)
+number  : 1  element
+elements: (SPIT)
 --------
 
+category: S/(S\NP)
+number  : 1  element
 elements: (DO)
-category: S/(S\NP)
 --------
 
-elements: (SIT GO WOKE STAY WAKE WAKING)
 category: (S\NP)/(UP)
+number  : 6  elements
+elements: (SIT GO WOKE STAY WAKE WAKING)
 --------
 
+category: @X/@X
+number  : 1  element
 elements: (VERY)
-category: @X/@X
 --------
 
-elements: (WELL)
 category: @X\@X
---------
-
+number  : 1  element
 elements: (WELL)
-category: @X/@X
 --------
 
-elements: (ARE IS DID)
+category: @X/@X
+number  : 1  element
+elements: (WELL)
+--------
+
 category: S/NP
+number  : 3  elements
+elements: (ARE IS DID)
 --------
 
-elements: (PLAYING PEEK)
 category: ((S\NP)/NP)/(WITH)
+number  : 2  elements
+elements: (PLAYING PEEK)
 --------
 
-elements: (TELL)
 category: (S/(S\NP))/NP
---------
-
-elements: (COME CLIMB CLIMB GO PUT)
-category: (S\NP)/(IN)
---------
-
-elements: (STANDING BLOW PEEPING PEEKING)
-category: (S\NP)/(OUT)
---------
-
-elements: (BOTH)
-category: @X\@X
---------
-
-elements: (LOOK PEEK SMILE)
-category: (S/NP)/(AT)
---------
-
-elements: (GIVING)
-category: (S/NP)/NP
---------
-
-elements: (TOGETHER)
-category: @X\@X
---------
-
-elements: (GOING GOING BUMPED)
-category: ((S\NP)/NP)/(INTO)
---------
-
-elements: (CERTAINLY)
-category: @X/@X
---------
-
-elements: (LICK WIPE WASH CLEAN TAKE)
-category: (S/(OFF))/NP
---------
-
-elements: (POUR PUT)
-category: (S/(IN))/NP
---------
-
-elements: (PULL)
-category: (S/(DOWN))/NP
---------
-
-elements: (QUITE)
-category: @X/@X
---------
-
-elements: (THREW THROW TAKE PUT PUT)
-category: ((S\NP)/(AWAY))/NP
---------
-
-elements: (GOING)
-category: (S\NP)/(INTO)
---------
-
-elements: (FELL FALLING COME CAME)
-category: (S\NP)/(OFF)
---------
-
-elements: (REALLY)
-category: @X/@X
---------
-
-elements: (STARE PEEK LOOK LOOK WORKING)
-category: ((S\NP)/NP)/(AT)
---------
-
-elements: (BUT LIKE)
-category: ((S\NP)\(S\NP))/NP
---------
-
-elements: (GOING)
-category: (S\NP)/(ALONG)
---------
-
-elements: (IS)
-category: (S\NP)/PREDP
---------
-
-elements: (ABSOLUTELY)
-category: @X/@X
---------
-
-elements: (IS)
-category: (S/NP)/PREDP
---------
-
-elements: (MAYBE)
-category: @X/@X
---------
-
-elements: (BELONGS LEAVE HAS)
-category: (S\NP)/(ON)
---------
-
-elements: (PLAYING)
-category: (S/NP)/(WITH)
---------
-
-elements: (TAKING)
-category: (S/(OFF))/NP
---------
-
-elements: (INSTEAD-OF)
-category: @X/@X
---------
-
-elements: (GOING)
-category: (S/NP)/(FOR)
---------
-
-elements: (COLOR GET PUTTING PUT PUT)
-category: ((S\NP)/(IN))/NP
---------
-
-elements: (PROBABLY)
-category: @X/@X
---------
-
-elements: (BLOW STEP)
-category: S/(OUT)
---------
-
-elements: (IS ARE AM WAS)
-category: (S/PREDP)/NP
---------
-
-elements: (TRYING)
-category: S/(S\NP)
---------
-
-elements: (LEAVE SLIP PUT)
-category: (S/(ON))/NP
---------
-
-elements: (LEAVE GOT PUT PUT)
-category: ((S\NP)/(ON))/NP
---------
-
-elements: (YEAR)
-category: NP
---------
-
-elements: (CLIMB BELONG BELONGS)
-category: ((S\NP)/NP)/(IN)
---------
-
-elements: (EXACTLY)
-category: @X/@X
---------
-
-elements: (LOOK LOOKS SOUND)
-category: ((S\NP)/NP)/(LIKE)
---------
-
-elements: (TURN PUSH)
-category: (S/(AROUND))/NP
---------
-
-elements: (STILL)
-category: @X/@X
---------
-
-elements: (GOING LOOKING TURN)
-category: (S\NP)/(AROUND)
---------
-
-elements: (THAT)
-category: (NP\NP)/(S\NP)
---------
-
-elements: (WENT)
-category: (S\NP)/(BY)
---------
-
-elements: (FOLD PUT)
-category: ((S\NP)/(OVER))/NP
---------
-
-elements: (SAYING SAID GO)
-category: (S\NP)/S
---------
-
-elements: (CHEW BITE WIPE WANT TAKE KEEP)
-category: ((S\NP)/(OFF))/NP
---------
-
-elements: (ALL)
-category: @X\@X
---------
-
-elements: (BE)
-category: S/PREDP
---------
-
-elements: (AWFULLY)
-category: @X/@X
---------
-
-elements: (CLIMB PUT)
-category: (S/NP)/(IN)
---------
-
-elements: (TOO)
-category: @X/@X
---------
-
-elements: (EITHER)
-category: @X\@X
---------
-
-elements: (ONCE)
-category: @X\@X
---------
-
-elements: (HURRY SIT CLIMB)
-category: S/(UP)
---------
-
-elements: (COMING COMING STEP CAME COME RUN)
-category: (S\NP)/(BACK)
---------
-
-elements: (PEEK TURN)
-category: S/(AROUND)
---------
-
+number  : 1  element
 elements: (TELL)
-category: ((S/NP)/(ABOUT))/NP
 --------
 
-elements: (LOOKING)
-category: ((S\NP)/(AT))/NP
+category: (S\NP)/(IN)
+number  : 5  elements
+elements: (COME CLIMB CLIMB GO PUT)
 --------
 
-elements: (WAIT)
-category: ((S\NP)/NP)/(FOR)
+category: (S\NP)/(OUT)
+number  : 4  elements
+elements: (STANDING BLOW PEEPING PEEKING)
 --------
 
-elements: (PULLING)
-category: ((S\NP)/(DOWN))/NP
---------
-
-elements: (PUSHING)
-category: (S/(AROUND))/NP
---------
-
-elements: (BENT TURN)
-category: (S\NP)/(OVER)
---------
-
-elements: (NOW)
 category: @X\@X
+number  : 1  element
+elements: (BOTH)
 --------
 
-elements: (QUICKLY)
+category: (S/NP)/(AT)
+number  : 3  elements
+elements: (LOOK PEEK SMILE)
+--------
+
+category: (S/NP)/NP
+number  : 1  element
+elements: (GIVING)
+--------
+
 category: @X\@X
+number  : 1  element
+elements: (TOGETHER)
 --------
 
-elements: (WHICH)
-category: (S/(S/NP))/NP
+category: ((S\NP)/NP)/(INTO)
+number  : 3  elements
+elements: (GOING GOING BUMPED)
 --------
 
-elements: (BEST)
-category: @X\@X
---------
-
-elements: (WENT)
-category: (S/NP)/(TO)
---------
-
-elements: (LOOK)
-category: ((S\NP)/NP)/(THROUGH)
---------
-
-elements: (FINE)
-category: @X\@X
---------
-
-elements: (STRAIGHT)
-category: @X\@X
---------
-
-elements: (TAKE)
-category: ((S\NP)/(ALONG))/NP
---------
-
-elements: (UP)
 category: @X/@X
+number  : 1  element
+elements: (CERTAINLY)
 --------
 
+category: (S/(OFF))/NP
+number  : 5  elements
+elements: (LICK WIPE WASH CLEAN TAKE)
+--------
+
+category: (S/(IN))/NP
+number  : 2  elements
+elements: (POUR PUT)
+--------
+
+category: (S/(DOWN))/NP
+number  : 1  element
+elements: (PULL)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (QUITE)
+--------
+
+category: ((S\NP)/(AWAY))/NP
+number  : 5  elements
+elements: (THREW THROW TAKE PUT PUT)
+--------
+
+category: (S\NP)/(INTO)
+number  : 1  element
+elements: (GOING)
+--------
+
+category: (S\NP)/(OFF)
+number  : 4  elements
+elements: (FELL FALLING COME CAME)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (REALLY)
+--------
+
+category: ((S\NP)/NP)/(AT)
+number  : 5  elements
+elements: (STARE PEEK LOOK LOOK WORKING)
+--------
+
+category: ((S\NP)\(S\NP))/NP
+number  : 2  elements
+elements: (BUT LIKE)
+--------
+
+category: (S\NP)/(ALONG)
+number  : 1  element
+elements: (GOING)
+--------
+
+category: (S\NP)/PREDP
+number  : 1  element
+elements: (IS)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (ABSOLUTELY)
+--------
+
+category: (S/NP)/PREDP
+number  : 1  element
+elements: (IS)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (MAYBE)
+--------
+
+category: (S\NP)/(ON)
+number  : 3  elements
+elements: (BELONGS LEAVE HAS)
+--------
+
+category: (S/NP)/(WITH)
+number  : 1  element
+elements: (PLAYING)
+--------
+
+category: (S/(OFF))/NP
+number  : 1  element
+elements: (TAKING)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (INSTEAD-OF)
+--------
+
+category: (S/NP)/(FOR)
+number  : 1  element
+elements: (GOING)
+--------
+
+category: ((S\NP)/(IN))/NP
+number  : 5  elements
+elements: (COLOR GET PUTTING PUT PUT)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (PROBABLY)
+--------
+
+category: S/(OUT)
+number  : 2  elements
+elements: (BLOW STEP)
+--------
+
+category: (S/PREDP)/NP
+number  : 4  elements
+elements: (IS ARE AM WAS)
+--------
+
+category: S/(S\NP)
+number  : 1  element
+elements: (TRYING)
+--------
+
+category: (S/(ON))/NP
+number  : 3  elements
+elements: (LEAVE SLIP PUT)
+--------
+
+category: ((S\NP)/(ON))/NP
+number  : 4  elements
+elements: (LEAVE GOT PUT PUT)
+--------
+
+category: NP
+number  : 1  element
+elements: (YEAR)
+--------
+
+category: ((S\NP)/NP)/(IN)
+number  : 3  elements
+elements: (CLIMB BELONG BELONGS)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (EXACTLY)
+--------
+
+category: ((S\NP)/NP)/(LIKE)
+number  : 3  elements
+elements: (LOOK LOOKS SOUND)
+--------
+
+category: (S/(AROUND))/NP
+number  : 2  elements
+elements: (TURN PUSH)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (STILL)
+--------
+
+category: (S\NP)/(AROUND)
+number  : 3  elements
+elements: (GOING LOOKING TURN)
+--------
+
+category: (NP\NP)/(S\NP)
+number  : 1  element
+elements: (THAT)
+--------
+
+category: (S\NP)/(BY)
+number  : 1  element
+elements: (WENT)
+--------
+
+category: ((S\NP)/(OVER))/NP
+number  : 2  elements
+elements: (FOLD PUT)
+--------
+
+category: (S\NP)/S
+number  : 3  elements
+elements: (SAYING SAID GO)
+--------
+
+category: ((S\NP)/(OFF))/NP
+number  : 6  elements
+elements: (CHEW BITE WIPE WANT TAKE KEEP)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (ALL)
+--------
+
+category: S/PREDP
+number  : 1  element
+elements: (BE)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (AWFULLY)
+--------
+
+category: (S/NP)/(IN)
+number  : 2  elements
+elements: (CLIMB PUT)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (TOO)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (EITHER)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (ONCE)
+--------
+
+category: S/(UP)
+number  : 3  elements
+elements: (HURRY SIT CLIMB)
+--------
+
+category: (S\NP)/(BACK)
+number  : 6  elements
+elements: (COMING COMING STEP CAME COME RUN)
+--------
+
+category: S/(AROUND)
+number  : 2  elements
+elements: (PEEK TURN)
+--------
+
+category: ((S/NP)/(ABOUT))/NP
+number  : 1  element
+elements: (TELL)
+--------
+
+category: ((S\NP)/(AT))/NP
+number  : 1  element
+elements: (LOOKING)
+--------
+
+category: ((S\NP)/NP)/(FOR)
+number  : 1  element
+elements: (WAIT)
+--------
+
+category: ((S\NP)/(DOWN))/NP
+number  : 1  element
+elements: (PULLING)
+--------
+
+category: (S/(AROUND))/NP
+number  : 1  element
+elements: (PUSHING)
+--------
+
+category: (S\NP)/(OVER)
+number  : 2  elements
+elements: (BENT TURN)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (NOW)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (QUICKLY)
+--------
+
+category: (S/(S/NP))/NP
+number  : 1  element
+elements: (WHICH)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (BEST)
+--------
+
+category: (S/NP)/(TO)
+number  : 1  element
+elements: (WENT)
+--------
+
+category: ((S\NP)/NP)/(THROUGH)
+number  : 1  element
+elements: (LOOK)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (FINE)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (STRAIGHT)
+--------
+
+category: ((S\NP)/(ALONG))/NP
+number  : 1  element
+elements: (TAKE)
+--------
+
+category: @X/@X
+number  : 1  element
+elements: (UP)
+--------
+
+category: N
+number  : 8  elements
 elements: (ICECUBE BABY-NOISE GOPHER DIFFERENCE BOWEL-MOVEMENT DONKEY ROOSTER
            RADIATOR)
-category: N
 --------
 
+category: @X/@X
+number  : 1  element
 elements: (TERRIBLY)
-category: @X/@X
 --------
 
+category: @X/@X
+number  : 1  element
 elements: (SORELY)
-category: @X/@X
 --------
 
+category: @X\@X
+number  : 1  element
 elements: (SO-LONG)
-category: @X\@X
 --------
 
-elements: (CLIMB COME)
 category: S/(OVER)
+number  : 2  elements
+elements: (CLIMB COME)
 --------
 
-elements: (TELL)
 category: (((S\NP)/NP)/(ABOUT))/NP
---------
-
-elements: (GET LOOKING)
-category: ((S\NP)/NP)/(OUT)
---------
-
-elements: (TAKE)
-category: (S/(APART))/NP
---------
-
-elements: (WIPE)
-category: (((S\NP)/NP)/(OFF))/NP
---------
-
-elements: (COME GO)
-category: S/(ON)
---------
-
-elements: (DEAR)
-category: @X\@X
---------
-
-elements: (GO)
-category: S/(BACK)
---------
-
-elements: (COMING)
-category: (S/NP)/(OUTOF)
---------
-
-elements: (TAKE STEP)
-category: (S/(OUTOF))/NP
---------
-
-elements: (JUMP)
-category: (S/NP)/(OFF)
---------
-
-elements: (BEDROOM)
-category: N
---------
-
-elements: (GO)
-category: S/(AHEAD)
---------
-
-elements: (SAY)
-category: S/S
---------
-
-elements: (TAKE PUT PUT)
-category: ((S\NP)/(BACK))/NP
---------
-
-elements: (BLOW)
-category: (S/NP)/(ON)
---------
-
-elements: (STICK PUT)
-category: ((S/NP)/(IN))/NP
---------
-
-elements: (WERE)
-category: (S/NP)/(S/NP)
---------
-
-elements: (TO)
-category: (S/S)/(S\NP)
---------
-
+number  : 1  element
 elements: (TELL)
+--------
+
+category: ((S\NP)/NP)/(OUT)
+number  : 2  elements
+elements: (GET LOOKING)
+--------
+
+category: (S/(APART))/NP
+number  : 1  element
+elements: (TAKE)
+--------
+
+category: (((S\NP)/NP)/(OFF))/NP
+number  : 1  element
+elements: (WIPE)
+--------
+
+category: S/(ON)
+number  : 2  elements
+elements: (COME GO)
+--------
+
+category: @X\@X
+number  : 1  element
+elements: (DEAR)
+--------
+
+category: S/(BACK)
+number  : 1  element
+elements: (GO)
+--------
+
+category: (S/NP)/(OUTOF)
+number  : 1  element
+elements: (COMING)
+--------
+
+category: (S/(OUTOF))/NP
+number  : 2  elements
+elements: (TAKE STEP)
+--------
+
+category: (S/NP)/(OFF)
+number  : 1  element
+elements: (JUMP)
+--------
+
+category: N
+number  : 1  element
+elements: (BEDROOM)
+--------
+
+category: S/(AHEAD)
+number  : 1  element
+elements: (GO)
+--------
+
+category: S/S
+number  : 1  element
+elements: (SAY)
+--------
+
+category: ((S\NP)/(BACK))/NP
+number  : 3  elements
+elements: (TAKE PUT PUT)
+--------
+
+category: (S/NP)/(ON)
+number  : 1  element
+elements: (BLOW)
+--------
+
+category: ((S/NP)/(IN))/NP
+number  : 2  elements
+elements: (STICK PUT)
+--------
+
+category: (S/NP)/(S/NP)
+number  : 1  element
+elements: (WERE)
+--------
+
+category: (S/S)/(S\NP)
+number  : 1  element
+elements: (TO)
+--------
+
 category: ((S/(S\NP))/NP)/NP
+number  : 1  element
+elements: (TELL)
 --------
 
+category: ((S/NP)/(ON))/NP
+number  : 1  element
 elements: (PUTTING)
-category: ((S/NP)/(ON))/NP
 --------
 
-elements: (PUTTING PUT)
 category: (((S\NP)/NP)/(IN))/NP
+number  : 2  elements
+elements: (PUTTING PUT)
 --------
 
-elements: (PUTTING PUT PUT)
 category: (((S\NP)/NP)/(ON))/NP
+number  : 3  elements
+elements: (PUTTING PUT PUT)
 --------
 
-elements: (PUT)
 category: (S/(AWAY))/NP
+number  : 1  element
+elements: (PUT)
 --------
 
-elements: (PUT)
 category: (S/(BACK))/NP
+number  : 1  element
+elements: (PUT)
 --------
 
-elements: (PUT)
 category: ((S/NP)/(ON))/NP
+number  : 1  element
+elements: (PUT)
 --------
+Total  : 171 distinct categories
+Out of: 1790 entries (not counting asymmetric relational rules)

@@ -2913,8 +2913,14 @@
 			  skht))
 	     skht)
     (maphash #'(lambda (k v) ; report what is left
-		 (format t "~%elements: ~A~%category: ~A~%--------~%" (first v) (linearize-syn (machash 'SYN (second v)))))
-	     skht))
+		 (format t "~%category: ~A~%number  : ~A  element~:P~%elements: ~A~%--------~%" 
+			 (linearize-syn (machash 'SYN (second v))) 
+			 (length (first v))
+			 (first v)))
+	     skht)
+    (format t "Total  : ~A distinct categories~%Out of: ~A entries (not counting asymmetric relational rules)" 
+	    (hash-table-count skht)
+	    (- (length *current-grammar*) (length *lex-rules-table*))))
   t)  ; return success to python
 
 ;; some nohup-friendly test suite -- all is written offline
