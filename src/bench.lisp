@@ -2913,6 +2913,16 @@
   (format t "~%Loaded grammar augmented with arules for case~% (NOT saved in its text file).~2%")
   t)
 
+(defun skeleton ()
+  "collects and reports the skeleton of the currently loaded grammar"
+  (let ((skht (mk-cky-hashtable (length *current-grammar*))) ; although this is not for parsing, structure is the same
+	) 
+    (dolist (el *current-grammar*)
+      (if (not (lex-rule-p (nv-list-val 'KEY el)))
+	(setf (machash (nv-list-val 'KEY el) skht) 
+	      (lex-hash el)))
+      )))
+
 ;; some nohup-friendly test suite -- all is written offline
 ;; this stuff is used by bench-train-.. scripts 
 
