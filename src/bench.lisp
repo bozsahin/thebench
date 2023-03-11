@@ -2900,9 +2900,9 @@
     ; matches the syntactic cat in the second element
     (dolist (el *current-grammar*)
       (if (not (lex-rule-p (nv-list-val 'KEY el)))
-	(setf (gensym "sk-" skht)
+	(setf (machash (gensym "sk-") skht)
 	      (list (list (nv-list-val 'PHON el))
-		    (lex-hash el)))))
+		    (hash-lex el)))))
     (maphash #'(lambda (k1 v1)
 		 (maphash #'(lambda (k2 v2)
 			      (and (not (equal k1 k2))
@@ -2913,7 +2913,7 @@
 			  skht))
 	     skht)
     (maphash #'(lambda (k v) ; report what is left
-		 (format t "item: ~A cat: ~A" (first v) (second v)))
+		 (format t "~%item: ~A cat: ~A~%====i~%" (first v) (machash 'SYN (second v))))
 	     skht))
   )
 

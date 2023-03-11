@@ -992,7 +992,7 @@ def print_info ():
 def do (commline):
     global _online, _grammar, _info, _latestgr, _exit, _help
     comm, args = split_command(commline)
-    if comm in [_exit, '/', '#', '<', _help] and args:
+    if comm in [_exit, 'k', '/', '#', '<', _help] and args:
         print('too many arguments')
         return
     if comm in ['a', 'c', 'e', 'g', 'o', '@', '$', 'r', 'z', '-', 'l', 'i', '+', '>'] and not args:
@@ -1105,6 +1105,11 @@ def do (commline):
         try:
             _lisp.function('synthetic_case')(tuple(args),_latestgr+".case.log")  # a two-arg call to the processor
             _lisp.function('sc_rules2mg')(str(_latestgr))   # saves these files in text format
+        except Exception:
+            print('something went wrong')
+    elif comm == 'k':
+        try:
+            _lisp.function('skeleton')(tuple(args))
         except Exception:
             print('something went wrong')
     elif comm == 'a':
