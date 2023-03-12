@@ -1,0 +1,1215 @@
+The categorial skeleton of the current grammar
+
+
+category  : NP/NP
+occurrence: 147  elements
+elements  : (MORE / YOUR / A / THE / SOME / HIS / HER / THAT / GOOD / MY / NICE
+             / YOUR / WHICH / AN / LOTS-OF / ANOTHER / FUNNY / CLEAN / NEW /
+             BIG / WHICH / LITTLE / LOVELY / WHOSE / SWELL / NO / ANY / SQUEAKY
+             / JELLY / EMPTY / LONG / BROWN / RED / ROUND / BLUE / PINK /
+             YELLOW / GREEN / ONLY / THESE / ALL / OLD / ROUND / DIRTY /
+             BRAND-NEW / THEIR / THOSE / AND / BOUNCY / BOTH / OWN / SHORT /
+             ICED / WISE / NEXT / LEFT / SILLY / OUR / COMPLICATED / PRETTY /
+             SO-MUCH / FAT / BEAUTIFUL / NEAR / MANY / ORANGE / BIGGER / WHAT /
+             WHOLE / FIRST / MESSY / LOUD / CURLY / OTHER)
+
+--------
+
+category  : PREDP/PREDP
+occurrence: 1  element
+elements  : (MORE)
+
+--------
+
+category  : NP
+occurrence: 243  elements
+elements  : (JUICE / IT / THAT / ONE / HE / MILK / JUICE / WATER / COFFEE / TOP
+             / ME / MY / CHEESE / SOUP / PUDDING / CELERY / SHE / THIS / COFFEE
+             / YOURS / SUGAR / HORSIE / THEY / LIGHT / OFF / REST / TAPIOCA /
+             BREAKFAST / TOMATO-SOUP / CLEANING / PUSH / GRAPE-JUICE / NOW /
+             HIM / SOMETHING / LUNCHTIME / BREAD / BUTTER / NOISE / BOUILLON /
+             DOOC / DL-EL-FL / FL / PEANUTBUTTER / WEDNESDAY / THESE /
+             CHOCOLATE / MINE / CREAM / HAIR / TRASH / SATURDAY / THOSE / CL /
+             BL / DL / NOODLE-SOUP / VITAMIN-TIME / VITAMIN / EVERYBODY /
+             NOBODY / THREE-O-CLOCK / YESTERDAY / NOTHING / TIME / HAPPINESS /
+             ITSELF / OHIO / MONDAY / YOURSELF / DISH / RICE / RICE-SOUP / MEAT
+             / ANYTHING / SOME / US / VEGETABLE-SOUP / GRUYERE-CHEESE / PEPPER
+             / CLAY / NAP / HER / SOMEBODY / PARSLEY / BACON / LOBSTER-SALAD /
+             RAIN / MARKET / MAYONNAISE / HAIR / CEREAL / TEA / COLORADO /
+             CAMBRIDGE / ENGLAND / MEDICINE / TODAY / DESSERT / SNAP / SUPPER /
+             SALT / MAGIC / JELLO / INDIGESTION / MUSIC / ORANGE-PEEL / ICING /
+             POPCORN / HEAT / TOMORROW / ROCKABYE-BABY / TAPE / HAY / ICECREAM
+             / SNOW / AL-BL-CL / TONIGHT / CHOCOLATE-ICECREAM / EVERYTHING /
+             CHOCOLATE-ICECREAM / GRAVY)
+
+--------
+
+category  : S\*NP
+occurrence: 183  elements
+elements  : (? / DO / READ / GO / GO / SIT / SIT / LOOK / LOOK / FALL / TURN /
+             PLAY / GOES / PLAY / DANCE / GONE / WENT / IS / CHIRPS / WHISTLE /
+             CHIRP / MOVE / DID / MELTED / CAME / COMES / MANAGED / STAY / WET
+             / FELL / SEES / LIVES / MELT / DRAW / DO / CARE / HURT / COLOR /
+             TRIPPED / BEND / STOPS / FINISHED / WHISTLE / COME / CARE / SING /
+             START / LISTENS / WORK / ARE / CRY / LAUGH / HURTS / BE / WORKS /
+             HURT / PAINT / COME / CRY / DRAW / TRY / WALK / AM / WAS / EAT /
+             WAIT / PLAY / EAT / READ / LAY / TORE / STAND / CLIMB / MOVE /
+             SWING / JUMP / JUMP / SLEEP / DROPPED / SWAYS / SWIM / BLOW / BURP
+             / BURPED / SLIPPED / WERE / CRIED / MOVED / EATS / JUMP / SLEEP /
+             DO)
+
+--------
+
+category  : S/(S/NP)
+occurrence: 11  elements
+elements  : (WHERE / WHAT / WHO / WHAT-ELSE / WHOSE / WHAT)
+
+--------
+
+category  : (S/NP)/NP
+occurrence: 7  elements
+elements  : (IS / ARE / WAS / DID)
+
+--------
+
+category  : NP
+occurrence: 745  elements
+elements  : (CUP / FLY / TELEPHONE / MAN / COOKIE / BABY / BOOK / STOOL / HAT /
+             DOLLY / BOTTLE / MAN / LETTER / PENCIL / CORNER / SHOE / CHOOCHOO
+             / LUNCH / RADIO / GIRL / SEAT / LUNCH / HEAD / PAPER / DIAPER /
+             CHAIR / GOOD / TAPERECORDER / CRACKER / APPLE / NAME / SPOOL /
+             NAPKIN / MOUTH / RECORD / COUGH / BANJO / FLOOR / FINGER / LETTER
+             / KING / BEAR / CAT / FOX / DOG / KITTY / WELL / FISH / BRIEFCASE
+             / BIRD / HORSE / TABLE / BIBBIE / SPOON / BED / TOMATO / WIENER /
+             SKUNK / BOX / ERASER / CUPBOARD / CHEESE-SANDWICH / BICYCLE / DUCK
+             / PIECE / CHIRP / SNOWMAN / BLANKET / COUCH / SANDWICH / PADDLE /
+             HOLE / NAP / BEAD / COOKBOOK / COLD / GAS-MAN / BAG / BABY-DOLL /
+             BOY / PEN / RING / WATCH / IDEA / PARTY / CAKE-PLATE / TRAIN /
+             ENVELOPE / WALK / DOILY / CARD / SPOT / TUNNEL / FRIEND / BANK /
+             PEAR / BIRTHDAY-SANDWICH / BIRTHDAY-CAKE / ICING / CLOSET / EAR /
+             AL / DRUM / STICK / FUN / BOARD / BUILDING / BOAT / BIT / FLOWER /
+             SIDE / WORD / NOISE / COAT / TUMMY / KISS / TABLET / LADY /
+             MUSTACHE / JACKET / ABC / GLASS / SQUIRREL / CAKE / SLIVER / COOK
+             / MISTAKE / CLOCK / LOCK / KEY / COW / THING / TURTLE /
+             GRAHAMCRACKER / DOOR / DOORWAY / HOUSE / WINDOW / SUITCASE /
+             HOUSE-BUILDING / BITE / CHIN / EYE / KNOT / TRACK / RAILROAD /
+             SANDBOX / WAY / PIZZERONIC / BLANKIE / BLANKET / BALLOON / DIRT /
+             GATE / HELP / PEDALPUSHERS / BATH-MAT / COUNTER / DRAWER / PIPE /
+             ZERO / SIX / FRUIT / YES / DAY / MORNING / BONE / CHICKEN-BONE /
+             SOMERSAULT / HAIRCUT / CANDLE / HIGHCHAIR / SCRATCH / ELBOW /
+             VACCINE / TONGUE / DINOSAUR / FAN / DAUGHTER / FAMILY / SPIGOT /
+             FEET / BANDAID / FRONT / PILLOW / PAD / BOOT / MAAM /
+             CHOCOLATE-COOKIE / AIRPLANE / PLANE / CAMERA-SPOOL / JAR / KIND /
+             STORY / BURRO / NEWSPAPER / SONG / BALL / BABY-SISTER /
+             DINGDONG-DELL / CART / LOLLIPOP / LOT / ZWIEBACK / WEDDING /
+             NURSERY-RHYME / FOOT / PICTURE / STATUE / FINGERNAIL / HANGNAIL /
+             BUS / SAILINGBOAT / BUS-STOP / MOMENT / TREE / END / REFRIGERATOR
+             / COOKIE-PRESS / MINUTE / MUG / CLOWN / NOSE / GARAGE / SUBWAY /
+             TOMATO-SANDWICH / PART / PINEAPPLE-DESSERT / RABBIT / BANDAID /
+             BEACH / EGGNOG / RUG / PEANUTBUTTER-SANDWICH / THUMB / LEMON /
+             ACCIDENT / CANDY / WASTEBASKET / BLOUSE / GOOSE / BACK / FIRE /
+             HAND / FORK / PENNY / EGG / BASEMENT / COOLPOP / MAILMAN / BUBBLE
+             / ASHTRAY / CAN / GARBAGE / POTTIE / PAGE / CUSTARD / DRINK /
+             NOODLE / PUMPKIN / MACHINE / WASHINGMACHINE / TINKERTOY-CAN /
+             TINKERTOY / GUN / BUTTERFLY / TEDDYBEAR / DEAR / MUFFIN / UMBRELLA
+             / GRAPE / TRUCK / CRAYON / MATTER / TOY / RATTLE / FACE / DRESS /
+             POPSICLE / LEG / SILLY / JUMP / EXERCISE / PITCHER / TOE / ARM /
+             LAP / STOVE / FURNITURE / SHELF / CARROT / BOWL / TOWER / BLOCK /
+             SOCK / ROOM / BANANA / HAMMER / SWEATER / GAME / COFFEE-POT /
+             DANCE / LIVINGROOM / VANILLA / ROCKINGCHAIR / BOTTOM / PUZZLE /
+             CLIP / COIN / BASEBALL-COIN / POCKET / BASEBALL / SWEETIE / HAM /
+             GOLDFISH / HAMBURGER / SHEEP / SCARF / POLICEMAN / APPLE /
+             ELEPHANT / BUNNY / DOGGIE / COW / DUSTPAN / GIRAFFE / CAR /
+             SAILBOAT / BUG / STYLUS / WEEK / OLIVE / STRING / FIRETRUCK / BATH
+             / BATHROBE / BATHTUB / KNEE / PAPER-BAG / PAPER-CLIP / REEL / CAN
+             / MOUTHFUL / MESS / PICKLE / ROCKABYE / TIGER / ZEBRA / NIPPLE /
+             TURN / BUTTON / ICECREAM-CONE / TROUBLE / CHICAGO / BROOM / KNOB /
+             SHOVEL / SUGAR-TOP / BOX-TOP / TEAPOT / GOAT / COVER / KANGAROO /
+             RIBBON / BELL / WAGON / BOOM / TAIL / BIT / SPONGE / CHECK / FOOD)
+
+--------
+
+category  : NP
+occurrence: 23  elements
+elements  : (I / WHO / THERE / WHAT / DOWN / HERE / OUTSIDE / INSIDE /
+             DOWNSTAIRS / AROUND / UP / UPSTAIRS)
+
+--------
+
+category  : (S\NP)/NP
+occurrence: 423  elements
+elements  : (TOOK / AM / SAYING / GET / CALLING / DOING / WANT / DO / IS / READ
+             / EAT / ATE / HAD / DRINKING / HAVE / HAS / FIND / ARE / WRITE /
+             SAY / WAS / MAKING / HIT / EATS / BRING / BRING / TASTE / CHANGE /
+             CALL / CALLED / WRITING / HAVING / TURN / TURN / SEE / HURT / HURT
+             / HEAR / FIX / FORGOT / COOK / DROPPED / USING / CUT / FINISHED /
+             NEED / UNDERSTAND / USE / DOES / WEARING / HOLD / TIE / BITE / BIT
+             / TOUCH / GOT / OPEN / HELP / KNOW / CRACKING / LEAVE / LEAVE /
+             SNAP / LOSE / PULLED / MAKE / WATCHING / BUILDING / SPELL / SPELLS
+             / SPELLING / BURNED / DROP / DROP / DRAW / DID / TAKE / SAW / WIPE
+             / TURNING / MADE / EATEN / TORE / TRYING / LICK / BROKE / BREAK /
+             MOVES / SHARE / NEEDS / SHARING / POURING / CLEAN / CATCH /
+             FOLDING / FOLD / BE / SPILL / WANT / DO / WEARS / SEE / LIKE /
+             FIXED / WEAR / RUBBING / HEAR / SAID / HAVE / SAY / SPILLED / EAT
+             / GETTING / IRONED / TRADE / CUT / MAKE / SINGING / SING / PEEL /
+             CALLED / TAKE / TAKING / FORGET / WRITE / TELL / DRINK / NEED /
+             SING / EATING / FIND / READING / GET / TELL / WASH / FORGET /
+             CAUGHT / READ / DRAWING / DRAW / GOT / WASHED / LIKE / FOUND / HIT
+             / PULLING / THROW / MOVING / SHOOTING / PAINT / MOVE / FIX / WANTS
+             / BUY / SENT / COOKING / HAD / MEAN / SHUT / SHUT / HOLD / DRINK /
+             MOVE / BUMPED / CUTTING / COOK / HELP / WATCH / STIR / STIR /
+             WATCH / EMPTYING / DREW / THANK / CLOSE / KISS / FINISH / TOP /
+             USED / HOLDING / CATCH / HEARD / THROWING / BUILD / IMPROVES / PIN
+             / ANSWER / CRACK / CRACKED / CHANGE / COUNT / DECORATING / ICING /
+             DIGGING / CARRY / FEED / MISSED / RIDE / DRINKS / FIXING / RUINING
+             / ROCKING / PULL / USED / LOOKED / PINCH / COOL / PICK / ASK /
+             ROLL / PUT / PUT)
+
+--------
+
+category  : (S\NP)/PREDP
+occurrence: 7  elements
+elements  : (AM / BE / ARE / WAS)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (NOT)
+
+--------
+
+category  : PREDP
+occurrence: 127  elements
+elements  : (SURE / BUSY / ALRIGHT / BETTER / RIGHT / UNHAPPY / READY / HOT /
+             WELCOME / ALLGONE / SLEEPY / GREEN / DONE / SORRY / EASIER / EARLY
+             / OKAY / BIGGER / BLUE / FINE / BROWN / RED / DIRTY / FUNNY / TRUE
+             / WRONG / EMPTY / BIG / WHITE / CAREFUL / GOOD / GLAD / SHORT /
+             SILLY / HUNGRY / NICE / INDEED / WONDERFUL / FINISHED / LONG /
+             WARM / SICK / HEAVY / STRAIGHT / ENOUGH / GREAT / AWAKE /
+             DISAPPOINTED / OKKAY / TIRED / CLEAN / HAPPY / AWFUL / NECESSARY /
+             ALL-THE-SAME / LOST / COLD / COMFORTABLE / FUN / NOISY / THIRSTY /
+             LOOSE / MESSY / OPEN)
+
+--------
+
+category  : (S/(S\NP))/NP
+occurrence: 35  elements
+elements  : (ARE / IS / CAN / DID / WILL / WANT / DO / DOES / WOULD / HAVE /
+             SHALL / SHOULD / MAY / HAS / WERE / WAS / AM / (QUOTE D))
+
+--------
+
+category  : NP
+occurrence: 1  element
+elements  : (YOU)
+
+--------
+
+category  : NP
+occurrence: 175  elements
+elements  : (FRASER / MOMMY / JACK / JILL / EVE / RACKETYBOOM / NEIL / SAMBO /
+             DOLLY / GRANMA / THEM / CROMER / BECKY / MAMA / KATHY /
+             HUMPTYDUMPTY / DUMPTY / SANDY / PAPA / GORDON / SHEILA / CATHY /
+             JIM / MOM / GRANNY / RICK / SARAH / HIPPITYHOP / NANNY / BOSTON /
+             FROSTY / EMERSON / SNEEZER / JOANNE / POP / TIMOTHY / TIMMY / JOSH
+             / JOHN / MURRAY / NOEL / POPS / KLEENEX / NANCY / TAFFY /
+             EVECUMMINGS / GLORIA / HUMM / COLIN / GOD / HELGA / EVE-CUMMINGS /
+             COLINGC / BAABAABLACKSHEEP / EXETER / RUKO / FIZZIE / NEWBRUNSWICK
+             / BENNY / DAVID / GRANDPA / PETER / SCHROEDER / DINAH / JULIE /
+             JACKIE / LADYBUMP / FIZZIE / MOMMA / SARA / LASSIE / RANGY /
+             NATALIE / CLIPCLOP / HUMMTHEHAMSTER / OLDMACDONALD /
+             FROSTYTHESNOWMAN / FROGGY / JUDY / DANNY / MARCIA / GOLDRUSH /
+             TEQUITA / LINDA / SNOOPY / VALENTINE / KIX / MARGARET)
+
+--------
+
+category  : S/S
+occurrence: 43  elements
+elements  : (WHAT / LATER / AND / THERE / BECAUSE / BUT / THEN / NOW / FIRST /
+             AFTER / TONIGHT / TOMORROW / SOMETIMES / OR / SO / OH / AFTER-ALL
+             / WHILE / HAHA / EH / BECAUSE / SEE)
+
+--------
+
+category  : S
+occurrence: 65  elements
+elements  : (GO / COME / READ / LOOK / WAIT / COOK / JUMP / PEEK / BLOW /
+                PEEPEE / STOP / TRY / WORK / PLAY / FINISH / RUN / GUESS / SNAP
+                / SIT / SWIM / TOUCH / MOVE / SWING / SLEEP / PEEL / WAIT /
+                SNEEZE / EAT / SLIPPED / HUMP / LAY / CRASH / WHAT)
+
+--------
+
+category  : (@X\*@X)/*@X
+occurrence: 1  element
+elements  : (AND)
+
+--------
+
+category  : S/NP
+occurrence: 165  elements
+elements  : (GET / DRINK / BRING / AND / BECAUSE / PARDON / FIND / SEND / FIX /
+                 SEE / TIE / EAT / CLEAN / CALL / WANT / HAVE / READ / HOLD /
+                 SNAP / DO / KISS / DRAW / SPELL / LEAVE / PATTING / TELL / CAN
+                 / SAY / TAKE / COUNT / PIZZC / BE / TURN / BITE / SING /
+                 FINISH / MAKE / DRINK / TASTE / WRITE / FIXED / SHOOT / BANG /
+                 OPEN / DO / REMEMBER / MOVE / SHUT / CATCH / EXCUSE / BUMPED /
+                 WATCH / SEE / EAT / CHANGE / WATCH / WIPE / LOOK / HAD / WRITE
+                 / TWIST / SIGN / HEAR / OPEN / DROP / USE / CRACK / GIMME /
+                 SMELL / DRAW / CARRY / WIPE / SEE / GOT / FEED / STRAIGHTEN /
+                 SHOVEL / FORGOT / NEED / DRY / HAVE / DOES / PUT)
+
+--------
+
+category  : ((S\NP)/NP)/NP
+occurrence: 31  elements
+elements  : (GAVE / GIVE / SENT / READ / TOLD / GETTING / TELL / GIVING / WRITE
+             / BRING / BRING / WROTE / GIVE / BRINGING / FIND / READ)
+
+--------
+
+category  : S\*S
+occurrence: 61  elements
+elements  : (? / LATER / HERE / ? / UPSTAIRS / FAR / OUTSIDE / NOW / THEN /
+             THERE / EVERYDAY / YESTERDAY / YET / FIRST / STILL / SIDEWAYS / ?
+             / AWAY / AFTERWARDS / TOMORROW / THOUGH / DOWN / AWHILE /
+             BACKWARDS / SOON / TODAY / AWAY / AROUND / BEFORE / ALREADY / EVER)
+
+--------
+
+category  : (S\NP)/(S\NP)
+occurrence: 65  elements
+elements  : (CAN / DO / HAVE / IS / WILL / DOES / ARE / GONNA / GOING-TO / TO /
+             AM / MAY / WAS / DID / CANNOT / BEEN / GOES / HAS / MUST / WERE /
+             COULD / MAKE / PARTICULARLY / ONLY / TRYING / ALREADY / PROBABLY /
+             BETTER / WOULD / SHOULD / NEVER / STARTED / GO)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (JUST)
+
+--------
+
+category  : S/NP
+occurrence: 29  elements
+elements  : (DRINKING / FIXING / BRINGING / MAKING / FOLDING / TAKING / EATING
+             / PUSHING / DOING / SMELLING / HAVING / CHANGING / MIXING /
+             SHAKING / DOING)
+
+--------
+
+category  : NP
+occurrence: 1  element
+elements  : (WE)
+
+--------
+
+category  : (S\S)/NP
+occurrence: 39  elements
+elements  : (WITH / IN / TO / FOR / ON / OUT / OVER / UP / OUTOF / THROUGH /
+             DOWN / FROM / AT / AFTER / INSIDE / TO / OFF / BY / INTO / BEFORE)
+
+--------
+
+category  : (S/NP)/NP
+occurrence: 5  elements
+elements  : (GIVE / WRITE / BRING)
+
+--------
+
+category  : NP
+occurrence: 209  elements
+elements  : (SOLDIERS / DUCKS / FISH / PENCILS / CANDLES / CRAYONS / PEGS /
+             THINGS / CHIRPS / GLASSES / SHOES / SQUIRRELS / NAPKINS / TEETH /
+             BEADS / DOLLS / STAMPS / ONES / LIONS / FRIENDS / BUBBLES / HANDS
+             / WORDS / MEN / MITTENS / STORIES / ABCS / BEANS / PEAS / LETTERS
+             / PIES / TEARS / LEAVES / RUBBER-BANDS / CUPS / RAISINS / MUD-PIES
+             / TOWELS / NUMBERS / BUMPS / EYES / PICTURES / CRACKERS / JAMMIES
+             / COUCHES / SEEDS / FANS / PEOPLE / GROWNUPS / DAUGHTERS / SLEEVES
+             / RATTLES / HATS / CHILDREN / FINGERS / DOGGIES / BUSES / FLOWERS
+             / FUNNELS / COOKIES / TOMATOES / NOODLES / SUBWAYS / NOISES / EARS
+             / PEARS / BUTTONS / POCKETS / TOES / HOLES / ICECUBES /
+             ICECUBE-TRAYS / CARROTS / CANS / PILLOWS / TINKERTOYS / SPOONS /
+             EYEBROWS / DRESSES / KINDS / SOCK-SLIPPERS / TOES / PAGES / NUTS /
+             PENNIES / BOUILLON-CUBES / BLOCKS / SNOWBALLS / MITTENS / CHICKS /
+             DONKEYS / APPLES / APPLE-TREES / ROOSTERS / COWS / CATS / BOWELS /
+             SNEEZES / PANS / ANIMALS / RACCOONS / SOCKS / BOOTS / PANTIES /
+             JAMMIES)
+
+--------
+
+category  : (@X\@X)/@X
+occurrence: 1  element
+elements  : (AND)
+
+--------
+
+category  : ((S\NP)/NP)/(ABOUT)
+occurrence: 3  elements
+elements  : (READ / WORRY)
+
+--------
+
+category  : (S/S)/NP
+occurrence: 1  element
+elements  : (FOR)
+
+--------
+
+category  : ((S\NP)/(S\NP))/NP
+occurrence: 5  elements
+elements  : (WANT / WANT / LIKE)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 5  elements
+elements  : (WHO / GONNA / GONNA)
+
+--------
+
+category  : S\NP
+occurrence: 77  elements
+elements  : (SITTING / GOING / COMING / PLAYING / SWIMMING / CRYING / DRAWING /
+             JUMPING / SLEEPING / LAYING / SMILING / EATING / STANDING /
+             LAUGHING / GROWING / STAYING / FIZZING / MEETING / DRIPPING /
+             LYING / TALKING / WORKING / FLYING / READING / FALLING / TRYING /
+             HAPPENNING / DANCING / TEETHING / RUNNING / LOOKING / HIDING /
+             SPLASHING / SQUASHING / SHOVING / MOVING / BARKING / WALKING /
+             BLASTING)
+
+--------
+
+category  : (NP\NP)/NP
+occurrence: 3  elements
+elements  : ((QUOTE S) / BESIDES)
+
+--------
+
+category  : ((S\NP)/NP)/(TO)
+occurrence: 17  elements
+elements  : (BELONGS / HAPPENED / LISTENING / TALKING / WENT / TALKING / WAVING
+             / READ / GO)
+
+--------
+
+category  : NP
+occurrence: 3  elements
+elements  : (KITCHEN / FIREPLACE)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (TOO)
+
+--------
+
+category  : (S/(OUT))/NP
+occurrence: 9  elements
+elements  : (KEEP / CLEAR / PULL / TAKE / PICK)
+
+--------
+
+category  : (S\NP)/(DOWN)
+occurrence: 17  elements
+elements  : (SIT / FELL / GOING / LAYING / SIT / STAY / COMING / LYING /
+             SITTING)
+
+--------
+
+category  : (S\NP)\(S\NP)
+occurrence: 39  elements
+elements  : (HARD / ON / FLIPFLOP / PROPERLY / HARD / FAST / FINE / ROUND /
+             WELL / PROBABLY / RIGHT / BETTER / BAREFOOT / STILL / GREATLY /
+             OFF / ALONE / OUT / BACK / UP)
+
+--------
+
+category  : ((S\NP)/NP)/(OFF)
+occurrence: 7  elements
+elements  : (FELL / THINK / HOLD / FALLING)
+
+--------
+
+category  : ((S\NP)\(S\NP))/(S\NP)
+occurrence: 1  element
+elements  : (TO)
+
+--------
+
+category  : NP\NP
+occurrence: 1  element
+elements  : (ELSE)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (SURE)
+
+--------
+
+category  : ((S\NP)/NP)/(ON)
+occurrence: 5  elements
+elements  : (WRITING / BLOW / BELONG)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (NOT)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (BETTER)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (AGAIN)
+
+--------
+
+category  : (S/(UP))/NP
+occurrence: 3  elements
+elements  : (PICK / CHEW)
+
+--------
+
+category  : (S/NP)/(UP)
+occurrence: 1  element
+elements  : (PICK)
+
+--------
+
+category  : S/(IN)
+occurrence: 5  elements
+elements  : (CLIMB / PEEK / GO)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (RIGHT)
+
+--------
+
+category  : (S\NP)/(AWAY)
+occurrence: 7  elements
+elements  : (GONE / GOING / GO / GONE)
+
+--------
+
+category  : S/(DOWN)
+occurrence: 7  elements
+elements  : (SIT / FELL / LAY / CLIMB)
+
+--------
+
+category  : S
+occurrence: 17  elements
+elements  : (LYING / COMING / PLAYING / SITTING / RUNNING / EATING / SKATING /
+             SWIMMING / RINGING)
+
+--------
+
+category  : ((S\NP)/(UP))/NP
+occurrence: 9  elements
+elements  : (TIE / EAT / PICK / CHEW / TAKE)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (ALMOST)
+
+--------
+
+category  : ((S\NP)/(OUT))/NP
+occurrence: 17  elements
+elements  : (SPIT / GET / PULL / GETTING / TOOK / GET / GOT / MOVE / PUT)
+
+--------
+
+category  : ((S\NP)/NP)/(UP)
+occurrence: 1  element
+elements  : (SPIT)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 1  element
+elements  : (DO)
+
+--------
+
+category  : (S\NP)/(UP)
+occurrence: 11  elements
+elements  : (SIT / GO / WOKE / STAY / WAKE / WAKING)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (VERY)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (WELL)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (WELL)
+
+--------
+
+category  : S/NP
+occurrence: 5  elements
+elements  : (ARE / IS / DID)
+
+--------
+
+category  : ((S\NP)/NP)/(WITH)
+occurrence: 3  elements
+elements  : (PLAYING / PEEK)
+
+--------
+
+category  : (S/(S\NP))/NP
+occurrence: 1  element
+elements  : (TELL)
+
+--------
+
+category  : (S\NP)/(IN)
+occurrence: 9  elements
+elements  : (COME / CLIMB / CLIMB / GO / PUT)
+
+--------
+
+category  : (S\NP)/(OUT)
+occurrence: 7  elements
+elements  : (STANDING / BLOW / PEEPING / PEEKING)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (BOTH)
+
+--------
+
+category  : (S/NP)/(AT)
+occurrence: 5  elements
+elements  : (LOOK / PEEK / SMILE)
+
+--------
+
+category  : (S/NP)/NP
+occurrence: 1  element
+elements  : (GIVING)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (TOGETHER)
+
+--------
+
+category  : ((S\NP)/NP)/(INTO)
+occurrence: 5  elements
+elements  : (GOING / GOING / BUMPED)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (CERTAINLY)
+
+--------
+
+category  : (S/(OFF))/NP
+occurrence: 9  elements
+elements  : (LICK / WIPE / WASH / CLEAN / TAKE)
+
+--------
+
+category  : (S/(IN))/NP
+occurrence: 3  elements
+elements  : (POUR / PUT)
+
+--------
+
+category  : (S/(DOWN))/NP
+occurrence: 1  element
+elements  : (PULL)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (QUITE)
+
+--------
+
+category  : ((S\NP)/(AWAY))/NP
+occurrence: 9  elements
+elements  : (THREW / THROW / TAKE / PUT / PUT)
+
+--------
+
+category  : (S\NP)/(INTO)
+occurrence: 1  element
+elements  : (GOING)
+
+--------
+
+category  : (S\NP)/(OFF)
+occurrence: 7  elements
+elements  : (FELL / FALLING / COME / CAME)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (REALLY)
+
+--------
+
+category  : ((S\NP)/NP)/(AT)
+occurrence: 9  elements
+elements  : (STARE / PEEK / LOOK / LOOK / WORKING)
+
+--------
+
+category  : ((S\NP)\(S\NP))/NP
+occurrence: 3  elements
+elements  : (BUT / LIKE)
+
+--------
+
+category  : (S\NP)/(ALONG)
+occurrence: 1  element
+elements  : (GOING)
+
+--------
+
+category  : (S\NP)/PREDP
+occurrence: 1  element
+elements  : (IS)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (ABSOLUTELY)
+
+--------
+
+category  : (S/NP)/PREDP
+occurrence: 1  element
+elements  : (IS)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (MAYBE)
+
+--------
+
+category  : (S\NP)/(ON)
+occurrence: 5  elements
+elements  : (BELONGS / LEAVE / HAS)
+
+--------
+
+category  : (S/NP)/(WITH)
+occurrence: 1  element
+elements  : (PLAYING)
+
+--------
+
+category  : (S/(OFF))/NP
+occurrence: 1  element
+elements  : (TAKING)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (INSTEAD-OF)
+
+--------
+
+category  : (S/NP)/(FOR)
+occurrence: 1  element
+elements  : (GOING)
+
+--------
+
+category  : ((S\NP)/(IN))/NP
+occurrence: 9  elements
+elements  : (COLOR / GET / PUTTING / PUT / PUT)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (PROBABLY)
+
+--------
+
+category  : S/(OUT)
+occurrence: 3  elements
+elements  : (BLOW / STEP)
+
+--------
+
+category  : (S/PREDP)/NP
+occurrence: 7  elements
+elements  : (IS / ARE / AM / WAS)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 1  element
+elements  : (TRYING)
+
+--------
+
+category  : (S/(ON))/NP
+occurrence: 5  elements
+elements  : (LEAVE / SLIP / PUT)
+
+--------
+
+category  : ((S\NP)/(ON))/NP
+occurrence: 7  elements
+elements  : (LEAVE / GOT / PUT / PUT)
+
+--------
+
+category  : NP
+occurrence: 1  element
+elements  : (YEAR)
+
+--------
+
+category  : ((S\NP)/NP)/(IN)
+occurrence: 5  elements
+elements  : (CLIMB / BELONG / BELONGS)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (EXACTLY)
+
+--------
+
+category  : ((S\NP)/NP)/(LIKE)
+occurrence: 5  elements
+elements  : (LOOK / LOOKS / SOUND)
+
+--------
+
+category  : (S/(AROUND))/NP
+occurrence: 3  elements
+elements  : (TURN / PUSH)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (STILL)
+
+--------
+
+category  : (S\NP)/(AROUND)
+occurrence: 5  elements
+elements  : (GOING / LOOKING / TURN)
+
+--------
+
+category  : (NP\NP)/(S\NP)
+occurrence: 1  element
+elements  : (THAT)
+
+--------
+
+category  : (S\NP)/(BY)
+occurrence: 1  element
+elements  : (WENT)
+
+--------
+
+category  : ((S\NP)/(OVER))/NP
+occurrence: 3  elements
+elements  : (FOLD / PUT)
+
+--------
+
+category  : (S\NP)/S
+occurrence: 5  elements
+elements  : (SAYING / SAID / GO)
+
+--------
+
+category  : ((S\NP)/(OFF))/NP
+occurrence: 11  elements
+elements  : (CHEW / BITE / WIPE / WANT / TAKE / KEEP)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (ALL)
+
+--------
+
+category  : S/PREDP
+occurrence: 1  element
+elements  : (BE)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (AWFULLY)
+
+--------
+
+category  : (S/NP)/(IN)
+occurrence: 3  elements
+elements  : (CLIMB / PUT)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (TOO)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (EITHER)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (ONCE)
+
+--------
+
+category  : S/(UP)
+occurrence: 5  elements
+elements  : (HURRY / SIT / CLIMB)
+
+--------
+
+category  : (S\NP)/(BACK)
+occurrence: 11  elements
+elements  : (COMING / COMING / STEP / CAME / COME / RUN)
+
+--------
+
+category  : S/(AROUND)
+occurrence: 3  elements
+elements  : (PEEK / TURN)
+
+--------
+
+category  : ((S/NP)/(ABOUT))/NP
+occurrence: 1  element
+elements  : (TELL)
+
+--------
+
+category  : ((S\NP)/(AT))/NP
+occurrence: 1  element
+elements  : (LOOKING)
+
+--------
+
+category  : ((S\NP)/NP)/(FOR)
+occurrence: 1  element
+elements  : (WAIT)
+
+--------
+
+category  : ((S\NP)/(DOWN))/NP
+occurrence: 1  element
+elements  : (PULLING)
+
+--------
+
+category  : (S/(AROUND))/NP
+occurrence: 1  element
+elements  : (PUSHING)
+
+--------
+
+category  : (S\NP)/(OVER)
+occurrence: 3  elements
+elements  : (BENT / TURN)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (NOW)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (QUICKLY)
+
+--------
+
+category  : (S/(S/NP))/NP
+occurrence: 1  element
+elements  : (WHICH)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (BEST)
+
+--------
+
+category  : (S/NP)/(TO)
+occurrence: 1  element
+elements  : (WENT)
+
+--------
+
+category  : ((S\NP)/NP)/(THROUGH)
+occurrence: 1  element
+elements  : (LOOK)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (FINE)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (STRAIGHT)
+
+--------
+
+category  : ((S\NP)/(ALONG))/NP
+occurrence: 1  element
+elements  : (TAKE)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (UP)
+
+--------
+
+category  : N
+occurrence: 15  elements
+elements  : (ICECUBE / BABY-NOISE / GOPHER / DIFFERENCE / BOWEL-MOVEMENT /
+             DONKEY / ROOSTER / RADIATOR)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (TERRIBLY)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (SORELY)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (SO-LONG)
+
+--------
+
+category  : S/(OVER)
+occurrence: 3  elements
+elements  : (CLIMB / COME)
+
+--------
+
+category  : (((S\NP)/NP)/(ABOUT))/NP
+occurrence: 1  element
+elements  : (TELL)
+
+--------
+
+category  : ((S\NP)/NP)/(OUT)
+occurrence: 3  elements
+elements  : (GET / LOOKING)
+
+--------
+
+category  : (S/(APART))/NP
+occurrence: 1  element
+elements  : (TAKE)
+
+--------
+
+category  : (((S\NP)/NP)/(OFF))/NP
+occurrence: 1  element
+elements  : (WIPE)
+
+--------
+
+category  : S/(ON)
+occurrence: 3  elements
+elements  : (COME / GO)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (DEAR)
+
+--------
+
+category  : S/(BACK)
+occurrence: 1  element
+elements  : (GO)
+
+--------
+
+category  : (S/NP)/(OUTOF)
+occurrence: 1  element
+elements  : (COMING)
+
+--------
+
+category  : (S/(OUTOF))/NP
+occurrence: 3  elements
+elements  : (TAKE / STEP)
+
+--------
+
+category  : (S/NP)/(OFF)
+occurrence: 1  element
+elements  : (JUMP)
+
+--------
+
+category  : N
+occurrence: 1  element
+elements  : (BEDROOM)
+
+--------
+
+category  : S/(AHEAD)
+occurrence: 1  element
+elements  : (GO)
+
+--------
+
+category  : S/S
+occurrence: 1  element
+elements  : (SAY)
+
+--------
+
+category  : ((S\NP)/(BACK))/NP
+occurrence: 5  elements
+elements  : (TAKE / PUT / PUT)
+
+--------
+
+category  : (S/NP)/(ON)
+occurrence: 1  element
+elements  : (BLOW)
+
+--------
+
+category  : ((S/NP)/(IN))/NP
+occurrence: 3  elements
+elements  : (STICK / PUT)
+
+--------
+
+category  : (S/NP)/(S/NP)
+occurrence: 1  element
+elements  : (WERE)
+
+--------
+
+category  : (S/S)/(S\NP)
+occurrence: 1  element
+elements  : (TO)
+
+--------
+
+category  : ((S/(S\NP))/NP)/NP
+occurrence: 1  element
+elements  : (TELL)
+
+--------
+
+category  : ((S/NP)/(ON))/NP
+occurrence: 1  element
+elements  : (PUTTING)
+
+--------
+
+category  : (((S\NP)/NP)/(IN))/NP
+occurrence: 3  elements
+elements  : (PUTTING / PUT)
+
+--------
+
+category  : (((S\NP)/NP)/(ON))/NP
+occurrence: 5  elements
+elements  : (PUTTING / PUT / PUT)
+
+--------
+
+category  : (S/(AWAY))/NP
+occurrence: 1  element
+elements  : (PUT)
+
+--------
+
+category  : (S/(BACK))/NP
+occurrence: 1  element
+elements  : (PUT)
+
+--------
+
+category  : ((S/NP)/(ON))/NP
+occurrence: 1  element
+elements  : (PUT)
+
+--------
+
+Total : 171 distinct categories
+Out of: 1790 entries (not counting asymmetric relational rules)

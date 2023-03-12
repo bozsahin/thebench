@@ -2915,10 +2915,11 @@
 			      (and (not (equal k1 k2))
 				   (cat-match (machash 'SYN (second v1))
 					      (machash 'SYN (second v2)))
-				   (setf (first v1) (append (first v1) (first v2)))
+				   (setf (first v1) (append (first v1) (cons "/"  (first v2))))
 				   (remhash k2 skht))) ; this is destructive--effects next itereations
 			  skht))
 	     skht)
+    (format t "The categorial skeleton of the current grammar~2%")
     (maphash #'(lambda (k v) ; report what is left
 		 (format t "~%category  : ~A~%occurrence: ~A  element~:P~%elements  : ~A~2%--------~%" 
 			 (linearize-syn (machash 'SYN (second v))) 
