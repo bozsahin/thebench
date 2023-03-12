@@ -43,23 +43,29 @@
 
 (defparameter *tmploc* #P"/tmp/thebench")  ; non-editable files go here, ideally this is all taken care of in py interface
 
+(defparameter *mydef-rules* nil)  ; rules can be chosen by turning their switches on
 (defparameter *mydef-globals* nil) ; to keep track of all globals defined by mydef macro
                                     ; i seem to want to define more and more and lose track
 (defparameter *mydef-switches* nil) ; to keep track of all on/off switches
                                     ; i seem to want to define more and more and lose track
 
-(defmacro mydef (nam val &optional (msg nil))
+(defmacro mydef (nam val &key (rule nil) (msg t))
   (if (member nam *mydef-globals*)
     (and msg (format t "~%mydef warning! the name is RE-defined: ~A" nam))
-    (push nam *mydef-globals*))
-  `(defparameter ,nam ,val))  ; do the def in any case 
-                              ; no defvars in this dynamic env!
+    (progn 
+      (push nam *mydef-globals*)
+      (and rule (push nam *mydef-rules*))))
+  `(defparameter ,nam ,val))  ; do the def in any case; no defvars in this dynamic env!
 
 (defmacro defswitch (nam val &optional (msg nil))
   (if (member nam *mydef-switches*)
     (and msg (format t "~%defswitch warning! the name is RE-defined: ~A" nam))
     (push nam *mydef-switches*)) ; do the def in any case 
   `(defparameter ,nam ,val))      ; no defvars in this dynamic env!
+
+(defun rules ()
+  (dolist (g (sort (copy-seq *mydef-rules*) #'string<))
+    (format t "~%~a ~a" g (eval g))))
 
 (defun globals ()
   (dolist (g (sort (copy-seq *mydef-globals*) #'string<))
@@ -385,20 +391,20 @@
                           ;  to get partial parses as much as possible in a knowledge-poor way.
 
 ;; rule switches and default values
-(mydef *a-apply* t)   ;application
-(mydef *t-apply* t)
-(mydef *f-comp* t  )  ;composition
-(mydef *b-comp* t)
-(mydef *fx-comp* t)
-(mydef *bx-comp* t)
-(mydef *f2-comp* t )     ; B^2
-(mydef *b2-comp* t)
-(mydef *fx2-comp* t)
-(mydef *bx2-comp* t)
-(mydef *f3-comp* t )  ;B^3
-(mydef *b3-comp* t)
-(mydef *fx3-comp* t)
-(mydef *bx3-comp* t)
+(mydef *a-apply* t :rule t)   ;application
+(mydef *t-apply* t :rule t)
+(mydef *f-comp* t  :rule t)  ;composition
+(mydef *b-comp* t :rule t)
+(mydef *fx-comp* t :rule t)
+(mydef *bx-comp* t :rule t)
+(mydef *f2-comp* t  :rule t)     ; B^2
+(mydef *b2-comp* t :rule t)
+(mydef *fx2-comp* t :rule t)
+(mydef *bx2-comp* t :rule t)
+(mydef *f3-comp* t  :rule t)  ;B^3
+(mydef *b3-comp* t :rule t)
+(mydef *fx3-comp* t :rule t)
+(mydef *bx3-comp* t :rule t)
 
 ;; NF control
 (defmacro backward-nf ()
@@ -526,7 +532,8 @@
 
 (defun show-config ()
   (onoff)
-  (beam-value))
+  (beam-value)
+  (rules))
 
 ;; ==========================
 
