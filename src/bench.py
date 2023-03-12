@@ -1188,8 +1188,8 @@ def do (commline):
     elif comm == '!':
         print_info()
         if args:
-            print(f"also writing to file {args[0]}")
-            with open(args[0], 'w') as f:
+            print(f"also writing to file {args[0]+_logext}")
+            with open(args[0]+_logext, 'w') as f:
                 with redirect_stdout(f):
                     print_info()
     elif comm == _exit:       # caller knows what to do next

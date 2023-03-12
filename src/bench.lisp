@@ -2913,7 +2913,7 @@
 			  skht))
 	     skht)
     (maphash #'(lambda (k v) ; report what is left
-		 (format t "~%category: ~A~%number  : ~A  element~:P~%elements: ~A~2%--------~%" 
+		 (format t "~%category  : ~A~%occurrence: ~A  element~:P~%elements  : ~A~2%--------~%" 
 			 (linearize-syn (machash 'SYN (second v))) 
 			 (length (first v))
 			 (first v)))

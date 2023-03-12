@@ -1,0 +1,14 @@
+           editable files in
+ home    : /home/bozsahin/myrepos/thebench/grammars/english
+           temporary and non-editable files in
+ tmp     : /tmp/thebench/
+ file    :  en.txt (7 entries)
+ elements:  7
+ s rules :  0 (turned to 0 elements)
+ a rules :  0
+ basics  :  s np vp
+ quoted  :  
+ special :  
+ features:  t agr
+ values  :  fin 3s xpl
+ POSs    :  v
