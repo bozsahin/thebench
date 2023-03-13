@@ -3,4 +3,9 @@
 a | v :: (s\np)/np: \x\y.a x y
 b | v :: (s\np)/'b': \x\y.b _ x y
 c | v :: (s\np)/'c': \x\y.c _ x y
+kick | v :: (s\np)/np : \x\y.lick x y
+the bucket | idio :: np: euphemism
+the | det :: np/n : \x.def x
+bucket | n :: n: \x.bucket x
+john | n :: np[agr=3s] : john
 
