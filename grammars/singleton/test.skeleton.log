@@ -1,0 +1,24 @@
+The categorial skeleton of the current grammar
+
+
+category  : (S\NP)/NP
+occurrence: 1  element
+elements  : (a)
+
+--------
+
+category  : (S\NP)/(B)
+occurrence: 1  element
+elements  : (b)
+
+--------
+
+category  : (S\NP)/(C)
+occurrence: 1  element
+elements  : (c)
+
+--------
+
+Checksum: 3 (total of sums in category classes)
+Total   : 3 distinct categories
+Out of  : 3 entries (not counting asymmetric relational rules)

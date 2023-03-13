@@ -1,0 +1,6 @@
+% to see if singletons form a cluster
+
+a | v :: (s\np)/np: \x\y.a x y
+b | v :: (s\np)/'b': \x\y.b _ x y
+c | v :: (s\np)/'c': \x\y.c _ x y
+
