@@ -37,6 +37,8 @@ _exit='x'
 _silent='~'
 _help='?'
 _tmp='/var/tmp/thebench/'                  # all bench-generated non-editing files go here
+if not os.path.exists(_tmp): # someone deleted it, recreate
+    os.mkdir(_tmp)
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
@@ -1247,8 +1249,6 @@ phonparser = PHONParser()
 myPromptSession = PromptSession(history = FileHistory(expanduser('~/.thebenchhistory')))
 
 if __name__ == '__main__': # MG REPL online
-    if not os.path.exists(_tmp): # someone deleted it, recreate
-        os.mkdir(_tmp)
     init_grammar()
     welcome()
     with open(os.environ['HOME']+'/.thebenchhome', 'r') as f:        # full path of repo is in this file
