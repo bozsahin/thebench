@@ -9,9 +9,9 @@ if [ $1 == uninstall ]; then
 	if [ -d $BENCH_HOME ]; then
   	echo "Removing $BENCH_HOME"
   	rm -fr $BENCH_HOME
-	if [ -d "/tmp/thebench" ]; then
-  		echo "Removing /tmp/thebench"
-  		rm -fr /tmp/thebench
+	if [ -d "/var/tmp/thebench" ]; then
+  		echo "Removing /var/tmp/thebench"
+  		rm -fr /var/tmp/thebench
 	fi
 	echo "Removing thebench files from $HOME"
 	rm "~/.thebenchhome"
@@ -25,9 +25,9 @@ LOG="=========================================================\nTheBench install
 ULB="$HOME/bin"
 ULL=$HOME
 BHF="$ULL/.thebenchhome" # thebench home path resides in this file
-TMPB='/tmp/thebench'
+TMPB='/var/tmp/thebench'
 SUDO=sudo
-LOGFILE='/tmp/thebench-install.log'
+LOGFILE='/var/tmp/thebench-install.log'
 PYSUFF=$1
 PY="`command -v python$PYSUFF`"
 PIP="`command -v pip$PYSUFF`"

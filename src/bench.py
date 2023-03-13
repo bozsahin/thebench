@@ -36,7 +36,7 @@ _underscore= '_'
 _exit='x'
 _silent='~'
 _help='?'
-_tmp='/tmp/thebench/'                  # all bench-generated non-editing files go here
+_tmp='/var/tmp/thebench/'                  # all bench-generated non-editing files go here
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
@@ -1024,7 +1024,7 @@ def do (commline):
                 print("the grammar source is not well-formed, aborting t command")
                 return
             if load_1pass_sup(args[1]):
-                fn = args[1] + _supext    # .sup is temporary, save it in /tmp after cleaning it on sup
+                fn = args[1] + _supext    # .sup is temporary, save it in _tmp after cleaning it on sup
                 efn = args[2] + ".bench"  # this goes to _tmp too
                 mk_supfile(fn, args[1])
             else:
@@ -1247,6 +1247,8 @@ phonparser = PHONParser()
 myPromptSession = PromptSession(history = FileHistory(expanduser('~/.thebenchhistory')))
 
 if __name__ == '__main__': # MG REPL online
+    if not os.path.exists(_tmp): # someone deleted it, recreate
+        os.mkdir(_tmp)
     init_grammar()
     welcome()
     with open(os.environ['HOME']+'/.thebenchhome', 'r') as f:        # full path of repo is in this file
