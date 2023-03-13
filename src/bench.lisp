@@ -756,7 +756,10 @@
 (defun linearize-syn (synht)
   "turns the syn hashtable synht to a string for display; avoids features other than BCAT DIR MODAL"
   (cond ((null synht) "")
-	((machash 'BCAT synht)(write-to-string (machash 'BCAT synht)))
+	((machash 'BCAT synht)
+	 (if (machash 'BCONST synht)
+	   (format nil "'~{~A ~}'" (machash 'BCAT synht))
+	   (write-to-string (machash 'BCAT synht))))
 	(t (if (machash 'LEX synht)  ; don't print modality for LEX slash. it's * anyway.
 	     (concatenate 'string
 			  (cond ((machash 'DIR 'RESULT synht) "("))
