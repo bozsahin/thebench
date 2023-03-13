@@ -2,7 +2,7 @@ The categorial skeleton of the current grammar
 
 
 category  : NP/NP
-occurrence: 147  elements
+occurrence: 74  elements
 elements  : (MORE / YOUR / A / THE / SOME / HIS / HER / THAT / GOOD / MY / NICE
              / YOUR / WHICH / AN / LOTS-OF / ANOTHER / FUNNY / CLEAN / NEW /
              BIG / WHICH / LITTLE / LOVELY / WHOSE / SWELL / NO / ANY / SQUEAKY
@@ -22,7 +22,7 @@ elements  : (MORE)
 --------
 
 category  : NP
-occurrence: 243  elements
+occurrence: 122  elements
 elements  : (JUICE / IT / THAT / ONE / HE / MILK / JUICE / WATER / COFFEE / TOP
              / ME / MY / CHEESE / SOUP / PUDDING / CELERY / SHE / THIS / COFFEE
              / YOURS / SUGAR / HORSIE / THEY / LIGHT / OFF / REST / TAPIOCA /
@@ -45,7 +45,7 @@ elements  : (JUICE / IT / THAT / ONE / HE / MILK / JUICE / WATER / COFFEE / TOP
 --------
 
 category  : S\*NP
-occurrence: 183  elements
+occurrence: 92  elements
 elements  : (? / DO / READ / GO / GO / SIT / SIT / LOOK / LOOK / FALL / TURN /
              PLAY / GOES / PLAY / DANCE / GONE / WENT / IS / CHIRPS / WHISTLE /
              CHIRP / MOVE / DID / MELTED / CAME / COMES / MANAGED / STAY / WET
@@ -61,19 +61,19 @@ elements  : (? / DO / READ / GO / GO / SIT / SIT / LOOK / LOOK / FALL / TURN /
 --------
 
 category  : S/(S/NP)
-occurrence: 11  elements
+occurrence: 6  elements
 elements  : (WHERE / WHAT / WHO / WHAT-ELSE / WHOSE / WHAT)
 
 --------
 
 category  : (S/NP)/NP
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (IS / ARE / WAS / DID)
 
 --------
 
 category  : NP
-occurrence: 745  elements
+occurrence: 373  elements
 elements  : (CUP / FLY / TELEPHONE / MAN / COOKIE / BABY / BOOK / STOOL / HAT /
              DOLLY / BOTTLE / MAN / LETTER / PENCIL / CORNER / SHOE / CHOOCHOO
              / LUNCH / RADIO / GIRL / SEAT / LUNCH / HEAD / PAPER / DIAPER /
@@ -130,14 +130,14 @@ elements  : (CUP / FLY / TELEPHONE / MAN / COOKIE / BABY / BOOK / STOOL / HAT /
 --------
 
 category  : NP
-occurrence: 23  elements
+occurrence: 12  elements
 elements  : (I / WHO / THERE / WHAT / DOWN / HERE / OUTSIDE / INSIDE /
              DOWNSTAIRS / AROUND / UP / UPSTAIRS)
 
 --------
 
 category  : (S\NP)/NP
-occurrence: 423  elements
+occurrence: 212  elements
 elements  : (TOOK / AM / SAYING / GET / CALLING / DOING / WANT / DO / IS / READ
              / EAT / ATE / HAD / DRINKING / HAVE / HAS / FIND / ARE / WRITE /
              SAY / WAS / MAKING / HIT / EATS / BRING / BRING / TASTE / CHANGE /
@@ -168,7 +168,7 @@ elements  : (TOOK / AM / SAYING / GET / CALLING / DOING / WANT / DO / IS / READ
 --------
 
 category  : (S\NP)/PREDP
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (AM / BE / ARE / WAS)
 
 --------
@@ -180,7 +180,7 @@ elements  : (NOT)
 --------
 
 category  : PREDP
-occurrence: 127  elements
+occurrence: 64  elements
 elements  : (SURE / BUSY / ALRIGHT / BETTER / RIGHT / UNHAPPY / READY / HOT /
              WELCOME / ALLGONE / SLEEPY / GREEN / DONE / SORRY / EASIER / EARLY
              / OKAY / BIGGER / BLUE / FINE / BROWN / RED / DIRTY / FUNNY / TRUE
@@ -194,7 +194,7 @@ elements  : (SURE / BUSY / ALRIGHT / BETTER / RIGHT / UNHAPPY / READY / HOT /
 --------
 
 category  : (S/(S\NP))/NP
-occurrence: 35  elements
+occurrence: 18  elements
 elements  : (ARE / IS / CAN / DID / WILL / WANT / DO / DOES / WOULD / HAVE /
              SHALL / SHOULD / MAY / HAS / WERE / WAS / AM / (QUOTE D))
 
@@ -207,7 +207,7 @@ elements  : (YOU)
 --------
 
 category  : NP
-occurrence: 175  elements
+occurrence: 88  elements
 elements  : (FRASER / MOMMY / JACK / JILL / EVE / RACKETYBOOM / NEIL / SAMBO /
              DOLLY / GRANMA / THEM / CROMER / BECKY / MAMA / KATHY /
              HUMPTYDUMPTY / DUMPTY / SANDY / PAPA / GORDON / SHEILA / CATHY /
@@ -225,7 +225,7 @@ elements  : (FRASER / MOMMY / JACK / JILL / EVE / RACKETYBOOM / NEIL / SAMBO /
 --------
 
 category  : S/S
-occurrence: 43  elements
+occurrence: 22  elements
 elements  : (WHAT / LATER / AND / THERE / BECAUSE / BUT / THEN / NOW / FIRST /
              AFTER / TONIGHT / TOMORROW / SOMETIMES / OR / SO / OH / AFTER-ALL
              / WHILE / HAHA / EH / BECAUSE / SEE)
@@ -233,7 +233,7 @@ elements  : (WHAT / LATER / AND / THERE / BECAUSE / BUT / THEN / NOW / FIRST /
 --------
 
 category  : S
-occurrence: 65  elements
+occurrence: 33  elements
 elements  : (GO / COME / READ / LOOK / WAIT / COOK / JUMP / PEEK / BLOW /
                 PEEPEE / STOP / TRY / WORK / PLAY / FINISH / RUN / GUESS / SNAP
                 / SIT / SWIM / TOUCH / MOVE / SWING / SLEEP / PEEL / WAIT /
@@ -248,7 +248,7 @@ elements  : (AND)
 --------
 
 category  : S/NP
-occurrence: 165  elements
+occurrence: 83  elements
 elements  : (GET / DRINK / BRING / AND / BECAUSE / PARDON / FIND / SEND / FIX /
                  SEE / TIE / EAT / CLEAN / CALL / WANT / HAVE / READ / HOLD /
                  SNAP / DO / KISS / DRAW / SPELL / LEAVE / PATTING / TELL / CAN
@@ -263,14 +263,14 @@ elements  : (GET / DRINK / BRING / AND / BECAUSE / PARDON / FIND / SEND / FIX /
 --------
 
 category  : ((S\NP)/NP)/NP
-occurrence: 31  elements
+occurrence: 16  elements
 elements  : (GAVE / GIVE / SENT / READ / TOLD / GETTING / TELL / GIVING / WRITE
              / BRING / BRING / WROTE / GIVE / BRINGING / FIND / READ)
 
 --------
 
 category  : S\*S
-occurrence: 61  elements
+occurrence: 31  elements
 elements  : (? / LATER / HERE / ? / UPSTAIRS / FAR / OUTSIDE / NOW / THEN /
              THERE / EVERYDAY / YESTERDAY / YET / FIRST / STILL / SIDEWAYS / ?
              / AWAY / AFTERWARDS / TOMORROW / THOUGH / DOWN / AWHILE /
@@ -279,7 +279,7 @@ elements  : (? / LATER / HERE / ? / UPSTAIRS / FAR / OUTSIDE / NOW / THEN /
 --------
 
 category  : (S\NP)/(S\NP)
-occurrence: 65  elements
+occurrence: 33  elements
 elements  : (CAN / DO / HAVE / IS / WILL / DOES / ARE / GONNA / GOING-TO / TO /
              AM / MAY / WAS / DID / CANNOT / BEEN / GOES / HAS / MUST / WERE /
              COULD / MAKE / PARTICULARLY / ONLY / TRYING / ALREADY / PROBABLY /
@@ -294,7 +294,7 @@ elements  : (JUST)
 --------
 
 category  : S/NP
-occurrence: 29  elements
+occurrence: 15  elements
 elements  : (DRINKING / FIXING / BRINGING / MAKING / FOLDING / TAKING / EATING
              / PUSHING / DOING / SMELLING / HAVING / CHANGING / MIXING /
              SHAKING / DOING)
@@ -308,20 +308,20 @@ elements  : (WE)
 --------
 
 category  : (S\S)/NP
-occurrence: 39  elements
+occurrence: 20  elements
 elements  : (WITH / IN / TO / FOR / ON / OUT / OVER / UP / OUTOF / THROUGH /
              DOWN / FROM / AT / AFTER / INSIDE / TO / OFF / BY / INTO / BEFORE)
 
 --------
 
 category  : (S/NP)/NP
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (GIVE / WRITE / BRING)
 
 --------
 
 category  : NP
-occurrence: 209  elements
+occurrence: 105  elements
 elements  : (SOLDIERS / DUCKS / FISH / PENCILS / CANDLES / CRAYONS / PEGS /
              THINGS / CHIRPS / GLASSES / SHOES / SQUIRRELS / NAPKINS / TEETH /
              BEADS / DOLLS / STAMPS / ONES / LIONS / FRIENDS / BUBBLES / HANDS
@@ -348,7 +348,7 @@ elements  : (AND)
 --------
 
 category  : ((S\NP)/NP)/(ABOUT)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (READ / WORRY)
 
 --------
@@ -360,19 +360,19 @@ elements  : (FOR)
 --------
 
 category  : ((S\NP)/(S\NP))/NP
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (WANT / WANT / LIKE)
 
 --------
 
 category  : S/(S\NP)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (WHO / GONNA / GONNA)
 
 --------
 
 category  : S\NP
-occurrence: 77  elements
+occurrence: 39  elements
 elements  : (SITTING / GOING / COMING / PLAYING / SWIMMING / CRYING / DRAWING /
              JUMPING / SLEEPING / LAYING / SMILING / EATING / STANDING /
              LAUGHING / GROWING / STAYING / FIZZING / MEETING / DRIPPING /
@@ -384,20 +384,20 @@ elements  : (SITTING / GOING / COMING / PLAYING / SWIMMING / CRYING / DRAWING /
 --------
 
 category  : (NP\NP)/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : ((QUOTE S) / BESIDES)
 
 --------
 
 category  : ((S\NP)/NP)/(TO)
-occurrence: 17  elements
+occurrence: 9  elements
 elements  : (BELONGS / HAPPENED / LISTENING / TALKING / WENT / TALKING / WAVING
              / READ / GO)
 
 --------
 
 category  : NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (KITCHEN / FIREPLACE)
 
 --------
@@ -409,20 +409,20 @@ elements  : (TOO)
 --------
 
 category  : (S/(OUT))/NP
-occurrence: 9  elements
+occurrence: 5  elements
 elements  : (KEEP / CLEAR / PULL / TAKE / PICK)
 
 --------
 
 category  : (S\NP)/(DOWN)
-occurrence: 17  elements
+occurrence: 9  elements
 elements  : (SIT / FELL / GOING / LAYING / SIT / STAY / COMING / LYING /
              SITTING)
 
 --------
 
 category  : (S\NP)\(S\NP)
-occurrence: 39  elements
+occurrence: 20  elements
 elements  : (HARD / ON / FLIPFLOP / PROPERLY / HARD / FAST / FINE / ROUND /
              WELL / PROBABLY / RIGHT / BETTER / BAREFOOT / STILL / GREATLY /
              OFF / ALONE / OUT / BACK / UP)
@@ -430,7 +430,7 @@ elements  : (HARD / ON / FLIPFLOP / PROPERLY / HARD / FAST / FINE / ROUND /
 --------
 
 category  : ((S\NP)/NP)/(OFF)
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (FELL / THINK / HOLD / FALLING)
 
 --------
@@ -454,7 +454,7 @@ elements  : (SURE)
 --------
 
 category  : ((S\NP)/NP)/(ON)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (WRITING / BLOW / BELONG)
 
 --------
@@ -478,7 +478,7 @@ elements  : (AGAIN)
 --------
 
 category  : (S/(UP))/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (PICK / CHEW)
 
 --------
@@ -490,7 +490,7 @@ elements  : (PICK)
 --------
 
 category  : S/(IN)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (CLIMB / PEEK / GO)
 
 --------
@@ -502,26 +502,26 @@ elements  : (RIGHT)
 --------
 
 category  : (S\NP)/(AWAY)
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (GONE / GOING / GO / GONE)
 
 --------
 
 category  : S/(DOWN)
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (SIT / FELL / LAY / CLIMB)
 
 --------
 
 category  : S
-occurrence: 17  elements
+occurrence: 9  elements
 elements  : (LYING / COMING / PLAYING / SITTING / RUNNING / EATING / SKATING /
              SWIMMING / RINGING)
 
 --------
 
 category  : ((S\NP)/(UP))/NP
-occurrence: 9  elements
+occurrence: 5  elements
 elements  : (TIE / EAT / PICK / CHEW / TAKE)
 
 --------
@@ -533,7 +533,7 @@ elements  : (ALMOST)
 --------
 
 category  : ((S\NP)/(OUT))/NP
-occurrence: 17  elements
+occurrence: 9  elements
 elements  : (SPIT / GET / PULL / GETTING / TOOK / GET / GOT / MOVE / PUT)
 
 --------
@@ -551,7 +551,7 @@ elements  : (DO)
 --------
 
 category  : (S\NP)/(UP)
-occurrence: 11  elements
+occurrence: 6  elements
 elements  : (SIT / GO / WOKE / STAY / WAKE / WAKING)
 
 --------
@@ -575,13 +575,13 @@ elements  : (WELL)
 --------
 
 category  : S/NP
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (ARE / IS / DID)
 
 --------
 
 category  : ((S\NP)/NP)/(WITH)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (PLAYING / PEEK)
 
 --------
@@ -593,13 +593,13 @@ elements  : (TELL)
 --------
 
 category  : (S\NP)/(IN)
-occurrence: 9  elements
+occurrence: 5  elements
 elements  : (COME / CLIMB / CLIMB / GO / PUT)
 
 --------
 
 category  : (S\NP)/(OUT)
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (STANDING / BLOW / PEEPING / PEEKING)
 
 --------
@@ -611,7 +611,7 @@ elements  : (BOTH)
 --------
 
 category  : (S/NP)/(AT)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (LOOK / PEEK / SMILE)
 
 --------
@@ -629,7 +629,7 @@ elements  : (TOGETHER)
 --------
 
 category  : ((S\NP)/NP)/(INTO)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (GOING / GOING / BUMPED)
 
 --------
@@ -641,13 +641,13 @@ elements  : (CERTAINLY)
 --------
 
 category  : (S/(OFF))/NP
-occurrence: 9  elements
+occurrence: 5  elements
 elements  : (LICK / WIPE / WASH / CLEAN / TAKE)
 
 --------
 
 category  : (S/(IN))/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (POUR / PUT)
 
 --------
@@ -665,7 +665,7 @@ elements  : (QUITE)
 --------
 
 category  : ((S\NP)/(AWAY))/NP
-occurrence: 9  elements
+occurrence: 5  elements
 elements  : (THREW / THROW / TAKE / PUT / PUT)
 
 --------
@@ -677,7 +677,7 @@ elements  : (GOING)
 --------
 
 category  : (S\NP)/(OFF)
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (FELL / FALLING / COME / CAME)
 
 --------
@@ -689,13 +689,13 @@ elements  : (REALLY)
 --------
 
 category  : ((S\NP)/NP)/(AT)
-occurrence: 9  elements
+occurrence: 5  elements
 elements  : (STARE / PEEK / LOOK / LOOK / WORKING)
 
 --------
 
 category  : ((S\NP)\(S\NP))/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (BUT / LIKE)
 
 --------
@@ -731,7 +731,7 @@ elements  : (MAYBE)
 --------
 
 category  : (S\NP)/(ON)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (BELONGS / LEAVE / HAS)
 
 --------
@@ -761,7 +761,7 @@ elements  : (GOING)
 --------
 
 category  : ((S\NP)/(IN))/NP
-occurrence: 9  elements
+occurrence: 5  elements
 elements  : (COLOR / GET / PUTTING / PUT / PUT)
 
 --------
@@ -773,13 +773,13 @@ elements  : (PROBABLY)
 --------
 
 category  : S/(OUT)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (BLOW / STEP)
 
 --------
 
 category  : (S/PREDP)/NP
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (IS / ARE / AM / WAS)
 
 --------
@@ -791,13 +791,13 @@ elements  : (TRYING)
 --------
 
 category  : (S/(ON))/NP
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (LEAVE / SLIP / PUT)
 
 --------
 
 category  : ((S\NP)/(ON))/NP
-occurrence: 7  elements
+occurrence: 4  elements
 elements  : (LEAVE / GOT / PUT / PUT)
 
 --------
@@ -809,7 +809,7 @@ elements  : (YEAR)
 --------
 
 category  : ((S\NP)/NP)/(IN)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (CLIMB / BELONG / BELONGS)
 
 --------
@@ -821,13 +821,13 @@ elements  : (EXACTLY)
 --------
 
 category  : ((S\NP)/NP)/(LIKE)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (LOOK / LOOKS / SOUND)
 
 --------
 
 category  : (S/(AROUND))/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (TURN / PUSH)
 
 --------
@@ -839,7 +839,7 @@ elements  : (STILL)
 --------
 
 category  : (S\NP)/(AROUND)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (GOING / LOOKING / TURN)
 
 --------
@@ -857,19 +857,19 @@ elements  : (WENT)
 --------
 
 category  : ((S\NP)/(OVER))/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (FOLD / PUT)
 
 --------
 
 category  : (S\NP)/S
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (SAYING / SAID / GO)
 
 --------
 
 category  : ((S\NP)/(OFF))/NP
-occurrence: 11  elements
+occurrence: 6  elements
 elements  : (CHEW / BITE / WIPE / WANT / TAKE / KEEP)
 
 --------
@@ -893,7 +893,7 @@ elements  : (AWFULLY)
 --------
 
 category  : (S/NP)/(IN)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (CLIMB / PUT)
 
 --------
@@ -917,19 +917,19 @@ elements  : (ONCE)
 --------
 
 category  : S/(UP)
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (HURRY / SIT / CLIMB)
 
 --------
 
 category  : (S\NP)/(BACK)
-occurrence: 11  elements
+occurrence: 6  elements
 elements  : (COMING / COMING / STEP / CAME / COME / RUN)
 
 --------
 
 category  : S/(AROUND)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (PEEK / TURN)
 
 --------
@@ -965,7 +965,7 @@ elements  : (PUSHING)
 --------
 
 category  : (S\NP)/(OVER)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (BENT / TURN)
 
 --------
@@ -1031,7 +1031,7 @@ elements  : (UP)
 --------
 
 category  : N
-occurrence: 15  elements
+occurrence: 8  elements
 elements  : (ICECUBE / BABY-NOISE / GOPHER / DIFFERENCE / BOWEL-MOVEMENT /
              DONKEY / ROOSTER / RADIATOR)
 
@@ -1056,7 +1056,7 @@ elements  : (SO-LONG)
 --------
 
 category  : S/(OVER)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (CLIMB / COME)
 
 --------
@@ -1068,7 +1068,7 @@ elements  : (TELL)
 --------
 
 category  : ((S\NP)/NP)/(OUT)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (GET / LOOKING)
 
 --------
@@ -1086,7 +1086,7 @@ elements  : (WIPE)
 --------
 
 category  : S/(ON)
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (COME / GO)
 
 --------
@@ -1110,7 +1110,7 @@ elements  : (COMING)
 --------
 
 category  : (S/(OUTOF))/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (TAKE / STEP)
 
 --------
@@ -1140,7 +1140,7 @@ elements  : (SAY)
 --------
 
 category  : ((S\NP)/(BACK))/NP
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (TAKE / PUT / PUT)
 
 --------
@@ -1152,7 +1152,7 @@ elements  : (BLOW)
 --------
 
 category  : ((S/NP)/(IN))/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (STICK / PUT)
 
 --------
@@ -1182,13 +1182,13 @@ elements  : (PUTTING)
 --------
 
 category  : (((S\NP)/NP)/(IN))/NP
-occurrence: 3  elements
+occurrence: 2  elements
 elements  : (PUTTING / PUT)
 
 --------
 
 category  : (((S\NP)/NP)/(ON))/NP
-occurrence: 5  elements
+occurrence: 3  elements
 elements  : (PUTTING / PUT / PUT)
 
 --------
@@ -1211,5 +1211,6 @@ elements  : (PUT)
 
 --------
 
-Total : 171 distinct categories
-Out of: 1790 entries (not counting asymmetric relational rules)
+Checksum: 1790 (total of sums in category classes)
+Total   : 171 distinct categories
+Out of  : 1790 entries (not counting asymmetric relational rules)

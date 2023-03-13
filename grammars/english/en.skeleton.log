@@ -1,0 +1,30 @@
+The categorial skeleton of the current grammar
+
+
+category  : (S\NP)/NP
+occurrence: 1  element
+elements  : (sees)
+
+--------
+
+category  : ((S\NP)/VP)/NP
+occurrence: 3  elements
+elements  : (persuades / promises / wants)
+
+--------
+
+category  : (S\NP)/VP
+occurrence: 2  elements
+elements  : (wants / seems)
+
+--------
+
+category  : (S\NP)/S
+occurrence: 1  element
+elements  : (seems)
+
+--------
+
+Checksum: 7 (total of sums in category classes)
+Total   : 4 distinct categories
+Out of  : 7 entries (not counting asymmetric relational rules)

@@ -2903,30 +2903,37 @@
   "collects and reports the skeleton of the currently loaded grammar"
   (let ((skht (make-cky-hashtable 
 		(+ 5 (length *current-grammar*)))) ; although this is not for parsing, structure is the same
+	(checksum 0)
+	(slashcnt 0)
 	) ; second element of the list value is the lex cat as hash table, the first one is list of elements which 
     ; matches the syntactic cat in the second element
     (dolist (el *current-grammar*)
       (if (not (lex-rule-p (nv-list-val 'KEY el)))
-	(setf (machash (gensym "sk-") skht)
+	(setf (machash (gensym "sk-") skht)  ; 3 elements: PHON list a lexht and match count
 	      (list (list (nv-list-val 'PHON el))
-		    (hash-lex el)))))
+		    (hash-lex el)
+		    0))))
     (maphash #'(lambda (k1 v1)
 		 (maphash #'(lambda (k2 v2)
 			      (and (not (equal k1 k2))
 				   (cat-match (machash 'SYN (second v1))
 					      (machash 'SYN (second v2)))
 				   (setf (first v1) (append (first v1) (cons "/"  (first v2))))
-				   (remhash k2 skht))) ; this is destructive--effects next itereations
+				   (setf (third v1) (+ (third v1) 1))
+				   (incf slashcnt) ; for double check
+				   (remhash k2 skht))) ; this is destructive--effects next iterations
 			  skht))
 	     skht)
     (format t "The categorial skeleton of the current grammar~2%")
     (maphash #'(lambda (k v) ; report what is left
 		 (format t "~%category  : ~A~%occurrence: ~A  element~:P~%elements  : ~A~2%--------~%" 
 			 (linearize-syn (machash 'SYN (second v))) 
-			 (length (first v))
-			 (first v)))
+			 (- (length (first v)) (third v))
+			 (first v))
+		 (setf checksum (+ checksum (length (first v)))))
 	     skht)
-    (format t "~%Total : ~A distinct categories~%Out of: ~A entries (not counting asymmetric relational rules)" 
+    (format t "~%Checksum: ~A (total of sums in category classes)" (- checksum slashcnt))
+    (format t "~%Total   : ~A distinct categories~%Out of  : ~A entries (not counting asymmetric relational rules)" 
 	    (hash-table-count skht)
 	    (- (length *current-grammar*) (length *lex-rules-table*))))
   t)  ; return success to python
