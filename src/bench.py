@@ -897,11 +897,11 @@ def tc_bundle_quote(ql):
     # bundles ql, which is string within string, to Lisp list of tokens
     ws = ql.split("'")  
     if len(ws) > 1:
-        return '(' + _ws.join(ws[1].split()) + ')'
+        return '(|' + _ws.join(ws[1].split()) + '|)'
     elif len(ws[0]) == 0:
         return '(**ERROR** Your quoted category is empty This is well-formed but not processable)'
     else:
-        return '(' + _ws.join(ws[0][1:-1].split()) + ')'   # first and last elements are scare quotes, single or double
+        return '(|' + _ws.join(ws[0][1:-1].split()) + '|)'   # first and last elements are scare quotes, single or double
 
 def ir_to_lisp(ir):
     # turns an internal representation into Lisp list in strings
