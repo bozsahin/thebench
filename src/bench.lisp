@@ -949,11 +949,10 @@
   they are used to access *cky-input*; x is length, y is starting pos (from 1).
   Returns the new hashtable if succesful, otherwise nil.
   Check the BCAT, which is a phon sequence, one by one because of |..| inside"
-  (let* ((bcat (machash 'BCAT 'ARG 'SYN fht))
-	 (substr (subseq *cky-input* (- (second coorda) 1) (+ (first coorda) (- (second coorda) 1))))
-	 (success (reduce #'(lambda (x y) (and x y))
-			  (mapcar #'(lambda (x y)(equal (symbol-name x) (symbol-name y))) bcat substr))))
-    (format t "bcat: ~S substr: ~S success: ~S" bcat substr success)
+  (let* ((bcat (format nil "~{~A~^ ~}" (mapcar #'symbol-name (machash 'BCAT 'ARG 'SYN fht))))
+	 (substr (format nil "~{~A~^ ~}" (mapcar #'symbol-name (subseq *cky-input* 
+						 (- (second coorda) 1) (+ (first coorda) (- (second coorda) 1))))))
+	 (success (equal bcat substr)))
     (if (and success (lex-check (machash 'LEX 'SYN fht) alex))
       (let ((newht (make-cky-entry-hashtable)))
 	(set-nf-tag newht *ot*)
