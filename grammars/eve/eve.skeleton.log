@@ -347,7 +347,7 @@ elements  : (AND)
 
 --------
 
-category  : ((S\NP)/NP)/'about '
+category  : ((S\NP)/NP)/'about'
 occurrence: 2  elements
 elements  : (READ / WORRY)
 
@@ -389,7 +389,7 @@ elements  : ((QUOTE S) / BESIDES)
 
 --------
 
-category  : ((S\NP)/NP)/'to '
+category  : ((S\NP)/NP)/'to'
 occurrence: 9  elements
 elements  : (BELONGS / HAPPENED / LISTENING / TALKING / WENT / TALKING / WAVING
              / READ / GO)
@@ -408,13 +408,13 @@ elements  : (TOO)
 
 --------
 
-category  : (S/'out ')/NP
+category  : (S/'out')/NP
 occurrence: 5  elements
 elements  : (KEEP / CLEAR / PULL / TAKE / PICK)
 
 --------
 
-category  : (S\NP)/'down '
+category  : (S\NP)/'down'
 occurrence: 9  elements
 elements  : (SIT / FELL / GOING / LAYING / SIT / STAY / COMING / LYING /
              SITTING)
@@ -429,7 +429,7 @@ elements  : (HARD / ON / FLIPFLOP / PROPERLY / HARD / FAST / FINE / ROUND /
 
 --------
 
-category  : ((S\NP)/NP)/'off '
+category  : ((S\NP)/NP)/'off'
 occurrence: 4  elements
 elements  : (FELL / THINK / HOLD / FALLING)
 
@@ -453,7 +453,7 @@ elements  : (SURE)
 
 --------
 
-category  : ((S\NP)/NP)/'on '
+category  : ((S\NP)/NP)/'on'
 occurrence: 3  elements
 elements  : (WRITING / BLOW / BELONG)
 
@@ -477,19 +477,19 @@ elements  : (AGAIN)
 
 --------
 
-category  : (S/'up ')/NP
+category  : (S/'up')/NP
 occurrence: 2  elements
 elements  : (PICK / CHEW)
 
 --------
 
-category  : (S/NP)/'up '
+category  : (S/NP)/'up'
 occurrence: 1  element
 elements  : (PICK)
 
 --------
 
-category  : S/'in '
+category  : S/'in'
 occurrence: 3  elements
 elements  : (CLIMB / PEEK / GO)
 
@@ -501,13 +501,13 @@ elements  : (RIGHT)
 
 --------
 
-category  : (S\NP)/'away '
+category  : (S\NP)/'away'
 occurrence: 4  elements
 elements  : (GONE / GOING / GO / GONE)
 
 --------
 
-category  : S/'down '
+category  : S/'down'
 occurrence: 4  elements
 elements  : (SIT / FELL / LAY / CLIMB)
 
@@ -520,7 +520,7 @@ elements  : (LYING / COMING / PLAYING / SITTING / RUNNING / EATING / SKATING /
 
 --------
 
-category  : ((S\NP)/'up ')/NP
+category  : ((S\NP)/'up')/NP
 occurrence: 5  elements
 elements  : (TIE / EAT / PICK / CHEW / TAKE)
 
@@ -532,13 +532,13 @@ elements  : (ALMOST)
 
 --------
 
-category  : ((S\NP)/'out ')/NP
+category  : ((S\NP)/'out')/NP
 occurrence: 9  elements
 elements  : (SPIT / GET / PULL / GETTING / TOOK / GET / GOT / MOVE / PUT)
 
 --------
 
-category  : ((S\NP)/NP)/'up '
+category  : ((S\NP)/NP)/'up'
 occurrence: 1  element
 elements  : (SPIT)
 
@@ -550,7 +550,7 @@ elements  : (DO)
 
 --------
 
-category  : (S\NP)/'up '
+category  : (S\NP)/'up'
 occurrence: 6  elements
 elements  : (SIT / GO / WOKE / STAY / WAKE / WAKING)
 
@@ -580,7 +580,7 @@ elements  : (ARE / IS / DID)
 
 --------
 
-category  : ((S\NP)/NP)/'with '
+category  : ((S\NP)/NP)/'with'
 occurrence: 2  elements
 elements  : (PLAYING / PEEK)
 
@@ -592,13 +592,13 @@ elements  : (TELL)
 
 --------
 
-category  : (S\NP)/'in '
+category  : (S\NP)/'in'
 occurrence: 5  elements
 elements  : (COME / CLIMB / CLIMB / GO / PUT)
 
 --------
 
-category  : (S\NP)/'out '
+category  : (S\NP)/'out'
 occurrence: 4  elements
 elements  : (STANDING / BLOW / PEEPING / PEEKING)
 
@@ -610,7 +610,7 @@ elements  : (BOTH)
 
 --------
 
-category  : (S/NP)/'at '
+category  : (S/NP)/'at'
 occurrence: 3  elements
 elements  : (LOOK / PEEK / SMILE)
 
@@ -628,7 +628,7 @@ elements  : (TOGETHER)
 
 --------
 
-category  : ((S\NP)/NP)/'into '
+category  : ((S\NP)/NP)/'into'
 occurrence: 3  elements
 elements  : (GOING / GOING / BUMPED)
 
@@ -640,19 +640,19 @@ elements  : (CERTAINLY)
 
 --------
 
-category  : (S/'off ')/NP
+category  : (S/'off')/NP
 occurrence: 5  elements
 elements  : (LICK / WIPE / WASH / CLEAN / TAKE)
 
 --------
 
-category  : (S/'in ')/NP
+category  : (S/'in')/NP
 occurrence: 2  elements
 elements  : (POUR / PUT)
 
 --------
 
-category  : (S/'down ')/NP
+category  : (S/'down')/NP
 occurrence: 1  element
 elements  : (PULL)
 
@@ -664,19 +664,19 @@ elements  : (QUITE)
 
 --------
 
-category  : ((S\NP)/'away ')/NP
+category  : ((S\NP)/'away')/NP
 occurrence: 5  elements
 elements  : (THREW / THROW / TAKE / PUT / PUT)
 
 --------
 
-category  : (S\NP)/'into '
+category  : (S\NP)/'into'
 occurrence: 1  element
 elements  : (GOING)
 
 --------
 
-category  : (S\NP)/'off '
+category  : (S\NP)/'off'
 occurrence: 4  elements
 elements  : (FELL / FALLING / COME / CAME)
 
@@ -688,7 +688,7 @@ elements  : (REALLY)
 
 --------
 
-category  : ((S\NP)/NP)/'at '
+category  : ((S\NP)/NP)/'at'
 occurrence: 5  elements
 elements  : (STARE / PEEK / LOOK / LOOK / WORKING)
 
@@ -700,7 +700,7 @@ elements  : (BUT / LIKE)
 
 --------
 
-category  : (S\NP)/'along '
+category  : (S\NP)/'along'
 occurrence: 1  element
 elements  : (GOING)
 
@@ -730,19 +730,19 @@ elements  : (MAYBE)
 
 --------
 
-category  : (S\NP)/'on '
+category  : (S\NP)/'on'
 occurrence: 3  elements
 elements  : (BELONGS / LEAVE / HAS)
 
 --------
 
-category  : (S/NP)/'with '
+category  : (S/NP)/'with'
 occurrence: 1  element
 elements  : (PLAYING)
 
 --------
 
-category  : (S/'off ')/NP
+category  : (S/'off')/NP
 occurrence: 1  element
 elements  : (TAKING)
 
@@ -754,13 +754,13 @@ elements  : (INSTEAD-OF)
 
 --------
 
-category  : (S/NP)/'for '
+category  : (S/NP)/'for'
 occurrence: 1  element
 elements  : (GOING)
 
 --------
 
-category  : ((S\NP)/'in ')/NP
+category  : ((S\NP)/'in')/NP
 occurrence: 5  elements
 elements  : (COLOR / GET / PUTTING / PUT / PUT)
 
@@ -772,7 +772,7 @@ elements  : (PROBABLY)
 
 --------
 
-category  : S/'out '
+category  : S/'out'
 occurrence: 2  elements
 elements  : (BLOW / STEP)
 
@@ -790,13 +790,13 @@ elements  : (TRYING)
 
 --------
 
-category  : (S/'on ')/NP
+category  : (S/'on')/NP
 occurrence: 3  elements
 elements  : (LEAVE / SLIP / PUT)
 
 --------
 
-category  : ((S\NP)/'on ')/NP
+category  : ((S\NP)/'on')/NP
 occurrence: 4  elements
 elements  : (LEAVE / GOT / PUT / PUT)
 
@@ -808,7 +808,7 @@ elements  : (YEAR)
 
 --------
 
-category  : ((S\NP)/NP)/'in '
+category  : ((S\NP)/NP)/'in'
 occurrence: 3  elements
 elements  : (CLIMB / BELONG / BELONGS)
 
@@ -820,13 +820,13 @@ elements  : (EXACTLY)
 
 --------
 
-category  : ((S\NP)/NP)/'like '
+category  : ((S\NP)/NP)/'like'
 occurrence: 3  elements
 elements  : (LOOK / LOOKS / SOUND)
 
 --------
 
-category  : (S/'around ')/NP
+category  : (S/'around')/NP
 occurrence: 2  elements
 elements  : (TURN / PUSH)
 
@@ -838,7 +838,7 @@ elements  : (STILL)
 
 --------
 
-category  : (S\NP)/'around '
+category  : (S\NP)/'around'
 occurrence: 3  elements
 elements  : (GOING / LOOKING / TURN)
 
@@ -850,13 +850,13 @@ elements  : (THAT)
 
 --------
 
-category  : (S\NP)/'by '
+category  : (S\NP)/'by'
 occurrence: 1  element
 elements  : (WENT)
 
 --------
 
-category  : ((S\NP)/'over ')/NP
+category  : ((S\NP)/'over')/NP
 occurrence: 2  elements
 elements  : (FOLD / PUT)
 
@@ -868,7 +868,7 @@ elements  : (SAYING / SAID / GO)
 
 --------
 
-category  : ((S\NP)/'off ')/NP
+category  : ((S\NP)/'off')/NP
 occurrence: 6  elements
 elements  : (CHEW / BITE / WIPE / WANT / TAKE / KEEP)
 
@@ -892,7 +892,7 @@ elements  : (AWFULLY)
 
 --------
 
-category  : (S/NP)/'in '
+category  : (S/NP)/'in'
 occurrence: 2  elements
 elements  : (CLIMB / PUT)
 
@@ -916,55 +916,55 @@ elements  : (ONCE)
 
 --------
 
-category  : S/'up '
+category  : S/'up'
 occurrence: 3  elements
 elements  : (HURRY / SIT / CLIMB)
 
 --------
 
-category  : (S\NP)/'back '
+category  : (S\NP)/'back'
 occurrence: 6  elements
 elements  : (COMING / COMING / STEP / CAME / COME / RUN)
 
 --------
 
-category  : S/'around '
+category  : S/'around'
 occurrence: 2  elements
 elements  : (PEEK / TURN)
 
 --------
 
-category  : ((S/NP)/'about ')/NP
+category  : ((S/NP)/'about')/NP
 occurrence: 1  element
 elements  : (TELL)
 
 --------
 
-category  : ((S\NP)/'at ')/NP
+category  : ((S\NP)/'at')/NP
 occurrence: 1  element
 elements  : (LOOKING)
 
 --------
 
-category  : ((S\NP)/NP)/'for '
+category  : ((S\NP)/NP)/'for'
 occurrence: 1  element
 elements  : (WAIT)
 
 --------
 
-category  : ((S\NP)/'down ')/NP
+category  : ((S\NP)/'down')/NP
 occurrence: 1  element
 elements  : (PULLING)
 
 --------
 
-category  : (S/'around ')/NP
+category  : (S/'around')/NP
 occurrence: 1  element
 elements  : (PUSHING)
 
 --------
 
-category  : (S\NP)/'over '
+category  : (S\NP)/'over'
 occurrence: 2  elements
 elements  : (BENT / TURN)
 
@@ -994,13 +994,13 @@ elements  : (BEST)
 
 --------
 
-category  : (S/NP)/'to '
+category  : (S/NP)/'to'
 occurrence: 1  element
 elements  : (WENT)
 
 --------
 
-category  : ((S\NP)/NP)/'through '
+category  : ((S\NP)/NP)/'through'
 occurrence: 1  element
 elements  : (LOOK)
 
@@ -1018,7 +1018,7 @@ elements  : (STRAIGHT)
 
 --------
 
-category  : ((S\NP)/'along ')/NP
+category  : ((S\NP)/'along')/NP
 occurrence: 1  element
 elements  : (TAKE)
 
@@ -1055,37 +1055,37 @@ elements  : (SO-LONG)
 
 --------
 
-category  : S/'over '
+category  : S/'over'
 occurrence: 2  elements
 elements  : (CLIMB / COME)
 
 --------
 
-category  : (((S\NP)/NP)/'about ')/NP
+category  : (((S\NP)/NP)/'about')/NP
 occurrence: 1  element
 elements  : (TELL)
 
 --------
 
-category  : ((S\NP)/NP)/'out '
+category  : ((S\NP)/NP)/'out'
 occurrence: 2  elements
 elements  : (GET / LOOKING)
 
 --------
 
-category  : (S/'apart ')/NP
+category  : (S/'apart')/NP
 occurrence: 1  element
 elements  : (TAKE)
 
 --------
 
-category  : (((S\NP)/NP)/'off ')/NP
+category  : (((S\NP)/NP)/'off')/NP
 occurrence: 1  element
 elements  : (WIPE)
 
 --------
 
-category  : S/'on '
+category  : S/'on'
 occurrence: 2  elements
 elements  : (COME / GO)
 
@@ -1097,25 +1097,25 @@ elements  : (DEAR)
 
 --------
 
-category  : S/'back '
+category  : S/'back'
 occurrence: 1  element
 elements  : (GO)
 
 --------
 
-category  : (S/NP)/'outof '
+category  : (S/NP)/'outof'
 occurrence: 1  element
 elements  : (COMING)
 
 --------
 
-category  : (S/'outof ')/NP
+category  : (S/'outof')/NP
 occurrence: 2  elements
 elements  : (TAKE / STEP)
 
 --------
 
-category  : (S/NP)/'off '
+category  : (S/NP)/'off'
 occurrence: 1  element
 elements  : (JUMP)
 
@@ -1127,7 +1127,7 @@ elements  : (BEDROOM)
 
 --------
 
-category  : S/'ahead '
+category  : S/'ahead'
 occurrence: 1  element
 elements  : (GO)
 
@@ -1139,19 +1139,19 @@ elements  : (SAY)
 
 --------
 
-category  : ((S\NP)/'back ')/NP
+category  : ((S\NP)/'back')/NP
 occurrence: 3  elements
 elements  : (TAKE / PUT / PUT)
 
 --------
 
-category  : (S/NP)/'on '
+category  : (S/NP)/'on'
 occurrence: 1  element
 elements  : (BLOW)
 
 --------
 
-category  : ((S/NP)/'in ')/NP
+category  : ((S/NP)/'in')/NP
 occurrence: 2  elements
 elements  : (STICK / PUT)
 
@@ -1175,37 +1175,37 @@ elements  : (TELL)
 
 --------
 
-category  : ((S/NP)/'on ')/NP
+category  : ((S/NP)/'on')/NP
 occurrence: 1  element
 elements  : (PUTTING)
 
 --------
 
-category  : (((S\NP)/NP)/'in ')/NP
+category  : (((S\NP)/NP)/'in')/NP
 occurrence: 2  elements
 elements  : (PUTTING / PUT)
 
 --------
 
-category  : (((S\NP)/NP)/'on ')/NP
+category  : (((S\NP)/NP)/'on')/NP
 occurrence: 3  elements
 elements  : (PUTTING / PUT / PUT)
 
 --------
 
-category  : (S/'away ')/NP
+category  : (S/'away')/NP
 occurrence: 1  element
 elements  : (PUT)
 
 --------
 
-category  : (S/'back ')/NP
+category  : (S/'back')/NP
 occurrence: 1  element
 elements  : (PUT)
 
 --------
 
-category  : ((S/NP)/'on ')/NP
+category  : ((S/NP)/'on')/NP
 occurrence: 1  element
 elements  : (PUT)
 

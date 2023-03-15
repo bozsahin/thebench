@@ -1,5 +1,5 @@
            editable files in
- home    : /Users/bozsahin/myrepos/thebench/grammars/eve
+ home    : /home/bozsahin/myrepos/thebench/grammars/eve
            temporary and non-editable files in
  tmp     : /var/tmp/thebench/
  file    :  eve-short.txt (1790 entries)
@@ -7,7 +7,7 @@
  s rules :  0 (turned to 0 elements)
  a rules :  0
  basics  :  np predp s n
- quoted  :  'about ' 'to ' 'out ' 'down ' 'off ' 'on ' 'up ' 'in ' 'away ' 'with ' 'at ' 'into ' 'along ' 'for ' 'like ' 'around ' 'by ' 'over ' 'back ' 'through ' 'apart ' 'outof ' 'ahead '
+singleton:  'about' 'to' 'out' 'down' 'off' 'on' 'up' 'in' 'away' 'with' 'at' 'into' 'along' 'for' 'like' 'around' 'by' 'over' 'back' 'through' 'apart' 'outof' 'ahead'
  special :  @x
  features:  type agr count
  values  :  ?x ?y ?z uncount 3 q sg count 1 2 ing proper imp qw acc pl place time
