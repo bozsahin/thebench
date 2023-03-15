@@ -932,15 +932,6 @@
     (setf (machash 'OUTSYN ht) (create-syn-table (nv-list-val 'OUTSYN lexspec)))
     ht))
 
-;Turns a string into a stream so it can be read into a list
-; thanks to Banjocat of Stackoverflow 
-(defun string-to-list (str)
-  (if (not (streamp str))
-    (string-to-list (make-string-input-stream str))
-    (if (listen str)
-      (cons (read str) (string-to-list str))
-      nil)))
-
 (defun singleton-match (fht aht alex ruleindex coorda)
   "called only when functor hashtable fht's argument is singleton category; succeeds if argument hashtable aht's string
   span matches fht's arg's singleton category. (These categories were converted to word lists during file processing.)
