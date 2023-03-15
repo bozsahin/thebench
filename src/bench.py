@@ -218,7 +218,7 @@ def init_grammar():
     _grammar.clear()
     _info.clear()
     _keys.clear()
-    _info = { 'name': 'unknown', 'el':0, 'srule':0, 'arule':0, 'basic': {}, 'quoted': {}, 'special': {}, 'features' : {}, 'values': {}, 'pos': {} }  # basic cat inventory is synthetic, this ain't GG
+    _info = { 'name': 'unknown', 'el':0, 'srule':0, 'arule':0, 'basic': {}, 'singleton': {}, 'special': {}, 'features' : {}, 'values': {}, 'pos': {} }  # basic cat inventory is synthetic, this ain't GG
     _grammar['arules'] = {}     # keep arules separate, srules are compiled into elements
     _grammar['elements'] = {}   # all other entries under this label  
     
@@ -593,15 +593,15 @@ class MGParser(Parser):       # the syntax of MG entries
     def basic(self, p):
         global _info, _online, _basic
         if not _online:
-            _info['quoted'][p[0]] = True
-        return mk_bin(_basic, p[0], 'quoted')
+            _info['singleton'][p[0]] = True
+        return mk_bin(_basic, p[0], 'singleton')
 
     @_('DQCAT')
     def basic(self, p):
         global _info, _online, _basic
         if not _online:
-            _info['quoted'][p[0]] = True
-        return mk_bin(_basic, p[0], 'quoted')
+            _info['singleton'][p[0]] = True
+        return mk_bin(_basic, p[0], 'singleton')
 
     @_('SPECID')
     def basic(self, p):
@@ -899,7 +899,7 @@ def tc_bundle_quote(ql):
     if len(ws) > 1:
         return '(|' + _ws.join(ws[1].split()) + '|)'
     elif len(ws[0]) == 0:
-        return '(**ERROR** Your quoted category is empty This is well-formed but not processable)'
+        return '(**ERROR** Your singleton category is empty This is well-formed but not processable)'
     else:
         return '(|' + _ws.join(ws[0][1:-1].split()) + '|)'   # first and last elements are scare quotes, single or double
 
@@ -948,7 +948,7 @@ def ir_to_lisp(ir):
             else:
                 return mk_2cl('DIR', _targetdir[ir[_l]]) + mk_2cl('MODAL', _targetmod[ir[_r]]) 
         elif ir[_op] == _basic:
-            if ir[_r] == 'quoted':
+            if ir[_r] == 'singleton':
                 return mk_2cl('BCAT', tc_bundle_quote(ir[_l])) + \
                         mk_2cl('BCONST', 'T') + mk_2cl('FEATS', 'NIL')
             elif ir[_r] == 'special':
@@ -985,7 +985,7 @@ def print_info ():
     print(f" tmp     : {_tmp}")
     print(f" file    :  {_info['name']} ({_info['el']+_info['srule']+_info['arule']} entries)\n elements:  {_info['el']}\n s rules :  {_info['srule']} (turned to {_info['srule']*2} elements)\n a rules :  {_info['arule']}")
     print(" basics  : ", _ws.join(_info['basic'].keys()))
-    print(" quoted  : ", _ws.join(_info['quoted'].keys()))
+    print("singleton: ", _ws.join(_info['singleton'].keys()))
     print(" special : ", _ws.join(_info['special'].keys()))
     print(" features: ", _ws.join(_info['features'].keys()))
     print(" values  : ", _ws.join(_info['values'].keys()))
