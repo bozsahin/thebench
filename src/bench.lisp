@@ -758,7 +758,7 @@
   (cond ((null synht) "")
 	((machash 'BCAT synht)
 	 (if (machash 'BCONST synht)
-	   (format nil "'~{~A ~}'" (machash 'BCAT synht))
+	   (format nil "'~{~A~^ ~}'" (machash 'BCAT synht))
 	   (write-to-string (machash 'BCAT synht))))
 	(t (if (machash 'LEX synht)  ; don't print modality for LEX slash. it's * anyway.
 	     (concatenate 'string
@@ -2773,7 +2773,7 @@
 
 (defun mk_basic_sc (syn s)
   (if (nv-get-v 'BCONST syn)
-    (format s "'~{~(~A~) ~}'" (nv-get-v 'BCAT syn))
+    (format s "'~{~(~A~)~^ ~}'" (nv-get-v 'BCAT syn))
     (progn
       (format s  "~(~A~)" (nv-get-v 'BCAT syn))
       (if (nv-get-v 'FEATS syn)
