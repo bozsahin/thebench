@@ -932,23 +932,36 @@
     (setf (machash 'OUTSYN ht) (create-syn-table (nv-list-val 'OUTSYN lexspec)))
     ht))
 
+;Turns a string into a stream so it can be read into a list
+; thanks to Banjocat of Stackoverflow 
+(defun string-to-list (str)
+  (if (not (streamp str))
+    (string-to-list (make-string-input-stream str))
+    (if (listen str)
+      (cons (read str) (string-to-list str))
+      nil)))
+
 (defun singleton-match (fht aht alex ruleindex coorda)
   "called only when functor hashtable fht's argument is singleton category; succeeds if argument hashtable aht's string
   span matches fht's arg's singleton category. (These categories were converted to word lists during file processing.)
   Called from function application only. 
   Strings coordinates are of the form (x y) for argument; 
   they are used to access *cky-input*; x is length, y is starting pos (from 1).
-  Returns the new hashtable if succesful, otherwise nil."
-  (if (and (equal (machash 'BCAT 'ARG 'SYN fht) (subseq *cky-input* (- (second coorda) 1) (+ (first coorda)
-											     (- (second coorda) 1))))
-	   (lex-check (machash 'LEX 'SYN fht) alex))
-    (let ((newht (make-cky-entry-hashtable)))
-      (set-nf-tag newht *ot*)
-      (setf (machash 'SEM newht) (&a (machash 'SEM fht) (machash 'SEM aht))) ; this means lexical LFs must be compositional
-      (setf (machash 'INDEX newht) ruleindex)
-      (and (machash 'LEX 'SYN fht) (setf (machash 'LEX newht) t))
-      (setf (machash 'SYN newht) (machash 'RESULT 'SYN fht)) ; nothing to bind, assuming no features for singletons
-      newht)))
+  Returns the new hashtable if succesful, otherwise nil.
+  Check the BCAT, which is a phon sequence, one by one because of |..| inside"
+  (let* ((bcat (machash 'BCAT 'ARG 'SYN fht))
+	 (substr (subseq *cky-input* (- (second coorda) 1) (+ (first coorda) (- (second coorda) 1))))
+	 (success (reduce #'(lambda (x y) (and x y))
+			  (mapcar #'(lambda (x y)(equal (symbol-name x) (symbol-name y))) bcat substr))))
+    (format t "bcat: ~S substr: ~S success: ~S" bcat substr success)
+    (if (and success (lex-check (machash 'LEX 'SYN fht) alex))
+      (let ((newht (make-cky-entry-hashtable)))
+	(set-nf-tag newht *ot*)
+	(setf (machash 'SEM newht) (&a (machash 'SEM fht) (machash 'SEM aht))) ; this means lexical LFs must be compositional
+	(setf (machash 'INDEX newht) ruleindex)
+	(and (machash 'LEX 'SYN fht) (setf (machash 'LEX newht) t))
+	(setf (machash 'SYN newht) (machash 'RESULT 'SYN fht)) ; nothing to bind, assuming no features for singletons
+	newht))))
 
 (defun cat-match (sht1 sht2)
   "Checks to see if potentially complex syntactic cat hashtables, sht1 and sht2,
