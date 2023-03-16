@@ -2,7 +2,6 @@
 % and backward object raising (i.e. plain old English)
 % Note that there is no syntactic or morphological information in training. Syntax is a latent variable in training.
 % -cem bozsahin 2017-23
-% escaping the LF objects not necessary in Monadic grammar
 
 John loves Mary : love mary john
 Mary loves John : love john mary

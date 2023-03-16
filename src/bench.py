@@ -751,7 +751,7 @@ def help ():
         print(f' $ ..   | shows the elements with parts of speech ..')
         print(f' - .    | shows (without adding) the intermediate representation of element .')
         print(f' + .    | processor adds Lisp code in file .')
-        print(f" > .    | Logs processor output to filename . after adding {_logext} extension")
+        print(f" > . .? | Logs processor output to file {_logext}; if second . is 'force' overwrites if exists")
         print(f' <      | Logging turned off')
         print(f' /      | Clears the {_tmp} directory')
         print(f" {_help}      | displays help")
@@ -1155,6 +1155,7 @@ def do (commline):
         try:
             with open(fn,'r') as f:
                 for command in f:
+                    print(3*_prompt+' Batch mode')   # just to show that this is interface output
                     print('\ncommand line: ',command)
                     do(command)
         except FileNotFoundError:
@@ -1202,12 +1203,17 @@ def do (commline):
         pass
     elif comm == '>':
         fn = args[0] + _logext
-        ch = False
+        if len(args) > 1:
+            force = args[1]
+        else:
+            force = 'ask'
+        ch = 'y'
         if os.path.exists(fn):
-            ch = input(f"file {fn} exists, overwrite (y/N)? ")
-            if ch == 'y':
+            if force != 'force':
+                ch = input(f"file {fn} exists, overwrite (y/N)? ")
+            if ch == 'y' or force == 'force':
                 os.remove(fn)
-        if ch == 'y' or not ch:
+        if ch == 'y':
             try:
                 print('Logging processor output to: ', args[0]+ _logext)
                 _cl.dribble(args[0]+ _logext)
