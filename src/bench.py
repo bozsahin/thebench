@@ -1155,7 +1155,7 @@ def do (commline):
         try:
             with open(fn,'r') as f:
                 for command in f:
-                    print(3*_prompt+' Batch mode')   # just to show that this is interface output
+                    print(f"\n{2*_prompt} Batch mode")   # just to show that this is interface output
                     print('\ncommand line: ',command)
                     do(command)
         except FileNotFoundError:
