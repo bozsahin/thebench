@@ -8,3 +8,49 @@ wants     | v :: (s\np[agr=3s])/vp : \p\y. want (p y) y
 wants     | v :: ((s\np[agr=3s])/vp)/np: \x\p\y. want (p x) y
 seems     | v :: (s\np[agr=3s])/vp : \p\y.seems (p y)
 seems     | v :: (s\np[t=xpl])/s : \s\y.seems s
+picked    | v :: ((s\np)/np)/'up': \x\y\z.pick _ x y z
+picked    | v :: ((s\np)/'up')/np:\y\x\z.cause(init(hold _ (reach x) y z)) z
+picked    | v :: (s\np)/np: \x\y.pick x y
+spilled   | v :: (s\np)/np[head=beans]: \x\y.divulge _ (public x) (secret y) y
+spilled   | v :: (s\np)/np: \x\y.spill x y
+kicked    | v :: (s\np)/'the bucket': \x\y.die _ (euph x) y
+kicked    | v :: (s\np)/np: \x\y.kick x y
+sincerity | n :: np[agr=3s]" sincerity
+admires   | v :: (s\np[agr=3s])/np : admire x y
+john      | n :: np[agr=3s]: john
+sincerity | n :: s/(s\np[agr=3s]): \p.p sincerity
+john      | n :: (s\np[agr=?a])\((s\np[agr=?a])/np): \p.p john
+depart    | v :: iv:\y.depart y
+ed       | aff :: (s\np[agr=?a])\\iv: \p\y.p _ past y % pointwise extending IV$
+dismiss   | v  :: iv/np:\x\y.dismiss x y
+ed       | aff :: (s\np[agr=?a])\\(iv/np): \p\y.p _ past y % pointwise extending IV$
+re       | aff :: (iv/np)//(iv/np): \x.re x  % pointwise extending IV$
+introduce | v :: iv/np: \x\y.introduce x y
+consider  | v :: iv/np: \x\y.consider x y
+and       | c :: (@x\@x)/@x: and ( p x) (q x)
+mary      | n :: np:mary
+mustn't   | aux :: (s[t=pres]\np)/iv: \p\x.mustnot (p x)
+have      | aux :: iv/iv[t=en]: \p.have p
+being     | part :: iv[v=pass,t=ing]/iv[v=pass]: \p.being p
+ed        | pass :: iv[v=pass]\\(iv/np): \p\x\y.pass (p x y)
+#past run, iv:\x.run x <--> ran, s\np:\x.past run x
+without   | p :: ((s\np)\(S\np))/vp[t=ing]: \p\q\x.without (p x) (q x)
+reading   | ger :: vp[t=ing]/np:\x\y.read x y
+what      | q   :: s[t=q]/(s/np): \p\x.question (p x)
+where     | q   :: s[t=q]/(s/np[case=loc]): \p\x.question (at x) (p x)
+did Sally sing| q :: s/np[case=loc] : \y\x.sing x y
+to        | inf :: vp/iv: \p.p
+study     | v   :: iv:\x.study x
+the       | det :: np/n:\x.def x
+novel     | n   :: n :\x.novel x
+Mo        | np  :: s/(s\np): \p.p mo
+write     | v :: iv/np: \x\y.write x y
+every     | qu :: (s/(s\np))/n: \p\q\x.forall x(imp (p x) (q x))
+poem     | n   :: n :\x.poem x
+shines    | v :: s\np[agr=3s]: \x.shine x
+likes     | v :: (s\np[agr=3s])/np: \x\y.like x y
+I         | pn :: s/(s\np[agr=1s]):\p.p i
+gave      | v :: (S\np)/pp[p=to]/np: \x\y\z.give y x z
+to Mo     | loc :: (S\np)\((s\np)/pp[p=to]): \p.p mo
+
+
