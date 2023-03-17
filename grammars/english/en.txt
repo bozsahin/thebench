@@ -44,12 +44,12 @@ where     | q   :: s[t=q]/(s/np[case=loc]): \p\x.question (at x) (p x)
 did Sally sing| q :: s/np[case=loc] : \y\x.sing x y
 to        | inf :: vp/iv: \p.p
 study     | v   :: iv:\x.study x
-the       | det :: np/n:\x.def x
-a         | det :: np/n:\x.indef x
-that      | rel :: (n\np)/(s/np): \p\q\x.and (p x) (q x)
+the       | det :: np/*n:\x.def x
+a         | det :: np/*n:\x.indef x
+that      | rel :: (n\n)/(s/np): \p\q\x.and (p x) (q x)
 novel     | n   :: n :\x.novel x
 flower    | n   :: n :\x.flower x
-Mo        | np  :: s/(s\np): \p.p mo
+Mo        | n  :: np: \p.p mo
 write     | v :: iv/np: \x\y.write x y
 every     | qu :: (s/(s\np))/n: \p\q\x.forall x(imp (p x) (q x))
 poem     | n   :: n :\x.poem x

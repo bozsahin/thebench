@@ -44,14 +44,14 @@ elements  : (kicked)
 --------
 
 category  : NP
-occurrence: 4  elements
-elements  : (sincerity / john / mary / cats)
+occurrence: 5  elements
+elements  : (sincerity / john / mary / Mo / cats)
 
 --------
 
 category  : S/(S\NP)
-occurrence: 2  elements
-elements  : (sincerity / Mo)
+occurrence: 1  element
+elements  : (sincerity)
 
 --------
 
@@ -104,8 +104,8 @@ elements  : (musn't)
 --------
 
 category  : IV/IV
-occurrence: 2  elements
-elements  : (have / being)
+occurrence: 3  elements
+elements  : (have / been / being)
 
 --------
 
@@ -151,13 +151,13 @@ elements  : (to)
 
 --------
 
-category  : NP/N
+category  : NP/*N
 occurrence: 2  elements
 elements  : (the / a)
 
 --------
 
-category  : (N\NP)/(S/NP)
+category  : (N\N)/(S/NP)
 occurrence: 1  element
 elements  : (that)
 
@@ -211,6 +211,6 @@ elements  : (loves)
 
 --------
 
-Checksum: 63 (total of sums in category classes)
+Checksum: 64 (total of sums in category classes)
 Total   : 35 distinct categories
-Out of  : 63 entries (not counting asymmetric relational rules)
+Out of  : 64 entries (not counting asymmetric relational rules)

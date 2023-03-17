@@ -1,8 +1,28 @@
 
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : NIL
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
 
 Input: sincerity admires john
 
-Number of analyses: 4
+Number of analyses: 5
 
 
 Derivation 1
@@ -76,6 +96,24 @@ Final LF, normal-order evaluated:
 
     ((((ADMIRE X) Y) JOHN) SINCERITY) =
     (ADMIRE X Y JOHN SINCERITY)
+
+Derivation 5
+--------------
+LEX   (sincerity) := S/(S\NP)
+        : (LAM P (P SINCERITY))
+LEX   (admires) := (S\NP)/NP
+        : ((ADMIRE X) Y)
+>B    (|sincerity|)(|admires|) := S/NP
+        : (LAM X ((LAM P (P SINCERITY)) (((ADMIRE X) Y) X)))
+LEX   (john) := NP
+        : JOHN
+A     (|sincerity| |admires|)(|john|) := S
+        : ((LAM X ((LAM P (P SINCERITY)) (((ADMIRE X) Y) X))) JOHN)
+
+Final LF, normal-order evaluated: 
+
+    ((((ADMIRE JOHN) Y) JOHN) SINCERITY) =
+    (ADMIRE JOHN Y JOHN SINCERITY)
 
 Input: sincerity admires
 
@@ -219,7 +257,7 @@ Number of analyses: 0
 
 Input: mary musn't have been being dismiss ed
 
-Number of analyses: 1
+Number of analyses: 14
 
 
 Derivation 1
@@ -278,6 +316,682 @@ Final LF, normal-order evaluated:
      ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
     (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
 
+Derivation 2
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|been|)(|being|) := IV/IV
+        : (LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|been| |being|)(|dismiss| |ed|) := IV
+        : ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|have|)(|been| |being| |dismiss| |ed|) := IV
+        : ((LAM P (HAVE P))
+           ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+A     (|musn't|)(|have| |been| |being| |dismiss| |ed|) := S\NP
+        : ((LAM P (LAM X (MUSTNOT (P X))))
+           ((LAM P (HAVE P))
+            ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y)))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM P (HAVE P))
+             ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+              ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+               (LAM X (LAM Y ((DISMISS X) Y)))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 3
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+>B    (|have|)(|been|) := IV/IV
+        : (LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|being|)(|dismiss| |ed|) := IV
+        : ((LAM P (BEING P))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|have| |been|)(|being| |dismiss| |ed|) := IV
+        : ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+           ((LAM P (BEING P))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+A     (|musn't|)(|have| |been| |being| |dismiss| |ed|) := S\NP
+        : ((LAM P (LAM X (MUSTNOT (P X))))
+           ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+            ((LAM P (BEING P))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y)))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+             ((LAM P (BEING P))
+              ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+               (LAM X (LAM Y ((DISMISS X) Y)))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 4
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|been|)(|being|) := IV/IV
+        : (LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+>B    (|have|)(|been| |being|) := IV/IV
+        : (LAM X
+           ((LAM P (HAVE P))
+            ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|have| |been| |being|)(|dismiss| |ed|) := IV
+        : ((LAM X
+            ((LAM P (HAVE P))
+             ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|musn't|)(|have| |been| |being| |dismiss| |ed|) := S\NP
+        : ((LAM P (LAM X (MUSTNOT (P X))))
+           ((LAM X
+             ((LAM P (HAVE P))
+              ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM X
+              ((LAM P (HAVE P))
+               ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 5
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+>B    (|have|)(|been|) := IV/IV
+        : (LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|have| |been|)(|being|) := IV/IV
+        : (LAM X
+           ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+            ((LAM P (BEING P)) X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|have| |been| |being|)(|dismiss| |ed|) := IV
+        : ((LAM X
+            ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+             ((LAM P (BEING P)) X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|musn't|)(|have| |been| |being| |dismiss| |ed|) := S\NP
+        : ((LAM P (LAM X (MUSTNOT (P X))))
+           ((LAM X
+             ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+              ((LAM P (BEING P)) X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM X
+              ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+               ((LAM P (BEING P)) X)))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 6
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+>B    (|musn't|)(|have|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|being|)(|dismiss| |ed|) := IV
+        : ((LAM P (BEING P))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|been|)(|being| |dismiss| |ed|) := IV
+        : ((LAM P (BEEN P))
+           ((LAM P (BEING P))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+A     (|musn't| |have|)(|been| |being| |dismiss| |ed|) := S\NP
+        : ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+           ((LAM P (BEEN P))
+            ((LAM P (BEING P))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y)))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+            ((LAM P (BEEN P))
+             ((LAM P (BEING P))
+              ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+               (LAM X (LAM Y ((DISMISS X) Y)))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 7
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+>B    (|musn't|)(|have|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|been|)(|being|) := IV/IV
+        : (LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|been| |being|)(|dismiss| |ed|) := IV
+        : ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|musn't| |have|)(|been| |being| |dismiss| |ed|) := S\NP
+        : ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+           ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+            ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 8
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+>B    (|have|)(|been|) := IV/IV
+        : (LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+>B    (|musn't|)(|have| |been|) := (S\NP)/IV
+        : (LAM X
+           ((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X))) X)))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|being|)(|dismiss| |ed|) := IV
+        : ((LAM P (BEING P))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|musn't| |have| |been|)(|being| |dismiss| |ed|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X (MUSTNOT (P X))))
+             ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X))) X)))
+           ((LAM P (BEING P))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X
+             ((LAM P (LAM X (MUSTNOT (P X))))
+              ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X))) X)))
+            ((LAM P (BEING P))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 9
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+>B    (|musn't|)(|have|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+>B    (|musn't| |have|)(|been|) := (S\NP)/IV
+        : (LAM X
+           ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+            ((LAM P (BEEN P)) X)))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|being|)(|dismiss| |ed|) := IV
+        : ((LAM P (BEING P))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|musn't| |have| |been|)(|being| |dismiss| |ed|) := S\NP
+        : ((LAM X
+            ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+             ((LAM P (BEEN P)) X)))
+           ((LAM P (BEING P))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X
+             ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+              ((LAM P (BEEN P)) X)))
+            ((LAM P (BEING P))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 10
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|been|)(|being|) := IV/IV
+        : (LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+>B    (|have|)(|been| |being|) := IV/IV
+        : (LAM X
+           ((LAM P (HAVE P))
+            ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+>B    (|musn't|)(|have| |been| |being|) := (S\NP)/IV
+        : (LAM X
+           ((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM X
+              ((LAM P (HAVE P))
+               ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+             X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|musn't| |have| |been| |being|)(|dismiss| |ed|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X (MUSTNOT (P X))))
+             ((LAM X
+               ((LAM P (HAVE P))
+                ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+              X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X
+             ((LAM P (LAM X (MUSTNOT (P X))))
+              ((LAM X
+                ((LAM P (HAVE P))
+                 ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+               X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y)))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 11
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+>B    (|have|)(|been|) := IV/IV
+        : (LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|have| |been|)(|being|) := IV/IV
+        : (LAM X
+           ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+            ((LAM P (BEING P)) X)))
+>B    (|musn't|)(|have| |been| |being|) := (S\NP)/IV
+        : (LAM X
+           ((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM X
+              ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+               ((LAM P (BEING P)) X)))
+             X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|musn't| |have| |been| |being|)(|dismiss| |ed|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X (MUSTNOT (P X))))
+             ((LAM X
+               ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+                ((LAM P (BEING P)) X)))
+              X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X
+             ((LAM P (LAM X (MUSTNOT (P X))))
+              ((LAM X
+                ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+                 ((LAM P (BEING P)) X)))
+               X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y)))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 12
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+>B    (|musn't|)(|have|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|been|)(|being|) := IV/IV
+        : (LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X)))
+>B    (|musn't| |have|)(|been| |being|) := (S\NP)/IV
+        : (LAM X
+           ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+            ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|musn't| |have| |been| |being|)(|dismiss| |ed|) := S\NP
+        : ((LAM X
+            ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+             ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X
+             ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+              ((LAM X ((LAM P (BEEN P)) ((LAM P (BEING P)) X))) X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y)))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 13
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+>B    (|have|)(|been|) := IV/IV
+        : (LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X)))
+>B    (|musn't|)(|have| |been|) := (S\NP)/IV
+        : (LAM X
+           ((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X))) X)))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|musn't| |have| |been|)(|being|) := (S\NP)/IV
+        : (LAM X
+           ((LAM X
+             ((LAM P (LAM X (MUSTNOT (P X))))
+              ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X))) X)))
+            ((LAM P (BEING P)) X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|musn't| |have| |been| |being|)(|dismiss| |ed|) := S\NP
+        : ((LAM X
+            ((LAM X
+              ((LAM P (LAM X (MUSTNOT (P X))))
+               ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X))) X)))
+             ((LAM P (BEING P)) X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X
+             ((LAM X
+               ((LAM P (LAM X (MUSTNOT (P X))))
+                ((LAM X ((LAM P (HAVE P)) ((LAM P (BEEN P)) X))) X)))
+              ((LAM P (BEING P)) X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y)))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Derivation 14
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+>B    (|musn't|)(|have|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+>B    (|musn't| |have|)(|been|) := (S\NP)/IV
+        : (LAM X
+           ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+            ((LAM P (BEEN P)) X)))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+>B    (|musn't| |have| |been|)(|being|) := (S\NP)/IV
+        : (LAM X
+           ((LAM X
+             ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+              ((LAM P (BEEN P)) X)))
+            ((LAM P (BEING P)) X)))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|musn't| |have| |been| |being|)(|dismiss| |ed|) := S\NP
+        : ((LAM X
+            ((LAM X
+              ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+               ((LAM P (BEEN P)) X)))
+             ((LAM P (BEING P)) X)))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM X
+             ((LAM X
+               ((LAM X ((LAM P (LAM X (MUSTNOT (P X)))) ((LAM P (HAVE P)) X)))
+                ((LAM P (BEEN P)) X)))
+              ((LAM P (BEING P)) X)))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y)))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
 Input: without reading
 
 Number of analyses: 1
@@ -296,8 +1010,8 @@ LEX   (reading) := VP/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM Q (LAM G170 ((WITHOUT ((READ X) G170)) (Q G170))))) =
-    (\ X . \ Q . \ G178 . WITHOUT (READ X G178) (Q G178))
+    (LAM X (LAM Q (LAM G5318 ((WITHOUT ((READ X) G5318)) (Q G5318))))) =
+    (\ X . \ Q . \ G5326 . WITHOUT (READ X G5326) (Q G5326))
 
 Input: what and where did Sally sing
 
@@ -334,7 +1048,7 @@ Final LF, normal-order evaluated:
 
 Input: sincerity wants to study
 
-Number of analyses: 2
+Number of analyses: 7
 
 
 Derivation 1
@@ -362,6 +1076,31 @@ Final LF, normal-order evaluated:
 
 Derivation 2
 --------------
+LEX   (sincerity) := S/(S\NP)
+        : (LAM P (P SINCERITY))
+LEX   (wants) := (S\NP)/VP
+        : (LAM P (LAM Y ((WANT (P Y)) Y)))
+LEX   (to) := VP/IV
+        : (LAM P P)
+>B    (|wants|)(|to|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X)))
+LEX   (study) := IV
+        : (LAM X (STUDY X))
+A     (|wants| |to|)(|study|) := S\NP
+        : ((LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X)))
+           (LAM X (STUDY X)))
+A     (|sincerity|)(|wants| |to| |study|) := S
+        : ((LAM P (P SINCERITY))
+           ((LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X)))
+            (LAM X (STUDY X))))
+
+Final LF, normal-order evaluated: 
+
+    ((WANT (STUDY SINCERITY)) SINCERITY) =
+    (WANT (STUDY SINCERITY) SINCERITY)
+
+Derivation 3
+--------------
 LEX   (sincerity) := NP
         : SINCERITY
 LEX   (wants) := (S\NP)/VP
@@ -383,22 +1122,252 @@ Final LF, normal-order evaluated:
     ((WANT (STUDY SINCERITY)) SINCERITY) =
     (WANT (STUDY SINCERITY) SINCERITY)
 
+Derivation 4
+--------------
+LEX   (sincerity) := NP
+        : SINCERITY
+LEX   (wants) := (S\NP)/VP
+        : (LAM P (LAM Y ((WANT (P Y)) Y)))
+LEX   (to) := VP/IV
+        : (LAM P P)
+>B    (|wants|)(|to|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X)))
+LEX   (study) := IV
+        : (LAM X (STUDY X))
+A     (|wants| |to|)(|study|) := S\NP
+        : ((LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X)))
+           (LAM X (STUDY X)))
+T     (|sincerity|)(|wants| |to| |study|) := S
+        : (((LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X)))
+            (LAM X (STUDY X)))
+           SINCERITY)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT (STUDY SINCERITY)) SINCERITY) =
+    (WANT (STUDY SINCERITY) SINCERITY)
+
+Derivation 5
+--------------
+LEX   (sincerity) := S/(S\NP)
+        : (LAM P (P SINCERITY))
+LEX   (wants) := (S\NP)/VP
+        : (LAM P (LAM Y ((WANT (P Y)) Y)))
+>B    (|sincerity|)(|wants|) := S/VP
+        : (LAM X ((LAM P (P SINCERITY)) ((LAM P (LAM Y ((WANT (P Y)) Y))) X)))
+LEX   (to) := VP/IV
+        : (LAM P P)
+LEX   (study) := IV
+        : (LAM X (STUDY X))
+A     (|to|)(|study|) := VP
+        : ((LAM P P) (LAM X (STUDY X)))
+A     (|sincerity| |wants|)(|to| |study|) := S
+        : ((LAM X ((LAM P (P SINCERITY)) ((LAM P (LAM Y ((WANT (P Y)) Y))) X)))
+           ((LAM P P) (LAM X (STUDY X))))
+
+Final LF, normal-order evaluated: 
+
+    ((WANT (STUDY SINCERITY)) SINCERITY) =
+    (WANT (STUDY SINCERITY) SINCERITY)
+
+Derivation 6
+--------------
+LEX   (sincerity) := S/(S\NP)
+        : (LAM P (P SINCERITY))
+LEX   (wants) := (S\NP)/VP
+        : (LAM P (LAM Y ((WANT (P Y)) Y)))
+LEX   (to) := VP/IV
+        : (LAM P P)
+>B    (|wants|)(|to|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X)))
+>B    (|sincerity|)(|wants| |to|) := S/IV
+        : (LAM X
+           ((LAM P (P SINCERITY))
+            ((LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X))) X)))
+LEX   (study) := IV
+        : (LAM X (STUDY X))
+A     (|sincerity| |wants| |to|)(|study|) := S
+        : ((LAM X
+            ((LAM P (P SINCERITY))
+             ((LAM X ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) X))) X)))
+           (LAM X (STUDY X)))
+
+Final LF, normal-order evaluated: 
+
+    ((WANT (STUDY SINCERITY)) SINCERITY) =
+    (WANT (STUDY SINCERITY) SINCERITY)
+
+Derivation 7
+--------------
+LEX   (sincerity) := S/(S\NP)
+        : (LAM P (P SINCERITY))
+LEX   (wants) := (S\NP)/VP
+        : (LAM P (LAM Y ((WANT (P Y)) Y)))
+>B    (|sincerity|)(|wants|) := S/VP
+        : (LAM X ((LAM P (P SINCERITY)) ((LAM P (LAM Y ((WANT (P Y)) Y))) X)))
+LEX   (to) := VP/IV
+        : (LAM P P)
+>B    (|sincerity| |wants|)(|to|) := S/IV
+        : (LAM X
+           ((LAM X
+             ((LAM P (P SINCERITY)) ((LAM P (LAM Y ((WANT (P Y)) Y))) X)))
+            ((LAM P P) X)))
+LEX   (study) := IV
+        : (LAM X (STUDY X))
+A     (|sincerity| |wants| |to|)(|study|) := S
+        : ((LAM X
+            ((LAM X
+              ((LAM P (P SINCERITY)) ((LAM P (LAM Y ((WANT (P Y)) Y))) X)))
+             ((LAM P P) X)))
+           (LAM X (STUDY X)))
+
+Final LF, normal-order evaluated: 
+
+    ((WANT (STUDY SINCERITY)) SINCERITY) =
+    (WANT (STUDY SINCERITY) SINCERITY)
+
 Input: the novel that Mo persuaded sincerity to write
 
-Number of analyses: 1
+Number of analyses: 0
+
+
+Input: Mo persuaded sincerity to write the novel
+
+Number of analyses: 5
 
 
 Derivation 1
 --------------
-LEX   (the) := NP/N
+LEX   (Mo) := NP
+        : (LAM P (P MO))
+LEX   (persuaded) := ((S\NP)/VP)/NP
+        : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
+LEX   (sincerity) := NP
+        : SINCERITY
+A     (|persuaded|)(|sincerity|) := (S\NP)/VP
+        : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+LEX   (to) := VP/IV
+        : (LAM P P)
+LEX   (write) := IV/NP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+LEX   (the) := NP/*N
         : (LAM X (DEF X))
 LEX   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-LEX   (that) := (N\NP)/(S/NP)
-        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-LEX   (Mo) := S/(S\NP)
+A     (|write|)(|the| |novel|) := IV
+        : ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
+A     (|to|)(|write| |the| |novel|) := VP
+        : ((LAM P P)
+           ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X)))))
+A     (|persuaded| |sincerity|)(|to| |write| |the| |novel|) := S\NP
+        : (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+           ((LAM P P)
+            ((LAM X (LAM Y ((WRITE X) Y)))
+             ((LAM X (DEF X)) (LAM X (NOVEL X))))))
+T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
+        : ((((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+            ((LAM P P)
+             ((LAM X (LAM Y ((WRITE X) Y)))
+              ((LAM X (DEF X)) (LAM X (NOVEL X))))))
+           (LAM P (P MO)))
+
+Final LF, normal-order evaluated: 
+
+    (((PERSUADE ((WRITE (DEF (LAM X (NOVEL X)))) SINCERITY)) SINCERITY)
+     (LAM P (P MO))) =
+    (PERSUADE (WRITE (DEF (\ X . NOVEL X)) SINCERITY) SINCERITY (\ P . P MO))
+
+Derivation 2
+--------------
+LEX   (Mo) := NP
+        : (LAM P (P MO))
+LEX   (persuaded) := ((S\NP)/VP)/NP
+        : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
+LEX   (sincerity) := NP
+        : SINCERITY
+A     (|persuaded|)(|sincerity|) := (S\NP)/VP
+        : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+LEX   (to) := VP/IV
+        : (LAM P P)
+LEX   (write) := IV/NP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+>B    (|to|)(|write|) := VP/NP
+        : (LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X)))
+LEX   (the) := NP/*N
+        : (LAM X (DEF X))
+LEX   (novel) := N
+        : (LAM X (NOVEL X))
+A     (|the|)(|novel|) := NP
+        : ((LAM X (DEF X)) (LAM X (NOVEL X)))
+A     (|to| |write|)(|the| |novel|) := VP
+        : ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X)))
+           ((LAM X (DEF X)) (LAM X (NOVEL X))))
+A     (|persuaded| |sincerity|)(|to| |write| |the| |novel|) := S\NP
+        : (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+           ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X)))
+            ((LAM X (DEF X)) (LAM X (NOVEL X)))))
+T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
+        : ((((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+            ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X)))
+             ((LAM X (DEF X)) (LAM X (NOVEL X)))))
+           (LAM P (P MO)))
+
+Final LF, normal-order evaluated: 
+
+    (((PERSUADE ((WRITE (DEF (LAM X (NOVEL X)))) SINCERITY)) SINCERITY)
+     (LAM P (P MO))) =
+    (PERSUADE (WRITE (DEF (\ X . NOVEL X)) SINCERITY) SINCERITY (\ P . P MO))
+
+Derivation 3
+--------------
+LEX   (Mo) := NP
+        : (LAM P (P MO))
+LEX   (persuaded) := ((S\NP)/VP)/NP
+        : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
+LEX   (sincerity) := NP
+        : SINCERITY
+A     (|persuaded|)(|sincerity|) := (S\NP)/VP
+        : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+LEX   (to) := VP/IV
+        : (LAM P P)
+>B    (|persuaded| |sincerity|)(|to|) := (S\NP)/IV
+        : (LAM X
+           (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+            ((LAM P P) X)))
+LEX   (write) := IV/NP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+LEX   (the) := NP/*N
+        : (LAM X (DEF X))
+LEX   (novel) := N
+        : (LAM X (NOVEL X))
+A     (|the|)(|novel|) := NP
+        : ((LAM X (DEF X)) (LAM X (NOVEL X)))
+A     (|write|)(|the| |novel|) := IV
+        : ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
+A     (|persuaded| |sincerity| |to|)(|write| |the| |novel|) := S\NP
+        : ((LAM X
+            (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+             ((LAM P P) X)))
+           ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X)))))
+T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
+        : (((LAM X
+             (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+              ((LAM P P) X)))
+            ((LAM X (LAM Y ((WRITE X) Y)))
+             ((LAM X (DEF X)) (LAM X (NOVEL X)))))
+           (LAM P (P MO)))
+
+Final LF, normal-order evaluated: 
+
+    (((PERSUADE ((WRITE (DEF (LAM X (NOVEL X)))) SINCERITY)) SINCERITY)
+     (LAM P (P MO))) =
+    (PERSUADE (WRITE (DEF (\ X . NOVEL X)) SINCERITY) SINCERITY (\ P . P MO))
+
+Derivation 4
+--------------
+LEX   (Mo) := NP
         : (LAM P (P MO))
 LEX   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -416,47 +1385,33 @@ LEX   (write) := IV/NP
         : (LAM X
            (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
->B    (|Mo|)(|persuaded| |sincerity| |to| |write|) := S/NP
-        : (LAM X
-           ((LAM P (P MO))
-            ((LAM X
-              (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-               ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-             X)))
-A     (|that|)(|Mo| |persuaded| |sincerity| |to| |write|) := N\NP
-        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-           (LAM X
-            ((LAM P (P MO))
-             ((LAM X
-               (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-                ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-              X))))
-T     (|the| |novel|)(|that| |Mo| |persuaded| |sincerity| |to| |write|) := N
-        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-            (LAM X
-             ((LAM P (P MO))
-              ((LAM X
-                (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-                 ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-               X))))
+LEX   (the) := NP/*N
+        : (LAM X (DEF X))
+LEX   (novel) := N
+        : (LAM X (NOVEL X))
+A     (|the|)(|novel|) := NP
+        : ((LAM X (DEF X)) (LAM X (NOVEL X)))
+A     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
+        : ((LAM X
+            (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
            ((LAM X (DEF X)) (LAM X (NOVEL X))))
+T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
+        : (((LAM X
+             (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+              ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
+            ((LAM X (DEF X)) (LAM X (NOVEL X))))
+           (LAM P (P MO)))
 
 Final LF, normal-order evaluated: 
 
-    (LAM X
-     ((AND (((PERSUADE ((WRITE X) SINCERITY)) SINCERITY) MO))
-      ((DEF (LAM X (NOVEL X))) X))) =
-    (\ X . AND (PERSUADE (WRITE X SINCERITY) SINCERITY MO)
-     (DEF (\ X . NOVEL X) X))
+    (((PERSUADE ((WRITE (DEF (LAM X (NOVEL X)))) SINCERITY)) SINCERITY)
+     (LAM P (P MO))) =
+    (PERSUADE (WRITE (DEF (\ X . NOVEL X)) SINCERITY) SINCERITY (\ P . P MO))
 
-Input: Mo persuaded sincerity to write the novel
-
-Number of analyses: 1
-
-
-Derivation 1
+Derivation 5
 --------------
-LEX   (Mo) := S/(S\NP)
+LEX   (Mo) := NP
         : (LAM P (P MO))
 LEX   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -466,35 +1421,45 @@ A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
 LEX   (to) := VP/IV
         : (LAM P P)
+>B    (|persuaded| |sincerity|)(|to|) := (S\NP)/IV
+        : (LAM X
+           (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+            ((LAM P P) X)))
 LEX   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-LEX   (the) := NP/N
+>B    (|persuaded| |sincerity| |to|)(|write|) := (S\NP)/NP
+        : (LAM X
+           ((LAM X
+             (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+              ((LAM P P) X)))
+            ((LAM X (LAM Y ((WRITE X) Y))) X)))
+LEX   (the) := NP/*N
         : (LAM X (DEF X))
 LEX   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-A     (|write|)(|the| |novel|) := IV
-        : ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
-A     (|to|)(|write| |the| |novel|) := VP
-        : ((LAM P P)
-           ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X)))))
-A     (|persuaded| |sincerity|)(|to| |write| |the| |novel|) := S\NP
-        : (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-           ((LAM P P)
-            ((LAM X (LAM Y ((WRITE X) Y)))
-             ((LAM X (DEF X)) (LAM X (NOVEL X))))))
-A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
-        : ((LAM P (P MO))
-           (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-            ((LAM P P)
-             ((LAM X (LAM Y ((WRITE X) Y)))
-              ((LAM X (DEF X)) (LAM X (NOVEL X)))))))
+A     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
+        : ((LAM X
+            ((LAM X
+              (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+               ((LAM P P) X)))
+             ((LAM X (LAM Y ((WRITE X) Y))) X)))
+           ((LAM X (DEF X)) (LAM X (NOVEL X))))
+T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
+        : (((LAM X
+             ((LAM X
+               (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
+                ((LAM P P) X)))
+              ((LAM X (LAM Y ((WRITE X) Y))) X)))
+            ((LAM X (DEF X)) (LAM X (NOVEL X))))
+           (LAM P (P MO)))
 
 Final LF, normal-order evaluated: 
 
-    (((PERSUADE ((WRITE (DEF (LAM X (NOVEL X)))) SINCERITY)) SINCERITY) MO) =
-    (PERSUADE (WRITE (DEF (\ X . NOVEL X)) SINCERITY) SINCERITY MO)
+    (((PERSUADE ((WRITE (DEF (LAM X (NOVEL X)))) SINCERITY)) SINCERITY)
+     (LAM P (P MO))) =
+    (PERSUADE (WRITE (DEF (\ X . NOVEL X)) SINCERITY) SINCERITY (\ P . P MO))
 
 Input: every poem shines
 
@@ -524,22 +1489,8 @@ Final LF, normal-order evaluated:
 
 Input: Mo likes
 
-Number of analyses: 1
+Number of analyses: 0
 
-
-Derivation 1
---------------
-LEX   (Mo) := S/(S\NP)
-        : (LAM P (P MO))
-LEX   (likes) := (S\NP)/NP
-        : (LAM X (LAM Y ((LIKE X) Y)))
->B    (|Mo|)(|likes|) := S/NP
-        : (LAM X ((LAM P (P MO)) ((LAM X (LAM Y ((LIKE X) Y))) X)))
-
-Final LF, normal-order evaluated: 
-
-    (LAM X ((LIKE X) MO)) =
-    (\ X . LIKE X MO)
 
 Input: I gave to Mo
 
@@ -570,7 +1521,7 @@ Final LF, normal-order evaluated:
 
 Input: I believe sincerity loves cats
 
-Number of analyses: 1
+Number of analyses: 2
 
 
 Derivation 1
@@ -602,14 +1553,64 @@ Final LF, normal-order evaluated:
     ((BELIEVE ((LOVE CATS) SINCERITY)) I) =
     (BELIEVE (LOVE CATS SINCERITY) I)
 
+Derivation 2
+--------------
+LEX   (I) := S/(S\NP)
+        : (LAM P (P I))
+LEX   (believe) := (S\NP)/SP
+        : (LAM S (LAM X ((BELIEVE S) X)))
+>B    (I)(|believe|) := S/SP
+        : (LAM X ((LAM P (P I)) ((LAM S (LAM X ((BELIEVE S) X))) X)))
+LEX   (sincerity) := NP
+        : SINCERITY
+LEX   (loves) := (SP\NP)/NP
+        : (LAM X (LAM Y ((LOVE X) Y)))
+LEX   (cats) := NP
+        : CATS
+A     (|loves|)(|cats|) := SP\NP
+        : ((LAM X (LAM Y ((LOVE X) Y))) CATS)
+T     (|sincerity|)(|loves| |cats|) := SP
+        : (((LAM X (LAM Y ((LOVE X) Y))) CATS) SINCERITY)
+A     (I |believe|)(|sincerity| |loves| |cats|) := S
+        : ((LAM X ((LAM P (P I)) ((LAM S (LAM X ((BELIEVE S) X))) X)))
+           (((LAM X (LAM Y ((LOVE X) Y))) CATS) SINCERITY))
+
+Final LF, normal-order evaluated: 
+
+    ((BELIEVE ((LOVE CATS) SINCERITY)) I) =
+    (BELIEVE (LOVE CATS SINCERITY) I)
+
 Input: gave Mo a flower
 
-Number of analyses: 0
+Number of analyses: 1
 
+
+Derivation 1
+--------------
+LEX   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+LEX   (Mo) := NP
+        : (LAM P (P MO))
+A     (|gave|)(|Mo|) := (S\NP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
+LEX   (a) := NP/*N
+        : (LAM X (INDEF X))
+LEX   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := NP
+        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
+A     (|gave| |Mo|)(|a| |flower|) := S\NP
+        : (((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
+           ((LAM X (INDEF X)) (LAM X (FLOWER X))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
+    (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
 Input: tries to grab
 
-Number of analyses: 1
+Number of analyses: 2
 
 
 Derivation 1
@@ -629,5 +1630,25 @@ LEX   (grab) := IV/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM G228 (TRY ((GRAN X) G228)))) =
-    (\ X . \ G234 . TRY (GRAN X G234))
+    (LAM X (LAM G5402 (TRY ((GRAN X) G5402)))) =
+    (\ X . \ G5408 . TRY (GRAN X G5408))
+
+Derivation 2
+--------------
+LEX   (tries) := (S\NP)/VP
+        : (LAM P (LAM X (TRY (P X))))
+LEX   (to) := VP/IV
+        : (LAM P P)
+>B    (|tries|)(|to|) := (S\NP)/IV
+        : (LAM X ((LAM P (LAM X (TRY (P X)))) ((LAM P P) X)))
+LEX   (grab) := IV/NP
+        : (LAM X (LAM Y ((GRAN X) Y)))
+>B    (|tries| |to|)(|grab|) := (S\NP)/NP
+        : (LAM X
+           ((LAM X ((LAM P (LAM X (TRY (P X)))) ((LAM P P) X)))
+            ((LAM X (LAM Y ((GRAN X) Y))) X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X (LAM G5414 (TRY ((GRAN X) G5414)))) =
+    (\ X . \ G5420 . TRY (GRAN X G5420))

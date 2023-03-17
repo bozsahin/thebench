@@ -1,5 +1,7 @@
 g en.txt
-> en.no-sc.session force
+> en.sc.nf.session force
+c v
+l nfparse-on
 l show-config
 a sincerity admires john
 ,
