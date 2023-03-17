@@ -2,20 +2,20 @@ The categorial skeleton of the current grammar
 
 
 category  : (S\NP)/NP
-occurrence: 1  element
-elements  : (sees)
+occurrence: 7  elements
+elements  : (sees / picked / spilled / spilled / kicked / admires / likes)
 
 --------
 
 category  : ((S\NP)/VP)/NP
-occurrence: 3  elements
-elements  : (persuades / promises / wants)
+occurrence: 4  elements
+elements  : (persuades / persuaded / promises / wants)
 
 --------
 
 category  : (S\NP)/VP
-occurrence: 2  elements
-elements  : (wants / seems)
+occurrence: 3  elements
+elements  : (wants / seems / tries)
 
 --------
 
@@ -25,6 +25,192 @@ elements  : (seems)
 
 --------
 
-Checksum: 7 (total of sums in category classes)
-Total   : 4 distinct categories
-Out of  : 7 entries (not counting asymmetric relational rules)
+category  : ((S\NP)/NP)/'up'
+occurrence: 1  element
+elements  : (picked)
+
+--------
+
+category  : ((S\NP)/'up')/NP
+occurrence: 1  element
+elements  : (picked)
+
+--------
+
+category  : (S\NP)/'the bucket'
+occurrence: 1  element
+elements  : (kicked)
+
+--------
+
+category  : NP
+occurrence: 4  elements
+elements  : (sincerity / john / mary / cats)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 2  elements
+elements  : (sincerity / Mo)
+
+--------
+
+category  : (S\NP)\((S\NP)/NP)
+occurrence: 1  element
+elements  : (john)
+
+--------
+
+category  : IV
+occurrence: 3  elements
+elements  : (depart / run / study)
+
+--------
+
+category  : (S\NP)\\IV
+occurrence: 1  element
+elements  : (ed)
+
+--------
+
+category  : IV/NP
+occurrence: 6  elements
+elements  : (dismiss / reprimand / introduce / consider / write / grab)
+
+--------
+
+category  : (S\NP)\\(IV/NP)
+occurrence: 1  element
+elements  : (ed)
+
+--------
+
+category  : (IV/NP)//(IV/NP)
+occurrence: 1  element
+elements  : (re)
+
+--------
+
+category  : (@X\*@X)/*@X
+occurrence: 1  element
+elements  : (and)
+
+--------
+
+category  : (S\NP)/IV
+occurrence: 1  element
+elements  : (musn't)
+
+--------
+
+category  : IV/IV
+occurrence: 2  elements
+elements  : (have / being)
+
+--------
+
+category  : IV\\(IV/NP)
+occurrence: 1  element
+elements  : (ed)
+
+--------
+
+category  : S\NP
+occurrence: 2  elements
+elements  : (ran / shines)
+
+--------
+
+category  : ((S\NP)\(S\NP))/VP
+occurrence: 1  element
+elements  : (without)
+
+--------
+
+category  : VP/NP
+occurrence: 1  element
+elements  : (reading)
+
+--------
+
+category  : S/(S/NP)
+occurrence: 2  elements
+elements  : (what / where)
+
+--------
+
+category  : S/NP
+occurrence: 1  element
+elements  : (did Sally sing)
+
+--------
+
+category  : VP/IV
+occurrence: 1  element
+elements  : (to)
+
+--------
+
+category  : NP/N
+occurrence: 2  elements
+elements  : (the / a)
+
+--------
+
+category  : (N\NP)/(S/NP)
+occurrence: 1  element
+elements  : (that)
+
+--------
+
+category  : N
+occurrence: 3  elements
+elements  : (novel / flower / poem)
+
+--------
+
+category  : (S/(S\NP))/N
+occurrence: 1  element
+elements  : (every)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 1  element
+elements  : (I)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 1  element
+elements  : (gave)
+
+--------
+
+category  : ((S\NP)/NP)/NP
+occurrence: 1  element
+elements  : (gave)
+
+--------
+
+category  : (S\NP)\((S\NP)/PP)
+occurrence: 1  element
+elements  : (to Mo)
+
+--------
+
+category  : (S\NP)/SP
+occurrence: 1  element
+elements  : (believe)
+
+--------
+
+category  : (SP\NP)/NP
+occurrence: 1  element
+elements  : (loves)
+
+--------
+
+Checksum: 63 (total of sums in category classes)
+Total   : 35 distinct categories
+Out of  : 63 entries (not counting asymmetric relational rules)
