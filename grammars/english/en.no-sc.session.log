@@ -1,4 +1,7 @@
 
+
+Input: sincerity admires john
+
 Number of analyses: 4
 
 
@@ -73,6 +76,9 @@ Final LF, normal-order evaluated:
 
     ((((ADMIRE X) Y) JOHN) SINCERITY) =
     (ADMIRE X Y JOHN SINCERITY)
+
+Input: sincerity admires
+
 Number of analyses: 1
 
 
@@ -89,6 +95,9 @@ Final LF, normal-order evaluated:
 
     (LAM X ((((ADMIRE X) Y) X) SINCERITY)) =
     (\ X . ADMIRE X Y X SINCERITY)
+
+Input: admires john
+
 Number of analyses: 2
 
 
@@ -119,6 +128,9 @@ Final LF, normal-order evaluated:
 
     (((ADMIRE X) Y) JOHN) =
     (ADMIRE X Y JOHN)
+
+Input: depart ed
+
 Number of analyses: 1
 
 
@@ -135,6 +147,9 @@ Final LF, normal-order evaluated:
 
     (LAM Y (((DEPART _) PAST) Y)) =
     (\ Y . DEPART _ PAST Y)
+
+Input: dismiss ed
+
 Number of analyses: 2
 
 
@@ -166,6 +181,9 @@ Final LF, normal-order evaluated:
 
     (LAM Y (((DISMISS _) PAST) Y)) =
     (\ Y . DISMISS _ PAST Y)
+
+Input: re introduce and consider
+
 Number of analyses: 1
 
 
@@ -193,11 +211,74 @@ Final LF, normal-order evaluated:
      (RE (LAM X (LAM Y ((INTRODUCE X) Y))))) =
     (AND (P X) (Q X) (\ X . \ Y . CONSIDER X Y)
          (RE (\ X . \ Y . INTRODUCE X Y)))
+
+Input: dismiss and reprimand ed
+
 Number of analyses: 0
 
-OOV error: no lex entry for haev! Exiting without parse.
 
-Number of analyses: 0
+Input: mary musn't have been being dismiss ed
+
+Number of analyses: 1
+
+
+Derivation 1
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|being|)(|dismiss| |ed|) := IV
+        : ((LAM P (BEING P))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|been|)(|being| |dismiss| |ed|) := IV
+        : ((LAM P (BEEN P))
+           ((LAM P (BEING P))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+A     (|have|)(|been| |being| |dismiss| |ed|) := IV
+        : ((LAM P (HAVE P))
+           ((LAM P (BEEN P))
+            ((LAM P (BEING P))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y)))))))
+A     (|musn't|)(|have| |been| |being| |dismiss| |ed|) := S\NP
+        : ((LAM P (LAM X (MUSTNOT (P X))))
+           ((LAM P (HAVE P))
+            ((LAM P (BEEN P))
+             ((LAM P (BEING P))
+              ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+               (LAM X (LAM Y ((DISMISS X) Y))))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM P (HAVE P))
+             ((LAM P (BEEN P))
+              ((LAM P (BEING P))
+               ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+                (LAM X (LAM Y ((DISMISS X) Y))))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
+
+Input: without reading
 
 Number of analyses: 1
 
@@ -215,8 +296,11 @@ LEX   (reading) := VP/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM Q (LAM G354 ((WITHOUT ((READ X) G354)) (Q G354))))) =
-    (\ X . \ Q . \ G362 . WITHOUT (READ X G362) (Q G362))
+    (LAM X (LAM Q (LAM G170 ((WITHOUT ((READ X) G170)) (Q G170))))) =
+    (\ X . \ Q . \ G178 . WITHOUT (READ X G178) (Q G178))
+
+Input: what and where did Sally sing
+
 Number of analyses: 1
 
 
@@ -247,6 +331,9 @@ Final LF, normal-order evaluated:
      (LAM Y (LAM X ((SING X) Y)))) =
     (AND (P X) (Q X) (\ P . \ X . QUESTION (AT X) (P X))
          (\ P . \ X . QUESTION (P X)) (\ Y . \ X . SING X Y))
+
+Input: sincerity wants to study
+
 Number of analyses: 2
 
 
@@ -295,6 +382,9 @@ Final LF, normal-order evaluated:
 
     ((WANT (STUDY SINCERITY)) SINCERITY) =
     (WANT (STUDY SINCERITY) SINCERITY)
+
+Input: the novel that Mo persuaded sincerity to write
+
 Number of analyses: 1
 
 
@@ -358,6 +448,9 @@ Final LF, normal-order evaluated:
       ((DEF (LAM X (NOVEL X))) X))) =
     (\ X . AND (PERSUADE (WRITE X SINCERITY) SINCERITY MO)
      (DEF (\ X . NOVEL X) X))
+
+Input: Mo persuaded sincerity to write the novel
+
 Number of analyses: 1
 
 
@@ -402,6 +495,9 @@ Final LF, normal-order evaluated:
 
     (((PERSUADE ((WRITE (DEF (LAM X (NOVEL X)))) SINCERITY)) SINCERITY) MO) =
     (PERSUADE (WRITE (DEF (\ X . NOVEL X)) SINCERITY) SINCERITY MO)
+
+Input: every poem shines
+
 Number of analyses: 1
 
 
@@ -425,6 +521,9 @@ Final LF, normal-order evaluated:
 
     (LAM X ((FORALL X) ((IMP (POEM X)) (SHINE X)))) =
     (\ X . FORALL X (IMP (POEM X) (SHINE X)))
+
+Input: Mo likes
+
 Number of analyses: 1
 
 
@@ -441,6 +540,9 @@ Final LF, normal-order evaluated:
 
     (LAM X ((LIKE X) MO)) =
     (\ X . LIKE X MO)
+
+Input: I gave to Mo
+
 Number of analyses: 1
 
 
@@ -465,6 +567,9 @@ Final LF, normal-order evaluated:
 
     (LAM X (((GIVE MO) X) I)) =
     (\ X . GIVE MO X I)
+
+Input: I believe sincerity loves cats
+
 Number of analyses: 1
 
 
@@ -496,7 +601,13 @@ Final LF, normal-order evaluated:
 
     ((BELIEVE ((LOVE CATS) SINCERITY)) I) =
     (BELIEVE (LOVE CATS SINCERITY) I)
+
+Input: gave Mo a flower
+
 Number of analyses: 0
+
+
+Input: tries to grab
 
 Number of analyses: 1
 
@@ -518,5 +629,5 @@ LEX   (grab) := IV/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM G412 (TRY ((GRAN X) G412)))) =
-    (\ X . \ G418 . TRY (GRAN X G418))
+    (LAM X (LAM G228 (TRY ((GRAN X) G228)))) =
+    (\ X . \ G234 . TRY (GRAN X G234))

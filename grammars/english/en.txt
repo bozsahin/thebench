@@ -33,11 +33,12 @@ and       | c :: (@x\*@x)/*@x: and ( p x) (q x)
 mary      | n :: np:mary
 musn't   | aux :: (s[t=pres]\np)/iv: \p\x.mustnot (p x)
 have      | aux :: iv/iv[t=en]: \p.have p
-being     | part :: iv[v=pass,t=ing]/iv[v=pass]: \p.being p
+been      | perf :: iv[t=en,p=ing]/iv[p=ing]: \p.been p
+being     | part :: iv[v=pass,p=ing]/iv[v=pass]: \p.being p
 ed        | pass :: iv[v=pass]\\(iv/np): \p\x\y.pass (p x y)
 #past run, iv:\x.run x <--> ran, s\np:\x.past run x
-without   | p :: ((s\np)\(S\np))/vp[t=ing]: \p\q\x.without (p x) (q x)
-reading   | ger :: vp[t=ing]/np:\x\y.read x y
+without   | p :: ((s\np)\(S\np))/vp[p=ing]: \p\q\x.without (p x) (q x)
+reading   | ger :: vp[p=ing]/np:\x\y.read x y
 what      | q   :: s[t=q]/(s/np): \p\x.question (p x)
 where     | q   :: s[t=q]/(s/np[case=loc]): \p\x.question (at x) (p x)
 did Sally sing| q :: s/np[case=loc] : \y\x.sing x y

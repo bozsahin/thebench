@@ -1717,6 +1717,7 @@
   where keys are triplets (i j k), meaning combinations of length i,
   starting with position j, yielding reading k."
   (cond ((listp itemslist)
+	 (format t "~2%Input: ~{~A~^ ~}~%" itemslist)
 	 (clrhash *cky-hashtable*)
 	 (clrhash *cky-lf-hashtable*)
 	 (setf *cky-lf* nil)(setf *cky-argmax-lf* nil)

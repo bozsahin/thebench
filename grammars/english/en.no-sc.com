@@ -1,3 +1,4 @@
+g en.txt
 > en.no-sc.session force
 a sincerity admires john
 ,
@@ -13,7 +14,7 @@ a re introduce and consider
 ,
 a dismiss and reprimand ed 
 ,
-a mary musn't haev been being dismiss ed
+a mary musn't have been being dismiss ed
 ,
 a without reading
 ,
