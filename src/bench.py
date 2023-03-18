@@ -44,10 +44,11 @@ _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
 _version = '0.96'
 _vdate = 'January 31, 2023'
-# 3 built-in extensions recognized by MG
+# 3 built-in extensions of MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
 _logext = '.log'
+_boundel= '-'                 # for special treatment of phon items with dashes which are not in an MWE
 _punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually tokenized and wrapped in double quote
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
@@ -272,7 +273,11 @@ class PHONParser(Parser):
 
     @_('simple')
     def el(self, p):
-        return p.simple
+        simplist = ' '.join(p.simple).split(_boundel)
+        if [simplist] == p.simple:   # no _boundel
+            return p.simple
+        else:                        # if we're not in an NWE, e.g. dissmiss-ed is split into dismiss ed
+            return [simplist]
 
     @_('mwe')
     def el(self, p):
@@ -731,24 +736,24 @@ def split_command (cline): # splits a command line into command and list of args
     
 def help ():
         print(f"Letter commands are processor commands; symbol commands are for display or setup")
-        print(f"Items in .. must be space-separated; .? means optional .")
-        print(f' a ..   | analyzes .. in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
-        print(f' c ..   | case functions generated for current grammar from elements with POSs ..')
+        print(f"Items in . must be space-separated; .? means optional .")
+        print(f' a .    | analyzes . in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
+        print(f' c .    | case functions generated for current grammar from elements with POSs .')
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
         print(f" g .    | grammar text .  checked and its source made current ({_binext} file goes to {_tmp})")
         print(f' i .    | intermediate representation of current grammar saved (file . goes to {_tmp})')
         print(f" k      | reports categorial skeleton of the current grammar---its distinct syntactic categories")
-        print(f" l . ..?| Lisp function . is called with args .., which takes them as strings")
-        print(f' o ..   | OS/shell command .. is run at your own risk (be careful with deletes)')
-        print(f' r ..   | ranks .. in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
+        print(f" l . .? | Lisp function . is called with args ., which takes them as strings")
+        print(f' o .    | OS/shell command . is run at your own risk (be careful with deletes)')
+        print(f' r .    | ranks . in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | source . located in {_tmp} and saved as editable grammar locally (.txt)")
         print(f' @ .    | does commands in local file . (same format, 1 command per line, 1 line per command)')
-        print(f' , ..?  | displays analyses for solutions numbered .., all if none provided')
+        print(f' , .?   | displays analyses for solutions numbered ., all if none provided')
         print(f' #      | displays ranked analyses')
-        print(f' = ..   | displays analyses onto basic cats in ..')
+        print(f' = .    | displays analyses onto basic cats in .')
         print(f' ! .?   | shows basic cats and features of current grammar (optionally saves to file .log)')
-        print(f' $ ..   | shows the elements with parts of speech ..')
+        print(f' $ .    | shows the elements with parts of speech in .')
         print(f' - .    | shows (without adding) the intermediate representation of element .')
         print(f' + .    | processor adds Lisp code in file .')
         print(f" > . .? | Logs processor output to file {_logext}; if second . is 'force' overwrites if exists")
