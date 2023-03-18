@@ -305,8 +305,8 @@ class SUPLexer(Lexer): # Token types for supervision pairs
     ignore_newline = r'\n+'   # ignore empty lines
      
     ITEM   = r'.*\:'                                     # no need for form delimiters
-    BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
-    ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'        # (at least one alphabetical symbol for cat symbols)
+    BANGID = r'\![0-9a-zA-Z_\-\~]*[a-zA-Z][0-9a-zA-Z_\-\+\~]*'  
+    ID     = r'[0-9a-zA-Z_\-\~]*[a-zA-Z][0-9a-zA-Z_\-\+\~]*'        # (at least one alphabetical symbol for cat symbols)
     DOT    = r'\.'          # modalities also use this
     LP     = r'\('
     RP     = r'\)'
@@ -331,10 +331,10 @@ class MGLexer(Lexer):  # Token types of monadic grammar specifications
     ITEM   = r'.*\|'                                     
     SRULE  = r'\<\-\-\>'
     ARULE  = r'\-\-\>'                                            # to avoid -- becoming ID 
-    SPECID = r'@[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'       # special IDs, app only
-    RNAME  = r'\#[0-9a-zA-Z_\-\+]*[a-zA-Z][0-9a-zA-Z_\-\+]*'      # rule names start with #
-    BANGID = r'\![0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+]*'  
-    ID     = r'[0-9a-zA-Z_\-]*[a-zA-Z][0-9a-zA-Z_\-\+\>\<]*'      # (at least one alphabetical symbol for cat symbols not beginning with +, which is a modality, not part of basic cat name)
+    SPECID = r'@[0-9a-zA-Z_\-\~]*[a-zA-Z][0-9a-zA-Z_\-\+\~]*'       # special IDs, app only
+    RNAME  = r'\#[0-9a-zA-Z_\-\~]*[a-zA-Z][0-9a-zA-Z_\-\+\~]*'      # rule names start with #
+    BANGID = r'\![0-9a-zA-Z_\-\~]*[a-zA-Z][0-9a-zA-Z_\-\+\~]*'  
+    ID     = r'[0-9a-zA-Z_\-\~]*[a-zA-Z][0-9a-zA-Z_\-\+\~\>\<]*'      # at least one alphabetical symbol
     RNUM   = r'[\-\+]?\d+\.\d+'
     INUM   = r'\d+'
     END    = _overscore                               # RHS defined globally, not visible to user.

@@ -1,7 +1,8 @@
-% this is from the MS book, covering the English part
-% cem bozsahin
+% This is from the Monadic Structures book, covering the English part.
+% Visual alignment is purely for aesthetic reasons
+% -Cem Bozsahin
 
-sees| v :: (s[t=fin]\np[agr=3s])/np : \x\y.see x y
+sees      | v :: (s[t=fin]\np[agr=3s])/np : \x\y.see x y
 persuades | v :: ((s\np[agr=3s])/vp)/np : \x\p\y.persuade (p x) x y
 persuaded | v :: ((s\np)/vp)/np : \x\p\y.persuade (p x) x y
 promises  | v :: ((s\np[agr=3s])/vp)/np : \x\p\y.promise (p y) x y
@@ -22,16 +23,16 @@ john      | n :: np[agr=3s]: john
 sincerity | n :: s/(s\np[agr=3s]): \p.p sincerity
 john      | n :: (s\np[agr=?a])\((s\np[agr=?a])/np): \p.p john
 depart    | v :: iv:\y.depart y
-ed       | aff :: (s\np[agr=?a])\\iv: \p\y.p _ past y % pointwise extending IV$
+ed        | aff :: (s\np[agr=?a])\\iv: \p\y.p _ past y % pointwise extending IV$
 dismiss   | v  :: iv/np:\x\y.dismiss x y
 reprimand | v  :: iv/np:\x\y.reprimand x y
-ed       | aff :: (s\np[agr=?a])\\(iv/np): \p\y.p _ past y % pointwise extending IV$
-re       | aff :: (iv/np)//(iv/np): \x.re x  % pointwise extending IV$
+ed        | aff :: (s\np[agr=?a])\\(iv/np): \p\y.p _ past y % pointwise extending IV$
+re        | aff :: (iv/np)//(iv/np): \x.re x  % pointwise extending IV$
 introduce | v :: iv/np: \x\y.introduce x y
 consider  | v :: iv/np: \x\y.consider x y
 and       | c :: (@x\*@x)/*@x: and ( p x) (q x)
 mary      | n :: np:mary
-musn't   | aux :: (s[t=pres]\np)/iv: \p\x.mustnot (p x)
+musn't    | aux :: (s[t=pres]\np)/iv: \p\x.mustnot (p x)
 have      | aux :: iv/iv[t=en]: \p.have p
 been      | perf :: iv[t=en,p=ing]/iv[p=ing]: \p.been p
 being     | part :: iv[v=pass,p=ing]/iv[v=pass]: \p.being p
