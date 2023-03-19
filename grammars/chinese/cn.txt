@@ -1,0 +1,26 @@
+% Mandarin Chinese as covered in Monadic structures book
+% -cem bozsahin
+kan | v :: (s\np)/np:\x\y.see x y
+wo  | n :: np:i
+you | v :: (s\np)/'mo'/np:\x\y\z.tease _ y x z
+le  | asp :: (s\np)\(s\np): \p\x.asp (p x)
+Zhangsan | n :: np:z
+yi  | cl :: np/n:\x.one x
+mo  | n :: n:\x.silent x
+na-ben | np/np:\x.measure x
+hui    | aux :: (s\np)/(S\np):\x.will x
+shuifi | v  :: (s\np)/vp/np:\x\p\x.persuade (p x)x y
+qu     | inf :: vp/iv:\p.p
+ma3i    | v :: iv/np:\x\y.buy x y
+erqies | coord :: (@x\@x)/@x:\p\q\x.and (p x)(q x)
+ma4i    | v :: iv/np:\x\y.sell x y
+de      | rel :: (n/n)\(s\np): \p\q\x.and(p x)(q x)
+book    | n :: n:\x.book x
+haoxiang | v :: s/s" \p.seem p
+Paul     | n :: np:paul
+chezi    | n :: np:\x.vehicle x
+chezi    | n :: /(s/np[top=+]):\p.(p vehicle) and topic=vehicle
+gege    | n :: /(s/np[top=+]):\p.(p brother) and topic=brother
+ta      | pro :: np:he-she
+di-gei  | v :: ((s\np)/np)/np: \x\y\z.pass give x y z
+yi-hu jiu | np :: np:one wine
