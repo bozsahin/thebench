@@ -9,21 +9,21 @@ a admires john
 ,
 a depart ed
 ,
-a depart-ed
+a depart+ed
 ,
-a dismiss-ed
+a dismiss+ed
 ,
 a re introduce and consider
 ,
-a re-introduce and consider
+a re+introduce and consider
 ,
 a dismiss and reprimand ed 
 ,
-a dismiss and reprimand-ed 
+a dismiss and reprimand+ed 
 ,
 a mary musn't have been being dismiss ed
 ,
-a mary musn't have been being dismiss-ed
+a mary musn't have been being dismiss+ed
 ,
 a without reading
 ,

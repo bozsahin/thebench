@@ -170,17 +170,56 @@ Final LF, normal-order evaluated:
 
 Input: depart ed
 
-OOV error: no lex entry for depart ed! Exiting without parse.
+Number of analyses: 1
 
-Number of analyses: 0
 
+Derivation 1
+--------------
+LEX   (depart) := IV
+        : (LAM Y (DEPART Y))
+LEX   (ed) := (S\NP)\\IV
+        : (LAM P (LAM Y (((P _) PAST) Y)))
+T     (|depart|)(|ed|) := S\NP
+        : ((LAM P (LAM Y (((P _) PAST) Y))) (LAM Y (DEPART Y)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM Y (((DEPART _) PAST) Y)) =
+    (\ Y . DEPART _ PAST Y)
 
 Input: dismiss ed
 
-OOV error: no lex entry for dismiss ed! Exiting without parse.
+Number of analyses: 2
 
-Number of analyses: 0
 
+Derivation 1
+--------------
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X (LAM Y (PASS ((DISMISS X) Y)))) =
+    (\ X . \ Y . PASS (DISMISS X Y))
+
+Derivation 2
+--------------
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := (S\NP)\\(IV/NP)
+        : (LAM P (LAM Y (((P _) PAST) Y)))
+T     (|dismiss|)(|ed|) := S\NP
+        : ((LAM P (LAM Y (((P _) PAST) Y))) (LAM X (LAM Y ((DISMISS X) Y))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM Y (((DISMISS _) PAST) Y)) =
+    (\ Y . DISMISS _ PAST Y)
 
 Input: re introduce and consider
 
@@ -214,10 +253,33 @@ Final LF, normal-order evaluated:
 
 Input: re introduce and consider
 
-OOV error: no lex entry for re introduce! Exiting without parse.
+Number of analyses: 1
 
-Number of analyses: 0
 
+Derivation 1
+--------------
+LEX   (re) := (IV/NP)//(IV/NP)
+        : (LAM X (RE X))
+LEX   (introduce) := IV/NP
+        : (LAM X (LAM Y ((INTRODUCE X) Y)))
+A     (|re|)(|introduce|) := IV/NP
+        : ((LAM X (RE X)) (LAM X (LAM Y ((INTRODUCE X) Y))))
+LEX   (and) := (@X\*@X)/*@X
+        : ((AND (P X)) (Q X))
+LEX   (consider) := IV/NP
+        : (LAM X (LAM Y ((CONSIDER X) Y)))
+>     (|and|)(|consider|) := (IV/NP)\*(IV/NP)
+        : (((AND (P X)) (Q X)) (LAM X (LAM Y ((CONSIDER X) Y))))
+T     (|re| |introduce|)(|and| |consider|) := IV/NP
+        : ((((AND (P X)) (Q X)) (LAM X (LAM Y ((CONSIDER X) Y))))
+           ((LAM X (RE X)) (LAM X (LAM Y ((INTRODUCE X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    ((((AND (P X)) (Q X)) (LAM X (LAM Y ((CONSIDER X) Y))))
+     (RE (LAM X (LAM Y ((INTRODUCE X) Y))))) =
+    (AND (P X) (Q X) (\ X . \ Y . CONSIDER X Y)
+         (RE (\ X . \ Y . INTRODUCE X Y)))
 
 Input: dismiss and reprimand ed
 
@@ -225,8 +287,6 @@ Number of analyses: 0
 
 
 Input: dismiss and reprimand ed
-
-OOV error: no lex entry for reprimand ed! Exiting without parse.
 
 Number of analyses: 0
 
@@ -294,10 +354,64 @@ Final LF, normal-order evaluated:
 
 Input: mary musn't have been being dismiss ed
 
-OOV error: no lex entry for dismiss ed! Exiting without parse.
+Number of analyses: 1
 
-Number of analyses: 0
 
+Derivation 1
+--------------
+LEX   (mary) := NP
+        : MARY
+LEX   (musn't) := (S\NP)/IV
+        : (LAM P (LAM X (MUSTNOT (P X))))
+LEX   (have) := IV/IV
+        : (LAM P (HAVE P))
+LEX   (been) := IV/IV
+        : (LAM P (BEEN P))
+LEX   (being) := IV/IV
+        : (LAM P (BEING P))
+LEX   (dismiss) := IV/NP
+        : (LAM X (LAM Y ((DISMISS X) Y)))
+LEX   (ed) := IV\\(IV/NP)
+        : (LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+T     (|dismiss|)(|ed|) := IV
+        : ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+           (LAM X (LAM Y ((DISMISS X) Y))))
+A     (|being|)(|dismiss| |ed|) := IV
+        : ((LAM P (BEING P))
+           ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+            (LAM X (LAM Y ((DISMISS X) Y)))))
+A     (|been|)(|being| |dismiss| |ed|) := IV
+        : ((LAM P (BEEN P))
+           ((LAM P (BEING P))
+            ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+             (LAM X (LAM Y ((DISMISS X) Y))))))
+A     (|have|)(|been| |being| |dismiss| |ed|) := IV
+        : ((LAM P (HAVE P))
+           ((LAM P (BEEN P))
+            ((LAM P (BEING P))
+             ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+              (LAM X (LAM Y ((DISMISS X) Y)))))))
+A     (|musn't|)(|have| |been| |being| |dismiss| |ed|) := S\NP
+        : ((LAM P (LAM X (MUSTNOT (P X))))
+           ((LAM P (HAVE P))
+            ((LAM P (BEEN P))
+             ((LAM P (BEING P))
+              ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+               (LAM X (LAM Y ((DISMISS X) Y))))))))
+T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
+        : (((LAM P (LAM X (MUSTNOT (P X))))
+            ((LAM P (HAVE P))
+             ((LAM P (BEEN P))
+              ((LAM P (BEING P))
+               ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
+                (LAM X (LAM Y ((DISMISS X) Y))))))))
+           MARY)
+
+Final LF, normal-order evaluated: 
+
+    (MUSTNOT
+     ((HAVE (BEEN (BEING (LAM X (LAM Y (PASS ((DISMISS X) Y))))))) MARY)) =
+    (MUSTNOT (HAVE (BEEN (BEING (\ X . \ Y . PASS (DISMISS X Y)))) MARY))
 
 Input: without reading
 
@@ -317,8 +431,8 @@ LEX   (reading) := VP/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM Q (LAM G158 ((WITHOUT ((READ X) G158)) (Q G158))))) =
-    (\ X . \ Q . \ G166 . WITHOUT (READ X G166) (Q G166))
+    (LAM X (LAM Q (LAM G188 ((WITHOUT ((READ X) G188)) (Q G188))))) =
+    (\ X . \ Q . \ G196 . WITHOUT (READ X G196) (Q G196))
 
 Input: what and where did Sally sing
 
@@ -599,5 +713,5 @@ LEX   (grab) := IV/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM G210 (TRY ((GRAN X) G210)))) =
-    (\ X . \ G216 . TRY (GRAN X G216))
+    (LAM X (LAM G240 (TRY ((GRAN X) G240)))) =
+    (\ X . \ G246 . TRY (GRAN X G246))
