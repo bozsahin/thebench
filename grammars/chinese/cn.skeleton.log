@@ -1,0 +1,176 @@
+The categorial skeleton of the current grammar
+
+
+category  : (S\NP)/NP
+occurrence: 6  elements
+elements  : (kan / e / hen teng / xihuan / teng / qi)
+
+--------
+
+category  : NP
+occurrence: 17  elements
+elements  : (wo / Zhangsan / Paul / chezi / ta / yi-hu jiu / duzi /
+             Zhang xiaojie / yisheng / tou / Lisi / weiyu / qiche / zixingche /
+             ren / ni / shu)
+
+--------
+
+category  : ((S\NP)/'mo')/NP
+occurrence: 1  element
+elements  : (you)
+
+--------
+
+category  : (S\NP)\(S\NP)
+occurrence: 2  elements
+elements  : (le / hen jiu)
+
+--------
+
+category  : NP/N
+occurrence: 1  element
+elements  : (yi)
+
+--------
+
+category  : N
+occurrence: 2  elements
+elements  : (mo / book)
+
+--------
+
+category  : NP/NP
+occurrence: 2  elements
+elements  : (na-ben / na)
+
+--------
+
+category  : (S\NP)/(S\NP)
+occurrence: 4  elements
+elements  : (hui / bu / xianzai / zui)
+
+--------
+
+category  : ((S\NP)/VP)/NP
+occurrence: 2  elements
+elements  : (shuifu / quan)
+
+--------
+
+category  : VP/IV
+occurrence: 1  element
+elements  : (qu)
+
+--------
+
+category  : IV/NP
+occurrence: 2  elements
+elements  : (ma3i / ma4i)
+
+--------
+
+category  : (@X\@X)/@X
+occurrence: 1  element
+elements  : (erqie)
+
+--------
+
+category  : (N/N)\(S\NP)
+occurrence: 1  element
+elements  : (de)
+
+--------
+
+category  : S/S
+occurrence: 1  element
+elements  : (haoxiang)
+
+--------
+
+category  : S/(S/NP)
+occurrence: 5  elements
+elements  : (chezi / gege / ta / mama / ren)
+
+--------
+
+category  : ((S\NP)/NP)/NP
+occurrence: 2  elements
+elements  : (di-gei / gei)
+
+--------
+
+category  : (S\NP)/VP
+occurrence: 1  element
+elements  : (xiang)
+
+--------
+
+category  : VP/NP
+occurrence: 1  element
+elements  : (zhui)
+
+--------
+
+category  : (S\NP)/S
+occurrence: 2  elements
+elements  : (renwei / fouren)
+
+--------
+
+category  : S\(S/NP)
+occurrence: 1  element
+elements  : (zhe-ben shu)
+
+--------
+
+category  : (@X\@X)/@X
+occurrence: 1  element
+elements  : (danshi)
+
+--------
+
+category  : (S\NP)/PREDP
+occurrence: 1  element
+elements  : (zuo)
+
+--------
+
+category  : (S\NP)\((S\NP)/PREDP)
+occurrence: 1  element
+elements  : (cuo)
+
+--------
+
+category  : VP
+occurrence: 1  element
+elements  : (yao lai)
+
+--------
+
+category  : NP/(NP/NP)
+occurrence: 1  element
+elements  : (didi)
+
+--------
+
+category  : S\NP
+occurrence: 1  element
+elements  : (gui)
+
+--------
+
+category  : (S/(S\NP))/(S/(S\NP))
+occurrence: 1  element
+elements  : (yu a)
+
+--------
+
+category  : (S\NP)\((S\NP)/NP)
+occurrence: 1  element
+elements  : (jiejie yi-pan cai)
+
+--------
+
+Checksum: 63 (total of sums in category classes)
+Total   : 28 distinct categories
+Out of  : 63 entries (not counting asymmetric relational rules)

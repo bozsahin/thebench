@@ -8,31 +8,32 @@ le  | asp :: (s\np)\(s\np): \p\x.asp (p x)
 Zhangsan | n :: np:z
 yi  | cl :: np/n:\x.one x
 mo  | n :: n:\x.silent x
-na-ben | np/np:\x.measure x
+na-ben | n :: np/np:\x.measure x
 hui    | aux :: (s\np)/(S\np):\x.will x
-shuifi | v  :: (s\np)/vp/np:\x\p\x.persuade (p x)x y
+shuifu | v  :: (s\np)/vp/np:\x\p\x.persuade (p x)x y
+quan | v  :: (s\np)/vp/np:\x\p\x.persuade (p x)x y
 qu     | inf :: vp/iv:\p.p
 ma3i    | v :: iv/np:\x\y.buy x y
-erqies | coord :: (@x\@x)/@x:\p\q\x.and (p x)(q x)
+erqie | coord :: (@x\@x)/@x:\p\q\x.and (p x)(q x)
 ma4i    | v :: iv/np:\x\y.sell x y
 de      | rel :: (n/n)\(s\np): \p\q\x.and(p x)(q x)
 book    | n :: n:\x.book x
-haoxiang | v :: s/s" \p.seem p
+haoxiang | v :: s/s: \p.seem p
 Paul     | n :: np:paul
 chezi    | n :: np:\x.vehicle x
-chezi    | n :: s/(s/np[top=+]):\p.(p vehicle) and topic=vehicle
-gege    | n :: s/(s/np[top=+]):\p.(p brother) and topic=brother
+chezi    | n :: s/(s/np[top=pl]):\p.(p vehicle) and topic vehicle
+gege    | n :: s/(s/np[top=pl]):\p.(p brother) and topic brother
 ta      | pro :: np:he-she
 di-gei  | v :: ((s\np)/np)/np: \x\y\z.pass give x y z
 yi-hu jiu | np :: np:one wine
-ta      | pro :: s/[t=disadv]/(s[t=disadv]/np[topic=+]): \p.disadv (p he) and (topic he)
+ta      | pro :: s[t=disadv]/(s[t=disadv]/np[topic=pl]): \p.disadv (p he) and (topic he)
 duzi    | n :: np: stomach
-e       | v :: (s[t=disadvc]\np)/np:\x\y.starve x y
+e       | v :: (s[t=disadv]\np)/np:\x\y.starve x y
 Zhang xiaojie | n :: np: miss-zhang
 bu      | part :: (s\np)/(s\np): \p.not p
 xiang   | v    :: (s\np)/vp:\p\x.want (p x)x
 zhui    | v    :: vp/np:\x\y.court x y
-mama    | n :: s/[t=disadv]/(s[t=disadv]/np[topic=+]): \p.disadv (p mom) and (topic mom)
+mama    | n :: s[t=disadv]/(s[t=disadv]/np[topic=pl]): \p.disadv (p mom) and (topic mom)
 yisheng | n :: np:doctors
 renwei  | v :: (s\np)/s:\p\x.consider p x
 tou     | n :: np:head
@@ -46,7 +47,7 @@ fouren   | v :: (s\np)/s: \s\x.deny s x
 zuo      | v :: (s\np)/PredP: \s\x.do s x
 cuo      | prop :: (s\np)\((s\np)/PredP): \p\x.wrong p x
 yao lai  | v :: vp:\x.come-will x
-didi     | n :: np/(np/np[topic=+])\p.p brother and topic b
+didi     | n :: np/(np/np[topic=pl]) : \p.p brother and topic b
 na       | c :: np/np:\x.x
 hen jiu  | prop :: (s\np)\(s\np):\p\x.p _ long x
 teng     | v :: (s[t=disadv]\np)/np: \x\y.suffer x y
@@ -54,7 +55,7 @@ weiyu    | n :: np:tuna
 xianzai  | prop :: (s\np)/(s\np):\p\x.now (p x)
 zui  | prop :: (s\np)/(s\np):\p\x.most (p x)
 gui    | v :: s\np:\x.expensive x
-yu a   | fish : (s/(s\np))/(S/(s\np)): \p\q.q (p appos)
+yu a   | n :: (s/(s\np))/(S/(s\np)): \p\q.appos (q (p fish))
 qiche  | n :: np:car
 qi     | v :: (s\np)/np:\x\y.ride x y
 zixingche | n :: np: \x.bike x
@@ -63,4 +64,3 @@ gei  | v :: ((s\np)/np)/np: \x\y\z.pass give x y z
 ni   | pro :: np: you
 shu  | n :: np:\x. book x
 jiejie yi-pan cai | cl :: (s\np)\((s\np)/np): \p\x.p dish sister x
-, | conj :: (@x\@\x)/@x:and(p x)(q x)
