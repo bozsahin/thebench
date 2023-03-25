@@ -1,4 +1,5 @@
 % Mandarin Chinese as covered in Monadic structures book
+% i put tones only for disambiguation--sorry
 % -cem bozsahin
 kan | v :: (s\np)/np:\x\y.see x y
 wo  | n :: np:i
@@ -19,8 +20,47 @@ book    | n :: n:\x.book x
 haoxiang | v :: s/s" \p.seem p
 Paul     | n :: np:paul
 chezi    | n :: np:\x.vehicle x
-chezi    | n :: /(s/np[top=+]):\p.(p vehicle) and topic=vehicle
-gege    | n :: /(s/np[top=+]):\p.(p brother) and topic=brother
+chezi    | n :: s/(s/np[top=+]):\p.(p vehicle) and topic=vehicle
+gege    | n :: s/(s/np[top=+]):\p.(p brother) and topic=brother
 ta      | pro :: np:he-she
 di-gei  | v :: ((s\np)/np)/np: \x\y\z.pass give x y z
 yi-hu jiu | np :: np:one wine
+ta      | pro :: s/[t=disadv]/(s[t=disadv]/np[topic=+]): \p.disadv (p he) and (topic he)
+duzi    | n :: np: stomach
+e       | v :: (s[t=disadvc]\np)/np:\x\y.starve x y
+Zhang xiaojie | n :: np: miss-zhang
+bu      | part :: (s\np)/(s\np): \p.not p
+xiang   | v    :: (s\np)/vp:\p\x.want (p x)x
+zhui    | v    :: vp/np:\x\y.court x y
+mama    | n :: s/[t=disadv]/(s[t=disadv]/np[topic=+]): \p.disadv (p mom) and (topic mom)
+yisheng | n :: np:doctors
+renwei  | v :: (s\np)/s:\p\x.consider p x
+tou     | n :: np:head
+hen teng | v :: (s[t=disadv]\np)/np:\x\y.suffer-hard x y
+xihuan   | v :: (s\np)/np:\x\y.like x y
+Lisi     | n :: np:l
+zhe-ben shu | n :: s\(s/np):\p.p this-book
+ren      | n :: s[t=disadv]/(s[t=disadv]/np):\p.p people
+danshi |  c :: (@x\@x)/@x:\p\x.and(p x)(q x)
+fouren   | v :: (s\np)/s: \s\x.deny s x
+zuo      | v :: (s\np)/PredP: \s\x.do s x
+cuo      | prop :: (s\np)\((s\np)/PredP): \p\x.wrong p x
+yao lai  | v :: vp:\x.come-will x
+didi     | n :: np/(np/np[topic=+])\p.p brother and topic b
+na       | c :: np/np:\x.x
+hen jiu  | prop :: (s\np)\(s\np):\p\x.p _ long x
+teng     | v :: (s[t=disadv]\np)/np: \x\y.suffer x y
+weiyu    | n :: np:tuna
+xianzai  | prop :: (s\np)/(s\np):\p\x.now (p x)
+zui  | prop :: (s\np)/(s\np):\p\x.most (p x)
+gui    | v :: s\np:\x.expensive x
+yu a   | fish : (s/(s\np))/(S/(s\np)): \p\q.q (p appos)
+qiche  | n :: np:car
+qi     | v :: (s\np)/np:\x\y.ride x y
+zixingche | n :: np: \x.bike x
+ren       | n :: np:\x.person x
+gei  | v :: ((s\np)/np)/np: \x\y\z.pass give x y z
+ni   | pro :: np: you
+shu  | n :: np:\x. book x
+jiejie yi-pan cai | cl :: (s\np)\((s\np)/np): \p\x.p dish sister x
+, | conj :: (@x\@\x)/@x:and(p x)(q x)
