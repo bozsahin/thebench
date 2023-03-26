@@ -9,14 +9,14 @@ Zhangsan | n :: np:z
 yi  | cl :: np/n:\x.one x
 mo  | n :: n:\x.silent x
 na-ben | n :: np/np:\x.measure x
-hui    | aux :: (s\np)/(S\np):\x.will x
+hui    | aux :: (s\np)/(S\np):\p\x.will (p x)
 shuifu | v  :: (s\np)/vp/np:\x\p\x.persuade (p x)x y
 quan | v  :: (s\np)/vp/np:\x\p\x.persuade (p x)x y
 qu     | inf :: vp/iv:\p.p
 ma3i    | v :: iv/np:\x\y.buy x y
 erqie | coord :: (@x\@x)/@x:\p\q\x.and (p x)(q x)
 ma4i    | v :: iv/np:\x\y.sell x y
-de      | rel :: (n/n)\(s\np): \p\q\x.and(p x)(q x)
+de      | rel :: (np/np)\(s\np): \p\q\x.and(p x)(q x)
 book    | n :: n:\x.book x
 haoxiang | v :: s/s: \p.seem p
 Paul     | n :: np:paul
