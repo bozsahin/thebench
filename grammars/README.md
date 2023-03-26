@@ -10,11 +10,11 @@ Naming convention for the files:
 
 <code>.commands</code> TheBench commands to process the grammar with certain options, which are:
 
-    - <code>sc.no</code>  : no synthetic case rule used
+   <code>sc.no</code>  : no synthetic case rule derived or used
 
-    - <code>sc.all</code> : synthetic case rules and all analyses
+   <code>sc.all</code> : synthetic case rules derived and used and all analyses
 
-    - <code>sc.nf</code>  : synthetic case rules and normal form analysis only (one analysis among equivalents)
+   <code>sc.nf</code>  : synthetic case rules derived and used in normal form analysis only (i.e. reporting one analysis among equivalents)
                   
 <code>.session</code> The output of a command file
 
