@@ -15,7 +15,7 @@ elements  : (wo / Zhangsan / Paul / chezi / ta / yi-hu jiu / duzi /
 
 --------
 
-category  : ((S\NP)/'mo')/NP
+category  : ((S\NP)/'yi mo')/NP
 occurrence: 1  element
 elements  : (you)
 

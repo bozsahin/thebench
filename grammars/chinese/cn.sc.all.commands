@@ -1,6 +1,7 @@
 g cn.txt
-> cn.no-sc.session force
-l nfparse-on
+> cn.sc.all.session force
+c v
+l nfparse-off
 l show-config
 a wo you le Zhangsan yi mo
 ,

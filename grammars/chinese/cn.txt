@@ -3,7 +3,7 @@
 % -cem bozsahin
 kan | v :: (s\np)/np:\x\y.see x y
 wo  | n :: np:i
-you | v :: (s\np)/'mo'/np:\x\y\z.tease _ y x z
+you | v :: (s\np)/'yi mo'/np:\x\y\z.tease _ y x z
 le  | asp :: (s\np)\(s\np): \p\x.asp (p x)
 Zhangsan | n :: np:z
 yi  | cl :: np/n:\x.one x
