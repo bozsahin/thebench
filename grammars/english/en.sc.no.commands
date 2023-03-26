@@ -1,5 +1,5 @@
 g en.txt
-> en.no-sc.session force
+> en.sc.no.session force
 l show-config
 a sincerity admires john
 ,

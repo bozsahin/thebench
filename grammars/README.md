@@ -1,21 +1,21 @@
 This folder contains various grammars and TheBench commands to process them.
 
-Convention:
+Naming convention for the files:
 
-.txt the grammar text file
+<code>.txt</code> The grammar text file
 
-.basic.log basic categories and features of the grammar
+<code>.basic.log</code> Basic categories and features of the grammar
 
-.skeleton.log all distinct categories of the grammar
+<code>.skeleton.log</code> All distinct categories of the grammar and list of items bearing them
 
-.commands TheBench commands to process the grammar with certain options:
+<code>.commands</code> TheBench commands to process the grammar with certain options, which are:
 
-    - no-sc : no synthetic case rule used
+    - <code>sc.no</code>  : no synthetic case rule used
 
-    - sc.all : synthetic case rules used to derive anything
+    - <code>sc.all</code> : synthetic case rules and all analyses
 
-    - sc.nf : synthetic case rules used in normal form parse only
+    - <code>sc.nf</code>  : synthetic case rules and normal form analysis only (one analysis among equivalents)
+                  
+<code>.session</code> The output of a command file
 
-.session The output of a command file
-
-.arules the derived entries of synthetic case
+<code>.arules</code> The derived entries of synthetic case
