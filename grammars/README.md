@@ -16,4 +16,6 @@ Convention:
 
     - sc.nf : synthetic case rules used in normal form parse only
 
+.session The output of a command file
+
 .arules the derived entries of synthetic case
