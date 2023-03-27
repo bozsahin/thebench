@@ -85,7 +85,7 @@ LEX   (na-ben) := NP/NP
 LEX   (wo) := NP
         : I
 LEX   (hui) := (S\NP)/(S\NP)
-        : (LAM X (WILL X))
+        : (LAM P (LAM X (WILL (P X))))
 LEX   (shuifu) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y))))
 LEX   (Zhangsan) := NP
@@ -125,7 +125,7 @@ LEX   (Lisi) := NP
              X)))
 >Bx   (|hui|)(|shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := (S\NP)\NP
         : (LAM X
-           ((LAM X (WILL X))
+           ((LAM P (LAM X (WILL (P X))))
             ((LAM X
               (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
                ((LAM X
@@ -138,7 +138,7 @@ LEX   (Lisi) := NP
              X)))
 T     (|wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S\NP
         : ((LAM X
-            ((LAM X (WILL X))
+            ((LAM P (LAM X (WILL (P X))))
              ((LAM X
                (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
                 ((LAM X
@@ -153,7 +153,7 @@ T     (|wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S\NP
 <Bx   (|na-ben|)(|wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S/NP
         : (LAM X
            (((LAM X
-              ((LAM X (WILL X))
+              ((LAM P (LAM X (WILL (P X))))
                ((LAM X
                  (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
                   ((LAM X
@@ -170,10 +170,11 @@ T     (|wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S\NP
 Final LF, normal-order evaluated: 
 
     (LAM X
-     ((WILL (LAM X (((PERSUADE ((BUY (LAM X ((AND (L X)) (I X)))) X)) X) Y)))
-      (MEASURE X))) =
-    (\ X . WILL (\ X . PERSUADE (BUY (\ X . AND (L X) (I X)) X) X Y)
-     (MEASURE X))
+     (WILL
+      (((PERSUADE ((BUY (LAM X ((AND (L X)) (I X)))) (MEASURE X))) (MEASURE X))
+       Y))) =
+    (\ X . WILL
+     (PERSUADE (BUY (\ X . AND (L X) (I X)) (MEASURE X)) (MEASURE X) Y))
 
 Derivation 2
 --------------
@@ -184,7 +185,7 @@ LEX   (wo) := NP
 A     (|na-ben|)(|wo|) := NP
         : ((LAM X (MEASURE X)) I)
 LEX   (hui) := (S\NP)/(S\NP)
-        : (LAM X (WILL X))
+        : (LAM P (LAM X (WILL (P X))))
 LEX   (shuifu) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y))))
 LEX   (Zhangsan) := NP
@@ -224,7 +225,7 @@ LEX   (Lisi) := NP
              X)))
 >Bx   (|hui|)(|shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := (S\NP)\NP
         : (LAM X
-           ((LAM X (WILL X))
+           ((LAM P (LAM X (WILL (P X))))
             ((LAM X
               (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
                ((LAM X
@@ -237,7 +238,7 @@ LEX   (Lisi) := NP
              X)))
 T     (|na-ben| |wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S\NP
         : ((LAM X
-            ((LAM X (WILL X))
+            ((LAM P (LAM X (WILL (P X))))
              ((LAM X
                (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
                 ((LAM X
@@ -252,24 +253,435 @@ T     (|na-ben| |wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S
 
 Final LF, normal-order evaluated: 
 
-    (WILL
-     (LAM X (((PERSUADE ((BUY (LAM X ((AND (L X)) ((MEASURE I) X)))) X)) X) Y))) =
-    (WILL (\ X . PERSUADE (BUY (\ X . AND (L X) (MEASURE I X)) X) X Y))
+    (LAM X
+     (WILL (((PERSUADE ((BUY (LAM X ((AND (L X)) ((MEASURE I) X)))) X)) X) Y))) =
+    (\ X . WILL (PERSUADE (BUY (\ X . AND (L X) (MEASURE I X)) X) X Y))
 
 Input: na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi qu ma4i de shu
 
-Number of analyses: 0
+Number of analyses: 2
 
+
+Derivation 1
+--------------
+LEX   (na-ben) := NP/NP
+        : (LAM X (MEASURE X))
+LEX   (wo) := NP
+        : I
+LEX   (hui) := (S\NP)/(S\NP)
+        : (LAM P (LAM X (WILL (P X))))
+LEX   (shuifu) := ((S\NP)/VP)/NP
+        : (LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y))))
+LEX   (Zhangsan) := NP
+        : Z
+A     (|shuifu|)(|Zhangsan|) := (S\NP)/VP
+        : ((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+LEX   (qu) := VP/IV
+        : (LAM P P)
+LEX   (ma3i) := IV/NP
+        : (LAM X (LAM Y ((BUY X) Y)))
+LEX   (erqie) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (Lisi) := NP
+        : L
+>     (|erqie|)(|Lisi|) := NP\NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L)
+>Bx   (|ma3i|)(|erqie| |Lisi|) := IV\NP
+        : (LAM X
+           ((LAM X (LAM Y ((BUY X) Y)))
+            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+>Bx   (|qu|)(|ma3i| |erqie| |Lisi|) := VP\NP
+        : (LAM X
+           ((LAM P P)
+            ((LAM X
+              ((LAM X (LAM Y ((BUY X) Y)))
+               (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+             X)))
+>Bx   (|shuifu| |Zhangsan|)(|qu| |ma3i| |erqie| |Lisi|) := (S\NP)\NP
+        : (LAM X
+           (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+            ((LAM X
+              ((LAM P P)
+               ((LAM X
+                 ((LAM X (LAM Y ((BUY X) Y)))
+                  (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                X)))
+             X)))
+>Bx   (|hui|)(|shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := (S\NP)\NP
+        : (LAM X
+           ((LAM P (LAM X (WILL (P X))))
+            ((LAM X
+              (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+               ((LAM X
+                 ((LAM P P)
+                  ((LAM X
+                    ((LAM X (LAM Y ((BUY X) Y)))
+                     (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                   X)))
+                X)))
+             X)))
+T     (|wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X (WILL (P X))))
+             ((LAM X
+               (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+                ((LAM X
+                  ((LAM P P)
+                   ((LAM X
+                     ((LAM X (LAM Y ((BUY X) Y)))
+                      (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                    X)))
+                 X)))
+              X)))
+           I)
+<Bx   (|na-ben|)(|wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S/NP
+        : (LAM X
+           (((LAM X
+              ((LAM P (LAM X (WILL (P X))))
+               ((LAM X
+                 (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+                  ((LAM X
+                    ((LAM P P)
+                     ((LAM X
+                       ((LAM X (LAM Y ((BUY X) Y)))
+                        (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                      X)))
+                   X)))
+                X)))
+             I)
+            ((LAM X (MEASURE X)) X)))
+LEX   (qu) := VP/IV
+        : (LAM P P)
+LEX   (ma4i) := IV/NP
+        : (LAM X (LAM Y ((SELL X) Y)))
+LEX   (de) := (NP/NP)\(S/NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+>B2   (|ma4i|)(|de|) := (IV/NP)\(S/NP)
+        : (LAM X
+           (LAM Y
+            ((LAM X (LAM Y ((SELL X) Y)))
+             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) X) Y))))
+>B2   (|qu|)(|ma4i| |de|) := (VP/NP)\(S/NP)
+        : (LAM X
+           (LAM Y
+            ((LAM P P)
+             (((LAM X
+                (LAM Y
+                 ((LAM X (LAM Y ((SELL X) Y)))
+                  (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) X) Y))))
+               X)
+              Y))))
+T     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|)(|qu| |ma4i| |de|) := VP/NP
+        : ((LAM X
+            (LAM Y
+             ((LAM P P)
+              (((LAM X
+                 (LAM Y
+                  ((LAM X (LAM Y ((SELL X) Y)))
+                   (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) X) Y))))
+                X)
+               Y))))
+           (LAM X
+            (((LAM X
+               ((LAM P (LAM X (WILL (P X))))
+                ((LAM X
+                  (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+                   ((LAM X
+                     ((LAM P P)
+                      ((LAM X
+                        ((LAM X (LAM Y ((BUY X) Y)))
+                         (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                       X)))
+                    X)))
+                 X)))
+              I)
+             ((LAM X (MEASURE X)) X))))
+LEX   (shu) := NP
+        : (LAM X (BOOK X))
+A     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi| |qu| |ma4i|
+ |de|)(|shu|) := VP
+        : (((LAM X
+             (LAM Y
+              ((LAM P P)
+               (((LAM X
+                  (LAM Y
+                   ((LAM X (LAM Y ((SELL X) Y)))
+                    (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) X) Y))))
+                 X)
+                Y))))
+            (LAM X
+             (((LAM X
+                ((LAM P (LAM X (WILL (P X))))
+                 ((LAM X
+                   (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+                    ((LAM X
+                      ((LAM P P)
+                       ((LAM X
+                         ((LAM X (LAM Y ((BUY X) Y)))
+                          (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                        X)))
+                     X)))
+                  X)))
+               I)
+              ((LAM X (MEASURE X)) X))))
+           (LAM X (BOOK X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM G9372
+     ((SELL
+       (LAM X
+        ((AND
+          (WILL
+           (((PERSUADE ((BUY (LAM X ((AND (L X)) (I X)))) (MEASURE X)))
+             (MEASURE X))
+            Y)))
+         (BOOK X))))
+      G9372)) =
+    (\ G9380 . SELL
+     (\ X . AND
+      (WILL (PERSUADE (BUY (\ X . AND (L X) (I X)) (MEASURE X)) (MEASURE X) Y))
+      (BOOK X))
+     G9380)
+
+Derivation 2
+--------------
+LEX   (na-ben) := NP/NP
+        : (LAM X (MEASURE X))
+LEX   (wo) := NP
+        : I
+A     (|na-ben|)(|wo|) := NP
+        : ((LAM X (MEASURE X)) I)
+LEX   (hui) := (S\NP)/(S\NP)
+        : (LAM P (LAM X (WILL (P X))))
+LEX   (shuifu) := ((S\NP)/VP)/NP
+        : (LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y))))
+LEX   (Zhangsan) := NP
+        : Z
+A     (|shuifu|)(|Zhangsan|) := (S\NP)/VP
+        : ((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+LEX   (qu) := VP/IV
+        : (LAM P P)
+LEX   (ma3i) := IV/NP
+        : (LAM X (LAM Y ((BUY X) Y)))
+LEX   (erqie) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (Lisi) := NP
+        : L
+>     (|erqie|)(|Lisi|) := NP\NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L)
+>Bx   (|ma3i|)(|erqie| |Lisi|) := IV\NP
+        : (LAM X
+           ((LAM X (LAM Y ((BUY X) Y)))
+            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+>Bx   (|qu|)(|ma3i| |erqie| |Lisi|) := VP\NP
+        : (LAM X
+           ((LAM P P)
+            ((LAM X
+              ((LAM X (LAM Y ((BUY X) Y)))
+               (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+             X)))
+>Bx   (|shuifu| |Zhangsan|)(|qu| |ma3i| |erqie| |Lisi|) := (S\NP)\NP
+        : (LAM X
+           (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+            ((LAM X
+              ((LAM P P)
+               ((LAM X
+                 ((LAM X (LAM Y ((BUY X) Y)))
+                  (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                X)))
+             X)))
+>Bx   (|hui|)(|shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := (S\NP)\NP
+        : (LAM X
+           ((LAM P (LAM X (WILL (P X))))
+            ((LAM X
+              (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+               ((LAM X
+                 ((LAM P P)
+                  ((LAM X
+                    ((LAM X (LAM Y ((BUY X) Y)))
+                     (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                   X)))
+                X)))
+             X)))
+T     (|na-ben| |wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X (WILL (P X))))
+             ((LAM X
+               (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+                ((LAM X
+                  ((LAM P P)
+                   ((LAM X
+                     ((LAM X (LAM Y ((BUY X) Y)))
+                      (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                    X)))
+                 X)))
+              X)))
+           ((LAM X (MEASURE X)) I))
+LEX   (qu) := VP/IV
+        : (LAM P P)
+LEX   (ma4i) := IV/NP
+        : (LAM X (LAM Y ((SELL X) Y)))
+LEX   (de) := (NP/NP)\(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+>B2   (|ma4i|)(|de|) := (IV/NP)\(S\NP)
+        : (LAM X
+           (LAM Y
+            ((LAM X (LAM Y ((SELL X) Y)))
+             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) X) Y))))
+>B2   (|qu|)(|ma4i| |de|) := (VP/NP)\(S\NP)
+        : (LAM X
+           (LAM Y
+            ((LAM P P)
+             (((LAM X
+                (LAM Y
+                 ((LAM X (LAM Y ((SELL X) Y)))
+                  (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) X) Y))))
+               X)
+              Y))))
+T     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|)(|qu| |ma4i| |de|) := VP/NP
+        : ((LAM X
+            (LAM Y
+             ((LAM P P)
+              (((LAM X
+                 (LAM Y
+                  ((LAM X (LAM Y ((SELL X) Y)))
+                   (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) X) Y))))
+                X)
+               Y))))
+           ((LAM X
+             ((LAM P (LAM X (WILL (P X))))
+              ((LAM X
+                (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+                 ((LAM X
+                   ((LAM P P)
+                    ((LAM X
+                      ((LAM X (LAM Y ((BUY X) Y)))
+                       (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                     X)))
+                  X)))
+               X)))
+            ((LAM X (MEASURE X)) I)))
+LEX   (shu) := NP
+        : (LAM X (BOOK X))
+A     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi| |qu| |ma4i|
+ |de|)(|shu|) := VP
+        : (((LAM X
+             (LAM Y
+              ((LAM P P)
+               (((LAM X
+                  (LAM Y
+                   ((LAM X (LAM Y ((SELL X) Y)))
+                    (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) X) Y))))
+                 X)
+                Y))))
+            ((LAM X
+              ((LAM P (LAM X (WILL (P X))))
+               ((LAM X
+                 (((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
+                  ((LAM X
+                    ((LAM P P)
+                     ((LAM X
+                       ((LAM X (LAM Y ((BUY X) Y)))
+                        (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L) X)))
+                      X)))
+                   X)))
+                X)))
+             ((LAM X (MEASURE X)) I)))
+           (LAM X (BOOK X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM G9388
+     ((SELL
+       (LAM X
+        ((AND
+          (WILL
+           (((PERSUADE ((BUY (LAM X ((AND (L X)) ((MEASURE I) X)))) X)) X) Y)))
+         (BOOK X))))
+      G9388)) =
+    (\ G9396 . SELL
+     (\ X . AND (WILL (PERSUADE (BUY (\ X . AND (L X) (MEASURE I X)) X) X Y))
+      (BOOK X))
+     G9396)
 
 Input: haoxiang Paul ma3i le chezi
 
-Number of analyses: 0
+Number of analyses: 1
 
+
+Derivation 1
+--------------
+LEX   (haoxiang) := S/S
+        : (LAM P (SEEM P))
+LEX   (Paul) := NP
+        : PAUL
+LEX   (ma3i) := IV/NP
+        : (LAM X (LAM Y ((BUY X) Y)))
+LEX   (le) := (S\NP)\IV
+        : (LAM P (ASP P))
+<Bx   (|ma3i|)(|le|) := (S\NP)/NP
+        : (LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
+LEX   (chezi) := NP
+        : (LAM X (VEHICLE X))
+A     (|ma3i| |le|)(|chezi|) := S\NP
+        : ((LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
+           (LAM X (VEHICLE X)))
+T     (|Paul|)(|ma3i| |le| |chezi|) := S
+        : (((LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
+            (LAM X (VEHICLE X)))
+           PAUL)
+A     (|haoxiang|)(|Paul| |ma3i| |le| |chezi|) := S
+        : ((LAM P (SEEM P))
+           (((LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
+             (LAM X (VEHICLE X)))
+            PAUL))
+
+Final LF, normal-order evaluated: 
+
+    (SEEM ((ASP (LAM Y ((BUY (LAM X (VEHICLE X))) Y))) PAUL)) =
+    (SEEM (ASP (\ Y . BUY (\ X . VEHICLE X) Y) PAUL))
 
 Input: Paul haoxiang ma3i le chezi
 
-Number of analyses: 0
+Number of analyses: 1
 
+
+Derivation 1
+--------------
+LEX   (Paul) := NP
+        : PAUL
+LEX   (haoxiang) := S/S
+        : (LAM P (SEEM P))
+LEX   (ma3i) := IV/NP
+        : (LAM X (LAM Y ((BUY X) Y)))
+LEX   (le) := (S\NP)\IV
+        : (LAM P (ASP P))
+<Bx   (|ma3i|)(|le|) := (S\NP)/NP
+        : (LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
+LEX   (chezi) := NP
+        : (LAM X (VEHICLE X))
+A     (|ma3i| |le|)(|chezi|) := S\NP
+        : ((LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
+           (LAM X (VEHICLE X)))
+>Bx   (|haoxiang|)(|ma3i| |le| |chezi|) := S\NP
+        : (LAM X
+           ((LAM P (SEEM P))
+            (((LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
+              (LAM X (VEHICLE X)))
+             X)))
+T     (|Paul|)(|haoxiang| |ma3i| |le| |chezi|) := S
+        : ((LAM X
+            ((LAM P (SEEM P))
+             (((LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
+               (LAM X (VEHICLE X)))
+              X)))
+           PAUL)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM ((ASP (LAM Y ((BUY (LAM X (VEHICLE X))) Y))) PAUL)) =
+    (SEEM (ASP (\ Y . BUY (\ X . VEHICLE X) Y) PAUL))
 
 Input: chezi haoxiang Paul ma3i le
 
@@ -408,8 +820,89 @@ Number of analyses: 0
 
 Input: didi na e le hen jiu de duzi
 
-Number of analyses: 0
+Number of analyses: 1
 
+
+Derivation 1
+--------------
+LEX   (didi) := NP/(NP/NP)
+        : (LAM P ((((P BROTHER) AND) TOPIC) B))
+LEX   (na) := NP/NP
+        : (LAM X X)
+LEX   (e) := (S\NP)/NP
+        : (LAM X (LAM Y ((STARVE X) Y)))
+LEX   (le) := (S\NP)\(S\NP)
+        : (LAM P (LAM X (ASP (P X))))
+<Bx   (|e|)(|le|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
+LEX   (hen jiu) := (S\NP)\(S\NP)
+        : (LAM P (LAM X (((P _) LONG) X)))
+<Bx   (|e| |le|)(|hen jiu|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X (((P _) LONG) X)))
+            ((LAM X
+              ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
+             X)))
+LEX   (de) := (NP/NP)\(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<Bx   (|e| |le| |hen jiu|)(|de|) := (NP/NP)/NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X
+              ((LAM P (LAM X (((P _) LONG) X)))
+               ((LAM X
+                 ((LAM P (LAM X (ASP (P X))))
+                  ((LAM X (LAM Y ((STARVE X) Y))) X)))
+                X)))
+             X)))
+LEX   (duzi) := NP
+        : STOMACH
+A     (|e| |le| |hen jiu| |de|)(|duzi|) := NP/NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X
+               ((LAM P (LAM X (((P _) LONG) X)))
+                ((LAM X
+                  ((LAM P (LAM X (ASP (P X))))
+                   ((LAM X (LAM Y ((STARVE X) Y))) X)))
+                 X)))
+              X)))
+           STOMACH)
+>B    (|na|)(|e| |le| |hen jiu| |de| |duzi|) := NP/NP
+        : (LAM X
+           ((LAM X X)
+            (((LAM X
+               ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+                ((LAM X
+                  ((LAM P (LAM X (((P _) LONG) X)))
+                   ((LAM X
+                     ((LAM P (LAM X (ASP (P X))))
+                      ((LAM X (LAM Y ((STARVE X) Y))) X)))
+                    X)))
+                 X)))
+              STOMACH)
+             X)))
+A     (|didi|)(|na| |e| |le| |hen jiu| |de| |duzi|) := NP
+        : ((LAM P ((((P BROTHER) AND) TOPIC) B))
+           (LAM X
+            ((LAM X X)
+             (((LAM X
+                ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+                 ((LAM X
+                   ((LAM P (LAM X (((P _) LONG) X)))
+                    ((LAM X
+                      ((LAM P (LAM X (ASP (P X))))
+                       ((LAM X (LAM Y ((STARVE X) Y))) X)))
+                     X)))
+                  X)))
+               STOMACH)
+              X))))
+
+Final LF, normal-order evaluated: 
+
+    ((((AND (((ASP ((STARVE STOMACH) _)) LONG) AND)) (BROTHER AND)) TOPIC) B) =
+    (AND (ASP (STARVE STOMACH _) LONG AND) (BROTHER AND) TOPIC B)
 
 Input: yisheng renwei tou teng le hen jiu de ren
 
@@ -438,8 +931,44 @@ Number of analyses: 0
 
 Input: e le duzi de ren
 
-Number of analyses: 0
+Number of analyses: 1
 
+
+Derivation 1
+--------------
+LEX   (e) := (S\NP)/NP
+        : (LAM X (LAM Y ((STARVE X) Y)))
+LEX   (le) := (S\NP)\(S\NP)
+        : (LAM P (LAM X (ASP (P X))))
+<Bx   (|e|)(|le|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
+LEX   (duzi) := NP
+        : STOMACH
+A     (|e| |le|)(|duzi|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
+           STOMACH)
+LEX   (de) := (NP/NP)\(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|e| |le| |duzi|)(|de|) := NP/NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM X
+             ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
+            STOMACH))
+LEX   (ren) := NP
+        : (LAM X (PERSON X))
+A     (|e| |le| |duzi| |de|)(|ren|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X
+              ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
+             STOMACH))
+           (LAM X (PERSON X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND (ASP ((STARVE STOMACH) X))) (PERSON X))) =
+    (\ X . AND (ASP (STARVE STOMACH X)) (PERSON X))
 
 Input: di-gei gege yi-hu jiu erqie jiejie yi-pan cai
 

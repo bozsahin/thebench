@@ -1,7 +1,7 @@
 
 Summary of compiling synthetic case functions for current grammar
 Log of warnings and errors                      : cn.txt.case.log (total entry: 1)
-Number of elements in the grammar               : 66
+Number of elements in the grammar               : 67
 Number of elementary functions considered       : 21
 POS tags considered for synthetic case          : (V)
 Number of second-order case functions generated : 21
@@ -49629,4 +49629,45 @@ Final LF, normal-order evaluated:
 
 Input: di-gei gege yi-hu jiu erqie jiejie yi-pan cai
 
-Number of analyses: 0
+Number of analyses: 1
+
+
+Derivation 1
+--------------
+LEX   (di-gei) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z ((((PASS GIVE) X) Y) Z))))
+_P2_145 (gege) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) BROTHER)
+_P2_167 (yi-hu jiu) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) (ONE WINE))
+<B    (|gege|)(|yi-hu jiu|) := (S\NP)\(((S\NP)/NP)/NP)
+        : (LAM X
+           (((LAM LF (LAM P (P LF))) (ONE WINE))
+            (((LAM LF (LAM P (P LF))) BROTHER) X)))
+LEX   (erqie) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+LEX   (jiejie yi-pan cai) := (S\NP)\(((S\NP)/NP)/NP)
+        : (LAM P (LAM X (((P DISH) SISTER) X)))
+>     (|erqie|)(|jiejie yi-pan cai|) := ((S\NP)\(((S\NP)/NP)/NP))\((S\NP)\(((S\NP)/NP)/NP))
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM P (LAM X (((P DISH) SISTER) X))))
+T     (|gege| |yi-hu jiu|)(|erqie| |jiejie yi-pan cai|) := (S\NP)\(((S\NP)/NP)/NP)
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM P (LAM X (((P DISH) SISTER) X))))
+           (LAM X
+            (((LAM LF (LAM P (P LF))) (ONE WINE))
+             (((LAM LF (LAM P (P LF))) BROTHER) X))))
+T     (|di-gei|)(|gege| |yi-hu jiu| |erqie| |jiejie yi-pan cai|) := S\NP
+        : ((((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             (LAM P (LAM X (((P DISH) SISTER) X))))
+            (LAM X
+             (((LAM LF (LAM P (P LF))) (ONE WINE))
+              (((LAM LF (LAM P (P LF))) BROTHER) X))))
+           (LAM X (LAM Y (LAM Z ((((PASS GIVE) X) Y) Z)))))
+
+Final LF, normal-order evaluated: 
+
+    ((AND (LAM G9338 ((((PASS GIVE) DISH) SISTER) G9338)))
+     (LAM Z ((((PASS GIVE) BROTHER) (ONE WINE)) Z))) =
+    (AND (\ G9343 . PASS GIVE DISH SISTER G9343)
+         (\ Z . PASS GIVE BROTHER (ONE WINE) Z))

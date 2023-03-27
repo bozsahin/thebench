@@ -25,6 +25,7 @@ haoxiang | v :: s/s: \p.seem p
 Paul     | n :: np:paul
 chezi    | n :: np:\x.vehicle x
 chezi    | n :: s/(s/np[topic=pl]):\p.(p vehicle) and topic vehicle
+gege    | n :: np: brother
 gege    | n :: s/(s/np[topic=pl]):\p.(p brother) and topic brother
 ta      | pro :: np:he-she
 di-gei  | v :: ((s\np)/np)/np: \x\y\z.pass give x y z
