@@ -19,3 +19,5 @@ Naming convention for the files:
 <code>.session</code> The output of a command file (usually suffixed with <code>.log</code>)
 
 <code>.arules</code> The derived entries of synthetic case (by 'c command')
+
+The command files explain how they are obtained.
