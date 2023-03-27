@@ -6,6 +6,7 @@ wo  | n :: np:i
 you | v :: (s\np)/'yi mo'/np:\x\y\z.tease _ y x z
 le  | asp :: (s\np)\(s\np): \p\x.asp (p x)
 Zhangsan | n :: np:z
+Zhangsan | n :: s/(s/np[topic=pl]): \p.p z and (topic z)
 yi  | cl :: np/n:\x.one x
 mo  | n :: n:\x.silent x
 na-ben | n :: np/np:\x.measure x
@@ -14,15 +15,17 @@ shuifu | v  :: (s\np)/vp/np:\x\p\x.persuade (p x)x y
 quan | v  :: (s\np)/vp/np:\x\p\x.persuade (p x)x y
 qu     | inf :: vp/iv:\p.p
 ma3i    | v :: iv/np:\x\y.buy x y
+le      | asp :: (s\np)\iv: \p.asp p
 erqie | coord :: (@x\@x)/@x:\p\q\x.and (p x)(q x)
 ma4i    | v :: iv/np:\x\y.sell x y
 de      | rel :: (np/np)\(s\np): \p\q\x.and(p x)(q x)
+de      | rel :: (np/np)\(s/np): \p\q\x.and(p x)(q x)
 book    | n :: n:\x.book x
 haoxiang | v :: s/s: \p.seem p
 Paul     | n :: np:paul
 chezi    | n :: np:\x.vehicle x
-chezi    | n :: s/(s/np[top=pl]):\p.(p vehicle) and topic vehicle
-gege    | n :: s/(s/np[top=pl]):\p.(p brother) and topic brother
+chezi    | n :: s/(s/np[topic=pl]):\p.(p vehicle) and topic vehicle
+gege    | n :: s/(s/np[topic=pl]):\p.(p brother) and topic brother
 ta      | pro :: np:he-she
 di-gei  | v :: ((s\np)/np)/np: \x\y\z.pass give x y z
 yi-hu jiu | np :: np:one wine
@@ -46,7 +49,7 @@ danshi |  c :: (@x\@x)/@x:\p\x.and(p x)(q x)
 fouren   | v :: (s\np)/s: \s\x.deny s x
 zuo      | v :: (s\np)/PredP: \s\x.do s x
 cuo      | prop :: (s\np)\((s\np)/PredP): \p\x.wrong p x
-yao lai  | v :: vp:\x.come-will x
+yao lai  | v :: (s\np)\((s\np)/vp):\p\x.p (come-will x)
 didi     | n :: np/(np/np[topic=pl]) : \p.p brother and topic b
 na       | c :: np/np:\x.x
 hen jiu  | prop :: (s\np)\(s\np):\p\x.p _ long x
@@ -63,4 +66,4 @@ ren       | n :: np:\x.person x
 gei  | v :: ((s\np)/np)/np: \x\y\z.pass give x y z
 ni   | pro :: np: you
 shu  | n :: np:\x. book x
-jiejie yi-pan cai | cl :: (s\np)\((s\np)/np): \p\x.p dish sister x
+jiejie yi-pan cai | cl :: (s\np)\((s\np)/np/np): \p\x.p dish sister x
