@@ -8,8 +8,8 @@ elements  : (kan / e / hen teng / xihuan / teng / qi)
 --------
 
 category  : NP
-occurrence: 17  elements
-elements  : (wo / Zhangsan / Paul / chezi / ta / yi-hu jiu / duzi /
+occurrence: 18  elements
+elements  : (wo / Zhangsan / Paul / chezi / gege / ta / yi-hu jiu / duzi /
              Zhang xiaojie / yisheng / tou / Lisi / weiyu / qiche / zixingche /
              ren / ni / shu)
 
@@ -24,6 +24,12 @@ elements  : (you)
 category  : (S\NP)\(S\NP)
 occurrence: 2  elements
 elements  : (le / hen jiu)
+
+--------
+
+category  : S/(S/NP)
+occurrence: 6  elements
+elements  : (Zhangsan / chezi / gege / ta / mama / ren)
 
 --------
 
@@ -69,6 +75,12 @@ elements  : (ma3i / ma4i)
 
 --------
 
+category  : (S\NP)\IV
+occurrence: 1  element
+elements  : (le)
+
+--------
+
 category  : (@X\@X)/@X
 occurrence: 1  element
 elements  : (erqie)
@@ -81,15 +93,15 @@ elements  : (de)
 
 --------
 
-category  : S/S
+category  : (NP/NP)\(S/NP)
 occurrence: 1  element
-elements  : (haoxiang)
+elements  : (de)
 
 --------
 
-category  : S/(S/NP)
-occurrence: 5  elements
-elements  : (chezi / gege / ta / mama / ren)
+category  : S/S
+occurrence: 1  element
+elements  : (haoxiang)
 
 --------
 
@@ -141,7 +153,7 @@ elements  : (cuo)
 
 --------
 
-category  : VP
+category  : (S\NP)\((S\NP)/VP)
 occurrence: 1  element
 elements  : (yao lai)
 
@@ -165,12 +177,12 @@ elements  : (yu a)
 
 --------
 
-category  : (S\NP)\((S\NP)/NP)
+category  : (S\NP)\(((S\NP)/NP)/NP)
 occurrence: 1  element
 elements  : (jiejie yi-pan cai)
 
 --------
 
-Checksum: 63 (total of sums in category classes)
-Total   : 28 distinct categories
-Out of  : 63 entries (not counting asymmetric relational rules)
+Checksum: 67 (total of sums in category classes)
+Total   : 30 distinct categories
+Out of  : 67 entries (not counting asymmetric relational rules)

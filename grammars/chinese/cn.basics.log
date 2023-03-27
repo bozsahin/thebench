@@ -1,14 +1,14 @@
            editable files in
- home    : /home/bozsahin/myrepos/thebench/grammars/chinese
+ home    : /Users/bozsahin/myrepos/thebench/grammars/chinese
            temporary and non-editable files in
  tmp     : /var/tmp/thebench/
- file    :  cn.txt (63 entries)
- elements:  63
+ file    :  cn.txt (67 entries)
+ elements:  67
  s rules :  0 (turned to 0 elements)
  a rules :  0
  basics  :  s np n S vp iv PredP
 singleton:  'yi mo'
  special :  @x
- features:  top t topic
+ features:  topic t
  values  :  pl disadv
  POSs    :  v n asp cl aux inf coord rel pro np part c prop
