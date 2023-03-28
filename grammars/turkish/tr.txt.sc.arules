@@ -1,2 +1,2 @@
-#_g2_227  s[case=acc] : a --> (s\np[case=nom])/((s\np[case=nom])\s[case=acc]) : \a\p.p a
-#_g2_226  np[case=acc] : a --> iv/(iv\np[case=acc]) : \a\p.p a
+#_p2_349  np[case=acc] : a --> iv/(iv\np[case=acc]) : \a\p.p a
+#_g2_348  s[case=acc] : a --> (s\np[case=nom])/((s\np[case=nom])\s[case=acc]) : \a\p.p a

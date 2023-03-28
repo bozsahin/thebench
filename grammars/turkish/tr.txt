@@ -3,7 +3,8 @@
 
 Ahmet | n :: np:ahmet
 arı | n :: np:bee
-arı | n :: np:bee
+kız | n :: np:girl
+arının | n :: np:bee
 çocuğun uyuduğunu | cl :: s[case=acc]:sleep child
 çocuğun uyuduğuna | cl :: s[case=dat]:sleep child
 düşünüyor | v :: (s\np[case=nom,agr=3s])\s[case=acc]: \s\x.think s x
