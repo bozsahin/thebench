@@ -2,13 +2,20 @@
 % -cem bozsahin
 
 Ahmet | n :: np:ahmet
+arı | n :: np:bee
+arı | n :: np:bee
 çocuğun uyuduğunu | cl :: s[case=acc]:sleep child
 çocuğun uyuduğuna | cl :: s[case=dat]:sleep child
 düşünüyor | v :: (s\np[case=nom,agr=3s])\s[case=acc]: \s\x.think s x
 kediyi    | n :: np[case=acc]: cat
 kedi    | n :: np: cat
 okşa      | v :: iv\np[case=acc]: \x\y.pet x y
+sok      | v :: iv\np[case=acc]: \x\y.sting x y
+arı sok   | v :: iv: \x.sting x bee
 yan       | rel :: (np/^np)\^iv: \p\q\x.and (p x)(q x)
+an       | rel :: (np/^np)\^iv: \p\q\x.and (p x)(q x)
 misafir   | n   :: np:guest
 misafirin  | n   :: s[agr=3s]/iv: \p\x.p guest
-dığı      | rel :: (np/^np)\^(s[agr=3s]\np): \p\q\x.and (p x)(q x)
+arının  | n   :: s[agr=3s]/iv: \p\x.p guest
+dığı      | rel :: (np/^np)\^(s[agr=3s]\np): \p\q\x.and (p x)(q x) 
+tuğu      | rel :: (np/^np)\^(s[agr=3s]\np): \p\q\x.and (p x)(q x)
