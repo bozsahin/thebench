@@ -255,7 +255,7 @@ def mk_clatom (s):
 
 class PHONLexer(Lexer):       
     tokens = {EL, MWEM}
-    ignore = ' +\t'          # whitespace, + is special operator, not represented in grammar
+    ignore = ' +\t'          # whitespace, + is a special operator in surface strings, not represented in grammar
     EL   = r'[^ \|]+'        # anything not space or | is data
     MWEM = r'\|'             # | is a token by itself
 
