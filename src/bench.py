@@ -48,7 +48,6 @@ _vdate = 'January 31, 2023'
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
 _logext = '.log'
-_boundop= '+'                 # for special treatment of phon items with it which are not in an MWE
 _punc   = ';:,.|~!@#$%^&*?'   # list of punctuation as data -- individually tokenized and wrapped in double quote
                               # assuming max size of grammar is 1 million entries. This is a lazy list in p3.
 _keys = {}                    # current keys
@@ -254,10 +253,11 @@ def mk_clatom (s):
 #
 
 class PHONLexer(Lexer):       
-    tokens = {EL, MWEM}
+    tokens = {EL, MWEM, BOUNDOP}
     ignore = ' +\t'          # whitespace, + is a special operator in surface strings, not represented in grammar
-    EL   = r'[^ \|]+'        # anything not space or | is data
-    MWEM = r'\|'             # | is a token by itself
+    EL      = r'[^ \|]+'        # anything not space or | is data
+    EL['+'] = BOUNDOP           #  except +, which is special op IN SURFACE STRING ONLY
+    MWEM    = r'\|'             # | is a token by itself
 
 class PHONParser(Parser):
     #debugfile = 'lalr_phon'+ _logext
@@ -273,11 +273,7 @@ class PHONParser(Parser):
 
     @_('simple')
     def el(self, p):
-        simplist = ' '.join(p.simple).split(_boundop)
-        if simplist == p.simple:   # no _boundop
-            return p.simple
-        else:                      # if we're not in an NWE, e.g. dismiss+ed is split into dismiss ed
-            return [[item] for item in simplist]
+        return p.simple
 
     @_('mwe')
     def el(self, p):
@@ -287,7 +283,7 @@ class PHONParser(Parser):
     def simple(self, p):
         return [p[0]]
 
-    @_('simples simple')
+    @_('simples [ BOUNDOP ] simple')
     def simples(self, p):
         return p.simples + p.simple
 
