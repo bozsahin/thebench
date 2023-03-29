@@ -486,10 +486,10 @@
 (defun status(&optional (all-lfs nil))
   (format t "  ---------------------------~%")
   (format t "  Currently loaded grammar  : ~A~%" *loaded-grammar*)
-  (format t " *current-grammar*              : ~A item~:p~%" (length *current-grammar*))
-  (format t " *LEX-RULES-TABLE*          : ~A item~:p~%" (length *lex-rules-table*))
-  (format t " *CKY-HASHTABLE*            : ~A item~:p~%" (hash-table-count *cky-hashtable*))
-  (format t " *CKY-INPUT* for the table  : ~A ~%" *cky-input*)
+  (format t "  current-grammar           : ~A item~:p~%" (length *current-grammar*))
+  (format t "  ARULES-TABLE              : ~A item~:p~%" (length *lex-rules-table*))
+  (format t "  CKY-HASHTABLE             : ~A item~:p~%" (hash-table-count *cky-hashtable*))
+  (format t "  CKY-INPUT  for the table  : ~A ~%" *cky-input*)
   (format t "  Most likely LF w/weight   : ~A ~%" *cky-lf*)
   (format t "  Its most likely derivation: ~A~%" *cky-argmax-lf-max*)
   (format t "  Sum of weighted counts    : ~A ~%" *cky-lf-hashtable-sum*)
@@ -909,7 +909,7 @@
   Lisp association lists in the lexicalized grammar, to a hashtable, 
   for faster and easier parsing. Called during parsing and synthetic case arules generation."
   (let ((ht (make-lex-hashtable)))
-    (setf (machash 'INDEX ht) 'LEX)     ; created by not combining
+    (setf (machash 'INDEX ht) 'ELM)     ; created by not combining
     (setf (machash 'TAG ht) *ot*)        ; NF tag initialization
     (setf (machash 'KEY ht) (nv-list-val 'KEY lexspec))
     (setf (machash 'PARAM ht) (nv-list-val 'PARAM lexspec))
@@ -1734,7 +1734,7 @@
 			       (dolist (entry matches) (push entry *current-grammar*))
 			       (setf n2 (length matches)))
 			     (progn 
-			       (format t "~%OOV error: no lex entry for ~A! Exiting without parse.~%" (nth (- i 1) itemslist))
+			       (format t "~%OOV error: no grammar entry for ~A! Exiting without parse.~%" (nth (- i 1) itemslist))
 			       (return-from cky_analyze0 nil)))))
 		   (loop for i2 from 1 to n2 do
 			 (setf (machash (list 1 i i2) *cky-hashtable*) 
@@ -1876,7 +1876,7 @@
   (dolist (lr *lex-rules-table*)
     (cond ((equal key (machash 'KEY lr))
 	   (return-from lex-rule-param (machash 'PARAM lr)))))
-  (format t "~%Error! no such lexical rule: ~A" key))
+  (format t "~%Error! no such relational rule: ~A" key))
 
 (defun lex-rule-p (key)
   "returns true if key is the key of a lex rule, nil otherwise."
@@ -2218,7 +2218,7 @@
   (format t "~%Training parameters: N = ~a alpha0 = ~a c = ~a n = ~a  " 
 	  *bign*  *alpha0* *c* *smalln*)
   (format t "~%Model parameters before and after training~%================================================")
-  (format t "~%key   lex             initial  final    diff ~%------------------------------------------------")
+  (format t "~%key   elm             initial  final    diff ~%------------------------------------------------")
   (dolist (l *current-grammar*)
     (let ((feat (if (lex-rule-p (nv-list-val 'KEY l)) 'INDEX 'PHON)))
       (format t "~%~5,,,A ~12,,,A ~8,,,F ~8,,,F  (~8,,,F)"
@@ -2232,7 +2232,7 @@
   (format t "~%Training parameters: N = ~a alpha0 = ~a c = ~a n = ~a  " 
 	  *bign*  *alpha0* *c* *smalln*)
   (format t "~%Model parameters before and after training and extrapolation~%================================================")
-  (format t "~%key   lex             initial  final    diff ~%------------------------------------------------")
+  (format t "~%key   elm             initial  final    diff ~%------------------------------------------------")
   (dolist (l *current-grammar*)
     (let ((feat (if (lex-rule-p (nv-list-val 'KEY l)) 'INDEX 'PHON)))
       (format t "~%~5,,,A ~12,,,A ~8,,,F ~8,,,F  (~8,,,F)"

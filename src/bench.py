@@ -254,16 +254,16 @@ def mk_clatom (s):
 
 class PHONLexer(Lexer):       
     tokens = {EL, MWEM, BOUNDOP}
-    ignore = ' +\t'          # whitespace, + is a special operator in surface strings, not represented in grammar
-    EL      = r'[^ \|]+'        # anything not space or | is data
-    EL['+'] = BOUNDOP           #  except +, which is special op IN SURFACE STRING ONLY
+    ignore = ' \t'             # whitespace, + is a special operator in surface strings, not represented in grammar
+    EL      = r'[^ \+\|]+'        # anything not space or | is data
+    BOUNDOP = r'\+'
     MWEM    = r'\|'             # | is a token by itself
 
 class PHONParser(Parser):
     #debugfile = 'lalr_phon'+ _logext
     tokens = PHONLexer.tokens
 
-    @_('s el')
+    @_('s [ BOUNDOP ] el')
     def s(self, p):
         return p.s + p.el
 
@@ -283,7 +283,7 @@ class PHONParser(Parser):
     def simple(self, p):
         return [p[0]]
 
-    @_('simples [ BOUNDOP ] simple')
+    @_('simples simple')
     def simples(self, p):
         return p.simples + p.simple
 
