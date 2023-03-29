@@ -1,9 +1,11 @@
 > tr.sc.all.session force
 g tr.txt
 c v
-nfparse-off
+l nfparse-off
 l show-config
 a Ahmet |çocuğun uyuduğunu| düşünüyor
+,
+a Ahmet çocuğun uyuduğunu düşünüyor
 ,
 a Ahmet |çocuğun uyuduğuna| düşünüyor
 ,

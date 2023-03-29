@@ -20,7 +20,7 @@ File: tr.txt.sc.arules created; contains synthetic case rules for tr.txt in the 
 
 *BEAMP* : NIL
 *LAMBDAFLAG* : T
-*NF-PARSE* : T
+*NF-PARSE* : NIL
 *OOVP* : NIL
 *Beamp* = NIL  *Beam-exp* = 0.9
 
@@ -130,6 +130,13 @@ Final LF, normal-order evaluated:
     (LAM P (P ((THINK (SLEEP CHILD)) AHMET))) =
     (\ P . P (THINK (SLEEP CHILD) AHMET))
 
+Input: Ahmet çocuğun uyuduğunu düşünüyor
+
+OOV error: no grammar entry for çocuğun! Exiting without parse.
+
+Number of analyses: 0
+
+
 Input: Ahmet çocuğun uyuduğuna düşünüyor
 
 Number of analyses: 0
@@ -137,10 +144,41 @@ Number of analyses: 0
 
 Input: kediyi okşa yan misafir
 
-Number of analyses: 4
+Number of analyses: 6
 
 
 Derivation 1
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+Derivation 2
 --------------
 ELM   (kediyi) := NP
         : CAT
@@ -165,7 +203,7 @@ Final LF, normal-order evaluated:
     (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
     (\ X . AND (PET CAT X) (GUEST X))
 
-Derivation 2
+Derivation 3
 --------------
 _P2_127 (kediyi) := IV/(IV\NP)
         : ((LAM LF (LAM P (P LF))) CAT)
@@ -190,7 +228,45 @@ Final LF, normal-order evaluated:
     (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
     (\ X . AND (PET CAT X) (GUEST X))
 
-Derivation 3
+Derivation 4
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+_P2_127 (kediyi okşa yan misafir) := IV/(IV\NP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM X
+              ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+               ((LAM X (LAM Y ((PET X) Y))) X)))
+             CAT)
+            GUEST))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
+    (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
+
+Derivation 5
 --------------
 ELM   (kediyi) := NP
         : CAT
@@ -220,7 +296,7 @@ Final LF, normal-order evaluated:
     (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
     (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
 
-Derivation 4
+Derivation 6
 --------------
 _P2_127 (kediyi) := IV/(IV\NP)
         : ((LAM LF (LAM P (P LF))) CAT)
@@ -252,10 +328,41 @@ Final LF, normal-order evaluated:
 
 Input: kediyi okşa yan misafir
 
-Number of analyses: 4
+Number of analyses: 6
 
 
 Derivation 1
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+Derivation 2
 --------------
 ELM   (kediyi) := NP
         : CAT
@@ -280,7 +387,7 @@ Final LF, normal-order evaluated:
     (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
     (\ X . AND (PET CAT X) (GUEST X))
 
-Derivation 2
+Derivation 3
 --------------
 _P2_127 (kediyi) := IV/(IV\NP)
         : ((LAM LF (LAM P (P LF))) CAT)
@@ -305,7 +412,45 @@ Final LF, normal-order evaluated:
     (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
     (\ X . AND (PET CAT X) (GUEST X))
 
-Derivation 3
+Derivation 4
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+_P2_127 (kediyi okşa yan misafir) := IV/(IV\NP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM X
+              ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+               ((LAM X (LAM Y ((PET X) Y))) X)))
+             CAT)
+            GUEST))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
+    (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
+
+Derivation 5
 --------------
 ELM   (kediyi) := NP
         : CAT
@@ -335,7 +480,7 @@ Final LF, normal-order evaluated:
     (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
     (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
 
-Derivation 4
+Derivation 6
 --------------
 _P2_127 (kediyi) := IV/(IV\NP)
         : ((LAM LF (LAM P (P LF))) CAT)
@@ -367,10 +512,41 @@ Final LF, normal-order evaluated:
 
 Input: kediyi okşa yan misafir
 
-Number of analyses: 4
+Number of analyses: 6
 
 
 Derivation 1
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+Derivation 2
 --------------
 ELM   (kediyi) := NP
         : CAT
@@ -395,7 +571,7 @@ Final LF, normal-order evaluated:
     (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
     (\ X . AND (PET CAT X) (GUEST X))
 
-Derivation 2
+Derivation 3
 --------------
 _P2_127 (kediyi) := IV/(IV\NP)
         : ((LAM LF (LAM P (P LF))) CAT)
@@ -420,7 +596,45 @@ Final LF, normal-order evaluated:
     (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
     (\ X . AND (PET CAT X) (GUEST X))
 
-Derivation 3
+Derivation 4
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+_P2_127 (kediyi okşa yan misafir) := IV/(IV\NP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM X
+              ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+               ((LAM X (LAM Y ((PET X) Y))) X)))
+             CAT)
+            GUEST))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
+    (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
+
+Derivation 5
 --------------
 ELM   (kediyi) := NP
         : CAT
@@ -450,7 +664,7 @@ Final LF, normal-order evaluated:
     (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
     (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
 
-Derivation 4
+Derivation 6
 --------------
 _P2_127 (kediyi) := IV/(IV\NP)
         : ((LAM LF (LAM P (P LF))) CAT)
@@ -518,8 +732,8 @@ A     (|misafirin| |okşa| |dığı|)(|kedi|) := NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X ((AND (LAM G204 ((PET X) GUEST))) (CAT X))) =
-    (\ X . AND (\ G207 . PET X GUEST) (CAT X))
+    (LAM X ((AND (LAM G228 ((PET X) GUEST))) (CAT X))) =
+    (\ X . AND (\ G231 . PET X GUEST) (CAT X))
 
 Derivation 2
 --------------
@@ -550,15 +764,46 @@ _P2_127 (misafirin okşa dığı kedi) := IV/(IV\NP)
 
 Final LF, normal-order evaluated: 
 
-    (LAM P (P (LAM X ((AND (LAM G210 ((PET X) GUEST))) (CAT X))))) =
-    (\ P . P (\ X . AND (\ G215 . PET X GUEST) (CAT X)))
+    (LAM P (P (LAM X ((AND (LAM G234 ((PET X) GUEST))) (CAT X))))) =
+    (\ P . P (\ X . AND (\ G239 . PET X GUEST) (CAT X)))
 
 Input: arı sok an kız
 
-Number of analyses: 4
+Number of analyses: 6
 
 
 Derivation 1
+--------------
+ELM   (arı) := NP
+        : BEE
+ELM   (sok) := IV\NP
+        : (LAM X (LAM Y ((STING X) Y)))
+ELM   (an) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|sok|)(|an|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((STING X) Y))) X)))
+T     (|arı|)(|sok| |an|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((STING X) Y))) X)))
+           BEE)
+ELM   (kız) := NP
+        : GIRL
+A     (|arı| |sok| |an|)(|kız|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((STING X) Y))) X)))
+            BEE)
+           GIRL)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((STING BEE) X)) (GIRL X))) =
+    (\ X . AND (STING BEE X) (GIRL X))
+
+Derivation 2
 --------------
 ELM   (arı) := NP
         : BEE
@@ -583,7 +828,7 @@ Final LF, normal-order evaluated:
     (LAM X ((AND ((STING BEE) X)) (GIRL X))) =
     (\ X . AND (STING BEE X) (GIRL X))
 
-Derivation 2
+Derivation 3
 --------------
 _P2_127 (arı) := IV/(IV\NP)
         : ((LAM LF (LAM P (P LF))) BEE)
@@ -608,7 +853,45 @@ Final LF, normal-order evaluated:
     (LAM X ((AND ((STING BEE) X)) (GIRL X))) =
     (\ X . AND (STING BEE X) (GIRL X))
 
-Derivation 3
+Derivation 4
+--------------
+ELM   (arı) := NP
+        : BEE
+ELM   (sok) := IV\NP
+        : (LAM X (LAM Y ((STING X) Y)))
+ELM   (an) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|sok|)(|an|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((STING X) Y))) X)))
+T     (|arı|)(|sok| |an|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((STING X) Y))) X)))
+           BEE)
+ELM   (kız) := NP
+        : GIRL
+A     (|arı| |sok| |an|)(|kız|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((STING X) Y))) X)))
+            BEE)
+           GIRL)
+_P2_127 (arı sok an kız) := IV/(IV\NP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM X
+              ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+               ((LAM X (LAM Y ((STING X) Y))) X)))
+             BEE)
+            GIRL))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((AND ((STING BEE) X)) (GIRL X))))) =
+    (\ P . P (\ X . AND (STING BEE X) (GIRL X)))
+
+Derivation 5
 --------------
 ELM   (arı) := NP
         : BEE
@@ -638,7 +921,7 @@ Final LF, normal-order evaluated:
     (LAM P (P (LAM X ((AND ((STING BEE) X)) (GIRL X))))) =
     (\ P . P (\ X . AND (STING BEE X) (GIRL X)))
 
-Derivation 4
+Derivation 6
 --------------
 _P2_127 (arı) := IV/(IV\NP)
         : ((LAM LF (LAM P (P LF))) BEE)

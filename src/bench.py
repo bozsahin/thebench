@@ -254,10 +254,10 @@ def mk_clatom (s):
 
 class PHONLexer(Lexer):       
     tokens = {EL, MWEM, BOUNDOP}
-    ignore = ' \t'             # whitespace, + is a special operator in surface strings, not represented in grammar
-    EL      = r'[^ \+\|]+'        # anything not space or | is data
-    BOUNDOP = r'\+'
-    MWEM    = r'\|'             # | is a token by itself
+    ignore = ' \t'             # whitespace, 
+    EL      = r'[^ \+\|]+'     # anything not space + or | is data
+    BOUNDOP = r'\+'            # + is a special operator in surface strings, not represented in grammar
+    MWEM    = r'\|'            # | is a token by itself
 
 class PHONParser(Parser):
     #debugfile = 'lalr_phon'+ _logext
