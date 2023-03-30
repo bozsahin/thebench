@@ -1,5 +1,4 @@
 g cn.txt
-> cn.sc.no.session force
 l nfparse-on
 l show-config
 a wo you le Zhangsan yi mo
@@ -48,4 +47,3 @@ a e le duzi de ren
 ,
 a di-gei gege |yi-hu jiu| erqie |jiejie yi-pan cai|
 ,
-<

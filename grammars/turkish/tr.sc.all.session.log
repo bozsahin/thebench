@@ -1,4 +1,15 @@
 
+/‾\ /‾\  g tr.txt
+
+no errors in grammar text, proceeding with set up..
+please check the /var/tmp/thebench/tr.txt.log file for information.
+file tr.txt.src exists in /var/tmp/thebench/, regenerating it.
+tr.txt.src file generated
+grammar loaded from /var/tmp/thebench/tr.txt.src; ready for analysis
+
+/‾\ /‾\  c v
+
+
 Summary of compiling synthetic case functions for current grammar
 Log of warnings and errors                      : tr.txt.case.log (total entry: 1)
 Number of elements in the grammar               : 19
@@ -17,6 +28,13 @@ Loaded grammar augmented with arules for case
 
 File: tr.txt.sc.arules created; contains synthetic case rules for tr.txt in the source format,
    for merging with grammar source text or for inspection.
+
+/‾\ /‾\  l nfparse-off
+
+
+
+/‾\ /‾\  l show-config
+
 
 *BEAMP* : NIL
 *LAMBDAFLAG* : T
@@ -39,9 +57,17 @@ File: tr.txt.sc.arules created; contains synthetic case rules for tr.txt in the 
 *FX3-COMP* T
 *T-APPLY* T
 
+/‾\ /‾\  a Ahmet |çocuğun uyuduğunu| düşünüyor
+
+
+
 Input: Ahmet çocuğun uyuduğunu düşünüyor
 
 Number of analyses: 4
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
@@ -130,21 +156,45 @@ Final LF, normal-order evaluated:
     (LAM P (P ((THINK (SLEEP CHILD)) AHMET))) =
     (\ P . P (THINK (SLEEP CHILD) AHMET))
 
+/‾\ /‾\  a Ahmet çocuğun uyuduğunu düşünüyor
+
+
+
 Input: Ahmet çocuğun uyuduğunu düşünüyor
 
 OOV error: no grammar entry for çocuğun! Exiting without parse.
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a Ahmet |çocuğun uyuduğuna| düşünüyor
+
 
 
 Input: Ahmet çocuğun uyuduğuna düşünüyor
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a kediyi okşa+yan misafir
+
 
 
 Input: kediyi okşa yan misafir
 
 Number of analyses: 6
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
@@ -326,9 +376,17 @@ Final LF, normal-order evaluated:
     (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
     (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
 
+/‾\ /‾\  a kediyi okşa yan misafir
+
+
+
 Input: kediyi okşa yan misafir
 
 Number of analyses: 6
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
@@ -510,9 +568,17 @@ Final LF, normal-order evaluated:
     (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
     (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
 
+/‾\ /‾\  a kediyi okşa +yan misafir
+
+
+
 Input: kediyi okşa yan misafir
 
 Number of analyses: 6
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
@@ -693,20 +759,44 @@ Final LF, normal-order evaluated:
 
     (LAM P (P (LAM X ((AND ((PET CAT) X)) (GUEST X))))) =
     (\ P . P (\ X . AND (PET CAT X) (GUEST X)))
+
+/‾\ /‾\  a kediyi okşa+dığı misafir
+
+
 
 Input: kediyi okşa dığı misafir
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a misafirin okşa+yan kedi
+
 
 
 Input: misafirin okşa yan kedi
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a misafirin okşa+dığı kedi
+
 
 
 Input: misafirin okşa dığı kedi
 
 Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
@@ -767,9 +857,17 @@ Final LF, normal-order evaluated:
     (LAM P (P (LAM X ((AND (LAM G234 ((PET X) GUEST))) (CAT X))))) =
     (\ P . P (\ X . AND (\ G239 . PET X GUEST) (CAT X)))
 
+/‾\ /‾\  a arı sok+an kız
+
+
+
 Input: arı sok an kız
 
 Number of analyses: 6
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
@@ -951,9 +1049,17 @@ Final LF, normal-order evaluated:
     (LAM P (P (LAM X ((AND ((STING BEE) X)) (GIRL X))))) =
     (\ P . P (\ X . AND (STING BEE X) (GIRL X)))
 
+/‾\ /‾\  a |arı sok|+an kız
+
+
+
 Input: arı sok an kız
 
 Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1

@@ -1,4 +1,3 @@
-> tr.sc.all.session force
 g tr.txt
 c v
 l nfparse-off
@@ -25,4 +24,3 @@ a arı sok+an kız
 ,
 a |arı sok|+an kız
 ,
-<

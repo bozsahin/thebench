@@ -1,4 +1,19 @@
 
+/‾\ /‾\  g cn.txt
+
+no errors in grammar text, proceeding with set up..
+please check the /var/tmp/thebench/cn.txt.log file for information.
+file cn.txt.src exists in /var/tmp/thebench/, regenerating it.
+cn.txt.src file generated
+grammar loaded from /var/tmp/thebench/cn.txt.src; ready for analysis
+
+/‾\ /‾\  l nfparse-on
+
+
+
+/‾\ /‾\  l show-config
+
+
 *BEAMP* : NIL
 *LAMBDAFLAG* : T
 *NF-PARSE* : T
@@ -20,25 +35,33 @@
 *FX3-COMP* T
 *T-APPLY* T
 
+/‾\ /‾\  a wo you le Zhangsan yi mo
+
+
+
 Input: wo you le Zhangsan yi mo
 
 Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
 --------------
-LEX   (wo) := NP
+ELM   (wo) := NP
         : I
-LEX   (you) := ((S\NP)/'yi mo')/NP
+ELM   (you) := ((S\NP)/'yi mo')/NP
         : (LAM X (LAM Y (LAM Z ((((TEASE _) Y) X) Z))))
-LEX   (le) := (S\NP)\(S\NP)
+ELM   (le) := (S\NP)\(S\NP)
         : (LAM P (LAM X (ASP (P X))))
 <Bx2  (|you|)(|le|) := ((S\NP)/'yi mo')/NP
         : (LAM X
            (LAM Y
             ((LAM P (LAM X (ASP (P X))))
              (((LAM X (LAM Y (LAM Z ((((TEASE _) Y) X) Z)))) X) Y))))
-LEX   (Zhangsan) := NP
+ELM   (Zhangsan) := NP
         : Z
 A     (|you| |le|)(|Zhangsan|) := (S\NP)/'yi mo'
         : ((LAM X
@@ -46,9 +69,9 @@ A     (|you| |le|)(|Zhangsan|) := (S\NP)/'yi mo'
              ((LAM P (LAM X (ASP (P X))))
               (((LAM X (LAM Y (LAM Z ((((TEASE _) Y) X) Z)))) X) Y))))
            Z)
-LEX   (yi) := NP/N
+ELM   (yi) := NP/N
         : (LAM X (ONE X))
-LEX   (mo) := N
+ELM   (mo) := N
         : (LAM X (SILENT X))
 A     (|yi|)(|mo|) := NP
         : ((LAM X (ONE X)) (LAM X (SILENT X)))
@@ -73,32 +96,40 @@ Final LF, normal-order evaluated:
     (ASP ((((TEASE _) (ONE (LAM X (SILENT X)))) Z) I)) =
     (ASP (TEASE _ (ONE (\ X . SILENT X)) Z I))
 
+/‾\ /‾\  a na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi
+
+
+
 Input: na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi
 
 Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
 --------------
-LEX   (na-ben) := NP/NP
+ELM   (na-ben) := NP/NP
         : (LAM X (MEASURE X))
-LEX   (wo) := NP
+ELM   (wo) := NP
         : I
-LEX   (hui) := (S\NP)/(S\NP)
+ELM   (hui) := (S\NP)/(S\NP)
         : (LAM P (LAM X (WILL (P X))))
-LEX   (shuifu) := ((S\NP)/VP)/NP
+ELM   (shuifu) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y))))
-LEX   (Zhangsan) := NP
+ELM   (Zhangsan) := NP
         : Z
 A     (|shuifu|)(|Zhangsan|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
-LEX   (qu) := VP/IV
+ELM   (qu) := VP/IV
         : (LAM P P)
-LEX   (ma3i) := IV/NP
+ELM   (ma3i) := IV/NP
         : (LAM X (LAM Y ((BUY X) Y)))
-LEX   (erqie) := (@X\@X)/@X
+ELM   (erqie) := (@X\@X)/@X
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-LEX   (Lisi) := NP
+ELM   (Lisi) := NP
         : L
 >     (|erqie|)(|Lisi|) := NP\NP
         : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L)
@@ -178,27 +209,27 @@ Final LF, normal-order evaluated:
 
 Derivation 2
 --------------
-LEX   (na-ben) := NP/NP
+ELM   (na-ben) := NP/NP
         : (LAM X (MEASURE X))
-LEX   (wo) := NP
+ELM   (wo) := NP
         : I
 A     (|na-ben|)(|wo|) := NP
         : ((LAM X (MEASURE X)) I)
-LEX   (hui) := (S\NP)/(S\NP)
+ELM   (hui) := (S\NP)/(S\NP)
         : (LAM P (LAM X (WILL (P X))))
-LEX   (shuifu) := ((S\NP)/VP)/NP
+ELM   (shuifu) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y))))
-LEX   (Zhangsan) := NP
+ELM   (Zhangsan) := NP
         : Z
 A     (|shuifu|)(|Zhangsan|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
-LEX   (qu) := VP/IV
+ELM   (qu) := VP/IV
         : (LAM P P)
-LEX   (ma3i) := IV/NP
+ELM   (ma3i) := IV/NP
         : (LAM X (LAM Y ((BUY X) Y)))
-LEX   (erqie) := (@X\@X)/@X
+ELM   (erqie) := (@X\@X)/@X
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-LEX   (Lisi) := NP
+ELM   (Lisi) := NP
         : L
 >     (|erqie|)(|Lisi|) := NP\NP
         : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L)
@@ -257,32 +288,40 @@ Final LF, normal-order evaluated:
      (WILL (((PERSUADE ((BUY (LAM X ((AND (L X)) ((MEASURE I) X)))) X)) X) Y))) =
     (\ X . WILL (PERSUADE (BUY (\ X . AND (L X) (MEASURE I X)) X) X Y))
 
+/‾\ /‾\  a na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi qu ma4i de shu
+
+
+
 Input: na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi qu ma4i de shu
 
 Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
 --------------
-LEX   (na-ben) := NP/NP
+ELM   (na-ben) := NP/NP
         : (LAM X (MEASURE X))
-LEX   (wo) := NP
+ELM   (wo) := NP
         : I
-LEX   (hui) := (S\NP)/(S\NP)
+ELM   (hui) := (S\NP)/(S\NP)
         : (LAM P (LAM X (WILL (P X))))
-LEX   (shuifu) := ((S\NP)/VP)/NP
+ELM   (shuifu) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y))))
-LEX   (Zhangsan) := NP
+ELM   (Zhangsan) := NP
         : Z
 A     (|shuifu|)(|Zhangsan|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
-LEX   (qu) := VP/IV
+ELM   (qu) := VP/IV
         : (LAM P P)
-LEX   (ma3i) := IV/NP
+ELM   (ma3i) := IV/NP
         : (LAM X (LAM Y ((BUY X) Y)))
-LEX   (erqie) := (@X\@X)/@X
+ELM   (erqie) := (@X\@X)/@X
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-LEX   (Lisi) := NP
+ELM   (Lisi) := NP
         : L
 >     (|erqie|)(|Lisi|) := NP\NP
         : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L)
@@ -350,11 +389,11 @@ T     (|wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S\NP
                 X)))
              I)
             ((LAM X (MEASURE X)) X)))
-LEX   (qu) := VP/IV
+ELM   (qu) := VP/IV
         : (LAM P P)
-LEX   (ma4i) := IV/NP
+ELM   (ma4i) := IV/NP
         : (LAM X (LAM Y ((SELL X) Y)))
-LEX   (de) := (NP/NP)\(S/NP)
+ELM   (de) := (NP/NP)\(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
 >B2   (|ma4i|)(|de|) := (IV/NP)\(S/NP)
         : (LAM X
@@ -396,7 +435,7 @@ T     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|)(|qu| 
                  X)))
               I)
              ((LAM X (MEASURE X)) X))))
-LEX   (shu) := NP
+ELM   (shu) := NP
         : (LAM X (BOOK X))
 A     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi| |qu| |ma4i|
  |de|)(|shu|) := VP
@@ -446,27 +485,27 @@ Final LF, normal-order evaluated:
 
 Derivation 2
 --------------
-LEX   (na-ben) := NP/NP
+ELM   (na-ben) := NP/NP
         : (LAM X (MEASURE X))
-LEX   (wo) := NP
+ELM   (wo) := NP
         : I
 A     (|na-ben|)(|wo|) := NP
         : ((LAM X (MEASURE X)) I)
-LEX   (hui) := (S\NP)/(S\NP)
+ELM   (hui) := (S\NP)/(S\NP)
         : (LAM P (LAM X (WILL (P X))))
-LEX   (shuifu) := ((S\NP)/VP)/NP
+ELM   (shuifu) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y))))
-LEX   (Zhangsan) := NP
+ELM   (Zhangsan) := NP
         : Z
 A     (|shuifu|)(|Zhangsan|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM X (((PERSUADE (P X)) X) Y)))) Z)
-LEX   (qu) := VP/IV
+ELM   (qu) := VP/IV
         : (LAM P P)
-LEX   (ma3i) := IV/NP
+ELM   (ma3i) := IV/NP
         : (LAM X (LAM Y ((BUY X) Y)))
-LEX   (erqie) := (@X\@X)/@X
+ELM   (erqie) := (@X\@X)/@X
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-LEX   (Lisi) := NP
+ELM   (Lisi) := NP
         : L
 >     (|erqie|)(|Lisi|) := NP\NP
         : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) L)
@@ -518,11 +557,11 @@ T     (|na-ben| |wo|)(|hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|) := S
                  X)))
               X)))
            ((LAM X (MEASURE X)) I))
-LEX   (qu) := VP/IV
+ELM   (qu) := VP/IV
         : (LAM P P)
-LEX   (ma4i) := IV/NP
+ELM   (ma4i) := IV/NP
         : (LAM X (LAM Y ((SELL X) Y)))
-LEX   (de) := (NP/NP)\(S\NP)
+ELM   (de) := (NP/NP)\(S\NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
 >B2   (|ma4i|)(|de|) := (IV/NP)\(S\NP)
         : (LAM X
@@ -562,7 +601,7 @@ T     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi|)(|qu| 
                   X)))
                X)))
             ((LAM X (MEASURE X)) I)))
-LEX   (shu) := NP
+ELM   (shu) := NP
         : (LAM X (BOOK X))
 A     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi| |qu| |ma4i|
  |de|)(|shu|) := VP
@@ -605,24 +644,32 @@ Final LF, normal-order evaluated:
       (BOOK X))
      G9396)
 
+/‾\ /‾\  a haoxiang Paul ma3i le chezi
+
+
+
 Input: haoxiang Paul ma3i le chezi
 
 Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
 --------------
-LEX   (haoxiang) := S/S
+ELM   (haoxiang) := S/S
         : (LAM P (SEEM P))
-LEX   (Paul) := NP
+ELM   (Paul) := NP
         : PAUL
-LEX   (ma3i) := IV/NP
+ELM   (ma3i) := IV/NP
         : (LAM X (LAM Y ((BUY X) Y)))
-LEX   (le) := (S\NP)\IV
+ELM   (le) := (S\NP)\IV
         : (LAM P (ASP P))
 <Bx   (|ma3i|)(|le|) := (S\NP)/NP
         : (LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
-LEX   (chezi) := NP
+ELM   (chezi) := NP
         : (LAM X (VEHICLE X))
 A     (|ma3i| |le|)(|chezi|) := S\NP
         : ((LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
@@ -642,24 +689,32 @@ Final LF, normal-order evaluated:
     (SEEM ((ASP (LAM Y ((BUY (LAM X (VEHICLE X))) Y))) PAUL)) =
     (SEEM (ASP (\ Y . BUY (\ X . VEHICLE X) Y) PAUL))
 
+/‾\ /‾\  a Paul haoxiang ma3i le chezi
+
+
+
 Input: Paul haoxiang ma3i le chezi
 
 Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
 --------------
-LEX   (Paul) := NP
+ELM   (Paul) := NP
         : PAUL
-LEX   (haoxiang) := S/S
+ELM   (haoxiang) := S/S
         : (LAM P (SEEM P))
-LEX   (ma3i) := IV/NP
+ELM   (ma3i) := IV/NP
         : (LAM X (LAM Y ((BUY X) Y)))
-LEX   (le) := (S\NP)\IV
+ELM   (le) := (S\NP)\IV
         : (LAM P (ASP P))
 <Bx   (|ma3i|)(|le|) := (S\NP)/NP
         : (LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
-LEX   (chezi) := NP
+ELM   (chezi) := NP
         : (LAM X (VEHICLE X))
 A     (|ma3i| |le|)(|chezi|) := S\NP
         : ((LAM X ((LAM P (ASP P)) ((LAM X (LAM Y ((BUY X) Y))) X)))
@@ -683,61 +738,125 @@ Final LF, normal-order evaluated:
     (SEEM ((ASP (LAM Y ((BUY (LAM X (VEHICLE X))) Y))) PAUL)) =
     (SEEM (ASP (\ Y . BUY (\ X . VEHICLE X) Y) PAUL))
 
+/‾\ /‾\  a chezi haoxiang Paul ma3i le
+
+
+
 Input: chezi haoxiang Paul ma3i le
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a gege haoxiang ta di-gei |yi-hu jiu|
+
 
 
 Input: gege haoxiang ta di-gei yi-hu jiu
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a ta duzi e
+
 
 
 Input: ta duzi e
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a ta |Zhang xiaojie| bu xiang zhui
+
 
 
 Input: ta Zhang xiaojie bu xiang zhui
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a mama yisheng renwei tou |hen teng|
+
 
 
 Input: mama yisheng renwei tou hen teng
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a tou yisheng renwei ren |hen teng|
+
 
 
 Input: tou yisheng renwei ren hen teng
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a Zhangsan xihuan danshi Lisi bu xihuan |zhe-ben shu|
+
 
 
 Input: Zhangsan xihuan danshi Lisi bu xihuan zhe-ben shu
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a Zhangsan ta fouren zuo cuo le
+
 
 
 Input: Zhangsan ta fouren zuo cuo le
 
 Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
 --------------
-LEX   (Zhangsan) := NP
+ELM   (Zhangsan) := NP
         : Z
-LEX   (ta) := NP
+ELM   (ta) := NP
         : HE-SHE
-LEX   (fouren) := (S\NP)/S
+ELM   (fouren) := (S\NP)/S
         : (LAM S (LAM X ((DENY S) X)))
-LEX   (zuo) := (S\NP)/PREDP
+ELM   (zuo) := (S\NP)/PREDP
         : (LAM S (LAM X ((DO S) X)))
-LEX   (cuo) := (S\NP)\((S\NP)/PREDP)
+ELM   (cuo) := (S\NP)\((S\NP)/PREDP)
         : (LAM P (LAM X ((WRONG P) X)))
 T     (|zuo|)(|cuo|) := S\NP
         : ((LAM P (LAM X ((WRONG P) X))) (LAM S (LAM X ((DO S) X))))
-LEX   (le) := (S\NP)\(S\NP)
+ELM   (le) := (S\NP)\(S\NP)
         : (LAM P (LAM X (ASP (P X))))
 T     (|zuo| |cuo|)(|le|) := S\NP
         : ((LAM P (LAM X (ASP (P X))))
@@ -771,15 +890,15 @@ Final LF, normal-order evaluated:
 
 Derivation 2
 --------------
-LEX   (Zhangsan) := NP
+ELM   (Zhangsan) := NP
         : Z
-LEX   (ta) := NP
+ELM   (ta) := NP
         : HE-SHE
-LEX   (fouren) := (S\NP)/S
+ELM   (fouren) := (S\NP)/S
         : (LAM S (LAM X ((DENY S) X)))
-LEX   (zuo) := (S\NP)/PREDP
+ELM   (zuo) := (S\NP)/PREDP
         : (LAM S (LAM X ((DO S) X)))
-LEX   (cuo) := (S\NP)\((S\NP)/PREDP)
+ELM   (cuo) := (S\NP)\((S\NP)/PREDP)
         : (LAM P (LAM X ((WRONG P) X)))
 T     (|zuo|)(|cuo|) := S\NP
         : ((LAM P (LAM X ((WRONG P) X))) (LAM S (LAM X ((DO S) X))))
@@ -792,7 +911,7 @@ T     (|ta|)(|fouren| |zuo| |cuo|) := S\NP
             ((LAM S (LAM X ((DENY S) X)))
              (((LAM P (LAM X ((WRONG P) X))) (LAM S (LAM X ((DO S) X)))) X)))
            HE-SHE)
-LEX   (le) := (S\NP)\(S\NP)
+ELM   (le) := (S\NP)\(S\NP)
         : (LAM P (LAM X (ASP (P X))))
 T     (|ta| |fouren| |zuo| |cuo|)(|le|) := S\NP
         : ((LAM P (LAM X (ASP (P X))))
@@ -813,30 +932,46 @@ Final LF, normal-order evaluated:
     (ASP ((DENY ((WRONG (LAM S (LAM X ((DO S) X)))) HE-SHE)) Z)) =
     (ASP (DENY (WRONG (\ S . \ X . DO S X) HE-SHE) Z))
 
+/‾\ /‾\  a Zhangsan wo quan |yao lai|
+
+
+
 Input: Zhangsan wo quan yao lai
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a didi na e le |hen jiu| de duzi
+
 
 
 Input: didi na e le hen jiu de duzi
 
 Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
 --------------
-LEX   (didi) := NP/(NP/NP)
+ELM   (didi) := NP/(NP/NP)
         : (LAM P ((((P BROTHER) AND) TOPIC) B))
-LEX   (na) := NP/NP
+ELM   (na) := NP/NP
         : (LAM X X)
-LEX   (e) := (S\NP)/NP
+ELM   (e) := (S\NP)/NP
         : (LAM X (LAM Y ((STARVE X) Y)))
-LEX   (le) := (S\NP)\(S\NP)
+ELM   (le) := (S\NP)\(S\NP)
         : (LAM P (LAM X (ASP (P X))))
 <Bx   (|e|)(|le|) := (S\NP)/NP
         : (LAM X
            ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
-LEX   (hen jiu) := (S\NP)\(S\NP)
+ELM   (hen jiu) := (S\NP)\(S\NP)
         : (LAM P (LAM X (((P _) LONG) X)))
 <Bx   (|e| |le|)(|hen jiu|) := (S\NP)/NP
         : (LAM X
@@ -844,7 +979,7 @@ LEX   (hen jiu) := (S\NP)\(S\NP)
             ((LAM X
               ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
              X)))
-LEX   (de) := (NP/NP)\(S\NP)
+ELM   (de) := (NP/NP)\(S\NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
 <Bx   (|e| |le| |hen jiu|)(|de|) := (NP/NP)/NP
         : (LAM X
@@ -856,7 +991,7 @@ LEX   (de) := (NP/NP)\(S\NP)
                   ((LAM X (LAM Y ((STARVE X) Y))) X)))
                 X)))
              X)))
-LEX   (duzi) := NP
+ELM   (duzi) := NP
         : STOMACH
 A     (|e| |le| |hen jiu| |de|)(|duzi|) := NP/NP
         : ((LAM X
@@ -904,59 +1039,115 @@ Final LF, normal-order evaluated:
     ((((AND (((ASP ((STARVE STOMACH) _)) LONG) AND)) (BROTHER AND)) TOPIC) B) =
     (AND (ASP (STARVE STOMACH _) LONG AND) (BROTHER AND) TOPIC B)
 
+/‾\ /‾\  a yisheng renwei tou teng le |hen jiu| de ren
+
+
+
 Input: yisheng renwei tou teng le hen jiu de ren
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a |yu a| weiyu xianzai zui gui
+
 
 
 Input: yu a weiyu xianzai zui gui
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a Zhangsan ma3i de qiche
+
 
 
 Input: Zhangsan ma3i de qiche
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  qi zixingche de ren
+
+command unknown
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a wo gei ni de shu
+
 
 
 Input: wo gei ni de shu
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a duzi e de ren
+
 
 
 Input: duzi e de ren
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a e le duzi de ren
+
 
 
 Input: e le duzi de ren
 
 Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
 
 
 Derivation 1
 --------------
-LEX   (e) := (S\NP)/NP
+ELM   (e) := (S\NP)/NP
         : (LAM X (LAM Y ((STARVE X) Y)))
-LEX   (le) := (S\NP)\(S\NP)
+ELM   (le) := (S\NP)\(S\NP)
         : (LAM P (LAM X (ASP (P X))))
 <Bx   (|e|)(|le|) := (S\NP)/NP
         : (LAM X
            ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
-LEX   (duzi) := NP
+ELM   (duzi) := NP
         : STOMACH
 A     (|e| |le|)(|duzi|) := S\NP
         : ((LAM X
             ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
            STOMACH)
-LEX   (de) := (NP/NP)\(S\NP)
+ELM   (de) := (NP/NP)\(S\NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
 T     (|e| |le| |duzi|)(|de|) := NP/NP
         : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
            ((LAM X
              ((LAM P (LAM X (ASP (P X)))) ((LAM X (LAM Y ((STARVE X) Y))) X)))
             STOMACH))
-LEX   (ren) := NP
+ELM   (ren) := NP
         : (LAM X (PERSON X))
 A     (|e| |le| |duzi| |de|)(|ren|) := NP
         : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -970,6 +1161,15 @@ Final LF, normal-order evaluated:
     (LAM X ((AND (ASP ((STARVE STOMACH) X))) (PERSON X))) =
     (\ X . AND (ASP (STARVE STOMACH X)) (PERSON X))
 
+/‾\ /‾\  a di-gei gege |yi-hu jiu| erqie |jiejie yi-pan cai|
+
+
+
 Input: di-gei gege yi-hu jiu erqie jiejie yi-pan cai
 
 Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+

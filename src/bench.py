@@ -251,7 +251,6 @@ def mk_clatom (s):
 #
 # All data parsing and tokenization goes here, one for grammar, one for supervision, one for input to analysis
 #
-
 class PHONLexer(Lexer):       
     tokens = {EL, MWEM, BOUNDOP}
     ignore = ' \t'             # whitespace, 
@@ -744,7 +743,7 @@ def help ():
         print(f' r .    | ranks . in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | source . located in {_tmp} and saved as editable grammar locally (.txt)")
-        print(f' @ .    | does commands in local file . (same format, 1 command per line, 1 line per command)')
+        print(f' @ ..   | does commands in file . (same format, 1 command/line, 1 line/command), forces output to .log')
         print(f' , .?   | displays analyses for solutions numbered ., all if none provided')
         print(f' #      | displays ranked analyses')
         print(f' = .    | displays analyses onto basic cats in .')
@@ -1152,12 +1151,20 @@ def do (commline):
         except Exception:
             print('something went wrong')
     elif comm == '@':
-        fn = str(args[0])
+        fn = args[0] 
+        if len(args) > 1:
+            logf = args[1]+ _logext
+        else:
+            print(f'need two arguments')
+            return
         try:
-            with open(fn,'r') as f:
-                for command in f:
-                    print(f"\n{2*_prompt} {command}")
-                    do(command)
+            with open(logf,'w') as fl:
+                with redirect_stdout(fl):
+                    with open(fn,'r') as f:
+                        for command in f:
+                            print(f"\n{2*_prompt} {command}")
+                            do(command)
+            print(f'Done. Check out the log in {logf}')
         except FileNotFoundError:
             print(f'command file {fn} not found')
     elif comm == '$':

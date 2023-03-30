@@ -1,5 +1,4 @@
 g cn.txt
-> cn.sc.all.session force
 c v
 l nfparse-off
 l show-config
@@ -49,4 +48,3 @@ a e le duzi de ren
 ,
 a di-gei gege |yi-hu jiu| erqie |jiejie yi-pan cai|
 ,
-<

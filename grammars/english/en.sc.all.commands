@@ -1,5 +1,4 @@
 g en.txt
-> en.sc.all.session force
 c v
 l nfparse-off
 l show-config
@@ -51,4 +50,3 @@ a gave Mo a flower
 ,
 a tries to grab
 ,  
-<
