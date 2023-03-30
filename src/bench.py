@@ -42,8 +42,8 @@ if not os.path.exists(_tmp): # someone deleted it, recreate
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.96'
-_vdate = 'January 31, 2023'
+_version = '0.97'
+_vdate = 'March 30, 2023'
 # 3 built-in extensions of MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
@@ -743,7 +743,7 @@ def help ():
         print(f' r .    | ranks . in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | source . located in {_tmp} and saved as editable grammar locally (.txt)")
-        print(f' @ ..   | does commands in file . (same format, 1 command/line, 1 line/command), forces output to .log')
+        print(f' @ ..   | does bench commands in file . (1 command/line, 1 line/command); forces output to .log')
         print(f' , .?   | displays analyses for solutions numbered ., all if none provided')
         print(f' #      | displays ranked analyses')
         print(f' = .    | displays analyses onto basic cats in .')
