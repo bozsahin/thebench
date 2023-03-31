@@ -20,12 +20,14 @@ yan       | rel :: (np/^np)\^iv: \p\q\x.and (p x)(q x)
 an       | rel :: (np/^np)\^iv: \p\q\x.and (p x)(q x)
 misafir   | n   :: np:guest
 adam   | n   :: np:man
+kitap   | n   :: np:book
 misafirin  | n   :: s[agr=3s]/iv: \p.p guest
 benim  | n   :: s[agr=1s]/iv: \p.p me
 arının  | n   :: s[agr=3s]/iv: \p.p guest
+adamın  | n   :: s/(s\np[agr=3s]): \p.p guest  % ordinary subject
 dığı      | rel :: (np/^np)\^(s[agr=3s]\np): \p\q\x.and (p x)(q x) 
 diğim      | rel :: (np/^np)\^(s[agr=1s]\np): \p\q\x.and (p x)(q x) 
-duğu      | comp :: (s[case=acc]\^s[agr=3s])\^iv: \p.p
+duğu      | comp :: (s[case=acc]\^np[agr=3s])\^iv: \p.p
 duğu      | rel :: (np/^np)\^(s[agr=3s]\np): \p\q\x.and (p x)(q x) 
 tuğu      | rel :: (np/^np)\^(s[agr=3s]\np): \p\q\x.and (p x)(q x)
 nu        | c :: s[case=acc]\s[agr=3s]: \p.p
