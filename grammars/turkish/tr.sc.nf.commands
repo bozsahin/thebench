@@ -1,0 +1,32 @@
+g tr.txt
+c v
+l nfparse-on
+l show-config
+a Ahmet |çocuğun uyuduğunu| düşünüyor
+,
+a Ahmet |çocuğun uyuduğuna| düşünüyor
+,
+a kediyi okşa+yan misafir
+,
+a kediyi okşa yan misafir
+,
+a kediyi okşa +yan misafir
+,
+a kediyi okşa+dığı misafir
+,
+a misafirin okşa+yan kedi
+,
+a misafirin okşa+dığı kedi
+,
+a arı sok+an kız
+,
+a |arı sok|+an kız
+,
+a |kamyon çarp|+an köpek
+,
+a benim kitabı oku+duğu+nu bil+diğim adam
+,
+a benim adamın oku+duğu+nu bil+diğim kitap
+,
+a şarkı söyle+mek ve resim yap+mak+tan 
+,

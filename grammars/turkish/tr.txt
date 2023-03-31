@@ -4,6 +4,8 @@
 Ahmet | n :: np:ahmet
 arı | n :: np:bee
 kız | n :: np:girl
+şarkı | n :: np:song
+resim | n :: np:picture
 arının | n :: np:bee
 çocuğun uyuduğunu | cl :: s[case=acc]:sleep child
 çocuğun uyuduğuna | cl :: s[case=dat]:sleep child
@@ -12,8 +14,16 @@ bil | v :: iv\s[case=acc]: \s\x.know s x
 kediyi    | n :: np[case=acc]: cat
 kitabı    | n :: np[case=acc]: book
 kedi    | n :: np: cat
+mek     | inf :: (vp\np)\\(iv\np):\p.p
+ten     | c   :: vp[case=abl]\vp:\p.p
+mak     | inf :: (vp\np)\\(iv\np):\p.p
+tan     | c   :: vp[case=abl]\vp:\p.p
+ve      | conj :: (@x\@x)/@x:\p\q\x.and(p x)(q x)
 okşa      | v :: iv\np[case=acc]: \x\y.pet x y
 oku      | v :: iv\np[case=acc]: \x\y.read x y
+yap      | v :: iv\np[case=acc]: \x\y.do x y
+söyle      | v :: iv\np[case=acc]: \x\y.sing x y
+söylemek      | v :: vp\np[case=acc]: \x\y.sing x y
 sok      | v :: iv\np[case=acc]: \x\y.sting x y
 arı sok   | v :: iv: \x.sting x bee
 yan       | rel :: (np/^np)\^iv: \p\q\x.and (p x)(q x)

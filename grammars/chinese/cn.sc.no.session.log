@@ -37,8 +37,6 @@ grammar loaded from /var/tmp/thebench/cn.txt.src; ready for analysis
 
 /‾\ /‾\  a wo you le Zhangsan yi mo
 
-
-
 Input: wo you le Zhangsan yi mo
 
 Number of analyses: 1
@@ -97,8 +95,6 @@ Final LF, normal-order evaluated:
     (ASP (TEASE _ (ONE (\ X . SILENT X)) Z I))
 
 /‾\ /‾\  a na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi
-
-
 
 Input: na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi
 
@@ -290,8 +286,6 @@ Final LF, normal-order evaluated:
 
 /‾\ /‾\  a na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi qu ma4i de shu
 
-
-
 Input: na-ben wo hui shuifu Zhangsan qu ma3i erqie Lisi qu ma4i de shu
 
 Number of analyses: 2
@@ -467,7 +461,7 @@ A     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi| |qu| |
 
 Final LF, normal-order evaluated: 
 
-    (LAM G9372
+    (LAM G149064
      ((SELL
        (LAM X
         ((AND
@@ -476,12 +470,12 @@ Final LF, normal-order evaluated:
              (MEASURE X))
             Y)))
          (BOOK X))))
-      G9372)) =
-    (\ G9380 . SELL
+      G149064)) =
+    (\ G149072 . SELL
      (\ X . AND
       (WILL (PERSUADE (BUY (\ X . AND (L X) (I X)) (MEASURE X)) (MEASURE X) Y))
       (BOOK X))
-     G9380)
+     G149072)
 
 Derivation 2
 --------------
@@ -631,22 +625,20 @@ A     (|na-ben| |wo| |hui| |shuifu| |Zhangsan| |qu| |ma3i| |erqie| |Lisi| |qu| |
 
 Final LF, normal-order evaluated: 
 
-    (LAM G9388
+    (LAM G149080
      ((SELL
        (LAM X
         ((AND
           (WILL
            (((PERSUADE ((BUY (LAM X ((AND (L X)) ((MEASURE I) X)))) X)) X) Y)))
          (BOOK X))))
-      G9388)) =
-    (\ G9396 . SELL
+      G149080)) =
+    (\ G149088 . SELL
      (\ X . AND (WILL (PERSUADE (BUY (\ X . AND (L X) (MEASURE I X)) X) X Y))
       (BOOK X))
-     G9396)
+     G149088)
 
 /‾\ /‾\  a haoxiang Paul ma3i le chezi
-
-
 
 Input: haoxiang Paul ma3i le chezi
 
@@ -690,8 +682,6 @@ Final LF, normal-order evaluated:
     (SEEM (ASP (\ Y . BUY (\ X . VEHICLE X) Y) PAUL))
 
 /‾\ /‾\  a Paul haoxiang ma3i le chezi
-
-
 
 Input: Paul haoxiang ma3i le chezi
 
@@ -740,8 +730,6 @@ Final LF, normal-order evaluated:
 
 /‾\ /‾\  a chezi haoxiang Paul ma3i le
 
-
-
 Input: chezi haoxiang Paul ma3i le
 
 Number of analyses: 0
@@ -752,8 +740,6 @@ Done. Try , command for results
 
 
 /‾\ /‾\  a gege haoxiang ta di-gei |yi-hu jiu|
-
-
 
 Input: gege haoxiang ta di-gei yi-hu jiu
 
@@ -766,8 +752,6 @@ Done. Try , command for results
 
 /‾\ /‾\  a ta duzi e
 
-
-
 Input: ta duzi e
 
 Number of analyses: 0
@@ -778,8 +762,6 @@ Done. Try , command for results
 
 
 /‾\ /‾\  a ta |Zhang xiaojie| bu xiang zhui
-
-
 
 Input: ta Zhang xiaojie bu xiang zhui
 
@@ -792,8 +774,6 @@ Done. Try , command for results
 
 /‾\ /‾\  a mama yisheng renwei tou |hen teng|
 
-
-
 Input: mama yisheng renwei tou hen teng
 
 Number of analyses: 0
@@ -804,8 +784,6 @@ Done. Try , command for results
 
 
 /‾\ /‾\  a tou yisheng renwei ren |hen teng|
-
-
 
 Input: tou yisheng renwei ren hen teng
 
@@ -818,8 +796,6 @@ Done. Try , command for results
 
 /‾\ /‾\  a Zhangsan xihuan danshi Lisi bu xihuan |zhe-ben shu|
 
-
-
 Input: Zhangsan xihuan danshi Lisi bu xihuan zhe-ben shu
 
 Number of analyses: 0
@@ -830,8 +806,6 @@ Done. Try , command for results
 
 
 /‾\ /‾\  a Zhangsan ta fouren zuo cuo le
-
-
 
 Input: Zhangsan ta fouren zuo cuo le
 
@@ -934,8 +908,6 @@ Final LF, normal-order evaluated:
 
 /‾\ /‾\  a Zhangsan wo quan |yao lai|
 
-
-
 Input: Zhangsan wo quan yao lai
 
 Number of analyses: 0
@@ -946,8 +918,6 @@ Done. Try , command for results
 
 
 /‾\ /‾\  a didi na e le |hen jiu| de duzi
-
-
 
 Input: didi na e le hen jiu de duzi
 
@@ -1041,8 +1011,6 @@ Final LF, normal-order evaluated:
 
 /‾\ /‾\  a yisheng renwei tou teng le |hen jiu| de ren
 
-
-
 Input: yisheng renwei tou teng le hen jiu de ren
 
 Number of analyses: 0
@@ -1054,8 +1022,6 @@ Done. Try , command for results
 
 /‾\ /‾\  a |yu a| weiyu xianzai zui gui
 
-
-
 Input: yu a weiyu xianzai zui gui
 
 Number of analyses: 0
@@ -1066,8 +1032,6 @@ Done. Try , command for results
 
 
 /‾\ /‾\  a Zhangsan ma3i de qiche
-
-
 
 Input: Zhangsan ma3i de qiche
 
@@ -1088,8 +1052,6 @@ command unknown
 
 /‾\ /‾\  a wo gei ni de shu
 
-
-
 Input: wo gei ni de shu
 
 Number of analyses: 0
@@ -1101,8 +1063,6 @@ Done. Try , command for results
 
 /‾\ /‾\  a duzi e de ren
 
-
-
 Input: duzi e de ren
 
 Number of analyses: 0
@@ -1113,8 +1073,6 @@ Done. Try , command for results
 
 
 /‾\ /‾\  a e le duzi de ren
-
-
 
 Input: e le duzi de ren
 
@@ -1162,8 +1120,6 @@ Final LF, normal-order evaluated:
     (\ X . AND (ASP (STARVE STOMACH X)) (PERSON X))
 
 /‾\ /‾\  a di-gei gege |yi-hu jiu| erqie |jiejie yi-pan cai|
-
-
 
 Input: di-gei gege yi-hu jiu erqie jiejie yi-pan cai
 

@@ -1,12 +1,12 @@
-#_p2_9441  np : a --> ((s\np)/np)\(((s\np)/np)/np) : \a\p.p a
-#_g2_9439  np : a --> ((s\np)/'yi mo')\(((s\np)/'yi mo')/np) : \a\p.p a
-#_p2_9467  np : a --> ((s\np)/vp)\(((s\np)/vp)/np) : \a\p.p a
-#_p2_9465  np : a --> iv\(iv/np) : \a\p.p a
-#_g2_9434  s : a --> s\(s/s) : \a\p.p a
-#_p2_9463  np : a --> (s\np)\((s\np)/np) : \a\p.p a
-#_g2_9431  vp : a --> (s\np)\((s\np)/vp) : \a\p.p a
-#_g2_9430  np : a --> vp\(vp/np) : \a\p.p a
-#_p2_9454  s : a --> (s\np)\((s\np)/s) : \a\p.p a
-#_g2_9425  predp : a --> (s\np)\((s\np)/predp) : \a\p.p a
-#_g2_9424  (s\np)/vp : a --> (s\np)/((s\np)\((s\np)/vp)) : \a\p.p a
-#_g2_9422  np : a --> s/(s\np) : \a\p.p a
+#_p2_149133  np : a --> ((s\np)/np)\(((s\np)/np)/np) : \a\p.p a
+#_g2_149131  np : a --> ((s\np)/'yi mo')\(((s\np)/'yi mo')/np) : \a\p.p a
+#_p2_149159  np : a --> ((s\np)/vp)\(((s\np)/vp)/np) : \a\p.p a
+#_p2_149157  np : a --> iv\(iv/np) : \a\p.p a
+#_g2_149126  s : a --> s\(s/s) : \a\p.p a
+#_p2_149155  np : a --> (s\np)\((s\np)/np) : \a\p.p a
+#_g2_149123  vp : a --> (s\np)\((s\np)/vp) : \a\p.p a
+#_g2_149122  np : a --> vp\(vp/np) : \a\p.p a
+#_p2_149146  s : a --> (s\np)\((s\np)/s) : \a\p.p a
+#_g2_149117  predp : a --> (s\np)\((s\np)/predp) : \a\p.p a
+#_g2_149116  (s\np)/vp : a --> (s\np)/((s\np)\((s\np)/vp)) : \a\p.p a
+#_g2_149114  np : a --> s/(s\np) : \a\p.p a

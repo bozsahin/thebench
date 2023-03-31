@@ -1,0 +1,1281 @@
+
+/‾\ /‾\  g tr.txt
+
+no errors in grammar text, proceeding with set up..
+please check the /var/tmp/thebench/tr.txt.log file for information.
+file tr.txt.src exists in /var/tmp/thebench/, regenerating it.
+tr.txt.src file generated
+grammar loaded from /var/tmp/thebench/tr.txt.src; ready for analysis
+
+/‾\ /‾\  l show-config
+
+
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : NIL
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
+
+/‾\ /‾\  a Ahmet |çocuğun uyuduğunu| düşünüyor
+
+Input: Ahmet çocuğun uyuduğunu düşünüyor
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (Ahmet) := NP
+        : AHMET
+ELM   (çocuğun uyuduğunu) := S
+        : (SLEEP CHILD)
+ELM   (düşünüyor) := (S\NP)\S
+        : (LAM S (LAM X ((THINK S) X)))
+T     (|çocuğun uyuduğunu|)(|düşünüyor|) := S\NP
+        : ((LAM S (LAM X ((THINK S) X))) (SLEEP CHILD))
+T     (|Ahmet|)(|çocuğun uyuduğunu| |düşünüyor|) := S
+        : (((LAM S (LAM X ((THINK S) X))) (SLEEP CHILD)) AHMET)
+
+Final LF, normal-order evaluated: 
+
+    ((THINK (SLEEP CHILD)) AHMET) =
+    (THINK (SLEEP CHILD) AHMET)
+
+/‾\ /‾\  a Ahmet |çocuğun uyuduğuna| düşünüyor
+
+Input: Ahmet çocuğun uyuduğuna düşünüyor
+
+Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a kediyi okşa+yan misafir
+
+Input: kediyi okşa yan misafir
+
+Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+Derivation 2
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+T     (|kediyi|)(|okşa|) := IV
+        : ((LAM X (LAM Y ((PET X) Y))) CAT)
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|kediyi| |okşa|)(|yan|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM X (LAM Y ((PET X) Y))) CAT))
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) CAT))
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+/‾\ /‾\  a kediyi okşa yan misafir
+
+Input: kediyi okşa yan misafir
+
+Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+Derivation 2
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+T     (|kediyi|)(|okşa|) := IV
+        : ((LAM X (LAM Y ((PET X) Y))) CAT)
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|kediyi| |okşa|)(|yan|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM X (LAM Y ((PET X) Y))) CAT))
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) CAT))
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+/‾\ /‾\  a kediyi okşa +yan misafir
+
+Input: kediyi okşa yan misafir
+
+Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|okşa|)(|yan|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) X)))
+T     (|kediyi|)(|okşa| |yan|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((PET X) Y))) X)))
+           CAT)
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((PET X) Y))) X)))
+            CAT)
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+Derivation 2
+--------------
+ELM   (kediyi) := NP
+        : CAT
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+T     (|kediyi|)(|okşa|) := IV
+        : ((LAM X (LAM Y ((PET X) Y))) CAT)
+ELM   (yan) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|kediyi| |okşa|)(|yan|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM X (LAM Y ((PET X) Y))) CAT))
+ELM   (misafir) := NP
+        : GUEST
+A     (|kediyi| |okşa| |yan|)(|misafir|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((PET X) Y))) CAT))
+           GUEST)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET CAT) X)) (GUEST X))) =
+    (\ X . AND (PET CAT X) (GUEST X))
+
+/‾\ /‾\  a kediyi okşa+dığı misafir
+
+Input: kediyi okşa dığı misafir
+
+Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a misafirin okşa+yan kedi
+
+Input: misafirin okşa yan kedi
+
+Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a misafirin okşa+dığı kedi
+
+Input: misafirin okşa dığı kedi
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (misafirin) := S/IV
+        : (LAM P (P GUEST))
+ELM   (okşa) := IV\NP
+        : (LAM X (LAM Y ((PET X) Y)))
+>Bx   (|misafirin|)(|okşa|) := S\NP
+        : (LAM X ((LAM P (P GUEST)) ((LAM X (LAM Y ((PET X) Y))) X)))
+ELM   (dığı) := (NP/^NP)\^(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|misafirin| |okşa|)(|dığı|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X ((LAM P (P GUEST)) ((LAM X (LAM Y ((PET X) Y))) X))))
+ELM   (kedi) := NP
+        : CAT
+A     (|misafirin| |okşa| |dığı|)(|kedi|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X ((LAM P (P GUEST)) ((LAM X (LAM Y ((PET X) Y))) X))))
+           CAT)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((PET X) GUEST)) (CAT X))) =
+    (\ X . AND (PET X GUEST) (CAT X))
+
+/‾\ /‾\  a arı sok+an kız
+
+Input: arı sok an kız
+
+Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (arı) := NP
+        : BEE
+ELM   (sok) := IV\NP
+        : (LAM X (LAM Y ((STING X) Y)))
+ELM   (an) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+<B    (|sok|)(|an|) := (NP/^NP)\NP
+        : (LAM X
+           ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((STING X) Y))) X)))
+T     (|arı|)(|sok| |an|) := NP/^NP
+        : ((LAM X
+            ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X (LAM Y ((STING X) Y))) X)))
+           BEE)
+ELM   (kız) := NP
+        : GIRL
+A     (|arı| |sok| |an|)(|kız|) := NP
+        : (((LAM X
+             ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X (LAM Y ((STING X) Y))) X)))
+            BEE)
+           GIRL)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((STING BEE) X)) (GIRL X))) =
+    (\ X . AND (STING BEE X) (GIRL X))
+
+Derivation 2
+--------------
+ELM   (arı) := NP
+        : BEE
+ELM   (sok) := IV\NP
+        : (LAM X (LAM Y ((STING X) Y)))
+T     (|arı|)(|sok|) := IV
+        : ((LAM X (LAM Y ((STING X) Y))) BEE)
+ELM   (an) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|arı| |sok|)(|an|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM X (LAM Y ((STING X) Y))) BEE))
+ELM   (kız) := NP
+        : GIRL
+A     (|arı| |sok| |an|)(|kız|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X (LAM Y ((STING X) Y))) BEE))
+           GIRL)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((STING BEE) X)) (GIRL X))) =
+    (\ X . AND (STING BEE X) (GIRL X))
+
+/‾\ /‾\  a |arı sok|+an kız
+
+Input: arı sok an kız
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (arı sok) := IV
+        : (LAM X ((STING X) BEE))
+ELM   (an) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|arı sok|)(|an|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) (LAM X ((STING X) BEE)))
+ELM   (kız) := NP
+        : GIRL
+A     (|arı sok| |an|)(|kız|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X ((STING X) BEE)))
+           GIRL)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((STING X) BEE)) (GIRL X))) =
+    (\ X . AND (STING X BEE) (GIRL X))
+
+/‾\ /‾\  a |kamyon çarp|+an köpek
+
+Input: kamyon çarp an köpek
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (kamyon çarp) := IV
+        : (LAM X ((HIT X) TRUCK))
+ELM   (an) := (NP/^NP)\^IV
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|kamyon çarp|)(|an|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X))))) (LAM X ((HIT X) TRUCK)))
+ELM   (köpek) := NP
+        : (LAM X (DOG X))
+A     (|kamyon çarp| |an|)(|köpek|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X ((HIT X) TRUCK)))
+           (LAM X (DOG X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((HIT X) TRUCK)) (DOG X))) =
+    (\ X . AND (HIT X TRUCK) (DOG X))
+
+/‾\ /‾\  a benim kitabı oku+duğu+nu bil+diğim adam
+
+Input: benim kitabı oku duğu nu bil diğim adam
+
+Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a benim adamın oku+duğu+nu bil+diğim kitap
+
+Input: benim adamın oku duğu nu bil diğim kitap
+
+Number of analyses: 4
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (benim) := S/IV
+        : (LAM P (P ME))
+ELM   (adamın) := S/(S\NP)
+        : (LAM P (P GUEST))
+ELM   (oku) := IV\NP
+        : (LAM X (LAM Y ((READ X) Y)))
+ELM   (duğu) := (S\^NP)\^IV
+        : (LAM P P)
+<B    (|oku|)(|duğu|) := (S\^NP)\NP
+        : (LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X)))
+>Bx   (|adamın|)(|oku| |duğu|) := S\NP
+        : (LAM X
+           ((LAM P (P GUEST))
+            ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+ELM   (nu) := S\S
+        : (LAM P P)
+ELM   (bil) := IV\S
+        : (LAM S (LAM X ((KNOW S) X)))
+<B    (|nu|)(|bil|) := IV\S
+        : (LAM X ((LAM S (LAM X ((KNOW S) X))) ((LAM P P) X)))
+<B    (|adamın| |oku| |duğu|)(|nu| |bil|) := IV\NP
+        : (LAM X
+           ((LAM X ((LAM S (LAM X ((KNOW S) X))) ((LAM P P) X)))
+            ((LAM X
+              ((LAM P (P GUEST))
+               ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+             X)))
+>Bx   (|benim|)(|adamın| |oku| |duğu| |nu| |bil|) := S\NP
+        : (LAM X
+           ((LAM P (P ME))
+            ((LAM X
+              ((LAM X ((LAM S (LAM X ((KNOW S) X))) ((LAM P P) X)))
+               ((LAM X
+                 ((LAM P (P GUEST))
+                  ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+                X)))
+             X)))
+ELM   (diğim) := (NP/^NP)\^(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|benim| |adamın| |oku| |duğu| |nu| |bil|)(|diğim|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X
+            ((LAM P (P ME))
+             ((LAM X
+               ((LAM X ((LAM S (LAM X ((KNOW S) X))) ((LAM P P) X)))
+                ((LAM X
+                  ((LAM P (P GUEST))
+                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+                 X)))
+              X))))
+ELM   (kitap) := NP
+        : BOOK
+A     (|benim| |adamın| |oku| |duğu| |nu| |bil| |diğim|)(|kitap|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X
+             ((LAM P (P ME))
+              ((LAM X
+                ((LAM X ((LAM S (LAM X ((KNOW S) X))) ((LAM P P) X)))
+                 ((LAM X
+                   ((LAM P (P GUEST))
+                    ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+                  X)))
+               X))))
+           BOOK)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((KNOW ((READ X) GUEST)) ME)) (BOOK X))) =
+    (\ X . AND (KNOW (READ X GUEST) ME) (BOOK X))
+
+Derivation 2
+--------------
+ELM   (benim) := S/IV
+        : (LAM P (P ME))
+ELM   (adamın) := S/(S\NP)
+        : (LAM P (P GUEST))
+ELM   (oku) := IV\NP
+        : (LAM X (LAM Y ((READ X) Y)))
+ELM   (duğu) := (S\^NP)\^IV
+        : (LAM P P)
+ELM   (nu) := S\S
+        : (LAM P P)
+<B2   (|duğu|)(|nu|) := (S\^NP)\^IV
+        : (LAM X (LAM Y ((LAM P P) (((LAM P P) X) Y))))
+<B    (|oku|)(|duğu| |nu|) := (S\^NP)\NP
+        : (LAM X
+           ((LAM X (LAM Y ((LAM P P) (((LAM P P) X) Y))))
+            ((LAM X (LAM Y ((READ X) Y))) X)))
+>Bx   (|adamın|)(|oku| |duğu| |nu|) := S\NP
+        : (LAM X
+           ((LAM P (P GUEST))
+            ((LAM X
+              ((LAM X (LAM Y ((LAM P P) (((LAM P P) X) Y))))
+               ((LAM X (LAM Y ((READ X) Y))) X)))
+             X)))
+ELM   (bil) := IV\S
+        : (LAM S (LAM X ((KNOW S) X)))
+<B    (|adamın| |oku| |duğu| |nu|)(|bil|) := IV\NP
+        : (LAM X
+           ((LAM S (LAM X ((KNOW S) X)))
+            ((LAM X
+              ((LAM P (P GUEST))
+               ((LAM X
+                 ((LAM X (LAM Y ((LAM P P) (((LAM P P) X) Y))))
+                  ((LAM X (LAM Y ((READ X) Y))) X)))
+                X)))
+             X)))
+>Bx   (|benim|)(|adamın| |oku| |duğu| |nu| |bil|) := S\NP
+        : (LAM X
+           ((LAM P (P ME))
+            ((LAM X
+              ((LAM S (LAM X ((KNOW S) X)))
+               ((LAM X
+                 ((LAM P (P GUEST))
+                  ((LAM X
+                    ((LAM X (LAM Y ((LAM P P) (((LAM P P) X) Y))))
+                     ((LAM X (LAM Y ((READ X) Y))) X)))
+                   X)))
+                X)))
+             X)))
+ELM   (diğim) := (NP/^NP)\^(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|benim| |adamın| |oku| |duğu| |nu| |bil|)(|diğim|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X
+            ((LAM P (P ME))
+             ((LAM X
+               ((LAM S (LAM X ((KNOW S) X)))
+                ((LAM X
+                  ((LAM P (P GUEST))
+                   ((LAM X
+                     ((LAM X (LAM Y ((LAM P P) (((LAM P P) X) Y))))
+                      ((LAM X (LAM Y ((READ X) Y))) X)))
+                    X)))
+                 X)))
+              X))))
+ELM   (kitap) := NP
+        : BOOK
+A     (|benim| |adamın| |oku| |duğu| |nu| |bil| |diğim|)(|kitap|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X
+             ((LAM P (P ME))
+              ((LAM X
+                ((LAM S (LAM X ((KNOW S) X)))
+                 ((LAM X
+                   ((LAM P (P GUEST))
+                    ((LAM X
+                      ((LAM X (LAM Y ((LAM P P) (((LAM P P) X) Y))))
+                       ((LAM X (LAM Y ((READ X) Y))) X)))
+                     X)))
+                  X)))
+               X))))
+           BOOK)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((KNOW ((READ X) GUEST)) ME)) (BOOK X))) =
+    (\ X . AND (KNOW (READ X GUEST) ME) (BOOK X))
+
+Derivation 3
+--------------
+ELM   (benim) := S/IV
+        : (LAM P (P ME))
+ELM   (adamın) := S/(S\NP)
+        : (LAM P (P GUEST))
+ELM   (oku) := IV\NP
+        : (LAM X (LAM Y ((READ X) Y)))
+ELM   (duğu) := (S\^NP)\^IV
+        : (LAM P P)
+<B    (|oku|)(|duğu|) := (S\^NP)\NP
+        : (LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X)))
+ELM   (nu) := S\S
+        : (LAM P P)
+<B2   (|oku| |duğu|)(|nu|) := (S\^NP)\NP
+        : (LAM X
+           (LAM Y
+            ((LAM P P)
+             (((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X) Y))))
+>Bx   (|adamın|)(|oku| |duğu| |nu|) := S\NP
+        : (LAM X
+           ((LAM P (P GUEST))
+            ((LAM X
+              (LAM Y
+               ((LAM P P)
+                (((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X) Y))))
+             X)))
+ELM   (bil) := IV\S
+        : (LAM S (LAM X ((KNOW S) X)))
+<B    (|adamın| |oku| |duğu| |nu|)(|bil|) := IV\NP
+        : (LAM X
+           ((LAM S (LAM X ((KNOW S) X)))
+            ((LAM X
+              ((LAM P (P GUEST))
+               ((LAM X
+                 (LAM Y
+                  ((LAM P P)
+                   (((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)
+                    Y))))
+                X)))
+             X)))
+>Bx   (|benim|)(|adamın| |oku| |duğu| |nu| |bil|) := S\NP
+        : (LAM X
+           ((LAM P (P ME))
+            ((LAM X
+              ((LAM S (LAM X ((KNOW S) X)))
+               ((LAM X
+                 ((LAM P (P GUEST))
+                  ((LAM X
+                    (LAM Y
+                     ((LAM P P)
+                      (((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)
+                       Y))))
+                   X)))
+                X)))
+             X)))
+ELM   (diğim) := (NP/^NP)\^(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|benim| |adamın| |oku| |duğu| |nu| |bil|)(|diğim|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X
+            ((LAM P (P ME))
+             ((LAM X
+               ((LAM S (LAM X ((KNOW S) X)))
+                ((LAM X
+                  ((LAM P (P GUEST))
+                   ((LAM X
+                     (LAM Y
+                      ((LAM P P)
+                       (((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X)))
+                         X)
+                        Y))))
+                    X)))
+                 X)))
+              X))))
+ELM   (kitap) := NP
+        : BOOK
+A     (|benim| |adamın| |oku| |duğu| |nu| |bil| |diğim|)(|kitap|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X
+             ((LAM P (P ME))
+              ((LAM X
+                ((LAM S (LAM X ((KNOW S) X)))
+                 ((LAM X
+                   ((LAM P (P GUEST))
+                    ((LAM X
+                      (LAM Y
+                       ((LAM P P)
+                        (((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X)))
+                          X)
+                         Y))))
+                     X)))
+                  X)))
+               X))))
+           BOOK)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((KNOW ((READ X) GUEST)) ME)) (BOOK X))) =
+    (\ X . AND (KNOW (READ X GUEST) ME) (BOOK X))
+
+Derivation 4
+--------------
+ELM   (benim) := S/IV
+        : (LAM P (P ME))
+ELM   (adamın) := S/(S\NP)
+        : (LAM P (P GUEST))
+ELM   (oku) := IV\NP
+        : (LAM X (LAM Y ((READ X) Y)))
+ELM   (duğu) := (S\^NP)\^IV
+        : (LAM P P)
+<B    (|oku|)(|duğu|) := (S\^NP)\NP
+        : (LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X)))
+>Bx   (|adamın|)(|oku| |duğu|) := S\NP
+        : (LAM X
+           ((LAM P (P GUEST))
+            ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+ELM   (nu) := S\S
+        : (LAM P P)
+<B    (|adamın| |oku| |duğu|)(|nu|) := S\NP
+        : (LAM X
+           ((LAM P P)
+            ((LAM X
+              ((LAM P (P GUEST))
+               ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+             X)))
+ELM   (bil) := IV\S
+        : (LAM S (LAM X ((KNOW S) X)))
+<B    (|adamın| |oku| |duğu| |nu|)(|bil|) := IV\NP
+        : (LAM X
+           ((LAM S (LAM X ((KNOW S) X)))
+            ((LAM X
+              ((LAM P P)
+               ((LAM X
+                 ((LAM P (P GUEST))
+                  ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+                X)))
+             X)))
+>Bx   (|benim|)(|adamın| |oku| |duğu| |nu| |bil|) := S\NP
+        : (LAM X
+           ((LAM P (P ME))
+            ((LAM X
+              ((LAM S (LAM X ((KNOW S) X)))
+               ((LAM X
+                 ((LAM P P)
+                  ((LAM X
+                    ((LAM P (P GUEST))
+                     ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X))) X)))
+                   X)))
+                X)))
+             X)))
+ELM   (diğim) := (NP/^NP)\^(S\NP)
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+T     (|benim| |adamın| |oku| |duğu| |nu| |bil|)(|diğim|) := NP/^NP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (LAM X
+            ((LAM P (P ME))
+             ((LAM X
+               ((LAM S (LAM X ((KNOW S) X)))
+                ((LAM X
+                  ((LAM P P)
+                   ((LAM X
+                     ((LAM P (P GUEST))
+                      ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X)))
+                       X)))
+                    X)))
+                 X)))
+              X))))
+ELM   (kitap) := NP
+        : BOOK
+A     (|benim| |adamın| |oku| |duğu| |nu| |bil| |diğim|)(|kitap|) := NP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (LAM X
+             ((LAM P (P ME))
+              ((LAM X
+                ((LAM S (LAM X ((KNOW S) X)))
+                 ((LAM X
+                   ((LAM P P)
+                    ((LAM X
+                      ((LAM P (P GUEST))
+                       ((LAM X ((LAM P P) ((LAM X (LAM Y ((READ X) Y))) X)))
+                        X)))
+                     X)))
+                  X)))
+               X))))
+           BOOK)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((KNOW ((READ X) GUEST)) ME)) (BOOK X))) =
+    (\ X . AND (KNOW (READ X GUEST) ME) (BOOK X))
+
+/‾\ /‾\  a şarkı söyle+mek ve resim yap+mak+tan 
+
+Input: şarkı söyle mek ve resim yap mak tan
+
+Number of analyses: 9
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+ELM   (tan) := VP\VP
+        : (LAM P P)
+<B    (|yap| |mak|)(|tan|) := VP\NP
+        : (LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+T     (|resim|)(|yap| |mak| |tan|) := VP
+        : ((LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+           PICTURE)
+>     (|ve|)(|resim| |yap| |mak| |tan|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+            PICTURE))
+<B    (|söyle| |mek|)(|ve| |resim| |yap| |mak| |tan|) := VP\NP
+        : (LAM X
+           (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+              PICTURE))
+            (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+T     (|şarkı|)(|söyle| |mek| |ve| |resim| |yap| |mak| |tan|) := VP
+        : ((LAM X
+            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+               PICTURE))
+             (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+           SONG)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
+
+Derivation 2
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+T     (|resim|)(|yap| |mak|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)
+ELM   (tan) := VP\VP
+        : (LAM P P)
+T     (|resim| |yap| |mak|)(|tan|) := VP
+        : ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+>     (|ve|)(|resim| |yap| |mak| |tan|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)))
+<B    (|söyle| |mek|)(|ve| |resim| |yap| |mak| |tan|) := VP\NP
+        : (LAM X
+           (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)))
+            (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+T     (|şarkı|)(|söyle| |mek| |ve| |resim| |yap| |mak| |tan|) := VP
+        : ((LAM X
+            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)))
+             (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+           SONG)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
+
+Derivation 3
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+T     (|resim|)(|yap| |mak|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)
+>     (|ve|)(|resim| |yap| |mak|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+ELM   (tan) := VP\VP
+        : (LAM P P)
+<B    (|ve| |resim| |yap| |mak|)(|tan|) := VP\VP
+        : (LAM X
+           ((LAM P P)
+            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+             X)))
+<B    (|söyle| |mek|)(|ve| |resim| |yap| |mak| |tan|) := VP\NP
+        : (LAM X
+           ((LAM X
+             ((LAM P P)
+              (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+                (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+               X)))
+            (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+T     (|şarkı|)(|söyle| |mek| |ve| |resim| |yap| |mak| |tan|) := VP
+        : ((LAM X
+            ((LAM X
+              ((LAM P P)
+               (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+                 (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+                X)))
+             (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+           SONG)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
+
+Derivation 4
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+T     (|resim|)(|yap| |mak|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)
+>     (|ve|)(|resim| |yap| |mak|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+<B    (|söyle| |mek|)(|ve| |resim| |yap| |mak|) := VP\NP
+        : (LAM X
+           (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+            (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+ELM   (tan) := VP\VP
+        : (LAM P P)
+<B    (|söyle| |mek| |ve| |resim| |yap| |mak|)(|tan|) := VP\NP
+        : (LAM X
+           ((LAM P P)
+            ((LAM X
+              (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+                (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+               (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+             X)))
+T     (|şarkı|)(|söyle| |mek| |ve| |resim| |yap| |mak| |tan|) := VP
+        : ((LAM X
+            ((LAM P P)
+             ((LAM X
+               (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+                 (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+                (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+              X)))
+           SONG)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
+
+Derivation 5
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+T     (|şarkı|)(|söyle| |mek|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG)
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+ELM   (tan) := VP\VP
+        : (LAM P P)
+<B    (|yap| |mak|)(|tan|) := VP\NP
+        : (LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+T     (|resim|)(|yap| |mak| |tan|) := VP
+        : ((LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+           PICTURE)
+>     (|ve|)(|resim| |yap| |mak| |tan|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+            PICTURE))
+T     (|şarkı| |söyle| |mek|)(|ve| |resim| |yap| |mak| |tan|) := VP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM X ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) X)))
+             PICTURE))
+           (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
+
+Derivation 6
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+T     (|şarkı|)(|söyle| |mek|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG)
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+T     (|resim|)(|yap| |mak|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)
+ELM   (tan) := VP\VP
+        : (LAM P P)
+T     (|resim| |yap| |mak|)(|tan|) := VP
+        : ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+>     (|ve|)(|resim| |yap| |mak| |tan|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)))
+T     (|şarkı| |söyle| |mek|)(|ve| |resim| |yap| |mak| |tan|) := VP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            ((LAM P P) (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)))
+           (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
+
+Derivation 7
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+T     (|şarkı|)(|söyle| |mek|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG)
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+T     (|resim|)(|yap| |mak|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)
+>     (|ve|)(|resim| |yap| |mak|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+ELM   (tan) := VP\VP
+        : (LAM P P)
+<B    (|ve| |resim| |yap| |mak|)(|tan|) := VP\VP
+        : (LAM X
+           ((LAM P P)
+            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+             X)))
+T     (|şarkı| |söyle| |mek|)(|ve| |resim| |yap| |mak| |tan|) := VP
+        : ((LAM X
+            ((LAM P P)
+             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+               (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+              X)))
+           (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
+
+Derivation 8
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+T     (|resim|)(|yap| |mak|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)
+>     (|ve|)(|resim| |yap| |mak|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+<B    (|söyle| |mek|)(|ve| |resim| |yap| |mak|) := VP\NP
+        : (LAM X
+           (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+            (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+T     (|şarkı|)(|söyle| |mek| |ve| |resim| |yap| |mak|) := VP
+        : ((LAM X
+            (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+              (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+             (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+           SONG)
+ELM   (tan) := VP\VP
+        : (LAM P P)
+T     (|şarkı| |söyle| |mek| |ve| |resim| |yap| |mak|)(|tan|) := VP
+        : ((LAM P P)
+           ((LAM X
+             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+               (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+              (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) X)))
+            SONG))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
+
+Derivation 9
+--------------
+ELM   (şarkı) := NP
+        : SONG
+ELM   (söyle) := IV\NP
+        : (LAM X (LAM Y ((SING X) Y)))
+ELM   (mek) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|söyle|)(|mek|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((SING X) Y))))
+T     (|şarkı|)(|söyle| |mek|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG)
+ELM   (ve) := (@X\@X)/@X
+        : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+ELM   (resim) := NP
+        : PICTURE
+ELM   (yap) := IV\NP
+        : (LAM X (LAM Y ((DO X) Y)))
+ELM   (mak) := (VP\NP)\\(IV\NP)
+        : (LAM P P)
+T     (|yap|)(|mak|) := VP\NP
+        : ((LAM P P) (LAM X (LAM Y ((DO X) Y))))
+T     (|resim|)(|yap| |mak|) := VP
+        : (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE)
+>     (|ve|)(|resim| |yap| |mak|) := VP\VP
+        : ((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+           (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+T     (|şarkı| |söyle| |mek|)(|ve| |resim| |yap| |mak|) := VP
+        : (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+            (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+           (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG))
+ELM   (tan) := VP\VP
+        : (LAM P P)
+T     (|şarkı| |söyle| |mek| |ve| |resim| |yap| |mak|)(|tan|) := VP
+        : ((LAM P P)
+           (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
+             (((LAM P P) (LAM X (LAM Y ((DO X) Y)))) PICTURE))
+            (((LAM P P) (LAM X (LAM Y ((SING X) Y)))) SONG)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((AND ((DO PICTURE) X)) ((SING SONG) X))) =
+    (\ X . AND (DO PICTURE X) (SING SONG X))
