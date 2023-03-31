@@ -1,0 +1,1255 @@
+
+/‾\ /‾\  g kw.txt
+
+no errors in grammar text, proceeding with set up..
+please check the /var/tmp/thebench/kw.txt.log file for information.
+file kw.txt.src exists in /var/tmp/thebench/, regenerating it.
+kw.txt.src file generated
+grammar loaded from /var/tmp/thebench/kw.txt.src; ready for analysis
+
+/‾\ /‾\  c v x
+
+
+Summary of compiling synthetic case functions for current grammar
+There were NO errors/warnings in deriving second order functions
+Number of elements in the grammar               : 12
+Number of elementary functions considered       : 3
+POS tags considered for synthetic case          : (V X)
+Number of second-order case functions generated : 3
+Number of paradigmatic functions out of them    : 3
+
+Case functions compiled OK.
+
+Loaded grammar augmented with arules for case
+ (NOT saved in its text file).
+
+
+File: kw.txt.sc.arules created; contains synthetic case rules for kw.txt in the source format,
+   for merging with grammar source text or for inspection.
+
+/‾\ /‾\  l nfparse-on
+
+
+
+/‾\ /‾\  l show-config
+
+
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : T
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
+
+/‾\ /‾\  a nanaqɘsil+ida i?gɘl'wati ɘlewinuixha+s+is mestuwi la+xa migati
+
+Input: nanaqɘsil ida i?gɘl'wati ɘlewinuixha s is mestuwi la xa migati
+
+Number of analyses: 18
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+A     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : ((((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 2
+--------------
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+A     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 3
+--------------
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+A     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+_G2_134 (s is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+            ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 4
+--------------
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+A     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+_G2_134 (s is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+            ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 5
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_136 (ida i?gɘl'wati ɘlewinuixha) := ((S/PP)/NP)\(((S/PP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+T     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : ((((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 6
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_136 (ida i?gɘl'wati ɘlewinuixha) := ((S/PP)/NP)\(((S/PP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+T     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : ((((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           ((((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 7
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_136 (ida i?gɘl'wati ɘlewinuixha) := ((S/PP)/NP)\(((S/PP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+T     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+_G2_134 (s is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+            (((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 8
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_136 (ida i?gɘl'wati ɘlewinuixha) := ((S/PP)/NP)\(((S/PP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+T     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+_G2_134 (s is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+            (((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 9
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_134 (ida i?gɘl'wati ɘlewinuixha) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+<Bx   (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (LAM X
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : ((LAM X
+            (((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM X
+             (((LAM LF (LAM P (P LF)))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (EXPERT (LAM X (HUNTER X))))) (DEF (LAM X (SEAL X))))
+     (DEF (LAM X (HARPOON X)))) =
+    (GUIDE (DEF (EXPERT (\ X . HUNTER X))) (DEF (\ X . SEAL X))
+     (DEF (\ X . HARPOON X)))
+
+Derivation 10
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_134 (ida i?gɘl'wati ɘlewinuixha) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+<Bx   (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (LAM X
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : ((LAM X
+            (((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           ((LAM X
+             (((LAM LF (LAM P (P LF)))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (EXPERT (LAM X (HUNTER X))))) (DEF (LAM X (SEAL X))))
+     (DEF (LAM X (HARPOON X)))) =
+    (GUIDE (DEF (EXPERT (\ X . HUNTER X))) (DEF (\ X . SEAL X))
+     (DEF (\ X . HARPOON X)))
+
+Derivation 11
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_134 (ida i?gɘl'wati ɘlewinuixha) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+<Bx   (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (LAM X
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+_G2_134 (s is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           (LAM X
+            (((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+            (LAM X
+             (((LAM LF (LAM P (P LF)))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (EXPERT (LAM X (HUNTER X))))) (DEF (LAM X (SEAL X))))
+     (DEF (LAM X (HARPOON X)))) =
+    (GUIDE (DEF (EXPERT (\ X . HUNTER X))) (DEF (\ X . SEAL X))
+     (DEF (\ X . HARPOON X)))
+
+Derivation 12
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_134 (ida i?gɘl'wati ɘlewinuixha) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+<Bx   (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (LAM X
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+_G2_134 (s is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           (LAM X
+            (((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+            (LAM X
+             (((LAM LF (LAM P (P LF)))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (EXPERT (LAM X (HUNTER X))))) (DEF (LAM X (SEAL X))))
+     (DEF (LAM X (HARPOON X)))) =
+    (GUIDE (DEF (EXPERT (\ X . HUNTER X))) (DEF (\ X . SEAL X))
+     (DEF (\ X . HARPOON X)))
+
+Derivation 13
+--------------
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+A     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+>B    (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s|) := (S/PP)/NP
+        : (LAM X
+           (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X X) X)))
+_G2_134 (is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s|)(|is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+           (LAM X
+            (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             ((LAM X X) X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : ((((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+            (LAM X
+             (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              ((LAM X X) X))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 14
+--------------
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+A     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+>B    (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s|) := (S/PP)/NP
+        : (LAM X
+           (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X X) X)))
+_G2_134 (is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s|)(|is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+           (LAM X
+            (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             ((LAM X X) X))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+            (LAM X
+             (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              ((LAM X X) X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 15
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_136 (ida i?gɘl'wati ɘlewinuixha) := ((S/PP)/NP)\(((S/PP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+T     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+>B    (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s|) := (S/PP)/NP
+        : (LAM X
+           ((((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+            ((LAM X X) X)))
+_G2_134 (is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s|)(|is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+           (LAM X
+            ((((LAM LF (LAM P (P LF)))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+             ((LAM X X) X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : ((((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+            (LAM X
+             ((((LAM LF (LAM P (P LF)))
+                ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+               (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+              ((LAM X X) X))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 16
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_136 (ida i?gɘl'wati ɘlewinuixha) := ((S/PP)/NP)\(((S/PP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+T     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+>B    (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s|) := (S/PP)/NP
+        : (LAM X
+           ((((LAM LF (LAM P (P LF)))
+              ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+             (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+            ((LAM X X) X)))
+_G2_134 (is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s|)(|is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+           (LAM X
+            ((((LAM LF (LAM P (P LF)))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+             ((LAM X X) X))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+            (LAM X
+             ((((LAM LF (LAM P (P LF)))
+                ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+               (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))))
+              ((LAM X X) X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
+
+Derivation 17
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_134 (ida i?gɘl'wati ɘlewinuixha) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+<Bx   (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (LAM X
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+ELM   (s) := NP/NP
+        : (LAM X X)
+>B    (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s|) := (S/PP)/NP
+        : (LAM X
+           ((LAM X
+             (((LAM LF (LAM P (P LF)))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+            ((LAM X X) X)))
+_G2_134 (is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s|)(|is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+           (LAM X
+            ((LAM X
+              (((LAM LF (LAM P (P LF)))
+                ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+               ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+             ((LAM X X) X))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : ((((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+            (LAM X
+             ((LAM X
+               (((LAM LF (LAM P (P LF)))
+                 ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+                ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+              ((LAM X X) X))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (EXPERT (LAM X (HUNTER X))))) (DEF (LAM X (SEAL X))))
+     (DEF (LAM X (HARPOON X)))) =
+    (GUIDE (DEF (EXPERT (\ X . HUNTER X))) (DEF (\ X . SEAL X))
+     (DEF (\ X . HARPOON X)))
+
+Derivation 18
+--------------
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+_G2_134 (ida i?gɘl'wati ɘlewinuixha) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+<Bx   (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : (LAM X
+           (((LAM LF (LAM P (P LF)))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+ELM   (s) := NP/NP
+        : (LAM X X)
+>B    (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s|) := (S/PP)/NP
+        : (LAM X
+           ((LAM X
+             (((LAM LF (LAM P (P LF)))
+               ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+              ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+            ((LAM X X) X)))
+_G2_134 (is mestuwi) := (S/PP)\((S/PP)/NP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s|)(|is| |mestuwi|) := S/PP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+           (LAM X
+            ((LAM X
+              (((LAM LF (LAM P (P LF)))
+                ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+               ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+             ((LAM X X) X))))
+_G2_135 (la xa migati) := S\(S/PP)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+T     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : (((LAM LF (LAM P (P LF)))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+           (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+            (LAM X
+             ((LAM X
+               (((LAM LF (LAM P (P LF)))
+                 ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+                ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X)))) X)))
+              ((LAM X X) X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (EXPERT (LAM X (HUNTER X))))) (DEF (LAM X (SEAL X))))
+     (DEF (LAM X (HARPOON X)))) =
+    (GUIDE (DEF (EXPERT (\ X . HUNTER X))) (DEF (\ X . SEAL X))
+     (DEF (\ X . HARPOON X)))

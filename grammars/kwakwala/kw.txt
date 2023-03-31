@@ -1,2 +1,19 @@
+% Kwakwala fragment of the MS book
+% -cem bozsahin
+%
+% NB. the bound elements look to the left for phonological host
+%   and to the right for syntactic structure
 
-% stub
+nanaqɘsil | v :: s/pp/np[case=inst]/np: \x\y\z.guide y z x
+ida       | det :: np/n: \x.def x
+is       | det :: np/n: \x.def x
+xa       | det :: np/n: \x.def x
+s        | c   :: np[case=inst]/np:\x.x
+i?gɘl'wati | n :: n/n:\x.expert x
+mestuwi    | n :: n:\x.harpoon x
+ɘlewinuixha | n :: n: \x.hunter x
+migati | n :: n: \x.seal x
+la          | p :: pp/np: \x.x
+dummy1      | x :: s/pp: \x.dummmy x  % i don't know words with these cats
+                                      % they are here to facilitate case derivation
+dummy2      | x :: s/pp/np[case=inst]: \x\y.dummmy x y

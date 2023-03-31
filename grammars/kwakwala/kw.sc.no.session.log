@@ -1,0 +1,97 @@
+
+/‾\ /‾\  g kw.txt
+
+no errors in grammar text, proceeding with set up..
+please check the /var/tmp/thebench/kw.txt.log file for information.
+file kw.txt.src exists in /var/tmp/thebench/, regenerating it.
+kw.txt.src file generated
+grammar loaded from /var/tmp/thebench/kw.txt.src; ready for analysis
+
+/‾\ /‾\  l show-config
+
+
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : T
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
+
+/‾\ /‾\  a nanaqɘsil+ida i?gɘl'wati ɘlewinuixha+s+is mestuwi la+xa migati
+
+Input: nanaqɘsil ida i?gɘl'wati ɘlewinuixha s is mestuwi la xa migati
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (nanaqɘsil) := ((S/PP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+ELM   (ida) := NP/N
+        : (LAM X (DEF X))
+ELM   (i?gɘl'wati) := N/N
+        : (LAM X (EXPERT X))
+ELM   (ɘlewinuixha) := N
+        : (LAM X (HUNTER X))
+A     (|i?gɘl'wati|)(|ɘlewinuixha|) := N
+        : ((LAM X (EXPERT X)) (LAM X (HUNTER X)))
+A     (|ida|)(|i?gɘl'wati| |ɘlewinuixha|) := NP
+        : ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X))))
+A     (|nanaqɘsil|)(|ida| |i?gɘl'wati| |ɘlewinuixha|) := (S/PP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+           ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+ELM   (s) := NP/NP
+        : (LAM X X)
+ELM   (is) := NP/N
+        : (LAM X (DEF X))
+ELM   (mestuwi) := N
+        : (LAM X (HARPOON X))
+A     (|is|)(|mestuwi|) := NP
+        : ((LAM X (DEF X)) (LAM X (HARPOON X)))
+A     (|s|)(|is| |mestuwi|) := NP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha|)(|s| |is| |mestuwi|) := S/PP
+        : (((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+            ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+ELM   (la) := PP/NP
+        : (LAM X X)
+ELM   (xa) := NP/N
+        : (LAM X (DEF X))
+ELM   (migati) := N
+        : (LAM X (SEAL X))
+A     (|xa|)(|migati|) := NP
+        : ((LAM X (DEF X)) (LAM X (SEAL X)))
+A     (|la|)(|xa| |migati|) := PP
+        : ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X))))
+A     (|nanaqɘsil| |ida| |i?gɘl'wati| |ɘlewinuixha| |s| |is| |mestuwi|)(|la| |xa| |migati|) := S
+        : ((((LAM X (LAM Y (LAM Z (((GUIDE Y) Z) X))))
+             ((LAM X (DEF X)) ((LAM X (EXPERT X)) (LAM X (HUNTER X)))))
+            ((LAM X X) ((LAM X (DEF X)) (LAM X (HARPOON X)))))
+           ((LAM X X) ((LAM X (DEF X)) (LAM X (SEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (((GUIDE (DEF (LAM X (HARPOON X)))) (DEF (LAM X (SEAL X))))
+     (DEF (EXPERT (LAM X (HUNTER X))))) =
+    (GUIDE (DEF (\ X . HARPOON X)) (DEF (\ X . SEAL X))
+     (DEF (EXPERT (\ X . HUNTER X))))
