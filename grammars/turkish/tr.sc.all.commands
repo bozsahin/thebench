@@ -4,8 +4,6 @@ l nfparse-off
 l show-config
 a Ahmet |çocuğun uyuduğunu| düşünüyor
 ,
-a Ahmet çocuğun uyuduğunu düşünüyor
-,
 a Ahmet |çocuğun uyuduğuna| düşünüyor
 ,
 a kediyi okşa+yan misafir
@@ -23,4 +21,8 @@ a misafirin okşa+dığı kedi
 a arı sok+an kız
 ,
 a |arı sok|+an kız
+,
+a |kamyon çarp|+an köpek
+,
+a benim adamın oku+dugu+nu bil+diğim adam
 ,

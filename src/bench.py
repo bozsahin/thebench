@@ -282,7 +282,7 @@ class PHONParser(Parser):
     def simple(self, p):
         return [p[0]]
 
-    @_('simples simple')
+    @_('simples [ BOUNDOP ] simple')
     def simples(self, p):
         return p.simples + p.simple
 

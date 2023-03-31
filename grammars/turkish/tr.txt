@@ -20,3 +20,5 @@ misafirin  | n   :: s[agr=3s]/iv: \p\x.p guest
 arının  | n   :: s[agr=3s]/iv: \p\x.p guest
 dığı      | rel :: (np/^np)\^(s[agr=3s]\np): \p\q\x.and (p x)(q x) 
 tuğu      | rel :: (np/^np)\^(s[agr=3s]\np): \p\q\x.and (p x)(q x)
+kamyon çarp | v :: iv[case=dat]: \x.hit x truck
+köpek        | n :: np:\x.dog x
