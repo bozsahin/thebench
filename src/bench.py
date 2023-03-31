@@ -1162,7 +1162,7 @@ def do (commline):
                 with redirect_stdout(fl):
                     with open(fn,'r') as f:
                         for command in f:
-                            print(f"\n{2*_prompt} {command}")
+                            print(f"{2*_prompt} {command}")
                             do(command)
             print(f'Done. Check out the log in {logf}')
         except FileNotFoundError:
