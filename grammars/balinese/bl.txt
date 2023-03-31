@@ -1,0 +1,16 @@
+% Balinese grammar fragment of MS book
+% -cem bozsahin
+ngengkebang | v :: vp[v=av]/np:\x\y.hide x y
+engkebang   | v :: vp[v=ov]/np:\y\x.hide x y
+numbas      | v :: (s[v=av]\np)/np:\x\y.buy x y
+tumbas      | v :: (s[v=ov]\np)/np:\y\x.buy x y
+meriksa     | v :: vp[v=av]/np:\x\y.examine x y
+periksa     | v :: vp[v=ov]/np:\y\x.examine x y
+kapelihanne | n :: np:mistake
+dokter      | n :: np:doctor
+ngenah      | v :: (s\np)/vp: \p\y.seem (p y)
+ngenah      | v :: s/s: \p.seem p
+sajan       | adv :: (vp/np)/(vp/np):\p.much p
+ci          | pro :: np:you
+tiang       | pro :: np:i
+edot        | v :: (s\np)/vp:\p\x.want(p x)x

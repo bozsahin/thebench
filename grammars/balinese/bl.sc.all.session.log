@@ -1,0 +1,2858 @@
+
+/‾\ /‾\  g bl.txt
+
+no errors in grammar text, proceeding with set up..
+please check the /var/tmp/thebench/bl.txt.log file for information.
+file bl.txt.src exists in /var/tmp/thebench/, regenerating it.
+bl.txt.src file generated
+grammar loaded from /var/tmp/thebench/bl.txt.src; ready for analysis
+
+/‾\ /‾\  c v
+
+
+Summary of compiling synthetic case functions for current grammar
+There were NO errors/warnings in deriving second order functions
+Number of elements in the grammar               : 14
+Number of elementary functions considered       : 9
+POS tags considered for synthetic case          : (V)
+Number of second-order case functions generated : 9
+Number of paradigmatic functions out of them    : 6
+
+Case functions compiled OK.
+
+Loaded grammar augmented with arules for case
+ (NOT saved in its text file).
+
+
+File: bl.txt.sc.arules created; contains synthetic case rules for bl.txt in the source format,
+   for merging with grammar source text or for inspection.
+
+/‾\ /‾\  l nfparse-off
+
+
+
+/‾\ /‾\  l show-config
+
+
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : NIL
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
+
+/‾\ /‾\  a kapelihanne ngenah sajan engkebang ci
+
+Input: kapelihanne ngenah sajan engkebang ci
+
+Number of analyses: 24
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (ci) := NP
+        : YOU
+A     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU)
+A     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 2
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_139 (ci) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+A     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM LF (LAM P (P LF))) YOU)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM LF (LAM P (P LF))) YOU)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 3
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_138 (ci) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+A     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM LF (LAM P (P LF))) YOU)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM LF (LAM P (P LF))) YOU)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 4
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (ci) := NP
+        : YOU
+A     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU)
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang ci) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+T     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 5
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_139 (ci) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang ci) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) YOU)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) YOU)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) YOU)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 6
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_138 (ci) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang ci) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) YOU)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) YOU)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) YOU)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 7
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+ELM   (ci) := NP
+        : YOU
+A     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+           YOU)
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : (((LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+            YOU)
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 8
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+_G2_134 (ci) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           (LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF))) YOU)
+            (LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 9
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+_G2_133 (ci) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           (LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF))) YOU)
+            (LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 10
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (ci) := NP
+        : YOU
+A     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y))))
+           YOU)
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y))))
+            YOU)
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 11
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+_G2_134 (ci) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF))) YOU)
+            ((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y)))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 12
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+_G2_133 (ci) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF))) YOU)
+            ((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y)))))
+           MISTAKE)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE))
+
+Derivation 13
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (ci) := NP
+        : YOU
+A     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU)
+A     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 14
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_139 (ci) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+A     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM LF (LAM P (P LF))) YOU)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM LF (LAM P (P LF))) YOU)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM LF (LAM P (P LF))) YOU)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 15
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_138 (ci) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+A     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM LF (LAM P (P LF))) YOU)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM LF (LAM P (P LF))) YOU)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM LF (LAM P (P LF))) YOU)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 16
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (ci) := NP
+        : YOU
+A     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU)
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang ci) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+T     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF)))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) YOU))
+             (LAM P (LAM Y (SEEM (P Y)))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 17
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_139 (ci) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang ci) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) YOU)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) YOU)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) YOU)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF)))
+              (((LAM LF (LAM P (P LF))) YOU)
+               ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+             (LAM P (LAM Y (SEEM (P Y)))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 18
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_138 (ci) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|sajan| |engkebang|)(|ci|) := VP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang ci) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) YOU)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ngenah|)(|sajan| |engkebang| |ci|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) YOU)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) YOU)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF)))
+              (((LAM LF (LAM P (P LF))) YOU)
+               ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+             (LAM P (LAM Y (SEEM (P Y)))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 19
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+ELM   (ci) := NP
+        : YOU
+A     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+           YOU)
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : (((LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+            YOU)
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM X
+              ((LAM P (LAM Y (SEEM (P Y))))
+               (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+             YOU)
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 20
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+_G2_134 (ci) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           (LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF))) YOU)
+            (LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) YOU)
+             (LAM X
+              ((LAM P (LAM Y (SEEM (P Y))))
+               (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 21
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+_G2_133 (ci) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           (LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF))) YOU)
+            (LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) YOU)
+             (LAM X
+              ((LAM P (LAM Y (SEEM (P Y))))
+               (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 22
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (ci) := NP
+        : YOU
+A     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y))))
+           YOU)
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y))))
+            YOU)
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM X
+               (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+              (LAM Y (LAM X ((HIDE X) Y))))
+             YOU)
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 23
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+_G2_134 (ci) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF))) YOU)
+            ((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y)))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) YOU)
+             ((LAM X
+               (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+              (LAM Y (LAM X ((HIDE X) Y)))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+Derivation 24
+--------------
+ELM   (kapelihanne) := NP
+        : MISTAKE
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+_G2_133 (ci) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) YOU)
+T     (|ngenah| |sajan| |engkebang|)(|ci|) := S\NP
+        : (((LAM LF (LAM P (P LF))) YOU)
+           ((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y)))))
+T     (|kapelihanne|)(|ngenah| |sajan| |engkebang| |ci|) := S
+        : ((((LAM LF (LAM P (P LF))) YOU)
+            ((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y)))))
+           MISTAKE)
+_G2_129 (kapelihanne ngenah sajan engkebang ci) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) YOU)
+             ((LAM X
+               (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+              (LAM Y (LAM X ((HIDE X) Y)))))
+            MISTAKE))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) YOU) MISTAKE)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) YOU MISTAKE)))
+
+/‾\ /‾\  a ci ngenah kapelihanne sajan engkebang
+
+Input: ci ngenah kapelihanne sajan engkebang
+
+Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a ci ngenah sajan engkebang kapelihanne 
+
+Input: ci ngenah sajan engkebang kapelihanne
+
+Number of analyses: 24
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+A     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE)
+A     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 2
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_139 (kapelihanne) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+A     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 3
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_138 (kapelihanne) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+A     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 4
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+A     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE)
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang kapelihanne) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+T     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 5
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_139 (kapelihanne) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang kapelihanne) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) MISTAKE)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 6
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_138 (kapelihanne) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang kapelihanne) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) MISTAKE)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 7
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+A     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+           MISTAKE)
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : (((LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+            MISTAKE)
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 8
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+_G2_134 (kapelihanne) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           (LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF))) MISTAKE)
+            (LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 9
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+_G2_133 (kapelihanne) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           (LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF))) MISTAKE)
+            (LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 10
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+A     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y))))
+           MISTAKE)
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y))))
+            MISTAKE)
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 11
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+_G2_134 (kapelihanne) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y)))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 12
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+_G2_133 (kapelihanne) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y)))))
+           YOU)
+
+Final LF, normal-order evaluated: 
+
+    (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)) =
+    (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU))
+
+Derivation 13
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+A     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE)
+A     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 14
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_139 (kapelihanne) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+A     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM LF (LAM P (P LF))) MISTAKE)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 15
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_138 (kapelihanne) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+A     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : ((LAM P (LAM Y (SEEM (P Y))))
+           (((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : (((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM LF (LAM P (P LF))) MISTAKE)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 16
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+A     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE)
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang kapelihanne) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+T     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF)))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE))
+             (LAM P (LAM Y (SEEM (P Y)))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 17
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_139 (kapelihanne) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang kapelihanne) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) MISTAKE)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF)))
+              (((LAM LF (LAM P (P LF))) MISTAKE)
+               ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+             (LAM P (LAM Y (SEEM (P Y)))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 18
+--------------
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+_P2_138 (kapelihanne) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|sajan| |engkebang|)(|kapelihanne|) := VP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))))
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+_P2_137 (sajan engkebang kapelihanne) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+T     (|ngenah|)(|sajan| |engkebang| |kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+           (LAM P (LAM Y (SEEM (P Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) MISTAKE)
+              ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+            (LAM P (LAM Y (SEEM (P Y)))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF)))
+              (((LAM LF (LAM P (P LF))) MISTAKE)
+               ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))))
+             (LAM P (LAM Y (SEEM (P Y)))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 19
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+A     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+           MISTAKE)
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : (((LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+            MISTAKE)
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM X
+              ((LAM P (LAM Y (SEEM (P Y))))
+               (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+             MISTAKE)
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 20
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+_G2_134 (kapelihanne) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           (LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF))) MISTAKE)
+            (LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) MISTAKE)
+             (LAM X
+              ((LAM P (LAM Y (SEEM (P Y))))
+               (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 21
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|sajan|)(|engkebang|) := VP/NP
+        : ((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y))))
+>B    (|ngenah|)(|sajan| |engkebang|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM Y (SEEM (P Y))))
+            (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X)))
+_G2_133 (kapelihanne) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           (LAM X
+            ((LAM P (LAM Y (SEEM (P Y))))
+             (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF))) MISTAKE)
+            (LAM X
+             ((LAM P (LAM Y (SEEM (P Y))))
+              (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) MISTAKE)
+             (LAM X
+              ((LAM P (LAM Y (SEEM (P Y))))
+               (((LAM P (MUCH P)) (LAM Y (LAM X ((HIDE X) Y)))) X))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 22
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+ELM   (kapelihanne) := NP
+        : MISTAKE
+A     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y))))
+           MISTAKE)
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y))))
+            MISTAKE)
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM X
+               (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+              (LAM Y (LAM X ((HIDE X) Y))))
+             MISTAKE)
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 23
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+_G2_134 (kapelihanne) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y)))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM X
+               (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+              (LAM Y (LAM X ((HIDE X) Y)))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+Derivation 24
+--------------
+ELM   (ci) := NP
+        : YOU
+ELM   (ngenah) := (S\NP)/VP
+        : (LAM P (LAM Y (SEEM (P Y))))
+ELM   (sajan) := (VP/NP)/(VP/NP)
+        : (LAM P (MUCH P))
+>B2   (|ngenah|)(|sajan|) := ((S\NP)/NP)/(VP/NP)
+        : (LAM X
+           (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+ELM   (engkebang) := VP/NP
+        : (LAM Y (LAM X ((HIDE X) Y)))
+A     (|ngenah| |sajan|)(|engkebang|) := (S\NP)/NP
+        : ((LAM X
+            (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+           (LAM Y (LAM X ((HIDE X) Y))))
+_G2_133 (kapelihanne) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) MISTAKE)
+T     (|ngenah| |sajan| |engkebang|)(|kapelihanne|) := S\NP
+        : (((LAM LF (LAM P (P LF))) MISTAKE)
+           ((LAM X
+             (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+            (LAM Y (LAM X ((HIDE X) Y)))))
+T     (|ci|)(|ngenah| |sajan| |engkebang| |kapelihanne|) := S
+        : ((((LAM LF (LAM P (P LF))) MISTAKE)
+            ((LAM X
+              (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+             (LAM Y (LAM X ((HIDE X) Y)))))
+           YOU)
+_G2_129 (ci ngenah sajan engkebang kapelihanne) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) MISTAKE)
+             ((LAM X
+               (LAM Y ((LAM P (LAM Y (SEEM (P Y)))) (((LAM P (MUCH P)) X) Y))))
+              (LAM Y (LAM X ((HIDE X) Y)))))
+            YOU))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (SEEM (((MUCH (LAM Y (LAM X ((HIDE X) Y)))) MISTAKE) YOU)))) =
+    (\ P . P (SEEM (MUCH (\ Y . \ X . HIDE X Y) MISTAKE YOU)))
+
+/‾\ /‾\  a kapelihanne ngenah ci sajan engkebang
+
+Input: kapelihanne ngenah ci sajan engkebang
+
+Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a tiang edot meriksa dokter
+
+Input: tiang edot meriksa dokter
+
+Number of analyses: 14
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|meriksa|)(|dokter|) := VP
+        : ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR)
+A     (|edot|)(|meriksa| |dokter|) := S\NP
+        : ((LAM P (LAM X ((WANT (P X)) X)))
+           ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : (((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE DOCTOR) I)) I) =
+    (WANT (EXAMINE DOCTOR I) I)
+
+Derivation 2
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+_P2_139 (dokter) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|meriksa|)(|dokter|) := VP
+        : (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y))))
+A     (|edot|)(|meriksa| |dokter|) := S\NP
+        : ((LAM P (LAM X ((WANT (P X)) X)))
+           (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y)))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : (((LAM P (LAM X ((WANT (P X)) X)))
+            (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y)))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE DOCTOR) I)) I) =
+    (WANT (EXAMINE DOCTOR I) I)
+
+Derivation 3
+--------------
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|meriksa|)(|dokter|) := VP
+        : ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR)
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+_P2_137 (meriksa dokter) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+T     (|edot|)(|meriksa| |dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+           (LAM P (LAM X ((WANT (P X)) X))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+            (LAM P (LAM X ((WANT (P X)) X))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE DOCTOR) I)) I) =
+    (WANT (EXAMINE DOCTOR I) I)
+
+Derivation 4
+--------------
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+_P2_139 (dokter) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|meriksa|)(|dokter|) := VP
+        : (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y))))
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+_P2_137 (meriksa dokter) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y)))))
+T     (|edot|)(|meriksa| |dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y)))))
+           (LAM P (LAM X ((WANT (P X)) X))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) DOCTOR)
+              (LAM X (LAM Y ((EXAMINE X) Y)))))
+            (LAM P (LAM X ((WANT (P X)) X))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE DOCTOR) I)) I) =
+    (WANT (EXAMINE DOCTOR I) I)
+
+Derivation 5
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+>B    (|edot|)(|meriksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|edot| |meriksa|)(|dokter|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+           DOCTOR)
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : (((LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+            DOCTOR)
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE DOCTOR) I)) I) =
+    (WANT (EXAMINE DOCTOR I) I)
+
+Derivation 6
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+>B    (|edot|)(|meriksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+_G2_134 (dokter) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|edot| |meriksa|)(|dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) DOCTOR)
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) DOCTOR)
+            (LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE DOCTOR) I)) I) =
+    (WANT (EXAMINE DOCTOR I) I)
+
+Derivation 7
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+>B    (|edot|)(|meriksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+_G2_133 (dokter) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|edot| |meriksa|)(|dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) DOCTOR)
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) DOCTOR)
+            (LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE DOCTOR) I)) I) =
+    (WANT (EXAMINE DOCTOR I) I)
+
+Derivation 8
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|meriksa|)(|dokter|) := VP
+        : ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR)
+A     (|edot|)(|meriksa| |dokter|) := S\NP
+        : ((LAM P (LAM X ((WANT (P X)) X)))
+           ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : (((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+           I)
+_G2_129 (tiang edot meriksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE DOCTOR) I)) I))) =
+    (\ P . P (WANT (EXAMINE DOCTOR I) I))
+
+Derivation 9
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+_P2_139 (dokter) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|meriksa|)(|dokter|) := VP
+        : (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y))))
+A     (|edot|)(|meriksa| |dokter|) := S\NP
+        : ((LAM P (LAM X ((WANT (P X)) X)))
+           (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y)))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : (((LAM P (LAM X ((WANT (P X)) X)))
+            (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y)))))
+           I)
+_G2_129 (tiang edot meriksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM X ((WANT (P X)) X)))
+             (((LAM LF (LAM P (P LF))) DOCTOR)
+              (LAM X (LAM Y ((EXAMINE X) Y)))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE DOCTOR) I)) I))) =
+    (\ P . P (WANT (EXAMINE DOCTOR I) I))
+
+Derivation 10
+--------------
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|meriksa|)(|dokter|) := VP
+        : ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR)
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+_P2_137 (meriksa dokter) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+T     (|edot|)(|meriksa| |dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+           (LAM P (LAM X ((WANT (P X)) X))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+            (LAM P (LAM X ((WANT (P X)) X))))
+           I)
+_G2_129 (tiang edot meriksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) ((LAM X (LAM Y ((EXAMINE X) Y))) DOCTOR))
+             (LAM P (LAM X ((WANT (P X)) X))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE DOCTOR) I)) I))) =
+    (\ P . P (WANT (EXAMINE DOCTOR I) I))
+
+Derivation 11
+--------------
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+_P2_139 (dokter) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|meriksa|)(|dokter|) := VP
+        : (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y))))
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+_P2_137 (meriksa dokter) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y)))))
+T     (|edot|)(|meriksa| |dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) DOCTOR) (LAM X (LAM Y ((EXAMINE X) Y)))))
+           (LAM P (LAM X ((WANT (P X)) X))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) DOCTOR)
+              (LAM X (LAM Y ((EXAMINE X) Y)))))
+            (LAM P (LAM X ((WANT (P X)) X))))
+           I)
+_G2_129 (tiang edot meriksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF)))
+              (((LAM LF (LAM P (P LF))) DOCTOR)
+               (LAM X (LAM Y ((EXAMINE X) Y)))))
+             (LAM P (LAM X ((WANT (P X)) X))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE DOCTOR) I)) I))) =
+    (\ P . P (WANT (EXAMINE DOCTOR I) I))
+
+Derivation 12
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+>B    (|edot|)(|meriksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|edot| |meriksa|)(|dokter|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+           DOCTOR)
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : (((LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+            DOCTOR)
+           I)
+_G2_129 (tiang edot meriksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM X
+              ((LAM P (LAM X ((WANT (P X)) X)))
+               ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+             DOCTOR)
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE DOCTOR) I)) I))) =
+    (\ P . P (WANT (EXAMINE DOCTOR I) I))
+
+Derivation 13
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+>B    (|edot|)(|meriksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+_G2_134 (dokter) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|edot| |meriksa|)(|dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) DOCTOR)
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) DOCTOR)
+            (LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+           I)
+_G2_129 (tiang edot meriksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) DOCTOR)
+             (LAM X
+              ((LAM P (LAM X ((WANT (P X)) X)))
+               ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE DOCTOR) I)) I))) =
+    (\ P . P (WANT (EXAMINE DOCTOR I) I))
+
+Derivation 14
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (meriksa) := VP/NP
+        : (LAM X (LAM Y ((EXAMINE X) Y)))
+>B    (|edot|)(|meriksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM X (LAM Y ((EXAMINE X) Y))) X)))
+_G2_133 (dokter) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|edot| |meriksa|)(|dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) DOCTOR)
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+T     (|tiang|)(|edot| |meriksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) DOCTOR)
+            (LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+           I)
+_G2_129 (tiang edot meriksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) DOCTOR)
+             (LAM X
+              ((LAM P (LAM X ((WANT (P X)) X)))
+               ((LAM X (LAM Y ((EXAMINE X) Y))) X))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE DOCTOR) I)) I))) =
+    (\ P . P (WANT (EXAMINE DOCTOR I) I))
+
+/‾\ /‾\  a tiang edot periksa dokter
+
+Input: tiang edot periksa dokter
+
+Number of analyses: 14
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|periksa|)(|dokter|) := VP
+        : ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR)
+A     (|edot|)(|periksa| |dokter|) := S\NP
+        : ((LAM P (LAM X ((WANT (P X)) X)))
+           ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : (((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE I) DOCTOR)) I) =
+    (WANT (EXAMINE I DOCTOR) I)
+
+Derivation 2
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+_P2_138 (dokter) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|periksa|)(|dokter|) := VP
+        : (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y))))
+A     (|edot|)(|periksa| |dokter|) := S\NP
+        : ((LAM P (LAM X ((WANT (P X)) X)))
+           (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y)))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : (((LAM P (LAM X ((WANT (P X)) X)))
+            (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y)))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE I) DOCTOR)) I) =
+    (WANT (EXAMINE I DOCTOR) I)
+
+Derivation 3
+--------------
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|periksa|)(|dokter|) := VP
+        : ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR)
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+_P2_137 (periksa dokter) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF))) ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+T     (|edot|)(|periksa| |dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+           (LAM P (LAM X ((WANT (P X)) X))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+            (LAM P (LAM X ((WANT (P X)) X))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE I) DOCTOR)) I) =
+    (WANT (EXAMINE I DOCTOR) I)
+
+Derivation 4
+--------------
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+_P2_138 (dokter) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|periksa|)(|dokter|) := VP
+        : (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y))))
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+_P2_137 (periksa dokter) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y)))))
+T     (|edot|)(|periksa| |dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y)))))
+           (LAM P (LAM X ((WANT (P X)) X))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) DOCTOR)
+              (LAM Y (LAM X ((EXAMINE X) Y)))))
+            (LAM P (LAM X ((WANT (P X)) X))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE I) DOCTOR)) I) =
+    (WANT (EXAMINE I DOCTOR) I)
+
+Derivation 5
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+>B    (|edot|)(|periksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|edot| |periksa|)(|dokter|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+           DOCTOR)
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : (((LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+            DOCTOR)
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE I) DOCTOR)) I) =
+    (WANT (EXAMINE I DOCTOR) I)
+
+Derivation 6
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+>B    (|edot|)(|periksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+_G2_134 (dokter) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|edot| |periksa|)(|dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) DOCTOR)
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) DOCTOR)
+            (LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE I) DOCTOR)) I) =
+    (WANT (EXAMINE I DOCTOR) I)
+
+Derivation 7
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+>B    (|edot|)(|periksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+_G2_133 (dokter) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|edot| |periksa|)(|dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) DOCTOR)
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) DOCTOR)
+            (LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+           I)
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((EXAMINE I) DOCTOR)) I) =
+    (WANT (EXAMINE I DOCTOR) I)
+
+Derivation 8
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|periksa|)(|dokter|) := VP
+        : ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR)
+A     (|edot|)(|periksa| |dokter|) := S\NP
+        : ((LAM P (LAM X ((WANT (P X)) X)))
+           ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : (((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+           I)
+_G2_129 (tiang edot periksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE I) DOCTOR)) I))) =
+    (\ P . P (WANT (EXAMINE I DOCTOR) I))
+
+Derivation 9
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+_P2_138 (dokter) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|periksa|)(|dokter|) := VP
+        : (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y))))
+A     (|edot|)(|periksa| |dokter|) := S\NP
+        : ((LAM P (LAM X ((WANT (P X)) X)))
+           (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y)))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : (((LAM P (LAM X ((WANT (P X)) X)))
+            (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y)))))
+           I)
+_G2_129 (tiang edot periksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM X ((WANT (P X)) X)))
+             (((LAM LF (LAM P (P LF))) DOCTOR)
+              (LAM Y (LAM X ((EXAMINE X) Y)))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE I) DOCTOR)) I))) =
+    (\ P . P (WANT (EXAMINE I DOCTOR) I))
+
+Derivation 10
+--------------
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|periksa|)(|dokter|) := VP
+        : ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR)
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+_P2_137 (periksa dokter) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF))) ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+T     (|edot|)(|periksa| |dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+           (LAM P (LAM X ((WANT (P X)) X))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+            (LAM P (LAM X ((WANT (P X)) X))))
+           I)
+_G2_129 (tiang edot periksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) ((LAM Y (LAM X ((EXAMINE X) Y))) DOCTOR))
+             (LAM P (LAM X ((WANT (P X)) X))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE I) DOCTOR)) I))) =
+    (\ P . P (WANT (EXAMINE I DOCTOR) I))
+
+Derivation 11
+--------------
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+_P2_138 (dokter) := VP\(VP/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|periksa|)(|dokter|) := VP
+        : (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y))))
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+_P2_137 (periksa dokter) := (S\NP)\((S\NP)/VP)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y)))))
+T     (|edot|)(|periksa| |dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF)))
+            (((LAM LF (LAM P (P LF))) DOCTOR) (LAM Y (LAM X ((EXAMINE X) Y)))))
+           (LAM P (LAM X ((WANT (P X)) X))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF)))
+             (((LAM LF (LAM P (P LF))) DOCTOR)
+              (LAM Y (LAM X ((EXAMINE X) Y)))))
+            (LAM P (LAM X ((WANT (P X)) X))))
+           I)
+_G2_129 (tiang edot periksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF)))
+              (((LAM LF (LAM P (P LF))) DOCTOR)
+               (LAM Y (LAM X ((EXAMINE X) Y)))))
+             (LAM P (LAM X ((WANT (P X)) X))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE I) DOCTOR)) I))) =
+    (\ P . P (WANT (EXAMINE I DOCTOR) I))
+
+Derivation 12
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+>B    (|edot|)(|periksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+ELM   (dokter) := NP
+        : DOCTOR
+A     (|edot| |periksa|)(|dokter|) := S\NP
+        : ((LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+           DOCTOR)
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : (((LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+            DOCTOR)
+           I)
+_G2_129 (tiang edot periksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM X
+              ((LAM P (LAM X ((WANT (P X)) X)))
+               ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+             DOCTOR)
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE I) DOCTOR)) I))) =
+    (\ P . P (WANT (EXAMINE I DOCTOR) I))
+
+Derivation 13
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+>B    (|edot|)(|periksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+_G2_134 (dokter) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|edot| |periksa|)(|dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) DOCTOR)
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) DOCTOR)
+            (LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+           I)
+_G2_129 (tiang edot periksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) DOCTOR)
+             (LAM X
+              ((LAM P (LAM X ((WANT (P X)) X)))
+               ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE I) DOCTOR)) I))) =
+    (\ P . P (WANT (EXAMINE I DOCTOR) I))
+
+Derivation 14
+--------------
+ELM   (tiang) := NP
+        : I
+ELM   (edot) := (S\NP)/VP
+        : (LAM P (LAM X ((WANT (P X)) X)))
+ELM   (periksa) := VP/NP
+        : (LAM Y (LAM X ((EXAMINE X) Y)))
+>B    (|edot|)(|periksa|) := (S\NP)/NP
+        : (LAM X
+           ((LAM P (LAM X ((WANT (P X)) X)))
+            ((LAM Y (LAM X ((EXAMINE X) Y))) X)))
+_G2_133 (dokter) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) DOCTOR)
+T     (|edot| |periksa|)(|dokter|) := S\NP
+        : (((LAM LF (LAM P (P LF))) DOCTOR)
+           (LAM X
+            ((LAM P (LAM X ((WANT (P X)) X)))
+             ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+T     (|tiang|)(|edot| |periksa| |dokter|) := S
+        : ((((LAM LF (LAM P (P LF))) DOCTOR)
+            (LAM X
+             ((LAM P (LAM X ((WANT (P X)) X)))
+              ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+           I)
+_G2_129 (tiang edot periksa dokter) := S\(S/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((((LAM LF (LAM P (P LF))) DOCTOR)
+             (LAM X
+              ((LAM P (LAM X ((WANT (P X)) X)))
+               ((LAM Y (LAM X ((EXAMINE X) Y))) X))))
+            I))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P ((WANT ((EXAMINE I) DOCTOR)) I))) =
+    (\ P . P (WANT (EXAMINE I DOCTOR) I))
+
+/‾\ /‾\  a tiang edot dokter periksa
+
+Input: tiang edot dokter periksa
+
+Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+/‾\ /‾\  a tiang edot dokter meriksa
+
+Input: tiang edot dokter meriksa
+
+Number of analyses: 0
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+

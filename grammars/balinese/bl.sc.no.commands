@@ -1,0 +1,19 @@
+g bl.txt
+l nfparse-off
+l show-config
+a kapelihanne ngenah sajan engkebang ci
+,
+a ci ngenah kapelihanne sajan engkebang
+,
+a ci ngenah sajan engkebang kapelihanne 
+,
+a kapelihanne ngenah ci sajan engkebang
+,
+a tiang edot meriksa dokter
+,
+a tiang edot periksa dokter
+,
+a tiang edot dokter periksa
+,
+a tiang edot dokter meriksa
+,

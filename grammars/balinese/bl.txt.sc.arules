@@ -1,0 +1,6 @@
+#_p2_621  vp : a --> (s\np)\((s\np)/vp) : \a\p.p a
+#_p2_623  np : a --> vp[v=av]\(vp[v=av]/np) : \a\p.p a
+#_g2_618  np : a --> (s[v=av]\np)\((s[v=av]\np)/np) : \a\p.p a
+#_g2_617  np : a --> (s[v=ov]\np)\((s[v=ov]\np)/np) : \a\p.p a
+#_p2_622  np : a --> vp[v=ov]\(vp[v=ov]/np) : \a\p.p a
+#_g2_613  s : a --> s\(s/s) : \a\p.p a
