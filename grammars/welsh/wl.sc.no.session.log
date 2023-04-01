@@ -1,0 +1,171 @@
+
+/‾\ /‾\  g wl.txt
+
+no errors in grammar text, proceeding with set up..
+please check the /var/tmp/thebench/wl.txt.log file for information.
+file wl.txt.src exists in /var/tmp/thebench/, regenerating it.
+wl.txt.src file generated
+grammar loaded from /var/tmp/thebench/wl.txt.src; ready for analysis
+
+/‾\ /‾\  l show-config
+
+
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : T
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
+
+/‾\ /‾\  a mae rhiannon yn cygsu
+
+Input: mae rhiannon yn cygsu
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (mae) := (S/VP)/NP
+        : (LAM Y (LAM P (PRES (P Y))))
+ELM   (rhiannon) := NP
+        : R
+A     (|mae|)(|rhiannon|) := S/VP
+        : ((LAM Y (LAM P (PRES (P Y)))) R)
+ELM   (yn) := VP/IV
+        : (LAM P (LAM Y (PROG (P Y))))
+ELM   (cygsu) := IV
+        : (LAM X (SLEEP X))
+A     (|yn|)(|cygsu|) := VP
+        : ((LAM P (LAM Y (PROG (P Y)))) (LAM X (SLEEP X)))
+A     (|mae| |rhiannon|)(|yn| |cygsu|) := S
+        : (((LAM Y (LAM P (PRES (P Y)))) R)
+           ((LAM P (LAM Y (PROG (P Y)))) (LAM X (SLEEP X))))
+
+Final LF, normal-order evaluated: 
+
+    (PRES (PROG (SLEEP R))) =
+    (PRES (PROG (SLEEP R)))
+
+/‾\ /‾\  a maen nhw'n perswadio grwpiau i fynd adref
+
+Input: maen nhw'n perswadio grwpiau i fynd adref
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (maen) := (S/VP)/NP
+        : (LAM Y (LAM P (PRES (P Y))))
+ELM   (nhw'n) := NP
+        : THEY
+A     (|maen|)(|nhw'n|) := S/VP
+        : ((LAM Y (LAM P (PRES (P Y)))) THEY)
+ELM   (perswadio) := (VP/VP)/NP
+        : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
+ELM   (grwpiau) := NP
+        : GROUPS
+A     (|perswadio|)(|grwpiau|) := VP/VP
+        : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) GROUPS)
+ELM   (i) := VP/IV
+        : (LAM P P)
+ELM   (fynd) := IV/NP
+        : (LAM X (LAM Y ((GO X) Y)))
+ELM   (adref) := NP
+        : HOME
+A     (|fynd|)(|adref|) := IV
+        : ((LAM X (LAM Y ((GO X) Y))) HOME)
+A     (|i|)(|fynd| |adref|) := VP
+        : ((LAM P P) ((LAM X (LAM Y ((GO X) Y))) HOME))
+A     (|perswadio| |grwpiau|)(|i| |fynd| |adref|) := VP
+        : (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) GROUPS)
+           ((LAM P P) ((LAM X (LAM Y ((GO X) Y))) HOME)))
+A     (|maen| |nhw'n|)(|perswadio| |grwpiau| |i| |fynd| |adref|) := S
+        : (((LAM Y (LAM P (PRES (P Y)))) THEY)
+           (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) GROUPS)
+            ((LAM P P) ((LAM X (LAM Y ((GO X) Y))) HOME))))
+
+Final LF, normal-order evaluated: 
+
+    (PRES (((PERSUADE ((GO HOME) GROUPS)) GROUPS) THEY)) =
+    (PRES (PERSUADE (GO HOME GROUPS) GROUPS THEY))
+
+/‾\ /‾\  a roedd gwyn yn dymuno i grwpiau fynd adref
+
+Input: roedd gwyn yn dymuno i grwpiau fynd adref
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (roedd) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+ELM   (gwyn) := NP
+        : GWYN
+A     (|roedd|)(|gwyn|) := S/VP
+        : ((LAM Y (LAM P (P Y))) GWYN)
+ELM   (yn) := (S\(S/VP))/VP
+        : (LAM Q (LAM P (P Q)))
+ELM   (dymuno) := VP/S
+        : (LAM S (LAM Y ((WANT S) Y)))
+ELM   (i) := (S/VP)/NP
+        : (LAM Y (LAM P (P Y)))
+ELM   (grwpiau) := NP
+        : GROUPS
+A     (|i|)(|grwpiau|) := S/VP
+        : ((LAM Y (LAM P (P Y))) GROUPS)
+ELM   (fynd) := VP/PP
+        : (LAM X (LAM Y ((GO X) Y)))
+ELM   (adref) := PP
+        : PHOME
+A     (|fynd|)(|adref|) := VP
+        : ((LAM X (LAM Y ((GO X) Y))) PHOME)
+A     (|i| |grwpiau|)(|fynd| |adref|) := S
+        : (((LAM Y (LAM P (P Y))) GROUPS) ((LAM X (LAM Y ((GO X) Y))) PHOME))
+A     (|dymuno|)(|i| |grwpiau| |fynd| |adref|) := VP
+        : ((LAM S (LAM Y ((WANT S) Y)))
+           (((LAM Y (LAM P (P Y))) GROUPS) ((LAM X (LAM Y ((GO X) Y))) PHOME)))
+A     (|yn|)(|dymuno| |i| |grwpiau| |fynd| |adref|) := S\(S/VP)
+        : ((LAM Q (LAM P (P Q)))
+           ((LAM S (LAM Y ((WANT S) Y)))
+            (((LAM Y (LAM P (P Y))) GROUPS)
+             ((LAM X (LAM Y ((GO X) Y))) PHOME))))
+T     (|roedd| |gwyn|)(|yn| |dymuno| |i| |grwpiau| |fynd| |adref|) := S
+        : (((LAM Q (LAM P (P Q)))
+            ((LAM S (LAM Y ((WANT S) Y)))
+             (((LAM Y (LAM P (P Y))) GROUPS)
+              ((LAM X (LAM Y ((GO X) Y))) PHOME))))
+           ((LAM Y (LAM P (P Y))) GWYN))
+
+Final LF, normal-order evaluated: 
+
+    ((WANT ((GO PHOME) GROUPS)) GWYN) =
+    (WANT (GO PHOME GROUPS) GWYN)

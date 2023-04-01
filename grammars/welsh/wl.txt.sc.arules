@@ -1,0 +1,9 @@
+#_g2_10978  np[per=3] : a --> (s/np)\((s/np)/np[per=3]) : \a\p.p a
+#_g2_10977  np : a --> vp\(vp/np) : \a\p.p a
+#_p2_10983  np[per=3] : a --> (s/vp)\((s/vp)/np[per=3]) : \a\p.p a
+#_g2_10975  np[per=3] : a --> (s/vp)\((s/vp)/np[per=3]) : \a\p.p a
+#_g2_10973  np : a --> iv\(iv/np) : \a\p.p a
+#_g2_10972  pp : a --> vp\(vp/pp) : \a\p.p a
+#_g2_10971  np : a --> (vp/vp)\((vp/vp)/np) : \a\p.p a
+#_p2_10981  s[t=inf] : a --> vp\(vp/s[t=inf]) : \a\p.p a
+#_g2_10968  vp : a --> s[t=inf]\(s[t=inf]/vp) : \a\p.p a

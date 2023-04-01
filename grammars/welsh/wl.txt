@@ -1,0 +1,27 @@
+% Welsh fragment of the MS book
+% -cem bozsahin
+gwelodd | v :: s/np/np[per=3]: \y\y.see x y %NB inversion in finite verb
+gweld | v :: vp/np: \x\y.see x y
+roedd | v :: s/vp/np[per=3]:\y\p.p y
+mae     | v :: s/vp/np[per=3,no=s]: \y\p.pres (p y)
+maen     | v :: s/vp/np[per=3,no=p]: \y\p.pres (p y)
+rhiannon | n :: np[per=3,no=s]:r
+adref | n :: np[per=3,no=s]:home
+adref | n :: pp:phome
+grwpiau | n :: np[per=3,no=s]:groups
+gwyn | n :: np[per=3,no=s]:gwyn
+mair | n :: np[per=3,no=s]:mair
+yn       | prog :: vp[t=prog]/iv: \p\y.prog (p y)
+yn       | prog :: (s\(s/vp[t=prog]))/vp: \q\p.p q
+cygsu    | v :: iv:\x.sleep x
+i        | c :: vp/iv:\p.p
+i        | inf :: (s[t=inf]/vp)/np[per=?p,no=?n]: \y\p.p y
+fynd     | v :: iv/np: \x\y.go x y % NB no inversion in l-comm
+fynd     | v :: vp/pp: \x\y.go x y % NB no inversion in l-comm
+nhw'n    | n :: np:they
+perswadio | v :: (vp/vp)/np: \x\p\y.persuade (p x)x y
+dymuno    | v :: vp/s[t=inf]: \s\y.want s y
+dymunai    | v :: vp/s[t=inf]: \s\y.want s y
+dummy1     | x :: s[t=inf]/vp: dummy   % Dont know the forms for these verbs with topical args
+                                       %   need this to get SC going though.
+dummy2     | x :: vp/s[t=inf]: dummy
