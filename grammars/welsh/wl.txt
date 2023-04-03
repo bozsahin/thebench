@@ -1,6 +1,6 @@
 % Welsh fragment of the MS book
 % -cem bozsahin
-gwelodd | v :: s/np/np[per=3]: \y\y.see x y %NB inversion in finite verb
+gwelodd | v :: s/np/np[per=3]: \y\x.see x y %NB inversion in finite verb
 gweld | v :: vp/np: \x\y.see x y
 roedd | v :: s/vp/np[per=3]:\y\p.p y
 mae     | v :: s/vp/np[per=3,no=s]: \y\p.pres (p y)
@@ -23,5 +23,5 @@ perswadio | v :: (vp/vp)/np: \x\p\y.persuade (p x)x y
 dymuno    | v :: vp/s[t=inf]: \s\y.want s y
 dymunai    | v :: vp/s[t=inf]: \s\y.want s y
 dummy1     | x :: s[t=inf]/vp: dummy   % Dont know the forms for these verbs with topical args
-                                       %   need this to get SC going though.
+                                       %   need this to get SC going
 dummy2     | x :: vp/s[t=inf]: dummy
