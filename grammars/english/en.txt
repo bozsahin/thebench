@@ -2,7 +2,7 @@
 % Visual alignment is purely for aesthetic reasons
 % -Cem Bozsahin
 
-sees      | v :: (s[t=fin]\np[agr=3s])/np : \x\y.see x y
+sees      | v :: (s[t=fin]\np[agr=3s])/np[ref=def] : \x\y.see x y
 persuades | v :: ((s\np[agr=3s])/vp)/np : \x\p\y.persuade (p x) x y
 persuaded | v :: ((s\np)/vp)/np : \x\p\y.persuade (p x) x y
 promises  | v :: ((s\np[agr=3s])/vp)/np : \x\p\y.promise (p y) x y
@@ -12,13 +12,13 @@ seems     | v :: (s\np[agr=3s])/vp : \p\y.seems (p y)
 seems     | v :: (s\np[t=xpl])/s : \s\y.seems s
 picked    | v :: ((s\np)/np)/'up': \x\y\z.pick _ x y z
 picked    | v :: ((s\np)/'up')/np:\y\x\z.cause(init(hold _ (reach x) y z)) z
-picked    | v :: (s\np)/np: \x\y.pick x y
+picked    | v :: (s\np)/np[ref=def]: \x\y.pick x y
 spilled   | v :: (s\np)/np[head=beans]: \x\y.divulge _ (public x) (secret y) y
-spilled   | v :: (s\np)/np: \x\y.spill x y
+spilled   | v :: (s\np)/np[ref=def]: \x\y.spill x y
 kicked    | v :: (s\np)/'the bucket': \x\y.die _ (euph x) y
-kicked    | v :: (s\np)/np: \x\y.kick x y
+kicked    | v :: (s\np)/np[ref=def]: \x\y.kick x y
 sincerity | n :: np[agr=3s] : sincerity
-admires   | v :: (s\np[agr=3s])/np : admire x y
+admires   | v :: (s\np[agr=3s])/np[ref=def] : admire x y
 john      | n :: np[agr=3s]: john
 sincerity | n :: s/(s\np[agr=3s]): \p.p sincerity
 john      | n :: (s\np[agr=?a])\((s\np[agr=?a])/np): \p.p john
