@@ -6,3 +6,7 @@ it  | aff :: (s\np[agr=?a])//vp[agr=?a] : \p.p
 ii  | aff :: vp[agr=3s]//iv[agr=?a]: \p.p
 ?uut'yaap | v :: iv[agr=?a]/np : \x\y.bring x y
 suuhaa    | n :: iv[agr=?a]\(iv[agr=?a]/np) : \p.p salmon
+kalhsa'p=al | v :: (s/np)/np[agr=3s]:\x\y.bringout y x
+lu'csma+?ak | adj :: np/np:\x.poss woman x
+lu'xwicit   | n :: np[agr=3s]:woodpecker
+qawascsac=uk=?i' | np: contain strawberry
