@@ -60,7 +60,7 @@ meal | n   :: n :\x.meal x
 worker | n   :: n :\x.worker x
 poem     | n   :: n :\x.poem x
 shines    | v :: s\np[agr=3s]: \x.shine x
-likes     | v :: (s\np[agr=3s])/np: \x\y.like x y
+likes     | v :: (s\np[agr=3s])/np[ref=def]: \x\y.like x y
 I         | pn :: s/(s\np[agr=1s]):\p.p i
 gave      | v :: (S\np)/pp[p=to]/np: \x\y\z.give y x z
 gave      | v :: ((s\np)/np)/np: \x\y\z.give x y z
@@ -68,7 +68,7 @@ to Mo     | loc :: (S\np)\((s\np)/pp[p=to]): \p.p mo
 tries     | v :: (s\np[agr=3s])/vp: \p\x.try (p x)
 grab      | v :: iv/np: \x\y.gran x y
 believe   | v :: (s\np)/sp: \s\x.believe s x
-loves     | v :: (sp\np[agr=3s])/np: \x\y.love x y
+loves     | v :: (sp\np[agr=3s])/np[ref=def]: \x\y.love x y
 cats      | n :: np:cats
 
 % and now for something completely different, avoiding Montague 70 and 73.

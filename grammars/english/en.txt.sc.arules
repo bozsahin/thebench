@@ -10,5 +10,5 @@
 #_g2_136  np : a --> ((s\np)/pp[p=to])\(((s\np)/pp[p=to])/np) : \a\p.p a
 #_g2_135  np : a --> ((s\np)/np)\(((s\np)/np)/np) : \a\p.p a
 #_g2_132  sp : a --> (s\np)\((s\np)/sp) : \a\p.p a
-#_g2_131  np : a --> (sp\np[agr=3s])\((sp\np[agr=3s])/np) : \a\p.p a
+#_g2_131  np[ref=def] : a --> (sp\np[agr=3s])\((sp\np[agr=3s])/np[ref=def]) : \a\p.p a
 #_g2_130  np[ref=indef] : a --> (s\np)\((s\np)/np[ref=indef]) : \a\p.p a
