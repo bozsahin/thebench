@@ -52,8 +52,8 @@ novel     | n   :: n :\x.novel x
 flower    | n   :: n :\x.flower x
 Mo        | n  :: np: \p.p mo
 write     | v :: iv/np: \x\y.write x y
-every     | qu :: (s/(s\np[ref=def]))/n: \p\q\x.(forall x) (imp (p x) (q x))
-a     | qu :: (s/(s\np[ref=def]))/n: \p\q\x.(some x) (and (p x) (q x))
+every     | qu :: (s/(s\np))/n: \p\q\x.(forall x) (imp (p x) (q x))
+a     | qu :: ((s\np)\((s\np)/np[ref=def]))/n: \p\q\x.(some x) (and (p x) (q x))
 professor | n   :: n :\x.prof x
 book | n   :: n :\x.book x
 meal | n   :: n :\x.meal x

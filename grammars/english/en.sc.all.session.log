@@ -3,6 +3,7 @@
 
 no errors in grammar text, proceeding with set up..
 please check the /var/tmp/thebench/en.txt.log file for information.
+file en.txt.src exists in /var/tmp/thebench/, regenerating it.
 en.txt.src file generated
 grammar loaded from /var/tmp/thebench/en.txt.src; ready for analysis
 
@@ -38396,7 +38397,7 @@ Final LF, normal-order evaluated:
 
 Input: gave Mo a flower
 
-Number of analyses: 18
+Number of analyses: 25
 Done. Try , command for results
 
 /‾\ /‾\  ,
@@ -38404,6 +38405,42 @@ Done. Try , command for results
 
 
 Derivation 1
+--------------
+ELM   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+_G2_134 (Mo) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+>Bx   (|Mo|)(|a| |flower|) := S\((S\NP)/NP)
+        : (LAM X
+           (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+            (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+              (LAM X (FLOWER X)))
+             X)))
+<Bx   (|gave|)(|Mo| |a| |flower|) := S/NP
+        : (LAM X
+           ((LAM X
+             (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+              (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+                (LAM X (FLOWER X)))
+               X)))
+            ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X
+     ((SOME (LAM P (P MO)))
+      ((AND (FLOWER (LAM P (P MO)))) (LAM Z (((GIVE X) (LAM P (P MO))) Z))))) =
+    (\ X . SOME (\ P . P MO)
+     (AND (FLOWER (\ P . P MO)) (\ Z . GIVE X (\ P . P MO) Z)))
+
+Derivation 2
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38435,7 +38472,7 @@ Final LF, normal-order evaluated:
     (LAM X (((GIVE X) (INDEF (LAM X (FLOWER X)))) (LAM P (P MO)))) =
     (\ X . GIVE X (INDEF (\ X . FLOWER X)) (\ P . P MO))
 
-Derivation 2
+Derivation 3
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38471,7 +38508,7 @@ Final LF, normal-order evaluated:
     (LAM Y (((GIVE (INDEF (LAM X (FLOWER X)))) Y) (LAM P (P MO)))) =
     (\ Y . GIVE (INDEF (\ X . FLOWER X)) Y (\ P . P MO))
 
-Derivation 3
+Derivation 4
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38503,7 +38540,37 @@ Final LF, normal-order evaluated:
     (LAM X (((GIVE X) (INDEF (LAM X (FLOWER X)))) (LAM P (P MO)))) =
     (\ X . GIVE X (INDEF (\ X . FLOWER X)) (\ P . P MO))
 
-Derivation 4
+Derivation 5
+--------------
+ELM   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+_G2_131 (Mo) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+<B    (|Mo|)(|a| |flower|) := (S\NP)\(((S\NP)/NP)/NP)
+        : (LAM X
+           (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+             (LAM X (FLOWER X)))
+            (((LAM LF (LAM P (P LF))) (LAM P (P MO))) X)))
+T     (|gave|)(|Mo| |a| |flower|) := S\NP
+        : ((LAM X
+            (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+              (LAM X (FLOWER X)))
+             (((LAM LF (LAM P (P LF))) (LAM P (P MO))) X)))
+           (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE (LAM P (P MO))) X) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE (\ P . P MO) X Z)))
+
+Derivation 6
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38532,7 +38599,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
     (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
-Derivation 5
+Derivation 7
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38561,7 +38628,46 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
     (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
-Derivation 6
+Derivation 8
+--------------
+ELM   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+_G2_134 (Mo) := S/(S\NP)
+        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+>Bx2  (|Mo|)(|a|) := (S\((S\NP)/NP))/N
+        : (LAM X
+           (LAM Y
+            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+             (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X)))))) X) Y))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|Mo| |a|)(|flower|) := S\((S\NP)/NP)
+        : ((LAM X
+            (LAM Y
+             (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+              (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X)))))) X) Y))))
+           (LAM X (FLOWER X)))
+<Bx   (|gave|)(|Mo| |a| |flower|) := S/NP
+        : (LAM X
+           (((LAM X
+              (LAM Y
+               (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+                (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X)))))) X)
+                 Y))))
+             (LAM X (FLOWER X)))
+            ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X
+     ((SOME (LAM P (P MO)))
+      ((AND (FLOWER (LAM P (P MO)))) (LAM Z (((GIVE X) (LAM P (P MO))) Z))))) =
+    (\ X . SOME (\ P . P MO)
+     (AND (FLOWER (\ P . P MO)) (\ Z . GIVE X (\ P . P MO) Z)))
+
+Derivation 9
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38597,7 +38703,32 @@ Final LF, normal-order evaluated:
     (LAM Y (((GIVE Y) (INDEF (LAM X (FLOWER X)))) (LAM P (P MO)))) =
     (\ Y . GIVE Y (INDEF (\ X . FLOWER X)) (\ P . P MO))
 
-Derivation 7
+Derivation 10
+--------------
+ELM   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+ELM   (Mo) := NP
+        : (LAM P (P MO))
+A     (|gave|)(|Mo|) := (S\NP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+T     (|gave| |Mo|)(|a| |flower|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (FLOWER X)))
+           ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE (LAM P (P MO))) X) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE (\ P . P MO) X Z)))
+
+Derivation 11
 --------------
 ELM   (gave) := ((S\NP)/NP)/NP
         : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
@@ -38620,7 +38751,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
     (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
-Derivation 8
+Derivation 12
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38645,7 +38776,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
     (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
-Derivation 9
+Derivation 13
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38670,7 +38801,36 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
     (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
-Derivation 10
+Derivation 14
+--------------
+ELM   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+_P2_221 (Mo) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+<Bx   (|gave|)(|Mo|) := (S\NP)/NP
+        : (LAM X
+           (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+            ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+T     (|gave| |Mo|)(|a| |flower|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (FLOWER X)))
+           (LAM X
+            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+             ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE X) (LAM P (P MO))) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE X (\ P . P MO) Z)))
+
+Derivation 15
 --------------
 ELM   (gave) := ((S\NP)/NP)/NP
         : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
@@ -38697,7 +38857,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (INDEF (LAM X (FLOWER X)))) (LAM P (P MO))) Z)) =
     (\ Z . GIVE (INDEF (\ X . FLOWER X)) (\ P . P MO) Z)
 
-Derivation 11
+Derivation 16
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38726,7 +38886,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (INDEF (LAM X (FLOWER X)))) (LAM P (P MO))) Z)) =
     (\ Z . GIVE (INDEF (\ X . FLOWER X)) (\ P . P MO) Z)
 
-Derivation 12
+Derivation 17
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38755,7 +38915,34 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (INDEF (LAM X (FLOWER X)))) (LAM P (P MO))) Z)) =
     (\ Z . GIVE (INDEF (\ X . FLOWER X)) (\ P . P MO) Z)
 
-Derivation 13
+Derivation 18
+--------------
+ELM   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+_G2_131 (Mo) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+T     (|gave|)(|Mo|) := (S\NP)/NP
+        : (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+           (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+T     (|gave| |Mo|)(|a| |flower|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (FLOWER X)))
+           (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+            (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE (LAM P (P MO))) X) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE (\ P . P MO) X Z)))
+
+Derivation 19
 --------------
 ELM   (gave) := ((S\NP)/NP)/NP
         : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
@@ -38780,7 +38967,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
     (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
-Derivation 14
+Derivation 20
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38807,7 +38994,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
     (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
-Derivation 15
+Derivation 21
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38834,7 +39021,36 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
     (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
 
-Derivation 16
+Derivation 22
+--------------
+ELM   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+_G2_126 (Mo) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+<Bx   (|gave|)(|Mo|) := (S\NP)/NP
+        : (LAM X
+           (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+            ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+T     (|gave| |Mo|)(|a| |flower|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (FLOWER X)))
+           (LAM X
+            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+             ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE X) (LAM P (P MO))) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE X (\ P . P MO) Z)))
+
+Derivation 23
 --------------
 ELM   (gave) := ((S\NP)/NP)/NP
         : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
@@ -38861,7 +39077,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (INDEF (LAM X (FLOWER X)))) (LAM P (P MO))) Z)) =
     (\ Z . GIVE (INDEF (\ X . FLOWER X)) (\ P . P MO) Z)
 
-Derivation 17
+Derivation 24
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38890,7 +39106,7 @@ Final LF, normal-order evaluated:
     (LAM Z (((GIVE (INDEF (LAM X (FLOWER X)))) (LAM P (P MO))) Z)) =
     (\ Z . GIVE (INDEF (\ X . FLOWER X)) (\ P . P MO) Z)
 
-Derivation 18
+Derivation 25
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -38947,8 +39163,8 @@ ELM   (grab) := IV/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM G5363 (TRY ((GRAN X) G5363)))) =
-    (\ X . \ G5369 . TRY (GRAN X G5369))
+    (LAM X (LAM G5441 (TRY ((GRAN X) G5441)))) =
+    (\ X . \ G5447 . TRY (GRAN X G5447))
 
 Derivation 2
 --------------
@@ -38967,14 +39183,14 @@ ELM   (grab) := IV/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM G5375 (TRY ((GRAN X) G5375)))) =
-    (\ X . \ G5381 . TRY (GRAN X G5381))
+    (LAM X (LAM G5453 (TRY ((GRAN X) G5453)))) =
+    (\ X . \ G5459 . TRY (GRAN X G5459))
 
 /‾\ /‾\  a every professor wrote a book
 
 Input: every professor wrote a book
 
-Number of analyses: 8
+Number of analyses: 10
 Done. Try , command for results
 
 /‾\ /‾\  ,
@@ -38982,6 +39198,42 @@ Done. Try , command for results
 
 
 Derivation 1
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/NP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (BOOK X)))
+T     (|wrote|)(|a| |book|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (BOOK X)))
+           (LAM X (LAM Y ((WRITE X) Y))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+             (LAM X (BOOK X)))
+            (LAM X (LAM Y ((WRITE X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X
+     ((FORALL X)
+      ((IMP (PROF X)) ((SOME X) ((AND (BOOK X)) (LAM Y ((WRITE X) Y))))))) =
+    (\ X . FORALL X (IMP (PROF X) (SOME X (AND (BOOK X) (\ Y . WRITE X Y)))))
+
+Derivation 2
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -39014,7 +39266,7 @@ Final LF, normal-order evaluated:
     (LAM X ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))) =
     (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X)))
 
-Derivation 2
+Derivation 3
 --------------
 ELM   (every) := (S/(S\NP))/N
         : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
@@ -39043,7 +39295,7 @@ Final LF, normal-order evaluated:
     (LAM X ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))) =
     (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X)))
 
-Derivation 3
+Derivation 4
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -39076,7 +39328,7 @@ Final LF, normal-order evaluated:
     (LAM X ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))) =
     (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X)))
 
-Derivation 4
+Derivation 5
 --------------
 ELM   (every) := (S/(S\NP))/N
         : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
@@ -39110,7 +39362,53 @@ Final LF, normal-order evaluated:
     (LAM X ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))) =
     (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X)))
 
-Derivation 5
+Derivation 6
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/NP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (BOOK X)))
+T     (|wrote|)(|a| |book|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (BOOK X)))
+           (LAM X (LAM Y ((WRITE X) Y))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+             (LAM X (BOOK X)))
+            (LAM X (LAM Y ((WRITE X) Y)))))
+_G2_148 (every professor wrote a book) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (PROF X)))
+            (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+              (LAM X (BOOK X)))
+             (LAM X (LAM Y ((WRITE X) Y))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P
+     (P
+      (LAM X
+       ((FORALL X)
+        ((IMP (PROF X)) ((SOME X) ((AND (BOOK X)) (LAM Y ((WRITE X) Y))))))))) =
+    (\ P . P
+     (\ X . FORALL X (IMP (PROF X) (SOME X (AND (BOOK X) (\ Y . WRITE X Y))))))
+
+Derivation 7
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -39152,7 +39450,7 @@ Final LF, normal-order evaluated:
        ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))))) =
     (\ P . P (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X))))
 
-Derivation 6
+Derivation 8
 --------------
 ELM   (every) := (S/(S\NP))/N
         : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
@@ -39190,7 +39488,7 @@ Final LF, normal-order evaluated:
        ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))))) =
     (\ P . P (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X))))
 
-Derivation 7
+Derivation 9
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -39232,7 +39530,7 @@ Final LF, normal-order evaluated:
        ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))))) =
     (\ P . P (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X))))
 
-Derivation 8
+Derivation 10
 --------------
 ELM   (every) := (S/(S\NP))/N
         : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
@@ -39280,7 +39578,7 @@ Final LF, normal-order evaluated:
 
 Input: every worker missed a meal
 
-Number of analyses: 2
+Number of analyses: 4
 Done. Try , command for results
 
 /‾\ /‾\  ,
@@ -39288,6 +39586,42 @@ Done. Try , command for results
 
 
 Derivation 1
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/NP
+        : (LAM X (LAM Y ((MISS X) Y)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (meal) := N
+        : (LAM X (MEAL X))
+A     (|a|)(|meal|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (MEAL X)))
+T     (|missed|)(|a| |meal|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (MEAL X)))
+           (LAM X (LAM Y ((MISS X) Y))))
+A     (|every| |worker|)(|missed| |a| |meal|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+             (LAM X (MEAL X)))
+            (LAM X (LAM Y ((MISS X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X
+     ((FORALL X)
+      ((IMP (WORKER X)) ((SOME X) ((AND (MEAL X)) (LAM Y ((MISS X) Y))))))) =
+    (\ X . FORALL X (IMP (WORKER X) (SOME X (AND (MEAL X) (\ Y . MISS X Y)))))
+
+Derivation 2
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
@@ -39320,7 +39654,53 @@ Final LF, normal-order evaluated:
     (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS (INDEF (LAM X (MEAL X)))) X)))) =
     (\ X . FORALL X (IMP (WORKER X) (MISS (INDEF (\ X . MEAL X)) X)))
 
-Derivation 2
+Derivation 3
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/NP
+        : (LAM X (LAM Y ((MISS X) Y)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (meal) := N
+        : (LAM X (MEAL X))
+A     (|a|)(|meal|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (MEAL X)))
+T     (|missed|)(|a| |meal|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (MEAL X)))
+           (LAM X (LAM Y ((MISS X) Y))))
+A     (|every| |worker|)(|missed| |a| |meal|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+             (LAM X (MEAL X)))
+            (LAM X (LAM Y ((MISS X) Y)))))
+_G2_148 (every worker missed a meal) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (WORKER X)))
+            (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+              (LAM X (MEAL X)))
+             (LAM X (LAM Y ((MISS X) Y))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P
+     (P
+      (LAM X
+       ((FORALL X)
+        ((IMP (WORKER X)) ((SOME X) ((AND (MEAL X)) (LAM Y ((MISS X) Y))))))))) =
+    (\ P . P
+     (\ X . FORALL X (IMP (WORKER X) (SOME X (AND (MEAL X) (\ Y . MISS X Y))))))
+
+Derivation 4
 --------------
 ELM   (a) := NP/*N
         : (LAM X (INDEF X))
