@@ -50,6 +50,9 @@ a gave Mo a flower
 ,
 a tries to grab
 ,  
+pass generating special case functions for testing scope inversion
+g en.txt
+c test
 a every professor wrote a book
 ,
 a every worker missed a meal
