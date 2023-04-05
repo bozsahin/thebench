@@ -46,14 +46,12 @@ did Sally sing| q :: s/np[case=loc] : \y\x.sing x y
 to        | inf :: vp/iv: \p.p
 study     | v   :: iv:\x.study x
 the       | det :: np/*n:\x.def x
-a         | det :: inp/*n:\x.indef x
 that      | rel :: (n\n)/(s/np): \p\q\x.and (p x) (q x)
 novel     | n   :: n :\x.novel x
 flower    | n   :: n :\x.flower x
 Mo        | n  :: np: \p.p mo
 write     | v :: iv/np: \x\y.write x y
 every     | qu :: (s/(s\np))/n: \p\q\x.(forall x) (imp (p x) (q x))
-a     | qu :: ((s\np)\((s\np)/np))/n: \p\q\x.(some x) (and (p x) (q x))
 professor | n   :: n :\x.prof x
 book | n   :: n :\x.book x
 meal | n   :: n :\x.meal x
@@ -73,6 +71,10 @@ cats      | n :: np:cats
 
 % and now for something completely different, avoiding Montague 70 and 73.
 % the verb's reference rather than the quantifiers handle scope inversion
+% the idea in the next two entries is that a as a determiner can allow
+%   quantification or identification, and verbs are sensitive to that.
+a     | det :: inp/*n:\x.indef x
+a     | qu :: ((s\np)\((s\np)/np))/n: \p\q\x.(some x) (and (p x) (q x))
 wrote     | test :: (s\np)/np:\x\y.write x y
 wrote     | test :: (s\np)/inp  :\x\y.write x y
 missed    | test :: (s\np)/inp  :\x\y.miss x y
