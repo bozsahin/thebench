@@ -1,4 +1,13 @@
 
+/‾\ /‾\  pass List of commands where we load english grammar, generate case functions
+
+
+/‾\ /‾\  pass and do some anayses
+
+
+/‾\ /‾\  pass Normal form parsing is turned ON to see one equivalent analysis
+
+
 /‾\ /‾\  g en.txt
 
 no errors in grammar text, proceeding with set up..
@@ -7,16 +16,16 @@ file en.txt.src exists in /var/tmp/thebench/, regenerating it.
 en.txt.src file generated
 grammar loaded from /var/tmp/thebench/en.txt.src; ready for analysis
 
-/‾\ /‾\  c v
+/‾\ /‾\  c v test
 
 
 Summary of compiling synthetic case functions for current grammar
 Log of warnings and errors                      : en.txt.case.log (total entry: 2)
-Number of elements in the grammar               : 64
-Number of elementary functions considered       : 31
-POS tags considered for synthetic case          : (V)
-Number of second-order case functions generated : 29
-Number of paradigmatic functions out of them    : 13
+Number of elements in the grammar               : 72
+Number of elementary functions considered       : 34
+POS tags considered for synthetic case          : (V TEST)
+Number of second-order case functions generated : 32
+Number of paradigmatic functions out of them    : 14
 
 Check the en.txt.case.log file for potential concerns.
 These are not ill-formed,
@@ -110,7 +119,7 @@ ELM   (sincerity) := S/(S\NP)
         : (LAM P (P SINCERITY))
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
-_P2_206 (john) := (S\NP)\((S\NP)/NP)
+_P2_5178 (john) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) JOHN)
 T     (|admires|)(|john|) := S\NP
         : (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))
@@ -165,7 +174,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
-_P2_206 (john) := (S\NP)\((S\NP)/NP)
+_P2_5178 (john) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) JOHN)
 T     (|admires|)(|john|) := S\NP
         : (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))
@@ -179,7 +188,7 @@ Final LF, normal-order evaluated:
 
 Derivation 7
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
@@ -198,7 +207,7 @@ Final LF, normal-order evaluated:
 
 Derivation 8
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
@@ -216,11 +225,11 @@ Final LF, normal-order evaluated:
 
 Derivation 9
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
-_P2_206 (john) := (S\NP)\((S\NP)/NP)
+_P2_5178 (john) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) JOHN)
 T     (|admires|)(|john|) := S\NP
         : (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))
@@ -245,7 +254,7 @@ T     (|admires|)(|john|) := S\NP
         : ((LAM P (P JOHN)) ((ADMIRE X) Y))
 A     (|sincerity|)(|admires| |john|) := S
         : ((LAM P (P SINCERITY)) ((LAM P (P JOHN)) ((ADMIRE X) Y)))
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P SINCERITY)) ((LAM P (P JOHN)) ((ADMIRE X) Y))))
 
@@ -266,7 +275,7 @@ A     (|admires|)(|john|) := S\NP
         : (((ADMIRE X) Y) JOHN)
 A     (|sincerity|)(|admires| |john|) := S
         : ((LAM P (P SINCERITY)) (((ADMIRE X) Y) JOHN))
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P SINCERITY)) (((ADMIRE X) Y) JOHN)))
 
@@ -281,14 +290,14 @@ ELM   (sincerity) := S/(S\NP)
         : (LAM P (P SINCERITY))
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
-_P2_206 (john) := (S\NP)\((S\NP)/NP)
+_P2_5178 (john) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) JOHN)
 T     (|admires|)(|john|) := S\NP
         : (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))
 A     (|sincerity|)(|admires| |john|) := S
         : ((LAM P (P SINCERITY))
            (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y)))
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P SINCERITY))
             (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))))
@@ -310,7 +319,7 @@ T     (|admires|)(|john|) := S\NP
         : ((LAM P (P JOHN)) ((ADMIRE X) Y))
 T     (|sincerity|)(|admires| |john|) := S
         : (((LAM P (P JOHN)) ((ADMIRE X) Y)) SINCERITY)
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM P (P JOHN)) ((ADMIRE X) Y)) SINCERITY))
 
@@ -331,7 +340,7 @@ A     (|admires|)(|john|) := S\NP
         : (((ADMIRE X) Y) JOHN)
 T     (|sincerity|)(|admires| |john|) := S
         : ((((ADMIRE X) Y) JOHN) SINCERITY)
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF))) ((((ADMIRE X) Y) JOHN) SINCERITY))
 
 Final LF, normal-order evaluated: 
@@ -345,13 +354,13 @@ ELM   (sincerity) := NP
         : SINCERITY
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
-_P2_206 (john) := (S\NP)\((S\NP)/NP)
+_P2_5178 (john) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) JOHN)
 T     (|admires|)(|john|) := S\NP
         : (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))
 T     (|sincerity|)(|admires| |john|) := S
         : ((((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y)) SINCERITY)
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y)) SINCERITY))
 
@@ -362,7 +371,7 @@ Final LF, normal-order evaluated:
 
 Derivation 16
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
@@ -373,7 +382,7 @@ T     (|admires|)(|john|) := S\NP
 A     (|sincerity|)(|admires| |john|) := S
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            ((LAM P (P JOHN)) ((ADMIRE X) Y)))
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) SINCERITY)
             ((LAM P (P JOHN)) ((ADMIRE X) Y))))
@@ -385,7 +394,7 @@ Final LF, normal-order evaluated:
 
 Derivation 17
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
@@ -395,7 +404,7 @@ A     (|admires|)(|john|) := S\NP
         : (((ADMIRE X) Y) JOHN)
 A     (|sincerity|)(|admires| |john|) := S
         : (((LAM LF (LAM P (P LF))) SINCERITY) (((ADMIRE X) Y) JOHN))
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) SINCERITY) (((ADMIRE X) Y) JOHN)))
 
@@ -406,18 +415,18 @@ Final LF, normal-order evaluated:
 
 Derivation 18
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
-_P2_206 (john) := (S\NP)\((S\NP)/NP)
+_P2_5178 (john) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) JOHN)
 T     (|admires|)(|john|) := S\NP
         : (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))
 A     (|sincerity|)(|admires| |john|) := S
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y)))
-_G2_149 (sincerity admires john) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity admires john) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) SINCERITY)
             (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))))
@@ -454,7 +463,7 @@ Final LF, normal-order evaluated:
 
 Derivation 2
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
@@ -509,7 +518,7 @@ Derivation 3
 --------------
 ELM   (admires) := (S\NP)/NP
         : ((ADMIRE X) Y)
-_P2_206 (john) := (S\NP)\((S\NP)/NP)
+_P2_5178 (john) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) JOHN)
 T     (|admires|)(|john|) := S\NP
         : (((LAM LF (LAM P (P LF))) JOHN) ((ADMIRE X) Y))
@@ -801,7 +810,7 @@ Final LF, normal-order evaluated:
 
 Derivation 2
 --------------
-_G2_135 (mary) := S/(S\NP)
+_G2_5099 (mary) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) MARY)
 ELM   (musn't) := (S\NP)/IV
         : (LAM P (LAM X (MUSTNOT (P X))))
@@ -904,7 +913,7 @@ T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
                ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
                 (LAM X (LAM Y ((DISMISS X) Y))))))))
            MARY)
-_G2_149 (mary musn't have been being dismiss ed) := (S\NP)\((S\NP)/S)
+_G2_5113 (mary musn't have been being dismiss ed) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM P (LAM X (MUSTNOT (P X))))
              ((LAM P (HAVE P))
@@ -925,7 +934,7 @@ Final LF, normal-order evaluated:
 
 Derivation 4
 --------------
-_G2_135 (mary) := S/(S\NP)
+_G2_5099 (mary) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) MARY)
 ELM   (musn't) := (S\NP)/IV
         : (LAM P (LAM X (MUSTNOT (P X))))
@@ -972,7 +981,7 @@ A     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
               ((LAM P (BEING P))
                ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
                 (LAM X (LAM Y ((DISMISS X) Y)))))))))
-_G2_149 (mary musn't have been being dismiss ed) := (S\NP)\((S\NP)/S)
+_G2_5113 (mary musn't have been being dismiss ed) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) MARY)
             ((LAM P (LAM X (MUSTNOT (P X))))
@@ -1060,7 +1069,7 @@ Final LF, normal-order evaluated:
 
 Derivation 2
 --------------
-_G2_135 (mary) := S/(S\NP)
+_G2_5099 (mary) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) MARY)
 ELM   (musn't) := (S\NP)/IV
         : (LAM P (LAM X (MUSTNOT (P X))))
@@ -1163,7 +1172,7 @@ T     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
                ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
                 (LAM X (LAM Y ((DISMISS X) Y))))))))
            MARY)
-_G2_149 (mary musn't have been being dismiss ed) := (S\NP)\((S\NP)/S)
+_G2_5113 (mary musn't have been being dismiss ed) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM P (LAM X (MUSTNOT (P X))))
              ((LAM P (HAVE P))
@@ -1184,7 +1193,7 @@ Final LF, normal-order evaluated:
 
 Derivation 4
 --------------
-_G2_135 (mary) := S/(S\NP)
+_G2_5099 (mary) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) MARY)
 ELM   (musn't) := (S\NP)/IV
         : (LAM P (LAM X (MUSTNOT (P X))))
@@ -1231,7 +1240,7 @@ A     (|mary|)(|musn't| |have| |been| |being| |dismiss| |ed|) := S
               ((LAM P (BEING P))
                ((LAM P (LAM X (LAM Y (PASS ((P X) Y)))))
                 (LAM X (LAM Y ((DISMISS X) Y)))))))))
-_G2_149 (mary musn't have been being dismiss ed) := (S\NP)\((S\NP)/S)
+_G2_5113 (mary musn't have been being dismiss ed) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) MARY)
             ((LAM P (LAM X (MUSTNOT (P X))))
@@ -1274,8 +1283,8 @@ ELM   (reading) := VP/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM Q (LAM G354 ((WITHOUT ((READ X) G354)) (Q G354))))) =
-    (\ X . \ Q . \ G362 . WITHOUT (READ X G362) (Q G362))
+    (LAM X (LAM Q (LAM G5328 ((WITHOUT ((READ X) G5328)) (Q G5328))))) =
+    (\ X . \ Q . \ G5336 . WITHOUT (READ X G5336) (Q G5336))
 
 /‾\ /‾\  a what and where |did Sally sing| 
 
@@ -1335,7 +1344,7 @@ A     (|what| |and| |where|)(|did Sally sing|) := S
         : (((((AND (P X)) (Q X)) (LAM P (LAM X ((QUESTION (AT X)) (P X)))))
             (LAM P (LAM X (QUESTION (P X)))))
            (LAM Y (LAM X ((SING X) Y))))
-_G2_149 (what and where did Sally sing) := (S\NP)\((S\NP)/S)
+_G2_5113 (what and where did Sally sing) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((((AND (P X)) (Q X)) (LAM P (LAM X ((QUESTION (AT X)) (P X)))))
              (LAM P (LAM X (QUESTION (P X)))))
@@ -1343,12 +1352,12 @@ _G2_149 (what and where did Sally sing) := (S\NP)\((S\NP)/S)
 
 Final LF, normal-order evaluated: 
 
-    (LAM G382
-     (G382
+    (LAM G5356
+     (G5356
       (((((AND (P X)) (Q X)) (LAM P (LAM X ((QUESTION (AT X)) (P X)))))
         (LAM P (LAM X (QUESTION (P X)))))
        (LAM Y (LAM X ((SING X) Y)))))) =
-    (\ G390 . G390
+    (\ G5364 . G5364
      (AND (P X) (Q X) (\ P . \ X . QUESTION (AT X) (P X))
           (\ P . \ X . QUESTION (P X)) (\ Y . \ X . SING X Y)))
 
@@ -1375,7 +1384,7 @@ ELM   (sincerity) := S/(S\NP)
         : (LAM P (P SINCERITY))
 ELM   (wants) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y ((WANT (P X)) Y))))
-_P2_186 (to study) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to study) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
 <Bx   (|wants|)(|to| |study|) := (S\NP)/NP
         : (LAM X
@@ -1429,7 +1438,7 @@ ELM   (sincerity) := S/(S\NP)
         : (LAM P (P SINCERITY))
 ELM   (wants) := (S\NP)/VP
         : (LAM P (LAM Y ((WANT (P Y)) Y)))
-_P2_186 (to study) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to study) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
 T     (|wants|)(|to| |study|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
@@ -1479,7 +1488,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 ELM   (wants) := (S\NP)/VP
         : (LAM P (LAM Y ((WANT (P Y)) Y)))
-_P2_186 (to study) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to study) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
 T     (|wants|)(|to| |study|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
@@ -1502,11 +1511,11 @@ ELM   (study) := IV
         : (LAM X (STUDY X))
 A     (|to|)(|study|) := VP
         : ((LAM P P) (LAM X (STUDY X)))
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (wants) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y ((WANT (P X)) Y))))
-_P2_186 (to study) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to study) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
 <Bx   (|wants|)(|to| |study|) := (S\NP)/NP
         : (LAM X
@@ -1527,7 +1536,7 @@ Final LF, normal-order evaluated:
 
 Derivation 7
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (wants) := (S\NP)/VP
         : (LAM P (LAM Y ((WANT (P Y)) Y)))
@@ -1556,11 +1565,11 @@ ELM   (study) := IV
         : (LAM X (STUDY X))
 A     (|to|)(|study|) := VP
         : ((LAM P P) (LAM X (STUDY X)))
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (wants) := (S\NP)/VP
         : (LAM P (LAM Y ((WANT (P Y)) Y)))
-_P2_186 (to study) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to study) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
 T     (|wants|)(|to| |study|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
@@ -1592,7 +1601,7 @@ A     (|wants|)(|to| |study|) := S\NP
 A     (|sincerity|)(|wants| |to| |study|) := S
         : ((LAM P (P SINCERITY))
            ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) (LAM X (STUDY X)))))
-_G2_149 (sincerity wants to study) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity wants to study) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P SINCERITY))
             ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) (LAM X (STUDY X))))))
@@ -1614,7 +1623,7 @@ ELM   (sincerity) := S/(S\NP)
         : (LAM P (P SINCERITY))
 ELM   (wants) := (S\NP)/VP
         : (LAM P (LAM Y ((WANT (P Y)) Y)))
-_P2_186 (to study) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to study) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
 T     (|wants|)(|to| |study|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
@@ -1623,7 +1632,7 @@ A     (|sincerity|)(|wants| |to| |study|) := S
         : ((LAM P (P SINCERITY))
            (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
             (LAM P (LAM Y ((WANT (P Y)) Y)))))
-_G2_149 (sincerity wants to study) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity wants to study) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P SINCERITY))
             (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
@@ -1651,7 +1660,7 @@ A     (|wants|)(|to| |study|) := S\NP
 T     (|sincerity|)(|wants| |to| |study|) := S
         : (((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) (LAM X (STUDY X))))
            SINCERITY)
-_G2_149 (sincerity wants to study) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity wants to study) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) (LAM X (STUDY X))))
             SINCERITY))
@@ -1673,7 +1682,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 ELM   (wants) := (S\NP)/VP
         : (LAM P (LAM Y ((WANT (P Y)) Y)))
-_P2_186 (to study) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to study) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
 T     (|wants|)(|to| |study|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
@@ -1682,7 +1691,7 @@ T     (|sincerity|)(|wants| |to| |study|) := S
         : ((((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
             (LAM P (LAM Y ((WANT (P Y)) Y))))
            SINCERITY)
-_G2_149 (sincerity wants to study) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity wants to study) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
              (LAM P (LAM Y ((WANT (P Y)) Y))))
@@ -1695,7 +1704,7 @@ Final LF, normal-order evaluated:
 
 Derivation 13
 --------------
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (wants) := (S\NP)/VP
         : (LAM P (LAM Y ((WANT (P Y)) Y)))
@@ -1710,7 +1719,7 @@ A     (|wants|)(|to| |study|) := S\NP
 A     (|sincerity|)(|wants| |to| |study|) := S
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) (LAM X (STUDY X)))))
-_G2_149 (sincerity wants to study) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity wants to study) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) SINCERITY)
             ((LAM P (LAM Y ((WANT (P Y)) Y))) ((LAM P P) (LAM X (STUDY X))))))
@@ -1728,11 +1737,11 @@ ELM   (study) := IV
         : (LAM X (STUDY X))
 A     (|to|)(|study|) := VP
         : ((LAM P P) (LAM X (STUDY X)))
-_G2_135 (sincerity) := S/(S\NP)
+_G2_5099 (sincerity) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 ELM   (wants) := (S\NP)/VP
         : (LAM P (LAM Y ((WANT (P Y)) Y)))
-_P2_186 (to study) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to study) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
 T     (|wants|)(|to| |study|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
@@ -1741,7 +1750,7 @@ A     (|sincerity|)(|wants| |to| |study|) := S
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
             (LAM P (LAM Y ((WANT (P Y)) Y)))))
-_G2_149 (sincerity wants to study) := (S\NP)\((S\NP)/S)
+_G2_5113 (sincerity wants to study) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) SINCERITY)
             (((LAM LF (LAM P (P LF))) ((LAM P P) (LAM X (STUDY X))))
@@ -1771,7 +1780,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -1842,11 +1851,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -1919,7 +1928,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -1971,7 +1980,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_P2_184 (the novel that Mo persuaded sincerity to write) := IV\(IV/NP)
+_P2_5189 (the novel that Mo persuaded sincerity to write) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2004,11 +2013,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -2062,7 +2071,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_P2_184 (the novel that Mo persuaded sincerity to write) := IV\(IV/NP)
+_P2_5189 (the novel that Mo persuaded sincerity to write) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2096,7 +2105,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -2148,7 +2157,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_P2_215 (the novel that Mo persuaded sincerity to write) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_G2_5111 (the novel that Mo persuaded sincerity to write) := ((S\NP)/'up')\(((S\NP)/'up')/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2181,11 +2190,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -2239,7 +2248,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_P2_215 (the novel that Mo persuaded sincerity to write) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_G2_5111 (the novel that Mo persuaded sincerity to write) := ((S\NP)/'up')\(((S\NP)/'up')/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2273,7 +2282,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -2325,7 +2334,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_P2_206 (the novel that Mo persuaded sincerity to write) := (S\NP)\((S\NP)/NP)
+_P2_5158 (the novel that Mo persuaded sincerity to write) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2358,11 +2367,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -2416,7 +2425,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_P2_206 (the novel that Mo persuaded sincerity to write) := (S\NP)\((S\NP)/NP)
+_P2_5158 (the novel that Mo persuaded sincerity to write) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2450,7 +2459,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -2502,7 +2511,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_147 (the novel that Mo persuaded sincerity to write) := ((S\NP)/'up')\(((S\NP)/'up')/NP)
+_G2_5099 (the novel that Mo persuaded sincerity to write) := S/(S\NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2535,11 +2544,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -2593,7 +2602,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_147 (the novel that Mo persuaded sincerity to write) := ((S\NP)/'up')\(((S\NP)/'up')/NP)
+_G2_5099 (the novel that Mo persuaded sincerity to write) := S/(S\NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2627,7 +2636,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -2679,7 +2688,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_135 (the novel that Mo persuaded sincerity to write) := S/(S\NP)
+_G2_5097 (the novel that Mo persuaded sincerity to write) := ((S\NP)/PP)\(((S\NP)/PP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2712,11 +2721,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -2770,7 +2779,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_135 (the novel that Mo persuaded sincerity to write) := S/(S\NP)
+_G2_5097 (the novel that Mo persuaded sincerity to write) := ((S\NP)/PP)\(((S\NP)/PP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2804,7 +2813,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -2856,7 +2865,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_133 (the novel that Mo persuaded sincerity to write) := ((S\NP)/PP)\(((S\NP)/PP)/NP)
+_G2_5096 (the novel that Mo persuaded sincerity to write) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2889,11 +2898,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -2947,7 +2956,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_133 (the novel that Mo persuaded sincerity to write) := ((S\NP)/PP)\(((S\NP)/PP)/NP)
+_G2_5096 (the novel that Mo persuaded sincerity to write) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -2981,7 +2990,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -3033,7 +3042,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_132 (the novel that Mo persuaded sincerity to write) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+_G2_5092 (the novel that Mo persuaded sincerity to write) := (SP\NP)\((SP\NP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -3066,11 +3075,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -3124,7 +3133,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_132 (the novel that Mo persuaded sincerity to write) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+_G2_5092 (the novel that Mo persuaded sincerity to write) := (SP\NP)\((SP\NP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -3158,7 +3167,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -3210,7 +3219,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_128 (the novel that Mo persuaded sincerity to write) := (SP\NP)\((SP\NP)/NP)
+_P2_5178 (the novel that Mo persuaded sincerity to write) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -3243,11 +3252,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 ELM   (that) := (N\N)/(S/NP)
         : (LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -3301,7 +3310,7 @@ A     (|the|)(|novel| |that| |Mo| |persuaded| |sincerity| |to| |write|) := NP
                   ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
                 X))))
             (LAM X (NOVEL X))))
-_G2_128 (the novel that Mo persuaded sincerity to write) := (SP\NP)\((SP\NP)/NP)
+_P2_5178 (the novel that Mo persuaded sincerity to write) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM X (DEF X))
             (((LAM P (LAM Q (LAM X ((AND (P X)) (Q X)))))
@@ -3401,7 +3410,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3453,7 +3462,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             ((LAM X (LAM Y ((WRITE X) Y)))
@@ -3490,7 +3499,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3507,7 +3516,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3538,7 +3547,7 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -3590,7 +3599,7 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -3599,7 +3608,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3649,12 +3658,12 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             ((LAM X (LAM Y ((WRITE X) Y)))
@@ -3693,7 +3702,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3706,12 +3715,12 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3764,7 +3773,7 @@ ELM   (write) := IV/NP
         : (LAM X
            (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-_P2_206 (the novel) := (S\NP)\((S\NP)/NP)
+_P2_5178 (the novel) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3796,7 +3805,7 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -3812,7 +3821,7 @@ ELM   (write) := IV/NP
            ((((LAM LF (LAM P (P LF))) SINCERITY)
              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-_P2_206 (the novel) := (S\NP)\((S\NP)/NP)
+_P2_5178 (the novel) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3836,7 +3845,7 @@ Final LF, normal-order evaluated:
 
 Derivation 11
 --------------
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -3885,7 +3894,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -3897,7 +3906,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3941,7 +3950,7 @@ A     (|write|)(|the| |novel|) := IV
 A     (|to|)(|write| |the| |novel|) := VP
         : ((LAM P P)
            ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -3949,7 +3958,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             ((LAM X (LAM Y ((WRITE X) Y)))
@@ -3986,7 +3995,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -3995,7 +4004,7 @@ A     (|to|)(|write| |the| |novel|) := VP
         : ((LAM P P)
            (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
             (LAM X (LAM Y ((WRITE X) Y)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -4003,7 +4012,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4030,11 +4039,11 @@ Final LF, normal-order evaluated:
 
 Derivation 15
 --------------
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -4082,11 +4091,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -4095,7 +4104,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4141,16 +4150,16 @@ A     (|write|)(|the| |novel|) := IV
 A     (|to|)(|write| |the| |novel|) := VP
         : ((LAM P P)
            ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             ((LAM X (LAM Y ((WRITE X) Y)))
@@ -4189,7 +4198,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4198,16 +4207,16 @@ A     (|to|)(|write| |the| |novel|) := VP
         : ((LAM P P)
            (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
             (LAM X (LAM Y ((WRITE X) Y)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4242,7 +4251,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -4260,7 +4269,7 @@ ELM   (write) := IV/NP
         : (LAM X
            (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-_P2_206 (the novel) := (S\NP)\((S\NP)/NP)
+_P2_5178 (the novel) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4288,11 +4297,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -4308,7 +4317,7 @@ ELM   (write) := IV/NP
            ((((LAM LF (LAM P (P LF))) SINCERITY)
              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-_P2_206 (the novel) := (S\NP)\((S\NP)/NP)
+_P2_5178 (the novel) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4366,7 +4375,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
              ((LAM X (LAM Y ((WRITE X) Y)))
               ((LAM X (DEF X)) (LAM X (NOVEL X))))))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
              ((LAM P P)
@@ -4403,7 +4412,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4423,7 +4432,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
              (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
               (LAM X (LAM Y ((WRITE X) Y))))))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
              ((LAM P P)
@@ -4465,7 +4474,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             ((LAM X (LAM Y ((WRITE X) Y)))
@@ -4483,7 +4492,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
                ((LAM X (DEF X)) (LAM X (NOVEL X))))))
             ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF)))
               ((LAM P P)
@@ -4513,7 +4522,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4530,7 +4539,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4548,7 +4557,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
                (LAM X (LAM Y ((WRITE X) Y))))))
             ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF)))
               ((LAM P P)
@@ -4572,7 +4581,7 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -4605,7 +4614,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
              ((LAM X (LAM Y ((WRITE X) Y)))
               ((LAM X (DEF X)) (LAM X (NOVEL X))))))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((((LAM LF (LAM P (P LF))) SINCERITY)
               (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
@@ -4635,7 +4644,7 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -4644,7 +4653,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4666,7 +4675,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
              (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
               (LAM X (LAM Y ((WRITE X) Y))))))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((((LAM LF (LAM P (P LF))) SINCERITY)
               (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
@@ -4705,12 +4714,12 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             ((LAM X (LAM Y ((WRITE X) Y)))
@@ -4730,7 +4739,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
             (((LAM LF (LAM P (P LF))) SINCERITY)
              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF)))
               ((LAM P P)
@@ -4761,7 +4770,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4774,12 +4783,12 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4799,7 +4808,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
             (((LAM LF (LAM P (P LF))) SINCERITY)
              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF)))
               ((LAM P P)
@@ -4844,7 +4853,7 @@ ELM   (write) := IV/NP
         : (LAM X
            (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-_P2_206 (the novel) := (S\NP)\((S\NP)/NP)
+_P2_5178 (the novel) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4857,7 +4866,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
              (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
               ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X))))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
              (LAM X
@@ -4886,7 +4895,7 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -4902,7 +4911,7 @@ ELM   (write) := IV/NP
            ((((LAM LF (LAM P (P LF))) SINCERITY)
              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-_P2_206 (the novel) := (S\NP)\((S\NP)/NP)
+_P2_5178 (the novel) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -4917,7 +4926,7 @@ T     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
                (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
               ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X))))
            (LAM P (P MO)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
              (LAM X
@@ -4937,7 +4946,7 @@ Final LF, normal-order evaluated:
 
 Derivation 31
 --------------
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -4971,7 +4980,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
             ((LAM P P)
              ((LAM X (LAM Y ((WRITE X) Y)))
               ((LAM X (DEF X)) (LAM X (NOVEL X)))))))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
@@ -4996,7 +5005,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -5008,7 +5017,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5028,7 +5037,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
             ((LAM P P)
              (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
               (LAM X (LAM Y ((WRITE X) Y)))))))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
@@ -5062,7 +5071,7 @@ A     (|write|)(|the| |novel|) := IV
 A     (|to|)(|write| |the| |novel|) := VP
         : ((LAM P P)
            ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -5070,7 +5079,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             ((LAM X (LAM Y ((WRITE X) Y)))
@@ -5088,7 +5097,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
               ((LAM X (LAM Y ((WRITE X) Y)))
                ((LAM X (DEF X)) (LAM X (NOVEL X))))))
             ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             (((LAM LF (LAM P (P LF)))
@@ -5118,7 +5127,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5127,7 +5136,7 @@ A     (|to|)(|write| |the| |novel|) := VP
         : ((LAM P P)
            (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
             (LAM X (LAM Y ((WRITE X) Y)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -5135,7 +5144,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 A     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5153,7 +5162,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
               (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
                (LAM X (LAM Y ((WRITE X) Y))))))
             ((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             (((LAM LF (LAM P (P LF)))
@@ -5173,11 +5182,11 @@ Final LF, normal-order evaluated:
 
 Derivation 35
 --------------
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -5210,7 +5219,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
             ((LAM P P)
              ((LAM X (LAM Y ((WRITE X) Y)))
               ((LAM X (DEF X)) (LAM X (NOVEL X)))))))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             ((((LAM LF (LAM P (P LF))) SINCERITY)
@@ -5236,11 +5245,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -5249,7 +5258,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5271,7 +5280,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
             ((LAM P P)
              (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
               (LAM X (LAM Y ((WRITE X) Y)))))))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             ((((LAM LF (LAM P (P LF))) SINCERITY)
@@ -5306,16 +5315,16 @@ A     (|write|)(|the| |novel|) := IV
 A     (|to|)(|write| |the| |novel|) := VP
         : ((LAM P P)
            ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (DEF X)) (LAM X (NOVEL X)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             ((LAM X (LAM Y ((WRITE X) Y)))
@@ -5335,7 +5344,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
                ((LAM X (DEF X)) (LAM X (NOVEL X))))))
             (((LAM LF (LAM P (P LF))) SINCERITY)
              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             (((LAM LF (LAM P (P LF)))
@@ -5366,7 +5375,7 @@ ELM   (to) := VP/IV
         : (LAM P P)
 ELM   (write) := IV/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-_P2_184 (the novel) := IV\(IV/NP)
+_P2_5158 (the novel) := IV\(IV/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|write|)(|the| |novel|) := IV
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5375,16 +5384,16 @@ A     (|to|)(|write| |the| |novel|) := VP
         : ((LAM P P)
            (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
             (LAM X (LAM Y ((WRITE X) Y)))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
            (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
-_P2_186 (to write the novel) := (S\NP)\((S\NP)/VP)
+_P2_5180 (to write the novel) := (S\NP)\((S\NP)/VP)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P P)
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5404,7 +5413,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
                (LAM X (LAM Y ((WRITE X) Y))))))
             (((LAM LF (LAM P (P LF))) SINCERITY)
              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             (((LAM LF (LAM P (P LF)))
@@ -5431,7 +5440,7 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
@@ -5449,7 +5458,7 @@ ELM   (write) := IV/NP
         : (LAM X
            (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-_P2_206 (the novel) := (S\NP)\((S\NP)/NP)
+_P2_5178 (the novel) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5462,7 +5471,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
             (LAM X
              (((LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))) SINCERITY)
               ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5487,11 +5496,11 @@ ELM   (novel) := N
         : (LAM X (NOVEL X))
 A     (|the|)(|novel|) := NP
         : ((LAM X (DEF X)) (LAM X (NOVEL X)))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (persuaded) := ((S\NP)/VP)/NP
         : (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y))))
-_P2_215 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
+_P2_5189 (sincerity) := ((S\NP)/VP)\(((S\NP)/VP)/NP)
         : ((LAM LF (LAM P (P LF))) SINCERITY)
 T     (|persuaded|)(|sincerity|) := (S\NP)/VP
         : (((LAM LF (LAM P (P LF))) SINCERITY)
@@ -5507,7 +5516,7 @@ ELM   (write) := IV/NP
            ((((LAM LF (LAM P (P LF))) SINCERITY)
              (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
             ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))
-_P2_206 (the novel) := (S\NP)\((S\NP)/NP)
+_P2_5178 (the novel) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
 T     (|persuaded| |sincerity| |to| |write|)(|the| |novel|) := S\NP
         : (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5522,7 +5531,7 @@ A     (|Mo|)(|persuaded| |sincerity| |to| |write| |the| |novel|) := S
              ((((LAM LF (LAM P (P LF))) SINCERITY)
                (LAM X (LAM P (LAM Y (((PERSUADE (P X)) X) Y)))))
               ((LAM X ((LAM P P) ((LAM X (LAM Y ((WRITE X) Y))) X))) X)))))
-_G2_149 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
+_G2_5113 (Mo persuaded sincerity to write the novel) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             (((LAM LF (LAM P (P LF))) ((LAM X (DEF X)) (LAM X (NOVEL X))))
@@ -5587,7 +5596,7 @@ A     (|every| |poem|)(|shines|) := S
         : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
             (LAM X (POEM X)))
            (LAM X (SHINE X)))
-_G2_149 (every poem shines) := (S\NP)\((S\NP)/S)
+_G2_5113 (every poem shines) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
              (LAM X (POEM X)))
@@ -5611,7 +5620,7 @@ Done. Try , command for results
 
 Derivation 1
 --------------
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 ELM   (likes) := (S\NP)/NP
         : (LAM X (LAM Y ((LIKE X) Y)))
@@ -5708,7 +5717,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 ELM   (loves) := (SP\NP)/NP
         : (LAM X (LAM Y ((LOVE X) Y)))
-_G2_128 (cats) := (SP\NP)\((SP\NP)/NP)
+_G2_5092 (cats) := (SP\NP)\((SP\NP)/NP)
         : ((LAM LF (LAM P (P LF))) CATS)
 T     (|loves|)(|cats|) := SP\NP
         : (((LAM LF (LAM P (P LF))) CATS) (LAM X (LAM Y ((LOVE X) Y))))
@@ -5746,7 +5755,7 @@ ELM   (I) := S/(S\NP)
         : (LAM P (P I))
 ELM   (believe) := (S\NP)/SP
         : (LAM S (LAM X ((BELIEVE S) X)))
-_G2_129 (sincerity loves cats) := (S\NP)\((S\NP)/SP)
+_G2_5093 (sincerity loves cats) := (S\NP)\((S\NP)/SP)
         : ((LAM LF (LAM P (P LF)))
            (((LAM X (LAM Y ((LOVE X) Y))) CATS) SINCERITY))
 T     (|believe|)(|sincerity| |loves| |cats|) := S\NP
@@ -5770,7 +5779,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 ELM   (loves) := (SP\NP)/NP
         : (LAM X (LAM Y ((LOVE X) Y)))
-_G2_128 (cats) := (SP\NP)\((SP\NP)/NP)
+_G2_5092 (cats) := (SP\NP)\((SP\NP)/NP)
         : ((LAM LF (LAM P (P LF))) CATS)
 T     (|loves|)(|cats|) := SP\NP
         : (((LAM LF (LAM P (P LF))) CATS) (LAM X (LAM Y ((LOVE X) Y))))
@@ -5781,7 +5790,7 @@ ELM   (I) := S/(S\NP)
         : (LAM P (P I))
 ELM   (believe) := (S\NP)/SP
         : (LAM S (LAM X ((BELIEVE S) X)))
-_G2_129 (sincerity loves cats) := (S\NP)\((S\NP)/SP)
+_G2_5093 (sincerity loves cats) := (S\NP)\((S\NP)/SP)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF))) CATS) (LAM X (LAM Y ((LOVE X) Y))))
             SINCERITY))
@@ -5825,7 +5834,7 @@ A     (I)(|believe| |sincerity| |loves| |cats|) := S
         : ((LAM P (P I))
            ((LAM S (LAM X ((BELIEVE S) X)))
             (((LAM X (LAM Y ((LOVE X) Y))) CATS) SINCERITY)))
-_G2_149 (I believe sincerity loves cats) := (S\NP)\((S\NP)/S)
+_G2_5113 (I believe sincerity loves cats) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P I))
             ((LAM S (LAM X ((BELIEVE S) X)))
@@ -5846,7 +5855,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 ELM   (loves) := (SP\NP)/NP
         : (LAM X (LAM Y ((LOVE X) Y)))
-_G2_128 (cats) := (SP\NP)\((SP\NP)/NP)
+_G2_5092 (cats) := (SP\NP)\((SP\NP)/NP)
         : ((LAM LF (LAM P (P LF))) CATS)
 T     (|loves|)(|cats|) := SP\NP
         : (((LAM LF (LAM P (P LF))) CATS) (LAM X (LAM Y ((LOVE X) Y))))
@@ -5862,7 +5871,7 @@ A     (I)(|believe| |sincerity| |loves| |cats|) := S
            ((LAM S (LAM X ((BELIEVE S) X)))
             ((((LAM LF (LAM P (P LF))) CATS) (LAM X (LAM Y ((LOVE X) Y))))
              SINCERITY)))
-_G2_149 (I believe sincerity loves cats) := (S\NP)\((S\NP)/S)
+_G2_5113 (I believe sincerity loves cats) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P I))
             ((LAM S (LAM X ((BELIEVE S) X)))
@@ -5890,7 +5899,7 @@ ELM   (I) := S/(S\NP)
         : (LAM P (P I))
 ELM   (believe) := (S\NP)/SP
         : (LAM S (LAM X ((BELIEVE S) X)))
-_G2_129 (sincerity loves cats) := (S\NP)\((S\NP)/SP)
+_G2_5093 (sincerity loves cats) := (S\NP)\((S\NP)/SP)
         : ((LAM LF (LAM P (P LF)))
            (((LAM X (LAM Y ((LOVE X) Y))) CATS) SINCERITY))
 T     (|believe|)(|sincerity| |loves| |cats|) := S\NP
@@ -5902,7 +5911,7 @@ A     (I)(|believe| |sincerity| |loves| |cats|) := S
            (((LAM LF (LAM P (P LF)))
              (((LAM X (LAM Y ((LOVE X) Y))) CATS) SINCERITY))
             (LAM S (LAM X ((BELIEVE S) X)))))
-_G2_149 (I believe sincerity loves cats) := (S\NP)\((S\NP)/S)
+_G2_5113 (I believe sincerity loves cats) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P I))
             (((LAM LF (LAM P (P LF)))
@@ -5920,7 +5929,7 @@ ELM   (sincerity) := NP
         : SINCERITY
 ELM   (loves) := (SP\NP)/NP
         : (LAM X (LAM Y ((LOVE X) Y)))
-_G2_128 (cats) := (SP\NP)\((SP\NP)/NP)
+_G2_5092 (cats) := (SP\NP)\((SP\NP)/NP)
         : ((LAM LF (LAM P (P LF))) CATS)
 T     (|loves|)(|cats|) := SP\NP
         : (((LAM LF (LAM P (P LF))) CATS) (LAM X (LAM Y ((LOVE X) Y))))
@@ -5931,7 +5940,7 @@ ELM   (I) := S/(S\NP)
         : (LAM P (P I))
 ELM   (believe) := (S\NP)/SP
         : (LAM S (LAM X ((BELIEVE S) X)))
-_G2_129 (sincerity loves cats) := (S\NP)\((S\NP)/SP)
+_G2_5093 (sincerity loves cats) := (S\NP)\((S\NP)/SP)
         : ((LAM LF (LAM P (P LF)))
            ((((LAM LF (LAM P (P LF))) CATS) (LAM X (LAM Y ((LOVE X) Y))))
             SINCERITY))
@@ -5946,7 +5955,7 @@ A     (I)(|believe| |sincerity| |loves| |cats|) := S
              ((((LAM LF (LAM P (P LF))) CATS) (LAM X (LAM Y ((LOVE X) Y))))
               SINCERITY))
             (LAM S (LAM X ((BELIEVE S) X)))))
-_G2_149 (I believe sincerity loves cats) := (S\NP)\((S\NP)/S)
+_G2_5113 (I believe sincerity loves cats) := (S\NP)\((S\NP)/S)
         : ((LAM LF (LAM P (P LF)))
            ((LAM P (P I))
             (((LAM LF (LAM P (P LF)))
@@ -5963,7 +5972,7 @@ Final LF, normal-order evaluated:
 
 Input: gave Mo a flower
 
-Number of analyses: 9
+Number of analyses: 4
 Done. Try , command for results
 
 /‾\ /‾\  ,
@@ -5972,263 +5981,120 @@ Done. Try , command for results
 
 Derivation 1
 --------------
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
-ELM   (flower) := N
-        : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
 ELM   (gave) := ((S\NP)/NP)/NP
         : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
-_G2_135 (Mo) := S/(S\NP)
+_G2_5099 (Mo) := S/(S\NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-_P2_206 (a flower) := (S\NP)\((S\NP)/NP)
-        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
 >Bx   (|Mo|)(|a| |flower|) := S\((S\NP)/NP)
         : (LAM X
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-            (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
+            (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+              (LAM X (FLOWER X)))
              X)))
 <Bx   (|gave|)(|Mo| |a| |flower|) := S/NP
         : (LAM X
            ((LAM X
              (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-              (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
+              (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+                (LAM X (FLOWER X)))
                X)))
             ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X)))
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (((GIVE X) (INDEF (LAM X (FLOWER X)))) (LAM P (P MO)))) =
-    (\ X . GIVE X (INDEF (\ X . FLOWER X)) (\ P . P MO))
+    (LAM X
+     ((SOME (LAM P (P MO)))
+      ((AND (FLOWER (LAM P (P MO)))) (LAM Z (((GIVE X) (LAM P (P MO))) Z))))) =
+    (\ X . SOME (\ P . P MO)
+     (AND (FLOWER (\ P . P MO)) (\ Z . GIVE X (\ P . P MO) Z)))
 
 Derivation 2
 --------------
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
-ELM   (flower) := N
-        : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
 ELM   (gave) := ((S\NP)/NP)/NP
         : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
-_G2_135 (Mo) := S/(S\NP)
-        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-_G2_132 (a flower) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
-        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
->B2   (|Mo|)(|a| |flower|) := (S/NP)\(((S\NP)/NP)/NP)
-        : (LAM X
-           (LAM Y
-            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-             ((((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-               X)
-              Y))))
-T     (|gave|)(|Mo| |a| |flower|) := S/NP
-        : ((LAM X
-            (LAM Y
-             (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-              ((((LAM LF (LAM P (P LF)))
-                 ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-                X)
-               Y))))
-           (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))))
+ELM   (Mo) := NP
+        : (LAM P (P MO))
+A     (|gave|)(|Mo|) := (S\NP)/NP
+        : ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (flower) := N
+        : (LAM X (FLOWER X))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+T     (|gave| |Mo|)(|a| |flower|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (FLOWER X)))
+           ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO))))
 
 Final LF, normal-order evaluated: 
 
-    (LAM Y (((GIVE (INDEF (LAM X (FLOWER X)))) Y) (LAM P (P MO)))) =
-    (\ Y . GIVE (INDEF (\ X . FLOWER X)) Y (\ P . P MO))
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE (LAM P (P MO))) X) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE (\ P . P MO) X Z)))
 
 Derivation 3
 --------------
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
+ELM   (gave) := ((S\NP)/NP)/NP
+        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
+_G2_5096 (Mo) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
+        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+T     (|gave|)(|Mo|) := (S\NP)/NP
+        : (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+           (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
 ELM   (flower) := N
         : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
-ELM   (gave) := ((S\NP)/PP)/NP
-        : (LAM X (LAM Y (LAM Z (((GIVE Y) X) Z))))
-_G2_135 (Mo) := S/(S\NP)
-        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-_G2_133 (a flower) := ((S\NP)/PP)\(((S\NP)/PP)/NP)
-        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
->B2   (|Mo|)(|a| |flower|) := (S/PP)\(((S\NP)/PP)/NP)
-        : (LAM X
-           (LAM Y
-            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-             ((((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-               X)
-              Y))))
-T     (|gave|)(|Mo| |a| |flower|) := S/PP
-        : ((LAM X
-            (LAM Y
-             (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-              ((((LAM LF (LAM P (P LF)))
-                 ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-                X)
-               Y))))
-           (LAM X (LAM Y (LAM Z (((GIVE Y) X) Z)))))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+T     (|gave| |Mo|)(|a| |flower|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (FLOWER X)))
+           (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
+            (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))))
 
 Final LF, normal-order evaluated: 
 
-    (LAM Y (((GIVE Y) (INDEF (LAM X (FLOWER X)))) (LAM P (P MO)))) =
-    (\ Y . GIVE Y (INDEF (\ X . FLOWER X)) (\ P . P MO))
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE (LAM P (P MO))) X) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE (\ P . P MO) X Z)))
 
 Derivation 4
 --------------
 ELM   (gave) := ((S\NP)/NP)/NP
         : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
-ELM   (Mo) := NP
-        : (LAM P (P MO))
-A     (|gave|)(|Mo|) := (S\NP)/NP
-        : ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
-ELM   (flower) := N
-        : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
-A     (|gave| |Mo|)(|a| |flower|) := S\NP
-        : (((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
-           ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-
-Final LF, normal-order evaluated: 
-
-    (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
-    (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
-
-Derivation 5
---------------
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
-ELM   (flower) := N
-        : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
-ELM   (gave) := ((S\NP)/NP)/NP
-        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
-ELM   (Mo) := NP
-        : (LAM P (P MO))
-A     (|gave|)(|Mo|) := (S\NP)/NP
-        : ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
-_P2_206 (a flower) := (S\NP)\((S\NP)/NP)
-        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-T     (|gave| |Mo|)(|a| |flower|) := S\NP
-        : (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-           ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO))))
-
-Final LF, normal-order evaluated: 
-
-    (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
-    (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
-
-Derivation 6
---------------
-ELM   (gave) := ((S\NP)/NP)/NP
-        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
-_P2_206 (Mo) := (S\NP)\((S\NP)/NP)
+_P2_5178 (Mo) := (S\NP)\((S\NP)/NP)
         : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
 <Bx   (|gave|)(|Mo|) := (S\NP)/NP
         : (LAM X
            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
             ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X)))
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
 ELM   (flower) := N
         : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
-A     (|gave| |Mo|)(|a| |flower|) := S\NP
-        : ((LAM X
-            (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-             ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X)))
-           ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-
-Final LF, normal-order evaluated: 
-
-    (LAM Z (((GIVE (INDEF (LAM X (FLOWER X)))) (LAM P (P MO))) Z)) =
-    (\ Z . GIVE (INDEF (\ X . FLOWER X)) (\ P . P MO) Z)
-
-Derivation 7
---------------
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
-ELM   (flower) := N
-        : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
-ELM   (gave) := ((S\NP)/NP)/NP
-        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
-_P2_206 (Mo) := (S\NP)\((S\NP)/NP)
-        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-<Bx   (|gave|)(|Mo|) := (S\NP)/NP
-        : (LAM X
-           (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-            ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X)))
-_P2_206 (a flower) := (S\NP)\((S\NP)/NP)
-        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
 T     (|gave| |Mo|)(|a| |flower|) := S\NP
-        : (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (FLOWER X)))
            (LAM X
             (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
              ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) X))))
 
 Final LF, normal-order evaluated: 
 
-    (LAM Z (((GIVE (INDEF (LAM X (FLOWER X)))) (LAM P (P MO))) Z)) =
-    (\ Z . GIVE (INDEF (\ X . FLOWER X)) (\ P . P MO) Z)
-
-Derivation 8
---------------
-ELM   (gave) := ((S\NP)/NP)/NP
-        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
-_G2_132 (Mo) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
-        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-T     (|gave|)(|Mo|) := (S\NP)/NP
-        : (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-           (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))))
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
-ELM   (flower) := N
-        : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
-A     (|gave| |Mo|)(|a| |flower|) := S\NP
-        : ((((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-            (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))))
-           ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-
-Final LF, normal-order evaluated: 
-
-    (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
-    (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
-
-Derivation 9
---------------
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
-ELM   (flower) := N
-        : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
-ELM   (gave) := ((S\NP)/NP)/NP
-        : (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))
-_G2_132 (Mo) := ((S\NP)/NP)\(((S\NP)/NP)/NP)
-        : ((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-T     (|gave|)(|Mo|) := (S\NP)/NP
-        : (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-           (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))))
-_P2_206 (a flower) := (S\NP)\((S\NP)/NP)
-        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-T     (|gave| |Mo|)(|a| |flower|) := S\NP
-        : (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (FLOWER X))))
-           (((LAM LF (LAM P (P LF))) (LAM P (P MO)))
-            (LAM X (LAM Y (LAM Z (((GIVE X) Y) Z))))))
-
-Final LF, normal-order evaluated: 
-
-    (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
-    (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE X) (LAM P (P MO))) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE X (\ P . P MO) Z)))
 
 /‾\ /‾\  a tries to grab
 
@@ -6258,5 +6124,396 @@ ELM   (grab) := IV/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM G1152 (TRY ((GRAN X) G1152)))) =
-    (\ X . \ G1158 . TRY (GRAN X G1158))
+    (LAM X (LAM G6088 (TRY ((GRAN X) G6088)))) =
+    (\ X . \ G6094 . TRY (GRAN X G6094))
+
+/‾\ /‾\  pass scope inversion or no inversion
+
+
+/‾\ /‾\  a every professor wrote a book
+
+Input: every professor wrote a book
+
+Number of analyses: 6
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/INP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := INP
+        : ((LAM X (INDEF X)) (LAM X (BOOK X)))
+A     (|wrote|)(|a| |book|) := S\NP
+        : ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (INDEF X)) (LAM X (BOOK X)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))) =
+    (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X)))
+
+Derivation 2
+--------------
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := INP
+        : ((LAM X (INDEF X)) (LAM X (BOOK X)))
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/INP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+_P2_5121 (a book) := (S\NP)\((S\NP)/INP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+T     (|wrote|)(|a| |book|) := S\NP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+           (LAM X (LAM Y ((WRITE X) Y))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+            (LAM X (LAM Y ((WRITE X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))) =
+    (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X)))
+
+Derivation 3
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/NP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (BOOK X)))
+T     (|wrote|)(|a| |book|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (BOOK X)))
+           (LAM X (LAM Y ((WRITE X) Y))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+             (LAM X (BOOK X)))
+            (LAM X (LAM Y ((WRITE X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X
+     ((FORALL X)
+      ((IMP (PROF X)) ((SOME X) ((AND (BOOK X)) (LAM Y ((WRITE X) Y))))))) =
+    (\ X . FORALL X (IMP (PROF X) (SOME X (AND (BOOK X) (\ Y . WRITE X Y)))))
+
+Derivation 4
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/INP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := INP
+        : ((LAM X (INDEF X)) (LAM X (BOOK X)))
+A     (|wrote|)(|a| |book|) := S\NP
+        : ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (INDEF X)) (LAM X (BOOK X)))))
+_G2_5113 (every professor wrote a book) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (PROF X)))
+            ((LAM X (LAM Y ((WRITE X) Y)))
+             ((LAM X (INDEF X)) (LAM X (BOOK X))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P
+     (P
+      (LAM X
+       ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))))) =
+    (\ P . P (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X))))
+
+Derivation 5
+--------------
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := INP
+        : ((LAM X (INDEF X)) (LAM X (BOOK X)))
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/INP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+_P2_5121 (a book) := (S\NP)\((S\NP)/INP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+T     (|wrote|)(|a| |book|) := S\NP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+           (LAM X (LAM Y ((WRITE X) Y))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+            (LAM X (LAM Y ((WRITE X) Y)))))
+_G2_5113 (every professor wrote a book) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (PROF X)))
+            (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+             (LAM X (LAM Y ((WRITE X) Y))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P
+     (P
+      (LAM X
+       ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))))) =
+    (\ P . P (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X))))
+
+Derivation 6
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/NP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (BOOK X)))
+T     (|wrote|)(|a| |book|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (BOOK X)))
+           (LAM X (LAM Y ((WRITE X) Y))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+             (LAM X (BOOK X)))
+            (LAM X (LAM Y ((WRITE X) Y)))))
+_G2_5113 (every professor wrote a book) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (PROF X)))
+            (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+              (LAM X (BOOK X)))
+             (LAM X (LAM Y ((WRITE X) Y))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P
+     (P
+      (LAM X
+       ((FORALL X)
+        ((IMP (PROF X)) ((SOME X) ((AND (BOOK X)) (LAM Y ((WRITE X) Y))))))))) =
+    (\ P . P
+     (\ X . FORALL X (IMP (PROF X) (SOME X (AND (BOOK X) (\ Y . WRITE X Y))))))
+
+/‾\ /‾\  a every worker missed a meal
+
+Input: every worker missed a meal
+
+Number of analyses: 4
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/INP
+        : (LAM X (LAM Y ((MISS X) Y)))
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (meal) := N
+        : (LAM X (MEAL X))
+A     (|a|)(|meal|) := INP
+        : ((LAM X (INDEF X)) (LAM X (MEAL X)))
+A     (|missed|)(|a| |meal|) := S\NP
+        : ((LAM X (LAM Y ((MISS X) Y))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+A     (|every| |worker|)(|missed| |a| |meal|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           ((LAM X (LAM Y ((MISS X) Y))) ((LAM X (INDEF X)) (LAM X (MEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS (INDEF (LAM X (MEAL X)))) X)))) =
+    (\ X . FORALL X (IMP (WORKER X) (MISS (INDEF (\ X . MEAL X)) X)))
+
+Derivation 2
+--------------
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (meal) := N
+        : (LAM X (MEAL X))
+A     (|a|)(|meal|) := INP
+        : ((LAM X (INDEF X)) (LAM X (MEAL X)))
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/INP
+        : (LAM X (LAM Y ((MISS X) Y)))
+_P2_5121 (a meal) := (S\NP)\((S\NP)/INP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+T     (|missed|)(|a| |meal|) := S\NP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+           (LAM X (LAM Y ((MISS X) Y))))
+A     (|every| |worker|)(|missed| |a| |meal|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+            (LAM X (LAM Y ((MISS X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS (INDEF (LAM X (MEAL X)))) X)))) =
+    (\ X . FORALL X (IMP (WORKER X) (MISS (INDEF (\ X . MEAL X)) X)))
+
+Derivation 3
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/INP
+        : (LAM X (LAM Y ((MISS X) Y)))
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (meal) := N
+        : (LAM X (MEAL X))
+A     (|a|)(|meal|) := INP
+        : ((LAM X (INDEF X)) (LAM X (MEAL X)))
+A     (|missed|)(|a| |meal|) := S\NP
+        : ((LAM X (LAM Y ((MISS X) Y))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+A     (|every| |worker|)(|missed| |a| |meal|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           ((LAM X (LAM Y ((MISS X) Y))) ((LAM X (INDEF X)) (LAM X (MEAL X)))))
+_G2_5113 (every worker missed a meal) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (WORKER X)))
+            ((LAM X (LAM Y ((MISS X) Y)))
+             ((LAM X (INDEF X)) (LAM X (MEAL X))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P
+     (P
+      (LAM X
+       ((FORALL X) ((IMP (WORKER X)) ((MISS (INDEF (LAM X (MEAL X)))) X)))))) =
+    (\ P . P (\ X . FORALL X (IMP (WORKER X) (MISS (INDEF (\ X . MEAL X)) X))))
+
+Derivation 4
+--------------
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (meal) := N
+        : (LAM X (MEAL X))
+A     (|a|)(|meal|) := INP
+        : ((LAM X (INDEF X)) (LAM X (MEAL X)))
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/INP
+        : (LAM X (LAM Y ((MISS X) Y)))
+_P2_5121 (a meal) := (S\NP)\((S\NP)/INP)
+        : ((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+T     (|missed|)(|a| |meal|) := S\NP
+        : (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+           (LAM X (LAM Y ((MISS X) Y))))
+A     (|every| |worker|)(|missed| |a| |meal|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+            (LAM X (LAM Y ((MISS X) Y)))))
+_G2_5113 (every worker missed a meal) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (WORKER X)))
+            (((LAM LF (LAM P (P LF))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+             (LAM X (LAM Y ((MISS X) Y))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P
+     (P
+      (LAM X
+       ((FORALL X) ((IMP (WORKER X)) ((MISS (INDEF (LAM X (MEAL X)))) X)))))) =
+    (\ P . P (\ X . FORALL X (IMP (WORKER X) (MISS (INDEF (\ X . MEAL X)) X))))

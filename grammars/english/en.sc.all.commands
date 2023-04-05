@@ -1,5 +1,9 @@
+pass List of commands where we load english grammar, generate case functions
+pass and do some anayses
+pass Normal form parsing is turned off to see ALL analyses
 g en.txt
-c v
+pass generating special case functions for testing scope inversion. 'test' is a special POS
+c v test
 l nfparse-off
 l show-config
 a sincerity admires john
@@ -50,9 +54,7 @@ a gave Mo a flower
 ,
 a tries to grab
 ,  
-pass generating special case functions for testing scope inversion
-g en.txt
-c test
+pass scope inversion or no inversion
 a every professor wrote a book
 ,
 a every worker missed a meal

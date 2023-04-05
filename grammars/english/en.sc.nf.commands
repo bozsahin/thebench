@@ -1,5 +1,8 @@
+pass List of commands where we load english grammar, generate case functions
+pass and do some anayses
+pass Normal form parsing is turned ON to see one equivalent analysis
 g en.txt
-c v
+c v test
 l nfparse-on
 l show-config
 a sincerity admires john
@@ -48,3 +51,8 @@ a gave Mo a flower
 ,
 a tries to grab
 ,  
+pass scope inversion or no inversion
+a every professor wrote a book
+,
+a every worker missed a meal
+,

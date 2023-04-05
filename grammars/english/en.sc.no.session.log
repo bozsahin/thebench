@@ -1,4 +1,13 @@
 
+/‾\ /‾\  pass List of commands where we load english grammar, generate case functions
+
+
+/‾\ /‾\  pass and do some anayses
+
+
+/‾\ /‾\  pass No case functions generated
+
+
 /‾\ /‾\  g en.txt
 
 no errors in grammar text, proceeding with set up..
@@ -520,8 +529,8 @@ ELM   (reading) := VP/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM Q (LAM G1216 ((WITHOUT ((READ X) G1216)) (Q G1216))))) =
-    (\ X . \ Q . \ G1224 . WITHOUT (READ X G1224) (Q G1224))
+    (LAM X (LAM Q (LAM G6230 ((WITHOUT ((READ X) G6230)) (Q G6230))))) =
+    (\ X . \ Q . \ G6238 . WITHOUT (READ X G6238) (Q G6238))
 
 /‾\ /‾\  a what and where |did Sally sing| 
 
@@ -819,20 +828,22 @@ ELM   (Mo) := NP
         : (LAM P (P MO))
 A     (|gave|)(|Mo|) := (S\NP)/NP
         : ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
-ELM   (a) := NP/*N
-        : (LAM X (INDEF X))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
 ELM   (flower) := N
         : (LAM X (FLOWER X))
-A     (|a|)(|flower|) := NP
-        : ((LAM X (INDEF X)) (LAM X (FLOWER X)))
-A     (|gave| |Mo|)(|a| |flower|) := S\NP
-        : (((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO)))
-           ((LAM X (INDEF X)) (LAM X (FLOWER X))))
+A     (|a|)(|flower|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (FLOWER X)))
+T     (|gave| |Mo|)(|a| |flower|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (FLOWER X)))
+           ((LAM X (LAM Y (LAM Z (((GIVE X) Y) Z)))) (LAM P (P MO))))
 
 Final LF, normal-order evaluated: 
 
-    (LAM Z (((GIVE (LAM P (P MO))) (INDEF (LAM X (FLOWER X)))) Z)) =
-    (\ Z . GIVE (\ P . P MO) (INDEF (\ X . FLOWER X)) Z)
+    (LAM X ((SOME X) ((AND (FLOWER X)) (LAM Z (((GIVE (LAM P (P MO))) X) Z))))) =
+    (\ X . SOME X (AND (FLOWER X) (\ Z . GIVE (\ P . P MO) X Z)))
 
 /‾\ /‾\  a tries to grab
 
@@ -862,5 +873,124 @@ ELM   (grab) := IV/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM G1268 (TRY ((GRAN X) G1268)))) =
-    (\ X . \ G1274 . TRY (GRAN X G1274))
+    (LAM X (LAM G6282 (TRY ((GRAN X) G6282)))) =
+    (\ X . \ G6288 . TRY (GRAN X G6288))
+
+/‾\ /‾\  pass scope inversion or no inversion
+
+
+/‾\ /‾\  a every professor wrote a book
+
+Input: every professor wrote a book
+
+Number of analyses: 2
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/INP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := INP
+        : ((LAM X (INDEF X)) (LAM X (BOOK X)))
+A     (|wrote|)(|a| |book|) := S\NP
+        : ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (INDEF X)) (LAM X (BOOK X)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (PROF X)) ((WRITE (INDEF (LAM X (BOOK X)))) X)))) =
+    (\ X . FORALL X (IMP (PROF X) (WRITE (INDEF (\ X . BOOK X)) X)))
+
+Derivation 2
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (professor) := N
+        : (LAM X (PROF X))
+A     (|every|)(|professor|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (PROF X)))
+ELM   (wrote) := (S\NP)/NP
+        : (LAM X (LAM Y ((WRITE X) Y)))
+ELM   (a) := ((S\NP)\((S\NP)/NP))/N
+        : (LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+ELM   (book) := N
+        : (LAM X (BOOK X))
+A     (|a|)(|book|) := (S\NP)\((S\NP)/NP)
+        : ((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+           (LAM X (BOOK X)))
+T     (|wrote|)(|a| |book|) := S\NP
+        : (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+            (LAM X (BOOK X)))
+           (LAM X (LAM Y ((WRITE X) Y))))
+A     (|every| |professor|)(|wrote| |a| |book|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (PROF X)))
+           (((LAM P (LAM Q (LAM X ((SOME X) ((AND (P X)) (Q X))))))
+             (LAM X (BOOK X)))
+            (LAM X (LAM Y ((WRITE X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X
+     ((FORALL X)
+      ((IMP (PROF X)) ((SOME X) ((AND (BOOK X)) (LAM Y ((WRITE X) Y))))))) =
+    (\ X . FORALL X (IMP (PROF X) (SOME X (AND (BOOK X) (\ Y . WRITE X Y)))))
+
+/‾\ /‾\  a every worker missed a meal
+
+Input: every worker missed a meal
+
+Number of analyses: 1
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/INP
+        : (LAM X (LAM Y ((MISS X) Y)))
+ELM   (a) := INP/*N
+        : (LAM X (INDEF X))
+ELM   (meal) := N
+        : (LAM X (MEAL X))
+A     (|a|)(|meal|) := INP
+        : ((LAM X (INDEF X)) (LAM X (MEAL X)))
+A     (|missed|)(|a| |meal|) := S\NP
+        : ((LAM X (LAM Y ((MISS X) Y))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
+A     (|every| |worker|)(|missed| |a| |meal|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           ((LAM X (LAM Y ((MISS X) Y))) ((LAM X (INDEF X)) (LAM X (MEAL X)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS (INDEF (LAM X (MEAL X)))) X)))) =
+    (\ X . FORALL X (IMP (WORKER X) (MISS (INDEF (\ X . MEAL X)) X)))

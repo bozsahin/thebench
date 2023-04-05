@@ -1,3 +1,6 @@
+pass List of commands where we load english grammar, generate case functions
+pass and do some anayses
+pass No case functions generated
 g en.txt
 l show-config
 a sincerity admires john
@@ -46,3 +49,8 @@ a gave Mo a flower
 ,
 a tries to grab
 ,  
+pass scope inversion or no inversion
+a every professor wrote a book
+,
+a every worker missed a meal
+,

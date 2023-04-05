@@ -1,1 +1,14 @@
-#_p2_5069  np : a --> (s\np)\((s\np)/np) : \a\p.p a
+#_p2_5121  inp : a --> (s\np)\((s\np)/inp) : \a\p.p a
+#_p2_5189  np : a --> ((s\np[agr=3s])/vp)\(((s\np[agr=3s])/vp)/np) : \a\p.p a
+#_p2_5180  vp : a --> (s\np[agr=3s])\((s\np[agr=3s])/vp) : \a\p.p a
+#_g2_5113  s : a --> (s\np[t=xpl])\((s\np[t=xpl])/s) : \a\p.p a
+#_g2_5112  'up' : a --> ((s\np)/np)\(((s\np)/np)/'up') : \a\p.p a
+#_g2_5111  np : a --> ((s\np)/'up')\(((s\np)/'up')/np) : \a\p.p a
+#_g2_5107  'the bucket' : a --> (s\np)\((s\np)/'the bucket') : \a\p.p a
+#_p2_5158  np : a --> iv\(iv/np) : \a\p.p a
+#_g2_5099  np[agr=3s] : a --> s/(s\np[agr=3s]) : \a\p.p a
+#_g2_5097  np : a --> ((s\np)/pp[p=to])\(((s\np)/pp[p=to])/np) : \a\p.p a
+#_g2_5096  np : a --> ((s\np)/np)\(((s\np)/np)/np) : \a\p.p a
+#_g2_5093  sp : a --> (s\np)\((s\np)/sp) : \a\p.p a
+#_g2_5092  np : a --> (sp\np[agr=3s])\((sp\np[agr=3s])/np) : \a\p.p a
+#_p2_5178  np : a --> (s\np)\((s\np)/np) : \a\p.p a
