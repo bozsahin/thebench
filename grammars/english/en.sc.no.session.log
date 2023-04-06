@@ -529,8 +529,8 @@ ELM   (reading) := VP/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM Q (LAM G6230 ((WITHOUT ((READ X) G6230)) (Q G6230))))) =
-    (\ X . \ Q . \ G6238 . WITHOUT (READ X G6238) (Q G6238))
+    (LAM X (LAM Q (LAM G16684 ((WITHOUT ((READ X) G16684)) (Q G16684))))) =
+    (\ X . \ Q . \ G16692 . WITHOUT (READ X G16692) (Q G16692))
 
 /‾\ /‾\  a what and where |did Sally sing| 
 
@@ -873,8 +873,8 @@ ELM   (grab) := IV/NP
 
 Final LF, normal-order evaluated: 
 
-    (LAM X (LAM G6282 (TRY ((GRAN X) G6282)))) =
-    (\ X . \ G6288 . TRY (GRAN X G6288))
+    (LAM X (LAM G16736 (TRY ((GRAN X) G16736)))) =
+    (\ X . \ G16742 . TRY (GRAN X G16742))
 
 /‾\ /‾\  pass scope inversion or no inversion
 
@@ -899,13 +899,13 @@ ELM   (professor) := N
 A     (|every|)(|professor|) := S/(S\NP)
         : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
            (LAM X (PROF X)))
-ELM   (wrote) := (S\NP)/INP
+ELM   (wrote) := (S\NP)/NP
         : (LAM X (LAM Y ((WRITE X) Y)))
-ELM   (a) := INP/*N
+ELM   (a) := NP/*N
         : (LAM X (INDEF X))
 ELM   (book) := N
         : (LAM X (BOOK X))
-A     (|a|)(|book|) := INP
+A     (|a|)(|book|) := NP
         : ((LAM X (INDEF X)) (LAM X (BOOK X)))
 A     (|wrote|)(|a| |book|) := S\NP
         : ((LAM X (LAM Y ((WRITE X) Y))) ((LAM X (INDEF X)) (LAM X (BOOK X))))
@@ -975,13 +975,13 @@ ELM   (worker) := N
 A     (|every|)(|worker|) := S/(S\NP)
         : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
            (LAM X (WORKER X)))
-ELM   (missed) := (S\NP)/INP
+ELM   (missed) := (S\NP)/NP
         : (LAM X (LAM Y ((MISS X) Y)))
-ELM   (a) := INP/*N
+ELM   (a) := NP/*N
         : (LAM X (INDEF X))
 ELM   (meal) := N
         : (LAM X (MEAL X))
-A     (|a|)(|meal|) := INP
+A     (|a|)(|meal|) := NP
         : ((LAM X (INDEF X)) (LAM X (MEAL X)))
 A     (|missed|)(|a| |meal|) := S\NP
         : ((LAM X (LAM Y ((MISS X) Y))) ((LAM X (INDEF X)) (LAM X (MEAL X))))
