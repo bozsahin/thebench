@@ -5,7 +5,7 @@
 # brew does not allow sudo--$SUDO controls that
 if [ $# -eq 0 ]; then
 	echo "please specify 'install', 'uninstall' or python/pip version number"
-	echo "exitig without action"
+	echo "exiting without action"
 	exit -1
 fi
 if [ $1 == uninstall ]; then
