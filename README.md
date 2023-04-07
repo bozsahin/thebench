@@ -39,7 +39,7 @@ TO INSTALL:
 
 2.  In the terminal, and IN <code>thebench</code> directory, do  the following:
 
-   <code>bench.install.sh</code>
+   <code>bench.sh install</code>
 
 You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
 
@@ -66,7 +66,7 @@ Python versions can be daunting for the uninitiated. Don't count on the executab
 Use the latest for python AND pip. If you have a new one installed, say python3.11,
 just re-run the installer with that suffix to update thebench libraries, for example
 
-<code>bench.install.sh 3.11</code>
+<code>bench.sh 3.11</code>
 
 This will refresh the tool to work with  <code>pip3.11</code> and <code>python3.11</code>.
 
@@ -86,7 +86,7 @@ TO UNINSTALL:
 
 do
 
-   <code>bench.install.sh uninstall</code>
+   <code>bench.sh uninstall</code>
 
 Enjoy. 
 
