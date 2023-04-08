@@ -2,71 +2,71 @@
 % Visual alignment is purely for aesthetic reasons
 % -Cem Bozsahin
 
-sees      | v :: (s[t=fin]\np[agr=3s])/np[ts=?s] : \x\y.see x y   % q is for control of quantificational reference
-persuades | v :: ((s\np[agr=3s])/vp)/np[ts=?s] : \x\p\y.persuade (p x) x y
-persuaded | v :: ((s\np)/vp)/np[ts=?s] : \x\p\y.persuade (p x) x y
-promises  | v :: ((s\np[agr=3s])/vp)/np[ts=?s] : \x\p\y.promise (p y) x y
+sees      | v :: (s[t=fin]\np[agr=3s])/np[ts=p] : \x\y.see x y   % q is for control of quantificational reference
+persuades | v :: ((s\np[agr=3s])/vp)/np[ts=p] : \x\p\y.persuade (p x) x y
+persuaded | v :: ((s\np)/vp)/np[ts=p] : \x\p\y.persuade (p x) x y
+promises  | v :: ((s\np[agr=3s])/vp)/np[ts=p] : \x\p\y.promise (p y) x y
 wants     | v :: (s\np[agr=3s])/vp : \p\y. want (p y) y
-wants     | v :: ((s\np[agr=3s])/vp)/np[ts=?s]: \x\p\y. want (p x) y
+wants     | v :: ((s\np[agr=3s])/vp)/np[ts=p]: \x\p\y. want (p x) y
 seems     | v :: (s\np[agr=3s])/vp : \p\y.seems (p y)
 seems     | v :: (s\np[t=xpl])/s : \s\y.seems s
-picked    | v :: ((s\np)/np[ts=?s])/'up': \x\y\z.pick _ x y z
-picked    | v :: ((s\np)/'up')/np[ts=?s]:\y\x\z.cause(init(hold _ (reach x) y z)) z
-picked    | v :: (s\np)/np[ts=?s]: \x\y.pick x y
-spilled   | v :: (s\np)/np[ts=?s,head=beans]: \x\y.divulge _ (public x) (secret y) y
-spilled   | v :: (s\np)/np[ts=?s]: \x\y.spill x y
+picked    | v :: ((s\np)/np[ts=p])/'up': \x\y\z.pick _ x y z
+picked    | v :: ((s\np)/'up')/np[ts=p]:\y\x\z.cause(init(hold _ (reach x) y z)) z
+picked    | v :: (s\np)/np[ts=p]: \x\y.pick x y
+spilled   | v :: (s\np)/np[ts=p,head=beans]: \x\y.divulge _ (public x) (secret y) y
+spilled   | v :: (s\np)/np[ts=p]: \x\y.spill x y
 kicked    | v :: (s\np)/'the bucket': \x\y.die _ (euph x) y
-kicked    | v :: (s\np)/np[ts=?s]: \x\y.kick x y
-sincerity | n :: np[ts=?s,agr=3s] : sincerity
-admires   | v :: (s\np[agr=3s])/np[ts=?s] : admire x y
-john      | n :: np[ts=?s,agr=3s]: john
-sincerity | n :: s/(s\np[ts=?s,agr=3s]): \p.p sincerity
-john      | n :: (s\np[agr=?a])\((s\np[agr=?a])/np[ts=?s]): \p.p john
+kicked    | v :: (s\np)/np[ts=p]: \x\y.kick x y
+sincerity | n :: np[ts=p,agr=3s] : sincerity
+admires   | v :: (s\np[agr=3s])/np[ts=p] : admire x y
+john      | n :: np[ts=p,agr=3s]: john
+sincerity | n :: s/(s\np[agr=3s]): \p.p sincerity
+john      | n :: (s\np[agr=?a])\((s\np[agr=?a])/np[ts=p]): \p.p john
 depart    | v :: iv:\y.depart y
 ed        | aff :: (s\np[agr=?a])\\iv: \p\y.p _ past y % pointwise extending IV$
-dismiss   | v  :: iv/np[ts=?s]:\x\y.dismiss x y
-reprimand | v  :: iv/np[ts=?s]:\x\y.reprimand x y
-ed        | aff :: (s\np[agr=?a])\\(iv/np[ts=?s]): \p\y.p _ past y % pointwise extending IV$
-re        | aff :: (iv/np[ts=?s])//(iv/np[ts=?s]): \x.re x  % pointwise extending IV$
-introduce | v :: iv/np[ts=?s]: \x\y.introduce x y
-consider  | v :: iv/np[ts=?s]: \x\y.consider x y
+dismiss   | v  :: iv/np[ts=p]:\x\y.dismiss x y
+reprimand | v  :: iv/np[ts=p]:\x\y.reprimand x y
+ed        | aff :: (s\np[agr=?a])\\(iv/np[ts=p]): \p\y.p _ past y % pointwise extending IV$
+re        | aff :: (iv/np[ts=p])//(iv/np[ts=p]): \x.re x  % pointwise extending IV$
+introduce | v :: iv/np[ts=p]: \x\y.introduce x y
+consider  | v :: iv/np[ts=p]: \x\y.consider x y
 and       | c :: (@x\*@x)/*@x: and ( p x) (q x)
 mary      | n :: np:mary
 musn't    | aux :: (s[t=pres]\np)/iv: \p\x.mustnot (p x)
 have      | aux :: iv/iv[t=en]: \p.have p
 been      | perf :: iv[t=en,p=ing]/iv[p=ing]: \p.been p
 being     | part :: iv[v=pass,p=ing]/iv[v=pass]: \p.being p
-ed        | pass :: iv[v=pass]\\(iv/np[ts=?s]): \p\x\y.pass (p x y)
+ed        | pass :: iv[v=pass]\\(iv/np[ts=p]): \p\x\y.pass (p x y)
 #past run, iv:\x.run x <--> ran, s\np:\x.past run x
 without   | p :: ((s\np)\(S\np))/vp[p=ing]: \p\q\x.without (p x) (q x)
-reading   | ger :: vp[p=ing]/np[ts=?s]:\x\y.read x y
-what      | q   :: s[t=q]/(s/np[ts=?s]): \p\x.question (p x)
-where     | q   :: s[t=q]/(s/np[ts=?s,case=loc]): \p\x.question (at x) (p x)
-did Sally sing| q :: s/np[ts=?s,case=loc] : \y\x.sing x y
+reading   | ger :: vp[p=ing]/np[ts=p]:\x\y.read x y
+what      | q   :: s[t=q]/(s/np[ts=p]): \p\x.question (p x)
+where     | q   :: s[t=q]/(s/np[ts=p,case=loc]): \p\x.question (at x) (p x)
+did Sally sing| q :: s/np[ts=p,case=loc] : \y\x.sing x y
 to        | inf :: vp/iv: \p.p
 study     | v   :: iv:\x.study x
 the       | det :: np/*n:\x.def x
-that      | rel :: (n\n)/(s/np[ts=?s]): \p\q\x.and (p x) (q x)
+that      | rel :: (n\n)/(s/np[ts=p]): \p\q\x.and (p x) (q x)
 novel     | n   :: n :\x.novel x
 flower    | n   :: n :\x.flower x
 Mo        | n  :: np: \p.p mo
-write     | v :: iv/np[ts=?s]: \x\y.write x y
+write     | v :: iv/np[ts=p]: \x\y.write x y
 every     | qu :: (s/(s\np))/n: \p\q\x.(forall x) (imp (p x) (q x))
 professor | n   :: n :\x.prof x
 book | n   :: n :\x.book x
 meal | n   :: n :\x.meal x
 worker | n   :: n :\x.worker x
 poem     | n   :: n :\x.poem x
-shines    | v :: s\np[ts=?s,agr=3s]: \x.shine x
-likes     | v :: (s\np[agr=3s])/np[ts=?s]: \x\y.like x y
+shines    | v :: s\np[agr=3s]: \x.shine x
+likes     | v :: (s\np[agr=3s])/np[ts=p]: \x\y.like x y
 I         | pn :: s/(s\np[agr=1s]):\p.p i
-gave      | v :: (S\np)/pp[p=to]/np[ts=?s]: \x\y\z.give y x z
-gave      | v :: ((s\np)/np[ts=?s])/np[ts=?s]: \x\y\z.give x y z
+gave      | v :: (S\np)/pp[p=to]/np[ts=p]: \x\y\z.give y x z
+gave      | v :: ((s\np)/np[ts=p])/np[ts=p]: \x\y\z.give x y z
 to Mo     | loc :: (S\np)\((s\np)/pp[p=to]): \p.p mo
 tries     | v :: (s\np[agr=3s])/vp: \p\x.try (p x)
-grab      | v :: iv/np[ts=?s]: \x\y.gran x y
+grab      | v :: iv/np[ts=p]: \x\y.gran x y
 believe   | v :: (s\np)/sp: \s\x.believe s x
-loves     | v :: (sp\np[agr=3s])/np[ts=?s]: \x\y.love x y
+loves     | v :: (sp\np[agr=3s])/np[ts=p]: \x\y.love x y
 cats      | n :: np:cats
 
 % and now for something completely different, avoiding Montague 70 and 73.
@@ -74,7 +74,7 @@ cats      | n :: np:cats
 % the idea in the next two entries is that a as a determiner can allow
 %   quantification or identification, and verbs are sensitive to that.
 a     | det :: np[ts=m]/*n:\x.indef x
-a     | qu :: ((s\np)\((s\np)/np[ts=?s]))/n: \p\q\x.(some x) (and (p x) (q x))
+a     | qu :: ((s\np)\((s\np)/np[ts=p]))/n: \p\q\x.(some x) (and (p x) (q x))
 wrote     | test :: (s\np)/np[ts=?s]:\x\y.write x y
 missed    | test :: (s\np)/np[ts=m]  :\x\y.miss x y
 
