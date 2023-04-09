@@ -19,7 +19,7 @@ kicked    | v :: (s\np)/'the bucket': \x\y.die _ (euph x) y
 kicked    | v :: (s\np)/np[ts=p]: \x\y.kick x y
 sincerity | n :: np[ts=p,agr=3s] : sincerity
 admires   | v :: (s\np[agr=3s])/np[ts=p] : admire x y
-john      | n :: np[ts=p,agr=3s]: john
+john      | n :: np[agr=3s]: john
 sincerity | n :: s/(s\np[agr=3s]): \p.p sincerity
 john      | n :: (s\np[agr=?a])\((s\np[agr=?a])/np[ts=p]): \p.p john
 depart    | v :: iv:\y.depart y

@@ -2,13 +2,13 @@
  home    : /home/bozsahin/myrepos/thebench/grammars/english
            temporary and non-editable files in
  tmp     : /var/tmp/thebench/
- file    :  en.txt (63 entries)
- elements:  62
+ file    :  en.txt (70 entries)
+ elements:  69
  s rules :  1 (turned to 2 elements)
  a rules :  0
  basics  :  s np vp iv S n pp sp
 singleton:  'up' 'the bucket'
  special :  @x
- features:  t agr head p v case
- values  :  fin 3s xpl beans ?a pres en ing pass q loc 1s to
- POSs    :  v n aff c aux perf part pass p ger q inf det rel qu pn loc
+ features:  t agr ts head p v case
+ values  :  fin 3s p xpl beans ?a pres en ing pass q loc 1s to m ?s
+ POSs    :  v n aff c aux perf part pass p ger q inf det rel qu pn loc test

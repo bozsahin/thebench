@@ -38134,3 +38134,194 @@ Final LF, normal-order evaluated:
       (LAM X
        ((FORALL X) ((IMP (WORKER X)) ((MISS (INDEF (LAM X (MEAL X)))) X)))))) =
     (\ P . P (\ X . FORALL X (IMP (WORKER X) (MISS (INDEF (\ X . MEAL X)) X))))
+
+/‾\ /‾\  pass to check for NPs other than indefinite NP
+
+
+/‾\ /‾\  a every worker missed john
+
+Input: every worker missed john
+
+Number of analyses: 6
+Done. Try , command for results
+
+/‾\ /‾\  ,
+
+
+
+Derivation 1
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/NP
+        : (LAM X (LAM Y ((MISS X) Y)))
+ELM   (john) := NP
+        : JOHN
+A     (|missed|)(|john|) := S\NP
+        : ((LAM X (LAM Y ((MISS X) Y))) JOHN)
+A     (|every| |worker|)(|missed| |john|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           ((LAM X (LAM Y ((MISS X) Y))) JOHN))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS JOHN) X)))) =
+    (\ X . FORALL X (IMP (WORKER X) (MISS JOHN X)))
+
+Derivation 2
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/NP
+        : (LAM X (LAM Y ((MISS X) Y)))
+_P2_159 (john) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) JOHN)
+T     (|missed|)(|john|) := S\NP
+        : (((LAM LF (LAM P (P LF))) JOHN) (LAM X (LAM Y ((MISS X) Y))))
+A     (|every| |worker|)(|missed| |john|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           (((LAM LF (LAM P (P LF))) JOHN) (LAM X (LAM Y ((MISS X) Y)))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS JOHN) X)))) =
+    (\ X . FORALL X (IMP (WORKER X) (MISS JOHN X)))
+
+Derivation 3
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/NP
+        : (LAM X (LAM Y ((MISS X) Y)))
+>B    (|every| |worker|)(|missed|) := S/NP
+        : (LAM X
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (WORKER X)))
+            ((LAM X (LAM Y ((MISS X) Y))) X)))
+ELM   (john) := NP
+        : JOHN
+A     (|every| |worker| |missed|)(|john|) := S
+        : ((LAM X
+            (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+              (LAM X (WORKER X)))
+             ((LAM X (LAM Y ((MISS X) Y))) X)))
+           JOHN)
+
+Final LF, normal-order evaluated: 
+
+    (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS JOHN) X)))) =
+    (\ X . FORALL X (IMP (WORKER X) (MISS JOHN X)))
+
+Derivation 4
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/NP
+        : (LAM X (LAM Y ((MISS X) Y)))
+ELM   (john) := NP
+        : JOHN
+A     (|missed|)(|john|) := S\NP
+        : ((LAM X (LAM Y ((MISS X) Y))) JOHN)
+A     (|every| |worker|)(|missed| |john|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           ((LAM X (LAM Y ((MISS X) Y))) JOHN))
+_G2_151 (every worker missed john) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (WORKER X)))
+            ((LAM X (LAM Y ((MISS X) Y))) JOHN)))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS JOHN) X)))))) =
+    (\ P . P (\ X . FORALL X (IMP (WORKER X) (MISS JOHN X))))
+
+Derivation 5
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/NP
+        : (LAM X (LAM Y ((MISS X) Y)))
+_P2_159 (john) := (S\NP)\((S\NP)/NP)
+        : ((LAM LF (LAM P (P LF))) JOHN)
+T     (|missed|)(|john|) := S\NP
+        : (((LAM LF (LAM P (P LF))) JOHN) (LAM X (LAM Y ((MISS X) Y))))
+A     (|every| |worker|)(|missed| |john|) := S
+        : (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+            (LAM X (WORKER X)))
+           (((LAM LF (LAM P (P LF))) JOHN) (LAM X (LAM Y ((MISS X) Y)))))
+_G2_151 (every worker missed john) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (WORKER X)))
+            (((LAM LF (LAM P (P LF))) JOHN) (LAM X (LAM Y ((MISS X) Y))))))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS JOHN) X)))))) =
+    (\ P . P (\ X . FORALL X (IMP (WORKER X) (MISS JOHN X))))
+
+Derivation 6
+--------------
+ELM   (every) := (S/(S\NP))/N
+        : (LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+ELM   (worker) := N
+        : (LAM X (WORKER X))
+A     (|every|)(|worker|) := S/(S\NP)
+        : ((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+           (LAM X (WORKER X)))
+ELM   (missed) := (S\NP)/NP
+        : (LAM X (LAM Y ((MISS X) Y)))
+>B    (|every| |worker|)(|missed|) := S/NP
+        : (LAM X
+           (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+             (LAM X (WORKER X)))
+            ((LAM X (LAM Y ((MISS X) Y))) X)))
+ELM   (john) := NP
+        : JOHN
+A     (|every| |worker| |missed|)(|john|) := S
+        : ((LAM X
+            (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+              (LAM X (WORKER X)))
+             ((LAM X (LAM Y ((MISS X) Y))) X)))
+           JOHN)
+_G2_151 (every worker missed john) := (S\NP)\((S\NP)/S)
+        : ((LAM LF (LAM P (P LF)))
+           ((LAM X
+             (((LAM P (LAM Q (LAM X ((FORALL X) ((IMP (P X)) (Q X))))))
+               (LAM X (WORKER X)))
+              ((LAM X (LAM Y ((MISS X) Y))) X)))
+            JOHN))
+
+Final LF, normal-order evaluated: 
+
+    (LAM P (P (LAM X ((FORALL X) ((IMP (WORKER X)) ((MISS JOHN) X)))))) =
+    (\ P . P (\ X . FORALL X (IMP (WORKER X) (MISS JOHN X))))

@@ -2,8 +2,9 @@ The categorial skeleton of the current grammar
 
 
 category  : (S\NP)/NP
-occurrence: 7  elements
-elements  : (sees / picked / spilled / spilled / kicked / admires / likes)
+occurrence: 8  elements
+elements  : (sees / picked / spilled / spilled / kicked / admires / likes /
+             wrote)
 
 --------
 
@@ -164,8 +165,8 @@ elements  : (that)
 --------
 
 category  : N
-occurrence: 3  elements
-elements  : (novel / flower / poem)
+occurrence: 7  elements
+elements  : (novel / flower / professor / book / meal / worker / poem)
 
 --------
 
@@ -211,6 +212,18 @@ elements  : (loves)
 
 --------
 
-Checksum: 64 (total of sums in category classes)
-Total   : 35 distinct categories
-Out of  : 64 entries (not counting asymmetric relational rules)
+category  : ((S\NP)\((S\NP)/NP))/N
+occurrence: 1  element
+elements  : (a)
+
+--------
+
+category  : (S\NP)/NP
+occurrence: 1  element
+elements  : (missed)
+
+--------
+
+Checksum: 71 (total of sums in category classes)
+Total   : 37 distinct categories
+Out of  : 71 entries (not counting asymmetric relational rules)

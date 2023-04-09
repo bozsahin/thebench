@@ -1,14 +1,14 @@
-#_p2_5568  np[ts=m] : a --> (s\np)\((s\np)/np[ts=m]) : \a\p.p a
-#_p2_5627  np[ts=p] : a --> ((s\np[agr=3s])/vp)\(((s\np[agr=3s])/vp)/np[ts=p]) : \a\p.p a
-#_p2_5618  np[ts=p] : a --> (s\np[agr=3s])\((s\np[agr=3s])/np[ts=p]) : \a\p.p a
-#_p2_5598  vp : a --> (s\np[agr=3s])\((s\np[agr=3s])/vp) : \a\p.p a
-#_g2_5560  s : a --> (s\np[t=xpl])\((s\np[t=xpl])/s) : \a\p.p a
-#_g2_5559  'up' : a --> ((s\np)/np[ts=p])\(((s\np)/np[ts=p])/'up') : \a\p.p a
-#_g2_5558  np[ts=p] : a --> ((s\np)/'up')\(((s\np)/'up')/np[ts=p]) : \a\p.p a
-#_g2_5554  'the bucket' : a --> (s\np)\((s\np)/'the bucket') : \a\p.p a
-#_g2_5546  np[agr=3s] : a --> s/(s\np[agr=3s]) : \a\p.p a
-#_g2_5544  np[ts=p] : a --> ((s\np)/pp[p=to])\(((s\np)/pp[p=to])/np[ts=p]) : \a\p.p a
-#_g2_5543  np[ts=p] : a --> ((s\np)/np[ts=p])\(((s\np)/np[ts=p])/np[ts=p]) : \a\p.p a
-#_g2_5540  sp : a --> (s\np)\((s\np)/sp) : \a\p.p a
-#_g2_5539  np[ts=p] : a --> (sp\np[agr=3s])\((sp\np[agr=3s])/np[ts=p]) : \a\p.p a
-#_p2_5596  np[ts=p] : a --> iv\(iv/np[ts=p]) : \a\p.p a
+#_p2_5310  np[ts=m] : a --> (s\np)\((s\np)/np[ts=m]) : \a\p.p a
+#_p2_5369  np[ts=p] : a --> ((s\np[agr=3s])/vp)\(((s\np[agr=3s])/vp)/np[ts=p]) : \a\p.p a
+#_p2_5360  np[ts=p] : a --> (s\np[agr=3s])\((s\np[agr=3s])/np[ts=p]) : \a\p.p a
+#_p2_5340  vp : a --> (s\np[agr=3s])\((s\np[agr=3s])/vp) : \a\p.p a
+#_g2_5302  s : a --> (s\np[t=xpl])\((s\np[t=xpl])/s) : \a\p.p a
+#_g2_5301  'up' : a --> ((s\np)/np[ts=p])\(((s\np)/np[ts=p])/'up') : \a\p.p a
+#_g2_5300  np[ts=p] : a --> ((s\np)/'up')\(((s\np)/'up')/np[ts=p]) : \a\p.p a
+#_g2_5296  'the bucket' : a --> (s\np)\((s\np)/'the bucket') : \a\p.p a
+#_g2_5288  np[agr=3s] : a --> s/(s\np[agr=3s]) : \a\p.p a
+#_g2_5286  np[ts=p] : a --> ((s\np)/pp[p=to])\(((s\np)/pp[p=to])/np[ts=p]) : \a\p.p a
+#_g2_5285  np[ts=p] : a --> ((s\np)/np[ts=p])\(((s\np)/np[ts=p])/np[ts=p]) : \a\p.p a
+#_g2_5282  sp : a --> (s\np)\((s\np)/sp) : \a\p.p a
+#_g2_5281  np[ts=p] : a --> (sp\np[agr=3s])\((sp\np[agr=3s])/np[ts=p]) : \a\p.p a
+#_p2_5338  np[ts=p] : a --> iv\(iv/np[ts=p]) : \a\p.p a
