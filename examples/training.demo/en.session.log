@@ -1,4 +1,7 @@
 
+/‾\ /‾\  pass train en.txt on en.spairs using experiment parameters in en.exp
+
+
 /‾\ /‾\  t en.txt en.spairs en.exp
 
 no errors in grammar text, proceeding with set up..
