@@ -2,7 +2,7 @@
 A tool to study monadic structures in natural languages using two command relations.
 
 It works in Linuxsphere, for example MacOS, Arch, Debian, RedHat (which are available as systems of various beginner-friendliness, in my opinion 
-in the order of latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Suse, Kali, Gentoo, slackware etc.)
+in the order of latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Suse, Pop_OS, Kali, Gentoo, slackware etc.)
 
 YOU NEED:
 
