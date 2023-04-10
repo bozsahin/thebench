@@ -1,16 +1,15 @@
 # TheBench
 A tool to study monadic structures in natural languages using two command relations.
 
-It works in Linuxsphere, for example MacOS, Arch, Debian, RedHat (which are available as systems of various beginner-friendliness, in my opinion 
-in the order of latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Suse, Pop_OS, Kali, Gentoo, slackware etc.)
+It works in Linuxsphere, for example Window's WSL, MacOS, Arch, Debian, RedHat (which are available as systems of various beginner-friendliness, in my opinion in the order of latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Suse, Pop_OS, CentOS, Kali, Gentoo, slackware etc.)
 
 YOU NEED:
 
-- A terminal app, such as those in any Linux, MacOS or Window's WSL system.  
+1. A terminal app, such as those in any Linux, MacOS or Window's WSL system.  
 
 You can start using WSL right off the shelf if you have Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 
-- A software installer.  
+2. A software installer.  
 
 The standard installers
 in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by thebench installer. They are built-in, depending on your platform, even under WSL.
@@ -19,13 +18,13 @@ As things Apple go these days, you might be left helpless about things we take f
 in programming; you'd need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 
 
-- <a href="https://www.python.org/">Python 3.8  or above</a>
+3. <a href="https://www.python.org/">Python 3.8  or above</a>
 
-- Python module installer <a href="https://pypi.org/project/pip/">pip</a>
+4. Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 
 If you installed python by a package manager, you probably have pip already.
 
-- <a href="https://git-scm.com/downloads">git</a> 
+5. <a href="https://git-scm.com/downloads">git</a> 
 
 If you already have these utilities in your system, your versions are detected and used by the bench. 
 If not, the installer will complain and exit.
