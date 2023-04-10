@@ -34,12 +34,12 @@ BHF="$ULL/.thebenchhome" # thebench home path resides in this file
 TMPB='/var/tmp/thebench'
 SUDO=sudo
 LOGFILE='/var/tmp/thebench-install.log'
+if [ -f $ULB/bench ]; then
+	echo "You have TheBench installed at: `cat $BHF`"
+  	echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
+  	exit -1
+fi
 if [ $1 == install ]; then
-	if [ -f $ULB/bench ]; then
-  		echo "You have TheBench installed at: `cat $BHF`"
-	  	echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
-	  	exit -1
-  	fi
 	echo " "
 	echo "**** PLEASE NOTE: ****"
 	echo " "
@@ -98,7 +98,7 @@ if [ $1 == install ]; then
 	fi
 	echo "$labdir" | tee "$BHF"
 	ln -s $labdir/src/bench.train.sh $ULB/bench.train
-	echo "python$PYSUFF $labdir/src/bench.py" | tee "$ULB/bench"
+	echo "python $labdir/src/bench.py" | tee "$ULB/bench"
 	chmod ugo+x "$ULB/bench"
 	chmod ugo+r "$BHF"
 	chmod ugo+x "$ULB/bench.train"
@@ -127,6 +127,8 @@ if [ -f $PY ]; then
 		echo "No $PIP; aborting..."
 		exit -1
 	fi
+	echo "python$PYSUFF $labdir/src/bench.py" | tee "$ULB/bench"
+	chmod ugo+x "$ULB/bench"
 else
 	echo "No $PY; aborting..."
 	exit -1
