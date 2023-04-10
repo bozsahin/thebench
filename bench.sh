@@ -8,9 +8,9 @@ if [ $# -eq 0 ]; then
 	exit -1
 fi
 if [ $1 == uninstall ]; then
-	BENCH_HOME="`cat ~/.thebenchhome`"
-	cd ~
-	if [ -d $BENCH_HOME ] && [ $BENCH_HOME != ~ ]; then
+	BENCH_HOME="`cat $HOME/.thebenchhome`"
+	cd $HOME
+	if [ -d $BENCH_HOME ] && [ $BENCH_HOME != $HOME ]; then
   		echo "Removing $BENCH_HOME"
   		rm -fr $BENCH_HOME
 	fi
@@ -19,10 +19,10 @@ if [ $1 == uninstall ]; then
   		rm -fr /var/tmp/thebench
 	fi
 	echo "Removing thebench files from $HOME"
-	rm ~/.thebenchhome
-	rm ~/.thebenchhistory
-	rm ~/bin/bench.train
-	rm ~/bin/bench
+	rm $HOME/.thebenchhome
+	rm $HOME/.thebenchhistory
+	rm $HOME/bin/bench.train
+	rm $HOME/bin/bench
 	echo "Uninstall completed."
 	exit 0
 fi
@@ -107,11 +107,11 @@ if [ $1 == install ]; then
 	echo -e $LOG > $LOGFILE
 	echo -e $LOG
 	# and now for some .bashrc managament tucked at the very end of .bashrc
-	PATH=~/bin:$PATH
-	printf '%s\n' '# stuff added by thebench installer to set and make PATH unique (kudos to Mitch Frazier)' >> ~/.bashrc
-	printf '%s\n' 'PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '"'"'!($0 in a) {a[$0]; print}'"'"')' >> ~/.bashrc
-	printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
-	source ~/.bashrc
+	PATH=$HOME/bin:$PATH
+	printf '%s\n' '# stuff added by thebench installer to set and make PATH unique (kudos to Mitch Frazier)' >> $HOME/.bashrc
+	printf '%s\n' 'PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '"'"'!($0 in a) {a[$0]; print}'"'"')' >> $HOME/.bashrc
+	printf '%s\n' '# end of stuff added by thebench installer' >> $HOME/.bashrc
+	source $HOME/.bashrc
        	exit 0
 fi
 PYSUFF=$1
