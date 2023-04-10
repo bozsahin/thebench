@@ -34,6 +34,7 @@ BHF="$ULL/.thebenchhome" # thebench home path resides in this file
 TMPB='/var/tmp/thebench'
 SUDO=sudo
 LOGFILE='/var/tmp/thebench-install.log'
+labdir=`pwd`
 if [ $1 == install ]; then
 	if [ -f $ULB/bench ]; then
 		echo "You have TheBench installed at: `cat $BHF`"
@@ -55,7 +56,6 @@ if [ $1 == install ]; then
   		mkdir $TMPB
   		LOG+="\n-$TMPB directory created for temporary files"
 	fi
-	labdir=`pwd`
 	#check if SBCL need installing-- SBCL is the standard  lisp for cl4py module
 	#there is a pecking order of packagers, in case you have more than one
 	packager=
