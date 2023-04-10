@@ -34,12 +34,12 @@ BHF="$ULL/.thebenchhome" # thebench home path resides in this file
 TMPB='/var/tmp/thebench'
 SUDO=sudo
 LOGFILE='/var/tmp/thebench-install.log'
-if [ -f $ULB/bench ]; then
-	echo "You have TheBench installed at: `cat $BHF`"
-  	echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
-  	exit -1
-fi
 if [ $1 == install ]; then
+	if [ -f $ULB/bench ]; then
+		echo "You have TheBench installed at: `cat $BHF`"
+  		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
+  		exit -1
+	fi
 	echo " "
 	echo "**** PLEASE NOTE: ****"
 	echo " "
