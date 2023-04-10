@@ -66,7 +66,7 @@ Python versions can be daunting for the uninitiated. Don't count on the executab
 Use the latest for python AND pip. If you have a new one installed, say python3.11,
 just re-run the installer with that suffix to update thebench libraries, for example
 
-<code>bench.sh 3.11</code>
+<code>./bench.sh 3.11</code>
 
 This will refresh the tool to work with  <code>pip3.11</code> and <code>python3.11</code>.
 
@@ -86,7 +86,7 @@ TO UNINSTALL:
 
 do
 
-   <code>bench.sh uninstall</code>
+   <code>./bench.sh uninstall</code>
 
 Enjoy. 
 
