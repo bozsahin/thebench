@@ -1,6 +1,5 @@
 #!/bin/bash
 # cem bozsahin 2023
-# The new install does not alter .bashrc or .bash_profile; there are no environment variables either
 # $1 : 'uninstall' 'install' or Python and pip binary suffix in case there is more than one binary for them
 # brew does not allow sudo--$SUDO controls that
 if [ $# -eq 0 ]; then
@@ -92,9 +91,9 @@ if [ $1 == install ]; then
   		if [ "$packager" ]; then
 			$SUDO $packager $install sbcl
 			LOG+="\n-sbcl is downloaded and installed"
-  		fi
 		else
   			LOG+="\n-Local sbcl is set for tool use"
+  		fi
 	fi
 	echo "$labdir" | tee "$BHF"
 	ln -s $labdir/src/bench.train.sh $ULB/bench.train
@@ -107,17 +106,17 @@ if [ $1 == install ]; then
 	LOG+="\n========================================================="
 	echo -e $LOG > $LOGFILE
 	echo -e $LOG
-	# and now for some .bashrc managament tucked at the very end of it 
-	printf '%s\n' '# stuff added by thebench installer to set and make PATH unique (kudos to Mitch Frazier for the 2nd line)' >> ~/.bashrc
-	printf '%s\n' "PATH=~/bin:$PATH" >> ~/.bashrc
+	# and now for some .bashrc managament tucked at the very end of .bashrc
+	PATH=~/bin:$PATH
+	printf '%s\n' '# stuff added by thebench installer to set and make PATH unique (kudos to Mitch Frazier)' >> ~/.bashrc
 	printf '%s\n' 'PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '"'"'!($0 in a) {a[$0]; print}'"'"')' >> ~/.bashrc
 	printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
+	source ~/.bashrc
        	exit 0
 fi
 PYSUFF=$1
 PY="`command -v python$PYSUFF`"
 PIP="`command -v pip$PYSUFF`"
-BHOME=`pwd`
 if [ -f $PY ]; then
 	if [ -f $PIP ]; then
 		$PIP install cl4py
