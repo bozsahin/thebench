@@ -24,8 +24,6 @@ If you installed python by a package manager, you probably have pip already.
 
 - <a href="https://git-scm.com/downloads">git</a> 
 
-(git is optional if you don't care about upgrades; in this case, ignore step 1 below and just download this repository, and do step 2. If you do care about upgrades, git is safest and easiest).
-
 If you already have these utilities in your system, your versions are detected and used by the bench. 
 If not, the installer will complain and exit.
 
