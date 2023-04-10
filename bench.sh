@@ -10,7 +10,7 @@ fi
 if [ $1 == uninstall ]; then
 	BENCH_HOME="`cat ~/.thebenchhome`"
 	cd ~
-	if [ -d $BENCH_HOME ]; then
+	if [ -d $BENCH_HOME ] && [ $BENCH_HOME != ~ ]; then
   		echo "Removing $BENCH_HOME"
   		rm -fr $BENCH_HOME
 	fi
