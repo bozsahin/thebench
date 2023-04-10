@@ -1,7 +1,7 @@
 #!/bin/bash
 # cem bozsahin 2023
-# The new install does not alter .bashrc or .bash_profile; no environment variables either
-# $1 : 'uninstall' 'install' or Python and pip binary suffixes in case there is more than one binary for them
+# The new install does not alter .bashrc or .bash_profile; there are no environment variables either
+# $1 : 'uninstall' 'install' or Python and pip binary suffix in case there is more than one binary for them
 # brew does not allow sudo--$SUDO controls that
 if [ $# -eq 0 ]; then
 	echo "please specify 'install', 'uninstall' or python/pip version number"
