@@ -41,11 +41,11 @@ TO INSTALL:
 
    <code>./bench.sh install</code>
 
-This wii install thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
+This will install thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
 
 TO USE: 
 
-just do
+just do anywhere 
 
 <code>bench</code>
 
