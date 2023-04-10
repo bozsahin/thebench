@@ -36,7 +36,7 @@ TO INSTALL:
 
    <code>git clone https://github.com/bozsahin/thebench</code>
 
-   This will create <code>thebench</code> folder with code and documentation.
+   This will create <code>thebench</code> subfolder with code and documentation.
 
 2.  In the terminal, and IN <code>thebench</code> directory, do  the following:
 
