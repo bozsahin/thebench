@@ -12,17 +12,18 @@ if [ $1 == uninstall ]; then
 	BENCH_HOME="`cat ~/.thebenchhome`"
 	cd ~
 	if [ -d $BENCH_HOME ]; then
-  	echo "Removing $BENCH_HOME"
-  	rm -fr $BENCH_HOME
+  		echo "Removing $BENCH_HOME"
+  		rm -fr $BENCH_HOME
+	fi
 	if [ -d "/var/tmp/thebench" ]; then
   		echo "Removing /var/tmp/thebench"
   		rm -fr /var/tmp/thebench
 	fi
 	echo "Removing thebench files from $HOME"
-	rm "~/.thebenchhome"
-	rm "~/.thebenchhistory"
-	rm "~/bin/bench.train"
-	rm "~/bin/bench"
+	rm ~/.thebenchhome
+	rm ~/.thebenchhistory
+	rm ~/bin/bench.train
+	rm ~/bin/bench
 	echo "Uninstall completed."
 	exit 0
 fi
@@ -132,4 +133,3 @@ printf '%s\n' '# stuff added by thebench installer to set and make PATH unique (
 printf '%s\n' "PATH=~/bin:$PATH" >> ~/.bashrc
 printf '%s\n' 'PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '"'"'!($0 in a) {a[$0]; print}'"'"')' >> ~/.bashrc
 printf '%s\n' '# end of stuff added by thebench installer' >> ~/.bashrc
-fi

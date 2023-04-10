@@ -39,9 +39,9 @@ TO INSTALL:
 
 2.  In the terminal, and IN <code>thebench</code> directory, do  the following:
 
-   <code>bench.sh install</code>
+   <code>./bench.sh install</code>
 
-You've just installed thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
+This wii install thebench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and thebench processor. You have also made the tool available from anywhere in your machine.
 
 TO USE: 
 
