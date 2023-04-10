@@ -112,7 +112,7 @@ tool.
 
 Please do not alter them manually.
 
-The installer also creates a <code>~ /bin</code> directory at your home, if you don't already have one.
+The installer also creates the <code>~/bin</code> directory at your home, if you don't already have one.
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
 are kept (usually), is to add this directory to the PATH variable and eliminate duplicates in it.
 
