@@ -108,7 +108,7 @@ if [ $1 == install ]; then
 	echo -e $LOG
 	# and now for some .bashrc managament tucked at the very end of .bashrc
 	printf '%s\n' '# stuff added by thebench installer (and to make PATH unique--kudos to Mitch Frazier)' >> $HOME/.bashrc
-	printf 'PATH=$HOME/bin:$PATH' >> $HOME/.bashrc
+	printf '%s\n' 'PATH=$HOME/bin:$PATH' >> $HOME/.bashrc
 	printf '%s\n' 'PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '"'"'!($0 in a) {a[$0]; print}'"'"')' >> $HOME/.bashrc
 	printf '%s\n' '# end of stuff added by thebench installer' >> $HOME/.bashrc
 	source $HOME/.bashrc
