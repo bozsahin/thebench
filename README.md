@@ -1,7 +1,7 @@
 # TheBench
 This is a tool to study monadic structures in natural languages using two command relations.
 
-It works in Linuxsphere, for example Window's WSL, MacOS, Arch, Debian and RedHat (which are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Suse, Pop_OS, CentOS, Kali, Gentoo, slackware etc.)
+It works in Linuxsphere, for example in Window's WSL, MacOS, Arch, Debian and RedHat. These linues are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Suse, Pop_OS, CentOS, Kali, Gentoo, slackware etc.
 
 YOU NEED:
 
@@ -17,7 +17,7 @@ The standard installers
 in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, even under WSL.
 
 As things Apple go these days, you might be left helpless about things we take for granted
-in programming, for example community support for public software. You'd need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
+in programming, for example community support and public software. You'd need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 
 
 3. <a href="https://www.python.org/">Python 3.8  or above</a>
