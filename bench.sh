@@ -38,7 +38,7 @@ if [ $1 == install ]; then
 	if [ -f $ULB/bench ]; then
 		echo "You have TheBench installed at: `cat $BHF`"
   		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
-  		exit -1
+  		exit 0  # this is not an error
 	fi
 	echo " "
 	echo "**** PLEASE NOTE: ****"
@@ -101,6 +101,13 @@ if [ $1 == install ]; then
 	chmod ugo+x "$ULB/bench"
 	chmod ugo+r "$BHF"
 	chmod ugo+x "$ULB/bench.train"
+	if [ `command -v pip` ]; then
+		pip install cl4py
+		pip install sly
+		pip install prompt_toolkit
+	else
+		LOG+="\n-no pip. You must install cl4py sly and prompt_toolkit yourself"
+	fi
 	LOG+="\n\n-thebench install: COMPLETED"
 	LOG+="\n-This log is saved in file $LOGFILE"
 	LOG+="\n========================================================="
