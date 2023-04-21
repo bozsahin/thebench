@@ -1,7 +1,7 @@
 # TheBench
 This is a tool to study monadic structures in natural languages using two command relations.
 
-It can work in Linuxsphere, Macosphere and Windows sub-atmosphere, for example in Window's WSL, MacOS, Arch, Debian and RedHat. These spheres are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Suse, Pop_OS, CentOS, Kali, Gentoo, slackware etc.
+It can work in Linuxsphere, Macosphere and Windows sub-atmosphere, for example in Window's WSL, MacOS, Arch, Debian and RedHat. These spheres are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Suse, Pop_OS, CentOS, Kali, Gentoo, slackware etc. I have been able to install TheBench fully automatically in top five most popular platforms in the list.
 
 YOU NEED:
 
@@ -120,3 +120,9 @@ The only surgical touch to your <code>~/.bashrc</code>, which is where your bash
 are kept (usually), is to add this directory to the PATH variable and eliminate duplicates in it.
 
 There are no bench-related environment variables.
+
+You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
+is also available in such platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
+So, for Suse and other RH systems, install <code>yum</code> first before you install TheBench.
+
+
