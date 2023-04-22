@@ -85,13 +85,11 @@ if [ $1 == install ]; then
 		fi
 		if [ "$packager" ]; then
 			LOG+="\n-You have an installer ($packager) for standard packages"
+			$SUDO $packager $install sbcl
+			LOG+="\n-sbcl is downloaded and installed"
 		else
 			LOG+="\n-apt-get, dnf, pacman, yum or brew not found. I leave Common Lisp handling to you."
 		fi
-  		if [ "$packager" ]; then
-			$SUDO $packager $install sbcl
-			LOG+="\n-sbcl is downloaded and installed"
-  		fi
 	else
   		LOG+="\n-Local sbcl is set for tool use"
 	fi
