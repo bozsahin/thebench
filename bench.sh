@@ -57,37 +57,37 @@ if [ $1 == install ]; then
 	fi
 	#check if SBCL need installing-- SBCL is the standard  lisp for cl4py module
 	#there is a pecking order of packagers, in case you have more than one
-	packager=
-	install=install
-	if [ `command -v dnf` ]; then
-		packager=dnf
-	fi
-	if [ `command -v yum` ]; then
-	  packager=yum   
-	  # open library space of yum
-	  $SUDO yum $install yum-utils
-	  $SUDO yum-config-manager --enable \*
-	fi
-	if [ `command -v apt-get` ]; then
-		packager=apt-get
-		# open library space of apt-get and refresh
-		$SUDO add-apt-repository universe
-		$SUDO apt-get update
-	fi
-	if [ `command -v pacman` ]; then
-		packager=pacman
-		install='-S'
-	fi
-	if [ `command -v brew` ]; then
-    		packager=brew
-		SUDO=
-	fi
-	if [ "$packager" ]; then
-		LOG+="\n-You have an installer ($packager) for standard packages"
-	else
-		LOG+="\n-apt-get, dnf, pacman, yum or brew not found. I leave Common Lisp handling to you."
-	fi
 	if [ ! `command -v sbcl` ]; then
+		packager=
+		install=install
+		if [ `command -v dnf` ]; then
+			packager=dnf
+		fi
+		if [ `command -v yum` ]; then
+	  		packager=yum   
+	  		# open library space of yum
+	  		$SUDO yum $install yum-utils
+	  		$SUDO yum-config-manager --enable \*
+		fi
+		if [ `command -v apt-get` ]; then
+			packager=apt-get
+			# open library space of apt-get and refresh
+			$SUDO add-apt-repository universe
+			$SUDO apt-get update
+		fi
+		if [ `command -v pacman` ]; then
+			packager=pacman
+			install='-S'
+		fi
+		if [ `command -v brew` ]; then
+    			packager=brew
+			SUDO=
+		fi
+		if [ "$packager" ]; then
+			LOG+="\n-You have an installer ($packager) for standard packages"
+		else
+			LOG+="\n-apt-get, dnf, pacman, yum or brew not found. I leave Common Lisp handling to you."
+		fi
   		if [ "$packager" ]; then
 			$SUDO $packager $install sbcl
 			LOG+="\n-sbcl is downloaded and installed"
