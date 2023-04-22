@@ -1,7 +1,9 @@
 # TheBench
 This is a tool to study monadic structures in natural languages using two command relations.
 
-It can work in Linuxsphere, Macosphere and Windows sub-atmosphere, for example in Window's WSL, MacOS, Arch, Debian and RedHat. These spheres are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Kali, Suse, Pop_OS, CentOS, slackware etc. I have been able to install and run TheBench fully automatically in top six of the platforms in this list. (I skipped Suse after installing it---see the bottom of this page for the explanation. I have not tried others.)
+It can work in Linuxsphere, Macosphere and Windows linux sub-atmosphere,  for example in Window's WSL, MacOS, Arch, Debian and RedHat-based distributions.
+
+These spheres are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Kali, Suse, Pop_OS, CentOS, slackware etc. I have been able to install and run TheBench fully automatically in top six of the platforms in this list. (I skipped Suse after installing it---see the bottom of this page for the explanation. I have not tried others.)
 
 YOU NEED:
 
@@ -24,7 +26,7 @@ in programming, for example community support and public software. You'd need ex
 
 4. Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 
-If you installed python via a package manager, you probably have pip already.
+If you installed python via a package manager, you probably have pip already. Do <code>command pip</code> to find out.
 
 5. <a href="https://git-scm.com/downloads">git</a> 
 
@@ -122,7 +124,7 @@ are kept (usually), is to add this directory to the PATH variable and eliminate 
 There are no bench-related environment variables.
 
 You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
-is also available in such platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
+is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
 So, for Suse and similar RH systems, install <code>yum</code> first before you install TheBench. Fedora is RH, but comes with <code>yum</code>, so no problems (and wise choice, lads and lasses, ditto CentOS).
 
 
