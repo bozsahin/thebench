@@ -2931,14 +2931,18 @@
 				   (remhash k2 skht))) ; this is destructive--effects next iterations
 			  skht))
 	     skht)
-    (format t "The categorial skeleton of the current grammar~2%")
-    (maphash #'(lambda (k v) ; report what is left
-		 (format t "~%category  : ~A~%occurrence: ~A  element~:P~%elements  : ~A~2%--------~%" 
-			 (linearize-syn (machash 'SYN (second v))) 
-			 (- (length (first v)) (third v))
-			 (first v))
-		 (setf checksum (+ checksum (length (first v)))))
-	     skht)
+    (let ((sklist nil))        ; sort what remains and report
+      (maphash #'(lambda (k v) 
+		   (push (list (machash 'SYN (second v))
+			       (- (length (first v)) (third v))
+			       (first v)) 
+			 sklist)
+		   (setf checksum (+ checksum (length (first v)))))
+	       skht)
+      (format t "The categorial skeleton of the current grammar~2%")
+      (dolist (v (sort sklist #'> :key #'second))
+	(format t "~%category  : ~A~%occurrence: ~A  element~:P~%elements  : ~A~2%--------~%" 
+		(linearize-syn (first v)) (second v) (third v))))
     (format t "~%Checksum: ~A (total of sums in category classes)" (- checksum slashcnt))
     (format t "~%Total   : ~A distinct categories~%Out of  : ~A entries (not counting asymmetric relational rules)" 
 	    (hash-table-count skht)

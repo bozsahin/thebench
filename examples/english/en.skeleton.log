@@ -8,69 +8,9 @@ elements  : (sees / picked / spilled / spilled / kicked / admires / likes /
 
 --------
 
-category  : ((S\NP)/VP)/NP
-occurrence: 4  elements
-elements  : (persuades / persuaded / promises / wants)
-
---------
-
-category  : (S\NP)/VP
-occurrence: 3  elements
-elements  : (wants / seems / tries)
-
---------
-
-category  : (S\NP)/S
-occurrence: 1  element
-elements  : (seems)
-
---------
-
-category  : ((S\NP)/NP)/'up'
-occurrence: 1  element
-elements  : (picked)
-
---------
-
-category  : ((S\NP)/'up')/NP
-occurrence: 1  element
-elements  : (picked)
-
---------
-
-category  : (S\NP)/'the bucket'
-occurrence: 1  element
-elements  : (kicked)
-
---------
-
-category  : NP
-occurrence: 5  elements
-elements  : (sincerity / john / mary / Mo / cats)
-
---------
-
-category  : S/(S\NP)
-occurrence: 1  element
-elements  : (sincerity)
-
---------
-
-category  : (S\NP)\((S\NP)/NP)
-occurrence: 1  element
-elements  : (john)
-
---------
-
-category  : IV
-occurrence: 3  elements
-elements  : (depart / run / study)
-
---------
-
-category  : (S\NP)\\IV
-occurrence: 1  element
-elements  : (ed)
+category  : N
+occurrence: 7  elements
+elements  : (novel / flower / professor / book / meal / worker / poem)
 
 --------
 
@@ -80,27 +20,15 @@ elements  : (dismiss / reprimand / introduce / consider / write / grab)
 
 --------
 
-category  : (S\NP)\\(IV/NP)
-occurrence: 1  element
-elements  : (ed)
+category  : NP
+occurrence: 5  elements
+elements  : (sincerity / john / mary / Mo / cats)
 
 --------
 
-category  : (IV/NP)//(IV/NP)
-occurrence: 1  element
-elements  : (re)
-
---------
-
-category  : (@X\*@X)/*@X
-occurrence: 1  element
-elements  : (and)
-
---------
-
-category  : (S\NP)/IV
-occurrence: 1  element
-elements  : (musn't)
+category  : ((S\NP)/VP)/NP
+occurrence: 4  elements
+elements  : (persuades / persuaded / promises / wants)
 
 --------
 
@@ -110,45 +38,15 @@ elements  : (have / been / being)
 
 --------
 
-category  : IV\\(IV/NP)
-occurrence: 1  element
-elements  : (ed)
+category  : IV
+occurrence: 3  elements
+elements  : (depart / run / study)
 
 --------
 
-category  : S\NP
-occurrence: 2  elements
-elements  : (ran / shines)
-
---------
-
-category  : ((S\NP)\(S\NP))/VP
-occurrence: 1  element
-elements  : (without)
-
---------
-
-category  : VP/NP
-occurrence: 1  element
-elements  : (reading)
-
---------
-
-category  : S/(S/NP)
-occurrence: 2  elements
-elements  : (what / where)
-
---------
-
-category  : S/NP
-occurrence: 1  element
-elements  : (did Sally sing)
-
---------
-
-category  : VP/IV
-occurrence: 1  element
-elements  : (to)
+category  : (S\NP)/VP
+occurrence: 3  elements
+elements  : (wants / seems / tries)
 
 --------
 
@@ -158,57 +56,21 @@ elements  : (the / a)
 
 --------
 
-category  : (N\N)/(S/NP)
-occurrence: 1  element
-elements  : (that)
+category  : S/(S/NP)
+occurrence: 2  elements
+elements  : (what / where)
 
 --------
 
-category  : N
-occurrence: 7  elements
-elements  : (novel / flower / professor / book / meal / worker / poem)
+category  : S\NP
+occurrence: 2  elements
+elements  : (ran / shines)
 
 --------
 
-category  : (S/(S\NP))/N
+category  : (S\NP)/NP
 occurrence: 1  element
-elements  : (every)
-
---------
-
-category  : S/(S\NP)
-occurrence: 1  element
-elements  : (I)
-
---------
-
-category  : ((S\NP)/PP)/NP
-occurrence: 1  element
-elements  : (gave)
-
---------
-
-category  : ((S\NP)/NP)/NP
-occurrence: 1  element
-elements  : (gave)
-
---------
-
-category  : (S\NP)\((S\NP)/PP)
-occurrence: 1  element
-elements  : (to Mo)
-
---------
-
-category  : (S\NP)/SP
-occurrence: 1  element
-elements  : (believe)
-
---------
-
-category  : (SP\NP)/NP
-occurrence: 1  element
-elements  : (loves)
+elements  : (missed)
 
 --------
 
@@ -218,9 +80,147 @@ elements  : (a)
 
 --------
 
-category  : (S\NP)/NP
+category  : (SP\NP)/NP
 occurrence: 1  element
-elements  : (missed)
+elements  : (loves)
+
+--------
+
+category  : (S\NP)/SP
+occurrence: 1  element
+elements  : (believe)
+
+--------
+
+category  : (S\NP)\((S\NP)/PP)
+occurrence: 1  element
+elements  : (to Mo)
+
+--------
+
+category  : ((S\NP)/NP)/NP
+occurrence: 1  element
+elements  : (gave)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 1  element
+elements  : (gave)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 1  element
+elements  : (I)
+
+--------
+
+category  : (S/(S\NP))/N
+occurrence: 1  element
+elements  : (every)
+
+--------
+
+category  : (N\N)/(S/NP)
+occurrence: 1  element
+elements  : (that)
+
+--------
+
+category  : VP/IV
+occurrence: 1  element
+elements  : (to)
+
+--------
+
+category  : S/NP
+occurrence: 1  element
+elements  : (did Sally sing)
+
+--------
+
+category  : VP/NP
+occurrence: 1  element
+elements  : (reading)
+
+--------
+
+category  : ((S\NP)\(S\NP))/VP
+occurrence: 1  element
+elements  : (without)
+
+--------
+
+category  : IV\\(IV/NP)
+occurrence: 1  element
+elements  : (ed)
+
+--------
+
+category  : (S\NP)/IV
+occurrence: 1  element
+elements  : (musn't)
+
+--------
+
+category  : (@X\*@X)/*@X
+occurrence: 1  element
+elements  : (and)
+
+--------
+
+category  : (IV/NP)//(IV/NP)
+occurrence: 1  element
+elements  : (re)
+
+--------
+
+category  : (S\NP)\\(IV/NP)
+occurrence: 1  element
+elements  : (ed)
+
+--------
+
+category  : (S\NP)\\IV
+occurrence: 1  element
+elements  : (ed)
+
+--------
+
+category  : (S\NP)\((S\NP)/NP)
+occurrence: 1  element
+elements  : (john)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 1  element
+elements  : (sincerity)
+
+--------
+
+category  : (S\NP)/'the bucket'
+occurrence: 1  element
+elements  : (kicked)
+
+--------
+
+category  : ((S\NP)/'up')/NP
+occurrence: 1  element
+elements  : (picked)
+
+--------
+
+category  : ((S\NP)/NP)/'up'
+occurrence: 1  element
+elements  : (picked)
+
+--------
+
+category  : (S\NP)/S
+occurrence: 1  element
+elements  : (seems)
 
 --------
 
