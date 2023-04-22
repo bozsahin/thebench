@@ -7,19 +7,20 @@ These spheres are available as systems of various beginner-friendliness, in my o
 
 YOU NEED:
 
-1. A terminal app. (All of the platforms listed above has one built-in.)  
+1. A terminal app. (All of the platforms listed above have one built-in.)  
 
 Window's native terminal is not the right one for TheBench, you'd need WSL in a windows system.
 
-You can start using WSL right off the shelf if you have Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 
 2. A software installer.  
 
 The standard installers
 in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, even under WSL.
 
+You can start using WSL right off the shelf if you have Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
+
 As things Apple go these days, you might be left helpless about things we take for granted
-in programming, for example community support and public software. You'd need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
+in programming, foYou can start using WSL right off the shelf if you have Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. r example community support and public software. You'd need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 
 
 3. <a href="https://www.python.org/">Python 3.8  or above</a>
