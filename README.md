@@ -1,7 +1,7 @@
 # TheBench
 This is a tool to study monadic structures in natural languages using two command relations.
 
-It can work in Linuxsphere, Macosphere and Windows linux sub-atmosphere,  for example in Window's WSL, MacOS, Arch, Debian and RedHat-based distributions.
+It can work in Linuxsphere, Macosphere and Window's Linux sub-atmosphere,  for example in Window's WSL, MacOS, Arch, Debian and RedHat-based distributions.
 
 These spheres are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Kali, Suse, Pop_OS, CentOS, slackware etc. I have been able to install and run TheBench fully automatically in top six of the platforms in this list. (I skipped Suse after installing it---see the bottom of this page for the explanation. I have not tried others.)
 
