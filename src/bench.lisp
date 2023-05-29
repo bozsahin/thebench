@@ -1461,7 +1461,7 @@
        (machash 'DIR 'RESULT 'SYN ht2) ; ht2 must have a really complex result
        (machash 'DIR 'RESULT 'RESULT 'SYN ht2)
        (eql (machash 'DIR 'RESULT 'RESULT 'SYN ht2) 'BS)
-       (not (eql (machash 'MODAL 'SYN ht2) 'STAR)) ; main functor must allow composition
+      ;(not (eql (machash 'MODAL 'SYN ht2) 'STAR)) ; canceled. not necessary. Thanks to Chris Stone for pointing this out
        (member (machash 'MODAL 'RESULT 'RESULT 'SYN ht2) '(ALL CROSS))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'ARG 'SYN ht1) 
