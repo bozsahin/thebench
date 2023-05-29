@@ -1273,7 +1273,6 @@
        (machash 'DIR 'RESULT 'SYN ht2) ; ht2 must have complex result
        (eql (machash 'DIR 'RESULT 'SYN ht2) 'FS)
        (member (machash 'MODAL 'SYN ht1) '(ALL HARMONIC))
- ;     (not (eql (machash 'MODAL 'SYN ht2) 'STAR)) ; canceled. not necessary. Thanks to Chris Stone for pointing this out
        (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL HARMONIC))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'ARG 'SYN ht1) (machash 'RESULT 'RESULT 'SYN ht2))
@@ -1308,7 +1307,6 @@
        (machash 'DIR 'RESULT 'SYN ht1) ; ht1 must have complex result
        (eql (machash 'DIR 'RESULT 'SYN ht1) 'BS)
        (member (machash 'MODAL 'SYN ht2) '(ALL HARMONIC))
-     ; (not (eql (machash 'MODAL 'SYN ht1) 'STAR))  ; canceled. not necessary. Thanks to Chris Stone for pointing this out
        (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL HARMONIC))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'RESULT 'RESULT 'SYN ht1)
@@ -1344,7 +1342,6 @@
        (machash 'DIR 'RESULT 'SYN ht2) ; ht2 must have complex result
        (eql (machash 'DIR 'RESULT 'SYN ht2) 'BS)
        (member (machash 'MODAL 'SYN ht1) '(ALL CROSS))
-      ;(not (eql (machash 'MODAL 'SYN ht2) 'STAR)) ; canceled. not necessary. Thanks to Chris Stone for pointing this out 
        (member (machash 'MODAL 'RESULT 'SYN ht2) '(ALL CROSS))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'ARG 'SYN ht1) (machash 'RESULT 'RESULT 'SYN ht2))
@@ -1379,7 +1376,6 @@
        (machash 'DIR 'RESULT 'SYN ht1) ; ht1 must have complex result
        (eql (machash 'DIR 'RESULT 'SYN ht1) 'FS)
        (member (machash 'MODAL 'SYN ht2) '(ALL CROSS))
-      ;(not (eql (machash 'MODAL 'SYN ht1) 'STAR)) ; canceled. not necessary. Thanks to Chris Stone for pointing this out
        (member (machash 'MODAL 'RESULT 'SYN ht1) '(ALL CROSS))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'RESULT 'RESULT 'SYN ht1)
@@ -1416,7 +1412,6 @@
        (machash 'DIR 'RESULT 'SYN ht2) ; ht2 must have a really complex result
        (machash 'DIR 'RESULT 'RESULT 'SYN ht2)
        (eql (machash 'DIR 'RESULT 'RESULT 'SYN ht2) 'FS)
-      ;(not (eql (machash 'MODAL 'SYN ht2) 'STAR)) ; canceled. not necessary. Thanks to Chris Stone for pointing this out
        (member (machash 'MODAL 'RESULT 'RESULT 'SYN ht2) '(ALL HARMONIC))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'ARG 'SYN ht1) 
@@ -1461,7 +1456,6 @@
        (machash 'DIR 'RESULT 'SYN ht2) ; ht2 must have a really complex result
        (machash 'DIR 'RESULT 'RESULT 'SYN ht2)
        (eql (machash 'DIR 'RESULT 'RESULT 'SYN ht2) 'BS)
-      ;(not (eql (machash 'MODAL 'SYN ht2) 'STAR)) ; canceled. not necessary. Thanks to Chris Stone for pointing this out
        (member (machash 'MODAL 'RESULT 'RESULT 'SYN ht2) '(ALL CROSS))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'ARG 'SYN ht1) 
@@ -1506,7 +1500,6 @@
        (machash 'DIR 'RESULT 'SYN ht1) ; ht1 must have a really complex result
        (machash 'DIR 'RESULT 'RESULT 'SYN ht1)
        (eql (machash 'DIR 'RESULT 'RESULT 'SYN ht1) 'BS)
-      ;(not (eql (machash 'MODAL 'SYN ht1) 'STAR)) ; canceled. not necessary. Thanks to Chris Stone for pointing this out
        (member (machash 'MODAL 'RESULT 'RESULT 'SYN ht1) '(ALL HARMONIC))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'RESULT 'RESULT 'RESULT 'SYN ht1)
@@ -1551,7 +1544,6 @@
        (machash 'DIR 'RESULT 'SYN ht1) ; ht1 must have a really complex result
        (machash 'DIR 'RESULT 'RESULT 'SYN ht1)
        (eql (machash 'DIR 'RESULT 'RESULT 'SYN ht1) 'FS)
-      ;(not (eql (machash 'MODAL 'SYN ht1) 'STAR)) ; canceled. not necessary. Thanks to Chris Stone for pointing this out
        (member (machash 'MODAL 'RESULT 'RESULT 'SYN ht1) '(ALL CROSS))
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'RESULT 'RESULT 'RESULT 'SYN ht1)
