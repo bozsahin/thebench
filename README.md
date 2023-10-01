@@ -27,7 +27,11 @@ in programming, such as having linux public code installers. You'd need external
 
 4. Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 
-If you installed python via a package manager, you probably have pip already. Do <code>command pip</code> to find out.
+Do <code>command pip</code> to find out whether you have pip that fits your python version.
+
+If it's not installed, use the version of python you intend to use to install its own pip:
+
+<code>python -m ensurepip</code>
 
 5. <a href="https://git-scm.com/downloads">git</a> 
 
