@@ -1,0 +1,1207 @@
+The categorial skeleton of the current grammar
+
+
+category  : NP
+occurrence: 385  elements
+elements  : (cup / fly / telephone / man / cookie / baby / book / stool / hat /
+             dolly / bottle / man / letter / pencil / corner / shoe / choochoo
+             / lunch / radio / job / girl / seat / lunch / head / paper /
+             diaper / chair / good / taperecorder / cracker / apple / name /
+             spool / napkin / mouth / record / cough / banjo / floor / finger /
+             letter / king / bear / cat / fox / dog / kitty / well / fish /
+             briefcase / bird / horse / table / bibbie / spoon / bed / tomato /
+             wiener / skunk / box / eraser / cupboard / bike / cheese-sandwich
+             / nut / bicycle / duck / piece / chirp / snowman / blanket / couch
+             / sandwich / paddle / hole / nap / bead / beads / cookbook / cold
+             / gas-man / bag / baby-doll / boy / pen / ring / watch / idea /
+             party / cake-plate / train / envelope / walk / doily / card / spot
+             / tunnel / friend / bank / pear / birthday-sandwich /
+             birthday-cake / icing / closet / ear / al / drum / stick / fun /
+             board / building / boat / bit / flower / side / word / noise /
+             coat / tummy / kiss / tablet / lady / mustache / jacket / abc /
+             glass / squirrel / cake / sliver / cook / mistake / clock / lock /
+             key / cow / thing / turtle / grahamcracker / door / doorway /
+             house / window / suitcase / house-building / bite / chin / eye /
+             knot / track / railroad / sandbox / way / pizzeronic / blankie /
+             blanket / balloon / dirt / gate / help / pedalpushers / bath-mat /
+             counter / drawer / pipe / zero / six / fruit / yes / day / morning
+             / bone / chicken-bone / somersault / haircut / candle / highchair
+             / scratch / elbow / vaccine / tongue / dinosaur / fan / daughter /
+             family / spigot / feet / bandaid / front / pillow / pad / boot /
+             maam / chocolate-cookie / airplane / plane / camera-spool / jar /
+             kind / story / burro / newspaper / song / ball / baby-sister /
+             dingdong-bell / dingdong-dell / cart / lollipop / lot / zwieback /
+             wedding / nursery-rhyme / foot / picture / statue / fingernail /
+             hangnail / bus / sailingboat / bus-stop / moment / tree / end /
+             refrigerator / cookie-press / minute / mug / clown / nose / garage
+             / subway / tomato-sandwich / part / pineapple-dessert / rabbit /
+             bandaid / beach / eggnog / rug / peanutbutter-sandwich / thumb /
+             lemon / accident / candy / wastebasket / blouse / goose / back /
+             fire / hand / fork / penny / egg / basement / coolpop / mailman /
+             icecube / bubble / ashtray / can / garbage / pottie / page /
+             custard / drink / noodle / pumpkin / machine / washingmachine /
+             tinkertoy-can / tinkertoy / gun / butterfly / teddybear / dear /
+             muffin / umbrella / grape / truck / crayon / matter / toy / rattle
+             / face / dress / popsicle / leg / silly / jump / exercise /
+             pitcher / baby-noise / toe / arm / lap / gopher / stove /
+             furniture / shelf / carrot / bowl / tower / block / sock / room /
+             banana / hammer / sweater / difference / game / coffee-pot / dance
+             / bowel-movement / livingroom / vanilla / rockingchair / bottom /
+             puzzle / clip / coin / baseball-coin / pocket / baseball / sweetie
+             / ham / goldfish / hamburger / sheep / scarf / policeman / donkey
+             / apple / elephant / bunny / doggie / rooster / cow / dustpan /
+             giraffe / car / sailboat / bug / stylus / week / olive / string /
+             firetruck / bath / bathrobe / bathtub / knee / paper-bag /
+             paper-clip / reel / can / mouthful / mess / pickle / tiger / zebra
+             / nipple / turn / button / icecream-cone / trouble / Chicago /
+             broom / knob / radiator / shovel / sugar-top / box-top / teapot /
+             goat / cover / kangaroo / ribbon / bell / wagon / boom / tail /
+             bit / sponge / check / food)
+
+--------
+
+category  : (S\NP)/NP
+occurrence: 260  elements
+elements  : (is / took / are / saying / get / calling / do / do / doing / want
+             / read / did / eat / ate / have / have / having / had / drinking /
+             does / has / find / write / say / was / making / hit / eats /
+             bring / bring / taste / change / call / called / writing / be /
+             turn / turn / pardon / see / hurt / hurt / hurt / hear / wait /
+             fix / forgot / cook / dropped / send / using / cut / cut /
+             finished / need / understand / fixing / use / wearing / hold / tie
+             / bite / bit / touch / touch / clean / got / got / call / open /
+             bringing / help / know / cracking / leave / leave / snap / lose /
+             snap / sees / pulled / kiss / make / watching / building / spell /
+             spell / spells / spelling / burned / drop / drop / leave / draw /
+             take / saw / patting / folding / wipe / turning / made / color /
+             color / eaten / tore / trying / lick / taking / count / broke /
+             break / moves / share / needs / pizzc / sharing / pouring / clean
+             / catch / folding / fold / spill / want / wears / see / like /
+             fixed / wear / rubbing / hear / said / say / spilled / eat /
+             getting / ironed / trade / cut / make / bite / singing / sing /
+             peel / called / take / taking / finish / forget / write / tell /
+             drink / need / sing / eating / find / reading / get / tell / wash
+             / forget / pushing / caught / read / drawing / draw / washed /
+             like / found / hit / pulling / throw / moving / shoot / shooting /
+             bang / open / paint / move / fix / remember / wants / buy / sent /
+             cooking / had / mean / shut / shut / hold / drink / excuse / move
+             / bumped / cutting / cook / help / watch / stir / stir / watch /
+             wipe / look / emptying / drew / twist / thank / close / kiss /
+             finish / top / sign / used / holding / catch / heard / throwing /
+             build / improves / pin / answer / crack / crack / use / cracked /
+             gimme / change / count / decorating / icing / digging / smell /
+             smelling / carry / carry / feed / missed / ride / squashing /
+             shoving / changing / drinks / mixing / feed / ruining / straighten
+             / shovel / rocking / pull / used / shaking / pinch / cool / dry /
+             pick / ask / roll / put / put / put / put)
+
+--------
+
+category  : NP
+occurrence: 126  elements
+elements  : (juice / it / that / one / he / milk / juice / water / coffee / top
+             / what / who / me / my / cheese / soup / pudding / celery / she /
+             this / coffee / yours / sugar / horsie / they / light / off / rest
+             / tapioca / breakfast / tomato-soup / cleaning / grape-juice / now
+             / him / something / lunchtime / bread / butter / noise / bouillon
+             / green / dooc / dl-el-fl / fl / peanutbutter / Wednesday / these
+             / chocolate / mine / cream / hair / trash / Saturday / those / cl
+             / bl / dl / noodle-soup / vitamin-time / vitamin / everybody /
+             nobody / three-o-clock / yesterday / nothing / time / happiness /
+             itself / Ohio / Monday / yourself / dish / rice / rice-soup / meat
+             / anything / some / us / vegetable-soup / gruyere-cheese / pepper
+             / clay / nap / her / somebody / parsley / bacon / lobster-salad /
+             rain / market / mayonnaise / hair / cereal / tea / Colorado /
+             Cambridge / England / medicine / today / dessert / snap / supper /
+             salt / magic / jello / indigestion / music / orange-peel / icing /
+             popcorn / heat / sneeze / tomorrow / rockabye-baby / tape / hay /
+             icecream / snow / al-bl-cl / tonight / chocolate-icecream /
+             everything / chocolate-icecream / gravy / x)
+
+--------
+
+category  : NP
+occurrence: 107  elements
+elements  : (soldiers / ducks / fish / pencils / candles / crayons / pegs /
+             things / chirps / glasses / shoes / squirrels / napkins / teeth /
+             beads / dolls / stamps / ones / lions / friends / bubbles / hands
+             / words / men / mittens / stories / abcs / beans / peas / letters
+             / pies / tears / leaves / rubber-bands / cups / raisins / mud-pies
+             / towels / numbers / bumps / eyes / pictures / crackers / jammies
+             / couches / seeds / fans / people / grownups / daughters / sleeves
+             / rattles / hats / children / fingers / doggies / buses / flowers
+             / funnels / cookies / tomatoes / noodles / subways / noises / ears
+             / pears / buttons / pockets / toes / holes / icecubes /
+             icecube-trays / carrots / cans / pillows / tinkertoys / spoons /
+             eyebrows / dresses / kinds / sock-slippers / slippers / toes /
+             pages / toys / nuts / pennies / bouillon-cubes / blocks /
+             snowballs / mittens / chicks / donkeys / apples / apple-trees /
+             roosters / cows / cats / bowels / sneezes / pans / animals /
+             raccoons / socks / boots / panties / jammies)
+
+--------
+
+category  : S\*NP
+occurrence: 103  elements
+elements  : (? / is / am / are / do / do / read / did / go / go / sit / sit /
+             was / look / look / fall / be / turn / play / play / goes / dance
+             / cook / went / chirps / chirp / chirp / melted / came / comes /
+             managed / peek / blow / stay / stay / wet / fell / peepee / were /
+             lives / melt / draw / draw / care / stop / hurt / color / work /
+             bend / stops / whistle / come / care / sing / start / listens /
+             work / cry / laugh / hurts / works / finish / hurt / run / paint /
+             come / cry / try / walk / eat / wait / wait / guess / snap / touch
+             / eat / read / lay / tore / stand / climb / climb / move / move /
+             swing / jump / jump / swing / sleep / peel / dropped / sways /
+             swim / blow / burp / burped / slipped / hump / crash / cried /
+             moved / eats / sleep)
+
+--------
+
+category  : NP
+occurrence: 88  elements
+elements  : (Fraser / Mommy / Jack / Jill / Eve / Racketyboom / Neil / Sambo /
+             dolly / Granma / them / Cromer / Becky / Mama / Kathy /
+             HumptyDumpty / Dumpty / Sandy / Papa / Gordon / Sheila / Cathy /
+             Jim / Mom / Granny / Rick / Sarah / HippityHop / Nanny / Boston /
+             Frosty / Emerson / Sneezer / Joanne / Pop / Timothy / Timmy / Josh
+             / John / Murray / Noel / Pops / Kleenex / Nancy / Taffy /
+             EveCummings / Gloria / Humm / Colin / God / Helga / Eve-Cummings /
+             Colingc / Baabaablacksheep / Exeter / Ruko / Fizzie / NewBrunswick
+             / Benny / David / Grandpa / Peter / Schroeder / Dinah / Julie /
+             Jackie / LadyBump / Fizzie / Momma / Sara / Lassie / Rangy /
+             Natalie / Clipclop / Hummthehamster / OldMacdonald /
+             Frostythesnowman / Froggy / Judy / Danny / Marcia / Goldrush /
+             Tequita / Linda / Snoopy / Valentine / Kix / Margaret)
+
+--------
+
+category  : NP/NP
+occurrence: 72  elements
+elements  : (more / your / its / a / the / some / his / her / that / this /
+             good / my / nice / your / which / an / lots-of / another / funny /
+             clean / new / big / little / lovely / whose / swell / no / any /
+             squeaky / jelly / empty / long / brown / red / round / blue / pink
+             / yellow / green / only / these / all / old / dirty / brand-new /
+             their / those / bouncy / both / own / short / iced / wise / next /
+             left / silly / our / complicated / pretty / so-much / fat /
+             beautiful / near / many / orange / bigger / whole / first / messy
+             / loud / curly / other)
+
+--------
+
+category  : PREDP
+occurrence: 66  elements
+elements  : (sure / busy / alright / better / right / unhappy / gone / ready /
+             hot / welcome / allgone / sleepy / green / done / sorry / easier /
+             early / okay / cool / bigger / blue / fine / brown / red / dirty /
+             funny / true / wrong / empty / big / white / careful / good / glad
+             / short / silly / hungry / nice / indeed / wonderful / finished /
+             long / warm / sick / heavy / straight / enough / great / awake /
+             disappointed / okkay / tired / clean / happy / awful / necessary /
+             all-the-same / lost / cold / comfortable / fun / noisy / thirsty /
+             loose / messy / open)
+
+--------
+
+category  : (S\NP)\(S\NP)
+occurrence: 50  elements
+elements  : (here / upstairs / far / too / outside / not / there / again /
+             everyday / on / well / together / yet / first / sideways /
+             flipflop / really / properly / hard / fast / still / fine / either
+             / once / though / anymore / down / already / around / round /
+             probably / right / quickly / best / straight / better / awhile /
+             so-long / barefoot / backwards / soon / greatly / off / away /
+             alone / before / out / back / up / ahead)
+
+--------
+
+category  : (S\NP)/(S\NP)
+occurrence: 43  elements
+elements  : (is / am / are / do / can / cannot / could / might / may / should /
+             d-better / d-like / must / did / have / just / will / does / here
+             / has / gonna / going-to / was / would / too / to / been / there /
+             certainly / were / really / still / make / particularly / only / d
+             / trying / already / probably / better / never / started / go)
+
+--------
+
+category  : S\NP
+occurrence: 40  elements
+elements  : (doing / sitting / going / coming / playing / swimming / crying /
+             drawing / jumping / sleeping / laying / smiling / eating /
+             standing / laughing / growing / staying / fizzing / meeting /
+             dripping / lying / talking / working / flying / reading / falling
+             / trying / happening / dancing / teething / running / looking /
+             hiding / skating / splashing / moving / ringing / barking /
+             walking / blasting)
+
+--------
+
+category  : S
+occurrence: 23  elements
+elements  : (push / whistle / good-day-Eve / what / who / hello / perhaps /
+             maybe / quick / hard / almost / quite / yet / again / later /
+             already / sortof / el-vl-el / mmo / mm / mooo / cockadoodledooo /
+             No)
+
+--------
+
+category  : S/S
+occurrence: 23  elements
+elements  : (later / and / because / but / there / here / well / then / now /
+             maybe / first / after / tonight / tomorrow / sometimes / or / so /
+             oh / after-all / while / haha / eh / because)
+
+--------
+
+category  : (S/(S\NP))/NP
+occurrence: 20  elements
+elements  : (is / am / are / do / the / can / may / should / shall / did / have
+             / will / does / that / this / was / would / your / were / these)
+
+--------
+
+category  : ((S\NP)/NP)/NP
+occurrence: 18  elements
+elements  : (gave / do / give / giving / sent / read / told / getting / tell /
+             write / write / bring / bring / wrote / give / bringing / find /
+             read)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 17  elements
+elements  : (it / Fraser / that / he / Mommy / Eve / she / horsie / Papa /
+             Cathy / Rick / Sarah / Humm / Colin / Sara / Lassie / OldMacdonald)
+
+--------
+
+category  : (S/NP)/(S/NP)
+occurrence: 16  elements
+elements  : (is / am / are / do / can / should / shall / did / have / will /
+             does / has / was / would / were / d)
+
+--------
+
+category  : ((S\NP)\(S\NP))/NP
+occurrence: 15  elements
+elements  : (with / in / for / on / out / outof / from / at / to / off / like /
+             by / into / besides / before)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 14  elements
+elements  : (keep / spit / get / clear / pull / pull / getting / took / get /
+             got / take / pick / move / put)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 12  elements
+elements  : (lick / taking / chew / bite / wipe / wipe / want / take / wash /
+             keep / clean / take)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 11  elements
+elements  : (come / climb / go / goes / peek / belong / climb / belongs / put /
+             putting / put)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 11  elements
+elements  : (pick / tie / spit / sit / go / hurry / woke / stay / climb / wake
+             / waking)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 11  elements
+elements  : (sit / sit / writing / lying / blow / belong / belongs / come /
+             slip / go / sitting)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 11  elements
+elements  : (sit / sit / fell / go / going / laying / lay / coming / lying /
+             climb / sitting)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 11  elements
+elements  : (belongs / going / belong / happened / listening / talking / went /
+             talking / waving / read / go)
+
+--------
+
+category  : S/NP
+occurrence: 11  elements
+elements  : (is / is / are / do / doing / can / did / have / does / because /
+             what)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 9  elements
+elements  : (standing / blow / blowing / peeking / peeping / get / come /
+             looking / step)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 9  elements
+elements  : (fell / fell / falling / slips / come / hold / falling / came /
+             jump)
+
+--------
+
+category  : S\*S
+occurrence: 9  elements
+elements  : (? / later / now / then / afterwards / tomorrow / today / yesterday
+             / ever)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 8  elements
+elements  : (stare / peek / peeking / looking / look / look / working / smile)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 8  elements
+elements  : (has / leave / leave / got / putting / put / put / put)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 7  elements
+elements  : (pour / color / get / stick / putting / put / put)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 7  elements
+elements  : (tie / eat / chew / pick / pick / chew / take)
+
+--------
+
+category  : ((S\NP)\(S\NP))/NP_LOC
+occurrence: 7  elements
+elements  : (in / on / under / out / over / up / down)
+
+--------
+
+category  : (S\NP)/S
+occurrence: 7  elements
+elements  : (saying / understand / goes / said / go / say / see)
+
+--------
+
+category  : NP
+occurrence: 7  elements
+elements  : (I / down / up / outside / inside / downstairs / upstairs)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 6  elements
+elements  : (coming / step / go / came / come / run)
+
+--------
+
+category  : ((S\NP)/(S\NP))/NP
+occurrence: 6  elements
+elements  : (want / want / want / tell / like / helps)
+
+--------
+
+category  : (S/NP)/NP
+occurrence: 6  elements
+elements  : (is / is / are / are / was / was)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 5  elements
+elements  : (going / peek / looking / turn / turn)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 5  elements
+elements  : (threw / throw / take / put / put)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 4  elements
+elements  : (look / looks / sound / sounds)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 4  elements
+elements  : (tripped / climb / come / turn)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 4  elements
+elements  : (going / wait / went / look)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 4  elements
+elements  : (pull / leave / pulling / put)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 4  elements
+elements  : (play / play / playing / peek)
+
+--------
+
+category  : (S\NP)/NP_LOC
+occurrence: 4  elements
+elements  : (go / move / look / looked)
+
+--------
+
+category  : (S\NP)/PREDP
+occurrence: 4  elements
+elements  : (is / are / was / be)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 3  elements
+elements  : (take / put / put)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 3  elements
+elements  : (coming / came / step)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 3  elements
+elements  : (fold / put / put)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 3  elements
+elements  : (going / bumped / move)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 3  elements
+elements  : (gone / going / go)
+
+--------
+
+category  : NP
+occurrence: 3  elements
+elements  : (kitchen / fireplace / bedroom)
+
+--------
+
+category  : S/(S/NP)
+occurrence: 3  elements
+elements  : (what / who / whose)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 3  elements
+elements  : (I / what / who)
+
+--------
+
+category  : (S/PREDP)/NP
+occurrence: 3  elements
+elements  : (is / are / was)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 2  elements
+elements  : (take / took)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 2  elements
+elements  : (look / came)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 2  elements
+elements  : (turn / push)
+
+--------
+
+category  : (S\S)/NP
+occurrence: 2  elements
+elements  : (but / after)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 2  elements
+elements  : (read / worry)
+
+--------
+
+category  : (NP\NP)/NP
+occurrence: 2  elements
+elements  : (and / 's)
+
+--------
+
+category  : (S/S)/NP
+occurrence: 2  elements
+elements  : (did / for)
+
+--------
+
+category  : NP_LOC
+occurrence: 2  elements
+elements  : (there / here)
+
+--------
+
+category  : (S/PP)/NP
+occurrence: 2  elements
+elements  : (is / pushing)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (with)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (up)
+
+--------
+
+category  : PP/NP_LOC
+occurrence: 1  element
+elements  : (up)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (up)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (under)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (to)
+
+--------
+
+category  : PP/NP_LOC
+occurrence: 1  element
+elements  : (through)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (through)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (over)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (over)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (outof)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (outof)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (out)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (out)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (on)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (on)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (off)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (off)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (of)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (of)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (like)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (into)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (inside)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (in)
+
+--------
+
+category  : PP/NP_LOC
+occurrence: 1  element
+elements  : (in)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (in)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (from)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (for)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (down)
+
+--------
+
+category  : PP/NP_LOC
+occurrence: 1  element
+elements  : (down)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (down)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (by)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (by)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (back)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (away)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (at)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (around)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (apart)
+
+--------
+
+category  : PP
+occurrence: 1  element
+elements  : (along)
+
+--------
+
+category  : PP/NP
+occurrence: 1  element
+elements  : (about)
+
+--------
+
+category  : (((S\NP)/PP)/PP)/NP
+occurrence: 1  element
+elements  : (put)
+
+--------
+
+category  : ((S\NP)/NP_LOC)/NP
+occurrence: 1  element
+elements  : (put)
+
+--------
+
+category  : (((S\NP)/(S\NP))/NP)/NP
+occurrence: 1  element
+elements  : (tell)
+
+--------
+
+category  : (S/S)/(S\NP)
+occurrence: 1  element
+elements  : (to)
+
+--------
+
+category  : (((S\NP)/PP)/PP)/NP
+occurrence: 1  element
+elements  : (move)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 1  element
+elements  : (bring)
+
+--------
+
+category  : ((S\NP)/PP)/PP
+occurrence: 1  element
+elements  : (coming)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (dear)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 1  element
+elements  : (take)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 1  element
+elements  : (tell)
+
+--------
+
+category  : ((S\NP)/NP)/PP
+occurrence: 1  element
+elements  : (think)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (sorely)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (terribly)
+
+--------
+
+category  : ((S\NP)/PP)/NP
+occurrence: 1  element
+elements  : (take)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 1  element
+elements  : (went)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 1  element
+elements  : (went)
+
+--------
+
+category  : (S/(S/NP))/NP
+occurrence: 1  element
+elements  : (which)
+
+--------
+
+category  : PREDP/PP
+occurrence: 1  element
+elements  : (bent)
+
+--------
+
+category  : PREDP/NP
+occurrence: 1  element
+elements  : (finished)
+
+--------
+
+category  : ((S\NP)/PP)/PP
+occurrence: 1  element
+elements  : (come)
+
+--------
+
+category  : ((S\NP)/PP)/PP
+occurrence: 1  element
+elements  : (come)
+
+--------
+
+category  : NP\NP
+occurrence: 1  element
+elements  : (all)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (too)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (awfully)
+
+--------
+
+category  : (NP\NP)/(S\NP)
+occurrence: 1  element
+elements  : (that)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (exactly)
+
+--------
+
+category  : NP
+occurrence: 1  element
+elements  : (year)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (probably)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (instead-of)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (absolutely)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 1  element
+elements  : (going)
+
+--------
+
+category  : (S\NP)/PP
+occurrence: 1  element
+elements  : (going)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (quite)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (now)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (yet)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (both)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (very)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (almost)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (right)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (else)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (not)
+
+--------
+
+category  : S\+S
+occurrence: 1  element
+elements  : (not)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (sure)
+
+--------
+
+category  : ((S\NP)\(S\NP))/(S\NP)
+occurrence: 1  element
+elements  : (to)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 1  element
+elements  : (they)
+
+--------
+
+category  : @X\@X
+occurrence: 1  element
+elements  : (too)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 1  element
+elements  : (we)
+
+--------
+
+category  : NP
+occurrence: 1  element
+elements  : (we)
+
+--------
+
+category  : @X/@X
+occurrence: 1  element
+elements  : (just)
+
+--------
+
+category  : (@X\@X)/@X
+occurrence: 1  element
+elements  : (and)
+
+--------
+
+category  : S/(S\NP)
+occurrence: 1  element
+elements  : (you)
+
+--------
+
+category  : NP
+occurrence: 1  element
+elements  : (you)
+
+--------
+
+category  : (S/PREDP)/NP
+occurrence: 1  element
+elements  : (am)
+
+--------
+
+category  : (S\NP)/PREDP
+occurrence: 1  element
+elements  : (am)
+
+--------
+
+category  : (S\NP)/NP
+occurrence: 1  element
+elements  : (am)
+
+--------
+
+category  : (S/NP)/PREDP
+occurrence: 1  element
+elements  : (is)
+
+--------
+
+category  : S/(S/PP)
+occurrence: 1  element
+elements  : (where)
+
+--------
+
+category  : S\*S
+occurrence: 1  element
+elements  : (?)
+
+--------
+
+category  : S\*S
+occurrence: 1  element
+elements  : (?)
+
+--------
+
+category  : S\*S
+occurrence: 1  element
+elements  : (?)
+
+--------
+
+category  : S\*NP_LOC
+occurrence: 1  element
+elements  : (?)
+
+--------
+
+category  : PREDP/PREDP
+occurrence: 1  element
+elements  : (more)
+
+--------
+
+Checksum: 1845 (total of sums in category classes)
+Total   : 168 distinct categories
+Out of  : 1845 entries (not counting asymmetric relational rules)
