@@ -42,8 +42,8 @@ if not os.path.exists(_tmp): # someone deleted it, recreate
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '0.97'
-_vdate = 'March 30, 2023'
+_version = '0.98'
+_vdate = 'October 1, 2023'
 # 3 built-in extensions of MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
@@ -1244,8 +1244,9 @@ def welcome ():
     print(3*_prompt+"Bench version:      ", _version, "Dated:", _vdate)
     print(3*_prompt+"Python version:     ", platform.python_version())
     print(3*_prompt+"Common Lisp version:", _lisptype)
+    print(3*_prompt)
     print(3*_prompt+"Pre/post processing by Python (grammar development, interfaces)")
-    print(3*_prompt+"Processing by Common Lisp (analysis, training, ranking)")
+    print(3*_prompt+"Processing by Common Lisp     (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
     print(1*_prompt+f"Type {_exit} to exit, {_help} to get some help")
     print(75*_underscore)
