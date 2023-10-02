@@ -27,9 +27,7 @@ in programming, such as having linux public code installers. You'd need external
 
 4. Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 
-Do <code>command pip</code> to find out whether you have pip that fits your python version.
-
-If it's not installed, use the version of python you intend to use to install its own pip:
+If it's not installed, use the version of python you intend to use with TheBench to install its own pip:
 
 <code>python -m ensurepip</code>
 
@@ -132,4 +130,11 @@ You may have noticed the curious absence of <code>rpm</code> package manager sup
 is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
 So, for Suse and similar RH systems, install <code>yum</code> first before you install TheBench. Fedora is RH, but comes with <code>yum</code>, so no problems (and wise choice, lads and lasses, ditto CentOS).
 
+SBCL Note: 
 
+This is the Common Lisp that the processor of TheBench uses. I have tried SBCL 1.x to 2.2.x with
+success in Macs, PCs and anything in between. Something happened to SBCL with 2.3.x releases, and
+TheBench hangs in the beginning. I couldn't locate what causes it, so I recommend downgrading
+your SBCL to something below 2.3.x to make sure this tool works. 
+
+Pythons below 3.8 won't even load TheBench.
