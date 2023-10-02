@@ -132,8 +132,11 @@ So, for Suse and similar RH systems, install <code>yum</code> first before you i
 
 SBCL Note: 
 
-This is the Common Lisp that the processor of TheBench uses. I have tried SBCL 1.x to 2.2.x with
-success in Macs, PCs and anything in between. Something happened to SBCL with 2.3.x releases, and
+This is the Common Lisp that the processor of TheBench uses. It is installed by the installer of TheBench if SBCL does
+not exist in your system. (This is checked by the installer.)
+
+I have tried SBCL 1.x to 2.2.x with success in Macs, PCs and anything in between. 
+Something happened to SBCL with 2.3.x releases, and
 TheBench hangs in the beginning. I couldn't locate what causes it, so I recommend downgrading
 your SBCL to something below 2.3.x to make sure this tool works. 
 
