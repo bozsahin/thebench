@@ -27,7 +27,7 @@ in programming, such as having linux public code installers. You'd need external
 
 4. Python module installer <a href="https://pypi.org/project/pip/">pip</a>
 
-If it's not installed, use the version of python you intend to use with TheBench to install its own pip:
+Use the version of python you intend to use with TheBench to install its own pip (it won't do harm if you already have it):
 
 <code>python -m ensurepip</code>
 
