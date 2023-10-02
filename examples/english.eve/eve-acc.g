@@ -96,8 +96,8 @@ may  | mod :: s/(s\np)/np : \x\y.q may (y x)
 should  | mod :: (s\np)/(s\np) : \x\y.should (x y)
 should  | mod :: (s/np)/(s/np) : \x.should x
 should  | mod :: s/(s\np)/np : \x\y.q should (y x)
-d-better  | mod ::  (s\np)/(s\np) : \x\y.d-better (x y)
-d-like  | mod ::  (s\np)/(s\np) : \x\y.d-like (x y)
+'d-better  | mod ::  (s\np)/(s\np) : \x\y.d-better (x y)
+'d-like  | mod ::  (s\np)/(s\np) : \x\y.d-like (x y)
 must  | mod :: (s\np)/(s\np) : \x\y.must (x y)
 shall  | mod :: (s/np)/(s/np) : \x.shall x
 shall  | mod :: s/(s\np)/np : \x\y.q shall (y x)
