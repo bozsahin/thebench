@@ -66,12 +66,11 @@ Then TheBench install script will detect that and won't complain.
 
 PYTHON UPGRADE NOTE:
 
-There is only ONE bench-related environment variable, called $THEBENCHPYTHON. It is automatically set 
-during install. If you want to move to another python, say python3.141519, run the script
+If you want to move to another python, say python3.141519, run the install script FROM thebench home as
 
-<code>resetthebenchpython python3.141519</code>
+<code>./bench.sh reset python3.141519</code>
 
-to change to that. It will make sure its <code>pip</code> library manager is installed and refreshes the THEBENCH libraries
+to change to that. It will make sure its <code>pip</code> library manager is installed and refreshes the bench libraries
 for that python. 
 
 TO DEVELOP A GRAMMAR:
@@ -106,6 +105,7 @@ Please do not alter them manually.
 
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
 are kept (usually), is to add these aliases so that they are always available, interactive or not.
+We don't touch your PATH variable.
 
 TO UNINSTALL:
 
@@ -121,7 +121,7 @@ SBCL, PYTHON AND PACKAGE MANAGER NOTES:
 SBCL is the Common Lisp that the processor of TheBench uses. It is installed by the installer of TheBench if SBCL does
 not exist in your system. (This is checked by the installer.)
 
-I have tried SBCL 1.x to 2.2.x with success in Macs, PCs and anything in between. 
+I have tried SBCL 1.x to 2.2.x with success in Macs, PCs and anything in between, for this tool. 
 
 Something happened to SBCL with 2.3.x releases, and
 TheBench hangs in the beginning. I couldn't locate what causes it, so I recommend downgrading
