@@ -90,25 +90,22 @@ in your <code>thebench</code> directory do
 NOTES FOR THE DISCERNING TECHIE:
 
 In addition to setting a package directory for <code>thebench</code> in your user space, the installer
-creates some files to keep things organized and available from
+creates some files and aliases to keep things organized and available from
 anywhere in the computer. There are four of them: (`~' points to your home directory in the linux world).
 
 <code>~/.thebenchhome</code> This file contains the full path of TheBench repository in your installation.
 
 <code>~/.thebenchhistory</code> This file contains history of your command use for easier recall.
 
-<code>~/bin/bench</code> This file contains the full python command line to reach TheBench from anywhere
-in your user space.
+<code>bench</code> This is an alias to reach TheBench from anywhere in your user space.
 
-<code>~/bin/bench.train</code> This is a  symbolic link to the trainer <code>bench.train.sh</code> used by the 
-tool.
+<code>bench.train</code> This is an alias to run the trainer <code>bench.train.sh</code> used by the 
+tool from anywhere.
 
 Please do not alter them manually.
 
-The installer also creates the <code>~ /bin</code> directory in your home if you don't already have one.
-If you have it, the last two files are saved in there.
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
-are kept (usually), is to add this directory  to the PATH variable and eliminate duplicates in it, and define $THEBENCHPYTHON variable.
+are kept (usually), is to add these aliases so that they are always available, interactive or not.
 
 TO UNINSTALL:
 
