@@ -75,7 +75,7 @@ to change to that python. It will make sure its <code>pip</code> library manager
 for that python. 
 
 If you've done python upgrades a few times, you will see in <code>~/.bashrc</code> file multiple definitions of the alias <code>bench</code>.
-The last one counts. You can eliminate the earlier ones. Don't eliminate the <code>bench.train</code> alias in the process.
+The last one counts. You can eliminate the earlier ones, but you don't have to. Don't eliminate the <code>bench.train</code> alias in the process.
 
 TO DEVELOP A GRAMMAR:
 
