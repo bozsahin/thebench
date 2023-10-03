@@ -86,14 +86,6 @@ in your <code>thebench</code> directory do
 
    <code>git pull</code>
 
-TO UNINSTALL:
-
-do
-
-   <code>./bench.sh uninstall</code>
-
-This will remove TheBench files and auxiliary directories, except <code>~/bin</code>. It won't touch
-your python or SBCL. To remove them, use your package manager.
 
 NOTES FOR THE DISCERNING TECHIE:
 
@@ -117,6 +109,15 @@ The installer also creates the <code>~ /bin</code> directory in your home if you
 If you have it, the last two files are saved in there.
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
 are kept (usually), is to add this directory  to the PATH variable and eliminate duplicates in it, and define $THEBENCHPYTHON variable.
+
+TO UNINSTALL:
+
+do
+
+   <code>./bench.sh uninstall</code>
+
+This will remove TheBench files and auxiliary directories, except <code>~/bin</code>. It won't touch
+your python or SBCL. To remove them, use your package manager.
 
 SBCL, PYTHON AND PACKAGE MANAGER NOTES: 
 
