@@ -25,12 +25,6 @@ in programming, such as having linux public code installers. You'd need external
 
 3. <a href="https://www.python.org/">Python 3.8  or above</a>
 
-4. Python module installer <a href="https://pypi.org/project/pip/">pip</a>
-
-Use the version of python you intend to use with TheBench to install its own pip (it won't do harm if you already have it):
-
-<code>python -m ensurepip</code>
-
 5. <a href="https://git-scm.com/downloads">git</a> 
 
 If you already have these utilities in your system, your versions are detected and used by TheBench. 
@@ -68,14 +62,13 @@ Then TheBench install script will detect that and won't complain.
 
 PYTHON UPGRADE NOTE:
 
-Python versions can be daunting for the uninitiated. Don't count on the executable <code>python</code> to be the latest python. You might also have python3.8, python3.9, python3141.59 etc. 
+There is only ONE bench-related environment variable, called $THEBENCHPYTHON. It is automatically set 
+during install. If you want to move to another python, say python3.141519, run the script
 
-Use the latest for python AND pip. If you have a new one installed, say python3.11,
-just re-run the installer with that suffix to upgrade TheBench libraries, for example
+<code>resetthebenchpython python3.141519</code>
 
-<code>./bench.sh 3.11</code>
-
-This will refresh the tool to work with  <code>pip3.11</code> and <code>python3.11</code>.
+to change to that. It will make sure its <code>pip</code> library manager is installed and refreshes the THEBENCH libraries
+for that python.
 
 TO DEVELOP A GRAMMAR:
 
@@ -123,8 +116,6 @@ The installer also creates the <code>~ /bin</code> directory in your home if you
 If you have it, the last two files are saved in there.
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
 are kept (usually), is to add this directory to the PATH variable and eliminate duplicates in it.
-
-There are no bench-related environment variables.
 
 You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
 is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
