@@ -2,7 +2,6 @@
 # cem bozsahin 2023
 # $1 : 'uninstall' 'install' 'reset' $2: (if relevant): the python binary
 # brew does not allow sudo--$SUDO controls that
-HO=~ # home
 if [ $# -eq 0 ]; then
 	echo "please specify 'install', 'uninstall' (and python executable if you are installing)"
 	echo "exiting without action"
@@ -16,9 +15,9 @@ elif [ $1 == reset ] && [ $# -lt 2 ]; then
 	echo "exiting without action"
 	exit -1
 elif [ $1 == uninstall ]; then
-	BENCH_HOME="`cat $HO/.thebenchhome`"
-	cd $HO
-	if [ -d $BENCH_HOME ] && [ $BENCH_HOME != $HO ]; then
+	BENCH_HOME="`cat $HOME/.thebenchhome`"
+	cd $HOME
+	if [ -d $BENCH_HOME ] && [ $BENCH_HOME != $HOME ]; then
   		echo "Removing $BENCH_HOME"
   		rm -fr $BENCH_HOME
 	fi
@@ -26,11 +25,11 @@ elif [ $1 == uninstall ]; then
   		echo "Removing /var/tmp/thebench"
   		rm -fr /var/tmp/thebench
 	fi
-	echo "Removing thebench files from $HO"
-	rm $HO/.thebenchhome
-	rm $HO/.thebenchhistory
+	echo "Removing thebench files from $HOME"
+	rm $HOME/.thebenchhome
+	rm $HOME/.thebenchhistory
 	echo "Uninstall completed."
-	echo "Please clear your $HO/.bashrc file off the two bench alises."
+	echo "Please clear your $HOME/.bashrc file off the two bench alises."
 	exit 0
 else
 	THEBENCHPYTHON=$2
@@ -42,11 +41,11 @@ if [ $NOPY ]; then
 	exit -1
 fi
 if [ ! -x `which $THEBENCHPYTHON` ]; then
-	echo "You designate $THEBENCHPYTHON as python but it is not executable"
+	echo "$THEBENCHPYTHON is not executable"
 	echo "exiting without action"
 	exit -1
 fi
-BHF="$HO/.thebenchhome" # thebench home path resides in this file
+BHF="$HOME/.thebenchhome" # thebench home path resides in this file
 labdir=`pwd`
 if [ $1 == reset ]; then
 	echo "$labdir" | tee "$BHF"
@@ -57,9 +56,9 @@ if [ $1 == reset ]; then
 	$THEBENCHPYTHON -m pip install sly
         $THEBENCHPYTHON -m pip install prompt_toolkit
 	# and now for some .bashrc managament tucked at the very end of .bashrc
-	printf '%s\n' '# stuff added by thebench resetter' >> $HO/.bashrc
-	printf '%s\n' "alias bench='$THEBENCHPYTHON $labdir/src/bench.py'" >> $HO/.bashrc
-	printf '%s\n' '# end of stuff added by thebench resetter' >> $HO/.bashrc
+	printf '%s\n' '# stuff added by thebench resetter' >> $HOME/.bashrc
+	printf '%s\n' "alias bench='$THEBENCHPYTHON $labdir/src/bench.py'" >> $HOME/.bashrc
+	printf '%s\n' '# end of stuff added by thebench resetter' >> $HOME/.bashrc
 	echo "TheBench is set to use $THEBENCHPYTHON"
 	bash # to reactivate alises
 	exit 0
@@ -138,10 +137,10 @@ if [ $1 == install ]; then
 	echo -e $LOG > $LOGFILE
 	echo -e $LOG
 	# and now for some .bashrc managament tucked at the very end of .bashrc
-	printf '%s\n' '# stuff added by thebench installer' >> $HO/.bashrc
-	printf '%s\n' "alias bench='$THEBENCHPYTHON $labdir/src/bench.py'" >> $HO/.bashrc
-	printf '%s\n' "alias bench.train='$labdir/src/bench.train.sh'" >> $HO/.bashrc
-	printf '%s\n' '# end of stuff added by thebench installer' >> $HO/.bashrc
+	printf '%s\n' '# stuff added by thebench installer' >> $HOME/.bashrc
+	printf '%s\n' "alias bench='$THEBENCHPYTHON $labdir/src/bench.py'" >> $HOME/.bashrc
+	printf '%s\n' "alias bench.train='$labdir/src/bench.train.sh'" >> $HOME/.bashrc
+	printf '%s\n' '# end of stuff added by thebench installer' >> $HOME/.bashrc
 	bash # to reactivate aliases
        	exit 0
 fi
