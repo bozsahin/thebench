@@ -134,6 +134,9 @@ your SBCL to something below 2.3.x to make sure this tool works.
 
 Pythons below 3.8 won't even load TheBench.
 
+--enjoy. Cem Bozsahin
+
+
 You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
 is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
 So, for Suse and similar RH systems, install <code>yum</code> first before you install TheBench. Fedora is RH, but comes with <code>yum</code>, so no problems (and wise choice, lads and lasses, ditto CentOS).
