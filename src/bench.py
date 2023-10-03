@@ -1043,8 +1043,8 @@ def do (commline):
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} noop")
                             else:
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} {ch[6]}")
-            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train > {_tmp+'nohup.out'}") # hope for the best
             print("\nTraining starts;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
+            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train > {_tmp+'nohup.out'}") # hope for the best
             print(f"Summary of experiments for locating results when done")
             with open(_tmp+efn,'r') as expout:
                 n=1
