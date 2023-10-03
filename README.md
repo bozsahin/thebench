@@ -27,7 +27,7 @@ in programming, such as having linux public code installers. You'd need external
 
 3. <a href="https://www.python.org/">Python 3.8  or above</a>
 
-5. <a href="https://git-scm.com/downloads">git</a> 
+4. <a href="https://git-scm.com/downloads">git</a> 
 
 If you already have these utilities in your system, your versions are detected and used by TheBench. 
 If not, the installer will complain and exit.
@@ -46,7 +46,7 @@ TO INSTALL:
 
 where <code>mypython</code> is your python executable, for example <code>python, python3.10</code> or <code>python3.11</code>, etc.
 
-This will install TheBench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine.
+This will install TheBench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. You get python's library manager <code>pip</code> as well if you don't already have it (checked by the installer).
 
 TO USE: 
 
@@ -72,7 +72,7 @@ during install. If you want to move to another python, say python3.141519, run t
 <code>resetthebenchpython python3.141519</code>
 
 to change to that. It will make sure its <code>pip</code> library manager is installed and refreshes the THEBENCH libraries
-for that python.
+for that python. 
 
 TO DEVELOP A GRAMMAR:
 
@@ -128,7 +128,7 @@ I have tried SBCL 1.x to 2.2.x with success in Macs, PCs and anything in between
 
 Something happened to SBCL with 2.3.x releases, and
 TheBench hangs in the beginning. I couldn't locate what causes it, so I recommend downgrading
-your SBCL to something below 2.3.x to make sure this tool works. 
+your SBCL to something below 2.3.x to make sure this tool works. You don't need to do anything else.
 
 Pythons below 3.8 won't even load TheBench.
 
