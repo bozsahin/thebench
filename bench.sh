@@ -17,7 +17,7 @@ elif [ $1 == reset ] && [ $# -lt 2 ]; then
 elif [ $1 == uninstall ]; then
 	BENCH_HOME="`cat $HOME/.thebenchhome`"
 	cd $HOME
-	if [ -d $BENCH_HOME ] && [ $BENCH_HOME != $HOME ]; then
+	if [ -d $BENCH_HOME ] && [ ! $BENCH_HOME == $HOME ]; then
   		echo "Removing $BENCH_HOME"
   		rm -fr $BENCH_HOME
 	fi
