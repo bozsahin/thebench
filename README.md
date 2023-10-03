@@ -66,11 +66,12 @@ Then TheBench install script will detect that and won't complain.
 
 PYTHON UPGRADE NOTE:
 
-If you want to move to another python, say python3.141519, run the install script FROM thebench home as
+If you want to move to another python for this tool, say python3.141519, and have that python installed, then 
+run the install script FROM thebench home as
 
 <code>./bench.sh reset python3.141519</code>
 
-to change to that. It will make sure its <code>pip</code> library manager is installed and refreshes the bench libraries
+to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes the bench libraries
 for that python. 
 
 TO DEVELOP A GRAMMAR:
