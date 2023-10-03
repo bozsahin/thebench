@@ -40,7 +40,9 @@ TO INSTALL:
 
 2.  In the terminal, and IN <code>thebench</code> directory, do  the following:
 
-   <code>./bench.sh install</code>
+   <code>./bench.sh install mypython</code>
+
+where <code>mypython</code> is your python executable, for example <code>python, python3.10</code> or <code>python3.11</code>, etc.
 
 This will install TheBench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine.
 
