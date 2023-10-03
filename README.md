@@ -15,7 +15,7 @@ Window's native terminal is not the right one for TheBench, you'd need WSL in a 
 2. A software installer.  
 
 The standard installers
-in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, even under WSL.
+in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, even under WSL. See the note at the bottom for the absence of the <code>rpm</code> package manager.
 
 You can start using WSL right off the shelf if you have Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 
@@ -117,7 +117,7 @@ Please do not alter them manually.
 The installer also creates the <code>~ /bin</code> directory in your home if you don't already have one.
 If you have it, the last two files are saved in there.
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
-are kept (usually), is to add this directory to the PATH variable and eliminate duplicates in it.
+are kept (usually), is to add this directory  to the PATH variable and eliminate duplicates in it, and define $THEBENCHPYTHON variable.
 
 You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
 is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
