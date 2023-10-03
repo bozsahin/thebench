@@ -1,13 +1,20 @@
 #!/bin/bash
 # cem bozsahin 2023
-# $1 : 'uninstall' 'install' or Python and pip binary suffix in case there is more than one binary for them
+# $1 : 'uninstall' 'install' 'reset' $2: (if relevant): the python binary
 # brew does not allow sudo--$SUDO controls that
 if [ $# -eq 0 ]; then
-	echo "please specify 'install', 'uninstall' or python/pip version number"
+	echo "please specify 'install', 'uninstall' (and python executable if you are installing)"
 	echo "exiting without action"
 	exit -1
-fi
-if [ $1 == uninstall ]; then
+elif [ $1 == install ] && [ $# -lt 2 ]; then
+	echo "You need to specify a python for use"
+	echo "exiting without action"
+	exit -1
+elif [ $1 == reset ] && [ $# -lt 2 ]; then
+	echo "You need to specify a python for use"
+	echo "exiting without action"
+	exit -1
+elif [ $1 == uninstall ]; then
 	BENCH_HOME="`cat $HOME/.thebenchhome`"
 	cd $HOME
 	if [ -d $BENCH_HOME ] && [ $BENCH_HOME != $HOME ]; then
@@ -21,23 +28,45 @@ if [ $1 == uninstall ]; then
 	echo "Removing thebench files from $HOME"
 	rm $HOME/.thebenchhome
 	rm $HOME/.thebenchhistory
-	rm $HOME/bin/bench.train
-	rm $HOME/bin/bench
 	echo "Uninstall completed."
+	echo 'Please clear your ~/.bashrc file off the two bench alises.'
+	exit 0
+else
+	THEBENCHPYTHON=$2
+fi
+if [ ! -x $THEBENCHPYTHON ]; then
+	echo "You designate $THEBENCHPYTHON as python but it is not executable"
+	echo "exiting without action"
+	exit -1
+fi
+BHF="$HOME/.thebenchhome" # thebench home path resides in this file
+labdir=`pwd`
+if [ $1 == reset ]; then
+	echo "$labdir" | tee "$BHF"
+	chmod ug+r "$BHF"
+	$THEBENCHPYTHON -m ensurepip    # every python has its own pip and libraries
+	$THEBENCHPYTHON -m pip install --upgrade pip  # who knows
+	$THEBENCHPYTHON	-m pip install cl4py
+	$THEBENCHPYTHON -m pip install sly
+        $THEBENCHPYTHON -m pip install prompt_toolkit
+	# and now for some .bashrc managament tucked at the very end of .bashrc
+	printf '%s\n' '# stuff added by thebench resetter' >> $HOME/.bashrc
+	printf '%s\n' "alias bench=$THEBENCHPYTHON $labdir/src/bench.py" >> $HOME/.bashrc
+	printf '%s\n' '# end of stuff added by thebench resetter' >> $HOME/.bashrc
+	source $HOME/.bashrc
+	echo "TheBench is set to use $THEBENCHPYTHON"
 	exit 0
 fi
-LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
-ULB="$HOME/bin"
-ULL=$HOME
-BHF="$ULL/.thebenchhome" # thebench home path resides in this file
+# If we've come this far, we are installing
 TMPB='/var/tmp/thebench'
 SUDO=sudo
 LOGFILE='/var/tmp/thebench-install.log'
-labdir=`pwd`
+LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 if [ $1 == install ]; then
-	if [ -f $ULB/bench ]; then
+	if [ -e $BHF ]; then
 		echo "You have TheBench installed at: `cat $BHF`"
   		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
+		echo "If you intend to change the python for the tool, run the installer as './bench.sh reset some-python'"
   		exit 0  # this is not an error
 	fi
 	echo " "
@@ -47,10 +76,6 @@ if [ $1 == install ]; then
 	echo "  It will be ONLY for installing the Common Lisp's SBCL through SAFE installers"
 	echo "  and for opening libraries of the package managers for a more comprehensive search"
 	echo " "
-	if [ ! -d $ULB ]; then
-  		LOG+="\n-No $ULB; creating.."
-  		mkdir $ULB
-	fi
 	if [ ! -d $TMPB ]; then
   		mkdir $TMPB
   		LOG+="\n-$TMPB directory created for temporary files"
@@ -94,46 +119,22 @@ if [ $1 == install ]; then
   		LOG+="\n-Local sbcl is set for tool use"
 	fi
 	echo "$labdir" | tee "$BHF"
-	ln -s $labdir/src/bench.train.sh $ULB/bench.train
-	echo "python $labdir/src/bench.py" | tee "$ULB/bench"
-	chmod ugo+x "$ULB/bench"
-	chmod ugo+r "$BHF"
-	chmod ugo+x "$ULB/bench.train"
-	if [ `command -v pip` ]; then
-		pip install cl4py
-		pip install sly
-		pip install prompt_toolkit
-	else
-		LOG+="\n-no pip. You must install cl4py sly and prompt_toolkit yourself"
-	fi
+	chmod ug+r "$BHF"
+	$THEBENCHPYTHON -m ensurepip    # every python has its own pip and libraries
+	$THEBENCHPYTHON -m pip install --upgrade pip  # who knows
+	$THEBENCHPYTHON	-m pip install cl4py
+	$THEBENCHPYTHON -m pip install sly
+        $THEBENCHPYTHON -m pip install prompt_toolkit
 	LOG+="\n\n-thebench install: COMPLETED"
 	LOG+="\n-This log is saved in file $LOGFILE"
 	LOG+="\n========================================================="
 	echo -e $LOG > $LOGFILE
 	echo -e $LOG
 	# and now for some .bashrc managament tucked at the very end of .bashrc
-	printf '%s\n' '# stuff added by thebench installer (and to make PATH unique--kudos to Mitch Frazier)' >> $HOME/.bashrc
-	printf '%s\n' 'PATH=$HOME/bin:$PATH' >> $HOME/.bashrc
-	printf '%s\n' 'PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '"'"'!($0 in a) {a[$0]; print}'"'"')' >> $HOME/.bashrc
+	printf '%s\n' '# stuff added by thebench installer' >> $HOME/.bashrc
+	printf '%s\n' "alias bench=$THEBENCHPYTHON $labdir/src/bench.py" >> $HOME/.bashrc
+	printf '%s\n' "alias bench.train=$labdir/src/bench.train.sh" >> $HOME/.bashrc
 	printf '%s\n' '# end of stuff added by thebench installer' >> $HOME/.bashrc
 	source $HOME/.bashrc
        	exit 0
-fi
-PYSUFF=$1
-PY="`command -v python$PYSUFF`"
-PIP="`command -v pip$PYSUFF`"
-if [ -f $PY ]; then
-	if [ -f $PIP ]; then
-		$PIP install cl4py
-		$PIP install sly
-		$PIP install prompt_toolkit
-	else
-		echo "No $PIP; aborting..."
-		exit -1
-	fi
-	echo "python$PYSUFF $labdir/src/bench.py" | tee "$ULB/bench"
-	chmod ugo+x "$ULB/bench"
-else
-	echo "No $PY; aborting..."
-	exit -1
 fi
