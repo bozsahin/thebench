@@ -30,7 +30,7 @@ elif [ $1 == uninstall ]; then
 	rm $HO/.thebenchhome
 	rm $HO/.thebenchhistory
 	echo "Uninstall completed."
-	echo 'Please clear your $HO/.bashrc file off the two bench alises.'
+	echo "Please clear your $HO/.bashrc file off the two bench alises."
 	exit 0
 else
 	THEBENCHPYTHON=$2
