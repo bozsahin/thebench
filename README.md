@@ -121,11 +121,7 @@ If you have it, the last two files are saved in there.
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
 are kept (usually), is to add this directory  to the PATH variable and eliminate duplicates in it, and define $THEBENCHPYTHON variable.
 
-You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
-is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
-So, for Suse and similar RH systems, install <code>yum</code> first before you install TheBench. Fedora is RH, but comes with <code>yum</code>, so no problems (and wise choice, lads and lasses, ditto CentOS).
-
-SBCL AND PYTHON NOTES: 
+SBCL, PYTHON AND PACKAGE MANAGER NOTES: 
 
 SBCL is the Common Lisp that the processor of TheBench uses. It is installed by the installer of TheBench if SBCL does
 not exist in your system. (This is checked by the installer.)
@@ -137,3 +133,8 @@ TheBench hangs in the beginning. I couldn't locate what causes it, so I recommen
 your SBCL to something below 2.3.x to make sure this tool works. 
 
 Pythons below 3.8 won't even load TheBench.
+
+You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
+is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
+So, for Suse and similar RH systems, install <code>yum</code> first before you install TheBench. Fedora is RH, but comes with <code>yum</code>, so no problems (and wise choice, lads and lasses, ditto CentOS).
+
