@@ -74,6 +74,9 @@ run the install script FROM thebench home as
 to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes the bench libraries
 for that python. 
 
+If you've done python upgrades a few times, you will see in <code>~/.bashrc</code> file multiple definitions of the alias <code>bench</code>.
+The last one counts. You can eliminate the earlier ones. Don't eliminate the <code>bench.train</code> alias in the process.
+
 TO DEVELOP A GRAMMAR:
 
 Just use your favourite plain text editor and enter a grammar. Then follow help (the `? command') of TheBench to process it.
