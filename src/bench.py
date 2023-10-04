@@ -1044,11 +1044,14 @@ def do (commline):
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} noop")
                             else:
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} {ch[6]}")
-            print("\nTraining starts;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
-            print("\nWhen the experiments finish you will be notified")
-            print("\nPlease do NOT hit ctrl-D in this session. It would terminate the experiments")
-            print("\nLet the session terminal on if you have to leave")
+            print("\nTraining starts.\nPlease hit RETURN if the prompt is not back on.\nYou don't have to wait for the finish.")
+            print("  Please do NOT hit ctrl-D in THIS terminal app. It would terminate the experiments.")
+            print("  You can continue to do other things in the interface")
+            print("    or leave the session. Training runs in the background.\n")
             os.system(f"(cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` {_benchtrainer} > {_tmp+'nohup.out'} &)") # hope for the best
+            print("You can use 'top' command of linux to follow the progress")
+            print("  Look for COMMAND column for processes named 'sbcl'.")
+            print("  These are the currently running training processes.\n")
             print(f"Summary of experiments for locating results when done")
             with open(_tmp+efn,'r') as expout:
                 n=1

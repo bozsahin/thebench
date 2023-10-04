@@ -2826,7 +2826,7 @@
   (format s "#~(~A~)  " r))
 
 (defun mk_keyparamend (r s)
-  (format s "<~A, ~A>~%" (nv-get-v 'KEY r) (nv-get-v 'PARAM r))) 
+  (format s "<~A, ~F>~%" (nv-get-v 'KEY r) (nv-get-v 'PARAM r)))  ; we need ~F to avoid scientific notation for wee values
 
 (defun mk_lf (lf s)
   "raw use of display-lf with format directives may spill over multiple lines, we avoid that with this function"
