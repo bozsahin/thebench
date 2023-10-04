@@ -18,12 +18,12 @@ Window's native terminal is not the right one for TheBench, you'd need WSL in a 
 2. A software installer.  
 
 The standard installers
-in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, even under WSL. See the note at the bottom for the absence of the <code>rpm</code> package manager.
+in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, including WSL. See the note at the bottom for the absence of the <code>rpm</code> package manager.
 
 You can start using WSL right off the shelf if you have Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 
 As things Apple go these days, you might be left helpless about things we take for granted
-in programming, such as having linux public code installers. You'd need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
+in programming, such as having public package managers. You need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 
 
 3. <a href="https://www.python.org/">Python 3.8  or above</a>
@@ -39,9 +39,9 @@ TO INSTALL:
 
    <code>git clone https://github.com/bozsahin/thebench</code>
 
-   This will create <code>thebench</code> subfolder with code and documentation.
+   This will create <code>thebench</code> subdirectory in that directory.
 
-2.  In the terminal, and IN <code>thebench</code> directory, do  the following:
+2.  In the terminal, <b>and in <code>thebench</code> directory</b>, do  the following:
 
    <code>./bench.sh install mypython</code>
 
