@@ -31,6 +31,7 @@ try:
 except Exception:
     _lisptype = 'unknown'
 
+_benchtrainer= ''
 _overscore = chr(8254)        # this is also the invisible 'declaration terminator'
 _underscore= '_'
 _exit='x'
@@ -1044,7 +1045,7 @@ def do (commline):
                             else:
                                 print(f"{ch[0]} {ch[1]} {_tmp+bfn} {_tmp+fn} {ch[2]} {ch[3]} {ch[4]} {_tmp+ch[5]} {ch[6]}")
             print("\nTraining starts;\nplease hit RETURN if the prompt is not back on\nyou don't have to wait for the finish")
-            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` bench.train > {_tmp+'nohup.out'}") # hope for the best
+            os.system(f"cat {_tmp+efn}|nohup xargs -n 9 -P `wc -l < {_tmp+efn}` {_benchtrainer} > {_tmp+'nohup.out'}") # hope for the best
             print(f"Summary of experiments for locating results when done")
             with open(_tmp+efn,'r') as expout:
                 n=1
@@ -1270,6 +1271,7 @@ if __name__ == '__main__': # MG REPL online
         for ws in f:
             p=ws.split()
     _cl.load(p[0]+'/src/bench.lisp')                # load the processor
+    _benchtrainer=p[0]+'/src/bench.train.sh'        # the trainer is in the same place
     print(f"python   : bench.py   loaded, version {_version}, encoding {sys.getdefaultencoding()}")
     print("ready")
     command = _silent

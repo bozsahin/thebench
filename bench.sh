@@ -139,7 +139,6 @@ if [ $1 == install ]; then
 	# and now for some .bashrc managament tucked at the very end of .bashrc
 	printf '%s\n' '# stuff added by thebench installer' >> $HOME/.bashrc
 	printf '%s\n' "alias bench='$THEBENCHPYTHON $labdir/src/bench.py'" >> $HOME/.bashrc
-	printf '%s\n' "alias bench.train='$labdir/src/bench.train.sh'" >> $HOME/.bashrc
 	printf '%s\n' '# end of stuff added by thebench installer' >> $HOME/.bashrc
 	bash # to reactivate aliases
        	exit 0
