@@ -75,7 +75,7 @@ to change to that python. It will make sure its <code>pip</code> library manager
 for that python. 
 
 If you've done python upgrades a few times, you will see in <code>~/.bashrc</code> file multiple definitions of the alias <code>bench</code>.
-The last one counts. You can eliminate the earlier ones, but you don't have to. Don't eliminate the <code>bench.train</code> alias in the process.
+The last one counts. You can eliminate the earlier ones, but you don't have to. 
 
 TO DEVELOP A GRAMMAR:
 
@@ -92,18 +92,15 @@ in your <code>thebench</code> directory do
 
 NOTES FOR THE DISCERNING TECHIE:
 
-In addition to setting a package directory for <code>thebench</code> in your user space, the installer
+The installer
 creates some files and aliases to keep things organized and available from
-anywhere in the computer. There are four of them: (`~' points to your home directory in the linux world).
+anywhere in the computer. There are THREE of them: (`~' points to your home directory in the linux world).
 
 <code>~/.thebenchhome</code> This file contains the full path of TheBench repository in your installation.
 
 <code>~/.thebenchhistory</code> This file contains history of your command use for easier recall.
 
 <code>bench</code> This is an alias to reach TheBench from anywhere in your user space.
-
-<code>bench.train</code> This is an alias to run the trainer <code>bench.train.sh</code> used by the 
-tool from anywhere.
 
 Please do not alter them manually.
 
