@@ -116,7 +116,8 @@ do
    <code>./bench.sh uninstall</code>
 
 This will remove TheBench files and auxiliary directories. It won't touch
-your python or SBCL. To remove them, use your package manager.
+your python or SBCL. To remove them, use your package manager. To clean your <code>~/.bashrc</code>, just delete every
+line that mention `bench'. (We don't do that automatically, not knowing whether you've changed this file yourself.)
 
 SBCL, PYTHON AND PACKAGE MANAGER NOTES: 
 
