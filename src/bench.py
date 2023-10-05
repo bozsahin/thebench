@@ -747,7 +747,7 @@ def help ():
         print(f" z .    | source . located in {_tmp} and saved as editable grammar locally (.txt)")
         print(f' @ ..   | does bench commands in file . (1 command/line, 1 line/command); forces output to .log')
         print(f' , .?   | displays analyses for solutions numbered ., all if none provided')
-        print(f' #      | displays ranked analyses')
+        print(f" # .?   | displays ranked analyses; outputs only (string-likeliest solution) pair if . is 'bare'")
         print(f' = .    | displays analyses onto basic cats in .')
         print(f' ! .?   | shows basic cats and features of current grammar (optionally saves to file .log)')
         print(f' $ .    | shows the elements with parts of speech in .')
@@ -996,7 +996,7 @@ def print_info ():
 def do (commline):
     global _online, _grammar, _info, _latestgr, _exit, _help
     comm, args = split_command(commline)
-    if comm in [_exit, 'k', '/', '#', '<', _help] and args:
+    if comm in [_exit, 'k', '/', '<', _help] and args:
         print('too many arguments')
         return
     if comm in ['a', 'c', 'e', 'g', 'o', '@', '$', 'r', 'z', '-', 'l', 'i', '+', '>'] and not args:
@@ -1153,11 +1153,17 @@ def do (commline):
         except Exception:
             print('something went wrong')
     elif comm == '#':
-        try:
-            _lisp.function('cky_show_ranking')()
-            print()
-        except Exception:
-            print('something went wrong')
+        if args and args[0] == 'bare':
+            try:
+                _lisp.function('cky_show_ranking_bare')()
+            except Exception:
+                print('something went wrong')
+        else:
+            try:
+                _lisp.function('cky_show_ranking')()
+                print()
+            except Exception:
+                print('something went wrong')
     elif comm == '@':
         fn = args[0] 
         if len(args) > 1:
