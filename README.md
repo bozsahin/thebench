@@ -1,5 +1,5 @@
 # TheBench
-This is a tool to study construction of surface structure in natural language using two command relations, one on
+This is a tool to study construction of surface structure in natural language using two command relations in a grammar, one on
 syntactic command one on semantic command.
 
 It can work in Linuxsphere, Macosphere and Window's Linux sub-atmosphere,  for example in Window's WSL, MacOS, Arch, Debian and RedHat-based distributions.
@@ -94,7 +94,7 @@ in your <code>thebench</code> directory do
 NOTES FOR THE DISCERNING TECHIE:
 
 The installer
-creates some files and aliases to keep things organized and available from
+creates some files and an alias to keep things organized and available from
 anywhere in the computer. There are THREE of them: (`~' points to your home directory in the linux world).
 
 <code>~/.thebenchhome</code> This file contains the full path of TheBench repository in your installation.
@@ -106,7 +106,7 @@ anywhere in the computer. There are THREE of them: (`~' points to your home dire
 Please do not alter them manually.
 
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
-are kept (usually), is to add these aliases so that they are always available, interactive or not.
+are kept (usually), is to add the alias so that they are always available, interactive or not.
 We don't touch your PATH variable.
 
 TO UNINSTALL:
