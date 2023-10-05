@@ -1065,7 +1065,7 @@ def do (commline):
             print(f"--------------------------")
             print("If everything runs OK, you can re-generate source grammars from .src files")
             print("   use the z command for that")
-            print("\n!!! Please do NOT hit ctrl-D in THIS terminal app. It would terminate the experiments.")
+            print("\n!!! Please do NOT hit ctrl-D in THIS terminal app. It would terminate the experiments.\n")
         else:
             print('need three existing files for the t command')
     elif comm == 'g':
