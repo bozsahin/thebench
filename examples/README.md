@@ -8,7 +8,7 @@ Naming convention for the files:
 
 <code>.skeleton.log</code> All distinct categories of the grammar and list of items bearing them
 
-<code>.commands</code> TheBench commands to process the grammar with certain options, which are:
+<code>.tbc</code> TheBench commands to process the grammar. The naming convention is:
 
    - <code>sc.no</code>  : no synthetic case rule derived or used
 
