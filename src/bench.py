@@ -746,7 +746,7 @@ def help ():
         print(f" z .    | source . located in {_tmp} and saved as editable grammar locally (.txt)")
         print(f' @ ..   | does bench commands in file . (1 command/line, 1 line/command); forces output to .log')
         print(f' , .?   | displays analyses for solutions numbered ., all if none provided')
-        print(f" # .?   | displays ranked analyses; outputs only (string-likeliest solution) pair if . is 'bare'")
+        print(f" # .?   | displays ranked analyses; outputs only [string likeliest-solution] pair if . is 'bare'")
         print(f' = .    | displays analyses onto basic cats in .')
         print(f' ! .?   | shows basic cats and features of current grammar (optionally saves to file .log)')
         print(f' $ .    | shows the elements with parts of speech in .')
