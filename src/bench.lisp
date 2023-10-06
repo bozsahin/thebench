@@ -1931,8 +1931,8 @@
   t)
 
 (defun cky_show_ranking_bare ()
-  "useful if you are going to compare it with gold pairings"
-  (format t "~A ~A" *cky-input* (second *cky-lf*))
+  "useful if you are going to compare it with gold pairings. Square brackets are there to avoid excessive Lisp parenths."
+  (format t "[ ~A ~A ]" *cky-input* (second *cky-lf*))
   t)
 
 ;;;; =============================================================================
