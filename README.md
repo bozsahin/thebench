@@ -51,7 +51,7 @@ This will install TheBench, the Python libraries needed, and SBCL as Common Lisp
 
 TO USE: 
 
-just do anywhere in your machine:
+just do anywhere in your machine in a terminal running the shell <code>bash</code>:
 
 <code>bench</code>
 
