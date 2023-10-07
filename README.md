@@ -51,12 +51,15 @@ This will install TheBench, the Python libraries needed, and SBCL as Common Lisp
 
 TO USE: 
 
-just do anywhere in your machine in a terminal running the shell <code>bash</code>:
+just do anywhere in your machine from a terminal app:
 
 <code>bench</code>
 
 Use UP and DOWN keys for command recall. TheBench keeps its specific command history in <code>.thebenchhistory</code>
 file at your home directory.
+
+If you experience problems accessing <code>bench</code> this way, you are probably using a different shell.
+In this case, do </code>bash</code>, then do the above. 
 
 MULTI-USER SYSTEMS:
 
