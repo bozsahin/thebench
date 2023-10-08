@@ -732,7 +732,7 @@ def split_command (cline): # splits a command line into command and list of args
     
 def help ():
         print(f"______\ Letter commands are processor commands; symbol commands are for display or setup")
-        print(f"_______\ Items in . must be space-separated; dots are referred in sequence; .? means optional .")
+        print(f"_______\__________ Dots are space-separated items; dots are referred in sequence; .? means optional")
         print(f' a .    | analyzes . in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' c .    | case functions generated for current grammar from elements with POSs .')
         print(f" e .    | evaluates the python expression . at your own risk (be careful with deletes)")
