@@ -59,7 +59,7 @@ Use UP and DOWN keys for command recall. TheBench keeps its specific command his
 file at your home directory.
 
 If you experience problems accessing <code>bench</code> this way, you are probably using a different shell.
-In this case, do <code>bash</code>, then do the above. 
+In this case, do <code>bash</code>, then do the above. Bash is available in all linux platforms, unlike other shells.
 
 MULTI-USER SYSTEMS:
 
