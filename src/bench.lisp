@@ -1709,7 +1709,7 @@
   where keys are triplets (i j k), meaning combinations of length i,
   starting with position j, yielding reading k."
   (cond ((listp itemslist)
-	 (format t "Input: ~{~A~^ ~}~%" itemslist)
+	 ;(format t "Input: ~{~A~^ ~}~%" itemslist)
 	 (clrhash *cky-hashtable*)
 	 (clrhash *cky-lf-hashtable*)
 	 (setf *cky-lf* nil)(setf *cky-argmax-lf* nil)
@@ -1932,7 +1932,7 @@
 
 (defun cky_show_ranking_bare ()
   "useful if you are going to compare it with gold pairings. Square brackets are there to avoid excessive Lisp parenths."
-  (format t "[ ~A ~A ]" *cky-input* (second *cky-lf*))
+  (format t "[ ~A ~A ]~%" *cky-input* (second *cky-lf*))
   t)
 
 ;;;; =============================================================================
