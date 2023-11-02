@@ -93,6 +93,9 @@ in your <code>thebench</code> directory do
 
    <code>git pull</code>
 
+If git complains about conflicts, the usual suspect is local changes to <code>bench.user.lisp</code> file.
+Move it somewhere and do the upgrade, then put it back. The contents of this file is not crucial to the tool,
+but its presence is.
 
 NOTES FOR THE DISCERNING TECHIE:
 
