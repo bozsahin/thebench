@@ -42,4 +42,4 @@ echo "Log goes to   : $LOGFILE" >> $LOGFILE
 echo "I will call sbcl as: $BENCH_LISP" >> $LOGFILE
 echo "It will call $TRAIN in $BENCH_HOME/src/bench.lisp as: ($TRAINER)" >> $LOGFILE
 echo '=======          ============' >> $LOGFILE
-$BENCH_LISP --load $BENCH_HOME/src/bench.lisp --eval '(reset-globals)' --eval "($9)" --eval "($TRAINER)" --eval '(sb-ext:exit)' >> $LOGFILE
+$BENCH_LISP --load $BENCH_HOME/src/bench.lisp --load $BENCH_HOME/src/bench.user.lisp --eval '(reset-globals)' --eval "($9)" --eval "($TRAINER)" --eval '(sb-ext:exit)' >> $LOGFILE
