@@ -1,4 +1,4 @@
-% Mandarin Chinese as covered in Monadic structures book
+% Mandarin Chinese as covered in the book mentioned in the manual
 % i put tones only for disambiguation--sorry
 % -cem bozsahin
 kan | v :: (s\np)/np:\x\y.see x y

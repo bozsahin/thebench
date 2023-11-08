@@ -1,4 +1,4 @@
-% Turkish as covered in the Monadic Structures book
+% Turkish as covered in the book mentioned in the manual
 % -cem bozsahin
 
 Ahmet | n :: np:ahmet

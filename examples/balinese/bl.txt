@@ -1,4 +1,4 @@
-% Balinese grammar fragment of MS book
+% Balinese grammar fragment of the book mentioned in the manual
 % -cem bozsahin
 ngengkebang | v :: vp[v=av]/np:\x\y.hide x y
 engkebang   | v :: vp[v=ov]/np:\y\x.hide x y

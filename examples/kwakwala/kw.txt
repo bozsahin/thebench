@@ -1,4 +1,4 @@
-% Kwakwala fragment of the MS book
+% Kwakwala fragment of the book mentioned in the manual
 % -cem bozsahin
 %
 % NB. the bound elements look to the left for phonological host

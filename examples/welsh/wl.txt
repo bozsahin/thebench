@@ -1,4 +1,4 @@
-% Welsh fragment of the MS book
+% Welsh fragment of the book mentioned in the manual
 % -cem bozsahin
 gwelodd | v :: s/np/np[per=3]: \y\x.see x y %NB inversion in finite verb
 gweld | v :: vp/np: \x\y.see x y

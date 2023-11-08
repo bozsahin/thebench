@@ -1,4 +1,4 @@
-% this is from the MS book, its Nootka parts
+% this is from the book mentioned in the manual, its Nootka parts
 % -cem bozsahin
 
 yaq | rel :: (n\n)/(s/np[agr=?a]) : \p\q\x.and (p x) (q x)

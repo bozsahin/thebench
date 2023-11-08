@@ -1,4 +1,4 @@
-% This is from the Monadic Structures book, covering the English part.
+% This is from the book mentioned in the manual, covering the English part.
 % Visual alignment is purely for aesthetic reasons
 % -Cem Bozsahin
 
