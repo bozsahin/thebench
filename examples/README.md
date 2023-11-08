@@ -1,5 +1,7 @@
 This folder contains various grammars and TheBench commands to process them.
 
+This is always work in progress. Look for updates occasionally.
+
 Naming convention for the files:
 
 <code>.txt</code> The grammar text file
