@@ -6,7 +6,10 @@ sees      | v :: (s[t=fin]\np[agr=3s])/np[ts=p] : \x\y.see x y   % q is for cont
 persuades | v :: ((s\np[agr=3s])/vp)/np[ts=p] : \x\p\y.persuade (p x) x y
 persuaded | v :: ((s\np)/vp)/np[ts=p] : \x\p\y.persuade (p x) x y
 promises  | v :: ((s\np[agr=3s])/vp)/np[ts=p] : \x\p\y.promise (p y) x y
+promised  | v :: ((s\np[agr=3s])/vp)/np[ts=p] : \x\p\y.promise (p y) x y
 wants     | v :: (s\np[agr=3s])/vp : \p\y. want (p y) y
+wanted    | v :: (s\np[agr=3s])/vp/np : \x\p\y. want (p x) y
+expected  | v :: (s\np[agr=3s])/vp/np : \x\p\y. expect (p x) y
 wants     | v :: ((s\np[agr=3s])/vp)/np[ts=p]: \x\p\y. want (p x) y
 seems     | v :: (s\np[agr=3s])/vp : \p\y.seems (p y)
 seems     | v :: (s\np[t=xpl])/s : \s\y.seems s
