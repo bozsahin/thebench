@@ -1,5 +1,5 @@
 to        | inf   :: vp/^iv: \p.p
-arrrived  | v     :: s\^np : \x.arrive x 
+arrived  | v     :: s\^np : \x.arrive x 
 persuaded | v     :: ((s\^np)/^vp)/^np : \x\p\y.persuade (p x) x y
 promised  | v     :: ((s\^np)/^vp)/^np : \x\p\y.promise (p y) x y
 seemed    | v     :: (s\^np)/^vp : \p\y.seem (p y)
