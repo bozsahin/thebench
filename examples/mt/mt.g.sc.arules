@@ -1,0 +1,3 @@
+#_p2_132  np : a --> ((s\^np)/^vp)\^(((s\^np)/^vp)/^np) : \a\p.p a
+#_g2_131  np : a --> s/^(s\^np) : \a\p.p a
+#_g2_128  vp : a --> (s\^np)\^((s\^np)/^vp) : \a\p.p a
