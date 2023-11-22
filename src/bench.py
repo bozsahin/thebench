@@ -43,8 +43,8 @@ if not os.path.exists(_tmp): # someone deleted it, recreate
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '1.0'
-_vdate = 'November 1, 2023'
+_version = '1.1'
+_vdate = 'November 22, 2023'
 # 3 built-in extensions of MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
@@ -167,7 +167,7 @@ def mk_supfile (fn, source):
             print(';;')
             for k,v in _supervision.items():
                   print('(')
-                  print(mk_1cl(ir_to_lisp(k)))
+                  print(mk_1cl(ir_to_lisp(k[1])))  # k[0] is index, not needed, not part of data
                   print(ir_to_lisp(v))
                   print(')')
             print(';;')
@@ -175,8 +175,10 @@ def mk_supfile (fn, source):
             print(')') 
 
 def mk_entry_sup (form, meaning):
+    # duplicates of form are ok in supervision. To avoid dict collide, the key to _supervision dict 
+    #   is the tuple (index,form)
     global _supervision
-    _supervision[_ws.join(form)] = ir_to_lisp(meaning)
+    _supervision[(make_up_an_index(),_ws.join(form))] = ir_to_lisp(meaning)
     return True
 
 def mk_entry (element, index):  
