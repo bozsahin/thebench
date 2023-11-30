@@ -75,7 +75,7 @@ re-run the install script FROM thebench home as
 
 <code>./bench.sh reset python3.141519</code>
 
-to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes the bench libraries
+to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes TheBench libraries
 for that python. 
 
 If you've done python upgrades a few times, you will see in <code>~/.bashrc</code> file multiple definitions of the alias <code>bench</code>.
