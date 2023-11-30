@@ -112,7 +112,7 @@ anywhere in the computer. There are THREE of them: (`~' points to your home dire
 Please do not alter them manually.
 
 The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
-are kept (usually), is to add the alias so that they are always available, interactive or not.
+are kept (usually), is to add the alias so that is is always available, interactive or not.
 We don't touch your PATH variable.
 
 TO UNINSTALL:
