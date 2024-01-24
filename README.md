@@ -136,6 +136,9 @@ Something happened to SBCL with 2.3.x releases, and
 TheBench hangs in the beginning. I couldn't locate what causes it, so I recommend downgrading
 your SBCL to something below 2.3.x to make sure this tool works. You don't need to do anything else.
 
+Downgrading SBCL is unfortunately not automatic. You have to build older binary using SBCL's install script. 
+It is explained <a href="https://www.sbcl.org/getting.html"> here</a>. It works in Macs and linuxes.
+
 Pythons below 3.8 won't even load TheBench.
 
 You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
