@@ -1022,17 +1022,6 @@
 	     (setf (machash 'ARG newsyn)(substitute-special-cat (machash 'ARG spht1) catht2))
 	     newsyn))))
 
-(defun load_dotbin (binname)
-  "loads the grammar generated from intermediate representation of monadic grammar"
-  (let* ((gname (concatenate 'string binname ".bin")))
-    (setf *error* nil)
-    (safely_load gname)  ;; sets *current-grammar* variable             
-    (cond ((not *error*) (setf *lex-rules-table* nil)
-			 (setf *loaded-grammar* gname)
-			 (dolist (l *current-grammar*)(and (not (lexp l)) (push-t (hash-lexrule l) *lex-rules-table*))) ; we get reversed list of rules
-			 (setf *lex-rules-table* (reverse *lex-rules-table*)) ; it is important that the rules apply in the order specified
-			 )))
-  t)
 
 (defun load_bin (binname)
   "loads the grammar generated from intermediate representation of monadic grammar"
@@ -2417,7 +2406,7 @@
 
 (defun kl-prepare (g)
   "z score grammar g, then hash item key to (param z-score prob)"
-  (load_dotbin g)
+  (load_bin g)
   (let ((ght (make-training-hashtable (length *current-grammar*)))
 	(errlog nil))
     (dolist (el *current-grammar*)
