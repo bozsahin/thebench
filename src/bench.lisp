@@ -2436,8 +2436,9 @@
 		   (cond ((and pv1 pv2)
 			  (if (/= pv2 0.0) 
 			    (setf total (+ total (* pv1 (log (/ pv1 pv2)))))))
-			 (t (format t "Invalid index pair: ~A  values: ~A" pair (list pv1 pv2))
+			 (t (format t "~%Invalid index pair: ~A  values: ~A" pair (list pv1 pv2))
 			    (return-from klz)))))
+	       (format t "~%Valid pairs: ~A (total)~%" (length keypairs))
 	       total)))))
 
 
