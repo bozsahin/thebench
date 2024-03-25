@@ -1,5 +1,6 @@
 # TheBench
-This is a tool to study construction of surface structure in natural language using two command relations in a grammar, one on
+This is a tool to study variants in natural language (crosslingustic and intralinguistic diversity) using an invariant: binary composition.
+It uses two command relations in a grammar, one on
 syntactic command one on semantic command.
 
 It can work in Linuxsphere, Macosphere and Window's Linux sub-atmosphere,  for example in Window's WSL, MacOS, Arch, Debian and RedHat-based distributions.

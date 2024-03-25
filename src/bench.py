@@ -43,8 +43,8 @@ if not os.path.exists(_tmp): # someone deleted it, recreate
 _home=os.getcwd()
 _prompt = '/'+_overscore+'\ ' # the pagoda
 _online = False               # parser output control
-_version = '1.1'
-_vdate = 'November 22, 2023'
+_version = '2.0'
+_vdate = 'March 25, 2024'
 # 3 built-in extensions of MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
@@ -746,7 +746,7 @@ def help ():
         print(f' r .*   | ranks . in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' t ...  | trains grammar in file . on data in file . using training parameters in file .')
         print(f" z .    | source . located in {_tmp} and saved as editable grammar locally (.txt)")
-        print(f' @ ..   | does bench commands in file . (1 command/line, 1 line/command); forces output to .log')
+        print(f' @ ..   | does (nested) commands in file . (1 command/line, 1 line/command); forces output to .log')
         print(f' , .*?  | displays analyses for solutions numbered ., all if none provided')
         print(f" # .?   | displays ranked analyses; outputs only [string likeliest-solution] pair if . is 'bare'")
         print(f' = .*   | displays analyses onto basic cats in .')
@@ -1253,9 +1253,9 @@ def do (commline):
         print('command unknown')
 
 def welcome ():
-    print(75*_overscore)
+    print(78*_overscore)
     print(1*_prompt+'Welcome to The Bench')
-    print(2*_prompt+" A workbench for studying Monadic Structures in Natural Language")
+    print(2*_prompt+" A workbench for studying NL structures built by two command relations")
     print(3*_prompt+"Bench version:      ", _version, "Dated:", _vdate)
     print(3*_prompt+"Python version:     ", platform.python_version())
     print(3*_prompt+"Common Lisp version:", _lisptype)
@@ -1264,7 +1264,7 @@ def welcome ():
     print(3*_prompt+"Processing by Common Lisp     (analysis, training, ranking)")
     print(2*_prompt+datetime.now().strftime("Today: %B %d, %Y, %H:%M:%S"))
     print(1*_prompt+f"Type {_exit} to exit, {_help} to get some help")
-    print(75*_underscore)
+    print(78*_underscore)
 
 mglexer  = MGLexer()
 mgparser = MGParser()
