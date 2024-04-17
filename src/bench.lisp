@@ -1,6 +1,10 @@
 ;; to suppress style warnings --load before anything else
 ;; first form is SBCL-specific
 ;; -cem bozsahin
+
+(setf *read-default-float-format* 'double-float) ; needed this in some trainings 
+                                                 ; to avoid (exp) overflow
+
 (declaim #+sbcl(sb-ext:muffle-conditions style-warning))
 (setf *load-verbose* nil)
 (setf *load-print* nil)
