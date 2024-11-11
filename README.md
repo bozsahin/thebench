@@ -1,7 +1,8 @@
 # TheBench
 This is a tool to study variants in natural language (crosslingustic and intralinguistic diversity) using an invariant: binary composition.
+
 It uses two command relations in a grammar, one on
-syntactic command one on semantic command.
+syntactic command one on semantic command. The guide explains these command relations.
 
 It can work in Linuxsphere, Macosphere and Window's Linux sub-atmosphere,  for example in Window's WSL, MacOS, Arch, Debian and RedHat-based distributions.
 
@@ -27,7 +28,7 @@ As things Apple go these days, you might be left helpless about things we take f
 in programming, such as having public package managers. You need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 
 
-3. <a href="https://www.python.org/">Python 3.8  or above</a>
+3. <a href="https://www.python.org/">Python 3.8  to 3.11</a>. (Earlier ones lack the libraries, later ones mess with python's pip in unpredictable ways. 3.11 is supported until the end of 2027.)
 
 4. <a href="https://git-scm.com/downloads">git</a> 
 
@@ -62,25 +63,22 @@ file at your home directory.
 If you experience problems accessing <code>bench</code> this way, you are probably using a different shell.
 In this case, do <code>bash</code>, then do the above. Bash is available in all linux platforms, unlike other shells.
 
-MULTI-USER SYSTEMS:
+PERSONAL COMPUTER SECURITY and MULTI-USER SYSTEMS:
 
 The installer is designed to set TheBench up in a personal computer, where you would have
-<code>sudo</code> access to install goodies like Common Lisp, which we need for
-the processor. If you work in a multi-user system, please ask your admin to install <code>SBCL</code> for you.
-Then TheBench install script will detect that and won't complain.
+<code>sudo</code> access. Please ask your system admin to install it for you if you don't have that access.
+When run on a personal computer, it will be your local sudo asking for password. Please do not share it with
+anyone. If you are not convinced, please ask a trusted expert to screen the installer for security.
 
 PYTHON UPGRADE NOTE:
 
-If you want to move to another python for this tool, say python3.141519, and have that python installed, then 
+If you want to move to another python for this tool, say python3.xx, and have that python installed, then 
 re-run the install script FROM thebench home as
 
-<code>./bench.sh reset python3.141519</code>
+<code>./bench.sh reset python3.xx</code>
 
 to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes TheBench libraries
 for that python. 
-
-If you've done python upgrades a few times, you will see in <code>~/.bashrc</code> file multiple definitions of the alias <code>bench</code>.
-The last one counts. You can eliminate the earlier ones, but you don't have to. 
 
 TO DEVELOP A GRAMMAR:
 
@@ -96,25 +94,21 @@ in your <code>thebench</code> directory do
 
 If git complains about conflicts, the usual suspect is local changes to <code>bench.user.lisp</code> file.
 Move it somewhere and do the upgrade, then put it back. The contents of this file is not crucial to the tool,
-but its presence is.
+but its presence and location are.
 
 NOTES FOR THE DISCERNING TECHIE:
 
 The installer
-creates some files and an alias to keep things organized and available from
+creates some files to keep things organized and available from
 anywhere in the computer. There are THREE of them: (`~' points to your home directory in the linux world).
 
 <code>~/.thebenchhome</code> This file contains the full path of TheBench repository in your installation.
 
 <code>~/.thebenchhistory</code> This file contains history of your command use for easier recall.
 
-<code>bench</code> This is an alias to reach TheBench from anywhere in your user space.
+<code>/usr/local/bin/bench</code> This is the executable that allows access to TheBench for anyone on your system from anywhere."
 
 Please do not alter them manually.
-
-The only surgical touch to your <code>~/.bashrc</code>, which is where your bash variables
-are kept (usually), is to add the alias so that it is always available, interactive or not.
-We don't touch your PATH variable.
 
 TO UNINSTALL:
 
@@ -123,8 +117,7 @@ do
    <code>./bench.sh uninstall</code>
 
 This will remove TheBench files and auxiliary directories. It won't touch
-your python or SBCL. To remove them, use your package manager. To clean your <code>~/.bashrc</code>, just delete every
-line that mentions `bench'. (We don't do that automatically, not knowing whether you've changed this file yourself.)
+your python or SBCL. To remove them, use your package manager. 
 
 SBCL, PYTHON AND PACKAGE MANAGER NOTES: 
 
@@ -134,13 +127,16 @@ not exist in your system. (This is checked by the installer.)
 I have tried SBCL 1.x to 2.2.x with success in Macs, PCs and anything in between, for this tool. 
 
 Something happened to SBCL with 2.3.x releases, and
-TheBench hangs in the beginning. I couldn't locate what causes it, so I recommend downgrading
+TheBench hangs in the beginning. I couldn't locate what causes it to ask the SBCL developers to fix it, so I recommend downgrading
 your SBCL to something below 2.3.x to make sure this tool works. You don't need to do anything else.
 
 Downgrading SBCL is unfortunately not automatic. You have to build an older binary using SBCL's install script. 
 It is explained <a href="https://sbcl.org/getting.html"> here</a>. It works in Macs and linuxes.
 
-Pythons below 3.8 won't even load TheBench.
+If you are wondering why I am not using Python's virtual environment facility to freeze TheBench to a certain python binary,
+it is because it's needlessly complex, anachronistic at this day and age, and error-prone. 
+It seemed to me for TheBench to be the shortest way to lose the python-uninitiated from the start.
+TheBench has its on command syntax; it does not need Python or Lisp programming.
 
 You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
 is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.

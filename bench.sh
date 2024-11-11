@@ -1,9 +1,9 @@
 #!/bin/bash
-# cem bozsahin 2023
-# $1 : 'uninstall' 'install' 'reset' $2: (if relevant): the python binary
+# cem bozsahin 2023--24
+# $1 : 'uninstall' 'install' or 'reset' $2: (when relevant): the python binary
 # brew does not allow sudo--$SUDO controls that
 if [ $# -eq 0 ]; then
-	echo "please specify 'install', 'uninstall' (and python executable if you are installing)"
+	echo "please specify 'install', 'reset' or 'uninstall'"
 	echo "exiting without action"
 	exit -1
 elif [ $1 == install ] && [ $# -lt 2 ]; then
@@ -64,6 +64,7 @@ if [ $1 == reset ]; then
 	exit 0
 fi
 # If we've come this far, we are installing
+ULB=/usr/local/bin # This is where the bench binary goes --no more .bashrc invasion
 TMPB='/var/tmp/thebench'
 SUDO=sudo
 LOGFILE='/var/tmp/thebench-install.log'
@@ -79,8 +80,9 @@ if [ $1 == install ]; then
 	echo "**** PLEASE NOTE: ****"
 	echo " "
 	echo "  In case the installer asks for SUDO PASSWORD"
-	echo "  It will be ONLY for installing the Common Lisp's SBCL through SAFE installers"
-	echo "  and for opening libraries of the package managers for a more comprehensive search"
+	echo "    It will be ONLY for 1) installing the Common Lisp's SBCL through SAFE installers" 
+        echo "                        2) opening libraries of the package managers for a more comprehensive search"
+        echo '                        3) putting the bench binary in /usr/local/bin'
 	echo " "
 	if [ ! -d $TMPB ]; then
   		mkdir $TMPB
@@ -131,15 +133,27 @@ if [ $1 == install ]; then
 	$THEBENCHPYTHON	-m pip install cl4py
 	$THEBENCHPYTHON -m pip install sly
         $THEBENCHPYTHON -m pip install prompt_toolkit
-	LOG+="\n\n-thebench install: COMPLETED"
-	LOG+="\n-This log is saved in file $LOGFILE"
-	LOG+="\n========================================================="
 	echo -e $LOG > $LOGFILE
 	echo -e $LOG
-	# and now for some .bashrc managament tucked at the very end of .bashrc
-	printf '%s\n' '# stuff added by thebench installer' >> $HOME/.bashrc
-	printf '%s\n' "alias bench='$THEBENCHPYTHON $labdir/src/bench.py'" >> $HOME/.bashrc
-	printf '%s\n' '# end of stuff added by thebench installer' >> $HOME/.bashrc
-	bash # to reactivate aliases
+	if [ ! -d $ULB ]; then
+		LOG+="\n-There is no $ULB in your system; creating one..."
+                LOG+="\n-Here is your PATH variable's contents: $PATH"
+                LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
+                LOG+="\n-It is usually set in the .bashrc file in your home directory."
+                sudo mkdir $ULB
+		sudo printf '%s\n' "$THEBENCHPYTHON $labdir/src/bench.py'" > $ULB/bench
+                sudo chmod ugo+x $ULB/bench
+	else
+                LOG+="\n-Here is your PATH variable's contents: $PATH"
+                LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
+                LOG+="\n-It is usually set in the .bashrc file in your home directory."
+		sudo printf '%s\n' "$THEBENCHPYTHON $labdir/src/bench.py'" > $ULB/bench
+                sudo chmod ugo+x $ULB/bench
+
+        fi
+	LOG+="\n\n-thebench install: COMPLETED"
+	LOG+="\n-This log is saved in file $LOGFILE"
+        LOG+="\n-PLEASE CHECK IT IF THE INSTALLER ASKED FOR SOME ADDITIONAL ACTION"
+	LOG+="\n========================================================="
        	exit 0
 fi
