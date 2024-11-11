@@ -29,7 +29,6 @@ elif [ $1 == uninstall ]; then
 	rm $HOME/.thebenchhome
 	rm $HOME/.thebenchhistory
 	echo "Uninstall completed."
-	echo "Please clear your $HOME/.bashrc file off the two bench alises."
 	exit 0
 else
 	THEBENCHPYTHON=$2
