@@ -106,13 +106,13 @@ anywhere in the computer. There are THREE of them: (`~' points to your home dire
 
 <code>~/.thebenchhistory</code> This file contains history of your command use for easier recall.
 
-<code>/usr/local/bin/bench</code> This is the executable that allows access to TheBench for anyone on your system from anywhere."
+<code>/usr/local/bin/bench</code> This is the executable that allows access to TheBench for anyone on your system from anywhere.
 
 Please do not alter them manually.
 
 TO UNINSTALL:
 
-do
+Change to repo's local directory, and do
 
    <code>./bench.sh uninstall</code>
 
