@@ -1,4 +1,6 @@
-#!/bin/bash # cem bozsahin 2023--24 # $1 : 'uninstall' 'install' or 'reset' $2: (when relevant): the python binary
+#!/bin/bash # cem bozsahin 2023--24 
+#  $1 : 'uninstall' 'install' or 'reset' 
+#  $2: (when relevant): the python binary
 # brew does not allow sudo--$SUDO controls that
 BENCH_HOMEP="$HOME/.thebenchhome" # this file will contain the 
                                   # pointer to TheBench in your file system
@@ -9,11 +11,11 @@ if [ $# -eq 0 ]; then
 	echo "exiting without action"
 	exit -1
 elif [ $1 == install ] && [ $# -lt 2 ]; then
-	echo "install requires two arguments, the key action and the python binary"
+	echo "install requires two arguments: the key action and the python binary"
 	echo "exiting without action"
 	exit -1
 elif [ $1 == reset ] && [ $# -lt 2 ]; then
-	echo "reset requires two arguments, the key action and the python binary"
+	echo "reset requires two arguments: the key action and the python binary"
 	echo "exiting without action"
 	exit -1
 elif [ $1 == uninstall ]; then
@@ -58,7 +60,7 @@ if [ $1 == reset ]; then
 	$THEBENCHPYTHON	-m pip install cl4py
 	$THEBENCHPYTHON -m pip install sly
         $THEBENCHPYTHON -m pip install prompt_toolkit
-	echo "TheBench is set to use $THEBENCHPYTHON"
+	echo "TheBench is reset to use $THEBENCHPYTHON"
 	exit 0
 fi
 # If we've come this far, we are installing
@@ -122,8 +124,8 @@ if [ $1 == install ]; then
 	else
   		LOG+="\n-Local sbcl is set for tool use"
 	fi
-	echo "$BHF" | tee "$BHF"
 	chmod ug+r "$BHF"
+	chmod ug+x "$BHF/bench.sh"
 	$THEBENCHPYTHON -m ensurepip    # every python has its own pip and libraries
 	$THEBENCHPYTHON -m pip install --upgrade pip  # who knows
 	$THEBENCHPYTHON	-m pip install cl4py
@@ -141,8 +143,8 @@ if [ $1 == install ]; then
                 LOG+="\n-Here is your PATH variable's contents: $PATH"
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
                 LOG+="\n-It is usually set in the .bashrc file in your home directory."
-
         fi
+	sudo chmod ug+rwx $ULB
 	sudo cat "$THEBENCHPYTHON $BHF/src/bench.py" > $ULB/bench
         sudo chmod ugo+x $ULB/bench
 	LOG+="\n\n-thebench install: COMPLETED"
