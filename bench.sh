@@ -1,88 +1,85 @@
-#!/bin/bash
-# cem bozsahin 2023--24
-# $1 : 'uninstall' 'install' or 'reset' $2: (when relevant): the python binary
+#!/bin/bash # cem bozsahin 2023--24 # $1 : 'uninstall' 'install' or 'reset' $2: (when relevant): the python binary
 # brew does not allow sudo--$SUDO controls that
+BENCH_HOMEP="$HOME/.thebenchhome" # this file will contain the 
+                                  # pointer to TheBench in your file system
+#first the checks for early exits without action
 if [ $# -eq 0 ]; then
-	echo "please specify 'install', 'reset' or 'uninstall'"
+	echo "please specify a key action (install, reset, uninstall)"
+	echo "  and a python binary if the action requires it."
 	echo "exiting without action"
 	exit -1
 elif [ $1 == install ] && [ $# -lt 2 ]; then
-	echo "You need to specify a python for use"
+	echo "install requires two arguments, the key action and the python binary"
 	echo "exiting without action"
 	exit -1
 elif [ $1 == reset ] && [ $# -lt 2 ]; then
-	echo "You need to specify a python for use"
+	echo "reset requires two arguments, the key action and the python binary"
 	echo "exiting without action"
 	exit -1
 elif [ $1 == uninstall ]; then
-	BENCH_HOME="`cat $HOME/.thebenchhome`"
-	cd $HOME
-	if [ -d $BENCH_HOME ] && [ ! $BENCH_HOME == $HOME ]; then
-  		echo "Removing $BENCH_HOME"
-  		rm -fr $BENCH_HOME
+	if [ ! -e $BENCH_HOMEP] || [ ! -e "`cat $BENCH_HOMEP`" ] ; then
+		echo "Nothing to uninstall"
+		echo "exiting without action"
+		exit 0
+	fi
+fi
+THEBENCHPYTHON=$2
+which $2 2> /dev/null || NOPY=TRUE
+if [ ! $1 == uninstall ] && [ $NOPY ]; then
+	echo "$THEBENCHPYTHON executable does not exist"
+	echo "exiting without action"
+	exit -1
+fi
+if [ ! $1 == uninstall ] && [ ! -x `which $THEBENCHPYTHON` ]; then
+	echo "$THEBENCHPYTHON is not executable"
+	echo "exiting without action"
+	exit -1
+fi
+# from now on we have legit action specified
+BHF="`cat $BENCH_HOMEP`" # The directory pointed by BENCH_HOMEP
+cd $HOME # to avoid deleting current folder	
+if [ $1 == uninstall ]; then
+	if  [ -d $BHF ] && [ ! $BHF == $HOME ]; then
+      		echo "Removing $BHF"
+		rm -fr $BHF
+		rm $BENCH_HOMEP
+		rm $HOME/.thebenchhistory
 	fi
 	if [ -d "/var/tmp/thebench" ]; then
   		echo "Removing /var/tmp/thebench"
   		rm -fr /var/tmp/thebench
 	fi
-	echo "Removing thebench files from $HOME"
-	rm $HOME/.thebenchhome
-	rm $HOME/.thebenchhistory
 	echo "Uninstall completed."
 	exit 0
-else
-	THEBENCHPYTHON=$2
 fi
-which $2 2> /dev/null || NOPY=TRUE
-if [ $NOPY ]; then
-	echo "$THEBENCHPYTHON executable does not exist"
-	echo "exiting without action"
-	exit -1
-fi
-if [ ! -x `which $THEBENCHPYTHON` ]; then
-	echo "$THEBENCHPYTHON is not executable"
-	echo "exiting without action"
-	exit -1
-fi
-BHF="$HOME/.thebenchhome" # thebench home path resides in this file
-labdir=`pwd`
 if [ $1 == reset ]; then
-	echo "$labdir" | tee "$BHF"
-	chmod ug+r "$BHF"
 	$THEBENCHPYTHON -m ensurepip    # every python has its own pip and libraries
 	$THEBENCHPYTHON -m pip install --upgrade pip  # who knows
 	$THEBENCHPYTHON	-m pip install cl4py
 	$THEBENCHPYTHON -m pip install sly
         $THEBENCHPYTHON -m pip install prompt_toolkit
-	# and now for some .bashrc managament tucked at the very end of .bashrc
-	printf '%s\n' '# stuff added by thebench resetter' >> $HOME/.bashrc
-	printf '%s\n' "alias bench='$THEBENCHPYTHON $labdir/src/bench.py'" >> $HOME/.bashrc
-	printf '%s\n' '# end of stuff added by thebench resetter' >> $HOME/.bashrc
 	echo "TheBench is set to use $THEBENCHPYTHON"
-	bash # to reactivate alises
 	exit 0
 fi
 # If we've come this far, we are installing
-ULB=/usr/local/bin # This is where the bench binary goes --no more .bashrc invasion
+ULB='/usr/local/bin' # This is where the bench binary goes --no more .bashrc invasion
 TMPB='/var/tmp/thebench'
 SUDO=sudo
-LOGFILE='/var/tmp/thebench-install.log'
+LOGFILE='thebench-install.log'
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 if [ $1 == install ]; then
 	if [ -e $BHF ]; then
-		echo "You have TheBench installed at: `cat $BHF`"
+		echo "You have TheBench installed at: $BHF"
   		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
 		echo "If you intend to change the python for the tool, run the installer as './bench.sh reset some-python'"
   		exit 0  # this is not an error
 	fi
-	echo " "
-	echo "**** PLEASE NOTE: ****"
-	echo " "
+	echo "\n**** PLEASE NOTE: ****\n"
 	echo "  In case the installer asks for SUDO PASSWORD"
 	echo "    It will be ONLY for 1) installing the Common Lisp's SBCL through SAFE installers" 
         echo "                        2) opening libraries of the package managers for a more comprehensive search"
         echo '                        3) putting the bench binary in /usr/local/bin'
-	echo " "
+	echo ""
 	if [ ! -d $TMPB ]; then
   		mkdir $TMPB
   		LOG+="\n-$TMPB directory created for temporary files"
@@ -125,7 +122,7 @@ if [ $1 == install ]; then
 	else
   		LOG+="\n-Local sbcl is set for tool use"
 	fi
-	echo "$labdir" | tee "$BHF"
+	echo "$BHF" | tee "$BHF"
 	chmod ug+r "$BHF"
 	$THEBENCHPYTHON -m ensurepip    # every python has its own pip and libraries
 	$THEBENCHPYTHON -m pip install --upgrade pip  # who knows
@@ -140,19 +137,20 @@ if [ $1 == install ]; then
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
                 LOG+="\n-It is usually set in the .bashrc file in your home directory."
                 sudo mkdir $ULB
-		sudo printf '%s\n' "$THEBENCHPYTHON $labdir/src/bench.py'" > $ULB/bench
-                sudo chmod ugo+x $ULB/bench
 	else
                 LOG+="\n-Here is your PATH variable's contents: $PATH"
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
                 LOG+="\n-It is usually set in the .bashrc file in your home directory."
-		sudo printf '%s\n' "$THEBENCHPYTHON $labdir/src/bench.py'" > $ULB/bench
-                sudo chmod ugo+x $ULB/bench
 
         fi
+	sudo cat "$THEBENCHPYTHON $BHF/src/bench.py" > $ULB/bench
+        sudo chmod ugo+x $ULB/bench
 	LOG+="\n\n-thebench install: COMPLETED"
 	LOG+="\n-This log is saved in file $LOGFILE"
         LOG+="\n-PLEASE CHECK IT IF THE INSTALLER ASKED FOR SOME ADDITIONAL ACTION"
 	LOG+="\n========================================================="
        	exit 0
+else
+	echo "Unknown action. Exiting without action"
+	exit 0
 fi
