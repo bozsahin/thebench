@@ -1,8 +1,8 @@
 # TheBench
-This is a tool to study variants in natural language (crosslingustic and intralinguistic diversity) using an invariant: binary composition.
+This is a tool to study the variants in natural language (i.e. crosslingustic and intralinguistic diversity) using an invariant: binary composition.
 
 It uses two command relations in a grammar, one on
-syntactic command one on semantic command. The guide explains these command relations.
+syntactic command, one on semantic command. The guide explains these command relations.
 
 It can work in Linuxsphere, Macosphere and Window's Linux sub-atmosphere,  for example in Window's WSL, MacOS, Arch, Debian and RedHat-based distributions.
 
@@ -22,7 +22,7 @@ Window's native terminal is not the right one for TheBench, you'd need WSL in a 
 The standard installers
 in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, including WSL. See the note at the bottom for the absence of the <code>rpm</code> package manager.
 
-You can start using WSL right off the shelf if you have Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
+You can start using WSL right off the shelf if you have late Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 
 As things Apple go these days, you might be left helpless about things we take for granted
 in programming, such as having public package managers. You need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
@@ -43,11 +43,11 @@ TO INSTALL:
 
    This will create <code>thebench</code> subdirectory in that directory.
 
-2.  In the terminal, <b>and in <code>thebench</code> directory</b>, do  the following:
+2.  In the terminal, <b>AND in <code>thebench</code> directory</b>, do  the following:
 
    <code>./bench.sh install mypython</code>
 
-where <code>mypython</code> is your python executable, for example <code>python, python3.10</code> or <code>python3.11</code>, etc.
+where <code>mypython</code> is your python executable, for example <code>python3.10</code> or <code>python3.11</code>, etc.
 
 This will install TheBench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. You get python's library manager <code>pip</code> as well if you don't already have it (checked by the installer).
 
@@ -67,6 +67,7 @@ PERSONAL COMPUTER SECURITY and MULTI-USER SYSTEMS:
 
 The installer is designed to set TheBench up in a personal computer, where you would have
 <code>sudo</code> access. Please ask your system admin to install it for you if you don't have that access.
+
 When run on a personal computer, it will be your local sudo asking for password. Please do not share it with
 anyone. If you are not convinced, please ask a trusted expert to screen the installer for security.
 
@@ -77,8 +78,7 @@ re-run the install script FROM thebench home as
 
 <code>./bench.sh reset python3.xx</code>
 
-to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes TheBench libraries
-for that python. 
+to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes TheBench libraries for that python. 
 
 TO DEVELOP A GRAMMAR:
 
@@ -134,9 +134,9 @@ Downgrading SBCL is unfortunately not automatic. You have to build an older bina
 It is explained <a href="https://sbcl.org/getting.html"> here</a>. It works in Macs and linuxes.
 
 If you are wondering why I am not using Python's virtual environment facility to freeze TheBench to a certain python binary,
-it is because it's needlessly complex, anachronistic at this day and age, and error-prone. 
-It seemed to me for TheBench to be the shortest way to lose the python-uninitiated from the start.
-TheBench has its on command syntax; it does not need Python or Lisp programming.
+it is because it's needlessly complex, a bit wet behind the ear at this day and age, and error-prone. 
+For TheBench, it seemed to me  to be the shortest way to lose the python-uninitiated from the start.
+TheBench has its on command syntax anyway; it does not need Python or Lisp programming.
 
 You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
 is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
