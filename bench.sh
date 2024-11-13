@@ -1,4 +1,5 @@
-#!/bin/bash # cem bozsahin 2023--24 
+#!/bin/bash 
+# cem bozsahin 2023--24 
 #  $1 : 'uninstall' 'install' or 'reset' 
 #  $2: (when relevant): the python binary
 # brew does not allow sudo--$SUDO controls that
