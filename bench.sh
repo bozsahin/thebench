@@ -151,7 +151,11 @@ if [ $1 == install ]; then
 	                              #     dot file (py refers to it internally)
 	chmod u+rw $BENCH_HISTORY
 	chmod u+rw $BENCH_HOMEP
-	chmod u+x ./bench.sh
+	chmod u+x  ./bench.sh          # just in case download loses priviledges
+	chmod u+rx ./src/bench.train.sh 
+	chmod u+rx ./src/bench.py
+	chmod u+r  ./src/bench.lisp
+	chmod u+r  ./src/bench.user.lisp
 	echo -e $LOG > $LOGFILE
 	echo -e $LOG
 	LOG+="\n\n-thebench install: COMPLETED"
