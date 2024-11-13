@@ -1,9 +1,18 @@
-#!/bin/bash # cem bozsahin 2023--24 
+#!/bin/bash 
+# cem bozsahin 2023--24 
 #  $1 : 'uninstall' 'install' or 'reset' 
 #  $2: (when relevant): the python binary
 # brew does not allow sudo--$SUDO controls that
 BENCH_HOMEP="$HOME/.thebenchhome" # this file will contain the 
                                   # pointer to TheBench in your file system
+BENCH_HISTORY="$HOME/.thebenchhistory" # py saves commands in it internally
+BHF='' # the dir pointed by BENCH_HOMEP; initially none
+ULB='/usr/local/bin' # where the bench binary goes
+TMPB='/var/tmp/thebench'  # where the temporari files in analysis and training go
+SUDO=sudo
+THEBENCHPYTHON=$2
+NOPY=
+which $2 2> /dev/null || NOPY=TRUE
 #first the checks for early exits without action
 if [ $# -eq 0 ]; then
 	echo "please specify a key action (install, reset, uninstall)"
@@ -19,14 +28,12 @@ elif [ $1 == reset ] && [ $# -lt 2 ]; then
 	echo "exiting without action"
 	exit -1
 elif [ $1 == uninstall ]; then
-	if [ ! -e $BENCH_HOMEP] || [ ! -e "`cat $BENCH_HOMEP`" ] ; then
+	if [ ! -e $BENCH_HOMEP ] || [ ! -e "`cat $BENCH_HOMEP`" ] ; then
 		echo "Nothing to uninstall"
 		echo "exiting without action"
 		exit 0
 	fi
 fi
-THEBENCHPYTHON=$2
-which $2 2> /dev/null || NOPY=TRUE
 if [ ! $1 == uninstall ] && [ $NOPY ]; then
 	echo "$THEBENCHPYTHON executable does not exist"
 	echo "exiting without action"
@@ -37,15 +44,15 @@ if [ ! $1 == uninstall ] && [ ! -x `which $THEBENCHPYTHON` ]; then
 	echo "exiting without action"
 	exit -1
 fi
-# from now on we have legit action specified
-BHF="`cat $BENCH_HOMEP`" # The directory pointed by BENCH_HOMEP
-cd $HOME # to avoid deleting current folder	
+# From now on we have legit action specified
 if [ $1 == uninstall ]; then
+	BHF="`cat $BENCH_HOMEP`" # The directory pointed by BENCH_HOMEP
+	cd $HOME # to avoid deleting current folder	
 	if  [ -d $BHF ] && [ ! $BHF == $HOME ]; then
       		echo "Removing $BHF"
 		rm -fr $BHF
 		rm $BENCH_HOMEP
-		rm $HOME/.thebenchhistory
+		rm $BENCH_HISTORY
 	fi
 	if [ -d "/var/tmp/thebench" ]; then
   		echo "Removing /var/tmp/thebench"
@@ -65,8 +72,6 @@ if [ $1 == reset ]; then
 fi
 # If we've come this far, we are installing
 ULB='/usr/local/bin' # This is where the bench binary goes --no more .bashrc invasion
-TMPB='/var/tmp/thebench'
-SUDO=sudo
 LOGFILE='thebench-install.log'
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 if [ $1 == install ]; then
