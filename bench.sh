@@ -1,5 +1,4 @@
-#!/bin/bash 
-# cem bozsahin 2023--24 
+#!/bin/bash # cem bozsahin 2023--24 
 #  $1 : 'uninstall' 'install' or 'reset' 
 #  $2: (when relevant): the python binary
 # brew does not allow sudo--$SUDO controls that
@@ -8,11 +7,13 @@ BENCH_HOMEP="$HOME/.thebenchhome" # this file will contain the
 BENCH_HISTORY="$HOME/.thebenchhistory" # py saves commands in it internally
 BHF='' # the dir pointed by BENCH_HOMEP; initially none
 ULB='/usr/local/bin' # where the bench binary goes
-TMPB='/var/tmp/thebench'  # where the temporari files in analysis and training go
+TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
 SUDO=sudo
 THEBENCHPYTHON=$2
 NOPY=
 which $2 2> /dev/null || NOPY=TRUE
+LOGFILE='/var/tmp/thebench-install.log' # to avoid .gitignore in repo directory
+LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 #first the checks for early exits without action
 if [ $# -eq 0 ]; then
 	echo "please specify a key action (install, reset, uninstall)"
@@ -54,9 +55,9 @@ if [ $1 == uninstall ]; then
 		rm $BENCH_HOMEP
 		rm $BENCH_HISTORY
 	fi
-	if [ -d "/var/tmp/thebench" ]; then
-  		echo "Removing /var/tmp/thebench"
-  		rm -fr /var/tmp/thebench
+	if [ -d $TMPB ]; then
+  		echo "Removing $TMPB"
+  		rm -fr $TMPB
 	fi
 	echo "Uninstall completed."
 	exit 0
@@ -71,12 +72,9 @@ if [ $1 == reset ]; then
 	exit 0
 fi
 # If we've come this far, we are installing
-ULB='/usr/local/bin' # This is where the bench binary goes --no more .bashrc invasion
-LOGFILE='thebench-install.log'
-LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
 if [ $1 == install ]; then
-	if [ -e $BHF ]; then
-		echo "You have TheBench installed at: $BHF"
+	if [ -e $BENCH_HOMEP ]; then
+		echo "You have TheBench installed at: `cat $BENCH_HOMEP`"
   		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
 		echo "If you intend to change the python for the tool, run the installer as './bench.sh reset some-python'"
   		exit 0  # this is not an error
@@ -129,15 +127,11 @@ if [ $1 == install ]; then
 	else
   		LOG+="\n-Local sbcl is set for tool use"
 	fi
-	chmod ug+r "$BHF"
-	chmod ug+x "$BHF/bench.sh"
 	$THEBENCHPYTHON -m ensurepip    # every python has its own pip and libraries
 	$THEBENCHPYTHON -m pip install --upgrade pip  # who knows
 	$THEBENCHPYTHON	-m pip install cl4py
 	$THEBENCHPYTHON -m pip install sly
         $THEBENCHPYTHON -m pip install prompt_toolkit
-	echo -e $LOG > $LOGFILE
-	echo -e $LOG
 	if [ ! -d $ULB ]; then
 		LOG+="\n-There is no $ULB in your system; creating one..."
                 LOG+="\n-Here is your PATH variable's contents: $PATH"
@@ -149,9 +143,17 @@ if [ $1 == install ]; then
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
                 LOG+="\n-It is usually set in the .bashrc file in your home directory."
         fi
-	sudo chmod ug+rwx $ULB
+	sudo chmod u+rwx $ULB
 	sudo cat "$THEBENCHPYTHON $BHF/src/bench.py" > $ULB/bench
-        sudo chmod ugo+x $ULB/bench
+        sudo chmod ugo+x $ULB/bench   # to call bench from anywhere
+	echo "`pwd`" > $BENCH_HOMEP   # repo pointer saved at home dir as a dot file
+	echo "" > $BENCH_HISTORY      # command history saved at home dir as a 
+	                              #     dot file (py refers to it internally)
+	chmod u+rw $BENCH_HISTORY
+	chmod u+rw $BENCH_HOMEP
+	chmod u+x ./bench.sh
+	echo -e $LOG > $LOGFILE
+	echo -e $LOG
 	LOG+="\n\n-thebench install: COMPLETED"
 	LOG+="\n-This log is saved in file $LOGFILE"
         LOG+="\n-PLEASE CHECK IT IF THE INSTALLER ASKED FOR SOME ADDITIONAL ACTION"
