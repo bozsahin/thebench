@@ -80,7 +80,7 @@ if [ $1 == install ]; then
 		echo "If you intend to change the python for the tool, run the installer as './bench.sh reset some-python'"
   		exit 0  # this is not an error
 	fi
-	echo "\n**** PLEASE NOTE: ****\n"
+	echo "**** PLEASE NOTE: ****"
 	echo "  In case the installer asks for SUDO PASSWORD"
 	echo "    It will be ONLY for 1) installing the Common Lisp's SBCL through SAFE installers" 
         echo "                        2) opening libraries of the package managers for a more comprehensive search"
@@ -139,13 +139,13 @@ if [ $1 == install ]; then
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
                 LOG+="\n-It is usually set in the .bashrc file in your home directory."
                 sudo mkdir $ULB
+		sudo chmod u+rwx $ULB
 	else
                 LOG+="\n-Here is your PATH variable's contents: $PATH"
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
                 LOG+="\n-It is usually set in the .bashrc file in your home directory."
         fi
-	sudo chmod u+rwx $ULB
-	sudo cat "$THEBENCHPYTHON $BHF/src/bench.py" > $ULB/bench
+	sudo echo "$THEBENCHPYTHON $BHF/src/bench.py" > $ULB/bench
         sudo chmod ugo+x $ULB/bench   # to call bench from anywhere
 	echo "`pwd`" > $BENCH_HOMEP   # repo pointer saved at home dir as a dot file
 	echo "" > $BENCH_HISTORY      # command history saved at home dir as a 
