@@ -147,7 +147,7 @@ if [ $1 == install ]; then
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
                 LOG+="\n-PATH is usually set in the .bashrc file in your home directory."
         fi
-	echo "$THEBENCHPYTHON $BHF/src/bench.py" | sudo tee $ULB/bench # sudo must be on write
+	echo "$THEBENCHPYTHON `pwd`/src/bench.py" | sudo tee $ULB/bench # sudo must be on write
         sudo chmod ugo+x $ULB/bench   # to call bench from anywhere
 	echo "`pwd`" > $BENCH_HOMEP   # repo pointer saved at home dir as a dot file
 	echo "" > $BENCH_HISTORY      # command history saved at home dir as a 
