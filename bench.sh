@@ -12,10 +12,11 @@ TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training g
 SUDO=sudo
 THEBENCHPYTHON=$2
 NOPY=
-which $2 2> /dev/null || NOPY=TRUE
+command -v $2 2> /dev/null || NOPY=TRUE
 LOGFILE='/var/tmp/thebench-install.log' # to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
-#first the checks for early exits without action
+
+#First the checks for early exits without action
 if [ $# -eq 0 ]; then
 	echo "please specify a key action (install, reset, uninstall)"
 	echo "  and a python binary if the action requires it."
@@ -41,11 +42,12 @@ if [ ! $1 == uninstall ] && [ $NOPY ]; then
 	echo "exiting without action"
 	exit -1
 fi
-if [ ! $1 == uninstall ] && [ ! -x `which $THEBENCHPYTHON` ]; then
+if [ ! $1 == uninstall ] && [ ! -x `command -v $THEBENCHPYTHON` ]; then
 	echo "$THEBENCHPYTHON is not executable"
 	echo "exiting without action"
 	exit -1
 fi
+
 # From now on we have legit action specified
 if [ $1 == uninstall ]; then
 	BHF="`cat $BENCH_HOMEP`" # The directory pointed by BENCH_HOMEP
@@ -82,12 +84,12 @@ if [ $1 == install ]; then
 	fi
 	echo "**** PLEASE NOTE: ****"
 	echo "  In case the installer asks for SUDO PASSWORD"
-	echo "    It will be ONLY for 1) installing the Common Lisp's SBCL through SAFE installers" 
-        echo "                        2) opening libraries of the package managers for a more comprehensive search"
-        echo '                        3) putting the bench binary in /usr/local/bin'
+	echo "  It will be ONLY for 1) installing the Common Lisp's SBCL through SAFE installers" 
+        echo "                      2) opening libraries of the package managers for a more comprehensive search"
+        echo '                      3) putting the bench binary in /usr/local/bin'
 	echo ""
 	if [ ! -d $TMPB ]; then
-  		mkdir $TMPB
+  		mkdir $TMPB   # we dont need sudo for this
   		LOG+="\n-$TMPB directory created for temporary files"
 	fi
 	#check if SBCL need installing-- SBCL is the standard  lisp for cl4py module
@@ -143,7 +145,7 @@ if [ $1 == install ]; then
 	else
                 LOG+="\n-Here is your PATH variable's contents: $PATH"
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
-                LOG+="\n-It is usually set in the .bashrc file in your home directory."
+                LOG+="\n-PATH is usually set in the .bashrc file in your home directory."
         fi
 	sudo echo "$THEBENCHPYTHON $BHF/src/bench.py" > $ULB/bench
         sudo chmod ugo+x $ULB/bench   # to call bench from anywhere
