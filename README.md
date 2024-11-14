@@ -28,7 +28,7 @@ As things Apple go these days, you might be left helpless about things we take f
 in programming, such as having public package managers. You need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 
 
-3. <a href="https://www.python.org/">Python 3.8  to 3.11</a>. (Earlier ones lack the libraries, later ones mess with python's pip in unpredictable ways. 3.11 is supported until the end of 2027.)
+3. <a href="https://www.python.org/">Python 3.8  to 3.11</a>. (Earlier ones lack the libraries we need; later ones mess with python's pip installs in unpredictable ways. Version 3.11 is supported until the end of 2027.)
 
 4. <a href="https://git-scm.com/downloads">git</a> 
 
