@@ -68,8 +68,8 @@ PERSONAL COMPUTER SECURITY and MULTI-USER SYSTEMS:
 The installer is designed to set TheBench up in a personal computer, where you would have
 <code>sudo</code> access. Please ask your system admin to install it for you if you don't have that access.
 
-When run on a personal computer, it will be your local sudo asking for password. Please do not share it with
-anyone. If you are not convinced, please ask a trusted expert to screen the installer for security.
+When installing on a personal computer, it will be your local sudo asking for password during install. 
+Please do not share it with anyone. If you are not convinced, please ask a trusted expert to screen the installer for security.
 
 PYTHON UPGRADE NOTE:
 
