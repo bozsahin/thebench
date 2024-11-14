@@ -85,6 +85,7 @@ TO DEVELOP A GRAMMAR:
 Just use your favourite plain text editor and enter a grammar. Then follow help (the `? command') of TheBench to process it.
 
 I suggest you develop grammars NOT in <code>thebench</code> folder to avoid override in upgrades.
+If you uninstall TheBench, the repo directory is deleted as well, so you might lose data if you work in this directory.
 
 TO UPGRADE:
 
