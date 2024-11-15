@@ -1030,7 +1030,7 @@ def do (commline):
                 return
             if load_1pass_sup(args[1]):
                 fn = args[1] + _supext    # .sup is temporary, save it in _tmp after cleaning it on sup
-                efn = args[2] + ".bench"  # this goes to _tmp too
+                efn = args[2] + ".thebench"  # this goes to _tmp too
                 mk_supfile(fn, args[1])
             else:
                 print(f"{_supext} file not generated, aborting t command")

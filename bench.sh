@@ -8,6 +8,7 @@ BENCH_HOMEP="$HOME/.thebenchhome" # this file will contain the
 BENCH_HISTORY="$HOME/.thebenchhistory" # py saves commands in it internally
 BHF='' # the dir pointed by BENCH_HOMEP; initially none
 ULB='/usr/local/bin' # where the bench binary goes
+BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but might collide
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
 SUDO=sudo
 THEBENCHPYTHON=$2
@@ -56,7 +57,8 @@ if [ $1 == uninstall ]; then
       		echo "Removing $BHF"
 		rm -fr $BHF
 		rm $BENCH_HOMEP
-		rm $BENCH_HISTORY
+		rm $BENCH_HISTORY # not deleting thebench in /usr/local/bin deliberately
+                                  # trying to execute will fail
 	fi
 	if [ -d $TMPB ]; then
   		echo "Removing $TMPB"
@@ -147,8 +149,8 @@ if [ $1 == install ]; then
                 LOG+="\n-If $ULB is not in it, add it at the end, separating it with ':'"
                 LOG+="\n-PATH is usually set in the .bashrc file in your home directory."
         fi
-	echo "$THEBENCHPYTHON `pwd`/src/bench.py" | sudo tee $ULB/bench # sudo must be on write
-        sudo chmod ugo+x $ULB/bench   # to call bench from anywhere
+	echo "$THEBENCHPYTHON `pwd`/src/bench.py" | sudo tee "$ULB/$BENCHBIN" # sudo must be on write
+        sudo chmod ugo+x "$ULB/$BENCHBIN"  # to call bench from anywhere
 	echo "`pwd`" > $BENCH_HOMEP   # repo pointer saved at home dir as a dot file
 	echo "" > $BENCH_HISTORY      # command history saved at home dir as a 
 	                              #     dot file (py refers to it internally)
