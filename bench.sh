@@ -137,6 +137,7 @@ if [ $1 == install ]; then
 	$THEBENCHPYTHON	-m pip install cl4py
 	$THEBENCHPYTHON -m pip install sly
         $THEBENCHPYTHON -m pip install prompt_toolkit
+	LOG+="\n-Three $THEBENCHPYTHON libraries set for TheBench use: cl4py, sly, prompt_toolkit"
 	if [ ! -d $ULB ]; then
 		LOG+="\n-There is no $ULB in your system; creating one..."
                 LOG+="\n-Here is your PATH variable's contents: $PATH"
