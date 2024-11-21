@@ -150,6 +150,7 @@ if [ $1 == install ]; then
                 LOG+="\n-PATH is usually set in the .bashrc file in your home directory."
         fi
 	echo "$THEBENCHPYTHON `pwd`/src/bench.py" | sudo tee "$ULB/$BENCHBIN" # sudo must be on write
+	LOG+="\n-TheBench binary thebench is set to execute: `cat $ULB/$BENCHBIN`"
         sudo chmod ugo+x "$ULB/$BENCHBIN"  # to call bench from anywhere
 	echo "`pwd`" > $BENCH_HOMEP   # repo pointer saved at home dir as a dot file
 	echo "" > $BENCH_HISTORY      # command history saved at home dir as a 
@@ -161,12 +162,14 @@ if [ $1 == install ]; then
 	chmod u+rx ./src/bench.py
 	chmod u+r  ./src/bench.lisp
 	chmod u+r  ./src/bench.user.lisp
+	LOG+="\n\n-thebench install: COMPLETED"
+	LOG+="\n-The log is saved in file $LOGFILE"
+	echo "The log is saved in file $LOGFILE"
+        LOG+="\n-PLEASE CHECK IT IF THE INSTALLER ASKED FOR SOME ADDITIONAL ACTION"
+        echo "PLEASE CHECK IT IF THE INSTALLER ASKED FOR SOME ADDITIONAL ACTION"
+	LOG+="\n========================================================="
 	echo -e $LOG > $LOGFILE
 	echo -e $LOG
-	LOG+="\n\n-thebench install: COMPLETED"
-	LOG+="\n-This log is saved in file $LOGFILE"
-        LOG+="\n-PLEASE CHECK IT IF THE INSTALLER ASKED FOR SOME ADDITIONAL ACTION"
-	LOG+="\n========================================================="
        	exit 0
 else
 	echo "Unknown action. Exiting without action"
