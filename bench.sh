@@ -55,14 +55,14 @@ if [ $1 == uninstall ]; then
 	cd $HOME # to avoid deleting current folder	
 	if  [ -d $BHF ] && [ ! $BHF == $HOME ]; then
       		echo "Removing $BHF"
-		rm -frI $BHF      # give them a last chance with -I
+		rm -fr $BHF  
 		rm $BENCH_HOMEP
 		rm $BENCH_HISTORY # not deleting thebench in /usr/local/bin deliberately
                                   # trying to execute will fail
 	fi
 	if [ -d $TMPB ]; then
   		echo "Removing $TMPB"
-  		rm -frI $TMPB
+  		rm -fr $TMPB
 	fi
 	echo "Uninstall completed."
 	exit 0
