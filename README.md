@@ -133,7 +133,8 @@ TheBench hangs in the beginning. I couldn't locate what causes it to ask the SBC
 your SBCL to something below 2.3.x to make sure this tool works. You don't need to do anything else.
 
 Downgrading SBCL is unfortunately not automatic. You have to build an older binary using SBCL's install script. 
-It is explained <a href="https://sbcl.org/getting.html"> here</a>. It works in Macs and linuxes.
+It is explained <a href="https://sbcl.org/getting.html"> here</a>. It works in Macs and linuxes. The part you need is the 'Installing a binary' section.
+Just pick any pre-2.3 SBCL version that is available for your platform.
 
 PYTHON AND PACKAGE MANAGER NOTES
 
