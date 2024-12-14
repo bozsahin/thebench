@@ -134,7 +134,7 @@ your SBCL to something below 2.3.x to make sure this tool works. You don't need 
 
 Downgrading SBCL is unfortunately not automatic. You have to build an older binary using SBCL's install script. 
 It is explained <a href="https://sbcl.org/getting.html"> here</a>. It works in Macs and linuxes. The part you need is the 'Installing a binary' section.
-Just pick any pre-2.3 SBCL version that is available for your platform.
+Just pick any non-Windows pre-2.3 SBCL version that is available for your platform. For Windows, that would be the linux that you installed using WSL.
 
 PYTHON AND PACKAGE MANAGER NOTES
 
