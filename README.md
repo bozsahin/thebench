@@ -121,7 +121,7 @@ Change to repo's local directory, and do
 This will remove TheBench files and auxiliary directories. It won't touch
 your python or SBCL. To remove them, use your package manager. 
 
-SBCL, PYTHON AND PACKAGE MANAGER NOTES: 
+SBCL MISHAP, STARTING WITH 2.3: 
 
 SBCL is the Common Lisp that the processor of TheBench uses. It is installed by the installer of TheBench if SBCL does
 not exist in your system. (This is checked by the installer.)
@@ -134,6 +134,8 @@ your SBCL to something below 2.3.x to make sure this tool works. You don't need 
 
 Downgrading SBCL is unfortunately not automatic. You have to build an older binary using SBCL's install script. 
 It is explained <a href="https://sbcl.org/getting.html"> here</a>. It works in Macs and linuxes.
+
+PYTHON AND PACKAGE MANAGER NOTES
 
 If you are wondering why I am not using Python's virtual environment facility to freeze TheBench to a certain python binary,
 it is because it's needlessly complex, a bit wet behind the ear at this day and age, and error-prone. 
