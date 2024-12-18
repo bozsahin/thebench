@@ -2,7 +2,7 @@
 This is a tool to study natural language structures by writing natural language grammars. It is
 for assessing and comparing grammars, for typology, and for fine-tuning grammars.
 
-It uses two command relations in a grammar, one on
+It uses two command relations for every element of grammar, one on
 syntactic command, one on semantic command. The guide explains these command relations.
     Much more is covered in the book <a href="https://www.cambridgescholars.com/product/978-1-0364-1830-4">Connecting Social Semiotics, Grammaticality, and Meaningfulness: The Verb</a>.
 
