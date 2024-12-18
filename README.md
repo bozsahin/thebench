@@ -13,7 +13,7 @@ These spheres are available as systems of various beginner-friendliness, in my o
 The standard installers
 in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, including WSL. See the note at the bottom for the absence of the <code>rpm</code> package manager.
 
-You can start using WSL right off the shelf if you have late Windows 10 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
+You can start using WSL right off the shelf if you have late Windows 11 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 
 As things Apple go these days, you might be left helpless about things we take for granted
 in programming, such as having public package managers. You need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
