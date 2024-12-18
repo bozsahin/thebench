@@ -9,17 +9,6 @@ It can work in Linuxsphere, Macosphere and Window's Linux sub-atmosphere,  for e
 
 These spheres are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Kali, Suse, Pop_OS, CentOS, slackware etc. 
 
-I have been able to install and run TheBench fully automatically in top six of the platforms in this list. (I skipped Suse after installing it---see the bottom of this page for the explanation. I have not tried others.)
-
-YOU NEED:
-
-1. A terminal app. (All of the platforms listed above have one built-in.)  
-
-Window's native terminal is not the right one for TheBench, you'd need WSL in a windows system.
-
-
-2. A software installer (All the platforms listed above has one built-in).  
-
 The standard installers
 in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, including WSL. See the note at the bottom for the absence of the <code>rpm</code> package manager.
 
@@ -29,16 +18,18 @@ As things Apple go these days, you might be left helpless about things we take f
 in programming, such as having public package managers. You need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
 
 
-3. <a href="https://www.python.org/">Python 3.8  to 3.11</a>. (Earlier ones lack the libraries we need; later ones mess with python's pip installs in unpredictable ways. Version 3.11 is supported until the end of 2027.)
+I have been able to install and run TheBench fully automatically in top six of the platforms in this list. (I skipped Suse after installing it---see the bottom of this page for the explanation. I have not tried others.)
 
-4. <a href="https://git-scm.com/downloads">git</a> (optional; strongly recommended if you want updates)
+YOU NEED:
 
-If you already have these utilities in your system, your versions are detected and used by TheBench. 
-If not, the installer will complain and exit.
+
+1. <a href="https://www.python.org/">Python 3.8  to 3.11</a>. (Earlier ones lack the libraries we need; later ones mess with python's pip installs in unpredictable ways. Version 3.11 is supported until the end of 2027.)
+
+2. <a href="https://git-scm.com/downloads">git</a> (optional; strongly recommended if you want updates)
 
 TO INSTALL: 
 
-1.  Open a terminal, and change directory to where you want to install the tool. Then do:
+1.  Open a terminal app, and change directory to where you want to install the tool. Then do:
 
    <code>git clone https://github.com/bozsahin/thebench</code>
 
