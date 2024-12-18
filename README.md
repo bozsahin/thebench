@@ -1,5 +1,6 @@
 # TheBench
-This is a tool to study the variants in natural language (i.e. crosslingustic and intralinguistic diversity) using an invariant: binary composition.
+This is a tool to study natural language structures by writing natural language grammars. It is
+for assessing and comparing grammars, for typology, and for fine-tuning them.
 
 It uses two command relations in a grammar, one on
 syntactic command, one on semantic command. The guide explains these command relations.
