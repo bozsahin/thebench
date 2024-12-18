@@ -18,7 +18,7 @@ YOU NEED:
 Window's native terminal is not the right one for TheBench, you'd need WSL in a windows system.
 
 
-2. A software installer.  
+2. A software installer (All the platforms listed above has one built-in).  
 
 The standard installers
 in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, including WSL. See the note at the bottom for the absence of the <code>rpm</code> package manager.
@@ -31,7 +31,7 @@ in programming, such as having public package managers. You need external help. 
 
 3. <a href="https://www.python.org/">Python 3.8  to 3.11</a>. (Earlier ones lack the libraries we need; later ones mess with python's pip installs in unpredictable ways. Version 3.11 is supported until the end of 2027.)
 
-4. <a href="https://git-scm.com/downloads">git</a> 
+4. <a href="https://git-scm.com/downloads">git</a> (optional; strongly recommended if you want updates)
 
 If you already have these utilities in your system, your versions are detected and used by TheBench. 
 If not, the installer will complain and exit.
@@ -120,21 +120,6 @@ Change to repo's local directory, and do
 
 This will remove TheBench files and auxiliary directories. It won't touch
 your python or SBCL. To remove them, use your package manager. 
-
-SBCL MISHAP, STARTING WITH 2.3: 
-
-SBCL is the Common Lisp that the processor of TheBench uses. It is installed by the installer of TheBench if SBCL does
-not exist in your system. (This is checked by the installer.)
-
-I have tried SBCL 1.x to 2.2.x with success in Macs, PCs and anything in between, for this tool. 
-
-Something happened to SBCL with 2.3.x releases, and
-TheBench hangs in the beginning. I couldn't locate what causes it to ask the SBCL developers to fix it, so I recommend downgrading
-your SBCL to something below 2.3.x to make sure this tool works. You don't need to do anything else.
-
-Downgrading SBCL is unfortunately not automatic. You have to build an older binary using SBCL's install script. 
-It is explained <a href="https://sbcl.org/getting.html"> here</a>. It works in Macs and linuxes. The part you need is the 'Installing a binary' section.
-Just pick any non-Windows pre-2.3 SBCL version that is available for your platform. For Windows, that would be the linux that you installed using WSL.
 
 PYTHON AND PACKAGE MANAGER NOTES
 
