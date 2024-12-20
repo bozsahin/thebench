@@ -44,6 +44,8 @@ where <code>mypython</code> is your python executable, for example <code>python3
 
 This will install TheBench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. You get python's library manager <code>pip</code> as well if you don't already have it (checked by the installer).
 
+If the installer reports that it failed to install SBCL, it means your software installer couldn't find it as a package. <a href="https://www.sbcl.org/getting.html">Manually install SBCL<a>, and you are ready to go without further action.
+
 TO USE: 
 
 just do anywhere in your machine from a terminal app:
