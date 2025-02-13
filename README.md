@@ -23,6 +23,7 @@ I have been able to install and run TheBench fully automatically in top six of t
 
 YOU NEED:
 
+0. A software installer (see above).
 
 1. <a href="https://www.python.org/">Python 3.8  to 3.11</a>. (Earlier ones lack the libraries we need; later ones mess with python's pip installs in unpredictable ways. Version 3.11 is supported until the end of 2027.)
 
