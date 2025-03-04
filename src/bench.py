@@ -1020,7 +1020,7 @@ def do (commline):
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
     elif comm == ';':
-        os.system(f'ls -alht {_tmp}')
+        os.system(f'ls -lht {_tmp}')
     elif comm == '/':
         os.system(f'rm {_tmp}*')
     elif comm == 't':
