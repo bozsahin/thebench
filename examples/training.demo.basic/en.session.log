@@ -1,0 +1,54 @@
+
+/‾\ /‾\  pass train en.txt on en.spairs using experiment parameters in en.exp
+
+
+/‾\ /‾\  t en.txt en.spairs en.exp
+
+no errors in grammar text, proceeding with set up..
+please check the /var/tmp/thebench/en.txt.log file for information.
+no errors in supervision data, proceeding with set up..
+please check the /var/tmp/thebench/en.spairs.log file for information.
+
+Training starts;
+please hit RETURN if the prompt is not back on
+you don't have to wait for the finish
+Summary of experiments for locating results when done
+------ Experiment 1 ------
+result goes to: /var/tmp/thebench/nfp.xp.1.2a.1.0c.src
+     log file : /var/tmp/thebench/nfp.log (contains summary of parameter change)
+initial call  : nfparse-off (before the experiment starts)
+------ Experiment 2 ------
+result goes to: /var/tmp/thebench/bon.10.0.5a.1.1c.src
+     log file : /var/tmp/thebench/bon.log (contains summary of parameter change)
+initial call  : beam-on (before the experiment starts)
+------ Experiment 3 ------
+result goes to: /var/tmp/thebench/boff.8.0.5a.1.2c.src
+     log file : /var/tmp/thebench/boff.log (contains summary of parameter change)
+initial call  : noop (before the experiment starts)
+--------------------------
+If everything runs OK, you can re-generate source grammars from .src files
+   use the z command for that
+
+/‾\ /‾\  l show-config
+
+
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : T
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
