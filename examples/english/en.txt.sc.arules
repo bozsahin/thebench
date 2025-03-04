@@ -1,13 +1,13 @@
-#_p2_187  np[ts=p] : a --> iv\(iv/np[ts=p]) : \a\p.p a
-#_p2_236  np : a --> ((s\np[agr=3s])/vp)\(((s\np[agr=3s])/vp)/np[ts=p]) : \a\p.p a
-#_p2_209  np[ts=p] : a --> (s\np[agr=3s])\((s\np[agr=3s])/np[ts=p]) : \a\p.p a
-#_p2_189  vp : a --> (s\np[agr=3s])\((s\np[agr=3s])/vp) : \a\p.p a
-#_g2_149  s : a --> (s\np[t=xpl])\((s\np[t=xpl])/s) : \a\p.p a
-#_g2_148  'up' : a --> ((s\np)/np[ts=p])\(((s\np)/np[ts=p])/'up') : \a\p.p a
-#_g2_147  np[ts=p] : a --> ((s\np)/'up')\(((s\np)/'up')/np[ts=p]) : \a\p.p a
-#_g2_143  'the bucket' : a --> (s\np)\((s\np)/'the bucket') : \a\p.p a
-#_g2_135  np[agr=3s] : a --> s/(s\np[agr=3s]) : \a\p.p a
-#_g2_133  np[ts=p] : a --> ((s\np)/pp[p=to])\(((s\np)/pp[p=to])/np[ts=p]) : \a\p.p a
-#_g2_132  np[ts=p] : a --> ((s\np)/np[ts=p])\(((s\np)/np[ts=p])/np[ts=p]) : \a\p.p a
-#_g2_129  sp : a --> (s\np)\((s\np)/sp) : \a\p.p a
-#_g2_128  np[ts=p] : a --> (sp\np[agr=3s])\((sp\np[agr=3s])/np[ts=p]) : \a\p.p a
+#_p2_349  np[ts=p] : a --> iv\(iv/np[ts=p]) : \a\p.p a
+#_p2_398  np : a --> ((s\np[agr=3s])/vp)\(((s\np[agr=3s])/vp)/np[ts=p]) : \a\p.p a
+#_p2_371  np[ts=p] : a --> (s\np[agr=3s])\((s\np[agr=3s])/np[ts=p]) : \a\p.p a
+#_p2_351  vp : a --> (s\np[agr=3s])\((s\np[agr=3s])/vp) : \a\p.p a
+#_g2_311  s : a --> (s\np[t=xpl])\((s\np[t=xpl])/s) : \a\p.p a
+#_g2_310  'up' : a --> ((s\np)/np[ts=p])\(((s\np)/np[ts=p])/'up') : \a\p.p a
+#_g2_309  np[ts=p] : a --> ((s\np)/'up')\(((s\np)/'up')/np[ts=p]) : \a\p.p a
+#_g2_305  'the bucket' : a --> (s\np)\((s\np)/'the bucket') : \a\p.p a
+#_g2_297  np[agr=3s] : a --> s/(s\np[agr=3s]) : \a\p.p a
+#_g2_295  np[ts=p] : a --> ((s\np)/pp[p=to])\(((s\np)/pp[p=to])/np[ts=p]) : \a\p.p a
+#_g2_294  np[ts=p] : a --> ((s\np)/np[ts=p])\(((s\np)/np[ts=p])/np[ts=p]) : \a\p.p a
+#_g2_291  sp : a --> (s\np)\((s\np)/sp) : \a\p.p a
+#_g2_290  np[ts=p] : a --> (sp\np[agr=3s])\((sp\np[agr=3s])/np[ts=p]) : \a\p.p a
