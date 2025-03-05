@@ -1,0 +1,87 @@
+======= Log file ============
+I am called as: /home/bozsahin/myrepos/thebench/src/bench.train.sh 7000 4000 /var/tmp/thebench/en.txt.src /var/tmp/thebench/en.spairs.sup xp 1.2 1.0 /var/tmp/thebench/nfp nfparse-off
+            at: Wed Mar  5 14:15:25 +03 2025
+            in: DESKTOP-Q21DT3R
+Log goes to   : /var/tmp/thebench/nfp.log
+I will call sbcl as: sbcl --dynamic-space-size 7000
+It will call train-nohup-sbcl-xp in /home/bozsahin/myrepos/thebench/src/bench.lisp as: (train-nohup-sbcl-xp "/var/tmp/thebench/en.txt.src" "/var/tmp/thebench/en.spairs.sup" 4000 "/var/tmp/thebench/nfp.xp.1.2a.1.0c.src"  1.2 1.0)
+=======          ============
+This is SBCL 2.1.11.debian, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+lisp     : bench.lisp loaded, version 8.0, encoding UTF-8
+
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : T
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+Supervision file loaded: /var/tmp/thebench/en.spairs.sup
+
+update-model-xp done.
+Evaluation took:
+  0.020 seconds of real time
+  0.017990 seconds of total run time (0.017990 user, 0.000000 system)
+  90.00% CPU
+  6 forms interpreted
+  59,237,013 processor cycles
+  9,017,264 bytes consed
+  
+
+*BEAMP* : NIL
+*LAMBDAFLAG* : T
+*NF-PARSE* : NIL
+*OOVP* : NIL
+*Beamp* = NIL  *Beam-exp* = 0.9
+
+*A-APPLY* T
+*B-COMP* T
+*B2-COMP* T
+*B3-COMP* T
+*BX-COMP* T
+*BX2-COMP* T
+*BX3-COMP* T
+*F-COMP* T
+*F2-COMP* T
+*F3-COMP* T
+*FX-COMP* T
+*FX2-COMP* T
+*FX3-COMP* T
+*T-APPLY* T
+Training parameters: N = 4 alpha0 = 1.2 c = 1.0 n = 6  
+Model parameters before and after training and extrapolation
+================================================
+key   elm             initial  final    diff 
+------------------------------------------------
+350959 knows             1.0  5.61179  ( 4.61179)
+201542 knows             1.0  4.80179  ( 3.80179)
+602321 knows             1.0 -3.61179  (-4.61179)
+993414 knows             1.0 -2.80179  (-3.80179)
+245258 loves             1.0 8.150294  (7.150294)
+261189 loves             1.0 -6.15029  (-7.15029)
+588046 John              1.0 7.549884  (6.549884)
+61046 Mary              1.0 7.754086  (6.754086)
+152895 John              1.0 -5.54988  (-6.54988)
+252494 Mary              1.0 -5.75409  (-6.75409)
+================================================

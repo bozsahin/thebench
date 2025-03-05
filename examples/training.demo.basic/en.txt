@@ -5,13 +5,13 @@
 % good and bad cats, and polysemy for knows.
 %   see the comments in the training output for these.
 
-knows | v :: (s\*np)/^np : \x\y.know x y
-knows | v :: (s\*np)/^s : \s\x.know s x
-knows | v :: (s\*np)/^np : \x\y.know y x    % bad
-knows | v :: (s\*np)/^s : \s\x.know x s    % bad
+knows | v :: (s\np)/np : \x\y.know x y
+knows | v :: (s\np)/s : \s\x.know s x
+knows | v :: (s\np)/np : \x\y.know y x    % bad
+knows | v :: (s\np)/s : \s\x.know x s    % bad
 
-loves | v :: (s\*np)/^np : \x\y.love x y
-loves | v :: (s\*np)/^np : \x\y.love y x    % bad
+loves | v :: (s\np)/np : \x\y.love x y
+loves | v :: (s\np)/np : \x\y.love y x    % bad
 
 % subjects  and objects -- no type-raising
 
