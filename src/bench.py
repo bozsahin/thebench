@@ -1020,9 +1020,11 @@ def do (commline):
         if not mgparser.parse(mglexer.tokenize(args+_overscore)):
             print('ill-formed, no internal structure')
     elif comm == ';':
+        print(f"the contents of {_tmp}")
         os.system(f'ls -lht {_tmp}')
     elif comm == '/':
         os.system(f'rm {_tmp}*')
+        print(f"directory {_tmp} cleared")
     elif comm == 't':
         if len(args) == 3 and os.path.exists(args[0]) and os.path.exists(args[1]) and os.path.exists(args[2]):
             if load_1pass(args[0]):
