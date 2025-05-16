@@ -217,7 +217,7 @@
 (defmacro put-derivative (key der)
   `(setf (rest (machash ,key *training-hashtable*)) ,der))
 
-;; macros for supervision pairs (Sentence LF)
+;; macros for supervision pairs of (Sentence l-command)
 (defmacro sup-sentence (pair)
   `(first ,pair))
 (defmacro sup-lf (pair)
@@ -494,12 +494,12 @@
   (format t "  ARULES-TABLE              : ~A item~:p~%" (length *lex-rules-table*))
   (format t "  CKY-HASHTABLE             : ~A item~:p~%" (hash-table-count *cky-hashtable*))
   (format t "  CKY-INPUT  for the table  : ~A ~%" *cky-input*)
-  (format t "  Most likely LF w/weight   : ~A ~%" *cky-lf*)
-  (format t "  Its most likely derivation: ~A~%" *cky-argmax-lf-max*)
+  (format t "  Most likely l-command     : ~A ~%" *cky-lf*)
+  (format t "  Its most likely analysis  : ~A~%" *cky-argmax-lf-max*)
   (format t "  Sum of weighted counts    : ~A ~%" *cky-lf-hashtable-sum*)
-  (format t "  Most likely LF's cells    : ~A ~%" *cky-argmax-lf*)
-  (format t "  Number of differing LFs   : ~A ~%" (hash-table-count *cky-lf-hashtable*))
-  (format t "  Most weighted derivation  : ~A ~%" *cky-max*)
+  (format t "  Most likely l-command's cell  : ~A ~%" *cky-argmax-lf*)
+  (format t "  Number of differing l-commands: ~A ~%" (hash-table-count *cky-lf-hashtable*))
+  (format t "  Most weighted analysis        : ~A ~%" *cky-max*)
   (format t "  ---------------------------~%")
   (and all-lfs (pack-cky-lf-hashtable))
   )
@@ -816,18 +816,18 @@
 	   (cond ((> (cell-len l) 1)
 		  (format t (cky-thread l)))) ; it may be a lex rule applying to a phrase
 	   (if *lambdaflag*
-	     (format nil "~%~5,,,a~6T~A := ~A~%        : ~A" ix (input-range (cell-len l)(cell-pos l)) syn lf)
-	     (format nil "~%~5,,,a~6T~A := ~A" ix (input-range (cell-len l)(cell-pos l)) syn)))
+	     (format nil "~%~5,,,a~6T~A :: ~A~%        : ~A" ix (input-range (cell-len l)(cell-pos l)) syn lf)
+	     (format nil "~%~5,,,a~6T~A :: ~A" ix (input-range (cell-len l)(cell-pos l)) syn)))
 	  (t (concatenate 'string 
 			    (cky-thread l)
 			    (cky-thread r)
 			    (if *lambdaflag*
-			      (format nil "~%~5,,,a~6T~A := ~A~%        : ~A" ix inputs syn lf)
-			      (format nil "~%~5,,,a~6T~A := ~A" ix inputs syn)))))))
+			      (format nil "~%~5,,,a~6T~A :: ~A~%        : ~A" ix inputs syn lf)
+			      (format nil "~%~5,,,a~6T~A :: ~A" ix inputs syn)))))))
 
 (defun cky-reveal-cell (cell)
   (format t (cky-thread cell))
-  (format t "~2%Final LF, normal-evaluated:~2%~A =~%~A" 
+  (format t "~2%Final l-command, normal-evaluated:~2%~A =~%~A" 
 	  (beta-normalize-outer (cky-sem cell))
 	  (display-lf (beta-normalize-outer (cky-sem cell)))))
 
@@ -1058,9 +1058,9 @@
     (if (or (not onto) (equal (machash 'BCAT 'SYN (nv-list-val 'SOLUTION 
 							       (machash (list (length *cky-input*) 1 m) *cky-hashtable*))) onto))
       (progn 
-	(format t "~2%Derivation ~A~%--------------" m)
+	(format t "~2%Analysis ~A~%--------------" m)
 	(format t (cky-thread (list (length *cky-input*) 1 m)))
-	(format t "~2&Final LF, normal-order evaluated: ~2%    ~A =~%    ~A" 
+	(format t "~2&Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A" 
 		(beta-normalize-outer (cky-sem (list (length *cky-input*) 1 m)))
 		(display-lf (beta-normalize-outer (cky-sem (list (length *cky-input*) 1 m))))))))
   t)
@@ -1072,9 +1072,9 @@
     ((null (machash (list row col m) *cky-hashtable*)))
     (if (or (not onto) (equal (machash 'BCAT 'SYN (nv-list-val 'SOLUTION (machash (list row col m) *cky-hashtable*))) onto))
       (progn 
-	(format t "~2%Derivation ~A~%--------------" m)
+	(format t "~2%Analysis ~A~%--------------" m)
 	(format t (cky-thread (list row col m)))
-	(format t "~2&Final LF, normal-order evaluated: ~2%    ~A =~%    ~A" 
+	(format t "~2&Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A" 
 		(beta-normalize-outer (cky-sem (list row col m)))
 		(display-lf (beta-normalize-outer (cky-sem (list row col m))))))))
   )
@@ -1082,7 +1082,7 @@
 (defun cky-show-normal-forms (row col)
    (do ((m 1 (incf m)))
      ((null (machash (list row col m) *cky-hashtable*)))
-     (format t "~2%Derivation ~A~%----------------~%" m)
+     (format t "~2%Analysis ~A~%----------------~%" m)
      (beta-normalize (cky-sem (list row col m)))))
 
 (defun cky_show_analysis_onto (catlist)
@@ -1132,7 +1132,7 @@
        (forward-nf)
        (eql (machash 'DIR 'SYN ht1) 'FS) ; no need to check modality, all entries qualify for application.
        (if (machash 'BCONST 'ARG 'SYN ht1) 
-	 (return-from a-apply (singleton-match ht1 ht2 lex2 'A coord2)) t) ; short-circuit a-apply if arg is singleton
+	 (return-from a-apply (singleton-match ht1 ht2 lex2 'C1 coord2)) t) ; short-circuit a-apply if arg is singleton
        (multiple-value-bind (match b1) ; b2 is not needed from (values)
 	 (cat-match (machash 'ARG 'SYN ht1) (machash 'SYN ht2))
 	 (and match 
@@ -1140,7 +1140,7 @@
 	      (let ((newht (make-cky-entry-hashtable)))
 		(set-nf-tag newht *ot*)
 		(setf (machash 'SEM newht) (&a (machash 'SEM ht1) (machash 'SEM ht2)))
-		(setf (machash 'INDEX newht) 'A)
+		(setf (machash 'INDEX newht) 'C1)
 		(and (machash 'LEX 'SYN ht1) (setf (machash 'LEX newht) t)) ; result is lexical too if X//Y Y succeeds--pass on
 		(setf (machash 'SYN newht) (realize-binds (machash 'RESULT 'SYN ht1) b1))
 		newht)))))
@@ -1151,7 +1151,7 @@
        (backward-nf)
        (eql (machash 'DIR 'SYN ht2) 'BS) ; no need to check modality, all entries qualify for application.
        (if (machash 'BCONST 'ARG 'SYN ht2) 
-	 (return-from t-apply (singleton-match ht2 ht1 lex1 'T coord1)) t) ; short-circuit t-apply if arg is singleton
+	 (return-from t-apply (singleton-match ht2 ht1 lex1 'C2 coord1)) t) ; short-circuit t-apply if arg is singleton
        (multiple-value-bind (match b1 b2)
 	 (cat-match (machash 'SYN ht1) (machash 'ARG 'SYN ht2))
 	 (use-value b1) ; dummy use of b1, not needed but cant be skipped in (values)
@@ -1160,7 +1160,7 @@
 	      (let ((newht (make-cky-entry-hashtable)))
 		(set-nf-tag newht *ot*)
 		(setf (machash 'SEM newht) (&a (machash 'SEM ht2) (machash 'SEM ht1)))
-		(setf (machash 'INDEX newht) 'T)
+		(setf (machash 'INDEX newht) 'C2)
 		(and (machash 'LEX 'SYN ht2) (setf (machash 'LEX newht) t)) ; result is lexical too if Y X\\Y succeeds--pass on
 		(setf (machash 'SYN newht) (realize-binds (machash 'RESULT 'SYN ht2) b2))
 		newht)))))
@@ -1180,7 +1180,7 @@
 			  (newsyn (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *fc*)
 		      (setf (machash 'SEM newht) (&b (machash 'SEM ht1) (machash 'SEM ht2)))
-		      (setf (machash 'INDEX newht) '|>B|) ; ht2 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C3) ; ht2 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
@@ -1203,7 +1203,7 @@
 			  (newsyn (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *bc*)
 		      (setf (machash 'SEM newht) (&b (machash 'SEM ht2) (machash 'SEM ht1)))
-		      (setf (machash 'INDEX newht) '|<B|) ; ht1 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C4) ; ht1 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
@@ -1226,7 +1226,7 @@
 			  (newsyn (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *fc*)
 		      (setf (machash 'SEM newht) (&b (machash 'SEM ht1) (machash 'SEM ht2)))
-		      (setf (machash 'INDEX newht) '|>Bx|) ; ht2 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C3) ; ht2 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
@@ -1249,7 +1249,7 @@
 			  (newsyn (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *bc*)
 		      (setf (machash 'SEM newht) (&b (machash 'SEM ht2) (machash 'SEM ht1)))
-		      (setf (machash 'INDEX newht) '|<Bx|) ; ht1 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C4) ; ht1 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
@@ -1274,7 +1274,7 @@
 			  (newsyn (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *fc*)
 		      (setf (machash 'SEM newht) (&b2 (machash 'SEM ht1) (machash 'SEM ht2)))
-		      (setf (machash 'INDEX newht) '|>B2|) ; ht2 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C3) ; ht2 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
@@ -1309,7 +1309,7 @@
 			  (newsyn (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *bc*)
 		      (setf (machash 'SEM newht) (&b2 (machash 'SEM ht2) (machash 'SEM ht1)))
-		      (setf (machash 'INDEX newht) '|<B2|) ; ht1 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C4) ; ht1 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
@@ -1343,7 +1343,7 @@
 			  (newsyn (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *fc*)
 		      (setf (machash 'SEM newht) (&b2 (machash 'SEM ht1) (machash 'SEM ht2)))
-		      (setf (machash 'INDEX newht) '|>Bx2|) ; ht2 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C3) ; ht2 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
@@ -1378,7 +1378,7 @@
 			  (newsyn (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *bc*)
 		      (setf (machash 'SEM newht) (&b2 (machash 'SEM ht2) (machash 'SEM ht1)))
-		      (setf (machash 'INDEX newht) '|<Bx2|) ; ht1 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C4) ; ht1 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
@@ -1415,7 +1415,7 @@
 			  (newsyn3 (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *fc*)
 		      (setf (machash 'SEM newht) (&b3 (machash 'SEM ht1) (machash 'SEM ht2)))
-		      (setf (machash 'INDEX newht) '|>B3|) ; ht2 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C3) ; ht2 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn1)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
@@ -1459,7 +1459,7 @@
 			  (newsyn3 (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *fc*)
 		      (setf (machash 'SEM newht) (&b3 (machash 'SEM ht1) (machash 'SEM ht2)))
-		      (setf (machash 'INDEX newht) '|>Bx3|) ; ht2 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C3) ; ht2 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn1)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht2))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht2))
@@ -1503,7 +1503,7 @@
 			  (newsyn3 (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *bc*)
 		      (setf (machash 'SEM newht) (&b3 (machash 'SEM ht2) (machash 'SEM ht1)))
-		      (setf (machash 'INDEX newht) '|<B3|) ; ht1 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C4) ; ht1 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn1)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
@@ -1547,7 +1547,7 @@
 			  (newsyn3 (make-complex-cat-hashtable)))
 		      (set-nf-tag newht *bc*)
 		      (setf (machash 'SEM newht) (&b3 (machash 'SEM ht2) (machash 'SEM ht1)))
-		      (setf (machash 'INDEX newht) '|<Bx3|) ; ht1 dir and modality projects
+		      (setf (machash 'INDEX newht) 'C4) ; ht1 dir and modality projects
 		      (setf (machash 'SYN newht) newsyn1)
 		      (setf (machash 'DIR 'SYN newht) (machash 'DIR 'SYN ht1))
 		      (setf (machash 'MODAL 'SYN newht) (machash 'MODAL 'SYN ht1))
@@ -1580,7 +1580,7 @@
        (let ((newht (make-cky-entry-hashtable)))
 	 (set-nf-tag newht *ot*)
 	 (setf (machash 'SEM newht) (&a (machash 'SEM ht1) (machash 'SEM ht2)))
-	 (setf (machash 'INDEX newht) '|>|)
+	 (setf (machash 'INDEX newht) 'C1)
 	 (setf (machash 'SYN newht)(substitute-special-cat   ; pass on a fresh copy for substtn
 				     (machash 'RESULT 'SYN ht1)
 				     (copy-hashtable (machash 'SYN ht2))))
@@ -1595,7 +1595,7 @@
        (let ((newht (make-cky-entry-hashtable)))
 	 (set-nf-tag newht *ot*)
 	 (setf (machash 'SEM newht) (&a (machash 'SEM ht2) (machash 'SEM ht1)))
-	 (setf (machash 'INDEX newht) '|<|)
+	 (setf (machash 'INDEX newht) 'C2)
 	 (setf (machash 'SYN newht)(substitute-special-cat   ; pass on a fresh copy for substtn
 				     (machash 'RESULT 'SYN ht2)
 				     (copy-hashtable (machash 'SYN ht1))))
@@ -1719,7 +1719,7 @@
 			       (dolist (entry matches) (push entry *current-grammar*))
 			       (setf n2 (length matches)))
 			     (progn 
-			       (format t "~%OOV error: no grammar entry for ~A! Exiting without parse.~%" (nth (- i 1) itemslist))
+			       (format t "~%OOV error: no grammar entry for ~A! Exiting without analysis.~%" (nth (- i 1) itemslist))
 			       (return-from cky_analyze0 nil)))))
 		   (loop for i2 from 1 to n2 do
 			 (setf (machash (list 1 i i2) *cky-hashtable*) 
@@ -1847,14 +1847,14 @@
 		    (cond ((> (cell-len l) 1)
 			   (format t (cky-show-probs l)))) ; it may be a lex rule applying to a phrase
 		    (if *lambdaflag* 
-		      (format nil "~%~5,,,a~7,,,F~14T~A := ~A~%        : ~A" ix pr (input-range (cell-len l)(cell-pos l)) syn lf)
-		      (format nil "~%~5,,,a~7,,,F~14T~A := ~A" ix pr (input-range (cell-len l)(cell-pos l)) syn)))
+		      (format nil "~%~5,,,a~7,,,F~14T~A :: ~A~%        : ~A" ix pr (input-range (cell-len l)(cell-pos l)) syn lf)
+		      (format nil "~%~5,,,a~7,,,F~14T~A :: ~A" ix pr (input-range (cell-len l)(cell-pos l)) syn)))
 		   (t (concatenate 'string 
 				   (cky-show-probs l)
 				   (cky-show-probs r)
 				   (if *lambdaflag* 
-				     (format nil "~%~5,,,a~7,,,F~14T~A := ~A~%        : ~A" ix pr inputs syn lf)
-				     (format nil "~%~5,,,a~7,,,F~14T~A := ~A" ix pr inputs syn)))))))))
+				     (format nil "~%~5,,,a~7,,,F~14T~A :: ~A~%        : ~A" ix pr inputs syn lf)
+				     (format nil "~%~5,,,a~7,,,F~14T~A :: ~A" ix pr inputs syn)))))))))
 
 (defun lex-rule-param (key)
   "return the parameter of the lex rule with <key>"
@@ -1908,17 +1908,17 @@
   (format t (cky-show-probs cell)))
 
 (defun cky_show_ranking ()
-  (format t "~%Most likely LF for the input: ~A~2%  ~A =~%  ~A~2%Cumulative weight:  ~A" *cky-input* 
+  (format t "~%Most likely l-command for the input: ~A~2%  ~A =~%  ~A~2%Cumulative weight:  ~A" *cky-input* 
 	  (second *cky-lf*)(display-lf (beta-normalize-outer (second *cky-lf*)))
 	  (first *cky-lf*))
-  (format t "~2%Most probable derivation for it: ~A~%--------------------------------" *cky-argmax-lf-max*)
+  (format t "~2%Most probable analysis for it: ~A~%--------------------------------" *cky-argmax-lf-max*)
   (format t (cky-show-probs *cky-argmax-lf-max*))
-  (format t "~2%Final LF, normal-order evaluated: ~2%    ~A =~%    ~A~%" (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))
+  (format t "~2%Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A~%" (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))
 	  (display-lf (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))))
-  (format t "~2%Most weighted derivation : ~A" *cky-max*)
+  (format t "~2%Most weighted analysis : ~A" *cky-max*)
   (format t  "~%--------------------------")
   (format t (cky-show-probs *cky-max*))
-  (format t "~2&Final LF, normal-order evaluated: ~2%    ~A =~%    ~A" 
+  (format t "~2&Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A" 
 	  (beta-normalize-outer (cky-sem *cky-max*))
 	  (display-lf (beta-normalize-outer (cky-sem *cky-max*))))
   t)
@@ -1965,7 +1965,7 @@
     (format t "~%Supervision file loaded: ~A~%" supname))
   (dolist (s-lf *supervision-pairs-list*)
     (cond ((not (beta-normalize-outer (sup-lf s-lf))) 
-	   (format t "~%Warning! This S-LF pair has unnormalizable LF, and may give unexpected stats :~% ~a"
+	   (format t "~%Warning! This expression/l-command pair has unnormalizable l-command, and may give unexpected stats :~% ~a"
 		   s-lf)))))
 
 (defun count-local-structure (resultcell)
@@ -2475,9 +2475,9 @@
 
 (defmacro mk-tr-rule (key index insyn outsyn)
   "semantics is fixed, rest is varying, parameter is just initialized"
-  `(list (list 'KEY ,key) (list 'INSYN ,insyn) (list 'INSEM 'LF)
+  `(list (list 'KEY ,key) (list 'INSYN ,insyn) (list 'INSEM 'LCOM)
 	 (list 'OUTSYN ,outsyn)
-	 (list 'OUTSEM '(LAM LF (LAM P (P LF))))  
+	 (list 'OUTSEM '(LAM LCOM (LAM P (P LCOM))))  
 	 (list 'INDEX ,index)
 	 (list 'PARAM 1.0)))  
 
@@ -2728,8 +2728,8 @@
 					     (setf (machash 'KEY newht) key)
 					     (setf (machash 'INDEX newht) (gensym "_P2_"))  ; P2 derived the rule
 					     (setf (machash 'PARAM newht) 1.0)  ; uniform prior for inferred rules
-					     (setf (machash 'INSEM newht) 'LF)  ; always the same input abstraction by convention 
-					     (setf (machash 'OUTSEM newht) '(LAM LF (LAM P (P LF)))) ; this is universal
+					     (setf (machash 'INSEM newht) 'LCOM)  ; always the same input abstraction by convention 
+					     (setf (machash 'OUTSEM newht) '(LAM LCOM (LAM P (P LCOM)))) ; this is universal
 					     (setf (machash 'INSYN newht) in1)   ; MGU of input (1st arg modified in basic cats during match)
 					     (setf (machash 'OUTSYN newht) out1) ; MGU of output (1st arg modified in basic cats during match)
 					     (setf (machash key *ht-tr*) newht) ; added to table as it is looped
