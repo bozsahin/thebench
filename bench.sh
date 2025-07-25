@@ -1,23 +1,22 @@
 #!/bin/bash 
-# cem bozsahin 2023--24 
+# cem bozsahin 2025
 #  $1 : 'uninstall' 'install' or 'reset' 
 #  $2: (when relevant): the python binary
-# brew does not allow sudo--$SUDO controls that
 BENCH_HOMEP="$HOME/.thebenchhome" # this file will contain the 
                                   # pointer to TheBench in your file system
 BENCH_HISTORY="$HOME/.thebenchhistory" # py saves commands in it internally
 BHF='' # the dir pointed by BENCH_HOMEP; initially none
-ULB='/usr/local/bin' # where the bench binary goes
+ULB="$HOME/.local" # where the bench binary goes
 BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but might collide
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
-SUDO=sudo
 THEBENCHPYTHON=$2
 NOPY=
 command -v $2 2> /dev/null || NOPY=TRUE
 LOGFILE='/var/tmp/thebench-install.log' # to avoid .gitignore in repo directory
-LOG="=========================================================\nTheBench install and set up, `date`\n=========================================================" # installers can be very verbose, accumulate all deeds to report at end
+LOG="=========================================================\nTheBench install and set up, `date`\n========================================================="
 
-#First the checks for early exits without action
+#First the checks for early exits without action 
+ 
 if [ $# -eq 0 ]; then
 	echo "please specify a key action (install, reset, uninstall)"
 	echo "  and a python binary if the action requires it."
@@ -49,16 +48,26 @@ if [ ! $1 == uninstall ] && [ ! -x `command -v $THEBENCHPYTHON` ]; then
 	exit -1
 fi
 
-# From now on we have legit action specified
+# From now on we have legitimate action specified.
+# uninstall needs git, and install needs git and curl
+
+if [ ! -x `command -v git` ]; then
+	echo "You don't have git, or it is not executable"
+	echo "  exiting without action"
+	exit -1
+fi
 if [ $1 == uninstall ]; then
 	BHF="`cat $BENCH_HOMEP`" # The directory pointed by BENCH_HOMEP
-	cd $HOME # to avoid deleting current folder	
 	if  [ -d $BHF ] && [ ! $BHF == $HOME ]; then
-      		echo "Removing $BHF"
-		rm -fr $BHF  
+		echo "Uninstalling $BHF directory by deleting tracked (official thebench) files in it."
+		echo "  There may be personal files left in $BHF; if not, you can delete that directory now."
+                echo "Deleting $BENCHBIN executable, pointers to it and $BENCHBIN command history."
+                echo "I leave uninstall of git, curl, pip and python to you."
+                cd $BHF
+                git ls-files -z | xargs -0 rm
 		rm $BENCH_HOMEP
-		rm $BENCH_HISTORY # not deleting thebench in /usr/local/bin deliberately
-                                  # trying to execute will fail
+		rm $BENCH_HISTORY 
+                rm $ULB/$BENCHBIN 
 	fi
 	if [ -d $TMPB ]; then
   		echo "Removing $TMPB"
