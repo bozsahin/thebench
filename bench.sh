@@ -164,7 +164,7 @@ if [ $THEBENCHCOMMAND == install ] || [ $TEBENCHCOMMAND == INSTALL ]; then
 	chmod u+rx $BHF/src/bench.py
 	chmod u+r  $BHF/src/bench.lisp
 	chmod u+r  $BHF/src/bench.user.lisp
-	if [ $THEBENCHCOMMAND == INSTALL ] && [ ! `command -v sbcl` ];     # look for package managers
+	if [ $THEBENCHCOMMAND == INSTALL ] && [ ! `command -v sbcl` ]; then    # look for package managers
                 packager=
                 install=install
                 if [ `command -v dnf` ]; then
