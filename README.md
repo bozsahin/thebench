@@ -22,7 +22,7 @@ YOU NEED:
 
    THEN DO <code>python.x get-pip.py</code> AT THE SAME PLACE USING THE <code>terminal</code> APP, WHERE python.x IS THE PYTHON YOU INTEND TO USE.
 
-   (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every linux, and <code>pyenv</code> is more of a hack than software engineering). 
+   (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every OS (thank you, distributors), and <code>pyenv</code> is more of a hack than software engineering). 
 
 4. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
 
