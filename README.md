@@ -36,8 +36,10 @@ NOTE: The installer does not require sudo password or any password, and needs no
 
    This will create <code>thebench</code> subdirectory in that directory.
 
-2.  In the terminal, <b>AND in <code>thebench</code> directory</b>, do  the following:
+2.  In the terminal, do  the following:
 
+   <code>cd thebench</code>
+   
    <code>./bench.sh install mypython mypip</code>
 
 where <code>mypython</code> is your python executable, for example <code>python3.10</code> or <code>python3.11</code>, etc; <mypip> is the pip for that, e.g. <code>pip3.10</code> or <code>pip3.11</code>.
