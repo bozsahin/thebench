@@ -94,7 +94,7 @@ anywhere in the computer. There are THREE of them: (`~' points to your home dire
 
 <code>~/.thebenchhistory</code> This file contains history of your command use for easier recall.
 
-<code>~/.local/bin/thebench</code> This is the executable that allows access to TheBench for anyone on your system from anywhere.
+<code>~/.local/bin/thebench</code> This is the executable that allows access to TheBench from anywhere in your personal account.
 
 Please do not alter them manually.
 
