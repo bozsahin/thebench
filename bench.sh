@@ -20,7 +20,8 @@ command -v $THEBENCHPYTHON 2> /dev/null || NOPY=TRUE
 command -v $THEBENCHPIP 2> /dev/null || NOPIP=TRUE
 LOGFILE='/var/tmp/thebench-install.log' # to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up, `date`\n========================================================="
-
+echo "TheBench setup tool begins.."
+echo ""
 #First the checks for early exits without action 
  
 if [ $# -eq 0 ]; then
