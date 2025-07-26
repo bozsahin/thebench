@@ -170,9 +170,8 @@ if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
                 fi
                 if [ `command -v yum` ]; then
                         packager=yum
-                        # open library space of yum
-                        $SUDO yum $install yum-utils
-                        $SUDO yum-config-manager --enable \*
+                        $SUDO yum makecache  # updates the database
+                        install="-y install"
                 fi
                 if [ `command -v apt-get` ]; then
                         packager=apt-get
