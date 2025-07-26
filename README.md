@@ -16,7 +16,7 @@ YOU NEED:
 
 2. <a href="https://pip.pypa.io/en/stable/installation/">pip</a>. This is the maintainer of python libraries that we need.
 
-   PLEASE USE THE <code>get-pip.py</code> METHOD (the second method in the pip install page) TO MAKE SURE YOUR <code>pip</code> IS THE ONE YOU USE FOR THE <code>python</code> THAT YOU INTEND TO USE FOR <code>TheBench</code>.
+   PLEASE USE THE <code>get-pip.py</code> METHOD (the second method in the pip install page) TO MAKE SURE YOUR <code>pip</code> IS THE ONE YOU USE FOR THE <code>python</code> THAT YOU INTEND TO USE FOR <code>TheBench.</code>
 
    TO DO THAT, GET <code>get-pip.py</code> AS EXPLAINED IN THE PAGE, THEN DO <code>python.x get-pip.py</code> WHERE python.x IS THE PYTHON YOU INTEND TO USE.
 
