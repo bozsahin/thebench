@@ -6,30 +6,27 @@ It uses two command relations for every element of grammar, one on
 syntactic command, one on semantic command. The guide explains these command relations.
     Much more is covered in the book <a href="https://www.cambridgescholars.com/product/978-1-0364-1830-4">Connecting Social Semiotics, Grammaticality, and Meaningfulness: The Verb</a>.
 
-It can work in Linuxsphere, Macosphere and Window's Linux sub-atmosphere,  for example in Window's WSL, MacOS, Arch, Debian and RedHat-based distributions.
-
-These spheres are available as systems of various beginner-friendliness, in my opinion in the decreasing order of: latest MacOS, Ubuntu, Mint, Manjaro, Fedora, Kali, Suse, Pop_OS, CentOS, slackware etc. 
-
-The standard installers
-in linux platforms are <code>apt-get, dnf, pacman, yum</code> or <code>brew</code> (macOS). These are the ones recognized by TheBench installer. They are built-in, depending on your platform, including WSL. See the note at the bottom for the absence of the <code>rpm</code> package manager.
+It works in Linux, MacOS, and Windows 11 using Window's Linux native apps;  for example in Window's WSL, MacOS, Arch, Ubuntu, Debian, Fedora and RedHat-based distributions.
 
 You can start using WSL right off the shelf if you have late Windows 11 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 
-As things Apple go these days, you might be left helpless about things we take for granted
-in programming, such as having public package managers. You need external help. Brew is an external installer for such goodies in MacOS, which you can get from <a href="https://brew.sh/">brew home</a>.
-
-
-I have been able to install and run TheBench fully automatically in top six of the platforms in this list. (I skipped Suse after installing it---see the bottom of this page for the explanation. I have not tried others.)
-
 YOU NEED:
 
-0. A software installer (see above).
+1. <a href="https://www.python.org/">Python 3.8 upwards</a>. I recommend stable versions.
 
-1. <a href="https://www.python.org/">Python 3.8  to 3.11</a>. (Earlier ones lack the libraries we need; later ones mess with python's pip installs in unpredictable ways. Version 3.11 is supported until the end of 2027.)
+2. <a href="https://pip.pypa.io/en/stable/installation/">pip</a>. This is the maintainer of python libraries that we need.
 
-2. <a href="https://git-scm.com/downloads">git</a> 
+   PLEASE USE THE get-pip.py METHOD (the second method in the pip install page) TO MAKE SURE YOUR pip IS THE ONE YOU USE FOR THE python THAT YOU INTEND TO USE FOR TheBencch.
+
+   TO DO THAT, GET get-pip.py AS EXPLAINED IN THE PAGE, THEN DO <code>python.x get-pip.py</code> WHERE python.x IS THE PYTHON YOU INTEND TO USE.
+
+   (Why are we doing this? Because python's infamous ensurepip library is not available in every linux, and pyenv is more of a hack than software engineering). 
+
+3. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
 
 TO INSTALL: 
+
+NOTE: The installer does not require sudo password or any password, and needs no package manager.
 
 1.  Open a terminal app, and change directory to where you want to install the tool. Then do:
 
@@ -39,13 +36,11 @@ TO INSTALL:
 
 2.  In the terminal, <b>AND in <code>thebench</code> directory</b>, do  the following:
 
-   <code>./bench.sh install mypython</code>
+   <code>./bench.sh install mypython mypip</code>
 
-where <code>mypython</code> is your python executable, for example <code>python3.10</code> or <code>python3.11</code>, etc.
+where <code>mypython</code> is your python executable, for example <code>python3.10</code> or <code>python3.11</code>, etc; <mypip> is the pip for that, e.g. <code>pip3.10</code> or <code>pip3.11</code>.
 
 This will install TheBench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. You get python's library manager <code>pip</code> as well if you don't already have it (checked by the installer).
-
-If the installer reports that it failed to install SBCL, it means your software installer couldn't find it as a package. <a href="https://www.sbcl.org/getting.html">Manually install SBCL<a>, and you are ready to go without further action.
 
 TO USE: 
 
@@ -59,21 +54,12 @@ file at your home directory.
 If you experience problems accessing <code>thebench</code> this way, you are probably using a different shell.
 In this case, do <code>bash</code>, then do the above. Bash is available in all linux platforms, unlike other shells.
 
-PERSONAL COMPUTER SECURITY and MULTI-USER SYSTEMS:
-
-The installer is designed to set TheBench up in a personal computer, where you would have
-<code>sudo</code> access. Please ask your system admin to install it for you if you don't have that access.
-
-When installing on a personal computer, it will be your local sudo asking for password during install. 
-Please do not share it with anyone. If you are not convinced about the security of the installer, please ask a trusted expert to screen the installer  for security (and your system
-for a predatory keystroke logger).
-
 PYTHON UPGRADE NOTE:
 
 If you want to move to another python for this tool, say python3.xx, and have that python installed, then 
 re-run the install script FROM thebench home as
 
-<code>./bench.sh reset python3.xx</code>
+<code>./bench.sh reset python3.xx pip3.xx</code>
 
 to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes TheBench libraries for that python. 
 
@@ -104,7 +90,7 @@ anywhere in the computer. There are THREE of them: (`~' points to your home dire
 
 <code>~/.thebenchhistory</code> This file contains history of your command use for easier recall.
 
-<code>/usr/local/bin/thebench</code> This is the executable that allows access to TheBench for anyone on your system from anywhere.
+<code>~/.local/bin/thebench</code> This is the executable that allows access to TheBench for anyone on your system from anywhere.
 
 Please do not alter them manually.
 
@@ -114,20 +100,8 @@ Change to repo's local directory, and do
 
    <code>./bench.sh uninstall</code>
 
-This will remove TheBench files and auxiliary directories. It won't touch
+This will remove the official TheBench files and auxiliary directories. It won't touch
 your python or SBCL. To remove them, use your package manager. 
 
-PYTHON AND PACKAGE MANAGER NOTES
-
-If you are wondering why I am not using Python's virtual environment facility to freeze TheBench to a certain python binary,
-it is because it's needlessly complex, a bit wet behind the ear at this day and age, and error-prone. 
-For TheBench, it seemed to me  to be the shortest way to lose the python-uninitiated from the start.
-TheBench has its on command syntax anyway; it does not need Python or Lisp programming.
-
-You may have noticed the curious absence of <code>rpm</code> package manager support for install. Unlike <code>yum</code>, which
-is also available in rpm-based platforms, <code>rpm</code> is subscription-based. I find that quite un-linux, and non-transparent.
-So, for Suse and similar RH systems, install <code>yum</code> first before you install TheBench. Fedora is RH, but comes with <code>yum</code>, so no problems (and wise choice, lads and lasses, ditto CentOS).
-
---enjoy. Cem Bozsahin
 
 My email is somewhere in the webosphere to google; just drop me an email if you need assistance.
