@@ -60,7 +60,7 @@ In this case, do <code>bash</code>, then do the above. Bash is available in all 
 
 PYTHON UPGRADE NOTE:
 
-If you want to move to another python for this tool, say <code>mynewpaython</code>, and have that python and its pip installed as above, then 
+If you want to move to another python for this tool, say <code>mynewpython</code>, and have that python and its pip installed AS ABOVE, then 
 re-run the install script FROM thebench home as
 
 <code>./bench.sh reset mynewpython mynewpip</code>
