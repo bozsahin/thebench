@@ -1,6 +1,6 @@
 #!/bin/bash 
 # cem bozsahin 2025 -- to install, reset and remove thebench
-#  $1 : 'uninstall' 'install' or 'reset' 
+#  $1 : 'uninstall' 'install' 'INSTALL' or 'reset' 
 #  $2: (when relevant): the python binary
 #  $3: (when relevant): the pip binary
 THEBENCHCOMMAND=$1
@@ -16,6 +16,7 @@ BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but it 
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
 NOPY=
 NOPIP=
+SUDO=sudo
 command -v $THEBENCHPYTHON 2> /dev/null || NOPY=TRUE
 command -v $THEBENCHPIP 2> /dev/null || NOPIP=TRUE
 LOGFILE='/var/tmp/thebench-install.log' # to avoid .gitignore in repo directory
@@ -32,6 +33,10 @@ if [ $# -eq 0 ]; then
 	exit -1
 elif [ $THEBENCHCOMMAND == install ] && [ $# -lt 2 ]; then
 	echo "install requires two arguments: the key action and the python binary"
+	echo "exiting without action"
+	exit -1
+elif [ $THEBENCHCOMMAND == INSTALL ] && [ $# -lt 2 ]; then
+	echo "INSTALL requires two arguments: the key action and the python binary"
 	echo "exiting without action"
 	exit -1
 elif [ $THEBENCHCOMMAND == reset ] && [ $# -lt 2 ]; then
@@ -121,7 +126,7 @@ fi
 
 # If we've come this far, we are installing
 #
-if [ $THEBENCHCOMMAND == install ]; then
+if [ $THEBENCHCOMMAND == install ] || [ $TEBENCHCOMMAND == INSTALL ]; then
 	if [ -e $BENCH_HOMEP ]; then
 		echo "You have TheBench installed at: `cat $BENCH_HOMEP`"
   		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
@@ -132,8 +137,9 @@ if [ $THEBENCHCOMMAND == install ]; then
   		mkdir $TMPB   # we dont need sudo for this
   		LOG+="\n-$TMPB directory created for temporary files"
 	fi
-	if [ ! `command -v sbcl` ]; then
+	if [ ! `command -v sbcl` ] && [ $THEBENCHCOMMAND == install ]; then
 		echo "Please install SBCL before installing TheBench"
+                echo "Or use the INSTALL option, with upper case"
 		echo "check out the README.md in the repository for that"
 		echo "Exiting without install"
 		exit -1
@@ -158,6 +164,42 @@ if [ $THEBENCHCOMMAND == install ]; then
 	chmod u+rx $BHF/src/bench.py
 	chmod u+r  $BHF/src/bench.lisp
 	chmod u+r  $BHF/src/bench.user.lisp
+	if [ $THEBENCHCOMMAND == INSTALL ] && [ ! `command -v sbcl` ];     # look for package managers
+                packager=
+                install=install
+                if [ `command -v dnf` ]; then
+                        packager=dnf
+                fi
+                if [ `command -v yum` ]; then
+                        packager=yum
+                        # open library space of yum
+                        $SUDO yum $install yum-utils
+                        $SUDO yum-config-manager --enable \*
+                fi
+                if [ `command -v apt-get` ]; then
+                        packager=apt-get
+                        # open library space of apt-get and refresh
+                        $SUDO add-apt-repository universe
+                        $SUDO apt-get update
+                fi
+                if [ `command -v pacman` ]; then
+                        packager=pacman
+                        install='-S'
+                fi
+                if [ `command -v brew` ]; then
+                        packager=brew
+                        SUDO=                        # brew cannae sudo
+                fi
+                if [ "$packager" ]; then
+                        LOG+="\n-You have an installer ($packager) for standard packages"
+                        $SUDO $packager $install sbcl
+                        LOG+="\n-sbcl is downloaded and installed"
+                else
+                        LOG+="\n-apt-get, dnf, pacman, yum or brew not found. I leave Common Lisp handling to you."
+                        LOG+="\n-Please have a look at README.md in the repo for that."
+                fi
+
+	fi
 	LOG+="\n\n-thebench install: COMPLETED"
 	LOG+="\n-The log is saved in file $LOGFILE"
 	echo "The log is saved in file $LOGFILE"
