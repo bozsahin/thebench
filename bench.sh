@@ -1,17 +1,22 @@
 #!/bin/bash 
-# cem bozsahin 2025
+# cem bozsahin 2025 -- to install, reset and remove thebench
 #  $1 : 'uninstall' 'install' or 'reset' 
 #  $2: (when relevant): the python binary
+#  $3: (when relevant): the pip binary
+THEBENCHCOMMAND=$1
+THEBENCHPYTHON=$2
+THEBENCHPIP=$3
 BENCH_HOMEP="$HOME/.thebenchhome" # this file will contain the 
                                   # pointer to TheBench in your file system
 BENCH_HISTORY="$HOME/.thebenchhistory" # py saves commands in it internally
 BHF='' # the dir pointed by BENCH_HOMEP; initially none
-ULB="$HOME/.local" # where the bench binary goes
-BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but might collide
+ULB="$HOME/.local/bin" # where thebench binary goes -- we dont need sudo for this
+BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but it might name-collide
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
-THEBENCHPYTHON=$2
 NOPY=
-command -v $2 2> /dev/null || NOPY=TRUE
+NOPIP=
+command -v $THEBENCHPYTHON 2> /dev/null || NOPY=TRUE
+command -v $THEBENCHPIP 2> /dev/null || NOPIP=TRUE
 LOGFILE='/var/tmp/thebench-install.log' # to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up, `date`\n========================================================="
 
@@ -22,47 +27,57 @@ if [ $# -eq 0 ]; then
 	echo "  and a python binary if the action requires it."
 	echo "exiting without action"
 	exit -1
-elif [ $1 == install ] && [ $# -lt 2 ]; then
+elif [ $THEBENCHCOMMAND == install ] && [ $# -lt 2 ]; then
 	echo "install requires two arguments: the key action and the python binary"
 	echo "exiting without action"
 	exit -1
-elif [ $1 == reset ] && [ $# -lt 2 ]; then
+elif [ $THEBENCHCOMMAND == reset ] && [ $# -lt 2 ]; then
 	echo "reset requires two arguments: the key action and the python binary"
 	echo "exiting without action"
 	exit -1
-elif [ $1 == uninstall ]; then
+elif [ $THEBENCHCOMMAND == uninstall ]; then
 	if [ ! -e $BENCH_HOMEP ] || [ ! -e "`cat $BENCH_HOMEP`" ] ; then
 		echo "Nothing to uninstall"
 		echo "exiting without action"
 		exit 0
 	fi
 fi
-if [ ! $1 == uninstall ] && [ $NOPY ]; then
+if [ ! $THEBENCHCOMMAND == uninstall ] && [ $NOPY ]; then
 	echo "$THEBENCHPYTHON executable does not exist"
 	echo "exiting without action"
 	exit -1
 fi
-if [ ! $1 == uninstall ] && [ ! -x `command -v $THEBENCHPYTHON` ]; then
+if [ ! $THEBENCHCOMMAND == uninstall ] && [ $NOPIP ]; then
+	echo "$THEBENCHPIP executable does not exist"
+	echo "exiting without action"
+	exit -1
+fi
+if [ ! $THEBENCHCOMMAND == uninstall ] && [ ! -x `command -v $THEBENCHPYTHON` ]; then
 	echo "$THEBENCHPYTHON is not executable"
+	echo "exiting without action"
+	exit -1
+fi
+if [ ! $THEBENCHCOMMAND == uninstall ] && [ ! -x `command -v $THEBENCHPIP` ]; then
+	echo "$THEBENCHPIP is not executable"
 	echo "exiting without action"
 	exit -1
 fi
 
 # From now on we have legitimate action specified.
-# uninstall needs git, and install needs git and curl
+# uninstall needs git, reset needs python and pip, and install needs python, git and pip
 
 if [ ! -x `command -v git` ]; then
 	echo "You don't have git, or it is not executable"
 	echo "  exiting without action"
 	exit -1
 fi
-if [ $1 == uninstall ]; then
+if [ $THEBENCHCOMMAND == uninstall ]; then
 	BHF="`cat $BENCH_HOMEP`" # The directory pointed by BENCH_HOMEP
 	if  [ -d $BHF ] && [ ! $BHF == $HOME ]; then
 		echo "Uninstalling $BHF directory by deleting tracked (official thebench) files in it."
 		echo "  There may be personal files left in $BHF; if not, you can delete that directory now."
                 echo "Deleting $BENCHBIN executable, pointers to it and $BENCHBIN command history."
-                echo "I leave uninstall of git, curl, pip and python to you."
+                echo "I leave uninstall of git, pip and python to you."
                 cd $BHF
                 git ls-files -z | xargs -0 rm
 		rm $BENCH_HOMEP
@@ -76,29 +91,27 @@ if [ $1 == uninstall ]; then
 	echo "Uninstall completed."
 	exit 0
 fi
-if [ $1 == reset ]; then
-	$THEBENCHPYTHON -m ensurepip    # every python has its own pip and libraries
-	$THEBENCHPYTHON -m pip install --upgrade pip  # who knows
-	$THEBENCHPYTHON	-m pip install cl4py
-	$THEBENCHPYTHON -m pip install sly
-        $THEBENCHPYTHON -m pip install prompt_toolkit
+
+# from now on we also need python and pip
+#
+if [ $THEBENCHCOMMAND == reset ]; then
+	$THEBENCHPIP install cl4py
+	$THEBENCHPIP install sly
+        $THEBENCHPIP install prompt_toolkit
+	echo "$THEBENCHPYTHON `pwd`/src/bench.py" | sudo tee "$ULB/$BENCHBIN" 
+	echo "TheBench binary thebench is set to execute: `cat $ULB/$BENCHBIN`"
 	echo "TheBench is reset to use $THEBENCHPYTHON"
+	chmod u+x $ULB/$BENCHBIN
 	exit 0
 fi
 # If we've come this far, we are installing
-if [ $1 == install ]; then
+if [ $THEBENCHCOMMAND == install ]; then
 	if [ -e $BENCH_HOMEP ]; then
 		echo "You have TheBench installed at: `cat $BENCH_HOMEP`"
   		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
-		echo "If you intend to change the python for the tool, run the installer as './bench.sh reset some-python'"
+		echo "If you intend to change the python for the tool, run the installer with reset option.'"
   		exit 0  # this is not an error
 	fi
-	echo "**** PLEASE NOTE: ****"
-	echo "  In case the installer asks for SUDO PASSWORD"
-	echo "  It will be ONLY for 1) installing the Common Lisp's SBCL through SAFE installers" 
-        echo "                      2) opening libraries of the package managers for a more comprehensive search"
-        echo '                      3) putting the bench binary in /usr/local/bin'
-	echo ""
 	if [ ! -d $TMPB ]; then
   		mkdir $TMPB   # we dont need sudo for this
   		LOG+="\n-$TMPB directory created for temporary files"
@@ -141,11 +154,9 @@ if [ $1 == install ]; then
 	else
   		LOG+="\n-Local sbcl is set for tool use"
 	fi
-	$THEBENCHPYTHON -m ensurepip    # every python has its own pip and libraries
-	$THEBENCHPYTHON -m pip install --upgrade pip  # who knows
-	$THEBENCHPYTHON	-m pip install cl4py
-	$THEBENCHPYTHON -m pip install sly
-        $THEBENCHPYTHON -m pip install prompt_toolkit
+	$THEBENCHPIP install cl4py
+	$THEBENCHPIP install sly
+        $THEBENCHPIP install prompt_toolkit
 	LOG+="\n-Three $THEBENCHPYTHON libraries set for TheBench use: cl4py, sly, prompt_toolkit"
 	if [ ! -d $ULB ]; then
 		LOG+="\n-There is no $ULB in your system; creating one..."
