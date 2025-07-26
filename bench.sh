@@ -123,7 +123,7 @@ if [ $THEBENCHCOMMAND == install ]; then
 	if [ -e $BENCH_HOMEP ]; then
 		echo "You have TheBench installed at: `cat $BENCH_HOMEP`"
   		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
-		echo "If you intend to change the python for the tool, run the installer with reset option.'"
+		echo "If you intend to change the python for the tool, run the installer with reset option."
   		exit 0  # this is not an error
 	fi
 	if [ ! -d $TMPB ]; then
