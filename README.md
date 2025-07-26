@@ -35,7 +35,7 @@ YOU NEED:
    For example, <code>brew</code> is MacOS package manager. <code>apt</code> is for Ubuntu and its derivatives. <code>yum</code> is for many others, etc.
 
    If you are willing and able to 'sudo' in your machine, run the installer below with INSTALL option in UPPERCASE.
-   (The installer deteects many of the package managers, like <code>apt-get, dnf, yum, pamac</code>. However, if are in a MACOS, you will have to first install brew yourself.
+   (The installer deteects many of the package managers, like <code>apt-get, dnf, yum, pamac</code>. However, if you are in a MACOS, you will have to first install brew yourself.
    <a href="https://brew.sh/">Here</a> is its web site for download and install.)
    
 TO INSTALL: 
