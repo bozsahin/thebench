@@ -18,11 +18,13 @@ YOU NEED:
 
    PLEASE USE THE <code>get-pip.py</code> METHOD (the second method in the pip install page) TO MAKE SURE YOUR <code>pip</code> IS THE ONE YOU USE FOR THE <code>python</code> THAT YOU INTEND TO USE FOR <code>TheBench.</code>
 
-   TO DO THAT, GET <code>get-pip.py</code> AS EXPLAINED IN THE PAGE, THEN DO <code>python.x get-pip.py</code> WHERE python.x IS THE PYTHON YOU INTEND TO USE.
+   TO DO THAT, GET <code>get-pip.py</code> SOMEWHERE IN YOUR MACHINE, AS EXPLAINED IN THE PAGE,
+
+   THEN DO <code>python.x get-pip.py</code> AT THE SAME PLACE USING THE <code>terminalk</code> APP, WHERE python.x IS THE PYTHON YOU INTEND TO USE.
 
    (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every linux, and <code>pyenv</code> is more of a hack than software engineering). 
 
-3. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
+4. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
 
 TO INSTALL: 
 
