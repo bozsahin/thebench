@@ -180,9 +180,8 @@ if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
                         $SUDO add-apt-repository universe
                         $SUDO apt-get update
                 fi
-                if [ `command -v pacman` ]; then
-                        packager=pacman
-                        install='-S'
+                if [ `command -v pamac` ]; then
+                        packager=pamac
                 fi
                 if [ `command -v brew` ]; then
                         packager=brew
@@ -193,7 +192,7 @@ if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
                         $SUDO $packager $install sbcl
                         LOG+="\n-sbcl is downloaded and installed"
                 else
-                        LOG+="\n-apt-get, dnf, pacman, yum or brew not found. I leave Common Lisp handling to you."
+                        LOG+="\n-apt-get, dnf, pamac, yum or brew not found. I leave Common Lisp handling to you."
                         LOG+="\n-Please have a look at README.md in the repo for that."
                 fi
 
