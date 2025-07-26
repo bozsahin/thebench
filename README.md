@@ -52,7 +52,9 @@ NOTE: The installer does not FORCE sudo password or any password unless you use 
 
    <code>cd thebench</code>
    
-   <code>./bench.sh install mypython mypip</code>   (use INSTALL in upper case if you are willing and able to sudo in your machine, to install sbcl automatically).
+   <code>./bench.sh install mypython mypip</code>   
+   
+   (use INSTALL in upper case if you are willing and able to sudo in your machine, to install sbcl automatically)
 
 where <code>mypython</code> is your python executable, for example <code>python3.10</code> or <code>python3.11</code>, etc; <mypip> is the pip for that, e.g. <code>pip3.10</code> or <code>pip3.11</code>.
 
