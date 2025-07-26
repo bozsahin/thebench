@@ -9,7 +9,7 @@ THEBENCHPIP=$3
 BENCH_HOMEP="$HOME/.thebenchhome" # this file will contain the 
                                   # pointer to TheBench in your file system
 BENCH_HISTORY="$HOME/.thebenchhistory" # py saves commands in it internally
-BHF='' # the dir pointed by BENCH_HOMEP; initially none
+BHF=`pwd` # the dir to be pointed by BENCH_HOMEP;
 ULB="$HOME/.local/bin" # where thebench binary goes -- we dont need sudo for this
 UL="$HOME/.local"      # where the local sbcl and its repo goes
 BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but it might name-collide
@@ -109,7 +109,7 @@ if [ $THEBENCHCOMMAND == reset ]; then
 	$THEBENCHPIP install cl4py
 	$THEBENCHPIP install sly
         $THEBENCHPIP install prompt_toolkit
-	echo "$THEBENCHPYTHON `pwd`/src/bench.py" | tee "$ULB/$BENCHBIN" 
+	echo "$THEBENCHPYTHON $BHF/src/bench.py" | tee "$ULB/$BENCHBIN" 
 	echo $LOG
 	echo "TheBench binary thebench is set to execute: `cat $ULB/$BENCHBIN`"
 	echo "TheBench is reset to use $THEBENCHPYTHON"
@@ -149,11 +149,12 @@ if [ $THEBENCHCOMMAND == install ]; then
 	else
   		LOG+="\n-Local sbcl is adopted for thebench use"
 	fi
+	cd $BHF
 	$THEBENCHPIP install cl4py
 	$THEBENCHPIP install sly
         $THEBENCHPIP install prompt_toolkit
 	LOG+="\n-Three $THEBENCHPYTHON libraries set for TheBench use: cl4py, sly, prompt_toolkit"
-	echo "$THEBENCHPYTHON `pwd`/src/bench.py" | tee "$ULB/$BENCHBIN" 
+	echo "$THEBENCHPYTHON $BHF/src/bench.py" | tee "$ULB/$BENCHBIN" 
 	LOG+="\n-TheBench binary thebench is set to execute: `cat $ULB/$BENCHBIN`"
         chmod ugo+x "$ULB/$BENCHBIN"  # to call bench from anywhere
 	echo "`pwd`" > $BENCH_HOMEP   # repo pointer saved at home dir as a dot file
@@ -161,11 +162,11 @@ if [ $THEBENCHCOMMAND == install ]; then
 	                              #     dot file (py refers to it internally)
 	chmod u+rw $BENCH_HISTORY
 	chmod u+rw $BENCH_HOMEP
-	chmod u+x  ./bench.sh          # just in case download loses priviledges
-	chmod u+rx ./src/bench.train.sh 
-	chmod u+rx ./src/bench.py
-	chmod u+r  ./src/bench.lisp
-	chmod u+r  ./src/bench.user.lisp
+	chmod u+x  $BHF/bench.sh          # just in case download loses priviledges
+	chmod u+rx $BHF/src/bench.train.sh 
+	chmod u+rx $BHF/src/bench.py
+	chmod u+r  $BHF/src/bench.lisp
+	chmod u+r  $BHF/src/bench.user.lisp
 	LOG+="\n\n-thebench install: COMPLETED"
 	LOG+="\n-The log is saved in file $LOGFILE"
 	echo "The log is saved in file $LOGFILE"
