@@ -16,11 +16,11 @@ YOU NEED:
 
 2. <a href="https://pip.pypa.io/en/stable/installation/">pip</a>. This is the maintainer of python libraries that we need.
 
-   PLEASE USE THE get-pip.py METHOD (the second method in the pip install page) TO MAKE SURE YOUR pip IS THE ONE YOU USE FOR THE python THAT YOU INTEND TO USE FOR TheBench.
+   PLEASE USE THE <code>get-pip.py</code> METHOD (the second method in the pip install page) TO MAKE SURE YOUR <code>pip</code> IS THE ONE YOU USE FOR THE <code>python</code> THAT YOU INTEND TO USE FOR <code>TheBench</code>.
 
-   TO DO THAT, GET get-pip.py AS EXPLAINED IN THE PAGE, THEN DO <code>python.x get-pip.py</code> WHERE python.x IS THE PYTHON YOU INTEND TO USE.
+   TO DO THAT, GET <code>get-pip.py</code> AS EXPLAINED IN THE PAGE, THEN DO <code>python.x get-pip.py</code> WHERE python.x IS THE PYTHON YOU INTEND TO USE.
 
-   (Why are we doing this? Because python's infamous ensurepip library is not available in every linux, and pyenv is more of a hack than software engineering). 
+   (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every linux, and <code>pyenv</code> is more of a hack than software engineering). 
 
 3. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
 
