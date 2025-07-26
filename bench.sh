@@ -82,7 +82,7 @@ if [ $THEBENCHCOMMAND == uninstall ]; then
                 echo "Deleting $BENCHBIN executable, pointers to it and $BENCHBIN command history."
                 echo "I leave uninstall of git, pip and python to you."
                 cd $BHF
-                git ls-files -z | xargs -0 rm
+                git ls-files -z | xargs -0 rm -fr
 		rm $BENCH_HOMEP
 		rm $BENCH_HISTORY 
                 rm $ULB/$BENCHBIN 
