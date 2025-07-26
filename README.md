@@ -28,12 +28,16 @@ YOU NEED:
 
 4. <a href="https://www.sbcl.org/">SBCL</a>. This is the Lisp that TheBench uses.
 
-   The instructions in the official site to install it are not for the faint-hearted. Fear not, because sbcl is available as a package in ALL linuxes.
+   The instructions in the official site to install it are not for the faint-hearted. Fear not, because sbcl is available as a package in MANY linuxes.
    
-   Just google 'package manager for XX' where XX is your system (macOS, Ubuntu, etc) and follow the instructions there. (I once automated all this, but that needed sudo privileges).
+   Just google 'package manager for XX' where XX is your system (macOS, Ubuntu, etc) and follow the instructions there. 
 
    For example, <code>brew</code> is MacOS package manager. <code>apt</code> is for Ubuntu and its derivatives. <code>yum</code> is for many others, etc.
 
+   If you are willing and able to 'sudo' in your machine, run the installer below with INSTALL option in UPPERCASE.
+   (The installer deteects many of the package managers, like <code>apt-get, dnf, yum, pamac</code>. However, if are in a MACOS, you will have to first install brew yourself.
+   <a href="https://brew.sh/">Here</a> is its web site for download and install.)
+   
 TO INSTALL: 
 
 NOTE: The installer does not require sudo password or any password, and needs no package manager.
@@ -69,6 +73,7 @@ In this case, do <code>bash</code>, then do the above. Bash is available in all 
 PYTHON UPGRADE NOTE:
 
 If you want to move to another python for this tool, say <code>mynewpython</code>, and have that python and its pip installed AS ABOVE, then 
+
 re-run the install script FROM thebench home as
 
 <code>./bench.sh reset mynewpython mynewpip</code>
