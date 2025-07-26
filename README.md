@@ -40,7 +40,7 @@ YOU NEED:
    
 TO INSTALL: 
 
-NOTE: The installer does not require sudo password or any password, and needs no package manager.
+NOTE: The installer does not FORCE sudo password or any password unless you use the keyword INSTALL rather than  install.
 
 1.  Open a terminal app, and change directory to where you want to install the tool. Then do:
 
@@ -52,7 +52,7 @@ NOTE: The installer does not require sudo password or any password, and needs no
 
    <code>cd thebench</code>
    
-   <code>./bench.sh install mypython mypip</code>
+   <code>./bench.sh install mypython mypip</code>   (use INSTALL in upper case if you are willing and able to sudo in your machine, to install sbcl automatically).
 
 where <code>mypython</code> is your python executable, for example <code>python3.10</code> or <code>python3.11</code>, etc; <mypip> is the pip for that, e.g. <code>pip3.10</code> or <code>pip3.11</code>.
 
