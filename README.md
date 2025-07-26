@@ -60,12 +60,12 @@ In this case, do <code>bash</code>, then do the above. Bash is available in all 
 
 PYTHON UPGRADE NOTE:
 
-If you want to move to another python for this tool, say python3.xx, and have that python installed, then 
+If you want to move to another python for this tool, say <code>mynewpaython</code>, and have that python and its pip installed as above, then 
 re-run the install script FROM thebench home as
 
-<code>./bench.sh reset python3.xx pip3.xx</code>
+<code>./bench.sh reset mynewpython mynewpip</code>
 
-to change to that python. It will make sure its <code>pip</code> library manager is installed and refreshes TheBench libraries for that python. 
+to change to that python. 
 
 TO DEVELOP A GRAMMAR:
 
