@@ -20,8 +20,9 @@ command -v $THEBENCHPYTHON 2> /dev/null || NOPY=TRUE
 command -v $THEBENCHPIP 2> /dev/null || NOPIP=TRUE
 LOGFILE='/var/tmp/thebench-install.log' # to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up, `date`\n========================================================="
+echo " "
 echo "TheBench setup tool begins.."
-echo ""
+echo " "
 #First the checks for early exits without action 
  
 if [ $# -eq 0 ]; then
@@ -131,24 +132,13 @@ if [ $THEBENCHCOMMAND == install ]; then
   		mkdir $TMPB   # we dont need sudo for this
   		LOG+="\n-$TMPB directory created for temporary files"
 	fi
-	#check if SBCL need installing-- SBCL is the standard  lisp for cl4py module
-	#there is a pecking order of packagers, in case you have more than one
 	if [ ! `command -v sbcl` ]; then
-                cd $UL
-                git clone https://github.com/roswell/roswell.git
-                cd roswell
-		sh bootstrap
-		./configure --prefix=$UL
-		make
-		make install
-		ros install sbcl 
-		printf '%s\n' "export PATH=$PATH" >> $HOME/.bashrc
-		LOG+="\n-Locally installing Roswell git repo in $UL"
-		LOG+="\n-Locally installing sbcl via  Roswell in $ULB"
-		LOG+="ros install sbcl  installs sbcl and internally adds its path ~/.local/bin to PATH"
-		LOG+='\n-NB. your new PATH is augmented with the previous one at the end of ~/.bashrc to make it permanent'
+		echo "Please install SBCL before installing TheBench"
+		echo "check out the README.md in the repository for that"
+		echo "Exiting without install"
+		exit -1
 	else
-  		LOG+="\n-Local sbcl is adopted for thebench use"
+  		LOG+="\n-Local sbcl is adopted for $BENCHBIN use"
 	fi
 	cd $BHF
 	$THEBENCHPIP install cl4py
