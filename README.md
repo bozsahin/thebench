@@ -24,7 +24,15 @@ YOU NEED:
 
    (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every OS (thank you, distributors), and <code>pyenv</code> is more of a hack than software engineering). 
 
-4. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
+3. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
+
+4. <a href="https://www.sbcl.org/">SBCL</a>. This is the Lisp that TheBench uses.
+
+   The instructions in the official site to install it is not for the faint-hearted. Fear not, because sbcl is available as a package in many linuxes.
+   
+   Just google 'package manager for XX' where XX is your system (macOS, Ubuntu, etc) and follow the instructions there. (I once automated all this, but that needed sudo privileges).
+
+   For example, <code>brew</code> is MacOS package manager. <code>apt</code> is for Ubuntu and its derivatives. <code>yum</code> is for many others, etc.
 
 TO INSTALL: 
 
