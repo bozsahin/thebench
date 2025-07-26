@@ -126,7 +126,7 @@ fi
 
 # If we've come this far, we are installing
 #
-if [ $THEBENCHCOMMAND == install ] || [ $TEBENCHCOMMAND == INSTALL ]; then
+if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
 	if [ -e $BENCH_HOMEP ]; then
 		echo "You have TheBench installed at: `cat $BENCH_HOMEP`"
   		echo "There is no need to reinstall. Just do 'git pull' in that directory for the latest."
