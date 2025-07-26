@@ -56,7 +56,7 @@ NOTE: The installer does not FORCE sudo password or any password unless you use 
    
    (use INSTALL in upper case if you are willing and able to sudo in your machine, to install sbcl automatically)
 
-where <code>mypython</code> is your python executable, for example <code>python3.10</code> or <code>python3.11</code>, etc; <codse>mypip</code> is the pip for that, e.g. <code>pip3.10</code> or <code>pip3.11</code>.
+where <code>mypython</code> is your python executable, for example <code>python3.10</code> or <code>python3.11</code>, etc; <code>mypip</code> is the pip for that, e.g. <code>pip3.10</code> or <code>pip3.11</code>.
 
 This will install TheBench, the Python libraries needed, and SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. You get python's library manager <code>pip</code> as well if you don't already have it (checked by the installer).
 
