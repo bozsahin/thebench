@@ -28,7 +28,7 @@ YOU NEED:
 
 4. <a href="https://www.sbcl.org/">SBCL</a>. This is the Lisp that TheBench uses.
 
-   The instructions in the official site to install it are not for the faint-hearted. Fear not, because sbcl is available as a package in many linuxes.
+   The instructions in the official site to install it are not for the faint-hearted. Fear not, because sbcl is available as a package in ALL linuxes.
    
    Just google 'package manager for XX' where XX is your system (macOS, Ubuntu, etc) and follow the instructions there. (I once automated all this, but that needed sudo privileges).
 
