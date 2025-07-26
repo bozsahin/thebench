@@ -143,8 +143,6 @@ if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
 		echo "check out the README.md in the repository for that"
 		echo "Exiting without install"
 		exit -1
-	else
-  		LOG+="\n-Local sbcl is adopted for $BENCHBIN use"
 	fi
 	cd $BHF
 	$THEBENCHPIP install cl4py
