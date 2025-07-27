@@ -134,3 +134,5 @@ your python or SBCL. To remove them, use your package manager.
 
 
 My email is somewhere in the webosphere to google; just drop me an email if you need assistance.
+
+Enjoy. -Cem
