@@ -22,7 +22,7 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
    TO DO THAT, GET <code>get-pip.py</code> SOMEWHERE IN YOUR MACHINE, AS EXPLAINED IN THE PAGE,
 
    THEN DO <code>python.x get-pip.py</code> AT THE SAME PLACE USING THE <code>terminal</code> APP, WHERE python.x IS THE PYTHON YOU INTEND TO USE.
-   For example, if you have <code>curl</code> for downloading stuff, you can run the following in a terminal app:
+   For example, if you have <code>curl</code> for downloading URL stuff, you can run the following in a terminal app:
 
    <code>
    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
