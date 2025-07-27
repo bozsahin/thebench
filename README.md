@@ -10,7 +10,7 @@ It works in Linux, MacOS, and Windows 11 using Window's Linux native apps;  for 
 
 You can start using WSL right off the shelf if you have late Windows 11 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
 
-YOU NEED:
+DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
 1. <a href="https://www.python.org/">Python 3.8 upwards</a>. I recommend stable versions.
 
@@ -30,12 +30,13 @@ YOU NEED:
 
    The instructions in the official site to install it are not for the faint-hearted. Fear not, because sbcl is available as a package in MANY linuxes.
    
-   Just google 'package manager for XX' where XX is your system (macOS, Ubuntu, etc) and follow the instructions there. 
+   IF YOU WANT TO TAKE CARE OF THIS DEPENDENCY YOURSELF, just google 'package manager for XX' where XX is your system (macOS, Ubuntu, Fedora, Arch etc) and follow the instructions there. 
 
-   For example, <code>brew</code> is MacOS package manager. <code>apt</code> is for Ubuntu and its derivatives. <code>yum</code> is for many others, etc.
+   For example, <code>brew</code> is MacOS package manager. <code>apt</code> is for Ubuntu and its derivatives. <code>dnf</code> is for many others, etc.
 
-   AUTO-INSTALL of SBCL: If you are willing and able to 'sudo' in your machine, run the installer below with INSTALL option in UPPERCASE.
-   (The installer deteects many of the package managers, like <code>apt-get, dnf, yum, pamac</code>. However, if you are in a MACOS, you will have to first install brew yourself.
+   AUTO-INSTALL of SBCL DEPENDENCY: If you are willing and able to 'sudo' in your machine, run TheBench installer  with INSTALL option in UPPERCASE.
+   (The installer deteects many of the package managers, like <code>apt, dnf, yum, yay, pamac, zypper</code>. These are built-in in linuxes.
+    HOWEVER, if you are in a MACOS, you will have to first install BREW yourself.
    <a href="https://brew.sh/">Here</a> is its web site for download and install.)
    
 TO INSTALL: 
