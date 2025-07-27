@@ -44,7 +44,7 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
    For example, <code>brew</code> is MacOS package manager. <code>apt</code> is for Ubuntu and its derivatives. <code>dnf</code> is for many others, etc.
 
    AUTO-INSTALL of SBCL DEPENDENCY: If you are willing and able to 'sudo' in your machine, run TheBench installer  with INSTALL option in UPPERCASE.
-   (The installer deteects many of the package managers, like <code>apt, dnf, yum, yay, pamac, zypper</code>. These are built-in in linuxes.
+   (The installer detects many of the package managers, like <code>apt, dnf, yum, yay, pamac, zypper</code>. These are built-in in linuxes.
     HOWEVER, if you are in a MACOS, you will have to first install BREW yourself.
    <a href="https://brew.sh/">Here</a> is its web site for download and install.)
    
