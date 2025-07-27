@@ -6,9 +6,10 @@ It uses two command relations for every element of grammar, one on
 syntactic command, one on semantic command. The guide explains these command relations.
     Much more is covered in the book <a href="https://www.cambridgescholars.com/product/978-1-0364-1830-4">Connecting Social Semiotics, Grammaticality, and Meaningfulness: The Verb</a>.
 
-It works in Linux, MacOS, and Windows 11 using Window's Linux native apps;  for example in Window's WSL, MacOS, Arch, Ubuntu, Debian, Fedora and RedHat-based distributions.
+It works in Linux, MacOS, and Windows 11 using Window's Subsystem for Linux (WSL) native apps;  for example, in Window's WSL, MacOS, Arch, Ubuntu, Debian, Fedora and RedHat-based distributions.
 
-You can start using WSL right off the shelf if you have late Windows 11 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
+You can start using WSL from Microsoft Store if you have late Windows 11 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
+As od July 2025, I see Ubuntu, Kali, Oracle Linux and Debian as ready-made linux apps for Windows 11. Ubuntu IS SAFEST FOR BEGINNERS.
 
 DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
