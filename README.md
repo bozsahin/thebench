@@ -13,7 +13,7 @@ As of July 2025, I see Ubuntu, Kali, Oracle Linux, Fedora and Debian as ready-ma
 
 DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
-1. <a href="https://www.python.org/">Python 3.8 upwards</a>. I recommend stable versions.
+1. <a href="https://www.python.org/">Python 3.8 upwards</a>. TheBench's grammar editing tools are written in python. I recommend stable versions. 
 
 2. <a href="https://pip.pypa.io/en/stable/installation/">pip</a>. This is the maintainer of python libraries that we need.
 
@@ -33,9 +33,9 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
     
    (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every OS (thank you, distributors), and <code>pyenv</code> is more of a hack than software engineering). 
 
-4. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
+3. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
 
-5. <a href="https://www.sbcl.org/">SBCL</a>. This is the Lisp that TheBench uses.
+4. <a href="https://www.sbcl.org/">SBCL</a>. This is the Lisp that TheBench uses for grammar processing.
 
    The instructions in the official site to install it are not for the faint-hearted. Fear not, because sbcl is available as a package in MANY linuxes.
    
