@@ -82,7 +82,9 @@ file at your home directory.
 If you experience problems accessing <code>thebench</code> this way, you are probably using a different shell.
 In this case, do <code>bash</code>, then do the above. Bash is available in all linux platforms, unlike other shells.
 
-USE ADVICE: PLEASE KEEP YOUR WORK FILES OUTSIDE TheBench FOLDER. IT WOULD MAKE YOUR LIFE EASIER. IF YOU UINSTALL THE TOOL, YOUR WORK WON'T BE LOST.
+USE ADVICE: 
+
+Please keep your work files outside TheBench folder. That would make your life easier. That way, when you uninstall the tool, your work won't be lost.
 
 PYTHON UPGRADE NOTE:
 
