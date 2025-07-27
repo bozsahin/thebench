@@ -1290,6 +1290,7 @@ if __name__ == '__main__': # MG REPL online
             p=ws.split()
     _cl.load(p[0]+'/src/bench.lisp')                # load the processor
     _benchtrainer=p[0]+'/src/bench.train.sh'        # the trainer is in the same place
+    _cl.load(p[0]+'/src/bench.user.lisp')           # load the user-defined code
     print(f"python   : bench.py   loaded, version {_version}, encoding {sys.getdefaultencoding()}")
     print(f"Your working (current) directory is:\n  {_home}")
     print("ready")
