@@ -171,16 +171,25 @@ if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
                         install="-y install"
                 fi
                 if [ `command -v dnf` ]; then # dnf is more modern than yum, so override if both exists
+                        $SUDO dnf copr enable atim/sbcl
                         packager=dnf
                 fi
                 if [ `command -v pamac` ]; then
                         packager=pamac
                 fi
-                if [ `command -v apt-get` ]; then # in case you have both pamac and apt; apt is more likely to spot sbcl
-                        packager=apt-get
-                        # open library space of apt-get and refresh
-                        $SUDO add-apt-repository universe
-                        $SUDO apt-get update
+                if [ `command -v yay` ]; then
+                        packager=yay
+			install='-S'
+                fi
+                if [ `command -v apt` ]; then # in case you have both pamac and apt; apt is more likely to spot sbcl
+                        packager=apt
+                        # open library space of apt and refresh
+                        $SUDO add-apt-repository ppa:ubuntu-lisp/ppa
+                        $SUDO apt update
+                fi
+                if [ `command -v zypper` ]; then
+                        packager=zypper
+			$SUDO zypper refresh
                 fi
                 if [ `command -v brew` ]; then
                         packager=brew
