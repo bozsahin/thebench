@@ -112,8 +112,8 @@ but its presence and location are.
 NOTES FOR THE DISCERNING TECHIE:
 
 The installer
-creates some files to keep things organized and available from
-anywhere in the computer. There are THREE of them: (`~' points to your home directory in the linux world).
+creates some local files to keep things organized and available from
+anywhere in the user space. There are THREE of them: (`~' points to your home directory in the linux world).
 
 <code>~/.thebenchhome</code> This file contains the full path of TheBench repository in your installation.
 
