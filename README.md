@@ -9,7 +9,7 @@ syntactic command, one on semantic command. The guide explains these command rel
 It works in Linux, MacOS, and Windows 11 using Window's Subsystem for Linux (WSL) native apps;  for example, in Window's WSL, MacOS, Arch, Ubuntu, Debian, Fedora and RedHat-based distributions.
 
 You can start using WSL from Microsoft Store if you have late Windows 11 upwards; check out <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Window's WSL</a>. 
-As oF July 2025, I see Ubuntu, Kali, Oracle Linux and Debian as ready-made linux apps for Windows 11 in Microsoft Store. Ubuntu IS SAFEST FOR BEGINNERS.
+As oF July 2025, I see Ubuntu, Kali, Oracle Linux and Debian as ready-made linux apps for Windows 11 in Microsoft Store. Ubuntu IS SAFEST FOR BEGINNERS. Debian IS LEAST WELCOMING TO THIRD PARTY SOFTWARE.
 
 DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
