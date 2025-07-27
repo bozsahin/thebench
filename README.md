@@ -49,7 +49,7 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
     built-in in linuxes. IF YOU ARE USING MACOS, you will have to first install <code>brew</code> yourself.
    <a href="https://brew.sh/">Here</a> is its web site for download and install.
    
-TO INSTALL TheBench: 
+TO INSTALL <code>TheBench</code>: 
 
 NOTE: The installer does not FORCE sudo password or any password unless you use the keyword INSTALL rather than  install.
 
