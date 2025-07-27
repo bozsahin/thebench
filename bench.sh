@@ -86,14 +86,15 @@ if [ $THEBENCHCOMMAND == uninstall ]; then
 		echo "  There may be personal files left in $BHF; if not, you can delete that directory now."
                 echo "Deleting $BENCHBIN executable, pointers to it and $BENCHBIN command history."
                 echo "I leave uninstall of git, pip and python to you."
-                cd $BHF
-                git ls-files -z | xargs -0 rm -fr
+		cd ~  # to avoid hang up
+                rm -fr $BHF
 		rm $BENCH_HOMEP
 		rm $BENCH_HISTORY 
                 rm $ULB/$BENCHBIN 
 	fi
 	if [ -d $TMPB ]; then
   		echo "Removing $TMPB"
+		cd ~
   		rm -fr $TMPB
 	fi
 	echo "Uninstall completed."
