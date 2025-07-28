@@ -3020,6 +3020,6 @@
 (reset-globals :silent t)
 
 (format t "lisp     : bench.lisp loaded, version ~A, encoding ~A~%" 
-  (multiple-value-bind (pr v) (which_processor)
-    v)
-  sb-impl::*default-external-format*)
+	  (multiple-value-bind (pr v) (which_processor)
+	    v)
+	  sb-impl::*default-external-format*)

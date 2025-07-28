@@ -32,5 +32,4 @@
   (setf *f-comp* t)  ; add harmonic composition
   (setf *b-comp* t))
 
-(when *READ-EVAL*
-  (format t "         : bench.user.lisp loaded~%"))
+(format t "         : bench.user.lisp loaded~%")
