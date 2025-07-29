@@ -13,7 +13,7 @@ As of July 2025, I see Ubuntu, Kali, Oracle Linux, Fedora and Debian as ready-ma
 
 DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
-1. <a href="https://www.python.org/">Python, from 3.8 upwards</a>. TheBench's grammar editing tools are written in python. I recommend stable versions. It usually means the latest and greatest two python releases need upgrade of some libraries such as <code>setuptools</code>.
+1. <a href="https://www.python.org/">Python, from 3.8 upwards</a>. TheBench's grammar editing tools are written in python. I recommend stable versions. The latest and the greatest two python releases tend to need upgrade of some libraries such as <code>setuptools</code>.
 
 2. <a href="https://pip.pypa.io/en/stable/installation/">pip</a>. This is the maintainer of python libraries that we need.
 
