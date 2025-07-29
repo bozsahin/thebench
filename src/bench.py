@@ -41,7 +41,7 @@ _tmp='/var/tmp/thebench/'                  # all bench-generated non-editing fil
 if not os.path.exists(_tmp): # someone deleted it, recreate
     os.mkdir(_tmp)
 _home=os.getcwd()
-_prompt = '/'+_overscore+'\ ' # the pagoda
+_prompt = '/'+_overscore+r'\ ' # the pagoda
 _online = False               # parser output control
 _version = '2.2.1'
 _vdate = 'July 25, 2025'
@@ -59,8 +59,8 @@ _info = {}
 _indexed = False              # whether an entry is already indexed; need this unique indexing
 _targetprefix = '!'           # _target.. for generating symbol maps for the Lisp processor
 _targetmod = {'.': 'ALL', '+': 'CROSS', '*': 'STAR', '^': 'HARMONIC'}
-_targetdir = {'/': 'FS', '\\': 'BS', '//': 'FS', '\\\\': 'BS'}
-_targetslashlex = {'/': False, '\\': False, '//': True, '\\\\': True}
+_targetdir = {'/': 'FS', r'\\': 'BS', '//': 'FS', r'\\\\': 'BS'}
+_targetslashlex = {'/': False, r'\\': False, '//': True, r'\\\\': True}
 
 # Apart from Lexer and Parser, there is NO class definition, to make everything natively printable.
 #   And, these two classes are required by the sly module. 
@@ -733,8 +733,8 @@ def split_command (cline): # splits a command line into command and list of args
         return (comm, comarg[1:])
     
 def help ():
-        print(f"______\ Letter commands are processor commands; symbol commands are for display or setup")
-        print(f"_______\______ Dots are referred in sequence; .? means optional; .* means space-separated items")
+        print(f"________  Letter commands are processor commands; symbol commands are for display or setup")
+        print(f"________  Dots are referred in sequence; .? means optional; .* means space-separated items")
         print(f' a .*   | analyzes . in the current grammar; MWEs must be enclosed in |, e.g. |the bucket|')
         print(f' c .*   | case functions generated for current grammar from elements with POSs .')
         print(f" e .*   | evaluates the python expression . at your own risk (be careful with deletes)")
