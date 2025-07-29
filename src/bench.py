@@ -759,7 +759,7 @@ def help ():
         print(f' ;      | displays the contents of the {_tmp} directory')
         print(f' /      | clears the {_tmp} directory')
         print(f" {_help}      | displays help")
-        print(f'_______/ Use UP and DOWN keys for command recall from use history')
+        print(f'________| Use UP and DOWN keys for command recall from use history')
 
 def load_1pass_sup(fname):       
     global _supervision   
