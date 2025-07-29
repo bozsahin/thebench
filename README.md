@@ -45,8 +45,8 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
    AUTO-INSTALL of SBCL DEPENDENCY: If you are willing and able to 'sudo' in your machine, run TheBench installer  with INSTALL option in UPPERCASE.
 
-   The installer detects many of the package managers, like <code>apt, dnf, yum, yay, pamac, zypper, brew</code>. With the exception of <code>brew</code>, they are
-    built-in in linuxes. IF YOU ARE USING MACOS, you will have to first install <code>brew</code> yourself.
+   The installer detects many of the package managers, like <code>apt, dnf, yum, yay, pamac, zypper, brew</code>. With the exception of <code>brew</code> for Apple stuff, they are
+    built-in in linuxes. IF YOU ARE USING MacOS, you will have to first install <code>brew</code> yourself.
    <a href="https://brew.sh/">Here</a> is its web site for download and install.
    
 TO INSTALL <code>TheBench</code>: 
