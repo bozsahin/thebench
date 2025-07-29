@@ -59,8 +59,8 @@ _info = {}
 _indexed = False              # whether an entry is already indexed; need this unique indexing
 _targetprefix = '!'           # _target.. for generating symbol maps for the Lisp processor
 _targetmod = {'.': 'ALL', '+': 'CROSS', '*': 'STAR', '^': 'HARMONIC'}
-_targetdir = {'/': 'FS', r'\\': 'BS', '//': 'FS', r'\\\\': 'BS'}
-_targetslashlex = {'/': False, r'\\': False, '//': True, r'\\\\': True}
+_targetdir = {'/': 'FS', '\\': 'BS', '//': 'FS', '\\\\': 'BS'}
+_targetslashlex = {'/': False, '\\': False, '//': True, '\\\\': True}
 
 # Apart from Lexer and Parser, there is NO class definition, to make everything natively printable.
 #   And, these two classes are required by the sly module. 
