@@ -114,6 +114,8 @@ if [ ! -d $ULB ]; then
         chmod u+rwx $ULB
 fi
 if [ $THEBENCHCOMMAND == reset ]; then
+	$THEBENCHPIP install --upgrade pip  		# just in case
+	$THEBENCHPIP install --upgrade setuptools
 	$THEBENCHPIP install cl4py
 	$THEBENCHPIP install sly
         $THEBENCHPIP install prompt_toolkit
@@ -146,6 +148,8 @@ if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
 		exit -1
 	fi
 	cd $BHF
+	$THEBENCHPIP install --upgrade pip  		# just in case
+	$THEBENCHPIP install --upgrade setuptools
 	$THEBENCHPIP install cl4py
 	$THEBENCHPIP install sly
         $THEBENCHPIP install prompt_toolkit
