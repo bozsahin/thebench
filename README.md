@@ -37,7 +37,7 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
 4. <a href="https://www.sbcl.org/">SBCL</a>. This is the Lisp that TheBench uses for grammar processing.
 
-   The instructions in the official site to install SBCL are not for the faint-hearted. Fear not, because sbcl is available as a package in MANY linuxes.
+   The instructions in the official site to install SBCL are not for the faint-hearted. Fear not, because SBCL is available as a package in MANY linuxes.
    
    IF YOU WANT TO TAKE CARE OF THIS DEPENDENCY YOURSELF, just google 'package manager for XX' where XX is your system (macOS, Ubuntu, Fedora, Arch etc) and follow the instructions there. 
 
