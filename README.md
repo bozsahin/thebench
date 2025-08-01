@@ -31,7 +31,7 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
    This will install <code>pip3.11</code> rather than any pip. Then you can use python3.11 and pip3.11 for TheBench install.
     
-   (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every OS---thank you, distributors, and <code>pyenv</code> is more of a hack than software engineering). 
+   (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every OS--thank you, distributors--and <code>pyenv</code> is more of a hack than software engineering). 
 
 3. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
 
