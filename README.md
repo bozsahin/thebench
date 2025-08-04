@@ -1,6 +1,6 @@
 # TheBench
 This is a tool to study natural language structures by writing natural language grammars. It is
-for assessing and comparing grammars, for typology, and for fine-tuning of grammars.
+for writing, assessing and comparing grammars, for typology, and for fine-tuning of grammars.
 
 It uses two command relations for every element of grammar, one on
 syntactic command, one on semantic command. The guide explains these command relations.
@@ -19,9 +19,8 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
    PLEASE USE THE <code>get-pip.py</code> METHOD (the second method in the pip install page) TO MAKE SURE YOUR <code>pip</code> IS THE ONE YOU USE FOR THE <code>python</code> THAT YOU INTEND TO USE FOR <code>TheBench.</code>
 
-   TO DO THAT, GET <code>get-pip.py</code> SOMEWHERE IN YOUR MACHINE, AS EXPLAINED IN THE PAGE,
-
-   THEN DO <code>python.x get-pip.py</code> AT THE SAME PLACE USING THE <code>terminal</code> APP, WHERE python.x IS THE PYTHON YOU INTEND TO USE.
+   TO DO THAT, GET <code>get-pip.py</code> SOMEWHERE IN YOUR MACHINE, AS EXPLAINED IN THE PAGE, THEN DO <code>python.x get-pip.py</code> AT THE SAME PLACE USING THE <code>terminal</code> APP, WHERE python.x IS THE PYTHON YOU INTEND TO USE.
+   
    For example, if you have <code>curl</code> for downloading URL stuff, you can run the following in a terminal app:
 
    <code>
@@ -31,11 +30,11 @@ DEPENDENCIES: You need the following FOUR TOOLS before installing TheBench.
 
    This will install <code>pip3.11</code> rather than any pip. Then you can use python3.11 and pip3.11 for TheBench install.
     
-   (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every OS--thank you, distributors--and <code>pyenv</code> is more of a hack than software engineering). 
+   (Why are we doing this? Because python's infamous <code>ensurepip</code> library is not available in every OS distribution--thank you, distributors--and <code>pyenv</code> is more of a hack than software engineering). 
 
-3. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
+4. <a href="https://git-scm.com/downloads">git</a>. This is the maintainer of the tool overall.
 
-4. <a href="https://www.sbcl.org/">SBCL</a>. This is the Lisp that TheBench uses for grammar processing.
+5. <a href="https://www.sbcl.org/">SBCL</a>. This is the Lisp that TheBench uses for grammar processing.
 
    The instructions in the official site to install SBCL are not for the faint-hearted. Fear not, because SBCL is available as a package in MANY linuxes.
    
