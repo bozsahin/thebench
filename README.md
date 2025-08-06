@@ -123,8 +123,8 @@ anywhere in the user space. There are THREE of them: (`~' points to your home di
 
 <code>~/.thebenchhistory</code> This file contains history of your command use for easier recall.
 
-<code>~/.local/bin/thebench</code> This is the executable that allows access to TheBench from anywhere in your personal account. If you are in MacOS 10.15 and above,
-z shell is your default shell, and TheBench installer adds <code>~/.local/bin</code> to your z shell resources. If you use a different shell, please add this directory to your 
+<code> ~/.local/bin/thebench</code> This is the executable that allows access to TheBench from anywhere in your personal account. If you are in MacOS 10.15 and above,
+z shell is your default shell, and TheBench installer adds <code> ~/.local/bin</code> to your z shell resources. If you use a different shell, please add this directory to your 
 PATH variable manually. All other linuxes I know follow XDG convention to include this directory in the standard PATH (get it, Apple?).
 
 Please do not alter them manually.
