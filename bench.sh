@@ -199,11 +199,13 @@ if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
                 if [ `command -v brew` ]; then
                         packager=brew
                         SUDO=                        # brew cannae sudo
+			echo 'export PATH="$HOME/.local/bin:$PATH"' >> /.zshrc  % Apple, why are u always a pain??
+			source ~/.zshrc
                 fi
                 if [ "$packager" ]; then
                         LOG+="\n-You have an installer ($packager) for standard packages"
                         $SUDO $packager $install sbcl
-                        LOG+="\n-sbcl is downloaded and installed"
+                        LOG+="\n-SBCL is downloaded and installed"
                 else
                         LOG+="\n-apt-get, dnf, pamac, yum or brew not found. I leave Common Lisp handling to you."
                         LOG+="\n-Please have a look at README.md in the repo for that."
