@@ -199,7 +199,7 @@ if [ $THEBENCHCOMMAND == install ] || [ $THEBENCHCOMMAND == INSTALL ]; then
                 if [ `command -v brew` ]; then
                         packager=brew
                         SUDO=                        # brew cannae sudo
-			echo 'export PATH="$HOME/.local/bin:$PATH"' >> /.zshrc  % Apple, why are u always a pain??
+			echo 'export PATH="$HOME/.local/bin:$PATH"' >> /.zshrc  # Apple, why are u always a pain??
 			source ~/.zshrc
                 fi
                 if [ "$packager" ]; then
