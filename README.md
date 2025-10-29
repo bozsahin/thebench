@@ -82,6 +82,8 @@ file at your home directory.
 If you experience problems accessing <code>thebench</code> this way, you are probably using a different shell.
 In this case, do <code>bash</code>, then do the above. Bash is available in all linux platforms, unlike other shells.
 
+If you've installed TheBench but the `thebench` command isn't recognized (e.g., "command not found"), this typically means your shell's `PATH` environment variable does not include `~/.local/bin`, where the `thebench` executable is located. To resolve this, manually add `export PATH="$HOME/.local/bin:$PATH"` to your shell's configuration file (e.g., `~/.bashrc` for Bash, `~/.zshrc` for Zsh), and then restart your terminal or `source` the configuration file.
+
 USE ADVICE: 
 
 Please keep your work files outside TheBench folder. That would make your life easier. That way, when you uninstall the tool, your work won't be lost.
