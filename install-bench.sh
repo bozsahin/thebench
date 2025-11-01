@@ -7,6 +7,7 @@ BHF=`pwd` # the dir to be pointed by BENCH_HOMEP;
 BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but it might name-collide
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
 PY="3.11"                 # isolated python for TheBench, without pyenv or ensurepip nonsense
+PYC="3.11.9"              # specific python to download from python.org
 SUDO=sudo  # for SBCL install
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up `date`\n========================================================="
@@ -38,18 +39,15 @@ case ":$PATH:" in
 		;;
 esac
 LOG+="\nDone."
-LOG+="\nChecking/installing uv and isolating TheBench python ($PY), its pip and libraries for TheBench"
-if [ ! -x `command -v uv` ]; then
-     curl -LsSf https://astral.sh/uv/install.sh | sh
-     LOG+="\n  uv downloaded and installed"
-else
-     LOG+="\n  uv already installed."
-fi
-uv venv --python $PY thebenchenv
-source thebench/env/bin/activate
-uv pip install pkg_resources cl4py sly prompt_toolkit # no more python pip or ensurepip;  yerrs
-LOG+="\n  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
-echo "bash -c \"source thebenchenv/bin/activate; uv run python $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
+LOG+="\nChecking/installing TheBench python ($PYC as $PY) IN THIS REPO, its pip and libraries"
+curl -sSf https://wwww.python.org/ftp/python/$PYC/Python-$PYC.tgz | tar -xz
+cd Python-$PYC
+./configure --prefix=$HOME/.local/bin/python$PY --enable-optimizations
+make -j$(nproc)
+make install
+python$PY -m pip install pkg_resources cl4py sly prompt_toolkit 
+LOG+="\n  $PY libraries set for TheBench use: pkg_resources, cl4py, sly, prompt_toolkit"
+echo "python$PY $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
 LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
 LOG+="\nDone."
