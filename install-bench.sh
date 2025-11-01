@@ -50,7 +50,7 @@ uv python install $PY
 source thebenchenv/bin/activate
 uv pip install cl4py sly prompt_toolkit # no more python pip or ensurepip;  yerrs
 LOG+="\n  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
-echo "sh -c \"uv run --python $PY python $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
+echo "sh -c \" source thebenchenv/bin/activate; uv run --python $PY python $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
 LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
 LOG+="\nDone."
