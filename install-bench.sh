@@ -16,6 +16,19 @@ if [ ! -x `command -v curl` ]; then
 	LOG+="\n  exiting without action"
 	exit -1
 fi
+if [[ `uname` == "Darwin" ]]; then
+	LOG+="\n  You are using MacOS; I will check brew for install"
+        if [ `command -v brew` ]; then
+		LOG+="\n  brew found locally in your computer"
+        else
+                LOG+="\n  installing brew"
+        	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+        fi
+elif [[ `uname` == "Linux" ]]; then
+	LOG+="\n  You are using Linux; I will use its standard installer"
+else
+	LOG+="\n  You are not using Linux, MacOS or Window 11's WSL; lets hope I can find your installer"
+fi
 LOG+="\nDone."
 LOG+="\nChecking/installing temporary storage for TheBench"
 if [ ! -d $TMPB ]; then
