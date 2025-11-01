@@ -45,9 +45,7 @@ if [ ! -x `command -v uv` ]; then
 else
      LOG+="\n  uv already installed."
 fi
-LOG+="\n  uv version : `cat uv --version`"
 uv python install $PY
-LOG+="\n  TheBench's own python: `uv python list`"
 uv pip install --python $PY cl4py sly prompt_toolkit # no more python pip or ensurepip;  yerrs
 LOG+="\n  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
 echo "sh -c \"uv run --python $PY python $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
