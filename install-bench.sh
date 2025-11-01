@@ -120,8 +120,8 @@ else
 fi
 LOG+="Done."
 LOG+="TheBench install: COMPLETED"
-echo "The install log is available at: $LOGFILE"
-echo "--->Type 'bash', then 'thebench', to start using TheBench right away."
 LOG+="========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
+echo "The install log is available at: $LOGFILE"
+echo "--->Type 'bash', then 'thebench', to start using TheBench right away."
