@@ -17,13 +17,6 @@ if [ ! -x `command -v curl` ]; then
 	exit -1
 fi
 LOG+="Done."
-LOG+="Checking to see whether TheBench was previously installed"
-if [ -e `cat $BENCH_HOMEP` ]; then
-	LOG+="  You have TheBench installed at: `cat $BENCH_HOMEP`"
-  	LOG+="  There is no need to reinstall. Just do 'git pull' in that directory for the latest."
-  	exit 0  # this is not an error
-fi
-LOG+="Done."
 LOG+="Checking/installing temporary storage for TheBench"
 if [ ! -d $TMPB ]; then
 	mkdir $TMPB   # we dont need sudo for this
