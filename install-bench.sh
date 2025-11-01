@@ -6,7 +6,7 @@ BENCH_HISTORY="$HOME/.thebenchhistory" # py saves commands in it internally
 BHF=`pwd` # the dir to be pointed by BENCH_HOMEP;
 BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but it might name-collide
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
-PY="3.10"                 # isolated python for TheBench, without pyenv or ensurepip nonsense
+PY="3.9"                 # isolated python for TheBench, without pyenv or ensurepip nonsense
 SUDO=sudo  # for SBCL install
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up `date`\n========================================================="
