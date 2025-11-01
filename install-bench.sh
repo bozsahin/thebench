@@ -47,7 +47,7 @@ make -j$(nproc)
 make install
 python$PY -m pip install pkg_resources cl4py sly prompt_toolkit 
 LOG+="\n  $PY libraries set for TheBench use: pkg_resources, cl4py, sly, prompt_toolkit"
-echo "python$PY $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
+echo "python$PY $BHF/src/bench.py" > "$HOME/.local/bin/$BENCHBIN" 
 LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
 LOG+="\nDone."
