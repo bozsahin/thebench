@@ -49,7 +49,8 @@ LOG+="\nDone."
 LOG+="\nChecking/installing Python and SBCL"
 packager=
 install=install
-echo "You will be asked for sudo password"
+echo "You may be asked for sudo password"
+echo ""
 if [ `command -v yum` ]; then
        packager=yum
        $SUDO yum makecache  # updates the database
@@ -85,20 +86,31 @@ if [ "$packager" ]; then
        echo ""
        echo ""
        LOG+="\n  Checking/installing TheBench python ($PY), its pip and libraries"
-       $SUDO $packager $install python$PY
+       if [ `command -v python$PY` ]; then
+		LOG+="\n  You have python$PY; I will get a local pip for it only"
+       else
+                LOG+="\n No python$PY; installing it"
+       		$SUDO $packager $install python$PY
+       fi
        curl -Ss https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
        python$PY get-pip.py --prefix=$HOME/python$PY --user
        python$PY -m pip install --upgrade pip setuptools wheel
        python$PY -m pip install cl4py sly prompt_toolkit 
-       LOG+="\n  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
+       LOG+="\n  python$PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
        echo "python$PY $BHF/src/bench.py" > "$HOME/.local/bin/$BENCHBIN" 
        LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
        chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
-       $SUDO $packager $install sbcl
+       if [ `command -v sbcl` ]; then
+		LOG+="\n  You already have SBCL"
+       else
+                LOG+="\n No SBCL; installing it"
+                $SUDO $packager $install sbcl
+       fi
 else
        LOG+="\n  apt, dnf, pamac, yum, zypper or brew not found."
        LOG+="\n  Cannot install Python"
        LOG+="\n  Cannot install SBCL"
+       LOG+="\n***Are you sure you are on a known linux/macos ?***"
 fi
 LOG+="\nDone."
 LOG+="\nTheBench install: Check for Cannot install errors"
