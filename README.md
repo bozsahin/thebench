@@ -11,7 +11,7 @@ SOFTWARE NEEDED:
 
    A common Linux distro, MacOS or Windows11 and up.
 
-TO INSTALL: 
+TO INSTALL (involves 3 steps): 
  
 1. Make sure your OS has the basics: `curl` and `git`.
 
