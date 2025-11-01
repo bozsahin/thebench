@@ -7,15 +7,10 @@ BHF=`pwd` # the dir to be pointed by BENCH_HOMEP;
 BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but it might name-collide
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
 PY="3.10"                 # isolated python for TheBench, without pyenv or ensurepip nonsense
-SUDO=sudo  # for SBCL
+SUDO=sudo  # for SBCL install
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up `date`\n========================================================="
 LOG+="Checking the software requirements"
-if [ ! -x `command -v git` ]; then
-	LOG+="  You don't have git"
-	LOG+="  exiting without action"
-	exit -1
-fi
 if [ ! -x `command -v curl` ]; then
 	LOG+="  You don't have curl"
 	LOG+="  exiting without action"
@@ -33,6 +28,8 @@ LOG+="Checking/installing temporary storage for TheBench"
 if [ ! -d $TMPB ]; then
 	mkdir $TMPB   # we dont need sudo for this
   	LOG+="  $TMPB directory created for temporary files"
+else
+	LOG+="  $TMPB directory already exists; using it for TheBench"
 fi
 LOG+="Done."
 LOG+='Checking/ensuring ~/.local/bin'
@@ -124,7 +121,7 @@ fi
 LOG+="Done."
 LOG+="TheBench install: COMPLETED"
 echo "The install log is available at: $LOGFILE"
-echo "--->Type 'bash', then 'thebench', to start using it right away."
+echo "--->Type 'bash', then 'thebench', to start using TheBench right away."
 LOG+="========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
