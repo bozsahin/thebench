@@ -17,41 +17,44 @@ TO INSTALL:
 
     -In Linux, do the following one by one to find out if you have them:
 
-     <pre><code> 
+     ```
         command -v curl
         command -v git
-     </code></pre> 
+     ```
 
         If you get a blank response, you don't have them. Use your installer to install them before proceeding.
 
     -In MacOS, open a terminal app and get `brew` (you already have `curl` and `git`, but need an installer):
 
-     <pre><code>
+     ```
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-     </code></pre>
+     ```
 
     -In Windows, 11 and up, Go to Microsoft Store and install the linux called `Ubuntu` (any version).
         Click on the app, and set up a local user for yourself. 
         Then check `curl` and `git` as in Linux above.
 
         If `curl` or `git` is not available, install them with your Ubuntu's installer by doing the following:
-        <pre><code>
+
+        ```
         sudo apt install curl 
         sudo apt install git
-        </code></pre>
+        ```
 
 2.  Open a terminal app (for W11, do that in the ubuntu app), and change directory to where you want to install the tool. Then do:
 
-   <pre><code>git clone https://github.com/bozsahin/thebench</code></pre>
+   ```
+   git clone https://github.com/bozsahin/thebench
+   ```
 
    This will create `thebench` subdirectory in that directory.
 
 3.  Finally, do  the following in the terminal:
 
-   <pre><code>
+   ```
    cd thebench
    ./install-bench.sh   
-   </code></pre>
+   ```
    
 Open a NEW terminal app to start using it.
 
@@ -61,7 +64,9 @@ TO USE:
 
 just do anywhere in your machine from the terminal app:
 
-<code>thebench</code>
+    ```
+    thebench
+    ```
 
 Use UP and DOWN keys for command recall. TheBench keeps its specific command history in `.thebenchhistory`
 file at your home directory.
