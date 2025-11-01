@@ -72,7 +72,7 @@ Please keep your work files outside TheBench folder. That would make your life e
 
 TO DEVELOP A GRAMMAR:
 
-Just use your favourite PLAIN TEXT editor and enter a grammar. Then follow help (the `? command') of TheBench to process it.
+Just use your favourite PLAIN TEXT editor and enter a grammar. Then follow help (the `? command`) of TheBench to process it.
 I suggest you develop grammars NOT in `thebench` folder to avoid override in upgrades.
 If you uninstall TheBench, the repo directory is deleted as well, so you might lose data if you work in this directory.
 
@@ -102,7 +102,7 @@ Please do not alter them manually.
 
 TO UNINSTALL:
 
-    Just delete the folder `thebench`.
+Just delete the folder `thebench`.
 
 My email is somewhere in the webosphere to google; just drop me an email if you need assistance.
 
