@@ -106,7 +106,7 @@ if [ "$packager" ]; then
        		$SUDO $packager $install python$PY
        fi
        curl -Ss https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
-       python$PY get-pip.py --prefix=$HOME/python$PY --user
+       python$PY get-pip.py --user
        python$PY -m pip install --upgrade pip setuptools wheel
        python$PY -m pip install cl4py sly prompt_toolkit 
        LOG+="\n  python$PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
