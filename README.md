@@ -15,7 +15,7 @@ TO INSTALL:
  
 1. Make sure your OS has the basics: `curl` and `git`.
 
-    -In Linux, do the following one by one to find out if you have them:
+-In Linux, do the following one by one to find out if you have them:
 
 ```bash
         command -v curl
@@ -23,30 +23,27 @@ TO INSTALL:
 ```
 If you get a blank response, you don't have them. Use your installer to install them before proceeding.
 
-    -In MacOS, open a terminal app and get `brew` (you already have `curl` and `git`, but need an installer):
+-In MacOS, open a terminal app and get `brew` (you already have `curl` and `git`, but need an installer):
 
 ```bash
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+-In Windows, 11 and up, Go to Microsoft Store and install the linux called `Ubuntu` (any version).
+Click on the app, and set up a local user for yourself. 
+Then check `curl` and `git` as in Linux above.
 
-    -In Windows, 11 and up, Go to Microsoft Store and install the linux called `Ubuntu` (any version).
-        Click on the app, and set up a local user for yourself. 
-        Then check `curl` and `git` as in Linux above.
+If `curl` or `git` is not available, install them with your Ubuntu's installer by doing the following:
 
-        If `curl` or `git` is not available, install them with your Ubuntu's installer by doing the following:
-
- ```bash
+```bash
         sudo apt install curl 
         sudo apt install git
  ```
-
 2.  Open a terminal app (for W11, do that in the ubuntu app), and change directory to where you want to install the tool. Then do:
 
 ```bash
    git clone https://github.com/bozsahin/thebench
 ```
-
-   This will create `thebench` subdirectory in that directory.
+This will create `thebench` subdirectory in that directory.
 
 3.  Finally, do  the following in the terminal:
 
@@ -54,7 +51,6 @@ If you get a blank response, you don't have them. Use your installer to install 
    cd thebench
    ./install-bench.sh   
 ```
-   
 Open a NEW terminal app to start using it.
 
 This will install TheBench, a specific isolated Python for it (currently python3.11), Python libraries needed, SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. In case you have another python in your machine, even the same one that `TheBench` uses, it is untouched.
