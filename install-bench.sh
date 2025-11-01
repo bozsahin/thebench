@@ -22,7 +22,7 @@ if [[ `uname` == "Darwin" ]]; then
 		LOG+="\n  brew found locally in your computer"
         else
                 LOG+="\n  installing brew"
-        	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         fi
 elif [[ `uname` == "Linux" ]]; then
 	LOG+="\n  You are using Linux; I will use its standard installer"
