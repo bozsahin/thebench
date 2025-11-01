@@ -21,7 +21,7 @@ TO INSTALL:
         command -v curl
         command -v git
 ```
-        If you get a blank response, you don't have them. Use your installer to install them before proceeding.
+If you get a blank response, you don't have them. Use your installer to install them before proceeding.
 
     -In MacOS, open a terminal app and get `brew` (you already have `curl` and `git`, but need an installer):
 
