@@ -25,7 +25,7 @@ else
 	LOG+="\n  $TMPB directory already exists; using it for TheBench"
 fi
 LOG+="\nDone."
-LOG+='Checking/ensuring ~/.local/bin'
+LOG+='\nChecking/ensuring ~/.local/bin'
 mkdir -p $HOME/.local/bin  # create if it does not exist
 case ":$PATH:" in
 	*":$HOME/.local/bin:") 
