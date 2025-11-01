@@ -53,7 +53,7 @@ This will create `thebench` subdirectory in that directory.
 ```
 Open a NEW terminal app to start using it.
 
-This will install TheBench, a specific isolated Python for it (currently python3.11), Python libraries needed, SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. In case you have another python in your machine, even the same one that `TheBench` uses, it is untouched.
+This will install TheBench, a specific isolated Python for it (currently python3.10), Python libraries needed, SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. In case you have another python in your machine, even the same one that `TheBench` uses, it is untouched.
 
 TO USE: 
 
