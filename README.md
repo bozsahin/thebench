@@ -53,12 +53,13 @@ TO INSTALL:
    ./install-bench.sh   
    </code></pre>
    
+Open a NEW terminal app to start using it.
 
 This will install TheBench, a specific isolated Python for it (currently python3.11), Python libraries needed, SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. In case you have another python in your machine, even the same one that `TheBench` uses, it is untouched.
 
 TO USE: 
 
-just do anywhere in your machine from a terminal app:
+just do anywhere in your machine from the terminal app:
 
 <code>thebench</code>
 

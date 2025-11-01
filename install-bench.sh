@@ -36,20 +36,33 @@ if [ ! -d $TMPB ]; then
 fi
 LOG+="Done."
 LOG+='Checking/ensuring ~/.local/bin'
-mkdir -p $HOME/.local/bin 
+mkdir -p $HOME/.local/bin  # create if it does not exist
+case ":$PATH:" in
+	*":$HOME/.local/bin:") 
+		LOG+="  $HOME/.local/bin already in PATH." 
+		;;
+	*)
+		echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc  
+		LOG+="  $HOME/.local/bin added to PATH"
+		LOG+="  $HOME/.bashrc appended with PATH export for $HOME/.local/bin"
+		;;
+esac
 LOG+="Done."
 LOG+="Checking/installing uv and isolating TheBench python ($PY), its pip and libraries for TheBench"
 if [ ! -x `command -v uv` ]; then
      curl -LsSf https://astral.sh/uv/install.sh | sh
+     LOG+="  uv downloaded and installed"
+else
+     LOG+="  uv already installed."
 fi
-LOG+="  UV version : `cat uv --version`"
+LOG+="  uv version : `cat uv --version`"
 uv python install $PY
 LOG+="  TheBench's own python: `uv python list`"
 uv pip install --python $PY cl4py sly prompt_toolkit # no more python pip or ensurepip;  yerrs
 LOG+="  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
-echo "sh -c \"export PATH=\$HOME/.local/bin:\$PATH; uv run --python $PY python $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
+echo "sh -c \"uv run --python $PY python $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
 LOG+="  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
-chmod ugo+x "$ULB/$BENCHBIN"  # to call bench from anywhere
+chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
 LOG+="Done."
 LOG+="Checking/setting TheBench commmand recall files"
 echo "$BHF" > $BENCH_HOMEP   # repo pointer saved at home dir as a dot file
@@ -110,7 +123,7 @@ else
 fi
 LOG+="Done."
 LOG+="TheBench install: COMPLETED"
-LOG+="The log is available at: $LOGFILE"
+echo "The install log is available at: $LOGFILE"
 LOG+="========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
