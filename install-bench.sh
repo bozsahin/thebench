@@ -84,13 +84,13 @@ if [ "$packager" ]; then
        LOG+="\n  You have an installer ($packager) for standard packages"
        echo ""
        echo ""
-       LOG+="\nChecking/installing TheBench python ($PY), its pip and libraries"
+       LOG+="\n  Checking/installing TheBench python ($PY), its pip and libraries"
        $SUDO $packager $install python$PY
        curl -Ss https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
        python$PY get-pip.py --prefix=$HOME/python$PY --user
        python$PY -m pip install --upgrade pip setuptools wheel
        python$PY -m pip install cl4py sly prompt_toolkit 
-       LOG+="\n  $PY libraries set for TheBench use: pkg_resources, cl4py, sly, prompt_toolkit"
+       LOG+="\n  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
        echo "python$PY $BHF/src/bench.py" > "$HOME/.local/bin/$BENCHBIN" 
        LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
        chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
