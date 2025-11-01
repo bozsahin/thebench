@@ -15,7 +15,7 @@ TO INSTALL (involves 3 steps):
  
 1. Make sure your OS has the basics: `curl` and `git`.
 
--In Linux, do the following one by one to find out if you have them:
+-In Linux or MacOS, do the following one by one to find out if you have them:
 
 ```bash
         command -v curl
@@ -23,11 +23,6 @@ TO INSTALL (involves 3 steps):
 ```
 If you get a blank response, you don't have them. Use your installer to install them before proceeding.
 
--In MacOS, open a terminal app and get `brew` (you already have `curl` and `git`, but need an installer):
-
-```bash
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
 -In Windows, 11 and up, Go to Microsoft Store and install the linux called `Ubuntu` (any version).
 Click on the app, and set up a local user for yourself. 
 Then check `curl` and `git` as in Linux above.
