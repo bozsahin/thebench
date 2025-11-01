@@ -10,58 +10,58 @@ PY="3.10"                 # isolated python for TheBench, without pyenv or ensur
 SUDO=sudo  # for SBCL install
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up `date`\n========================================================="
-LOG+="Checking the software requirements"
+LOG+="\nChecking the software requirements"
 if [ ! -x `command -v curl` ]; then
-	LOG+="  You don't have curl"
-	LOG+="  exiting without action"
+	LOG+="\n  You don't have curl"
+	LOG+="\n  exiting without action"
 	exit -1
 fi
-LOG+="Done."
-LOG+="Checking/installing temporary storage for TheBench"
+LOG+="\nDone."
+LOG+="\nChecking/installing temporary storage for TheBench"
 if [ ! -d $TMPB ]; then
 	mkdir $TMPB   # we dont need sudo for this
-  	LOG+="  $TMPB directory created for temporary files"
+  	LOG+="\n  $TMPB directory created for temporary files"
 else
-	LOG+="  $TMPB directory already exists; using it for TheBench"
+	LOG+="\n  $TMPB directory already exists; using it for TheBench"
 fi
-LOG+="Done."
+LOG+="\nDone."
 LOG+='Checking/ensuring ~/.local/bin'
 mkdir -p $HOME/.local/bin  # create if it does not exist
 case ":$PATH:" in
 	*":$HOME/.local/bin:") 
-		LOG+="  $HOME/.local/bin already in PATH." 
+		LOG+="\n  $HOME/.local/bin already in PATH." 
 		;;
 	*)
 		echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc  
-		LOG+="  $HOME/.local/bin added to PATH"
-		LOG+="  $HOME/.bashrc appended with PATH export for $HOME/.local/bin"
+		LOG+="\n  $HOME/.local/bin added to PATH"
+		LOG+="\n  $HOME/.bashrc appended with PATH export for $HOME/.local/bin"
 		;;
 esac
-LOG+="Done."
-LOG+="Checking/installing uv and isolating TheBench python ($PY), its pip and libraries for TheBench"
+LOG+="\nDone."
+LOG+="\nChecking/installing uv and isolating TheBench python ($PY), its pip and libraries for TheBench"
 if [ ! -x `command -v uv` ]; then
      curl -LsSf https://astral.sh/uv/install.sh | sh
-     LOG+="  uv downloaded and installed"
+     LOG+="\n  uv downloaded and installed"
 else
-     LOG+="  uv already installed."
+     LOG+="\n  uv already installed."
 fi
-LOG+="  uv version : `cat uv --version`"
+LOG+="\n  uv version : `cat uv --version`"
 uv python install $PY
-LOG+="  TheBench's own python: `uv python list`"
+LOG+="\n  TheBench's own python: `uv python list`"
 uv pip install --python $PY cl4py sly prompt_toolkit # no more python pip or ensurepip;  yerrs
-LOG+="  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
+LOG+="\n  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
 echo "sh -c \"uv run --python $PY python $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
-LOG+="  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
+LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
-LOG+="Done."
-LOG+="Checking/setting TheBench commmand recall files"
+LOG+="\nDone."
+LOG+="\nChecking/setting TheBench commmand recall files"
 echo "$BHF" > $BENCH_HOMEP   # repo pointer saved at home dir as a dot file
 echo "" > $BENCH_HISTORY     # command history saved at home dir as a 
 	                              #     dot file (py refers to it internally)
 chmod u+rw $BENCH_HISTORY
 chmod u+rw $BENCH_HOMEP
-LOG+="Done."
-LOG+="Checking/installing SBCL"
+LOG+="\nDone."
+LOG+="\nChecking/installing SBCL"
 if [ ! -x `command -v sbcl` ]; then    # look for package managers
 	packager=
         install=install
@@ -96,24 +96,24 @@ if [ ! -x `command -v sbcl` ]; then    # look for package managers
             SUDO=                        # brew cannae sudo
         fi
         if [ "$packager" ]; then
-            LOG+="  You have an installer ($packager) for standard packages"
+            LOG+="\n  You have an installer ($packager) for standard packages"
             echo ""
             echo "You will be asked for sudo password ONLY to install SBCL"
             echo ""
             $SUDO $packager $install sbcl
-            LOG+="  SBCL is downloaded and installed"
+            LOG+="\n  SBCL is downloaded and installed"
         else
-            LOG+="  apt, dnf, pamac, yum, zypper or brew not found. I leave Common Lisp handling to you."
-            LOG+="  When you install SBCL, you will be set to go in TheBench."
-            LOG+="  No further install will be needed."
+            LOG+="\n  apt, dnf, pamac, yum, zypper or brew not found. I leave Common Lisp handling to you."
+            LOG+="\n  When you install SBCL, you will be set to go in TheBench."
+            LOG+="\n  No further install will be needed."
         fi
 else
-	LOG+="  You already have SBCL; using it for TheBench"
+	LOG+="\n  You already have SBCL; using it for TheBench"
 
 fi
-LOG+="Done."
-LOG+="TheBench install: COMPLETED"
-LOG+="========================================================="
+LOG+="\nDone."
+LOG+="\nTheBench install: COMPLETED"
+LOG+="\n========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
 echo "The install log is available at: $LOGFILE"
