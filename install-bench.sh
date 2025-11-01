@@ -46,8 +46,7 @@ else
      LOG+="\n  uv already installed."
 fi
 uv venv --python $PY thebenchenv
-uv python install $PY
-source thebenchenv/bin/activate
+source thebench/env/bin/activate
 uv pip install pkg_resources cl4py sly prompt_toolkit # no more python pip or ensurepip;  yerrs
 LOG+="\n  $PY libraries set for TheBench use: cl4py, sly, prompt_toolkit"
 echo "bash -c \"source thebenchenv/bin/activate; uv run python $BHF/src/bench.py\"" > "$HOME/.local/bin/$BENCHBIN" 
