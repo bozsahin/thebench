@@ -46,10 +46,6 @@ This will create `thebench` subdirectory in that directory.
    cd thebench
    ./install-bench.sh   
 ```
-Open a NEW terminal app to start using it.
-
-This will install TheBench, a specific isolated Python for it (currently python3.10), Python libraries needed, SBCL as Common Lisp, which is used by one of the python libraries and TheBench processor. You have also made the tool available from anywhere in your machine. In case you have another python in your machine, even the same one that `TheBench` uses, it is untouched.
-
 TO USE: 
 
 just do anywhere in your machine from the terminal app:
@@ -57,7 +53,6 @@ just do anywhere in your machine from the terminal app:
 ```bash
     thebench
 ```
-
 Use UP and DOWN keys for command recall. TheBench keeps its specific command history in `.thebenchhistory`
 file at your home directory.
 
