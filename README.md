@@ -15,7 +15,7 @@ TO INSTALL (involves 3 steps):
  
 1. Make sure your OS has the basics: `curl` and `git`.
 
--In Linux or MacOS, do the following one by one to find out if you have them:
+-In Linux or MacOS, do the following in a terminal app one by one to find out if you have them:
 
 ```bash
         command -v curl
@@ -27,7 +27,7 @@ If you get a blank response, you don't have them. Use your installer to install 
 Click on the app, and set up a local user for yourself. 
 Then check `curl` and `git` as in Linux above.
 
-If `curl` or `git` is not available, install them with your Ubuntu's installer by doing the following:
+If `curl` or `git` is not available, install them with your Ubuntu's installer by doing the following in a terminal app:
 
 ```bash
         sudo apt install curl 
