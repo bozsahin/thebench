@@ -6,8 +6,8 @@ BENCH_HISTORY="$HOME/.thebenchhistory" # py saves commands in it internally
 BHF=`pwd` # the dir to be pointed by BENCH_HOMEP;
 BENCHBIN='thebench'  # this is the name of the binary 'bench' is shorter but it might name-collide
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
-PY="3.11"                 # isolated python for TheBench, without pyenv or ensurepip nonsense
-PYC="3.11.9"             # specific python to download from python.org
+PY="3.9"                 # isolated python for TheBench, without pyenv or ensurepip nonsense
+PYC="3.9.13"             # specific python to download from python.org
 SUDO=sudo  # for SBCL install
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
 LOG="=========================================================\nTheBench install and set up `date`\n========================================================="
@@ -40,7 +40,7 @@ case ":$PATH:" in
 esac
 LOG+="\nDone."
 LOG+="\nChecking/installing TheBench python ($PYC as $PY) IN THIS REPO, its pip and libraries"
-curl -sSf https://wwww.python.org/ftp/python/$PYC/Python-$PYC.tgz | tar -xz
+curl -sSf https://www.python.org/ftp/python/$PYC/Python-$PYC.tgz | tar -xz
 cd Python-$PYC
 ./configure --prefix=$HOME/.local/bin/python$PY --enable-optimizations
 make -j$(nproc)
