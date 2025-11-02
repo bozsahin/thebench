@@ -6,6 +6,12 @@ BENCHBIN='thebench'  # this is the name of the binary; 'bench' is shorter but it
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
 PY="3.11"                 # specific python for thebench
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
+if [[ ! "$1" == "newbie" || ! "$1" == "Newbie" || ! "$1" == "NEWBIE" ]]; then
+	if [[ -n "$1" ]]; then
+		echo "Unknown install type, exiting without install"
+		exit -1
+	fi
+fi
 LOG="========================================================="
 LOG+="\nTheBench install and set up `date`"
 LOG+="\n======================================================="
