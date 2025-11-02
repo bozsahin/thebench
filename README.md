@@ -26,8 +26,12 @@ In Linux/MacOS, there is nothing to do in this step.
 
 ```bash
     curl -LO https://github.com/bozsahin/thebench/install-thebench.sh && chmod +x install-thebench.sh
+```
+
+```bash
     ./install-thebench.sh newbie
 ```
+
 The installer checks and installs if not present the following: `brew` (for MacOS only), `curl`, `git`, `SBCL`, `python3.11`, its `pip`, and TheBench's python libraries.
 
 TO USE: 
