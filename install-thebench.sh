@@ -11,7 +11,7 @@ if [[ "$1" == "newbie" || "$1" == "Newbie" || "$1" == "NEWBIE" ]]; then
 elif [[ -z "$1" ]]; then
 	echo "Pro install"
 else
-	echo "Unknown install type, exiting without install\n"
+	echo "Unknown install type, exiting without install"
 	exit -1
 fi
 LOG="========================================================="
