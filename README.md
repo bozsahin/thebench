@@ -22,10 +22,10 @@ In Linux/MacOS, there is nothing to do in this step.
 
     2.1 If you know your way around `git` and `linux` installs, clone this repo and run the installer in the repo directory: `./install-thebench.sh`
 
-    2.2 Or download [The downloadable TheBench installer](install-thebench.sh.tar.gz), and do the following to install TheBench:
+    2.2 Or do the following one by one to install TheBench:
 
 ```bash
-    tar xzf install-thebench.sh.tar.gz
+    curl -LO https://github.com/bozsahin/thebench/install-thebench.sh && chmod +x install-thebench.sh
     ./install-thebench.sh newbie
 ```
 The installer checks and installs if not present the following: `brew` (for MacOS only), `curl`, `git`, `SBCL`, `python3.11`, its `pip`, and TheBench's python libraries.
