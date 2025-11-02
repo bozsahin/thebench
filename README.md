@@ -11,41 +11,25 @@ SOFTWARE NEEDED:
 
    A common Linux distro, MacOS or Windows11 and up.
 
-TO INSTALL (involves 3 steps): 
+TO INSTALL (involves 2 steps): 
  
-1. Make sure your OS has the basics: `curl` and `git`.
-
--In Linux or MacOS, do the following in a terminal app one by one to find out if you have them:
-
-```bash
-        command -v curl
-        command -v git
-```
-If you get a blank response, you don't have them. Use your installer to install them before proceeding.
-
--In Windows, 11 and up, Go to Microsoft Store and install the linux called `Ubuntu` (any version).
+1. In Windows 11 and up, go to <a href="https://apps.microsoft.com/">Microsoft Store</a> and install the linux called `Ubuntu` (any version).
 Click on the app, and set up a local user for yourself. 
-Then check `curl` and `git` as in Linux above.
 
-If `curl` or `git` is not available, install them with your Ubuntu's installer by doing the following in a terminal app:
+In Linux/MacOS, there is nothing to do in this step.
+
+2.  Open a terminal app (for W11, do that in the ubuntu app), and CHANGE DIRECTORY to where you want to install the tool. Then do either:
+
+2.1 If you know your way around git and linux installs, clone this repo and run the installer in the repo directory: `./install-thebench.sh`.
+
+2.2 Otherwise download <a href="https://github.com/bozsahin/thebench/install-thebench.sh.tar.gz">Downloadable TheBench installer</a>, and do the following to install TheBench:
 
 ```bash
-        sudo apt install curl 
-        sudo apt install git
- ```
-2.  Open a terminal app (for W11, do that in the ubuntu app), and change directory to where you want to install the tool. Then do:
-
-```bash
-   git clone https://github.com/bozsahin/thebench
+    tar xzf install-thebench.sh.tar.gz
+    ./install-thebench.sh newbie
 ```
-This will create `thebench` subdirectory in that directory.
+The installer checks and installs if not present the following: `brew` (for MacOS only), `curl`, `git`, `SBCL`, `python3.11`, its `pip`, and TheBench's python libraries.
 
-3.  Finally, do  the following in the terminal:
-
-```bash
-   cd thebench
-   ./install-bench.sh   
-```
 TO USE: 
 
 just do anywhere in your machine from the terminal app:
