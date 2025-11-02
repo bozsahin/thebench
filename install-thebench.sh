@@ -7,8 +7,10 @@ TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training g
 PY="3.11"                 # specific python for thebench
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
 if [[ "$1" == "newbie" || "$1" == "Newbie" || "$1" == "NEWBIE" ]]; then
-	echo "newbie install\n"
-elif [[ ! -n "$1" ]]; then
+	echo "newbie install"
+elif [[ -z "$1" ]]; then
+	echo "Pro install"
+else
 	echo "Unknown install type, exiting without install\n"
 	exit -1
 fi
@@ -168,8 +170,9 @@ LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BEN
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
 LOG+="\nDone."
 LOG+="\n\n\nTheBench install: **Please check for Cannot Install errors"
-LOG+="\n========================================================="
+LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
 echo "The install log is available at: $LOGFILE"
 echo "Type 'thebench' to start using TheBench right away."
+echo ""
