@@ -7,7 +7,7 @@ TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training g
 PY="3.11"                 # specific python for thebench
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
 if [[ -n "$1" ]]; then
-	if [[ ! "$1" == "newbie" || ! "$1" == "Newbie" || ! "$1" == "NEWBIE" ]]; then
+	if [[ ! "$1" == "newbie" && ! "$1" == "Newbie" && ! "$1" == "NEWBIE" ]]; then
 		echo "Unknown install type, exiting without install"
 		exit -1
 	fi
