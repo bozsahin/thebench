@@ -25,7 +25,7 @@ In Linux/MacOS, there is nothing to do in this step.
     2.2 Or do the following one by one to install TheBench:
 
 ```bash
-    curl -LO https://github.com/bozsahin/thebench/install-thebench.sh && chmod +x install-thebench.sh
+    curl -LO https://github.com/bozsahin/thebench/blob/main/install-thebench.sh && chmod +x install-thebench.sh
 ```
 
 ```bash
