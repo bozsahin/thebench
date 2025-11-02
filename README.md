@@ -20,9 +20,9 @@ In Linux/MacOS, there is nothing to do in this step.
 
 2.  Open a terminal app (for W11, do that in the ubuntu app), and CHANGE DIRECTORY to where you want to install the tool. Then do one of the following:
 
-2.1 If you know your way around git and linux installs, clone this repo and run the installer in the repo directory: `./install-thebench.sh`.
+    2.1 If you know your way around git and linux installs, clone this repo and run the installer in the repo directory: `./install-thebench.sh`.
 
-2.2 Otherwise download [Downloadable TheBench installer](https://github.com/bozsahin/thebench/install-thebench.sh.tar.gz), and do the following to install TheBench:
+    2.2 Otherwise download [Downloadable TheBench installer](https://github.com/bozsahin/thebench/install-thebench.sh.tar.gz), and do the following to install TheBench:
 
 ```bash
     tar xzf install-thebench.sh.tar.gz
