@@ -18,7 +18,7 @@ Click on the app, and set up a local user for yourself.
 
 In Linux/MacOS, there is nothing to do in this step.
 
-2.  Open a terminal app (for W11, do that in the ubuntu app), and CHANGE DIRECTORY to where you want to install the tool. Then do the following:
+2.  Open a terminal app (for W11, do that in the ubuntu app), and CHANGE DIRECTORY to where you want to install the tool. Then do the following (`curl` is available in all Linuxes and macOS):
 
 ```bash
     curl -LO https://raw.githubusercontent.com/bozsahin/thebench/main/install-thebench.sh && chmod +x install-thebench.sh
