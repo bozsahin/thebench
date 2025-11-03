@@ -21,7 +21,7 @@ In Linux/MacOS, there is nothing to do in this step.
 2.  Open a terminal app (for W11, do that in the ubuntu app), and CHANGE DIRECTORY to where you want to install the tool. Then do the following (`curl` is available in all Linuxes and macOS):
 
 ```bash
-    curl -LO https://raw.githubusercontent.com/bozsahin/thebench/main/install-thebench.sh && chmod +x install-thebench.sh
+    curl -LO https://raw.githubusercontent.com/bozsahin/thebench/main/install-thebench.sh && chmod +x install-thebench.sh && ./install-thebench.sh
 ```
 The installer checks and installs if not present the following: `thebench`, `brew` (for MacOS only), `curl`, `git`, `SBCL`, `python3.11`, its `pip`, and TheBench's python libraries.
 
