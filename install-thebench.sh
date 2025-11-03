@@ -6,14 +6,6 @@ BENCHBIN='thebench'  # this is the name of the binary; 'bench' is shorter but it
 TMPB='/var/tmp/thebench'  # where the temporary files of analysis and training go
 PY="3.11"                 # specific python for thebench
 LOGFILE='/var/tmp/thebench-install.log' # goes there to avoid .gitignore in repo directory
-if [[ "$1" == "newbie" || "$1" == "Newbie" || "$1" == "NEWBIE" ]]; then
-	echo "newbie install"
-elif [[ -z "$1" ]]; then
-	echo "Pro install"
-else
-	echo "Unknown install type, exiting without install"
-	exit -1
-fi
 LOG="========================================================="
 LOG+="\nTheBench install and set up `date`"
 LOG+="\n======================================================="
@@ -147,14 +139,23 @@ case ":$PATH:" in
 esac
 LOG+="\nDone."
 LOG+="\nChecking thebench install type"
-if [[ "$1" == "newbie" || "$1" == "Newbie" || "$1" == "NEWBIE" ]]; then
-	LOG+="\n  Newbie install; cloning thebench repo"
-        git clone https://github.com/bozsahin/thebench
-	cd thebench
-	BHF=`pwd`
-else 
-	LOG+="\n  Pro install; no cloning of thebench repo"
+if [[ `basename "$PWD"` == "thebench" ]]; then
+	LOG+="\n  Already in the thebench repo; no git cloning, but pull"
+	git pull
 	BHF=`pwd` # the dir to be pointed by BENCH_HOMEP;
+else 
+	LOG+="\n  Git cloning thebench if needed"
+	if [[ -d "thebench" ]]; then
+		LOG+="\n  Directory exists, cd to it and pull"
+		cd thebench
+		git pull
+                BHF=`pwd`
+	else
+		LOG+="\n  No thebench; cloning it"
+        	git clone https://github.com/bozsahin/thebench
+		cd thebench
+		BHF=`pwd`
+	fi
 fi
 LOG+="\nDone."
 LOG+="\nChecking/setting TheBench command recall files"

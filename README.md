@@ -18,21 +18,12 @@ Click on the app, and set up a local user for yourself.
 
 In Linux/MacOS, there is nothing to do in this step.
 
-2.  Open a terminal app (for W11, do that in the ubuntu app), and CHANGE DIRECTORY to where you want to install the tool. Then do one of the following:
-
-    2.1 If you know your way around `git` and `linux` installs, clone this repo and run the installer in the repo directory: `./install-thebench.sh`
-
-    2.2 Or do the following one by one to install TheBench:
+2.  Open a terminal app (for W11, do that in the ubuntu app), and CHANGE DIRECTORY to where you want to install the tool. Then do the following:
 
 ```bash
     curl -LO https://raw.githubusercontent.com/bozsahin/thebench/main/install-thebench.sh && chmod +x install-thebench.sh
 ```
-
-```bash
-    ./install-thebench.sh newbie
-```
-
-The installer checks and installs if not present the following: `brew` (for MacOS only), `curl`, `git`, `SBCL`, `python3.11`, its `pip`, and TheBench's python libraries.
+The installer checks and installs if not present the following: `thebench`, `brew` (for MacOS only), `curl`, `git`, `SBCL`, `python3.11`, its `pip`, and TheBench's python libraries.
 
 TO USE: 
 
