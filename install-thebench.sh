@@ -11,8 +11,9 @@ LOG+="\nTheBench install and set up `date`"
 LOG+="\n======================================================="
 LOG+="\nChecking/installing install requirements"
 echo ""
-echo "**You may be asked for sudo password"
+echo "TheBench install begins; the result will be logged to $LOGFILE"
 echo ""
+echo "**You may be asked for sudo password"
 echo ""
 packager=
 install=install
