@@ -104,11 +104,11 @@ if [[ ! -z $packager ]]; then
        else
 	       if [[ $(packager) == "brew" ]]; then
                 	LOG+="\n No python$PY; installing it, brew-style"
-       			$SUDO $packager $install "python@$PY"
+       			$SUDO $packager $install python"@$PY"
 		else
-                	LOG+="\n No python$PY; installing it"
+                	LOG+="\n No python$PY; installing it, linux-style"
        			$SUDO $packager $install python$PY
-
+		fi
        fi
        curl -Ss https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
        python$PY get-pip.py --user
@@ -175,10 +175,13 @@ LOG+="\nSetting up thebench binary"
 echo "python$PY $BHF/src/bench.py" > "$HOME/.local/bin/$BENCHBIN" 
 LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
+LOG+="\n  Sourcing $HOME/.bashrc"
 LOG+="\nDone."
 LOG+="\n\n\nTheBench install: **Please check for Cannot Install errors"
 LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
 echo "The install log is available at: $LOGFILE"
+echo "Type 'thebench' to use it right away"
 source $HOME/.bashrc
+
