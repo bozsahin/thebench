@@ -141,8 +141,6 @@ case ":$PATH:" in
 		echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc  
 		LOG+="\n  $HOME/.local/bin added to PATH"
 		LOG+="\n  $HOME/.bashrc appended with PATH export for $HOME/.local/bin"
-		LOG+="\n  running source command to make it effective immediately"
-		source $HOME/.bashrc
 		;;
 esac
 LOG+="\nDone."
@@ -183,5 +181,5 @@ LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
 echo "The install log is available at: $LOGFILE"
-echo "Type 'thebench' to start using TheBench right away."
-echo ""
+source $HOME/.bashrc
+echo "Type thebench to start using TheBench right away."
