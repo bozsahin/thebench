@@ -177,5 +177,5 @@ LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
 echo "The install log is available at: $LOGFILE"
-echo "Type 'thebench' to start using TheBench right away."
+echo "Type 'bash' and hit RETURN; then 'thebench' to start using TheBench right away."
 echo ""
