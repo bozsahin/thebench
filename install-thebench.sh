@@ -102,10 +102,10 @@ if [[ ! -z $packager ]]; then
        if [[ -x `command -v python$PY` ]]; then
 		LOG+="\n  You have python$PY; I will get a local pip for it only"
        else
-	       if [[ $(packager) == "brew" ]]; then
+		if [[ $(packager) == "brew" ]]; then
                 	LOG+="\n No python$PY; installing it, brew-style"
        			$SUDO $packager $install python"@$PY"
-		else
+         	else
                 	LOG+="\n No python$PY; installing it, linux-style"
        			$SUDO $packager $install python$PY
 		fi
@@ -141,6 +141,8 @@ case ":$PATH:" in
 		echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc  
 		LOG+="\n  $HOME/.local/bin added to PATH"
 		LOG+="\n  $HOME/.bashrc appended with PATH export for $HOME/.local/bin"
+		LOG+="\n  Sourcing $HOME/.bashrc"
+		source $HOME/.bashrc
 		;;
 esac
 LOG+="\nDone."
@@ -175,13 +177,10 @@ LOG+="\nSetting up thebench binary"
 echo "python$PY $BHF/src/bench.py" > "$HOME/.local/bin/$BENCHBIN" 
 LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
-LOG+="\n  Sourcing $HOME/.bashrc"
 LOG+="\nDone."
 LOG+="\n\n\nTheBench install: **Please check for Cannot Install errors"
 LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
-echo "The install log is available at: $LOGFILE"
-echo "Type 'thebench' to use it right away"
-source $HOME/.bashrc
-
+echo "\n\nThe install log is available at: $LOGFILE"
+echo "\n\nType 'thebench' to use it right away"
