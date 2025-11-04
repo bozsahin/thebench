@@ -134,7 +134,7 @@ LOG+="\nDone."
 LOG+='\nChecking/ensuring ~/.local/bin'
 mkdir -p $HOME/.local/bin  # create if it does not exist
 case ":$PATH:" in
-	*":$HOME/.local/bin:") 
+	*":$HOME/.local/bin:"*) 
 		LOG+="\n  $HOME/.local/bin already in PATH." 
 		;;
 	*)
