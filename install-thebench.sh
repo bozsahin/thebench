@@ -182,4 +182,3 @@ echo -e $LOG > $LOGFILE
 echo -e $LOG
 echo "The install log is available at: $LOGFILE"
 source $HOME/.bashrc
-echo "Type thebench to start using TheBench right away."
