@@ -57,7 +57,6 @@ if [[ $(uname) == "Darwin" ]]; then
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         fi
 	packager=brew
-        PY="@$PY"      # brew has different py naming"
         SUDO=                        # brew cannae sudo
 elif [[ $(uname) == "Linux" ]]; then
 	LOG+="\n  You are using Linux; I will use its standard installer ($packager)"
@@ -76,7 +75,7 @@ else
 	fi
 fi
 if [[ ! -z $packager ]]; then
-	LOG+="\n  You have an installer ($packager) for standard packages"
+	LOG+="\n  Continuing with $packager for installs"
 	if [[ ! -x `command -v curl` ]]; then
 		LOG+="\n  You don't have curl; installing it"
 		$SUDO $packager $install curl
@@ -103,8 +102,13 @@ if [[ ! -z $packager ]]; then
        if [[ -x `command -v python$PY` ]]; then
 		LOG+="\n  You have python$PY; I will get a local pip for it only"
        else
-                LOG+="\n No python$PY; installing it"
-       		$SUDO $packager $install python$PY
+	       if [[ $(packager) == "brew" ]]; then
+                	LOG+="\n No python$PY; installing it, brew-style"
+       			$SUDO $packager $install "python@$PY"
+		else
+                	LOG+="\n No python$PY; installing it"
+       			$SUDO $packager $install python$PY
+
        fi
        curl -Ss https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
        python$PY get-pip.py --user
@@ -137,6 +141,8 @@ case ":$PATH:" in
 		echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.bashrc  
 		LOG+="\n  $HOME/.local/bin added to PATH"
 		LOG+="\n  $HOME/.bashrc appended with PATH export for $HOME/.local/bin"
+		LOG+="\n  running source command to make it effective immediately"
+		source $HOME/.bashrc
 		;;
 esac
 LOG+="\nDone."
@@ -177,5 +183,5 @@ LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
 echo "The install log is available at: $LOGFILE"
-echo "Type 'bash' and hit RETURN; then 'thebench' to start using TheBench right away."
+echo "Type 'thebench' to start using TheBench right away."
 echo ""
