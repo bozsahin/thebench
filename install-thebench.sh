@@ -37,7 +37,7 @@ fi
 if [[ `command -v apt` ]]; then # in case you have both pamac and apt; apt is more likely to spot sbcl
        packager=apt
        # open library space of apt and refresh
-       $SUDO add-apt-repository ppa:ubuntu-lisp/ppa
+       $SUDO add-apt-repository ppa:deadsnakes/ppa # to get older pythons
        $SUDO apt update
 fi
 if [[ `command -v zypper` ]]; then
@@ -57,6 +57,7 @@ if [[ $(uname) == "Darwin" ]]; then
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         fi
 	packager=brew
+        PY="@$PY"      # brew has different py naming"
         SUDO=                        # brew cannae sudo
 elif [[ $(uname) == "Linux" ]]; then
 	LOG+="\n  You are using Linux; I will use its standard installer ($packager)"
