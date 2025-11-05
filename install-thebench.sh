@@ -179,16 +179,17 @@ LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BEN
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
 LOG+="\nDone."
 LOG+="\n\n\nTheBench install: **Please check for Cannot Install errors"
-if [[ ! -x python$PY ]]; then
+if [[ ! `command -v python$PY` ]]; then
 	LOG+="\nI tried my best to locate python$PY but failed"
 	LOG+="Your packager ($packager) was unable to locate it in your system's package databases"
 	LOG+="\nFor now, if you manage to install python$PY by external means, "
         LOG+="\n   you would be set to go with thebench."
 	LOG+="\nSorry."
 else
-	LOG+="\n\nType 'thebench' to use it right away"
+        LOG+="\nthebench python is `command -v python$PY` in your system"
+	LOG+="\n\nType 'thebench' to use the tool right away"
 fi
-LOG+="\n=========================================================="
+LOG+="=========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
-echo "\n\nThe install log is available at: $LOGFILE"
+echo "The install log is available at: $LOGFILE"
