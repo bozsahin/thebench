@@ -189,7 +189,7 @@ else
         LOG+="\nthebench python is `command -v python$PY` in your system"
 	LOG+="\n\nType 'thebench' to use the tool right away"
 fi
-LOG+="=========================================================="
+LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
 echo -e $LOG
 echo "The install log is available at: $LOGFILE"
