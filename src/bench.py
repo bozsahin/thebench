@@ -44,7 +44,7 @@ _home=os.getcwd()
 _prompt = '/'+_overscore+r'\ ' # the pagoda
 _online = False               # parser output control
 _version = '2.2.22'
-_vdate = 'November 4, 2025'
+_vdate = 'November 5, 2025'
 # 3 built-in extensions of MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
