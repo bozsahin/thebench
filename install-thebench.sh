@@ -174,7 +174,7 @@ chmod u+rw $BENCH_HISTORY
 chmod u+rw $BENCH_HOMEP
 LOG+="\nDone."
 LOG+="\nSetting up thebench binary"
-echo "bash -c 'python$PY $BHF/src/bench.py'" > "$HOME/.local/bin/$BENCHBIN" 
+echo "bash -c 'source ~/.bashrc; python$PY $BHF/src/bench.py'" > "$HOME/.local/bin/$BENCHBIN" 
 LOG+="\n  TheBench binary thebench is set to execute: `cat $HOME/.local/bin/$BENCHBIN`"
 chmod ugo+x "$HOME/.local/bin/$BENCHBIN"  # to call bench from anywhere
 LOG+="\nDone."
@@ -187,7 +187,6 @@ if [[ ! `command -v python$PY` ]]; then
 	LOG+="\nSorry."
 else
         LOG+="\nthebench python is `command -v python$PY` in your system"
-	LOG+="\n\nOpen a new terminal and type 'thebench' to use the tool."
 fi
 LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
