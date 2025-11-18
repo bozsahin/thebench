@@ -187,7 +187,7 @@ if [[ ! `command -v python$PY` ]]; then
 	LOG+="\nSorry."
 else
         LOG+="\nthebench python is `command -v python$PY` in your system"
-	LOG+="\n\nType 'thebench' to use the tool right away"
+	LOG+="\n\nOpen a new terminal and type 'thebench' to use the tool."
 fi
 LOG+="\n=========================================================="
 echo -e $LOG > $LOGFILE
