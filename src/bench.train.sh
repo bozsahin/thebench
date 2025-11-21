@@ -22,7 +22,7 @@
 TRAIN=train-nohup-sbcl    # this function is in bench.lisp
 BENCH_LISP="sbcl --dynamic-space-size $1"
 BENCH_HOME="`cat $HOME/.thebenchhome`"
-LOGFILE="$8.log"
+LOGFILE="$8.$5.$6a.$7c.log"
 N=$5  # whether this is iteration count or xp determines which trainer to call
 if [ $5 = xp ]; then
         N=''  # not needed
