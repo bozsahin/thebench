@@ -1064,7 +1064,7 @@ def do (commline):
                     ch = line.split()
                     print(f"------ Experiment {n} ------")
                     print(f"result goes to: {ch[7]}.{ch[4]}.{ch[5]}a.{ch[6]}c.src")
-                    print(f"     log file : {ch[7]}.log (contains summary of parameter change)")
+                    print(f"     log file : {ch[7]}.{ch[4]}.{ch[5]}a.{ch[6]}c.log (contains summary of parameter change)")
                     print(f"initial call  : {ch[8]} (before the experiment starts)")
                     n+=1
 
