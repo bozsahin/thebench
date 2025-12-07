@@ -43,8 +43,8 @@ if not os.path.exists(_tmp): # someone deleted it, recreate
 _home=os.getcwd()
 _prompt = '/'+_overscore+r'\ ' # the pagoda
 _online = False               # parser output control
-_version = '2.2.23'
-_vdate = 'November 21, 2025'
+_version = '2.2.24'
+_vdate = 'December 7, 2025'
 # 3 built-in extensions of MG
 _binext = '.src'              # lisp code extension
 _supext = '.sup'              # native format extension for supervision files
