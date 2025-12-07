@@ -1917,7 +1917,7 @@
   (format t "~2&Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A" 
 	  (beta-normalize-outer (cky-sem *cky-max*))
 	  (display-lf (beta-normalize-outer (cky-sem *cky-max*))))
-  (format t "~2%Most likely analysis for it: ~A~%--------------------------------" *cky-argmax-lf-max*)
+  (format t "~2%Most likely analysis for it: ~A~%----------------------------" *cky-argmax-lf-max*)
   (format t (cky-show-probs *cky-argmax-lf-max*))
   (format t "~2%Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A~%" (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))
 	  (display-lf (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))))
