@@ -1911,16 +1911,16 @@
   (format t "~%Most likely l-command for the input: ~A~2%  ~A =~%  ~A~2%Cumulative weight:  ~A" *cky-input* 
 	  (second *cky-lf*)(display-lf (beta-normalize-outer (second *cky-lf*)))
 	  (first *cky-lf*))
-  (format t "~2%Most likely analysis for it: ~A~%--------------------------------" *cky-argmax-lf-max*)
-  (format t (cky-show-probs *cky-argmax-lf-max*))
-  (format t "~2%Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A~%" (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))
-	  (display-lf (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))))
   (format t "~2%Most weighted analysis (not necessarily most likely): ~A" *cky-max*)
-  (format t  "~%--------------------------")
+  (format t  "~%----------------------------------------------------")
   (format t (cky-show-probs *cky-max*))
   (format t "~2&Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A" 
 	  (beta-normalize-outer (cky-sem *cky-max*))
 	  (display-lf (beta-normalize-outer (cky-sem *cky-max*))))
+  (format t "~2%Most likely analysis for it: ~A~%--------------------------------" *cky-argmax-lf-max*)
+  (format t (cky-show-probs *cky-argmax-lf-max*))
+  (format t "~2%Final l-command, normal-order evaluated: ~2%    ~A =~%    ~A~%" (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))
+	  (display-lf (beta-normalize-outer (cky-sem *cky-argmax-lf-max*))))
   t)
 
 (defun cky_show_ranking_bare ()
