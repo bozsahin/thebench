@@ -2,9 +2,6 @@
 ;; first form is SBCL-specific
 ;; -cem bozsahin
 
-(setf *read-default-float-format* 'double-float) ; needed this in some trainings 
-                                                 ; to avoid (exp) overflow
-
 (declaim #+sbcl(sb-ext:muffle-conditions style-warning))
 (setf *load-verbose* nil)
 (setf *load-print* nil)
@@ -13,6 +10,9 @@
        (*standard-output* nada)
        (*error-output* nada))
      (load ,stuff)))
+
+(setf *read-default-float-format* 'double-float) ; needed this in some trainings 
+                                                 ; to avoid (exp) overflow
 
 (defconstant day-names
            '("Monday" "Tuesday" "Wednesday"
@@ -505,7 +505,7 @@
   )
 
 (defun which_processor ()
-  (values "Monad of Natural Command" "8.0"))
+  (values "Monad of Natural Command" "8.1"))
 
 (defun flash-news (&optional (report t))
   (cond (report 
