@@ -20,3 +20,4 @@ bundles/
 vendor/pkg/
 pyenv
 Vagrantfile
+.thebenchhistory
