@@ -32,6 +32,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: ${{ github.event_name != 'pull_request' }}
+          tags: latest
           annotations: ${{ steps.meta.outputs.annotations }}
           provenance: true
           sbom: true
