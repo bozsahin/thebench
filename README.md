@@ -14,69 +14,76 @@ The guide in this repo explains these command relations. Much more is covered in
 
 Go to <https://www.docker.com/products/docker-desktop/> and download the Docker Desktop app for your OS.
 
-#### 1. Downloading TheBench
+#### 1. Pull the TheBench Docker image
 
-Open your terminal and run `git clone github.com/bozsahin/thebench`
+```bash
+docker pull denizakdemir/thebench:latest
+```
 
-#### 2. Build the Docker Image
-
-Change directory by running `cd thebench` in your terminal to switch to the repository folder and run:
-`docker build -t thebench .`
-
-#### 3. Create the TheBench shortcut
+#### 2. Create the TheBench shortcut
 
 Run this command once to create a permanent alias:
 
 * **Linux:**
 
   ```bash
-  echo 'alias thebench="docker run -it --rm -v \"\$(pwd)\":/work -w /work thebench"' >> ~/.bashrc && source ~/.bashrc
+  echo 'alias thebench="docker run -it --rm -v \"\$(pwd)\":/work -w /work denizakdemir/thebench"' >> ~/.bashrc && source ~/.bashrc
   ```
 
 * **Mac:**
   
   ```bash
-  echo 'alias thebench="docker run -it --rm -v \"\$(pwd)\":/work -w /work thebench"' >> ~/.zshrc && source ~/.zshrc
+  echo 'alias thebench="docker run -it --rm -v \"\$(pwd)\":/work -w /work denizakdemir/thebench"' >> ~/.zshrc && source ~/.zshrc
   ```
 
 * **Windows (Powershell):**
 
   ```powershell
-  Add-Content -Path $PROFILE -Value 'function thebench { docker run -it --rm -v "$PWD:/work" -w /work thebench $args }'
+  Add-Content -Path $PROFILE -Value 'function thebench { docker run -it --rm -v "$PWD:/work" -w /work denizakdemir/thebench $args }'
   ```
+
+After this, you can simply type `thebench` in any terminal, inside any folder, and the app will run using the current directory.
 
 #### To Upgrade
 
-1. In your `thebench` directory, run
+On the terminal, run
 
-   `git pull`
-
-2. Rebuild your Docker image to bake in the new code:
-
-   `docker build -t thebench .`
+   `docker pull denizakdemir/thebench`
 
 #### To Uninstall
 
-Docker isolates the application so removing it leaves zero clutter on your system.
+1. Remove the alias / function
 
-1. Delete the image
+* Linux (bash)
 
-   `docker rmi thebench`
+```bash
+sed -i '/alias thebench=/d' ~/.bashrc && source ~/.bashrc
+```
 
-2. Remove the Shortcut (If created)
-   Open your terminal configuration file (~/.bashrc, ~/.zshrc, or Windows $PROFILE) and delete the alias/function line that mentions `thebench`.
+* macOS (zsh)
 
-3. Delete the Source Code
-   Delete the thebench repository folder from your computer.
+```bash
+sed -i '' '/alias thebench=/d' ~/.zshrc && source ~/.zshrc
+```
 
-> [!NOTE]
-> Your personal grammar files and your .thebenchhistory file will safely remain wherever you saved them.
+* Windows (PowerShell)
+Open your PowerShell profile with `notepad $PROFILE`, delete the line containing `function thebench { ... }`, save the file, then restart PowerShell.
+
+2. Remove the Docker image
+
+```bash
+docker rmi denizakdemir/thebench:latest
+```
+
+3. (Optional) Uninstall Docker Desktop
+
+Follow [the official guides](https://docs.docker.com/desktop/uninstall/).
 
 **Use Advice for Docker installations:**
 
-* **Your Files:** Because of the `-v` flag in the command above, any grammar files you create in your local folder will be instantly available inside TheBench, and they will be safe when you exit.
+* **Your Files:** Any grammar files you create in the local folder you run `thebench` in will be instantly available inside TheBench, and they will be safe when you exit.
 
-* **Command History:** The Docker container is disposable (`--rm`), but it is wired to save your command history. You will notice a hidden `.thebenchhistory` file appear in your working folder alongside your grammar files.
+* **Command History:** Docker containers are disposable (`--rm`), but this one is wired to save your command history. You will notice a hidden `.thebenchhistory` file appear in your working folder alongside your grammar files.
 
 ### Native
 
