@@ -17,7 +17,7 @@ Go to <https://www.docker.com/products/docker-desktop/> and download the Docker 
 #### 1. Pull the TheBench Docker image
 
 ```bash
-docker pull denizakdemir/thebench:latest
+docker pull denizakdemir/thebench:main
 ```
 
 #### 2. Create the TheBench shortcut
