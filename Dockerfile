@@ -22,7 +22,8 @@ COPY . /opt/thebench
 RUN python3 -c "import re; f=open('/opt/thebench/src/bench.py','r'); c=f.read(); f.close(); c=re.sub(r'(\s*)(command\s*=\s*myPromptSession\.prompt\(_prompt\))', r'\1if sys.stdin.isatty():\n\1    command = myPromptSession.prompt(_prompt)\n\1else:\n\1    try:\n\1        command = input()\n\1    except EOFError:\n\1        command = \"\"', c, count=1); f=open('/opt/thebench/src/bench.py','w'); f.write(c); f.close()"
 
 # Creates the dotfiles in the home directory
-RUN echo "/opt/thebench" > /root/.thebenchhome && \
+RUN mkdir -p /root/.local/bin && \
+    echo "/opt/thebench" > /root/.thebenchhome && \
     touch /root/.thebenchhistory && \
     chmod u+rw /root/.thebenchhistory /root/.thebenchhome
 
