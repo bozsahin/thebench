@@ -27,19 +27,19 @@ Run this command once to create a permanent alias:
 * **Linux:**
 
   ```bash
-  echo 'alias thebench="docker run -it --rm -v \"\$(pwd)\":/work -w /work denizakdemir/thebench"' >> ~/.bashrc && source ~/.bashrc
+  echo 'alias thebench="docker run -it -v \"\$(pwd)\":/work -w /work denizakdemir/thebench:main"' >> ~/.bashrc && source ~/.bashrc
   ```
 
 * **Mac:**
   
   ```bash
-  echo 'alias thebench="docker run -it --rm -v \"\$(pwd)\":/work -w /work denizakdemir/thebench"' >> ~/.zshrc && source ~/.zshrc
+  echo 'alias thebench="docker run -it -v \"\$(pwd)\":/work -w /work denizakdemir/thebench:main"' >> ~/.zshrc && source ~/.zshrc
   ```
 
 * **Windows (Powershell):**
 
   ```powershell
-  Add-Content -Path $PROFILE -Value 'function thebench { docker run -it --rm -v "$PWD:/work" -w /work denizakdemir/thebench $args }'
+  Add-Content -Path $PROFILE -Value 'function thebench { docker run -it -v "$PWD:/work" -w /work denizakdemir/thebench:main $args }'
   ```
 
 After this, you can simply type `thebench` in any terminal, inside any folder, and the app will run using the current directory.
@@ -72,18 +72,12 @@ Open your PowerShell profile with `notepad $PROFILE`, delete the line containing
 2. Remove the Docker image
 
 ```bash
-docker rmi denizakdemir/thebench:latest
+docker rmi denizakdemir/thebench:main
 ```
 
 3. (Optional) Uninstall Docker Desktop
 
 Follow [the official guides](https://docs.docker.com/desktop/uninstall/).
-
-**Use Advice for Docker installations:**
-
-* **Your Files:** Any grammar files you create in the local folder you run `thebench` in will be instantly available inside TheBench, and they will be safe when you exit.
-
-* **Command History:** Docker containers are disposable (`--rm`), but this one is wired to save your command history. You will notice a hidden `.thebenchhistory` file appear in your working folder alongside your grammar files.
 
 ### Native
 

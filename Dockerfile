@@ -4,6 +4,7 @@ FROM python:3.11-slim
 # Installs sbcl
 RUN apt-get update && apt-get install -y \
     sbcl \
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 # Installs the Python libraries
@@ -18,9 +19,6 @@ WORKDIR /opt/thebench
 # Copies thebench
 COPY . /opt/thebench
 
-# Patch bench.py to handle non‑TTY gracefully
-RUN python3 -c "import re; f=open('/opt/thebench/src/bench.py','r'); c=f.read(); f.close(); c=re.sub(r'(\s*)(command\s*=\s*myPromptSession\.prompt\(_prompt\))', r'\1if sys.stdin.isatty():\n\1    command = myPromptSession.prompt(_prompt)\n\1else:\n\1    try:\n\1        command = input()\n\1    except EOFError:\n\1        command = \"\"', c, count=1); f=open('/opt/thebench/src/bench.py','w'); f.write(c); f.close()"
-
 # Creates the dotfiles in the home directory
 RUN mkdir -p /root/.local/bin && \
     echo "/opt/thebench" > /root/.thebenchhome && \
@@ -28,7 +26,21 @@ RUN mkdir -p /root/.local/bin && \
     chmod u+rw /root/.thebenchhistory /root/.thebenchhome
 
 # Creates the executable wrapper 
-RUN echo '#!/bin/bash\ntouch $(pwd)/.thebenchhistory\nln -sf $(pwd)/.thebenchhistory /root/.thebenchhistory\npython3.11 /opt/thebench/src/bench.py "$@"' > /usr/local/bin/thebench && \
+RUN echo '#!/bin/bash\n\
+touch $(pwd)/.thebenchhistory\n\
+ln -sf $(pwd)/.thebenchhistory /root/.thebenchhistory\n\
+\n\
+# Run Python. The bash script waits here until Python is closed.\n\
+python3.11 /opt/thebench/src/bench.py "$@"\n\
+\n\
+# When Python closes, check if sbcl is running in the background.\n\
+if pgrep -x "sbcl" > /dev/null; then\n\
+    echo -e "\\n[Docker] Background training detected. Keeping container alive..."\n\
+    while pgrep -x "sbcl" > /dev/null; do\n\
+        sleep 30\n\
+    done\n\
+    echo "[Docker] Training finished. Shutting down."\n\
+fi' > /usr/local/bin/thebench && \
     chmod +x /usr/local/bin/thebench
 
 # Sets the default command
