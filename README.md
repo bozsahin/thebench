@@ -17,7 +17,7 @@ Go to <https://www.docker.com/products/docker-desktop/> and download the Docker 
 #### 1. Pull the TheBench Docker image
 
 ```bash
-docker pull denizakdemir/thebench:main
+docker pull bozsahin/thebench:main
 ```
 
 #### 2. Create the TheBench shortcut
@@ -27,19 +27,19 @@ Run this command once to create a permanent alias:
 * **Linux:**
 
   ```bash
-  echo 'alias thebench="docker run -it -v \"\$(pwd)\":/work -w /work denizakdemir/thebench:main"' >> ~/.bashrc && source ~/.bashrc
+  echo 'alias thebench="docker run -it -v \"\$(pwd)\":/work -w /work bozsahin/thebench:main"' >> ~/.bashrc && source ~/.bashrc
   ```
 
 * **Mac:**
   
   ```bash
-  echo 'alias thebench="docker run -it -v \"\$(pwd)\":/work -w /work denizakdemir/thebench:main"' >> ~/.zshrc && source ~/.zshrc
+  echo 'alias thebench="docker run -it -v \"\$(pwd)\":/work -w /work bozsahin/thebench:main"' >> ~/.zshrc && source ~/.zshrc
   ```
 
 * **Windows (Powershell):**
 
   ```powershell
-  Add-Content -Path $PROFILE -Value 'function thebench { docker run -it -v "$PWD:/work" -w /work denizakdemir/thebench:main $args }'
+  Add-Content -Path $PROFILE -Value 'function thebench { docker run -it -v "$PWD:/work" -w /work bozsahin/thebench:main $args }'
   ```
 
 After this, you can simply type `thebench` in any terminal, inside any folder, and the app will run using the current directory.
@@ -48,7 +48,7 @@ After this, you can simply type `thebench` in any terminal, inside any folder, a
 
 On the terminal, run
 
-   `docker pull denizakdemir/thebench`
+   `docker pull bozsahin/thebench`
 
 #### To Uninstall
 
@@ -72,7 +72,7 @@ Open your PowerShell profile with `notepad $PROFILE`, delete the line containing
 2. Remove the Docker image
 
 ```bash
-docker rmi denizakdemir/thebench:main
+docker rmi bozsahin/thebench:main
 ```
 
 3. (Optional) Uninstall Docker Desktop
