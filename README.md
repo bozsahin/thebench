@@ -16,6 +16,8 @@ Go to <https://www.docker.com/products/docker-desktop/> and download the Docker 
 
 #### 1. Pull the TheBench Docker image
 
+Click on the Docker desktop app.
+
 ```bash
 docker pull bozsahin/thebench:main
 ```
