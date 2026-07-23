@@ -79,51 +79,6 @@ docker rmi bozsahin/thebench:main
 
 Follow [the official guides](https://docs.docker.com/desktop/uninstall/).
 
-### Native
-
-#### 1. (THIS STEP IS FOR WINDOWS USERS ONLY) Installing the Windows Subsystem for Linux
-
-TheBench is written to work as a Linux program. Therefore we need a translation layer named Windows Subsystem for Linux (WSL) to use it in Windows.
-
-If you're a Windows 11 user, go to the [Microsoft Store](https://apps.microsoft.com/) and install `Ubuntu`. Click on the app, and set up a local user for yourself.
-
-If you use Linux/MacOS, there is nothing to do in this step.
-
-#### 2. Installing TheBench
-
-Open a terminal app (for W11, do that in the ubuntu app), and change your directory to where you want to install the tool by running `cd my_directory`. Then run the following code:
-
-```bash
-curl -LO https://raw.githubusercontent.com/bozsahin/thebench/main/install-thebench.sh && chmod +x install-thebench.sh && ./install-thebench.sh
-```
-
-The installer checks and installs if the following: `thebench`, `brew` (for MacOS only), `curl`, `git`, `SBCL`, `python3.11`, its `pip`, and TheBench's python libraries is not present in your system. It then installs TheBench.
-
-> [!TIP]
-> Please keep your work files outside TheBench folder. That would make your life easier. That way, when you uninstall the tool, your work won't be lost.
-
-> [!NOTE]
-> The installer creates some local files to keep things organized and available from anywhere in the user space. There are THREE of them: (`~' points to your home directory in the linux world).
->
-> `~/.thebenchhome` This file contains the full path of TheBench repository in your installation.
->
-> `~/.thebenchhistory` This file contains history of your command use for easier recall.
->
-> ` ~/.local/bin/thebench` This is the executable that allows access to TheBench from anywhere in your personal account.
->
-> Please do not alter them manually.
-
-#### To Upgrade:
-
-In your `thebench` directory, run
-
-   `git pull`
-
-If git complains about conflicts, the usual suspect is local changes to `bench.user.lisp` file. Move it somewhere and do the upgrade, then put it back. The contents of this file is not crucial to the tool, but its presence and location are.
-
-#### To Uninstall
-
-Just delete the folder `thebench`.
 
 
 ## Using TheBench
