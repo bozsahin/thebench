@@ -6,7 +6,7 @@ It uses two command relations for every element of grammar, one on syntactic com
 
 The guide in this repo explains these command relations. Much more is covered in the book [Connecting Social Semiotics, Grammaticality, and Meaningfulness: The Verb](https://www.cambridgescholars.com/product/978-1-0364-1830-4)
 
-## Installation Methods
+## Installation
 
 ### Docker
 
