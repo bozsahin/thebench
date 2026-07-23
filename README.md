@@ -46,6 +46,7 @@ Run this command once to create a permanent alias:
   notepad $PROFILE
   ```
   Paste the following in it:
+  
   ```powershell
   function thebench {
     docker run --rm -it `
@@ -54,11 +55,11 @@ Run this command once to create a permanent alias:
         bozsahin/thebench:main @args
   }
  ```
-  
  Save and exit. Then reload the profile:
-```powershell
-  . $PROFILE
-```
+
+ ```powershell
+ notepad $PROFILE
+ ```
 
 After this, you can simply type `thebench` in any terminal, inside any folder, and the app will run using the current directory.
 
