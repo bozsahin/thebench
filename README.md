@@ -58,7 +58,7 @@ Run this command once to create a permanent alias:
  Save and exit. Then reload the profile:
 
  ```powershell
- notepad $PROFILE
+ . $PROFILE
  ```
 
 After this, you can simply type `thebench` in any terminal, inside any folder, and the app will run using the current directory.
