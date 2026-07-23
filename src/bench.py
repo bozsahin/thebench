@@ -1297,7 +1297,13 @@ if __name__ == '__main__': # MG REPL online
     command = _silent
     while split_command(command)[0] != _exit:
         do(command)
-        command = myPromptSession.prompt(_prompt)
+        if sys.stdin.isatty():
+            command = myPromptSession.prompt(_prompt)
+        else:
+            try:
+                command = input()
+            except EOFError:
+                command = _exit
     print('Done.')
 else:
     print('Offline call.')
