@@ -54,7 +54,8 @@ Run this command once to create a permanent alias:
         -w /work `
         bozsahin/thebench:main @args
   }
- ```
+  ```
+
  Save and exit. Then reload the profile:
 
  ```powershell
