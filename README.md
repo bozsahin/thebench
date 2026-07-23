@@ -40,17 +40,27 @@ Run this command once to create a permanent alias:
 
 * **Windows (Powershell):**
 
+  Run powershell. In it edit the $PROFILE file:
+
   ```powershell
-  Add-Content -Path $PROFILE -Value 'function thebench { docker run -it -v "$PWD:/work" -w /work bozsahin/thebench:main $args }'
+  notepad $PROFILE
   ```
+  Paste the following in it:
+  ```powershell
+  function thebench {
+    docker run --rm -it `
+        -v "${PWD}:/work" `
+        -w /work `
+        bozsahin/thebench:main @args
+  }
+ ```
+  
+ Save and exit. Then reload the profile:
+```powershell
+  . $PROFILE
+```
 
 After this, you can simply type `thebench` in any terminal, inside any folder, and the app will run using the current directory.
-
-If Windows powershell script fails, click on Docker Desktop, open a powershell, change to a directory you want to run thebench, and do:
-
-```powershell
-  docker run -it bozsahin/thebench:main
-  ```
 
 #### To Upgrade
 
