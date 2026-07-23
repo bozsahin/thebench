@@ -46,6 +46,12 @@ Run this command once to create a permanent alias:
 
 After this, you can simply type `thebench` in any terminal, inside any folder, and the app will run using the current directory.
 
+If Windows powershell script fails, click on Docker Desktop, open a powershell, change to a directory you want to run thebench, and do:
+
+```powershell
+  docker run -it bozsahin/thebench:main
+  ```
+
 #### To Upgrade
 
 On the terminal, run
