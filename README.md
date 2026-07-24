@@ -24,7 +24,7 @@ docker pull bozsahin/thebench:main
 
 #### 2. Create the TheBench shortcuts (one for initiation, one for resumption of work later on)
 
-Do the following ONCE to create a permanent aliases:
+Do the following ONCE to create permanent aliases:
 
 * **Linux:**
 
