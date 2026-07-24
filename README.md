@@ -47,7 +47,12 @@ Do the following ONCE to create a permanent alias:
     fi
  }
 EOF
-source ~/.bashrc
+```
+
+Then do
+
+```bash
+source ~/bashrc
 ```
 
 * **Mac:**
@@ -71,7 +76,12 @@ function thebench {
     fi
 }
 EOF
-source ~/.zshrc
+```
+
+Then do
+
+```bash
+source ~/bashrc
 ```
 
 * **Windows (Powershell v7 onwards):**
