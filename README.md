@@ -29,14 +29,14 @@ Do the following ONCE to create permanent aliases:
 * **Linux:**
 
   ```bash
-  echo 'alias thebench-init="docker run -it --name thebench-session -v \"\$(pwd)\":/work -w /work bozsahin/thebench:main"' >> ~/.bashrc && source ~/.bashrc
+  echo 'alias thebench-init="docker run -it --name thebench-session -v \"\$(pwd)\":/work -w /work bozsahin/thebench:main"' >> ~/.bashrc
   echo 'alias thebench="docker start -ai thebench-session"' >> ~/.bashrc && source ~/.bashrc
   ```
 
 * **Mac:**
   
   ```bash
-  echo 'alias thebench-init="docker run -it --name thebench-session -v \"\$(pwd)\":/work -w /work bozsahin/thebench:main"' >> ~/.zshrc && source ~/.zshrc
+  echo 'alias thebench-init="docker run -it --name thebench-session -v \"\$(pwd)\":/work -w /work bozsahin/thebench:main"' >> ~/.zshrc
   echo 'alias thebench="docker start -ai thebench-session"' >> ~/.zshrc && source ~/.zshrc
   ```
 
