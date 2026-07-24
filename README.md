@@ -140,7 +140,7 @@ KEEP IN MIND THAT YOUR COMMAND HISTORY IS KEPT SEPARATELY DEPENDING ON FROM WHIC
 ### How to develop a grammar
 
 Just use your favourite PLAIN TEXT editor and enter a grammar. Then follow help (the `? command`) of TheBench to process it.
-I suggest you develop grammars NOT in `thebench` folder to avoid override in upgrades.
+I suggest you develop grammars NOT in `thebench` folder to avoid override and git conflicts in upgrades.
 If you uninstall TheBench, the repo directory is deleted as well, so you might lose data if you work in this directory.
 
 My email is somewhere in the webosphere to google; just drop me an email if you need assistance.
