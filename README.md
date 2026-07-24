@@ -52,7 +52,7 @@ EOF
 Then do
 
 ```bash
-source ~/bashrc
+source ~/.bashrc
 ```
 
 * **Mac:**
@@ -81,7 +81,7 @@ EOF
 Then do
 
 ```bash
-source ~/bashrc
+source ~/.bashrc
 ```
 
 * **Windows (Powershell v7 onwards):**
