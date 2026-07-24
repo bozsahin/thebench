@@ -147,7 +147,7 @@ Follow [the official guides](https://docs.docker.com/desktop/uninstall/).
 
 Use UP and DOWN keys for command recall. TheBench keeps its specific command history.
 
-KEEP IN MIND THAT YOUR COMMAND HISTORY IS KEPT SEPARATELY DEPENDING ON FROM WHICH WORKING DIRECTORIES YOU HAVE RUN thebench.
+KEEP IN MIND THAT your command history AND the training files ARE KEPT SEPARATELY DEPENDING ON FROM WHICH WORKING DIRECTORIES YOU HAVE RUN thebench.
 
 ### How to develop a grammar
 
