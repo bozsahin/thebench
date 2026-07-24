@@ -69,8 +69,7 @@ function thebench {
             bozsahin/thebench:main "$@"
     fi
 }
-EOF
-  && source ~/.zshrc
+EOF && source ~/.zshrc
 ```
 
 * **Windows (Powershell v7 onwards):**
