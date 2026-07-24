@@ -144,11 +144,14 @@ docker rmi bozsahin/thebench:main
 Follow [the official guides](https://docs.docker.com/desktop/uninstall/).
 
 
-## Using TheBench
+## Some pointers for using TheBench
 
-Use UP and DOWN keys for command recall. TheBench keeps its specific command history.
+i) Use UP and DOWN keys for command recall. TheBench keeps its specific command history.
 
-KEEP IN MIND THAT your command history AND the training files ARE KEPT SEPARATELY DEPENDING ON FROM WHICH WORKING DIRECTORIES YOU HAVE RUN thebench.
+ii) KEEP IN MIND THAT your command history AND the training files ARE KEPT SEPARATELY DEPENDING ON FROM WHICH WORKING DIRECTORIES YOU HAVE RUN thebench.
+
+iii) If you are in a long process of modeling a grammar, running many experiments, please do not rely on forever persistence of model files yoiu have created, especially those in /var/tmp/thebench.
+Docker images are ENVIRONMENTS, not code, therefore save your special files.
 
 ### How to develop a grammar
 
