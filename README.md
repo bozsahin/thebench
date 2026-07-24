@@ -81,7 +81,7 @@ EOF
 Then do
 
 ```bash
-source ~/.bashrc
+source ~/.zshrc
 ```
 
 * **Windows (Powershell v7 onwards):**
