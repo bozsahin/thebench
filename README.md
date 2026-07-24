@@ -28,7 +28,7 @@ Do the following ONCE to create a permanent alias:
 
 * **Linux:**
 
-  ```bash
+```bash
  cat >> ~/.bashrc <<'EOF'
 
  function thebench {
@@ -47,11 +47,11 @@ Do the following ONCE to create a permanent alias:
     fi
  }
 EOF && source ~/.bashrc
-  ```
+```
 
 * **Mac:**
   
-  ```zsh
+```zsh
 cat >> ~/.zshrc <<'EOF'
 
 function thebench {
@@ -71,18 +71,18 @@ function thebench {
 }
 EOF
   && source ~/.zshrc
-  ```
+```
 
 * **Windows (Powershell v7 onwards):**
 
   Run powershell. In it edit the $PROFILE file:
 
-  ```powershell
+```powershell
   notepad $PROFILE
-  ```
+```
   Paste the following in it:
   
-  ```powershell
+```powershell
   function thebench {
     $full = (Get-Location).Path
     $safe = ($full -replace '[^A-Za-z0-9_.-]', '_')
@@ -101,13 +101,13 @@ EOF
             bozsahin/thebench:main @args
     }
 }
-  ```
+```
 
  Save and exit. Then reload the profile:
 
- ```powershell
+```powershell
  . $PROFILE
- ```
+```
 
 After this, you can simply type:
 
