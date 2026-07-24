@@ -151,7 +151,7 @@ i) Use UP and DOWN keys for command recall. TheBench keeps its specific command 
 ii) If you use thebench from different directories, your work is saved separately. Your command recall and /var/tmp/thebench files are relative to your working directory.
 
 iii) If you are in a long process of modeling a grammar, running many experiments, please do not rely on forever persistence of model files you have created, especially those in the /var/tmp/thebench directory, where thebench puts its internal results.
-Docker images are ENVIRONMENTS, not code; save your special files as backups.
+Docker images are ENVIRONMENTS, not code; backup your special files.
 
 ### How to develop a grammar
 
