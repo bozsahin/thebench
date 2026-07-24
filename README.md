@@ -22,22 +22,55 @@ Click on the Docker Desktop app. This starts the Docker Engine (deamon). Then do
 docker pull bozsahin/thebench:main
 ```
 
-#### 2. Create the TheBench shortcuts (one for initiation, one for resumption of work later on)
+#### 2. Create the TheBench shortcut.
 
-Do the following ONCE to create permanent aliases:
+Do the following ONCE to create a permanent alias:
 
 * **Linux:**
 
   ```bash
-  echo 'alias thebench-init="docker run -it --name thebench-session -v \"\$(pwd)\":/work -w /work bozsahin/thebench:main"' >> ~/.bashrc
-  echo 'alias thebench="docker start -ai thebench-session"' >> ~/.bashrc && source ~/.bashrc
+ cat >> ~/.bashrc <<'EOF'
+
+ function thebench {
+    full="$PWD"
+    safe=$(printf '%s' "$full" | sed 's/[^A-Za-z0-9_.-]/_/g')
+    name="thebench-$safe"
+
+    if docker ps -aq -f "name=^${name}$" | grep -q .; then
+        docker start -ai "$name"
+    else
+        docker run -it \
+            --name "$name" \
+            -v "$PWD:/work" \
+            -w /work \
+            bozsahin/thebench:main "$@"
+    fi
+ }
+EOF && source ~/.bashrc
   ```
 
 * **Mac:**
   
-  ```bash
-  echo 'alias thebench-init="docker run -it --name thebench-session -v \"\$(pwd)\":/work -w /work bozsahin/thebench:main"' >> ~/.zshrc
-  echo 'alias thebench="docker start -ai thebench-session"' >> ~/.zshrc && source ~/.zshrc
+  ```zsh
+cat >> ~/.zshrc <<'EOF'
+
+function thebench {
+    full="$PWD"
+    safe=$(printf '%s' "$full" | sed 's/[^A-Za-z0-9_.-]/_/g')
+    name="thebench-$safe"
+
+    if docker ps -aq -f "name=^${name}$" | grep -q .; then
+        docker start -ai "$name"
+    else
+        docker run -it \
+            --name "$name" \
+            -v "$PWD:/work" \
+            -w /work \
+            bozsahin/thebench:main "$@"
+    fi
+}
+EOF
+  && source ~/.zshrc
   ```
 
 * **Windows (Powershell v7 onwards):**
@@ -50,15 +83,24 @@ Do the following ONCE to create permanent aliases:
   Paste the following in it:
   
   ```powershell
-  function thebench-init {
-    docker run -it --name thebench-session `
-        -v "${PWD}:/work" `
-        -w /work `
-        bozsahin/thebench:main @args
-  }
   function thebench {
-    docker start -ai thebench-session
-  }
+    $full = (Get-Location).Path
+    $safe = ($full -replace '[^A-Za-z0-9_.-]', '_')
+    $name = "thebench-$safe"
+
+    $exists = docker ps -aq -f "name=^${name}$"
+
+    if ($exists) {
+        docker start -ai $name
+    }
+    else {
+        docker run -it `
+            --name $name `
+            -v "${PWD}:/work" `
+            -w /work `
+            bozsahin/thebench:main @args
+    }
+}
   ```
 
  Save and exit. Then reload the profile:
@@ -69,9 +111,7 @@ Do the following ONCE to create permanent aliases:
 
 After this, you can simply type:
 
-`thebench-init` in any terminal, inside any folder, and the app will initiate thebench from the current directory.
-
-`thebench` in any terminal, inside any folder, and the app will resume thebench work from the current directory.
+`thebench` in any terminal, inside any folder, and the app will start or resume thebench work from the current directory.
 
 #### To Upgrade
 
@@ -81,26 +121,7 @@ On the terminal, run
 
 #### To Uninstall
 
-1. Remove the alias / function
-
-* Linux (bash)
-
-```bash
-sed -i '/alias thebench-init=/d' ~/.bashrc && source ~/.bashrc
-sed -i '/alias thebench=/d' ~/.bashrc && source ~/.bashrc
-```
-
-* macOS (zsh)
-
-```bash
-sed -i '' '/alias thebench-init=/d' ~/.zshrc && source ~/.zshrc
-sed -i '' '/alias thebench=/d' ~/.zshrc && source ~/.zshrc
-```
-
-* Windows (PowerShell)
-Open your PowerShell profile with `notepad $PROFILE`, delete the lines containing `function thebench... { ... }`, save the file, then restart PowerShell.
-
-2. Remove the Docker image
+Remove the Docker image
 
 ```bash
 docker rmi bozsahin/thebench:main
