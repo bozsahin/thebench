@@ -120,25 +120,22 @@ On the terminal, run
 
 #### To Uninstall
 
-Remove the Docker image
+1.Remove the Docker image
 
 ```bash
 docker rmi bozsahin/thebench:main
 ```
 
-3. (Optional) Uninstall Docker Desktop
+2. (Optional) Remove thebench function from your `~/.bashrc`. Uninstall Docker Desktop
 
 Follow [the official guides](https://docs.docker.com/desktop/uninstall/).
 
 
-
 ## Using TheBench
 
-You can run `thebench` and `thebench-init`  in any directory you wish to use TheBench.
+Use UP and DOWN keys for command recall. TheBench keeps its specific command history.
 
-Use UP and DOWN keys for command recall. TheBench keeps its specific command history in `.thebenchhistory` file at your home directory.
-
-In case the docker cannot run thebench, you may reinitiate it using `thebench-init`. KEEP IN MIND THAT WHEN YOU DO THAT YOUR PREVIOUS RESULTS AND COMMAND HISTORY WILL BE LOST.
+KEEP IN MIND THAT YOUR COMMAND HISTORY IS KEPT SEPARATELY DEPENDING ON FROM WHICH WORKING DIRECTORIES YOU HAVE RUN thebench.
 
 ### How to develop a grammar
 
