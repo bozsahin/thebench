@@ -119,6 +119,7 @@ source ~/.zshrc
 ```powershell
  . $PROFILE
 ```
+#### To use
 
 After this, you can simply type:
 
