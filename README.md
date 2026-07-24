@@ -98,8 +98,8 @@ EOF && source ~/.zshrc
             -v "${PWD}:/work" `
             -w /work `
             bozsahin/thebench:main @args
+         }
     }
-}
 ```
 
  Save and exit. Then reload the profile:
