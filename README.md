@@ -46,7 +46,8 @@ Do the following ONCE to create a permanent alias:
             bozsahin/thebench:main "$@"
     fi
  }
-EOF && source ~/.bashrc
+EOF
+source ~/.bashrc
 ```
 
 * **Mac:**
@@ -69,7 +70,8 @@ function thebench {
             bozsahin/thebench:main "$@"
     fi
 }
-EOF && source ~/.zshrc
+EOF
+source ~/.zshrc
 ```
 
 * **Windows (Powershell v7 onwards):**
