@@ -128,7 +128,7 @@ After this, you can simply type:
 
 On the terminal, run
 
-   `docker pull bozsahin/thebench`
+   `docker pull bozsahin/thebench:main`
 
 #### To Uninstall
 
