@@ -22,7 +22,7 @@ Click on the Docker Desktop app. This starts the Docker Engine (daemon). Then do
 docker pull bozsahin/thebench:main
 ```
 
-#### 2. Create the TheBench shortcut.
+#### 2. Create TheBench shortcut.
 
 Do the following ONCE to create a permanent alias:
 
@@ -138,7 +138,6 @@ On the terminal, run
 ```bash
 docker rmi bozsahin/thebench:main
 ```
-
 2. (Optional) Remove thebench function from your `~/.bashrc`. Uninstall Docker Desktop
 
 Follow [the official guides](https://docs.docker.com/desktop/uninstall/).
