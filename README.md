@@ -14,9 +14,9 @@ The guide in this repo explains these command relations. More comprehensive desc
 
 Go to <https://www.docker.com/products/docker-desktop/> and download the Docker Desktop app for your OS.
 
-#### 1. Pull the TheBench Docker image
+#### 1. Pull TheBench Docker image
 
-Click on the Docker Desktop app. This starts the Docker Engine (deamon). Then do:
+Click on the Docker Desktop app. This starts the Docker Engine (daemon). Then do:
 
 ```bash
 docker pull bozsahin/thebench:main
