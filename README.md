@@ -138,7 +138,7 @@ On the terminal, run
 ```bash
 docker rmi bozsahin/thebench:main
 ```
-2. (Optional) Remove thebench function from your `~/.bashrc`. Uninstall Docker Desktop
+2. (Optional) Remove thebench function from your `~/.bashrc` (linux), . `~/.zshrc` (mac), or `$PROFILE` (windows). Uninstall Docker Desktop
 
 Follow [the official guides](https://docs.docker.com/desktop/uninstall/).
 
