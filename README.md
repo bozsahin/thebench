@@ -131,6 +131,10 @@ On the terminal, run
 
    `docker pull bozsahin/thebench:main`
 
+It downloads the latest version of TheBench. Existing workspace containers continue to use the version from which they were created. To use the updated version in a workspace, remove its existing container and start TheBench again. This does not affect files stored in your mounted working directory.
+
+Do not remove or recreate a container while an offline training session is running. Wait until training completes before upgrading.
+
 #### To Uninstall
 
 1.Remove the Docker image
