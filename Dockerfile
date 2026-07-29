@@ -35,7 +35,7 @@ python3.11 /opt/thebench/src/bench.py "$@"\n\
 \n\
 # When Python closes, check if sbcl is running in the background.\n\
 if pgrep -x "sbcl" > /dev/null; then\n\
-    echo -e "\\n[Docker] *** Background training detected. YOU MAY EXIT TheBench SAFELY, BUT DO not STOP DOCKER OF THE CONTAINER"\n\
+    echo -e "\\n[Docker] *** Background training detected. PLEASE DO not STOP DOCKER OR THE CONTAINER UNTIL IT SAYS FINISHED."\n\
     while pgrep -x "sbcl" > /dev/null; do\n\
         sleep 30\n\
     done\n\
