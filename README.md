@@ -4,7 +4,7 @@ This is a tool to study natural language structures by writing natural language 
 
 It uses two command relations for every element of grammar, one on syntactic command, one on semantic command. All intra- and cross-linguistic variation is claimed to arise from their local interaction.
 
-The guide in this repo explains these command relations. More comprehensive description of the idea, including its analyses of linguistic diversity, is in the book [Connecting Social Semiotics, Grammaticality, and Meaningfulness: The Verb](https://www.cambridgescholars.com/product/978-1-0364-1830-4)
+The guide in this repo explains these command relations, how to write monadic categorial grammars, compare them, and train them. More comprehensive description of the idea, including its analyses of linguistic diversity, is in the book [Connecting Social Semiotics, Grammaticality, and Meaningfulness: The Verb](https://www.cambridgescholars.com/product/978-1-0364-1830-4)
 
 ## Installation (thanks to Deniz Akdemir for Docker help)
 
