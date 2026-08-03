@@ -1,6 +1,6 @@
 # TheBench
 
-This is a tool to study natural language structures by writing natural language grammars. It is for writing, assessing and comparing grammars, for typology and for fine-tuning of grammars.
+This is a tool to study natural language structures. It is for writing, assessing and comparing monadic categorial grammars, for typology and for fine-tuning of grammar models.
 
 It uses two command relations for every element of grammar, one on syntactic command, one on semantic command. All intra- and cross-linguistic variation is claimed to arise from their local interaction.
 
